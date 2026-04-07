@@ -1,0 +1,20 @@
+# Ignore Python Virtual Environments
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Ignore sensitive keys and secrets
+.env
+*.pem
+secrets.json
+
+# Ignore heavy build artifacts or local logs
+dist/
+build/
+*.log
+
+# Ignore standard git/metadata
+.git/
+.DS_Store

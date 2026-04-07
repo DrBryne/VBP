@@ -1,0 +1,20 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Local test outputs
+*_result.json
+
+# OS files
+.DS_Store
+
+# Tool directories
+.gemini/
