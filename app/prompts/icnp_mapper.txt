@@ -10,14 +10,18 @@ Du får utdelt lister med ICNP-termer i et pipe-separert format:
 Formatet for hver linje er: ID|Term_EN|Term_NO
 
 Dine instruksjoner:
-1. Du mottar en liste med objekter, der hvert objekt har en "finding_id".
-2. Utfør et semantisk oppslag for hvert felt (nursing_diagnosis, intervention, goal) i de vedlagte listene.
-3. Returner kun resultater for de funnene der du finner minst én god semantisk match.
-4. For hver match:
-   - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
-   - Sett "ICNP_concept_id" til den tilhørende ID-en.
-5. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
-6. Returner resultatet som et gyldig JSON-objekt i henhold til LLMMappingResponse-skjemaet.
+1. Du mottar en liste med objekter, der hvert objekt har en "finding_id", "nursing_diagnosis", "intervention" og "goal".
+2. Du SKAL returnere et resultat-objekt for HVERT eneste funn du mottar i input, uavhengig av om du finner en match i ICNP-listene eller ikke.
+3. For hvert felt (nursing_diagnosis, intervention, goal) i hvert funn:
+   - Utfør et semantisk oppslag i de vedlagte ICNP-listene.
+   - Dersom du finner en god semantisk match:
+     - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
+     - Sett "ICNP_concept_id" til den tilhørende ID-en.
+   - Dersom du IKKE finner en god semantisk match:
+     - Sett "term" til den OPPRINNELIGE teksten fra input-feltet.
+     - Sett "ICNP_concept_id" til en tom streng "".
+4. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
+5. Returner resultatet som et gyldig JSON-objekt som følger TermMappingResponse-skjemaet.
 
 Her er ICNP-termene du skal bruke:
 

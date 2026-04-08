@@ -19,7 +19,10 @@ def create_research_analyst():
         ),
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
-                initial_delay=1,
+                initial_delay=2,
+                max_delay=60,
+                exp_base=2.0,
+                jitter=True,
                 attempts=10,
                 http_status_codes=[429, 500, 502, 503, 504]
             ),

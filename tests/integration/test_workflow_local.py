@@ -28,8 +28,8 @@ async def run_local_test():
     # Define test parameters extracted from the original script
     test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/" 
     test_target_group = "ALS - Amytrofisk lateral sklerose"
-    limit_files = 1
-    max_concurrency = 1
+    limit_files = None # No limit on number of files
+    max_concurrency = 10 # Sustainable concurrency for high quota reliability
     
     print(f"--- Starting ADK 2.0 Local Workflow Test ---")
     print(f"Project: {project_id}")
@@ -98,7 +98,8 @@ async def run_local_test():
             print("\n--- Workflow Synthesis Result ---")
             print(formatted_json)
             
-            output_file = "workflow_test_result.json"
+            os.makedirs("tests/integration/results", exist_ok=True)
+            output_file = "tests/integration/results/workflow_synthesis.json"
             with open(output_file, "w", encoding="utf-8") as f:
                 f.write(formatted_json)
             print(f"\nResult saved to: {output_file}")

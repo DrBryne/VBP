@@ -2,6 +2,7 @@ import os
 import asyncio
 import json
 import uuid
+import random
 from typing import AsyncGenerator, List, Optional
 
 from google.adk.agents import BaseAgent
@@ -94,16 +95,23 @@ class VBPWorkflowAgent(BaseAgent):
             yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="No files found to process.")]))
             return
 
-        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Processing {len(files)} documents in parallel (limit: {max_concurrency})...")]))
+        total_files = len(files)
+        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Processing {total_files} documents in parallel (limit: {max_concurrency})...")]))
 
         semaphore = asyncio.Semaphore(max_concurrency)
+        progress_queue = asyncio.Queue()
         
         # Create an ephemeral session service for parallel execution isolation
         ephemeral_session_service = InMemorySessionService()
 
         async def process_single_document(uri: str) -> Optional[ProcessedDocument]:
+            filename = uri.split("/")[-1]
             async with semaphore:
                 try:
+                    await progress_queue.put(f"START: {filename}")
+                    # Staggered start to prevent massive initial burst of API calls
+                    await asyncio.sleep(random.uniform(0.1, 5.0))
+                    
                     # 1. Isolate the execution context
                     doc_session_id = str(uuid.uuid4())
                     doc_session = await ephemeral_session_service.create_session(
@@ -155,13 +163,33 @@ class VBPWorkflowAgent(BaseAgent):
                     
                     doc_ctx.session.events.append(Event(author="system", content=analyst_msg))
                     
-                    async for _ in self.analyst.run_async(doc_ctx):
-                        pass
+                    last_text = None
+                    async for ev in self.analyst.run_async(doc_ctx):
+                        if ev.content and ev.content.parts:
+                             last_text = ev.content.parts[0].text
+                    
+                    await progress_queue.put(f"ANALYST DONE: {filename}")
                         
                     # Extract the automatically parsed Pydantic object (thanks to output_key)
                     analyst_data: ExtractionResponse = doc_ctx.session.state.get("analyst_results")
                     
+                    if not analyst_data and last_text:
+                        try:
+                            clean_text = last_text.strip()
+                            if clean_text.startswith("```json"):
+                                clean_text = clean_text[7:]
+                            if clean_text.endswith("```"):
+                                clean_text = clean_text[:-3]
+                            
+                            import json
+                            data_dict = json.loads(clean_text)
+                            analyst_data = ExtractionResponse.model_validate(data_dict)
+                        except Exception as e:
+                            await progress_queue.put(f"ANALYST PARSE ERROR: {filename} ({e})")
+                            pass
+                    
                     if not analyst_data or not analyst_data.Candidate_findings:
+                        await progress_queue.put(f"NO FINDINGS: {filename}")
                         return None
                         
                     # Assign an internal ID to the source document if it lacks one
@@ -192,17 +220,40 @@ class VBPWorkflowAgent(BaseAgent):
                     doc_ctx.session.events.append(Event(author="system", content=mapper_msg))
                     
                     try:
-                        async for _ in self.mapper.run_async(doc_ctx):
-                            pass
+                        async for ev in self.mapper.run_async(doc_ctx):
+                            if ev.is_final_response() and ev.content and ev.content.parts:
+                                text = ev.content.parts[0].text
+                                try:
+                                    clean_text = text.strip()
+                                    if clean_text.startswith("```json"):
+                                        clean_text = clean_text[7:]
+                                    if clean_text.endswith("```"):
+                                        clean_text = clean_text[:-3]
+                                    
+                                    import json
+                                    data_dict = json.loads(clean_text)
+                                    if ev.author == "icnp_mapper":
+                                        doc_ctx.session.state["icnp_results"] = TermMappingResponse.model_validate(data_dict)
+                                    elif ev.author == "fo_classifier":
+                                        doc_ctx.session.state["fo_results"] = FOClassificationResponse.model_validate(data_dict)
+                                except Exception as e:
+                                    await progress_queue.put(f"MAPPER PARSE ERROR ({ev.author}): {filename} ({e})")
+                                    # Still fail if parsing was critical
+                                    pass
                     except Exception as e:
-                        print(f"Term mapper failed for {uri}: {e}")
+                        await progress_queue.put(f"MAPPER CRITICAL ERROR: {filename} ({e})")
                         return None
                         
                     # Extract mapped outputs
                     icnp_res: TermMappingResponse = doc_ctx.session.state.get("icnp_results")
                     fo_res: FOClassificationResponse = doc_ctx.session.state.get("fo_results")
                     
-                    if not icnp_res or not fo_res:
+                    missing = []
+                    if not icnp_res: missing.append("icnp_results")
+                    if not fo_res: missing.append("fo_results")
+                    
+                    if missing:
+                        await progress_queue.put(f"MAPPER INCOMPLETE ({', '.join(missing)}): {filename}")
                         return None
                         
                     # 5. Merge Logic: Reconstruct ProcessedDocument
@@ -233,18 +284,44 @@ class VBPWorkflowAgent(BaseAgent):
                         )
                         processed_findings.append(processed_finding)
 
+                    await progress_queue.put(f"SUCCESS: {filename} ({len(processed_findings)} findings)")
                     return ProcessedDocument(
                         source_document=analyst_data.source_document,
                         mapped_findings=processed_findings
                     )
                 except Exception as doc_e:
-                    import traceback
-                    print(f"Failed to process {uri}: {doc_e}")
-                    traceback.print_exc()
+                    await progress_queue.put(f"DOC CRITICAL ERROR: {filename} ({doc_e})")
                     return None
 
+        # Create tasks and a monitor for the queue
         tasks = [process_single_document(f) for f in files]
-        mapped_results = await asyncio.gather(*tasks)
+        
+        async def run_gather():
+            return await asyncio.gather(*tasks)
+            
+        gather_task = asyncio.create_task(run_gather())
+        
+        completed_count = 0
+        success_count = 0
+        while not gather_task.done() or not progress_queue.empty():
+            try:
+                # Wait for a progress message or task completion
+                msg = await asyncio.wait_for(progress_queue.get(), timeout=1.0)
+                yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"[Progress] {msg}")]))
+                
+                if msg.startswith("SUCCESS:") or msg.startswith("NO FINDINGS:") or "INCOMPLETE" in msg or "ERROR" in msg:
+                    completed_count += 1
+                    if msg.startswith("SUCCESS:"):
+                        success_count += 1
+                    
+                    if completed_count % 5 == 0 or completed_count == total_files:
+                         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"*** Overall Progress: {completed_count}/{total_files} documents processed ({success_count} with findings) ***")]))
+                
+                progress_queue.task_done()
+            except asyncio.TimeoutError:
+                continue
+
+        mapped_results = await gather_task
         successful_results = [r for r in mapped_results if r is not None]
 
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Processed {len(successful_results)}/{len(files)} documents successfully.")]))
@@ -271,7 +348,9 @@ class VBPWorkflowAgent(BaseAgent):
             parts=[types.Part.from_text(text=f"Målgruppe: {target_group}\n\nSyntetiser disse funnene:\n{json.dumps(consolidated_payload)}")]
         )
 
-        async for ev in self.consolidator.run_async(ctx.with_message(consolidator_msg)):
+        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="Starting final synthesis of all collected findings...")]))
+        ctx.session.events.append(Event(author="system", content=consolidator_msg))
+        async for ev in self.consolidator.run_async(ctx):
             yield ev
 
 # --- ADK Application Definition ---

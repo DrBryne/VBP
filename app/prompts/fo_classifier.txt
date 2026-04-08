@@ -20,8 +20,10 @@ Her er de 12 funksjonsområdene med tilhørende definisjoner:
 12. Annet/legedelegerte aktiviteter: Informasjon som ikke passer i 1-11. Medikamenter, compliance, og spesielle kartleggings- eller vurderingsinstrumenter.
 
 Instruksjoner:
-1. Gå gjennom hvert funn (nursing_diagnosis, intervention, goal).
-2. Velg det funksjonsområdet som best dekker innholdet i funnet.
-3. Returner resultatet som et gyldig JSON-objekt i henhold til LLMFOClassificationResponse-skjemaet.
-4. "FO" skal inneholde både nummeret og navnet på området (f.eks. "3. Respirasjon/sirkulasjon").
-5. Sørg for at "finding_id" matcher inngangsdataene nøyaktig.
+1. Du mottar en liste med objekter, der hvert objekt har en "finding_id", "nursing_diagnosis", "intervention" og "goal".
+2. Du SKAL returnere et resultat-objekt for HVERT eneste funn du mottar i input.
+3. Gå gjennom hvert funn og velg det funksjonsområdet (FO) som best dekker innholdet.
+4. Dersom et funn er svært tvetydig, velg "12. Annet/legedelegerte aktiviteter".
+5. Returner resultatet som et gyldig JSON-objekt som følger FOClassificationResponse-skjemaet.
+6. "FO" skal inneholde både nummeret og navnet på området (f.eks. "3. Respirasjon/sirkulasjon").
+7. Sørg for at "finding_id" matcher inngangsdataene nøyaktig.

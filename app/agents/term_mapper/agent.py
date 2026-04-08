@@ -20,6 +20,17 @@ def create_icnp_mapper():
     config = types.GenerateContentConfig(
         temperature=1.0,
         thinking_config=types.ThinkingConfig(include_thoughts=True, thinking_level="high"),
+        http_options=types.HttpOptions(
+            retry_options=types.HttpRetryOptions(
+                initial_delay=2,
+                max_delay=60,
+                exp_base=2.0,
+                jitter=True,
+                attempts=10,
+                http_status_codes=[429, 500, 502, 503, 504]
+            ),
+            timeout=300000
+        )
     )
 
     return Agent(
@@ -42,6 +53,17 @@ def create_fo_classifier():
     config = types.GenerateContentConfig(
         temperature=1.0,
         thinking_config=types.ThinkingConfig(include_thoughts=True, thinking_level="high"),
+        http_options=types.HttpOptions(
+            retry_options=types.HttpRetryOptions(
+                initial_delay=2,
+                max_delay=60,
+                exp_base=2.0,
+                jitter=True,
+                attempts=10,
+                http_status_codes=[429, 500, 502, 503, 504]
+            ),
+            timeout=300000
+        )
     )
 
     return Agent(
