@@ -5,6 +5,8 @@ import mimetypes
 import fitz  # PyMuPDF
 import json
 import uuid
+import gc
+import os
 from typing import List, Dict, Tuple, Optional, Any, Union
 from google.cloud import storage
 from google.adk.agents import BaseAgent
@@ -56,6 +58,17 @@ def format_indexed_text(indexed_sentences: Dict[str, str]) -> str:
         parts.append(f"[{sid}] {text}")
     return " ".join(parts)
 
+def _get_cache_dir() -> str:
+    """Determines the correct temporary directory for disk-backed caching."""
+    # Use /tmp for Agent Engine, or a local .adk/cache for local dev
+    if os.environ.get("AGENT_ENGINE_ID"):
+        cache_dir = "/tmp/vbp_indexes"
+    else:
+        cache_dir = ".adk/cache/indexes"
+    
+    os.makedirs(cache_dir, exist_ok=True)
+    return cache_dir
+
 def strip_xml_tags(text: str) -> str:
     """Extracts pure text from XML/HTML strings, replacing tags with spaces."""
     if not text:
@@ -96,34 +109,55 @@ def load_and_prep_document(uri: str, project_id: str) -> Tuple[str, str, str]:
 
 async def resolve_sentence_ids(
     finding_candidates: List[ClinicalFinding], 
-    indexed_sentences: Dict[str, str],
+    doc_id: str, 
     filename: str, 
     progress_state: WorkflowProgress, 
     state_lock: asyncio.Lock, 
     progress_queue: asyncio.Queue
 ) -> List[ClinicalFinding]:
     """
-    Resolves supporting_sentence_ids back into actual text quotes.
-    Drops hallucinated IDs and findings with no valid quotes.
+    Resolves supporting_sentence_ids back into actual text quotes with a context window.
+    Loads the index from disk to save memory.
     """
+    cache_dir = _get_cache_dir()
+    cache_path = os.path.join(cache_dir, f"{doc_id}_index.json")
+    
+    if not os.path.exists(cache_path):
+        logger.error(f"[Indexing] Cache missing for {filename} at {cache_path}")
+        return []
+
+    with open(cache_path, "r", encoding="utf-8") as f:
+        indexed_sentences = json.load(f)
+
     verified_findings = []
     
-    logger.debug(f"Resolving {len(finding_candidates)} findings for {filename}")
+    logger.debug(f"Resolving {len(finding_candidates)} findings for {filename} with context window (Disk-Backed)")
     for finding in finding_candidates:
-        valid_quotes = []
-        # Finding candidates currently has supporting_sentence_ids from the LLM
+        # Determine the set of unique sentence IDs to include (original + padding)
+        # We sort them to ensure narrative order
+        unique_ids = set()
         for sid in finding.supporting_sentence_ids:
-            quote_text = indexed_sentences.get(sid)
-            if quote_text:
-                valid_quotes.append(quote_text)
-            else:
-                logger.warning(f"[Indexing] Hallucinated Sentence ID '{sid}' in {filename}", finding=finding.nursing_diagnosis)
-        
-        if valid_quotes:
-            logger.debug(f"Resolved {len(valid_quotes)} quotes for finding: {finding.nursing_diagnosis}", filename=filename)
-            # We dynamically add 'quotes' attribute so the rest of the workflow
-            # (Taxonomy, Consolidation) can use it without schema changes.
-            finding.quotes = valid_quotes
+            try:
+                # Extract the numeric index from "S12" -> 12
+                idx = int(sid[1:])
+                # Add window: idx-1, idx, idx+1
+                for offset in [-1, 0, 1]:
+                    target_id = f"S{idx + offset}"
+                    if target_id in indexed_sentences:
+                        unique_ids.add(target_id)
+            except (ValueError, IndexError):
+                logger.warning(f"[Indexing] Malformed Sentence ID '{sid}' in {filename}")
+
+        if unique_ids:
+            # Sort IDs numerically: S1, S2, S10, S11 (standard string sort fails here)
+            sorted_ids = sorted(list(unique_ids), key=lambda x: int(x[1:]))
+            
+            # Retrieve the raw text without tags and join with spaces
+            contextual_quote = " ".join([indexed_sentences[sid] for sid in sorted_ids])
+            
+            logger.debug(f"Resolved contextual quote ({len(sorted_ids)} sentences) for finding: {finding.nursing_diagnosis}", filename=filename)
+            # Store as a single-element list for backward compatibility with downstream models
+            finding.quotes = [contextual_quote]
             verified_findings.append(finding)
         else:
             async with state_lock:
@@ -131,6 +165,8 @@ async def resolve_sentence_ids(
             await progress_queue.put(f"VALIDATION: Dropped finding with no valid sentence IDs in {filename}")
             logger.warning(f"[Indexing] Dropping finding in {filename} (no valid IDs remain): {finding.nursing_diagnosis}")
             
+    # Cleanup memory
+    del indexed_sentences
     return verified_findings
 
 async def process_document_pipeline(
@@ -149,6 +185,7 @@ async def process_document_pipeline(
     Complete processing pipeline for a single document: 
     Loading -> Indexing -> Analyst -> Resolution -> Mapper -> Taxonomy.
     """
+    doc_id = str(uuid.uuid4())
     try:
         filename = uri.split("/")[-1]
         logger.info(f"Processing document start: {filename}", uri=uri)
@@ -167,11 +204,22 @@ async def process_document_pipeline(
                 justification=f"The document was excluded because its file type ({mime_type}) is not supported for analysis. Only PDF, TXT, and XML are allowed."
             )
 
-        # 2. Index Sentences
+        # 2. Index Sentences & Persist to Disk
         logger.debug(f"Indexing document sentences: {filename}")
         indexed_sentences = index_document_sentences(file_text)
         tagged_text = format_indexed_text(indexed_sentences)
-        logger.debug(f"Document indexed: {filename}", sentence_count=len(indexed_sentences))
+        
+        # PERSIST TO DISK TO SAVE RAM
+        cache_dir = _get_cache_dir()
+        cache_path = os.path.join(cache_dir, f"{doc_id}_index.json")
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump(indexed_sentences, f)
+        
+        logger.debug(f"Document indexed and cached to disk: {filename}", sentence_count=len(indexed_sentences))
+        
+        # Aggressive memory cleanup
+        del file_text
+        del indexed_sentences
 
         # 3. Setup Session
         doc_session_id = str(uuid.uuid4())
@@ -181,6 +229,9 @@ async def process_document_pipeline(
         static_context = types.Part.from_text(text=f"Target Group: {target_group}\n\nAnalyze the attached document.")
         analyst_msg = types.Content(role="user", parts=[static_context, types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")])
         doc_session.events.append(Event(author="system", content=analyst_msg))
+        
+        # Memory cleanup
+        del tagged_text
         
         # Inherit from parent context but update session and invocation ID
         pipeline_ctx = parent_ctx.model_copy(update={
@@ -216,22 +267,27 @@ async def process_document_pipeline(
             async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
             logger.info(f"No findings identified in document: {filename}")
             await progress_queue.put(f"DONE: {filename} (NO FINDINGS)")
+            # Cleanup cache
+            if os.path.exists(cache_path): os.remove(cache_path)
             return ExcludedDocument(
                 source_uri=uri, 
                 title=metadata.source_document.title, 
                 justification=clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert."
             )
 
-        # 5. Resolve Sentence IDs
+        # 5. Resolve Sentence IDs (Loads from Disk)
         logger.debug(f"Resolving sentence IDs for: {filename}")
         verified_findings = await resolve_sentence_ids(
             clinical_findings.candidate_findings, 
-            indexed_sentences, 
+            doc_id, 
             filename, 
             progress_state, 
             state_lock, 
             progress_queue
         )
+        
+        # Cleanup cache after resolution
+        if os.path.exists(cache_path): os.remove(cache_path)
 
         if not verified_findings:
             async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
@@ -244,8 +300,8 @@ async def process_document_pipeline(
             )
         
         clinical_findings.candidate_findings = verified_findings
-        doc_id = metadata.source_document.document_id or str(uuid.uuid4())
-        metadata.source_document.document_id = doc_id
+        doc_id_val = metadata.source_document.document_id or str(uuid.uuid4())
+        metadata.source_document.document_id = doc_id_val
         metadata.source_document.reasoning_trace = clinical_findings.reasoning_trace
 
         # 6. Invoke Term Mapper
@@ -288,16 +344,23 @@ async def process_document_pipeline(
         
         # 7. Validate Taxonomy
         logger.debug(f"Validating taxonomy for: {filename}")
-        processed_findings, taxonomy_error_count = validate_taxonomy(finding_map, icnp_lookup, fo_lookup, doc_id, filename, progress_state, state_lock)
+        processed_findings, taxonomy_error_count = validate_taxonomy(finding_map, icnp_lookup, fo_lookup, doc_id_val, filename, progress_state, state_lock)
         if taxonomy_error_count > 0:
             async with state_lock: progress_state.total_taxonomy_errors += taxonomy_error_count
 
         async with state_lock: progress_state.completed += 1; progress_state.success += 1
         logger.info(f"Document processing success: {filename}", finding_count=len(processed_findings))
         await progress_queue.put(f"DONE: {filename} (SUCCESS: {len(processed_findings)} findings)")
-        return ProcessedDocument(source_document=metadata.source_document, mapped_findings=processed_findings)
+        
+        # Final cleanup for this document task
+        res = ProcessedDocument(source_document=metadata.source_document, mapped_findings=processed_findings)
+        del doc_session
+        gc.collect() # Force GC reclaim
+        return res
 
     except Exception as doc_e:
+        # Final safety cleanup
+        if 'cache_path' in locals() and os.path.exists(cache_path): os.remove(cache_path)
         async with state_lock: progress_state.completed += 1; progress_state.failed += 1
         logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(doc_e), uri=uri)
         await progress_queue.put(f"DONE: {filename} (CRITICAL ERROR: {doc_e})")
