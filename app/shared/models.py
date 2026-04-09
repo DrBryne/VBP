@@ -33,7 +33,8 @@ class ClinicalFinding(BaseModel):
     nursing_diagnosis: str = Field(description="The derived nursing diagnosis.")
     intervention: str = Field(description="Nursing intervention.")
     goal: Optional[str] = Field(default=None, description="Goal for the intervention.")
-    quotes: List[str] = Field(description="List of quotes supporting the finding.")
+    supporting_sentence_ids: List[str] = Field(description="List of exact sentence IDs (e.g., ['S12', 'S15']) from the indexed text that support this finding.")
+    quotes: Optional[List[str]] = Field(default=None, description="Verbatim quotes resolved from sentence IDs (internal use).")
 
 class MetadataResponse(BaseModel):
     """Schema for the specialized Metadata Extractor agent."""
@@ -86,7 +87,6 @@ class SynthesizedFinding(BaseModel):
     intervention: MappedTerm
     goal: MappedTerm
     FO: str = Field(description="Functional Area (1-12).")
-    evidence_summary: str = Field(description="Brief summary of the evidence for this finding across documents.")
     supporting_evidence: List[Evidence] = Field(description="Specific quotes from sources supporting the finding.")
 
 class ExcludedDocument(BaseModel):

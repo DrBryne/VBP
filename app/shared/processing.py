@@ -1,65 +1,69 @@
 import asyncio
 import re
+import nltk
 from typing import List, Dict, Tuple, Optional, Any
-from rapidfuzz import fuzz
 from app.shared.models import ClinicalFinding, ProcessedFinding, MappedTerm, Document, WorkflowProgress
 from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
 import logging
 
 logger = logging.getLogger("vbp_processing")
 
-def normalize_text(text: str) -> str:
-    """Removes all non-alphanumeric characters for robust fuzzy matching."""
-    return re.sub(r'[\W_]+', '', text.lower())
+# Download NLTK data
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab')
 
-async def verify_quotes_fuzzy(
+def index_document_sentences(text: str) -> Dict[str, str]:
+    """Splits text into sentences and assigns unique IDs (S1, S2, ...)."""
+    # Clean up excessive whitespace but preserve basic structure
+    text = re.sub(r'\s+', ' ', text).strip()
+    sentences = nltk.sent_tokenize(text)
+    return {f"S{i+1}": sent for i, sent in enumerate(sentences)}
+
+def format_indexed_text(indexed_sentences: Dict[str, str]) -> str:
+    """Reconstructs the document with visible sentence IDs for the LLM."""
+    parts = []
+    for sid, text in indexed_sentences.items():
+        parts.append(f"[{sid}] {text}")
+    return " ".join(parts)
+
+async def resolve_sentence_ids(
     finding_candidates: List[ClinicalFinding], 
-    source_text: str, 
+    indexed_sentences: Dict[str, str],
     filename: str, 
     progress_state: WorkflowProgress, 
     state_lock: asyncio.Lock, 
     progress_queue: asyncio.Queue
-) -> Tuple[List[ClinicalFinding], int]:
+) -> List[ClinicalFinding]:
     """
-    Verifies and rectifies clinical quotes using exact and fuzzy matching.
-    Drops hallucinated quotes and findings with no valid quotes.
+    Resolves supporting_sentence_ids back into actual text quotes.
+    Drops hallucinated IDs and findings with no valid quotes.
     """
     verified_findings = []
-    rectified_count = 0
     
     for finding in finding_candidates:
         valid_quotes = []
-        for quote in finding.quotes:
-            # 1. Exact match fallback (case-insensitive)
-            quote_clean = quote.strip()
-            if quote_clean.lower() in source_text.lower():
-                valid_quotes.append(quote_clean)
-                continue
-            
-            # 2. Fuzzy alignment
-            alignment = fuzz.partial_ratio_alignment(quote_clean.lower(), source_text.lower(), score_cutoff=85.0)
-            
-            if alignment and alignment.score >= 90.0:
-                verbatim_text = source_text[alignment.src_start:alignment.src_end]
-                valid_quotes.append(verbatim_text)
-                rectified_count += 1
-                async with state_lock:
-                    progress_state.rectified_quotes += 1
-                logger.info(f"[Quote Rectification] Fixed minor mismatch in {filename} (Score: {alignment.score:.1f})")
+        # Finding candidates currently has supporting_sentence_ids from the LLM
+        for sid in finding.supporting_sentence_ids:
+            quote_text = indexed_sentences.get(sid)
+            if quote_text:
+                valid_quotes.append(quote_text)
             else:
-                await progress_queue.put(f"VALIDATION: Dropped hallucinated quote from {filename}")
-                logger.warning(f"[Quote Verification] Hallucinated quote dropped in {filename}: {quote[:50]}...")
+                logger.warning(f"[Indexing] Hallucinated Sentence ID '{sid}' in {filename}")
         
         if valid_quotes:
+            # We dynamically add 'quotes' attribute so the rest of the workflow
+            # (Taxonomy, Consolidation) can use it without schema changes.
             finding.quotes = valid_quotes
             verified_findings.append(finding)
         else:
             async with state_lock:
                 progress_state.dropped_findings += 1
-            await progress_queue.put(f"VALIDATION: Dropped finding with no valid quotes in {filename}")
-            logger.warning(f"[Quote Verification] Dropping finding in {filename} (no valid quotes remain): {finding.nursing_diagnosis}")
+            await progress_queue.put(f"VALIDATION: Dropped finding with no valid sentence IDs in {filename}")
+            logger.warning(f"[Indexing] Dropping finding in {filename} (no valid IDs remain): {finding.nursing_diagnosis}")
             
-    return verified_findings, rectified_count
+    return verified_findings
 
 def validate_taxonomy(
     finding_map: Dict[str, ClinicalFinding], 
@@ -105,6 +109,7 @@ def validate_taxonomy(
             nursing_diagnosis=original.nursing_diagnosis,
             intervention=original.intervention, 
             goal=original.goal, 
+            supporting_sentence_ids=original.supporting_sentence_ids,
             quotes=original.quotes,
             mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, icnp_match.nursing_diagnosis if icnp_match else None),
             mapped_intervention=resolve(original.intervention, icnp_match.intervention if icnp_match else None),

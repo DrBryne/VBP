@@ -56,7 +56,6 @@ def finalize_synthesis(
     execution_start_time: datetime,
     execution_end_time: datetime,
     grouped_data: Dict[str, Dict],
-    summaries: Dict[str, str],
     quality_notes: str,
     source_documents: List[Document],
     excluded_documents: List[ExcludedDocument],
@@ -81,7 +80,6 @@ def finalize_synthesis(
             intervention=data["intervention"],
             goal=data["goal"],
             FO=data["FO"],
-            evidence_summary=summaries.get(group_key, "Ingen oppsummering tilgjengelig."),
             supporting_evidence=evidence_list
         ))
         

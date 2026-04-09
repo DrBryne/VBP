@@ -34,11 +34,10 @@ from app.shared.tools import list_gcs_files, parse_gcs_uri
 from app.shared.logging import VBPLogger
 from app.shared.consolidation import group_findings, finalize_synthesis
 from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
-from app.shared.processing import verify_quotes_fuzzy, validate_taxonomy
+from app.shared.processing import index_document_sentences, format_indexed_text, resolve_sentence_ids, validate_taxonomy
 from app.agents.research_analyst.agent import create_research_analyst
 from app.agents.term_mapper.agent import create_term_mapper
 from app.agents.consolidator.agent import (
-    create_clinical_summarizer, 
     create_quality_evaluator,
     create_evidence_validator
 )
@@ -57,7 +56,6 @@ class VbpWorkflowAgent(BaseAgent):
         super().__init__(name=name)
         self._research_analyst = create_research_analyst()
         self._term_mapper = create_term_mapper()
-        self._summarizer = create_clinical_summarizer()
         self._evaluator = create_quality_evaluator()
         self._evidence_validator = create_evidence_validator()
 
@@ -68,10 +66,6 @@ class VbpWorkflowAgent(BaseAgent):
     @property
     def term_mapper(self):
         return self._term_mapper
-
-    @property
-    def summarizer(self):
-        return self._summarizer
 
     @property
     def evaluator(self):
@@ -171,11 +165,17 @@ class VbpWorkflowAgent(BaseAgent):
                         for page in doc:
                             file_text += page.get_text()
                         doc.close()
-                        
-                        parts = [static_context, types.Part.from_bytes(data=pdf_bytes, mime_type=mime_type)]
                     else:
                         file_text = storage_client.bucket(bucket_name).blob(blob_name).download_as_bytes().decode('utf-8', errors='replace')
-                        parts = [static_context, types.Part.from_text(text=f"Document Content:\n{file_text}")]
+
+                    # --- SENTENCE INDEXING ---
+                    indexed_sentences = index_document_sentences(file_text)
+                    tagged_text = format_indexed_text(indexed_sentences)
+                    
+                    if mime_type == "application/pdf":
+                        parts = [static_context, types.Part.from_bytes(data=pdf_bytes, mime_type=mime_type), types.Part.from_text(text=f"Indexed Text for Citation:\n{tagged_text}")]
+                    else:
+                        parts = [static_context, types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")]
                         
                     analyst_msg = types.Content(role="user", parts=parts)
                     doc_session.events.append(Event(author="system", content=analyst_msg))
@@ -209,30 +209,27 @@ class VbpWorkflowAgent(BaseAgent):
                             justification=clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert."
                         )
 
-                    # --- QUOTE VERIFICATION ---
-                    verified_findings, rectified_count = await verify_quotes_fuzzy(
+                    # --- RESOLVE SENTENCE IDs ---
+                    verified_findings = await resolve_sentence_ids(
                         clinical_findings.candidate_findings, 
-                        file_text, 
+                        indexed_sentences, 
                         filename, 
                         progress_state, 
                         state_lock, 
                         progress_queue
                     )
-                    
-                    if rectified_count > 0:
-                        await progress_queue.put(f"VALIDATION: Rectified {rectified_count} quotes in {filename}")
 
                     if not verified_findings:
                         async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
-                        await progress_queue.put(f"DONE: {filename} (NO VALID FINDINGS AFTER VERIFICATION)")
+                        await progress_queue.put(f"DONE: {filename} (NO VALID CITATIONS)")
                         return ExcludedDocument(
                             source_uri=uri, 
                             title=metadata.source_document.title, 
-                            justification="The document was analyzed, but all identified clinical findings were excluded because their supporting quotes could not be verified against the document text."
+                            justification="The document was analyzed, but all identified clinical findings were excluded because the associated sentence citations were invalid."
                         )
                     
                     clinical_findings.candidate_findings = verified_findings
-                    # --- END QUOTE VERIFICATION ---
+                    # --- END RESOLUTION ---
                         
                     doc_id = metadata.source_document.document_id or str(uuid.uuid4())
                     metadata.source_document.document_id = doc_id
@@ -353,8 +350,9 @@ class VbpWorkflowAgent(BaseAgent):
             validation_results = {}
             total_unsupported_dropped = 0
             
-            for i in range(0, len(all_findings_to_validate), batch_size):
-                batch = all_findings_to_validate[i:i + batch_size]
+            val_tasks = []
+            
+            async def run_val_batch(batch, batch_idx):
                 batch_payload = []
                 for f in batch:
                     batch_payload.append({
@@ -366,11 +364,12 @@ class VbpWorkflowAgent(BaseAgent):
                     })
                 
                 valid_msg = types.Content(role="user", parts=[types.Part.from_text(text=f"Validate these clinical findings and their quotes:\n{json.dumps(batch_payload)}")])
-                val_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=f"val-batch-{i//batch_size}")
-                val_ctx = ctx.model_copy(update={"session": val_session, "invocation_id": str(uuid.uuid4())})
+                val_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=f"val-batch-{batch_idx}")
+                val_ctx_batch = ctx.model_copy(update={"session": val_session, "invocation_id": str(uuid.uuid4())})
                 val_session.events.append(Event(author="system", content=valid_msg))
                 
-                async for ev in self.evidence_validator.run_async(val_ctx):
+                batch_results = {}
+                async for ev in self.evidence_validator.run_async(val_ctx_batch):
                     if ev.is_final_response() and ev.content and ev.content.parts:
                         try:
                             text = ev.content.parts[0].text
@@ -379,9 +378,19 @@ class VbpWorkflowAgent(BaseAgent):
                             if clean_text.endswith("```"): clean_text = clean_text[:-3]
                             val_response = EvidenceValidationResponse.model_validate(json.loads(clean_text))
                             for res in val_response.results:
-                                validation_results[res.finding_id] = res.quote_validations
+                                batch_results[res.finding_id] = res.quote_validations
                         except Exception as ve:
-                            logger.error(f"Error parsing validation response: {ve}")
+                            logger.error(f"Error parsing validation response in batch {batch_idx}: {ve}")
+                return batch_results
+
+            for i in range(0, len(all_findings_to_validate), batch_size):
+                batch = all_findings_to_validate[i:i + batch_size]
+                val_tasks.append(run_val_batch(batch, i // batch_size))
+            
+            if val_tasks:
+                all_batch_results = await asyncio.gather(*val_tasks)
+                for batch_dict in all_batch_results:
+                    validation_results.update(batch_dict)
 
             new_successful_results = []
             for doc in successful_results:
@@ -422,31 +431,8 @@ class VbpWorkflowAgent(BaseAgent):
         
         grouped_data = group_findings(successful_results)
         source_docs = [r.source_document for r in successful_results]
-        summaries = {}
 
-        # 1. Generate evidence_summary for each group using ClinicalSummarizer
-        for group_key, data in grouped_data.items():
-            # Construct a small prompt for this specific group
-            summary_payload = {
-                "diagnosis": data["nursing_diagnosis"].model_dump(),
-                "intervention": data["intervention"].model_dump(),
-                "goal": data["goal"].model_dump(),
-                "all_quotes": [finding.quotes for finding in data["all_findings"]]
-            }
-            
-            summary_msg = types.Content(role="user", parts=[types.Part.from_text(text=f"Synthesize this clinical group:\n{json.dumps(summary_payload)}")])
-            # Use an ephemeral context for the summary LLM call
-            sum_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=f"sum-{group_key}")
-            sum_ctx = ctx.model_copy(update={"session": sum_session, "invocation_id": str(uuid.uuid4())})
-            sum_session.events.append(Event(author="system", content=summary_msg))
-            
-            summary_text = ""
-            async for ev in self.summarizer.run_async(sum_ctx):
-                if ev.is_final_response() and ev.content and ev.content.parts:
-                    summary_text = ev.content.parts[0].text
-            summaries[group_key] = summary_text
-
-        # 2. Generate final quality_notes using QualityEvaluator
+        # 1. Generate final quality_notes using QualityEvaluator
         quality_payload = {
             "finding_count": len(grouped_data),
             "evidence_levels": [doc.evidence_level for doc in source_docs]
@@ -476,7 +462,6 @@ class VbpWorkflowAgent(BaseAgent):
             execution_start_time,
             execution_end_time,
             grouped_data, 
-            summaries, 
             quality_notes, 
             source_docs, 
             excluded_results,
