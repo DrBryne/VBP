@@ -1,13 +1,40 @@
 import asyncio
 import re
 import nltk
-from typing import List, Dict, Tuple, Optional, Any
-from app.shared.models import ClinicalFinding, ProcessedFinding, MappedTerm, Document, WorkflowProgress
+import mimetypes
+import fitz  # PyMuPDF
+import json
+import uuid
+from typing import List, Dict, Tuple, Optional, Any, Union
+from google.cloud import storage
+from google.adk.agents import BaseAgent
+from google.adk.events import Event
+from google.adk.sessions import InMemorySessionService
+from google.adk.agents.invocation_context import InvocationContext
+from google.genai import types
+from app.shared.models import (
+    ClinicalFinding, 
+    ProcessedFinding, 
+    MappedTerm, 
+    Document, 
+    WorkflowProgress,
+    ProcessedDocument,
+    ExcludedDocument,
+    MetadataResponse,
+    ClinicalFindingsResponse,
+    IcnpMappingResponse,
+    FunctionalAreaResponse
+)
 from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
+from app.shared.tools import parse_gcs_uri
 import logging
+from app.shared.logging import VBPLogger
 from bs4 import BeautifulSoup
 
-logger = logging.getLogger("vbp_processing")
+logger = VBPLogger("vbp_processing")
+
+# List of supported MIME types
+ALLOWED_MIME_TYPES = {"application/pdf", "text/plain", "text/xml", "application/xml"}
 
 # Download NLTK data
 try:
@@ -42,6 +69,31 @@ def strip_xml_tags(text: str) -> str:
         logger.error(f"Error stripping XML tags: {e}")
         return text # Fallback
 
+def load_and_prep_document(uri: str, project_id: str) -> Tuple[str, str, str]:
+    """
+    Downloads a document from GCS, extracts its text based on MIME type,
+    and performs necessary cleaning (like XML tag stripping).
+    Returns (filename, mime_type, raw_text).
+    """
+    filename = uri.split("/")[-1]
+    mime_type, _ = mimetypes.guess_type(uri)
+    
+    bucket_name, blob_name = parse_gcs_uri(uri)
+    storage_client = storage.Client(project=project_id)
+    blob = storage_client.bucket(bucket_name).blob(blob_name)
+    
+    if mime_type == "application/pdf":
+        pdf_bytes = blob.download_as_bytes()
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+        file_text = "".join([page.get_text() for page in doc])
+        doc.close()
+    else:
+        file_text = blob.download_as_bytes().decode('utf-8', errors='replace')
+        if mime_type in ["text/xml", "application/xml"]:
+            file_text = strip_xml_tags(file_text)
+            
+    return filename, mime_type, file_text
+
 async def resolve_sentence_ids(
     finding_candidates: List[ClinicalFinding], 
     indexed_sentences: Dict[str, str],
@@ -56,6 +108,7 @@ async def resolve_sentence_ids(
     """
     verified_findings = []
     
+    logger.debug(f"Resolving {len(finding_candidates)} findings for {filename}")
     for finding in finding_candidates:
         valid_quotes = []
         # Finding candidates currently has supporting_sentence_ids from the LLM
@@ -64,9 +117,10 @@ async def resolve_sentence_ids(
             if quote_text:
                 valid_quotes.append(quote_text)
             else:
-                logger.warning(f"[Indexing] Hallucinated Sentence ID '{sid}' in {filename}")
+                logger.warning(f"[Indexing] Hallucinated Sentence ID '{sid}' in {filename}", finding=finding.nursing_diagnosis)
         
         if valid_quotes:
+            logger.debug(f"Resolved {len(valid_quotes)} quotes for finding: {finding.nursing_diagnosis}", filename=filename)
             # We dynamically add 'quotes' attribute so the rest of the workflow
             # (Taxonomy, Consolidation) can use it without schema changes.
             finding.quotes = valid_quotes
@@ -79,6 +133,176 @@ async def resolve_sentence_ids(
             
     return verified_findings
 
+async def process_document_pipeline(
+    uri: str,
+    target_group: str,
+    project_id: str,
+    research_analyst: BaseAgent,
+    term_mapper: BaseAgent,
+    parent_ctx: InvocationContext,
+    ephemeral_session_service: InMemorySessionService,
+    progress_state: WorkflowProgress,
+    state_lock: asyncio.Lock,
+    progress_queue: asyncio.Queue
+) -> Union[ProcessedDocument, ExcludedDocument]:
+    """
+    Complete processing pipeline for a single document: 
+    Loading -> Indexing -> Analyst -> Resolution -> Mapper -> Taxonomy.
+    """
+    try:
+        filename = uri.split("/")[-1]
+        logger.info(f"Processing document start: {filename}", uri=uri)
+        await progress_queue.put(f"START: {filename}")
+        
+        # 1. Load and Prep
+        filename, mime_type, file_text = load_and_prep_document(uri, project_id)
+        
+        if mime_type not in ALLOWED_MIME_TYPES:
+            async with state_lock: progress_state.completed += 1; progress_state.failed += 1
+            logger.warning(f"Unsupported file type: {mime_type}", filename=filename, uri=uri)
+            await progress_queue.put(f"DONE: {filename} (UNSUPPORTED TYPE: {mime_type})")
+            return ExcludedDocument(
+                source_uri=uri,
+                title=filename,
+                justification=f"The document was excluded because its file type ({mime_type}) is not supported for analysis. Only PDF, TXT, and XML are allowed."
+            )
+
+        # 2. Index Sentences
+        logger.debug(f"Indexing document sentences: {filename}")
+        indexed_sentences = index_document_sentences(file_text)
+        tagged_text = format_indexed_text(indexed_sentences)
+        logger.debug(f"Document indexed: {filename}", sentence_count=len(indexed_sentences))
+
+        # 3. Setup Session
+        doc_session_id = str(uuid.uuid4())
+        doc_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=doc_session_id)
+        
+        # 4. Invoke Research Analyst
+        static_context = types.Part.from_text(text=f"Target Group: {target_group}\n\nAnalyze the attached document.")
+        analyst_msg = types.Content(role="user", parts=[static_context, types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")])
+        doc_session.events.append(Event(author="system", content=analyst_msg))
+        
+        # Inherit from parent context but update session and invocation ID
+        pipeline_ctx = parent_ctx.model_copy(update={
+            "session": doc_session,
+            "invocation_id": str(uuid.uuid4()),
+            "session_service": ephemeral_session_service
+        })
+
+        logger.info(f"Invoking Research Analyst for: {filename}")
+        async for ev in research_analyst.run_async(pipeline_ctx):
+            if ev.is_final_response() and ev.content and ev.content.parts:
+                try:
+                    data_dict = json.loads(ev.content.parts[0].text)
+                    if ev.author == "metadata_extractor": 
+                        doc_session.state["metadata"] = MetadataResponse.model_validate(data_dict)
+                        logger.debug(f"Metadata extracted for: {filename}", title=data_dict.get("source_document", {}).get("title"))
+                    elif ev.author == "finding_extractor": 
+                        doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
+                        logger.debug(f"Findings extracted for: {filename}", count=len(data_dict.get("candidate_findings", [])))
+                except Exception as e: 
+                    logger.error(f"ANALYST PARSE ERROR ({ev.author}): {filename}", error=str(e))
+                    await progress_queue.put(f"ANALYST PARSE ERROR ({ev.author}): {filename} ({e})")
+
+        metadata: MetadataResponse = doc_session.state.get("metadata")
+        clinical_findings: ClinicalFindingsResponse = doc_session.state.get("clinical_findings")
+        
+        if not metadata:
+            metadata = MetadataResponse(source_document=Document(source_uri=uri, title=filename, publication_year=0, doi="Not found", evidence_level="Nivå 0: Ingen kategori"))
+        else:
+            metadata.source_document.source_uri = uri
+
+        if not clinical_findings or not clinical_findings.candidate_findings:
+            async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
+            logger.info(f"No findings identified in document: {filename}")
+            await progress_queue.put(f"DONE: {filename} (NO FINDINGS)")
+            return ExcludedDocument(
+                source_uri=uri, 
+                title=metadata.source_document.title, 
+                justification=clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert."
+            )
+
+        # 5. Resolve Sentence IDs
+        logger.debug(f"Resolving sentence IDs for: {filename}")
+        verified_findings = await resolve_sentence_ids(
+            clinical_findings.candidate_findings, 
+            indexed_sentences, 
+            filename, 
+            progress_state, 
+            state_lock, 
+            progress_queue
+        )
+
+        if not verified_findings:
+            async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
+            logger.warning(f"No valid citations remain after resolution for: {filename}")
+            await progress_queue.put(f"DONE: {filename} (NO VALID CITATIONS)")
+            return ExcludedDocument(
+                source_uri=uri, 
+                title=metadata.source_document.title, 
+                justification="The document was analyzed, but all identified clinical findings were excluded because the associated sentence citations were invalid."
+            )
+        
+        clinical_findings.candidate_findings = verified_findings
+        doc_id = metadata.source_document.document_id or str(uuid.uuid4())
+        metadata.source_document.document_id = doc_id
+        metadata.source_document.reasoning_trace = clinical_findings.reasoning_trace
+
+        # 6. Invoke Term Mapper
+        lean_findings = []
+        finding_map = {}
+        for finding in clinical_findings.candidate_findings:
+            internal_id = str(uuid.uuid4()); finding_map[internal_id] = finding
+            lean_findings.append({"finding_id": internal_id, "nursing_diagnosis": finding.nursing_diagnosis, "intervention": finding.intervention, "goal": finding.goal})
+
+        mapper_msg = types.Content(role="user", parts=[types.Part.from_text(text="Map these findings to ICNP and classify FO:"), types.Part.from_text(text=json.dumps(lean_findings))])
+        doc_session.events.append(Event(author="system", content=mapper_msg))
+        
+        logger.info(f"Invoking Term Mapper for: {filename}", finding_count=len(lean_findings))
+        try:
+            async for ev in term_mapper.run_async(pipeline_ctx):
+                if ev.is_final_response() and ev.content and ev.content.parts:
+                    try:
+                        data_dict = json.loads(ev.content.parts[0].text)
+                        if ev.author == "icnp_mapper": doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
+                        elif ev.author == "fo_classifier": doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
+                    except Exception as e: 
+                        logger.error(f"MAPPER PARSE ERROR ({ev.author}): {filename}", error=str(e))
+                        await progress_queue.put(f"MAPPER PARSE ERROR ({ev.author}): {filename} ({e})")
+        except Exception as e:
+            async with state_lock: progress_state.completed += 1; progress_state.failed += 1
+            logger.error(f"Term Mapper critical error for: {filename}", error=str(e))
+            await progress_queue.put(f"DONE: {filename} (MAPPER ERROR: {e})")
+            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
+            
+        icnp_mappings: IcnpMappingResponse = doc_session.state.get("icnp_mappings")
+        functional_areas: FunctionalAreaResponse = doc_session.state.get("functional_areas")
+        if not functional_areas:
+            async with state_lock: progress_state.completed += 1; progress_state.failed += 1
+            logger.error(f"Mapper incomplete for: {filename}")
+            await progress_queue.put(f"DONE: {filename} (MAPPER INCOMPLETE)")
+            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
+            
+        icnp_lookup = {res.finding_id: res for res in icnp_mappings.results} if icnp_mappings else {}
+        fo_lookup = {res.finding_id: res.FO for res in functional_areas.results}
+        
+        # 7. Validate Taxonomy
+        logger.debug(f"Validating taxonomy for: {filename}")
+        processed_findings, taxonomy_error_count = validate_taxonomy(finding_map, icnp_lookup, fo_lookup, doc_id, filename, progress_state, state_lock)
+        if taxonomy_error_count > 0:
+            async with state_lock: progress_state.total_taxonomy_errors += taxonomy_error_count
+
+        async with state_lock: progress_state.completed += 1; progress_state.success += 1
+        logger.info(f"Document processing success: {filename}", finding_count=len(processed_findings))
+        await progress_queue.put(f"DONE: {filename} (SUCCESS: {len(processed_findings)} findings)")
+        return ProcessedDocument(source_document=metadata.source_document, mapped_findings=processed_findings)
+
+    except Exception as doc_e:
+        async with state_lock: progress_state.completed += 1; progress_state.failed += 1
+        logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(doc_e), uri=uri)
+        await progress_queue.put(f"DONE: {filename} (CRITICAL ERROR: {doc_e})")
+        return ExcludedDocument(source_uri=uri, title=filename, justification="The document could not be read or its format was unsupported for analysis.")
+
 def validate_taxonomy(
     finding_map: Dict[str, ClinicalFinding], 
     icnp_lookup: Dict, 
@@ -87,7 +311,7 @@ def validate_taxonomy(
     filename: str, 
     progress_state: WorkflowProgress, 
     state_lock: asyncio.Lock
-) -> List[ProcessedFinding]:
+) -> Tuple[List[ProcessedFinding], int]:
     """
     Cross-references findings with the ICNP taxonomy and Functional Areas (FO).
     Handles hallucinated IDs and defaults invalid FO categories.
@@ -96,6 +320,7 @@ def validate_taxonomy(
     processed_findings = []
     taxonomy_error_count = 0
     
+    logger.debug(f"Validating taxonomy for {len(finding_map)} findings in {filename}")
     for f_id, original in finding_map.items():
         icnp_match = icnp_lookup.get(f_id)
         fo_val = fo_lookup.get(f_id, get_default_fo())
@@ -103,16 +328,16 @@ def validate_taxonomy(
         # Validate FO
         if not is_valid_fo(fo_val):
             taxonomy_error_count += 1
-            logger.warning(f"[Taxonomy Validation] Invalid FO '{fo_val}' in {filename}, defaulting.")
+            logger.warning(f"[Taxonomy Validation] Invalid FO '{fo_val}' in {filename}, defaulting.", finding_id=f_id)
             fo_val = get_default_fo()
 
-        def resolve(orig_val, mapping_field):
+        def resolve(orig_val, mapping_field, field_name):
             nonlocal taxonomy_error_count
             if mapping_field and mapping_field.term:
                 concept_id = mapping_field.ICNP_concept_id
                 if concept_id and concept_id not in valid_icnp_ids:
                     taxonomy_error_count += 1
-                    logger.warning(f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.")
+                    logger.warning(f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.", field=field_name, finding_id=f_id)
                     concept_id = ""
                 return MappedTerm(term=mapping_field.term, ICNP_concept_id=concept_id)
             return MappedTerm(term=orig_val, ICNP_concept_id="")
@@ -125,15 +350,13 @@ def validate_taxonomy(
             goal=original.goal, 
             supporting_sentence_ids=original.supporting_sentence_ids,
             quotes=original.quotes,
-            mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, icnp_match.nursing_diagnosis if icnp_match else None),
-            mapped_intervention=resolve(original.intervention, icnp_match.intervention if icnp_match else None),
-            mapped_goal=resolve(original.goal, icnp_match.goal if icnp_match else None),
+            mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, icnp_match.nursing_diagnosis if icnp_match else None, "nursing_diagnosis"),
+            mapped_intervention=resolve(original.intervention, icnp_match.intervention if icnp_match else None, "intervention"),
+            mapped_goal=resolve(original.goal, icnp_match.goal if icnp_match else None, "goal"),
             FO=fo_val
         ))
     
     if taxonomy_error_count > 0:
-        # We handle the lock externally if needed, or internally here.
-        # Given this is synchronous and called within an async task, we use a loop-level update.
-        pass # The orchestrator will add this to progress_state after calling.
+        logger.info(f"Taxonomy validation complete for {filename}: {taxonomy_error_count} errors corrected.", filename=filename)
         
     return processed_findings, taxonomy_error_count

@@ -1,8 +1,8 @@
 import os
-from typing import List
+from typing import List, Tuple
 from google.cloud import storage
 
-def parse_gcs_uri(gcs_uri: str) -> tuple[str, str]:
+def parse_gcs_uri(gcs_uri: str) -> Tuple[str, str]:
     """Parses a gs:// URI into a (bucket_name, prefix/blob_name) tuple."""
     if not gcs_uri.startswith("gs://"):
         raise ValueError("GCS URI must start with gs://")

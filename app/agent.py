@@ -33,8 +33,14 @@ from app.shared.models import (
 from app.shared.tools import list_gcs_files, parse_gcs_uri
 from app.shared.logging import VBPLogger
 from app.shared.consolidation import group_findings, finalize_synthesis
-from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
-from app.shared.processing import index_document_sentences, format_indexed_text, resolve_sentence_ids, validate_taxonomy, strip_xml_tags
+from app.shared.processing import (
+    index_document_sentences, 
+    format_indexed_text, 
+    resolve_sentence_ids, 
+    validate_taxonomy, 
+    strip_xml_tags,
+    process_document_pipeline
+)
 from app.agents.research_analyst.agent import create_research_analyst
 from app.agents.term_mapper.agent import create_term_mapper
 from app.agents.consolidator.agent import (
@@ -44,8 +50,6 @@ from app.agents.consolidator.agent import (
 
 # Initialize logger
 logger = VBPLogger("vbp_orchestrator")
-
-ALLOWED_MIME_TYPES = {"application/pdf", "text/plain", "text/xml", "application/xml"}
 
 class VbpWorkflowAgent(BaseAgent):
     """
@@ -129,182 +133,22 @@ class VbpWorkflowAgent(BaseAgent):
         state_lock = asyncio.Lock()
         ephemeral_session_service = InMemorySessionService()
 
-        async def process_single_document(uri: str) -> Union[ProcessedDocument, ExcludedDocument]:
-            filename = uri.split("/")[-1]
+        async def process_task(uri: str) -> Union[ProcessedDocument, ExcludedDocument]:
             async with semaphore:
-                try:
-                    await progress_queue.put(f"START: {filename}")
-                    await asyncio.sleep(random.uniform(0.1, 5.0))
-                    doc_session_id = str(uuid.uuid4())
-                    doc_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=doc_session_id)
-                    document_context = ctx.model_copy(update={"session": doc_session, "session_service": ephemeral_session_service, "invocation_id": str(uuid.uuid4())})
-                    
-                    import mimetypes
-                    from google.cloud import storage
-                    import fitz  # PyMuPDF
-                    
-                    mime_type, _ = mimetypes.guess_type(uri)
-                    if mime_type not in ALLOWED_MIME_TYPES:
-                        async with state_lock: progress_state.completed += 1; progress_state.failed += 1
-                        await progress_queue.put(f"DONE: {filename} (UNSUPPORTED TYPE: {mime_type})")
-                        return ExcludedDocument(
-                            source_uri=uri,
-                            title=filename,
-                            justification=f"The document was excluded because its file type ({mime_type}) is not supported for analysis. Only PDF, TXT, and XML are allowed."
-                        )
+                return await process_document_pipeline(
+                    uri=uri,
+                    target_group=target_group,
+                    project_id=project_id,
+                    research_analyst=self.research_analyst,
+                    term_mapper=self.term_mapper,
+                    parent_ctx=ctx,
+                    ephemeral_session_service=ephemeral_session_service,
+                    progress_state=progress_state,
+                    state_lock=state_lock,
+                    progress_queue=progress_queue
+                )
 
-                    static_context = types.Part.from_text(text=f"Target Group: {target_group}\n\nAnalyze the attached document.")
-                    bucket_name, blob_name = parse_gcs_uri(uri)
-                    storage_client = storage.Client(project=project_id)
-                    
-                    if mime_type == "application/pdf":
-                        # Download PDF for local text extraction
-                        pdf_bytes = storage_client.bucket(bucket_name).blob(blob_name).download_as_bytes()
-                        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-                        file_text = "".join([page.get_text() for page in doc])
-                        doc.close()
-                    else:
-                        file_text = storage_client.bucket(bucket_name).blob(blob_name).download_as_bytes().decode('utf-8', errors='replace')
-                        if mime_type in ["text/xml", "application/xml"]:
-                            file_text = strip_xml_tags(file_text)
-
-                    # --- SENTENCE INDEXING ---
-                    indexed_sentences = index_document_sentences(file_text)
-                    tagged_text = format_indexed_text(indexed_sentences)
-                    
-                    analyst_msg = types.Content(
-                        role="user", 
-                        parts=[
-                            static_context, 
-                            types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")
-                        ]
-                    )
-                    doc_session.events.append(Event(author="system", content=analyst_msg))
-                    
-                    async for ev in self.research_analyst.run_async(document_context):
-                        if ev.is_final_response() and ev.content and ev.content.parts:
-                            try:
-                                data_dict = json.loads(ev.content.parts[0].text)
-                                if ev.author == "metadata_extractor": doc_session.state["metadata"] = MetadataResponse.model_validate(data_dict)
-                                elif ev.author == "finding_extractor": doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
-                            except Exception as e: await progress_queue.put(f"ANALYST PARSE ERROR ({ev.author}): {filename} ({e})")
-                    
-                    metadata: MetadataResponse = doc_session.state.get("metadata")
-                    clinical_findings: ClinicalFindingsResponse = doc_session.state.get("clinical_findings")
-                    if not metadata:
-                        metadata = MetadataResponse(source_document=Document(source_uri=uri, title=filename, publication_year=0, doi="Not found", evidence_level="Nivå 0: Ingen kategori"))
-                    else:
-                        metadata.source_document.source_uri = uri
-
-                    if not clinical_findings or not clinical_findings.candidate_findings:
-                        async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
-                        await progress_queue.put(f"DONE: {filename} (NO FINDINGS)")
-                        return ExcludedDocument(
-                            source_uri=uri, 
-                            title=metadata.source_document.title, 
-                            justification=clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert."
-                        )
-
-                    # --- RESOLVE SENTENCE IDs ---
-                    verified_findings = await resolve_sentence_ids(
-                        clinical_findings.candidate_findings, 
-                        indexed_sentences, 
-                        filename, 
-                        progress_state, 
-                        state_lock, 
-                        progress_queue
-                    )
-
-                    if not verified_findings:
-                        async with state_lock: progress_state.completed += 1; progress_state.no_findings += 1
-                        await progress_queue.put(f"DONE: {filename} (NO VALID CITATIONS)")
-                        return ExcludedDocument(
-                            source_uri=uri, 
-                            title=metadata.source_document.title, 
-                            justification="The document was analyzed, but all identified clinical findings were excluded because the associated sentence citations were invalid."
-                        )
-                    
-                    clinical_findings.candidate_findings = verified_findings
-                    # --- END RESOLUTION ---
-                        
-                    doc_id = metadata.source_document.document_id or str(uuid.uuid4())
-                    metadata.source_document.document_id = doc_id
-                    metadata.source_document.reasoning_trace = clinical_findings.reasoning_trace
-
-                    lean_findings = []
-                    finding_map = {}
-                    for finding in clinical_findings.candidate_findings:
-                        internal_id = str(uuid.uuid4()); finding_map[internal_id] = finding
-                        lean_findings.append({"finding_id": internal_id, "nursing_diagnosis": finding.nursing_diagnosis, "intervention": finding.intervention, "goal": finding.goal})
-
-                    mapper_input = json.dumps(lean_findings)
-                    mapper_msg = types.Content(role="user", parts=[types.Part.from_text(text="Map these findings to ICNP and classify FO:"), types.Part.from_text(text=mapper_input)])
-                    doc_session.events.append(Event(author="system", content=mapper_msg))
-                    
-                    try:
-                        async for ev in self.term_mapper.run_async(document_context):
-                            if ev.is_final_response() and ev.content and ev.content.parts:
-                                try:
-                                    data_dict = json.loads(ev.content.parts[0].text)
-                                    if ev.author == "icnp_mapper": doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
-                                    elif ev.author == "fo_classifier": doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
-                                except Exception as e: await progress_queue.put(f"MAPPER PARSE ERROR ({ev.author}): {filename} ({e})")
-                    except Exception as e:
-                        async with state_lock: progress_state.completed += 1; progress_state.failed += 1
-                        await progress_queue.put(f"DONE: {filename} (MAPPER ERROR: {e})")
-                        return ExcludedDocument(
-                            source_uri=uri, 
-                            title=metadata.source_document.title, 
-                            justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology."
-                        )
-                        
-                    icnp_mappings: IcnpMappingResponse = doc_session.state.get("icnp_mappings")
-                    functional_areas: FunctionalAreaResponse = doc_session.state.get("functional_areas")
-                    if not functional_areas:
-                        async with state_lock: progress_state.completed += 1; progress_state.failed += 1
-                        await progress_queue.put(f"DONE: {filename} (MAPPER INCOMPLETE)")
-                        return ExcludedDocument(
-                            source_uri=uri, 
-                            title=metadata.source_document.title, 
-                            justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology."
-                        )
-                        
-                    icnp_lookup = {res.finding_id: res for res in icnp_mappings.results} if icnp_mappings else {}
-                    fo_lookup = {res.finding_id: res.FO for res in functional_areas.results}
-                    
-                    # --- TAXONOMY VALIDATION ---
-                    processed_findings, taxonomy_error_count = validate_taxonomy(
-                        finding_map, 
-                        icnp_lookup, 
-                        fo_lookup, 
-                        doc_id, 
-                        filename, 
-                        progress_state, 
-                        state_lock
-                    )
-                    
-                    if taxonomy_error_count > 0:
-                        async with state_lock: progress_state.total_taxonomy_errors += taxonomy_error_count
-                    # --- END TAXONOMY VALIDATION ---
-
-                    async with state_lock: progress_state.completed += 1; progress_state.success += 1
-                    await progress_queue.put(f"DONE: {filename} (SUCCESS: {len(processed_findings)} findings)")
-                    return ProcessedDocument(source_document=metadata.source_document, mapped_findings=processed_findings)
-                except Exception as doc_e:
-                    async with state_lock: progress_state.completed += 1; progress_state.failed += 1
-                    await progress_queue.put(f"DONE: {filename} (CRITICAL ERROR: {doc_e})")
-                    # Use extracted title if available, otherwise filename
-                    try:
-                        title = metadata.source_document.title
-                    except:
-                        title = filename
-                    return ExcludedDocument(
-                        source_uri=uri, 
-                        title=title, 
-                        justification="The document could not be read or its format was unsupported for analysis."
-                    )
-
-        tasks = [process_single_document(f) for f in files]
+        tasks = [process_task(f) for f in files]
         async def run_gather(): return await asyncio.gather(*tasks)
         gather_task = asyncio.create_task(run_gather())
         
@@ -434,7 +278,7 @@ class VbpWorkflowAgent(BaseAgent):
             if ev.is_final_response() and ev.content and ev.content.parts:
                 quality_notes = ev.content.parts[0].text
 
-        # 3. Finalize
+        # 2. Finalize
         execution_end_time = datetime.now()
         async with state_lock:
             rectified_total = progress_state.rectified_quotes
