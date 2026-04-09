@@ -12,6 +12,8 @@ dependencies = [
     "google-cloud-logging>=3.12.0,<4.0.0",
     "google-cloud-aiplatform[evaluation,agent-engines]>=1.130.0",
     "protobuf>=6.31.1,<7.0.0",
+    "pymupdf>=1.27.2.2",
+    "rapidfuzz>=3.14.5",
 ]
 requires-python = ">=3.10,<3.14"
 
@@ -34,6 +36,10 @@ lint = [
     "ruff>=0.4.6,<1.0.0",
     "ty>=0.0.1a0",
     "codespell>=2.2.0,<3.0.0",
+]
+tools = [
+    "jinja2>=3.1.0",
+    "markdown>=3.6",
 ]
 
 [tool.ruff]

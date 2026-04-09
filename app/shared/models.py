@@ -1,50 +1,68 @@
-from typing import List, Optional
+from typing import List, Optional, Dict, Literal
+from datetime import datetime
+from dataclasses import dataclass
 from pydantic import BaseModel, Field
 
 # --- 1. SHARED CORE TYPES ---
 class MappedTerm(BaseModel):
-    term: str = Field(description="Den norske ICNP-termen (Term_NO) hvis match finnes, ellers den opprinnelige teksten.")
-    ICNP_concept_id: str = Field(description="Den tilhørende ICNP-ID-en (Concept Id) hvis match finnes, ellers tom streng.")
+    term: str = Field(description="The Norwegian ICNP term (Term_NO) if a match is found, otherwise the original text.")
+    ICNP_concept_id: str = Field(description="The corresponding ICNP ID (Concept Id) if a match is found, otherwise an empty string.")
 
 class Document(BaseModel):
-    document_id: Optional[str] = Field(default=None, description="Intern ID (fylles ikke ut av LLM).")
-    title: str = Field(description="Tittelen på den vitenskapelige artikkelen.")
-    publication_year: int = Field(description="Årstall for publikasjon. Sett til 0 hvis ikke funnet.")
-    doi: str = Field(description="DOI-nummeret. Sett til 'Ikke funnet' hvis det ikke oppgis.")
-    evidence_level: str = Field(description="Klassifisering basert på Kunnskapspyramiden (f.eks. 'Nivå 1: Studier').")
-    reasoning_trace: List[str] = Field(description="En detaljert, trinnvis oversikt over hvordan du evaluerte forespørselen.")
+    document_id: Optional[str] = Field(default=None, description="Internal ID (not filled by LLM).")
+    source_uri: str = Field(description="The GCS URI or local path to the source document.")
+    title: str = Field(description="The title of the scientific document.")
+    publication_year: int = Field(description="Year of publication. Set to 0 if not found.")
+    doi: str = Field(description="The DOI number. Set to 'Not found' if not provided.")
+    evidence_level: str = Field(description="Classification based on the Knowledge Pyramid (e.g., 'Level 1: Studies').")
+    reasoning_trace: Optional[str] = Field(default=None, description="A step-by-step explanation of the clinical selection process for this document.")
+
+@dataclass
+class WorkflowProgress:
+    completed: int = 0
+    success: int = 0
+    failed: int = 0
+    no_findings: int = 0
+    rectified_quotes: int = 0
+    dropped_findings: int = 0
+    total_unsupported_quotes_dropped: int = 0
+    total_taxonomy_errors: int = 0
 
 # --- 2. RESEARCH ANALYST (Extraction) ---
-class ExtractedFinding(BaseModel):
-    nursing_diagnosis: str = Field(description="Den utledede sykepleiediagnosen.")
-    intervention: str = Field(description="Sykepleieintervensjon.")
-    goal: str = Field(description="Mål for intervensjonen.")
-    quotes: List[str] = Field(description="Liste over sitater som understøtter funnet.")
+class ClinicalFinding(BaseModel):
+    nursing_diagnosis: str = Field(description="The derived nursing diagnosis.")
+    intervention: str = Field(description="Nursing intervention.")
+    goal: Optional[str] = Field(default=None, description="Goal for the intervention.")
+    quotes: List[str] = Field(description="List of quotes supporting the finding.")
 
-class ExtractionResponse(BaseModel):
-    """The schema passed to the LLM for clinical extraction."""
+class MetadataResponse(BaseModel):
+    """Schema for the specialized Metadata Extractor agent."""
     source_document: Document
-    Candidate_findings: List[ExtractedFinding]
+
+class ClinicalFindingsResponse(BaseModel):
+    """Schema for the specialized Finding Extractor agent."""
+    reasoning_trace: str = Field(description="A step-by-step explanation of the selection process.")
+    candidate_findings: List[ClinicalFinding]
 
 # --- 3. TERM MAPPER (LLM outputs) ---
-class TermMapping(BaseModel):
-    finding_id: str = Field(description="Unik identifikator som matcher inngangsdataene.")
-    nursing_diagnosis: Optional[MappedTerm] = Field(None, description="Mappet resultat for diagnose.")
-    intervention: Optional[MappedTerm] = Field(None, description="Mappet resultat for intervensjon.")
-    goal: Optional[MappedTerm] = Field(None, description="Mappet resultat for mål.")
+class IcnpMapping(BaseModel):
+    finding_id: str = Field(description="Unique identifier matching the input data.")
+    nursing_diagnosis: Optional[MappedTerm] = Field(None, description="Mapped result for diagnosis.")
+    intervention: Optional[MappedTerm] = Field(None, description="Mapped result for intervention.")
+    goal: Optional[MappedTerm] = Field(None, description="Mapped result for goal.")
 
-class TermMappingResponse(BaseModel):
-    results: List[TermMapping]
+class IcnpMappingResponse(BaseModel):
+    results: List[IcnpMapping]
 
-class FOClassification(BaseModel):
-    finding_id: str = Field(description="Unik identifikator som matcher inngangsdataene.")
-    FO: str = Field(description="Det valgte funksjonsområdet (navn og nummer).")
+class FunctionalAreaClassification(BaseModel):
+    finding_id: str = Field(description="Unique identifier matching the input data.")
+    FO: str = Field(description="The selected functional area (name and number).")
 
-class FOClassificationResponse(BaseModel):
-    results: List[FOClassification]
+class FunctionalAreaResponse(BaseModel):
+    results: List[FunctionalAreaClassification]
 
 # --- 4. INTERNAL WORKFLOW STATE ---
-class ProcessedFinding(ExtractedFinding):
+class ProcessedFinding(ClinicalFinding):
     """The unified finding object containing raw text, mappings, and IDs."""
     finding_id: str
     document_id: str
@@ -60,20 +78,53 @@ class ProcessedDocument(BaseModel):
 
 # --- 5. CONSOLIDATOR ---
 class Evidence(BaseModel):
-    document_id: str = Field(description="ID til dokumentet sitatene er hentet fra.")
-    quotes: List[str] = Field(description="Ordrette sitater fra dette kildedokumentet som understøtter funnet.")
+    document_id: str = Field(description="ID of the document the quotes are taken from.")
+    quotes: List[str] = Field(description="Verbatim quotes from this source document supporting the finding.")
 
 class SynthesizedFinding(BaseModel):
     nursing_diagnosis: MappedTerm
     intervention: MappedTerm
     goal: MappedTerm
-    FO: str = Field(description="Funksjonsområde (1-12).")
-    evidence_summary: str = Field(description="Kort sammendrag av evidensen for dette funnet på tvers av artikler.")
-    supporting_evidence: List[Evidence] = Field(description="Spesifikke sitater fra kildene som støtter funnet.")
+    FO: str = Field(description="Functional Area (1-12).")
+    evidence_summary: str = Field(description="Brief summary of the evidence for this finding across documents.")
+    supporting_evidence: List[Evidence] = Field(description="Specific quotes from sources supporting the finding.")
+
+class ExcludedDocument(BaseModel):
+    source_uri: str = Field(description="The GCS URI or local path to the source document.")
+    title: str = Field(description="The title of the document, or the filename if the title could not be extracted.")
+    justification: str = Field(description="The justification for why the document was excluded from the clinical synthesis.")
+
+class ExecutionSummary(BaseModel):
+    target_group: str = Field(description="The target group the analysis applies to.")
+    source_uri: str = Field(description="The GCS URI or local path that was scanned for documents.")
+    total_files_in_uri: int = Field(description="Total number of files discovered in the source URI.")
+    processed_files_count: int = Field(description="Total number of files actually processed (limited by max_files).")
+    successful_files_count: int = Field(description="Number of files that yielded clinical findings.")
+    excluded_files_count: int = Field(description="Number of files excluded due to lack of findings or errors.")
+    total_synthesized_findings: int = Field(description="Total number of unique clinical findings consolidated.")
+    total_rectified_quotes: int = Field(description="Total number of hallucinated quotes that were successfully fixed via fuzzy matching.")
+    total_unsupported_quotes_dropped: int = Field(description="Total number of verbatim quotes that were dropped because they did not semantically support the finding.")
+    total_taxonomy_errors: int = Field(description="Total number of hallucinated ICNP IDs or invalid Functional Areas caught and corrected.")
+    total_dropped_findings: int = Field(description="Total number of findings that were dropped due to no valid quotes.")
+    execution_start_time: datetime = Field(description="Timestamp when the workflow execution started.")
+    execution_end_time: datetime = Field(description="Timestamp when the workflow execution completed.")
+    quality_notes: str = Field(description="Notes from clinical quality control.")
+
+# --- 6. SEMANTIC VALIDATION ---
+class QuoteValidation(BaseModel):
+    quote: str = Field(description="The verbatim quote being validated.")
+    status: Literal["kept", "dropped"] = Field(description="Whether the quote should be kept or dropped.")
+    reason: str = Field(description="Brief clinical justification for the decision.")
+
+class FindingValidation(BaseModel):
+    finding_id: str = Field(description="Unique identifier matching the input data.")
+    quote_validations: List[QuoteValidation] = Field(description="Validation results for each quote in this finding.")
+
+class EvidenceValidationResponse(BaseModel):
+    results: List[FindingValidation]
 
 class SynthesisResponse(BaseModel):
-    target_group: str = Field(description="Målgruppen analysen gjelder for.")
-    synthesized_findings: List[SynthesizedFinding] = Field(description="De konsoliderte kliniske funnene.")
-    total_documents_processed: int
-    quality_notes: str = Field(description="Notater fra kvalitetskontrollen.")
-    source_documents: List[Document] = Field(description="Liste over alle kildedokumentene som ble analysert.")
+    execution_summary: ExecutionSummary = Field(description="Summary of the workflow execution and descriptive statistics.")
+    synthesized_findings: List[SynthesizedFinding] = Field(description="The consolidated clinical findings.")
+    source_documents: List[Document] = Field(description="List of all source documents successfully analyzed.")
+    excluded_documents: List[ExcludedDocument] = Field(default_factory=list, description="List of documents that were processed but excluded from the final findings.")

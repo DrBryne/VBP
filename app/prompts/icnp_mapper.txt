@@ -10,18 +10,17 @@ Du får utdelt lister med ICNP-termer i et pipe-separert format:
 Formatet for hver linje er: ID|Term_EN|Term_NO
 
 Dine instruksjoner:
-1. Du mottar en liste med objekter, der hvert objekt har en "finding_id", "nursing_diagnosis", "intervention" og "goal".
-2. Du SKAL returnere et resultat-objekt for HVERT eneste funn du mottar i input, uavhengig av om du finner en match i ICNP-listene eller ikke.
-3. For hvert felt (nursing_diagnosis, intervention, goal) i hvert funn:
-   - Utfør et semantisk oppslag i de vedlagte ICNP-listene.
-   - Dersom du finner en god semantisk match:
-     - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
-     - Sett "ICNP_concept_id" til den tilhørende ID-en.
-   - Dersom du IKKE finner en god semantisk match:
-     - Sett "term" til den OPPRINNELIGE teksten fra input-feltet.
-     - Sett "ICNP_concept_id" til en tom streng "".
-4. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
-5. Returner resultatet som et gyldig JSON-objekt som følger TermMappingResponse-skjemaet.
+1. Du mottar en liste med objekter, der hvert objekt har en "finding_id".
+2. Utfør et semantisk oppslag for hvert felt (nursing_diagnosis, intervention, goal) i de vedlagte ICNP-listene.
+3. Du skal KUN mappe termer der du har **høy klinisk konfidens** for at det er en korrekt semantisk match.
+   - Dersom en match er usikker, svak, eller bare delvis overlappende, skal du **IKKE** mappe feltet. 
+   - Ikke tving frem en match (forced match). Det er bedre å la et felt stå u-mappet enn å velge en unøyaktig ICNP-term.
+4. For hver match med høy konfidens:
+   - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
+   - Sett "ICNP_concept_id" til den tilhørende ID-en.
+5. Dersom et felt (f.eks. goal) ikke har en god match, men de andre har det, returnerer du objektet med det spesifikke feltet satt til `null` eller utelatt i henhold til skjemaet.
+6. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
+7. Returner resultatet som et gyldig JSON-objekt som følger IcnpMappingResponse-skjemaet.
 
 Her er ICNP-termene du skal bruke:
 

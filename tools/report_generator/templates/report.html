@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkast Veiledende Behandlingsplan - {{ execution_summary.target_group }}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .sticky-header { position: sticky; top: 0; z-index: 40; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Utkast Veiledende Behandlingsplan</h1>
+                    <p class="text-lg text-slate-600">Målgruppe: <span class="font-semibold text-slate-800">{{ execution_summary.target_group }}</span></p>
+                </div>
+                <div class="text-right text-sm text-slate-500 space-y-1">
+                    <p class="font-medium text-slate-900">Rapport generert: {{ execution_summary.execution_end_time.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p>Antall dokumenter oppdaget: <span class="font-bold text-slate-700">{{ execution_summary.total_files_in_uri }}</span></p>
+                    <p>Antall kliniske funn: <span class="font-bold text-slate-700">{{ execution_summary.total_synthesized_findings }}</span></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Table of Contents -->
+        <nav class="mb-12 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Innhold</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
+                <li><a href="#oversikt" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    Oversikt over kliniske funn
+                </a></li>
+                <li><a href="#kvalitet" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    Kvalitetsvurdering
+                </a></li>
+                <li><a href="#evidens" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    Evidensgrunnlag for funn
+                </a></li>
+                <li><a href="#bibliografi" class="text-indigo-600 hover:text-indigo-800 flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    Bibliografi
+                </a></li>
+            </ul>
+        </nav>
+
+        <!-- Summary Table of Findings -->
+        <section id="oversikt" class="mb-16 scroll-mt-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                Oversikt over kliniske funn
+            </h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">FO</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Sykepleiediagnose</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Intervensjon</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Mål</th>
+                            <th class="px-4 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Evidens</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white">
+                        {% for finding in synthesized_findings %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-xs font-bold text-slate-500">{{ finding.FO }}</td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm font-semibold text-slate-900">{{ finding.nursing_diagnosis.term }}</div>
+                                <div class="text-[10px] text-slate-400 font-mono mt-0.5 tracking-tighter">ICNP: {{ finding.nursing_diagnosis.ICNP_concept_id or 'Ingen ID' }}</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-slate-600 leading-tight">{{ finding.intervention.term }}</div>
+                                <div class="text-[10px] text-slate-300 font-mono mt-0.5 tracking-tighter">ICNP: {{ finding.intervention.ICNP_concept_id or 'Ingen ID' }}</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-slate-600 leading-tight">{{ finding.goal.term }}</div>
+                                <div class="text-[10px] text-slate-300 font-mono mt-0.5 tracking-tighter">ICNP: {{ finding.goal.ICNP_concept_id or 'Ingen ID' }}</div>
+                            </td>
+                            <td class="px-4 py-4 text-center">
+                                <a href="#evidens-{{ loop.index }}" class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors whitespace-nowrap">
+                                    Se evidens
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Quality Notes -->
+        <section id="kvalitet" class="mb-16 scroll-mt-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                Kvalitetsvurdering
+            </h2>
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 prose prose-blue max-w-none text-slate-700">
+                {{ quality_notes_html | safe }}
+            </div>
+        </section>
+
+        <!-- Detailed Evidence Section -->
+        <section id="evidens" class="mb-16 scroll-mt-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-8 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Evidensgrunnlag for funn
+            </h2>
+            
+            <div class="space-y-12">
+                {% for finding in synthesized_findings %}
+                <div id="evidens-{{ loop.index }}" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                    <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest">{{ finding.FO }}</span>
+                            <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                Tilbake til oversikt
+                            </a>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Sykepleiediagnose</p>
+                                <h3 class="text-base font-bold text-slate-900 leading-tight">{{ finding.nursing_diagnosis.term }}</h3>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjon</p>
+                                <h3 class="text-base font-bold text-slate-800 leading-tight">{{ finding.intervention.term }}</h3>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mål</p>
+                                <h3 class="text-base font-bold text-slate-800 leading-tight">{{ finding.goal.term }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-8">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 italic">Oppsummering av evidens</h4>
+                            <div class="prose prose-slate max-w-none text-slate-700">
+                                {{ finding.evidence_summary_html | safe }}
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                            {% for evidence in finding.supporting_evidence %}
+                                {% set doc = source_documents | selectattr("document_id", "equalto", evidence.document_id) | first %}
+                                <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <a href="#doc-{{ evidence.document_id }}" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline">
+                                            {{ doc.title if doc else 'Ukjent dokument' }} ({{ doc.publication_year if doc else 'År ukjent' }})
+                                        </a>
+                                        {% if doc %}
+                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-500 uppercase">{{ doc.evidence_level.split(':')[0] }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <ul class="space-y-3">
+                                        {% for quote in evidence.quotes %}
+                                        <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"{{ quote }}"</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Bibliography -->
+        <section id="bibliografi" class="mb-16 scroll-mt-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                Bibliografi
+            </h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Tittel</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">År</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Evidensnivå</th>
+                            <th class="px-6 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Kilde</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        {% for doc in source_documents %}
+                        <tr id="doc-{{ doc.document_id }}" class="scroll-mt-8 hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="text-sm font-semibold text-slate-900">{{ doc.title }} ({{ doc.publication_year }})</div>
+                                <div class="text-[10px] text-slate-400 font-mono mt-1 uppercase tracking-tighter">DOI: {{ doc.doi }}</div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-slate-600">{{ doc.publication_year }}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-100">{{ doc.evidence_level }}</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                {% if doc.http_uri %}
+                                <a href="{{ doc.http_uri }}" target="_blank" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors whitespace-nowrap">
+                                    Åpne dokument
+                                    <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                {% else %}
+                                <span class="text-xs text-slate-300 italic">Ikke tilgjengelig</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        {% if excluded_documents %}
+        <!-- Excluded Documents -->
+        <section>
+            <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+                Ekskluderte dokumenter
+            </h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden text-slate-500">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Dokument</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">Begrunnelse</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 italic">
+                        {% for doc in excluded_documents %}
+                        <tr>
+                            <td class="px-6 py-4 text-sm font-medium">
+                                <a href="{{ doc.http_uri }}" target="_blank" class="hover:text-indigo-600 transition-colors">{{ doc.title }} ({{ doc.publication_year }})</a>
+                            </td>
+                            <td class="px-6 py-4 text-sm">{{ doc.justification }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+
+        <footer class="mt-20 text-center text-[10px] text-slate-400 border-t border-slate-200 pt-8 uppercase tracking-[0.2em]">
+            <p>Veiledende Behandlingsplan (VBP) Workflow — Generert med Google Gemini AI</p>
+        </footer>
+    </div>
+</body>
+</html>

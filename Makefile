@@ -98,3 +98,15 @@ lint:
 # Optional env vars: GEMINI_DISPLAY_NAME, GEMINI_DESCRIPTION, GEMINI_TOOL_DESCRIPTION, AGENT_ENGINE_ID
 register-gemini-enterprise:
 	@uvx agent-starter-pack@0.40.1 register-gemini-enterprise
+
+# ==============================================================================
+# Standalone Tools
+# ==============================================================================
+
+# Generate an HTML report from a synthesis JSON file
+# Usage: make report [JSON_INPUT=tests/integration/results/workflow_synthesis.json] [HTML_OUTPUT=report.html]
+report:
+	@uv sync --extra tools
+	@PYTHONPATH=. uv run python tools/report_generator/main.py \
+		--input $(if $(JSON_INPUT),$(JSON_INPUT),tests/integration/results/workflow_synthesis.json) \
+		--output $(if $(HTML_OUTPUT),$(HTML_OUTPUT),report.html)

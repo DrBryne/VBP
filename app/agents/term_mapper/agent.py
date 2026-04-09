@@ -2,7 +2,7 @@ import os
 from typing import List
 from google.adk.agents import Agent, ParallelAgent
 from google.genai import types
-from app.shared.models import TermMappingResponse, FOClassificationResponse
+from app.shared.models import IcnpMappingResponse, FunctionalAreaResponse
 
 def create_icnp_mapper():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +19,6 @@ def create_icnp_mapper():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        thinking_config=types.ThinkingConfig(include_thoughts=True, thinking_level="high"),
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 initial_delay=2,
@@ -37,8 +36,8 @@ def create_icnp_mapper():
         name="icnp_mapper",
         model="gemini-3.1-pro-preview",
         instruction=mapping_instructions,
-        output_schema=TermMappingResponse,
-        output_key="icnp_results",
+        output_schema=IcnpMappingResponse,
+        output_key="icnp_mappings",
         generate_content_config=config
     )
 
@@ -52,7 +51,6 @@ def create_fo_classifier():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        thinking_config=types.ThinkingConfig(include_thoughts=True, thinking_level="high"),
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 initial_delay=2,
@@ -68,10 +66,10 @@ def create_fo_classifier():
 
     return Agent(
         name="fo_classifier",
-        model="gemini-3.1-pro-preview",
+        model="gemini-3-flash-preview",
         instruction=fo_instructions,
-        output_schema=FOClassificationResponse,
-        output_key="fo_results",
+        output_schema=FunctionalAreaResponse,
+        output_key="functional_areas",
         generate_content_config=config
     )
 
