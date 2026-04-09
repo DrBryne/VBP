@@ -5,6 +5,7 @@ from typing import List, Dict, Tuple, Optional, Any
 from app.shared.models import ClinicalFinding, ProcessedFinding, MappedTerm, Document, WorkflowProgress
 from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
 import logging
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger("vbp_processing")
 
@@ -27,6 +28,19 @@ def format_indexed_text(indexed_sentences: Dict[str, str]) -> str:
     for sid, text in indexed_sentences.items():
         parts.append(f"[{sid}] {text}")
     return " ".join(parts)
+
+def strip_xml_tags(text: str) -> str:
+    """Extracts pure text from XML/HTML strings, replacing tags with spaces."""
+    if not text:
+        return ""
+    try:
+        # Use lxml-xml parser for speed and correctness with XML content
+        soup = BeautifulSoup(text, "lxml-xml")
+        # separator=' ' ensures words in adjacent tags don't run together
+        return soup.get_text(separator=' ', strip=True)
+    except Exception as e:
+        logger.error(f"Error stripping XML tags: {e}")
+        return text # Fallback
 
 async def resolve_sentence_ids(
     finding_candidates: List[ClinicalFinding], 

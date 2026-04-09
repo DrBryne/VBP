@@ -34,7 +34,7 @@ from app.shared.tools import list_gcs_files, parse_gcs_uri
 from app.shared.logging import VBPLogger
 from app.shared.consolidation import group_findings, finalize_synthesis
 from app.shared.taxonomy import load_valid_icnp_ids, is_valid_fo, get_default_fo
-from app.shared.processing import index_document_sentences, format_indexed_text, resolve_sentence_ids, validate_taxonomy
+from app.shared.processing import index_document_sentences, format_indexed_text, resolve_sentence_ids, validate_taxonomy, strip_xml_tags
 from app.agents.research_analyst.agent import create_research_analyst
 from app.agents.term_mapper.agent import create_term_mapper
 from app.agents.consolidator.agent import (
@@ -161,34 +161,30 @@ class VbpWorkflowAgent(BaseAgent):
                         # Download PDF for local text extraction
                         pdf_bytes = storage_client.bucket(bucket_name).blob(blob_name).download_as_bytes()
                         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-                        file_text = ""
-                        for page in doc:
-                            file_text += page.get_text()
+                        file_text = "".join([page.get_text() for page in doc])
                         doc.close()
                     else:
                         file_text = storage_client.bucket(bucket_name).blob(blob_name).download_as_bytes().decode('utf-8', errors='replace')
+                        if mime_type in ["text/xml", "application/xml"]:
+                            file_text = strip_xml_tags(file_text)
 
                     # --- SENTENCE INDEXING ---
                     indexed_sentences = index_document_sentences(file_text)
                     tagged_text = format_indexed_text(indexed_sentences)
                     
-                    if mime_type == "application/pdf":
-                        parts = [static_context, types.Part.from_bytes(data=pdf_bytes, mime_type=mime_type), types.Part.from_text(text=f"Indexed Text for Citation:\n{tagged_text}")]
-                    else:
-                        parts = [static_context, types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")]
-                        
-                    analyst_msg = types.Content(role="user", parts=parts)
+                    analyst_msg = types.Content(
+                        role="user", 
+                        parts=[
+                            static_context, 
+                            types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")
+                        ]
+                    )
                     doc_session.events.append(Event(author="system", content=analyst_msg))
                     
                     async for ev in self.research_analyst.run_async(document_context):
                         if ev.is_final_response() and ev.content and ev.content.parts:
-                            text = ev.content.parts[0].text
                             try:
-                                clean_text = text.strip()
-                                if not clean_text: continue
-                                if clean_text.startswith("```json"): clean_text = clean_text[7:]
-                                if clean_text.endswith("```"): clean_text = clean_text[:-3]
-                                data_dict = json.loads(clean_text)
+                                data_dict = json.loads(ev.content.parts[0].text)
                                 if ev.author == "metadata_extractor": doc_session.state["metadata"] = MetadataResponse.model_validate(data_dict)
                                 elif ev.author == "finding_extractor": doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
                             except Exception as e: await progress_queue.put(f"ANALYST PARSE ERROR ({ev.author}): {filename} ({e})")
@@ -248,13 +244,8 @@ class VbpWorkflowAgent(BaseAgent):
                     try:
                         async for ev in self.term_mapper.run_async(document_context):
                             if ev.is_final_response() and ev.content and ev.content.parts:
-                                text = ev.content.parts[0].text
                                 try:
-                                    clean_text = text.strip()
-                                    if not clean_text: continue
-                                    if clean_text.startswith("```json"): clean_text = clean_text[7:]
-                                    if clean_text.endswith("```"): clean_text = clean_text[:-3]
-                                    data_dict = json.loads(clean_text)
+                                    data_dict = json.loads(ev.content.parts[0].text)
                                     if ev.author == "icnp_mapper": doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
                                     elif ev.author == "fo_classifier": doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
                                 except Exception as e: await progress_queue.put(f"MAPPER PARSE ERROR ({ev.author}): {filename} ({e})")
@@ -372,11 +363,7 @@ class VbpWorkflowAgent(BaseAgent):
                 async for ev in self.evidence_validator.run_async(val_ctx_batch):
                     if ev.is_final_response() and ev.content and ev.content.parts:
                         try:
-                            text = ev.content.parts[0].text
-                            clean_text = text.strip()
-                            if clean_text.startswith("```json"): clean_text = clean_text[7:]
-                            if clean_text.endswith("```"): clean_text = clean_text[:-3]
-                            val_response = EvidenceValidationResponse.model_validate(json.loads(clean_text))
+                            val_response = EvidenceValidationResponse.model_validate(json.loads(ev.content.parts[0].text))
                             for res in val_response.results:
                                 batch_results[res.finding_id] = res.quote_validations
                         except Exception as ve:
