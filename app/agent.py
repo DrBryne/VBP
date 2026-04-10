@@ -13,10 +13,7 @@ from google.genai import types
 
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
-from app.agents.clinical_taxonomist.agent import (
-    create_fo_classifier,
-    create_icnp_mappers,
-)
+from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
 from app.shared.consolidation import finalize_synthesis, group_findings
 from app.shared.fhir_client import FhirTerminologyClient
 from app.shared.logging import VBPLogger
@@ -44,8 +41,7 @@ class VbpWorkflowAgent(BaseAgent):
     def __init__(self, name: str = "vbp_workflow_agent"):
         super().__init__(name=name)
         self._extractor = create_combined_extractor()
-        self._fo_classifier = create_fo_classifier()
-        self._icnp_mappers = create_icnp_mappers()
+        self._taxonomist = ClinicalTaxonomist()
         self._auditor = create_clinical_auditor()
         self._fhir_client = FhirTerminologyClient()
 
@@ -55,14 +51,9 @@ class VbpWorkflowAgent(BaseAgent):
         return self._extractor
 
     @property
-    def fo_classifier(self):
-        """The agent responsible for VIPS Functional Area classification."""
-        return self._fo_classifier
-
-    @property
-    def icnp_mappers(self):
-        """The parallel group of specialized ICNP mapping agents."""
-        return self._icnp_mappers
+    def taxonomist(self):
+        """The agent responsible for ICNP mapping and Functional Area classification."""
+        return self._taxonomist
 
     @property
     def auditor(self):
@@ -134,8 +125,7 @@ class VbpWorkflowAgent(BaseAgent):
                 target_group=target_group,
                 project_id=project_id,
                 clinical_extractor=self.extractor,
-                fo_classifier=self.fo_classifier,
-                icnp_mappers=self.icnp_mappers,
+                clinical_taxonomist=self.taxonomist,
                 clinical_auditor=self.auditor,
                 parent_ctx=ctx,
                 ephemeral_session_service=ephemeral_session_service,

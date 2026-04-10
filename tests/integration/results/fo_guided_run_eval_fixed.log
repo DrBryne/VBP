@@ -17,3 +17,1072 @@
 [INFO] 2026-04-10 22:49:00,210 - vbp_processing - Processing document start: 33546507_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/33546507_fulltext.xml]
 [INFO] 2026-04-10 22:49:00,817 - vbp_processing - Invoking ClinicalExtractor for: 33546507_fulltext.xml
 [INFO] 2026-04-10 22:49:00,818 - vbp_processing - Processing document start: 34421792_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/34421792_fulltext.xml]
+[INFO] 2026-04-10 22:49:06,619 - vbp_processing - Invoking ClinicalExtractor for: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:49:06,619 - vbp_processing - Processing document start: 34786907_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/34786907_fulltext.xml]
+[INFO] 2026-04-10 22:49:07,197 - vbp_processing - Invoking ClinicalExtractor for: 34786907_fulltext.xml
+[INFO] 2026-04-10 22:49:07,197 - vbp_processing - Processing document start: 35235032_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35235032_fulltext.xml]
+[INFO] 2026-04-10 22:49:07,805 - vbp_processing - Invoking ClinicalExtractor for: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:49:07,805 - vbp_processing - Processing document start: 35309870_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35309870_fulltext.xml]
+[INFO] 2026-04-10 22:49:08,442 - vbp_processing - Invoking ClinicalExtractor for: 35309870_fulltext.xml
+[INFO] 2026-04-10 22:49:08,442 - vbp_processing - Processing document start: 35636801_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35636801_fulltext.xml]
+[INFO] 2026-04-10 22:49:09,026 - vbp_processing - Invoking ClinicalExtractor for: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:49:09,027 - vbp_processing - Processing document start: 35898325_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35898325_fulltext.xml]
+[INFO] 2026-04-10 22:49:09,646 - vbp_processing - Invoking ClinicalExtractor for: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:49:09,646 - vbp_processing - Processing document start: 36008057_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36008057_fulltext.xml]
+[INFO] 2026-04-10 22:49:10,211 - vbp_processing - Invoking ClinicalExtractor for: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:49:10,212 - vbp_processing - Processing document start: 36341104_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36341104_fulltext.xml]
+[INFO] 2026-04-10 22:49:10,949 - vbp_processing - Invoking ClinicalExtractor for: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:49:10,950 - vbp_processing - Processing document start: 36414305_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36414305_fulltext.xml]
+[INFO] 2026-04-10 22:49:11,522 - vbp_processing - Invoking ClinicalExtractor for: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:49:11,522 - vbp_processing - Processing document start: 36834005_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36834005_fulltext.xml]
+[INFO] 2026-04-10 22:49:12,129 - vbp_processing - Invoking ClinicalExtractor for: 36834005_fulltext.xml
+[INFO] 2026-04-10 22:49:12,129 - vbp_processing - Processing document start: 36875937_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36875937_fulltext.xml]
+[INFO] 2026-04-10 22:49:12,761 - vbp_processing - Invoking ClinicalExtractor for: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:49:12,761 - vbp_processing - Processing document start: 36995270_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36995270_fulltext.xml]
+[INFO] 2026-04-10 22:49:13,336 - vbp_processing - Invoking ClinicalExtractor for: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:49:13,336 - vbp_processing - Processing document start: 37249667_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37249667_fulltext.xml]
+[INFO] 2026-04-10 22:49:13,944 - vbp_processing - Invoking ClinicalExtractor for: 37249667_fulltext.xml
+[INFO] 2026-04-10 22:49:13,944 - vbp_processing - Processing document start: 37254833_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37254833_fulltext.xml]
+[INFO] 2026-04-10 22:49:14,774 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:49:14,774 - vbp_processing - Processing document start: 37436254_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37436254_fulltext.xml]
+[INFO] 2026-04-10 22:49:15,352 - vbp_processing - Invoking ClinicalExtractor for: 37436254_fulltext.xml
+[INFO] 2026-04-10 22:49:15,353 - vbp_processing - Processing document start: 37610446_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37610446_fulltext.xml]
+[INFO] 2026-04-10 22:49:15,999 - vbp_processing - Invoking ClinicalExtractor for: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:49:15,999 - vbp_processing - Processing document start: 37837507_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37837507_fulltext.xml]
+[INFO] 2026-04-10 22:49:16,586 - vbp_processing - Invoking ClinicalExtractor for: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:49:16,586 - vbp_processing - Processing document start: 38334254_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38334254_fulltext.xml]
+[INFO] 2026-04-10 22:49:17,235 - vbp_processing - Invoking ClinicalExtractor for: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:49:17,236 - vbp_processing - Processing document start: 38345764_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38345764_fulltext.xml]
+[INFO] 2026-04-10 22:49:17,829 - vbp_processing - Invoking ClinicalExtractor for: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:49:17,830 - vbp_processing - Processing document start: 38415696_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38415696_fulltext.xml]
+[INFO] 2026-04-10 22:49:18,599 - vbp_processing - Invoking ClinicalExtractor for: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:49:18,599 - vbp_processing - Processing document start: 38517530_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38517530_fulltext.xml]
+[INFO] 2026-04-10 22:49:19,213 - vbp_processing - Invoking ClinicalExtractor for: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:49:19,214 - vbp_processing - Processing document start: 38551974_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38551974_fulltext.xml]
+[INFO] 2026-04-10 22:49:19,809 - vbp_processing - Invoking ClinicalExtractor for: 38551974_fulltext.xml
+[INFO] 2026-04-10 22:49:19,810 - vbp_processing - Processing document start: 38622643_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38622643_fulltext.xml]
+[INFO] 2026-04-10 22:49:20,422 - vbp_processing - Invoking ClinicalExtractor for: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:49:20,423 - vbp_processing - Processing document start: 38762656_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38762656_fulltext.xml]
+[INFO] 2026-04-10 22:49:21,026 - vbp_processing - Invoking ClinicalExtractor for: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:49:21,026 - vbp_processing - Processing document start: 38805448_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38805448_fulltext.xml]
+[INFO] 2026-04-10 22:49:21,662 - vbp_processing - Invoking ClinicalExtractor for: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:49:21,662 - vbp_processing - Processing document start: 38870470_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38870470_fulltext.xml]
+[INFO] 2026-04-10 22:49:22,289 - vbp_processing - Invoking ClinicalExtractor for: 38870470_fulltext.xml
+[INFO] 2026-04-10 22:49:22,289 - vbp_processing - Processing document start: 39037980_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39037980_fulltext.xml]
+[INFO] 2026-04-10 22:49:22,881 - vbp_processing - Invoking ClinicalExtractor for: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:49:22,882 - vbp_processing - Processing document start: 39075493_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39075493_fulltext.xml]
+[INFO] 2026-04-10 22:49:23,502 - vbp_processing - Invoking ClinicalExtractor for: 39075493_fulltext.xml
+[INFO] 2026-04-10 22:49:23,503 - vbp_processing - Processing document start: 39182937_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39182937_fulltext.xml]
+[INFO] 2026-04-10 22:49:24,281 - vbp_processing - Invoking ClinicalExtractor for: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:49:24,282 - vbp_processing - Processing document start: 39375842_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39375842_fulltext.xml]
+[INFO] 2026-04-10 22:49:24,945 - vbp_processing - Invoking ClinicalExtractor for: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:49:24,945 - vbp_processing - Processing document start: 39496035_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39496035_fulltext.xml]
+[INFO] 2026-04-10 22:49:25,549 - vbp_processing - Invoking ClinicalExtractor for: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:49:25,549 - vbp_processing - Processing document start: 39520111_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39520111_fulltext.xml]
+[INFO] 2026-04-10 22:49:26,196 - vbp_processing - Invoking ClinicalExtractor for: 39520111_fulltext.xml
+[INFO] 2026-04-10 22:49:26,197 - vbp_processing - Processing document start: 39678223_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/39678223_fulltext.xml]
+[INFO] 2026-04-10 22:49:26,771 - vbp_processing - Invoking ClinicalExtractor for: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:49:26,771 - vbp_processing - Processing document start: 40077653_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40077653_fulltext.xml]
+[INFO] 2026-04-10 22:49:27,384 - vbp_processing - Invoking ClinicalExtractor for: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:49:27,385 - vbp_processing - Processing document start: 40091916_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40091916_fulltext.xml]
+[INFO] 2026-04-10 22:49:27,969 - vbp_processing - Invoking ClinicalExtractor for: 40091916_fulltext.xml
+[INFO] 2026-04-10 22:49:27,969 - vbp_processing - Processing document start: 40245393_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40245393_fulltext.xml]
+[INFO] 2026-04-10 22:49:28,749 - vbp_processing - Invoking ClinicalExtractor for: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:49:28,749 - vbp_processing - Processing document start: 40273110_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40273110_fulltext.xml]
+[INFO] 2026-04-10 22:49:29,374 - vbp_processing - Invoking ClinicalExtractor for: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:49:29,374 - vbp_processing - Processing document start: 40405710_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40405710_fulltext.xml]
+[INFO] 2026-04-10 22:49:30,039 - vbp_processing - Invoking ClinicalExtractor for: 40405710_fulltext.xml
+[INFO] 2026-04-10 22:49:30,039 - vbp_processing - Processing document start: 40470490_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40470490_fulltext.xml]
+[INFO] 2026-04-10 22:49:30,653 - vbp_processing - Invoking ClinicalExtractor for: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:49:30,653 - vbp_processing - Processing document start: 40488544_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40488544_fulltext.xml]
+[INFO] 2026-04-10 22:49:31,250 - vbp_processing - Invoking ClinicalExtractor for: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:49:31,250 - vbp_processing - Processing document start: 40560475_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40560475_fulltext.xml]
+[INFO] 2026-04-10 22:49:32,001 - vbp_processing - Invoking ClinicalExtractor for: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:49:32,001 - vbp_processing - Processing document start: 40563772_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40563772_fulltext.xml]
+[INFO] 2026-04-10 22:49:32,618 - vbp_processing - Invoking ClinicalExtractor for: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:49:32,619 - vbp_processing - Processing document start: 40649976_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40649976_fulltext.xml]
+[INFO] 2026-04-10 22:49:33,332 - vbp_processing - Invoking ClinicalExtractor for: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:49:33,332 - vbp_processing - Processing document start: 40725930_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40725930_fulltext.xml]
+[INFO] 2026-04-10 22:49:33,938 - vbp_processing - Invoking ClinicalExtractor for: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:49:33,939 - vbp_processing - Processing document start: 40802439_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/40802439_fulltext.xml]
+[INFO] 2026-04-10 22:49:34,545 - vbp_processing - Invoking ClinicalExtractor for: 40802439_fulltext.xml
+[INFO] 2026-04-10 22:49:34,545 - vbp_processing - Processing document start: 41024175_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/41024175_fulltext.xml]
+[INFO] 2026-04-10 22:49:35,157 - vbp_processing - Invoking ClinicalExtractor for: 41024175_fulltext.xml
+[INFO] 2026-04-10 22:49:35,157 - vbp_processing - Processing document start: 41073116_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/41073116_fulltext.xml]
+[INFO] 2026-04-10 22:49:35,759 - vbp_processing - Invoking ClinicalExtractor for: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:49:35,759 - vbp_processing - Processing document start: ALS (amyotrofisk lateral sklerose).pdf [uri=gs://veiledende_behandlingsplan/ALS/ALS (amyotrofisk lateral sklerose).pdf]
+[INFO] 2026-04-10 22:49:36,351 - vbp_processing - Invoking ClinicalExtractor for: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 22:49:36,351 - vbp_processing - Processing document start: ALS - Socialstyrelsen.pdf [uri=gs://veiledende_behandlingsplan/ALS/ALS - Socialstyrelsen.pdf]
+[INFO] 2026-04-10 22:49:36,995 - vbp_processing - Invoking ClinicalExtractor for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 22:49:36,995 - vbp_processing - Processing document start: Amyotrophic lateral sclerosis.pdf [uri=gs://veiledende_behandlingsplan/ALS/Amyotrophic lateral sclerosis.pdf]
+[INFO] 2026-04-10 22:49:37,672 - vbp_processing - Invoking ClinicalExtractor for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:49:37,672 - vbp_processing - Processing document start: CD004030.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD004030.pdf]
+[INFO] 2026-04-10 22:49:38,363 - vbp_processing - Invoking ClinicalExtractor for: CD004030.pdf
+[INFO] 2026-04-10 22:49:38,370 - vbp_processing - Processing document start: CD004157.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD004157.pdf]
+[INFO] 2026-04-10 22:49:39,057 - vbp_processing - Invoking ClinicalExtractor for: CD004157.pdf
+[INFO] 2026-04-10 22:49:39,058 - vbp_processing - Processing document start: CD004427.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD004427.pdf]
+[INFO] 2026-04-10 22:49:39,708 - vbp_processing - Invoking ClinicalExtractor for: CD004427.pdf
+[INFO] 2026-04-10 22:49:39,709 - vbp_processing - Processing document start: CD005226.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD005226.pdf]
+[INFO] 2026-04-10 22:49:40,303 - vbp_processing - Invoking ClinicalExtractor for: CD005226.pdf
+[INFO] 2026-04-10 22:49:40,304 - vbp_processing - Processing document start: CD005229.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD005229.pdf]
+[INFO] 2026-04-10 22:49:40,944 - vbp_processing - Invoking ClinicalExtractor for: CD005229.pdf
+[INFO] 2026-04-10 22:49:40,944 - vbp_processing - Processing document start: CD006049.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD006049.pdf]
+[INFO] 2026-04-10 22:49:41,596 - vbp_processing - Invoking ClinicalExtractor for: CD006049.pdf
+[INFO] 2026-04-10 22:49:41,596 - vbp_processing - Processing document start: CD006981.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD006981.pdf]
+[INFO] 2026-04-10 22:49:42,277 - vbp_processing - Invoking ClinicalExtractor for: CD006981.pdf
+[INFO] 2026-04-10 22:49:42,277 - vbp_processing - Processing document start: CD007593 (1).pdf [uri=gs://veiledende_behandlingsplan/ALS/CD007593 (1).pdf]
+[INFO] 2026-04-10 22:49:42,924 - vbp_processing - Invoking ClinicalExtractor for: CD007593 (1).pdf
+[INFO] 2026-04-10 22:49:42,924 - vbp_processing - Processing document start: CD007593.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD007593.pdf]
+[INFO] 2026-04-10 22:49:43,567 - vbp_processing - Invoking ClinicalExtractor for: CD007593.pdf
+[INFO] 2026-04-10 22:49:43,567 - vbp_processing - Processing document start: CD008554.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD008554.pdf]
+[INFO] 2026-04-10 22:49:44,227 - vbp_processing - Invoking ClinicalExtractor for: CD008554.pdf
+[INFO] 2026-04-10 22:49:44,227 - vbp_processing - Processing document start: CD011005.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD011005.pdf]
+[INFO] 2026-04-10 22:49:44,887 - vbp_processing - Invoking ClinicalExtractor for: CD011005.pdf
+[INFO] 2026-04-10 22:49:44,888 - vbp_processing - Processing document start: CD011742.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD011742.pdf]
+[INFO] 2026-04-10 22:49:45,539 - vbp_processing - Invoking ClinicalExtractor for: CD011742.pdf
+[INFO] 2026-04-10 22:49:45,539 - vbp_processing - Processing document start: CD011776.pdf [uri=gs://veiledende_behandlingsplan/ALS/CD011776.pdf]
+[INFO] 2026-04-10 22:49:46,190 - vbp_processing - Invoking ClinicalExtractor for: CD011776.pdf
+[INFO] 2026-04-10 22:49:46,190 - vbp_processing - Processing document start: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf [uri=gs://veiledende_behandlingsplan/ALS/Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf]
+[INFO] 2026-04-10 22:49:46,771 - vbp_processing - Invoking ClinicalExtractor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:49:46,771 - vbp_processing - Processing document start: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf [uri=gs://veiledende_behandlingsplan/ALS/Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf]
+[INFO] 2026-04-10 22:49:47,383 - vbp_processing - Invoking ClinicalExtractor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:49:47,383 - vbp_processing - Processing document start: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf [uri=gs://veiledende_behandlingsplan/ALS/Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf]
+[INFO] 2026-04-10 22:49:47,961 - vbp_processing - Invoking ClinicalExtractor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:49:47,961 - vbp_processing - Processing document start: Siewersetal2013.pdf [uri=gs://veiledende_behandlingsplan/ALS/Siewersetal2013.pdf]
+[INFO] 2026-04-10 22:49:48,608 - vbp_processing - Invoking ClinicalExtractor for: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:49:48,608 - vbp_processing - Processing document start: artikel_13034.pdf [uri=gs://veiledende_behandlingsplan/ALS/artikel_13034.pdf]
+[INFO] 2026-04-10 22:49:49,184 - vbp_processing - Invoking ClinicalExtractor for: artikel_13034.pdf
+[INFO] 2026-04-10 22:49:49,184 - vbp_processing - Processing document start: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf [uri=gs://veiledende_behandlingsplan/ALS/intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf]
+[INFO] 2026-04-10 22:49:49,795 - vbp_processing - Invoking ClinicalExtractor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:49:49,796 - vbp_processing - Processing document start: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf [uri=gs://veiledende_behandlingsplan/ALS/martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf]
+[INFO] 2026-04-10 22:49:50,397 - vbp_processing - Invoking ClinicalExtractor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 22:49:50,397 - vbp_processing - Processing document start: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf [uri=gs://veiledende_behandlingsplan/ALS/motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf]
+[INFO] 2026-04-10 22:49:51,031 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:49:51,031 - vbp_processing - Processing document start: motor-neurone-disease-pdf-3060858249925.pdf [uri=gs://veiledende_behandlingsplan/ALS/motor-neurone-disease-pdf-3060858249925.pdf]
+[INFO] 2026-04-10 22:49:51,626 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:49:51,626 - vbp_processing - Processing document start: motor-neurone-disease-pdf-75545361935557.pdf [uri=gs://veiledende_behandlingsplan/ALS/motor-neurone-disease-pdf-75545361935557.pdf]
+[INFO] 2026-04-10 22:49:52,262 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 22:49:52,262 - vbp_processing - Processing document start: pdf-export-49038.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-49038.pdf]
+[INFO] 2026-04-10 22:49:52,864 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:49:52,864 - vbp_processing - Processing document start: pdf-export-51075.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-51075.pdf]
+[INFO] 2026-04-10 22:49:53,470 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51075.pdf
+[INFO] 2026-04-10 22:49:53,470 - vbp_processing - Processing document start: pdf-export-51157.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-51157.pdf]
+[INFO] 2026-04-10 22:49:54,048 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51157.pdf
+[INFO] 2026-04-10 22:49:54,048 - vbp_processing - Processing document start: pdf-export-51330.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-51330.pdf]
+[INFO] 2026-04-10 22:49:54,590 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51330.pdf
+[INFO] 2026-04-10 22:49:54,590 - vbp_processing - Processing document start: pdf-export-56871.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-56871.pdf]
+[INFO] 2026-04-10 22:49:55,134 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:49:55,138 - vbp_processing - Processing document start: pdf-export-57787.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-57787.pdf]
+[INFO] 2026-04-10 22:49:55,719 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:49:55,719 - vbp_processing - Processing document start: pdf-export-57942.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-57942.pdf]
+[INFO] 2026-04-10 22:49:56,282 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:49:56,282 - vbp_processing - Processing document start: pdf-export-61011.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-61011.pdf]
+[INFO] 2026-04-10 22:49:56,893 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-61011.pdf
+[INFO] 2026-04-10 22:49:56,894 - vbp_processing - Processing document start: pdf-export-62504.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf-export-62504.pdf]
+[INFO] 2026-04-10 22:49:57,478 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:49:57,478 - vbp_processing - Processing document start: pdf2006--2520-2.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf2006--2520-2.pdf]
+[INFO] 2026-04-10 22:49:58,065 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:49:58,065 - vbp_processing - Processing document start: pdf2006--2523-5.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf2006--2523-5.pdf]
+[INFO] 2026-04-10 22:49:58,657 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 22:49:58,658 - vbp_processing - Processing document start: pdf2006--3297-9.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf2006--3297-9.pdf]
+[INFO] 2026-04-10 22:49:59,249 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 22:49:59,252 - vbp_processing - Processing document start: pdf2009--628-31.pdf [uri=gs://veiledende_behandlingsplan/ALS/pdf2009--628-31.pdf]
+[INFO] 2026-04-10 22:49:59,834 - vbp_processing - Invoking ClinicalExtractor for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:49:59,834 - vbp_processing - Processing document start: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf [uri=gs://veiledende_behandlingsplan/ALS/rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf]
+[INFO] 2026-04-10 22:50:00,574 - vbp_processing - Invoking ClinicalExtractor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:50:00,574 - vbp_processing - Processing document start: rapport_2015_08_naltrekson-sma-doser.pdf [uri=gs://veiledende_behandlingsplan/ALS/rapport_2015_08_naltrekson-sma-doser.pdf]
+[INFO] 2026-04-10 22:50:01,285 - vbp_processing - Invoking ClinicalExtractor for: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 22:50:01,286 - vbp_processing - Processing document start: rapport_2016_als_litteratursok.pdf [uri=gs://veiledende_behandlingsplan/ALS/rapport_2016_als_litteratursok.pdf]
+[INFO] 2026-04-10 22:50:02,060 - vbp_processing - Invoking ClinicalExtractor for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:50:34,448 - vbp_processing - No findings identified in document: 34786907_fulltext.xml
+[INFO] 2026-04-10 22:50:34,837 - vbp_processing - No findings identified in document: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 22:50:37,032 - vbp_processing - No findings identified in document: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:50:38,430 - vbp_processing - No findings identified in document: pdf-export-51075.pdf
+[INFO] 2026-04-10 22:50:38,849 - vbp_processing - No findings identified in document: CD008554.pdf
+[INFO] 2026-04-10 22:50:38,849 - vbp_orchestrator - *** Overall Progress: 5/96 processed (0 success) ***
+[INFO] 2026-04-10 22:50:40,023 - vbp_processing - No findings identified in document: CD004157.pdf
+[INFO] 2026-04-10 22:50:41,807 - vbp_processing - Invoking Clinical Auditor for: 33333772_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:43,088 - vbp_processing - No findings identified in document: artikel_13034.pdf
+[INFO] 2026-04-10 22:50:45,686 - vbp_processing - Invoking Clinical Auditor for: CD004427.pdf [finding_count=3]
+[INFO] 2026-04-10 22:50:47,924 - vbp_processing - Invoking Clinical Auditor for: 37610446_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:48,917 - vbp_processing - Invoking Clinical Auditor for: 36875937_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:50:49,361 - vbp_processing - Invoking Clinical Auditor for: 39496035_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:49,873 - vbp_processing - Invoking FO Classifier for: 33333772_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:50,615 - vbp_processing - Invoking Clinical Auditor for: ALS - Socialstyrelsen.pdf [finding_count=4]
+[INFO] 2026-04-10 22:50:51,307 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:51,680 - vbp_processing - No findings identified in document: CD006049.pdf
+[INFO] 2026-04-10 22:50:51,807 - vbp_processing - Invoking Clinical Auditor for: 36341104_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:52,460 - vbp_processing - Invoking Clinical Auditor for: CD011005.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:52,530 - vbp_processing - Invoking Clinical Auditor for: pdf-export-51330.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:52,958 - vbp_processing - Invoking Clinical Auditor for: 40560475_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:53,041 - vbp_processing - Invoking Clinical Auditor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:53,603 - vbp_processing - Invoking Clinical Auditor for: CD004030.pdf [finding_count=3]
+[INFO] 2026-04-10 22:50:53,674 - vbp_processing - Invoking Clinical Auditor for: 33530383_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:50:53,761 - vbp_processing - Invoking Clinical Auditor for: 34421792_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:50:53,828 - vbp_processing - Invoking FO Classifier for: 39496035_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:53,902 - vbp_processing - Invoking FO Classifier for: CD004427.pdf [finding_count=3]
+[INFO] 2026-04-10 22:50:53,986 - vbp_processing - Invoking Clinical Auditor for: CD011742.pdf [finding_count=3]
+[INFO] 2026-04-10 22:50:54,717 - vbp_processing - Invoking Clinical Auditor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf [finding_count=4]
+[INFO] 2026-04-10 22:50:55,755 - vbp_processing - Invoking Clinical Auditor for: 38551974_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:50:55,970 - vbp_processing - Invoking Clinical Auditor for: CD011776.pdf [finding_count=5]
+[INFO] 2026-04-10 22:50:56,042 - vbp_processing - Invoking Clinical Auditor for: 38762656_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:50:57,067 - vbp_processing - Invoking FO Classifier for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:57,204 - vbp_processing - Invoking Clinical Auditor for: 39678223_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:57,543 - vbp_processing - Invoking Clinical Auditor for: 40802439_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:50:57,649 - vbp_processing - Invoking FO Classifier for: 40560475_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:57,725 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57787.pdf [finding_count=4]
+[INFO] 2026-04-10 22:50:58,500 - vbp_processing - Invoking FO Classifier for: 36875937_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:50:58,751 - vbp_processing - Invoking FO Classifier for: CD011005.pdf [finding_count=2]
+[INFO] 2026-04-10 22:50:59,131 - vbp_processing - Invoking Clinical Auditor for: 33251776_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:50:59,799 - vbp_processing - Invoking FO Classifier for: 37610446_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:50:59,954 - vbp_processing - Invoking FO Classifier for: ALS - Socialstyrelsen.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:00,252 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:51:00,488 - vbp_processing - Invoking FO Classifier for: pdf-export-51330.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:00,586 - vbp_processing - Invoking Clinical Auditor for: 33546507_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:00,705 - vbp_processing - Invoking Clinical Auditor for: CD005226.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:00,841 - vbp_processing - Invoking Clinical Auditor for: CD006981.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:01,145 - vbp_processing - Invoking Clinical Auditor for: 40470490_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:01,450 - vbp_processing - Invoking Clinical Auditor for: 39375842_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:01,634 - vbp_processing - Invoking FO Classifier for: 34421792_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:02,011 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD004427.pdf
+[INFO] 2026-04-10 22:51:02,237 - vbp_processing - Invoking FO Classifier for: 36341104_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:02,361 - vbp_processing - Invoking FO Classifier for: CD011742.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:03,387 - vbp_processing - Invoking FO Classifier for: 39678223_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:03,907 - vbp_processing - Invoking Clinical Auditor for: 40563772_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:04,364 - vbp_processing - Invoking FO Classifier for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:04,442 - vbp_processing - Invoking FO Classifier for: 38551974_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:04,528 - vbp_processing - Invoking FO Classifier for: CD004030.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:04,661 - vbp_processing - No findings identified in document: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:51:04,786 - vbp_processing - Invoking Clinical Auditor for: rapport_2016_als_litteratursok.pdf [finding_count=8]
+[INFO] 2026-04-10 22:51:05,398 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:05,689 - vbp_processing - No findings identified in document: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:51:05,689 - vbp_orchestrator - *** Overall Progress: 10/96 processed (0 success) ***
+[INFO] 2026-04-10 22:51:05,926 - vbp_processing - Invoking Clinical Auditor for: 38415696_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:06,109 - vbp_processing - Invoking FO Classifier for: 33530383_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:06,585 - vbp_processing - Invoking FO Classifier for: pdf-export-57787.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:07,058 - vbp_processing - Invoking FO Classifier for: 33251776_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:07,130 - vbp_processing - Invoking Clinical Auditor for: 32903629_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:07,393 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:51:07,627 - vbp_processing - Invoking FO Classifier for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:07,717 - vbp_processing - Invoking FO Classifier for: 38762656_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:07,838 - vbp_processing - Invoking FO Classifier for: 40802439_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:07,954 - vbp_processing - Invoking FO Classifier for: CD011776.pdf [finding_count=5]
+[INFO] 2026-04-10 22:51:08,070 - vbp_processing - Invoking Clinical Auditor for: 39520111_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:08,307 - vbp_processing - Invoking Clinical Auditor for: Siewersetal2013.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:08,417 - vbp_processing - Invoking Clinical Auditor for: pdf2009--628-31.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:08,503 - vbp_processing - Invoking Clinical Auditor for: 41073116_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:09,340 - vbp_processing - Invoking Clinical Auditor for: 32910255_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:09,454 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:51:10,221 - vbp_processing - Invoking FO Classifier for: 33546507_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:10,288 - vbp_processing - Invoking FO Classifier for: 39375842_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:10,359 - vbp_processing - Invoking Clinical Auditor for: pdf-export-61011.pdf [finding_count=4]
+[WARNING] 2026-04-10 22:51:10,541 - vbp_processing - [Quality Guard] Dropped low-quality finding in CD006981.pdf: Risiko for hudekskoriasjon (hudskade) rundt munnen og nedsatt søvnkvalitet på grunn av konstant fuktighet fra spyttflod. (Score: 4.9) [reason=The intervention is quite generic and lacks specific skin barrier tools or scheduled intervals to manage the moisture-related skin risk unique to advanced ALS drooling.]
+[INFO] 2026-04-10 22:51:10,541 - vbp_processing - Invoking FO Classifier for: CD006981.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:10,611 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:51:10,920 - vbp_processing - Invoking Clinical Auditor for: Amyotrophic lateral sclerosis.pdf [finding_count=7]
+[INFO] 2026-04-10 22:51:11,009 - vbp_processing - Invoking FO Classifier for: 38415696_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:11,407 - vbp_processing - Invoking FO Classifier for: CD005226.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:12,349 - vbp_processing - Invoking FO Classifier for: 35309870_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:13,064 - vbp_processing - Invoking Clinical Auditor for: 36008057_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:13,130 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:51:13,356 - vbp_processing - Invoking FO-Guided ICNP Mappers for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:51:13,716 - vbp_processing - Invoking Clinical Auditor for: 35636801_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:13,877 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:51:14,264 - vbp_processing - Invoking Clinical Auditor for: 38334254_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:14,718 - vbp_processing - Invoking FO Classifier for: 32910255_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:14,786 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-51330.pdf
+[INFO] 2026-04-10 22:51:15,145 - vbp_processing - Invoking FO Classifier for: 40563772_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:15,782 - vbp_processing - Invoking FO Classifier for: 41073116_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:16,099 - vbp_processing - Invoking FO Classifier for: rapport_2016_als_litteratursok.pdf [finding_count=8]
+[INFO] 2026-04-10 22:51:16,538 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57942.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:16,614 - vbp_processing - Invoking FO Classifier for: Siewersetal2013.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:16,761 - vbp_processing - Invoking FO Classifier for: 32903629_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:16,831 - vbp_processing - Invoking Clinical Auditor for: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:17,039 - vbp_processing - Invoking Clinical Auditor for: 39182937_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:17,210 - vbp_processing - Invoking FO Classifier for: pdf2009--628-31.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:17,359 - vbp_processing - Invoking Clinical Auditor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:17,766 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:51:18,355 - vbp_processing - Invoking FO-Guided ICNP Mappers for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 22:51:18,577 - vbp_processing - Invoking FO Classifier for: 39520111_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:18,693 - vbp_processing - Invoking Clinical Auditor for: 37837507_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:19,545 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38551974_fulltext.xml
+[INFO] 2026-04-10 22:51:19,756 - vbp_processing - Invoking Clinical Auditor for: 38517530_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:20,172 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:51:20,391 - vbp_processing - Invoking Clinical Auditor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:20,834 - vbp_processing - Invoking Clinical Auditor for: 40273110_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:21,056 - vbp_processing - Invoking Clinical Auditor for: 39075493_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:21,188 - vbp_processing - Invoking FO Classifier for: pdf-export-61011.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:21,259 - vbp_processing - Invoking FO Classifier for: 35636801_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:21,698 - vbp_processing - Invoking FO Classifier for: 36008057_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:22,182 - vbp_processing - Invoking Clinical Auditor for: pdf2006--3297-9.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:22,255 - vbp_processing - Invoking Clinical Auditor for: 37436254_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:22,333 - vbp_processing - Invoking Clinical Auditor for: pdf-export-51157.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:22,582 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD011776.pdf
+[INFO] 2026-04-10 22:51:23,118 - vbp_processing - Invoking Clinical Auditor for: CD007593 (1).pdf [finding_count=3]
+[WARNING] 2026-04-10 22:51:23,532 - vbp_processing - [Quality Guard] Dropped low-quality finding in 40470490_fulltext.xml: Risiko for muskelkontrakturer relatert til redusert bevegelse og muskelsvakhet. (Score: 4.9) [reason=While logical, this finding is generic to many neuromuscular conditions and the intervention lacks specific techniques or frequency for stretching protocols.]
+[INFO] 2026-04-10 22:51:23,532 - vbp_processing - Invoking FO Classifier for: 40470490_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:23,728 - vbp_processing - Document processing success: CD004427.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:23,914 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD011005.pdf
+[INFO] 2026-04-10 22:51:23,916 - vbp_processing - Invoking FO Classifier for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:24,185 - vbp_processing - Invoking FO Classifier for: pdf-export-57942.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:24,326 - vbp_processing - Invoking Clinical Auditor for: 40245393_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:24,592 - vbp_processing - Invoking FO Classifier for: 38334254_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:24,797 - vbp_processing - Invoking Clinical Auditor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:24,939 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:51:25,255 - vbp_processing - Invoking Clinical Auditor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:25,368 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD006981.pdf
+[INFO] 2026-04-10 22:51:25,373 - vbp_processing - Invoking FO Classifier for: Amyotrophic lateral sclerosis.pdf [finding_count=7]
+[INFO] 2026-04-10 22:51:25,869 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:51:26,184 - vbp_processing - Invoking FO Classifier for: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:26,687 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:51:26,901 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40802439_fulltext.xml
+[INFO] 2026-04-10 22:51:26,906 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:51:27,477 - vbp_processing - Invoking FO Classifier for: 39075493_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:27,597 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:51:27,603 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2520-2.pdf [finding_count=6]
+[INFO] 2026-04-10 22:51:28,046 - vbp_processing - Invoking FO Classifier for: pdf-export-51157.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:28,131 - vbp_processing - Invoking FO Classifier for: 38517530_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:28,276 - vbp_processing - Invoking FO Classifier for: 37436254_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:28,426 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:51:28,771 - vbp_processing - Invoking FO Classifier for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:28,903 - vbp_processing - Invoking Clinical Auditor for: 36834005_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:29,218 - vbp_processing - Invoking FO Classifier for: 37837507_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:29,501 - vbp_processing - Invoking Clinical Auditor for: pdf-export-49038.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:30,022 - vbp_processing - Invoking FO Classifier for: 39182937_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:30,096 - vbp_processing - Invoking Clinical Auditor for: 40077653_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:30,372 - vbp_processing - Invoking FO-Guided ICNP Mappers for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:51:30,794 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:51:31,032 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:51:31,394 - vbp_processing - Invoking Clinical Auditor for: 38345764_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:31,521 - vbp_processing - Invoking Clinical Auditor for: 40091916_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:31,636 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2523-5.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:31,891 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:51:32,650 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:32,723 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 250-254.pdf
+[INFO] 2026-04-10 22:51:32,924 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:51:33,274 - vbp_processing - Invoking FO Classifier for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:33,362 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD004030.pdf
+[INFO] 2026-04-10 22:51:33,673 - vbp_processing - Invoking FO Classifier for: 40273110_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:33,798 - vbp_processing - Invoking Clinical Auditor for: 40488544_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:33,932 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:51:33,936 - vbp_processing - Invoking FO Classifier for: 40245393_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:34,355 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:51:34,696 - vbp_processing - Invoking Clinical Auditor for: 36995270_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:34,775 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:51:34,791 - vbp_processing - Invoking FO Classifier for: pdf2006--3297-9.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:34,887 - vbp_processing - Document processing success: 37610446_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:35,386 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:51:35,702 - vbp_processing - Invoking Clinical Auditor for: 40405710_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:35,838 - vbp_processing - Invoking FO Classifier for: pdf-export-49038.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:35,994 - vbp_processing - Invoking Clinical Auditor for: 38870470_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:36,156 - vbp_processing - Invoking Clinical Auditor for: 41024175_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:36,658 - vbp_processing - Invoking FO Classifier for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:36,729 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 37436254_fulltext.xml
+[INFO] 2026-04-10 22:51:36,955 - vbp_processing - Invoking FO-Guided ICNP Mappers for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:51:37,284 - vbp_processing - Invoking Clinical Auditor for: CD007593.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:37,377 - vbp_processing - Invoking Clinical Auditor for: 35235032_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:37,550 - vbp_processing - Document processing success: CD011005.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:37,782 - vbp_processing - Invoking Clinical Auditor for: 35898325_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:37,889 - vbp_processing - Invoking FO Classifier for: CD007593 (1).pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:38,010 - vbp_processing - Invoking Clinical Auditor for: 39037980_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:38,095 - vbp_processing - Document processing success: 38551974_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:38,328 - vbp_processing - Document processing success: ALS - Socialstyrelsen.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:38,505 - vbp_orchestrator - *** Overall Progress: 15/96 processed (5 success) ***
+[INFO] 2026-04-10 22:51:39,210 - vbp_processing - Invoking FO Classifier for: pdf2006--2520-2.pdf [finding_count=6]
+[INFO] 2026-04-10 22:51:39,315 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:51:39,903 - vbp_processing - Document processing success: 34421792_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:40,067 - vbp_processing - Invoking FO Classifier for: pdf2006--2523-5.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:40,311 - vbp_processing - Document processing success: 39678223_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:40,491 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:51:40,700 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD011742.pdf
+[INFO] 2026-04-10 22:51:40,938 - vbp_processing - Invoking FO Classifier for: 40077653_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:41,047 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf [finding_count=7]
+[INFO] 2026-04-10 22:51:41,118 - vbp_processing - Document processing success: 36875937_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:41,317 - vbp_processing - Invoking FO Classifier for: 36834005_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:41,469 - vbp_processing - Invoking Clinical Auditor for: CD005229.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:41,613 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:51:41,891 - vbp_processing - Invoking FO Classifier for: 40091916_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:42,077 - vbp_processing - Document processing success: 40560475_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:42,298 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 35309870_fulltext.xml
+[INFO] 2026-04-10 22:51:42,536 - vbp_processing - Invoking FO Classifier for: 37254833_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:42,633 - vbp_processing - Document processing success: 38415696_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:42,816 - vbp_orchestrator - *** Overall Progress: 20/96 processed (10 success) ***
+[INFO] 2026-04-10 22:51:42,816 - vbp_processing - Document processing success: CD011776.pdf [finding_count=5]
+[INFO] 2026-04-10 22:51:43,571 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-51157.pdf
+[INFO] 2026-04-10 22:51:43,776 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:51:44,001 - vbp_processing - Invoking FO Classifier for: 40488544_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:44,137 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:51:44,508 - vbp_processing - Invoking FO Classifier for: 36995270_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:44,677 - vbp_processing - Invoking Clinical Auditor for: 40725930_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:44,792 - vbp_processing - Document processing success: 36341104_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:44,993 - vbp_processing - Invoking FO Classifier for: 40405710_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:45,077 - vbp_processing - Invoking FO Classifier for: 38345764_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:45,399 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-61011.pdf
+[INFO] 2026-04-10 22:51:45,716 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:51:46,139 - vbp_processing - Invoking FO Classifier for: 41024175_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:46,211 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:51:46,488 - vbp_processing - Invoking FO-Guided ICNP Mappers for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:51:46,883 - vbp_processing - Invoking FO Classifier for: 39037980_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:47,005 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:51:47,394 - vbp_processing - Document processing success: 38334254_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:47,612 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD007593 (1).pdf
+[INFO] 2026-04-10 22:51:47,619 - vbp_processing - Document processing success: 40563772_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:48,028 - vbp_processing - Document processing success: 33333772_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:48,209 - vbp_processing - Document processing success: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:48,416 - vbp_processing - Invoking FO Classifier for: 38870470_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:48,517 - vbp_processing - Invoking FO Classifier for: 35898325_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:48,598 - vbp_processing - Invoking FO Classifier for: 35235032_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:48,677 - vbp_processing - Invoking Clinical Auditor for: 38622643_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:51:48,796 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-3060858249925.pdf [finding_count=6]
+[INFO] 2026-04-10 22:51:48,913 - vbp_processing - Document processing success: pdf-export-51330.pdf [finding_count=2]
+[INFO] 2026-04-10 22:51:49,124 - vbp_processing - Invoking FO Classifier for: CD007593.pdf [finding_count=4]
+[ERROR] 2026-04-10 22:51:49,126 - vbp_processing - FO Classifier error for: CD007593.pdf [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:51:49,127 - vbp_processing - FO classification failed for: CD007593.pdf
+[INFO] 2026-04-10 22:51:49,337 - vbp_processing - Document processing success: 33546507_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:50,465 - vbp_processing - Document processing success: CD006981.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:50,646 - vbp_orchestrator - *** Overall Progress: 30/96 processed (19 success) ***
+[INFO] 2026-04-10 22:51:50,650 - vbp_processing - Document processing success: 33530383_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:50,953 - vbp_processing - Invoking FO-Guided ICNP Mappers for: rapport_2016_als_litteratursok.pdf
+[ERROR] 2026-04-10 22:51:50,958 - vbp_processing - ICNP mapping group error for: rapport_2016_als_litteratursok.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:50,958 - vbp_processing - Document processing success: rapport_2016_als_litteratursok.pdf [finding_count=8]
+[INFO] 2026-04-10 22:51:51,179 - vbp_processing - Invoking FO Classifier for: CD005229.pdf [finding_count=2]
+[ERROR] 2026-04-10 22:51:51,180 - vbp_processing - FO Classifier error for: CD005229.pdf [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:51:51,180 - vbp_processing - FO classification failed for: CD005229.pdf
+[WARNING] 2026-04-10 22:51:51,252 - vbp_processing - [Quality Guard] Dropped low-quality finding in motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf: Risiko for psykisk og emosjonell belastning relatert til alvorlig diagnose. (Score: 4.9) [reason=While psychological support is vital in ALS, the intervention remains somewhat generic without referencing specific timing or specialized counseling services.]
+[INFO] 2026-04-10 22:51:51,253 - vbp_processing - Invoking FO Classifier for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf [finding_count=6]
+[ERROR] 2026-04-10 22:51:51,253 - vbp_processing - FO Classifier error for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:51:51,253 - vbp_processing - FO classification failed for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:51:51,788 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40245393_fulltext.xml
+[ERROR] 2026-04-10 22:51:51,792 - vbp_processing - ICNP mapping group error for: 40245393_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:51,792 - vbp_processing - Document processing success: 40245393_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:51,958 - vbp_orchestrator - *** Overall Progress: 35/96 processed (22 success) ***
+[INFO] 2026-04-10 22:51:52,705 - vbp_processing - Document processing success: 39496035_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:53,085 - vbp_processing - Document processing success: 32903629_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:53,477 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf2006--2523-5.pdf
+[ERROR] 2026-04-10 22:51:53,481 - vbp_processing - ICNP mapping group error for: pdf2006--2523-5.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:53,481 - vbp_processing - Document processing success: pdf2006--2523-5.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:53,652 - vbp_processing - Invoking FO-Guided ICNP Mappers for: Siewersetal2013.pdf
+[ERROR] 2026-04-10 22:51:53,660 - vbp_processing - ICNP mapping group error for: Siewersetal2013.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:53,660 - vbp_processing - Document processing success: Siewersetal2013.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:54,039 - vbp_processing - Document processing success: CD004030.pdf [finding_count=3]
+[INFO] 2026-04-10 22:51:54,206 - vbp_orchestrator - *** Overall Progress: 40/96 processed (27 success) ***
+[INFO] 2026-04-10 22:51:55,747 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf2006--2520-2.pdf
+[ERROR] 2026-04-10 22:51:55,751 - vbp_processing - ICNP mapping group error for: pdf2006--2520-2.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:55,752 - vbp_processing - Document processing success: pdf2006--2520-2.pdf [finding_count=6]
+[INFO] 2026-04-10 22:51:56,685 - vbp_processing - Invoking Clinical Auditor for: pdf-export-56871.pdf [finding_count=2]
+[ERROR] 2026-04-10 22:51:56,686 - vbp_processing - CRITICAL DOCUMENT ERROR: pdf-export-56871.pdf [error=Max number of llm calls limit of `500` exceeded, uri=gs://veiledende_behandlingsplan/ALS/pdf-export-56871.pdf]
+[INFO] 2026-04-10 22:51:56,691 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 41024175_fulltext.xml
+[ERROR] 2026-04-10 22:51:56,695 - vbp_processing - ICNP mapping group error for: 41024175_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:56,695 - vbp_processing - Document processing success: 41024175_fulltext.xml [finding_count=1]
+[INFO] 2026-04-10 22:51:56,858 - vbp_processing - Document processing success: 33251776_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:57,007 - vbp_processing - Document processing success: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf [finding_count=4]
+[INFO] 2026-04-10 22:51:57,150 - vbp_orchestrator - *** Overall Progress: 45/96 processed (31 success) ***
+[INFO] 2026-04-10 22:51:58,294 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40077653_fulltext.xml
+[ERROR] 2026-04-10 22:51:58,298 - vbp_processing - ICNP mapping group error for: 40077653_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:58,298 - vbp_processing - Document processing success: 40077653_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:58,795 - vbp_processing - Document processing success: 40802439_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:51:58,949 - vbp_processing - Invoking FO-Guided ICNP Mappers for: Amyotrophic lateral sclerosis.pdf
+[ERROR] 2026-04-10 22:51:58,959 - vbp_processing - ICNP mapping group error for: Amyotrophic lateral sclerosis.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:58,959 - vbp_processing - Document processing success: Amyotrophic lateral sclerosis.pdf [finding_count=7]
+[INFO] 2026-04-10 22:51:59,129 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-75545361935557.pdf [finding_count=5]
+[ERROR] 2026-04-10 22:51:59,130 - vbp_processing - CRITICAL DOCUMENT ERROR: motor-neurone-disease-pdf-75545361935557.pdf [error=Max number of llm calls limit of `500` exceeded, uri=gs://veiledende_behandlingsplan/ALS/motor-neurone-disease-pdf-75545361935557.pdf]
+[INFO] 2026-04-10 22:51:59,391 - vbp_processing - Document processing success: 37436254_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:51:59,553 - vbp_processing - Invoking FO Classifier for: motor-neurone-disease-pdf-3060858249925.pdf [finding_count=6]
+[ERROR] 2026-04-10 22:51:59,554 - vbp_processing - FO Classifier error for: motor-neurone-disease-pdf-3060858249925.pdf [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:51:59,554 - vbp_processing - FO classification failed for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:51:59,596 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 35898325_fulltext.xml
+[ERROR] 2026-04-10 22:51:59,600 - vbp_processing - ICNP mapping group error for: 35898325_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:51:59,600 - vbp_processing - Document processing success: 35898325_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:51:59,776 - vbp_processing - Document processing success: 35309870_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:00,979 - vbp_processing - Invoking FO Classifier for: 40725930_fulltext.xml [finding_count=3]
+[ERROR] 2026-04-10 22:52:00,980 - vbp_processing - FO Classifier error for: 40725930_fulltext.xml [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:52:00,980 - vbp_processing - FO classification failed for: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:52:01,078 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40488544_fulltext.xml
+[ERROR] 2026-04-10 22:52:01,082 - vbp_processing - ICNP mapping group error for: 40488544_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:01,083 - vbp_processing - Document processing success: 40488544_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:01,242 - vbp_orchestrator - *** Overall Progress: 55/96 processed (38 success) ***
+[INFO] 2026-04-10 22:52:01,650 - vbp_processing - Invoking FO-Guided ICNP Mappers for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[ERROR] 2026-04-10 22:52:01,654 - vbp_processing - ICNP mapping group error for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:01,654 - vbp_processing - Document processing success: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf [finding_count=3]
+[INFO] 2026-04-10 22:52:02,259 - vbp_processing - Document processing success: CD011742.pdf [finding_count=3]
+[INFO] 2026-04-10 22:52:02,486 - vbp_processing - Document processing success: 35636801_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:03,307 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf2006--3297-9.pdf
+[ERROR] 2026-04-10 22:52:03,312 - vbp_processing - ICNP mapping group error for: pdf2006--3297-9.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:03,312 - vbp_processing - Document processing success: pdf2006--3297-9.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:04,790 - vbp_processing - Invoking FO Classifier for: 38622643_fulltext.xml [finding_count=5]
+[ERROR] 2026-04-10 22:52:04,791 - vbp_processing - FO Classifier error for: 38622643_fulltext.xml [error=Max number of llm calls limit of `500` exceeded]
+[ERROR] 2026-04-10 22:52:04,791 - vbp_processing - FO classification failed for: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:52:04,792 - vbp_orchestrator - *** Overall Progress: 60/96 processed (42 success) ***
+[INFO] 2026-04-10 22:52:05,364 - vbp_processing - Invoking FO-Guided ICNP Mappers for: CD005226.pdf
+[INFO] 2026-04-10 22:52:05,364 - vbp_processing - Document processing success: 39375842_fulltext.xml [finding_count=3]
+[ERROR] 2026-04-10 22:52:05,499 - vbp_processing - ICNP mapping group error for: CD005226.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:05,499 - vbp_processing - Document processing success: CD005226.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:05,623 - vbp_processing - Invoking FO-Guided ICNP Mappers for: pdf-export-57787.pdf
+[ERROR] 2026-04-10 22:52:05,634 - vbp_processing - ICNP mapping group error for: pdf-export-57787.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:05,636 - vbp_processing - Document processing success: pdf-export-57787.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:05,774 - vbp_processing - Document processing success: 36008057_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:52:05,909 - vbp_processing - Invoking Clinical Auditor for: ALS (amyotrofisk lateral sklerose).pdf [finding_count=7]
+[ERROR] 2026-04-10 22:52:05,910 - vbp_processing - CRITICAL DOCUMENT ERROR: ALS (amyotrofisk lateral sklerose).pdf [error=Max number of llm calls limit of `500` exceeded, uri=gs://veiledende_behandlingsplan/ALS/ALS (amyotrofisk lateral sklerose).pdf]
+[INFO] 2026-04-10 22:52:05,910 - vbp_orchestrator - *** Overall Progress: 65/96 processed (46 success) ***
+[INFO] 2026-04-10 22:52:06,246 - vbp_processing - Document processing success: 39182937_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:52:06,810 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39037980_fulltext.xml
+[ERROR] 2026-04-10 22:52:06,817 - vbp_processing - ICNP mapping group error for: 39037980_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:06,817 - vbp_processing - Document processing success: 39037980_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:06,950 - vbp_processing - Document processing success: 40470490_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:07,077 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40405710_fulltext.xml
+[ERROR] 2026-04-10 22:52:07,086 - vbp_processing - ICNP mapping group error for: 40405710_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:07,088 - vbp_processing - Document processing success: 40405710_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:52:07,375 - vbp_processing - Document processing success: CD007593 (1).pdf [finding_count=3]
+[INFO] 2026-04-10 22:52:07,502 - vbp_orchestrator - *** Overall Progress: 70/96 processed (51 success) ***
+[INFO] 2026-04-10 22:52:08,005 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 40091916_fulltext.xml
+[ERROR] 2026-04-10 22:52:08,009 - vbp_processing - ICNP mapping group error for: 40091916_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:08,009 - vbp_processing - Document processing success: 40091916_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:52:08,237 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36834005_fulltext.xml
+[ERROR] 2026-04-10 22:52:08,241 - vbp_processing - ICNP mapping group error for: 36834005_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:08,242 - vbp_processing - Document processing success: 36834005_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:52:08,370 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 35235032_fulltext.xml
+[ERROR] 2026-04-10 22:52:08,377 - vbp_processing - ICNP mapping group error for: 35235032_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:08,378 - vbp_processing - Document processing success: 35235032_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:08,746 - vbp_processing - Document processing success: 38517530_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:10,089 - vbp_processing - Document processing success: 40273110_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:10,212 - vbp_orchestrator - *** Overall Progress: 75/96 processed (56 success) ***
+[INFO] 2026-04-10 22:52:10,250 - vbp_processing - Document processing success: 38762656_fulltext.xml [finding_count=5]
+[INFO] 2026-04-10 22:52:11,419 - vbp_processing - Document processing success: 32910255_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:52:13,330 - vbp_processing - Document processing success: 37837507_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:14,965 - vbp_processing - Document processing success: pdf-export-57942.pdf [finding_count=3]
+[INFO] 2026-04-10 22:52:16,259 - vbp_processing - Invoking FO-Guided ICNP Mappers for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[ERROR] 2026-04-10 22:52:16,263 - vbp_processing - ICNP mapping group error for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:16,264 - vbp_processing - Document processing success: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:16,394 - vbp_orchestrator - *** Overall Progress: 80/96 processed (61 success) ***
+[INFO] 2026-04-10 22:52:17,685 - vbp_processing - Document processing success: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf [finding_count=2]
+[INFO] 2026-04-10 22:52:19,515 - vbp_processing - Document processing success: 41073116_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:52:20,330 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38345764_fulltext.xml
+[ERROR] 2026-04-10 22:52:20,334 - vbp_processing - ICNP mapping group error for: 38345764_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:20,335 - vbp_processing - Document processing success: 38345764_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:21,176 - vbp_processing - Document processing success: pdf2009--628-31.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:22,723 - vbp_processing - Document processing success: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:22,850 - vbp_orchestrator - *** Overall Progress: 85/96 processed (66 success) ***
+[INFO] 2026-04-10 22:52:25,839 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39075493_fulltext.xml
+[ERROR] 2026-04-10 22:52:25,844 - vbp_processing - ICNP mapping group error for: 39075493_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:25,844 - vbp_processing - Document processing success: 39075493_fulltext.xml [finding_count=2]
+[INFO] 2026-04-10 22:52:26,631 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 39520111_fulltext.xml
+[ERROR] 2026-04-10 22:52:26,635 - vbp_processing - ICNP mapping group error for: 39520111_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:26,636 - vbp_processing - Document processing success: 39520111_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:52:28,765 - vbp_processing - Document processing success: pdf-export-49038.pdf [finding_count=2]
+[INFO] 2026-04-10 22:52:29,819 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 36995270_fulltext.xml
+[ERROR] 2026-04-10 22:52:29,823 - vbp_processing - ICNP mapping group error for: 36995270_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:29,824 - vbp_processing - Document processing success: 36995270_fulltext.xml [finding_count=4]
+[INFO] 2026-04-10 22:52:29,949 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 38870470_fulltext.xml
+[ERROR] 2026-04-10 22:52:29,956 - vbp_processing - ICNP mapping group error for: 38870470_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:29,957 - vbp_processing - Document processing success: 38870470_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:30,077 - vbp_orchestrator - *** Overall Progress: 90/96 processed (71 success) ***
+[INFO] 2026-04-10 22:52:30,672 - vbp_processing - Invoking Clinical Auditor for: 37249667_fulltext.xml [finding_count=3]
+[ERROR] 2026-04-10 22:52:30,672 - vbp_processing - CRITICAL DOCUMENT ERROR: 37249667_fulltext.xml [error=Max number of llm calls limit of `500` exceeded, uri=gs://veiledende_behandlingsplan/ALS/37249667_fulltext.xml]
+[INFO] 2026-04-10 22:52:32,550 - vbp_processing - Document processing success: pdf-export-51157.pdf [finding_count=2]
+[INFO] 2026-04-10 22:52:32,683 - vbp_processing - Document processing success: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf [finding_count=3]
+[INFO] 2026-04-10 22:52:33,140 - vbp_processing - Invoking FO-Guided ICNP Mappers for: 37254833_fulltext.xml
+[ERROR] 2026-04-10 22:52:33,145 - vbp_processing - ICNP mapping group error for: 37254833_fulltext.xml [error=unhandled errors in a TaskGroup (3 sub-exceptions)]
+[INFO] 2026-04-10 22:52:33,145 - vbp_processing - Document processing success: 37254833_fulltext.xml [finding_count=3]
+[INFO] 2026-04-10 22:52:36,215 - vbp_processing - Document processing success: pdf-export-61011.pdf [finding_count=4]
+[INFO] 2026-04-10 22:52:36,354 - vbp_orchestrator - *** Overall Progress: 95/96 processed (75 success) ***
+[INFO] 2026-04-10 22:57:04,719 - vbp_processing - Document processing success: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-10 22:57:04,842 - vbp_orchestrator - *** Overall Progress: 96/96 processed (76 success) ***
+[INFO] 2026-04-10 22:57:04,842 - vbp_orchestrator - Consolidating 76 successful documents and 20 excluded documents.
+[INFO] 2026-04-10 22:57:04,842 - vbp_consolidation - Starting FHIR semantic audit for 10 Functional Areas.
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=80954004]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,736 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,737 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497721000202103, code_b=70693003]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497721000202103, code_b=704307007]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=70693003, code_b=497721000202103]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=70693003, code_b=704307007]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704307007, code_b=497721000202103]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=80954004]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704307007, code_b=70693003]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=477681000202101, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=477681000202101]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=714667008]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=704417003]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=714667008, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=714667008, code_b=704417003]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,738 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=714667008, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704417003, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704417003, code_b=714667008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704417003, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=714667008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=704417003]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=445261000124106, code_b=699653008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=445261000124106, code_b=371736008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=445261000124106, code_b=300255008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=497611000202103, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=445261000124106, code_b=288939007]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=445261000124106, code_b=129845004]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=699653008, code_b=445261000124106]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=699653008, code_b=371736008]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,739 - fhir_client - FHIR Subsumption Timeout [code_a=699653008, code_b=300255008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=699653008, code_b=288939007]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=699653008, code_b=129845004]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=371736008, code_b=445261000124106]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=371736008, code_b=699653008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=371736008, code_b=300255008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=371736008, code_b=288939007]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=371736008, code_b=129845004]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=300255008, code_b=445261000124106]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=300255008, code_b=699653008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=704295007, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=300255008, code_b=371736008]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=300255008, code_b=288939007]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=300255008, code_b=129845004]
+[WARNING] 2026-04-10 22:57:10,740 - fhir_client - FHIR Subsumption Timeout [code_a=288939007, code_b=445261000124106]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=288939007, code_b=699653008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=288939007, code_b=371736008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=288939007, code_b=300255008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=288939007, code_b=129845004]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=129845004, code_b=445261000124106]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=129845004, code_b=699653008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=129845004, code_b=371736008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=129845004, code_b=300255008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=129845004, code_b=288939007]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=130984007, code_b=12871000202103]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=130984007, code_b=32000005]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=12871000202103, code_b=130984007]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=12871000202103, code_b=32000005]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=32000005, code_b=130984007]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=32000005, code_b=12871000202103]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=84229001]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=274663001]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=247347003]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=55300003]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=84229001, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=84229001, code_b=274663001]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=84229001, code_b=247347003]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=84229001, code_b=55300003]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=84229001, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,741 - fhir_client - FHIR Subsumption Timeout [code_a=274663001, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=274663001, code_b=84229001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=274663001, code_b=247347003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=274663001, code_b=55300003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=274663001, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=247347003, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=247347003, code_b=84229001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=247347003, code_b=274663001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=247347003, code_b=55300003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=247347003, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=55300003, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=55300003, code_b=84229001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=55300003, code_b=274663001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=55300003, code_b=247347003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=55300003, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=84229001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=274663001]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=247347003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=55300003]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704303006, code_b=129700008]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704303006, code_b=129891007]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704303006, code_b=706877002]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=704303006, code_b=705045007]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=129700008, code_b=704303006]
+[WARNING] 2026-04-10 22:57:10,742 - fhir_client - FHIR Subsumption Timeout [code_a=129700008, code_b=129891007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129700008, code_b=706877002]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129700008, code_b=705045007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129891007, code_b=704303006]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129891007, code_b=129700008]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129891007, code_b=706877002]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129891007, code_b=705045007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=706877002, code_b=704303006]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=706877002, code_b=129700008]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=706877002, code_b=129891007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=706877002, code_b=705045007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=705045007, code_b=704303006]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=705045007, code_b=129700008]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=705045007, code_b=129891007]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=705045007, code_b=706877002]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=508011000202100]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=129694002]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=284778005]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=82971005]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=80601004, code_b=298222004]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=508011000202100, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=508011000202100, code_b=129694002]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=508011000202100, code_b=284778005]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=508011000202100, code_b=82971005]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=508011000202100, code_b=298222004]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129694002, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129694002, code_b=508011000202100]
+[WARNING] 2026-04-10 22:57:10,743 - fhir_client - FHIR Subsumption Timeout [code_a=129694002, code_b=284778005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129694002, code_b=82971005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129694002, code_b=298222004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=284778005, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=284778005, code_b=508011000202100]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=284778005, code_b=129694002]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=284778005, code_b=82971005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=284778005, code_b=298222004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=82971005, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=82971005, code_b=508011000202100]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=82971005, code_b=129694002]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=82971005, code_b=284778005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=82971005, code_b=298222004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=298222004, code_b=80601004]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=298222004, code_b=508011000202100]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=298222004, code_b=129694002]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=298222004, code_b=284778005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=298222004, code_b=82971005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,744 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=129862009, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=1402001, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,745 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=714660005, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=26110006, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,746 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704488001, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=704421005, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,747 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=80954004]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=18232000, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=588781000202106, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,748 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=409622000, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=33300005, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,749 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=409622000, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=48694002, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=129868008, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,750 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=53209001, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=129864005, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,751 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=588771000202109, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=409622000, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=277843001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=409622000, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=386806002, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,752 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=588771000202109]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=704295007]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704356008, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=409622000, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=48694002]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=413307004]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=80954004]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=277843001, code_b=386806002]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=129862009]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=704296008, code_b=704356008]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=1402001]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=714660005]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=704296008]
+[WARNING] 2026-04-10 22:57:10,753 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=26110006]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=704488001]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=80954004, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=67750007]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=704421005]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=497611000202103]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=409622000]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=18232000]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=33300005]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=20573003, code_b=588781000202106]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=20573003]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=129868008]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=53209001]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=67750007, code_b=80954004]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=129864005]
+[WARNING] 2026-04-10 22:57:10,754 - fhir_client - FHIR Subsumption Timeout [code_a=413307004, code_b=588771000202109]
+[INFO] 2026-04-10 22:57:10,757 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-10 22:57:10,772 - test_workflow - --- Final Synthesis Complete --- [output_file=tests/integration/results/run_2026-04-11_00-48-55/workflow_synthesis.json]
+[INFO] 2026-04-10 22:57:10,772 - test_workflow - Generating HTML Report... [report_file=tests/integration/results/run_2026-04-11_00-48-55/report.html]
+[INFO] 2026-04-10 22:57:11,020 - test_workflow - HTML Report generated successfully.
+
+=============================================
+TEST RUN COMPLETED SUCCESSFULLY
+Run ID: 2026-04-11_00-48-55
+Results stored in: tests/integration/results/run_2026-04-11_00-48-55/
+  - Synthesis JSON: workflow_synthesis.json
+  - HTML Report:    report.html
+  - Execution Log:  session.log
+=============================================
+
