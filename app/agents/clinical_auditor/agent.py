@@ -12,7 +12,7 @@ def create_clinical_auditor():
     instructions = load_prompt("clinical_auditor")
 
     config = types.GenerateContentConfig(
-        temperature=0.0,  # Highly deterministic for audit consistency
+        temperature=1.0,  # Gemini 3.0 models operate best at default temperature
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 initial_delay=2,
