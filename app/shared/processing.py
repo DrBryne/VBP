@@ -231,6 +231,26 @@ async def resolve_sentence_ids(
             logger.debug(f"Resolved contextual quote ({len(sorted_ids)} sentences) for finding: {finding.nursing_diagnosis}", filename=filename)
             # Store as a single-element list for backward compatibility with downstream models
             finding.quotes = [contextual_quote]
+
+            # --- Verify GRADE Quotes ---
+            if finding.grade_sentence_ids:
+                grade_unique_ids = set()
+                for sid in finding.grade_sentence_ids:
+                    if sid in indexed_sentences:
+                        grade_unique_ids.add(sid)
+                    else:
+                        logger.warning(f"[Indexing] Hallucinated GRADE Sentence ID '{sid}' in {filename}")
+
+                if grade_unique_ids:
+                    sorted_grade_ids = sorted(grade_unique_ids, key=lambda x: int(x[1:]))
+                    finding.grade_quotes = [" ".join([indexed_sentences[sid] for sid in sorted_grade_ids])]
+                else:
+                    # Strip unsupported grades to prevent hallucinations
+                    logger.warning(f"[Indexing] Stripping unsupported GRADE from finding in {filename}: {finding.nursing_diagnosis}")
+                    finding.evidence_grade = None
+                    finding.recommendation_strength = None
+                    finding.grade_quotes = None
+
             verified_findings.append(finding)
         else:
             async with state_lock:

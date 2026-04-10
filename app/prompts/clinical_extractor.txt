@@ -21,6 +21,11 @@ A finding is a logical connection between:
 - **Self-Scoring:** For EVERY finding, you must provide two quality scores:
   1. `clinical_specificity` (1-10): How specific is this finding to the target group? (1=Generic nursing care applicable to anyone, 10=Highly specific to the target condition).
   2. `actionability_score` (1-10): How concrete and measurable is this intervention/goal? (1=Vague/General, 10=Directly executable instruction).
+- **GRADE & Recommendation Strength (CRITICAL):**
+  Many clinical documents explicitly state the strength of a recommendation or the quality of the evidence (e.g., "Sterk anbefaling", "Evidensgrad A", "GRADE Moderate").
+  - If the text **explicitly states** a recommendation strength or evidence grade for your finding, extract it exactly as written into the `recommendation_strength` or `evidence_grade` fields.
+  - You MUST prove this by providing the exact IDs of the sentences where this grade is stated in the `grade_sentence_ids` list.
+  - If the text **does NOT explicitly state** a formal grade or strength, you MUST leave these fields and the ID list empty (`null`). Do NOT guess or invent a GRADE score based on your own clinical knowledge.
 # Language
 The nursing diagnosis, intervention, goal, and the **reasoning_trace** must be written in Norwegian. Supporting quotes are no longer returned as text, only as IDs.
 

@@ -149,13 +149,18 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client: F
             if finding.mapped_goal not in groups[group_key]["goals"]:
                 groups[group_key]["goals"].append(finding.mapped_goal)
 
-            # Aggregate evidence
+            # Aggregate evidence with GRADE metadata
             if doc_id not in groups[group_key]["supporting_evidence"]:
-                groups[group_key]["supporting_evidence"][doc_id] = []
+                groups[group_key]["supporting_evidence"][doc_id] = {
+                    "quotes": [],
+                    "evidence_grade": finding.evidence_grade,
+                    "recommendation_strength": finding.recommendation_strength,
+                    "grade_quotes": finding.grade_quotes
+                }
 
             for quote in finding.quotes:
-                if quote not in groups[group_key]["supporting_evidence"][doc_id]:
-                    groups[group_key]["supporting_evidence"][doc_id].append(quote)
+                if quote not in groups[group_key]["supporting_evidence"][doc_id]["quotes"]:
+                    groups[group_key]["supporting_evidence"][doc_id]["quotes"].append(quote)
 
             # Aggregate quality metrics from the Auditor
             if finding.auditor_rating:
@@ -205,8 +210,14 @@ def finalize_synthesis(
     for _group_key, data in grouped_data.items():
         # Build the supporting evidence list of Evidence objects
         evidence_list = []
-        for doc_id, quotes in data["supporting_evidence"].items():
-            evidence_list.append(Evidence(document_id=doc_id, quotes=quotes))
+        for doc_id, ev_data in data["supporting_evidence"].items():
+            evidence_list.append(Evidence(
+                document_id=doc_id,
+                quotes=ev_data["quotes"],
+                evidence_grade=ev_data["evidence_grade"],
+                recommendation_strength=ev_data["recommendation_strength"],
+                grade_quotes=ev_data["grade_quotes"]
+            ))
 
         # Calculate final aggregated metrics
         avg_spec = sum(data["specificity_scores"]) / len(data["specificity_scores"]) if data["specificity_scores"] else 5.0
@@ -218,6 +229,14 @@ def finalize_synthesis(
         consensus_bonus = (data["consensus_count"] - 1) * 2.0
         trust_score = data["weighted_sum"] + max(0, consensus_bonus)
 
+        # Calculate Certainty Level (Sikkerhet)
+        if trust_score >= 30.0:
+            certainty_level = "Høy"
+        elif trust_score >= 15.0:
+            certainty_level = "Moderat"
+        else:
+            certainty_level = "Lav"
+
         synthesized_findings.append(SynthesizedFinding(
             nursing_diagnosis=data["nursing_diagnosis"],
             interventions=data["interventions"],
@@ -227,9 +246,9 @@ def finalize_synthesis(
             avg_actionability=round(avg_act, 1),
             avg_cohesion=round(avg_coh, 1),
             trust_score=round(trust_score, 1),
+            certainty_level=certainty_level,
             supporting_evidence=evidence_list
         ))
-
     # SORTING: Primary = TrustScore (Descending), Secondary = Specificity
     synthesized_findings.sort(key=lambda x: (x.trust_score, x.avg_specificity), reverse=True)
 

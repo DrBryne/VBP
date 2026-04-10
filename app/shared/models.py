@@ -60,9 +60,13 @@ class ClinicalFinding(BaseModel):
     intervention: str = Field(description="The proposed nursing action or intervention.")
     goal: str | None = Field(default=None, description="The desired clinical outcome.")
     supporting_sentence_ids: list[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
+    recommendation_strength: str | None = Field(default=None, description="Explicitly stated strength of recommendation (e.g., 'Sterk anbefaling'). Must be null if not stated.")
+    evidence_grade: str | None = Field(default=None, description="Explicitly stated quality of evidence (e.g., 'Moderat', 'GRADE High'). Must be null if not stated.")
+    grade_sentence_ids: list[str] | None = Field(default=None, description="Specific sentence IDs proving the recommendation_strength or evidence_grade.")
     clinical_specificity: int = Field(description="Self-score (1-10): How specific is this finding to the target group? (1=Generic, 10=Highly Condition-Specific)")
     actionability_score: int = Field(description="Self-score (1-10): How concrete and measurable is this intervention? (1=Vague, 10=Fully Actionable)")
     quotes: list[str] | None = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
+    grade_quotes: list[str] | None = Field(default=None, description="Verbatim text proving the grade/strength (internal use).")
 
 class MetadataResponse(BaseModel):
     """Schema used by the Metadata Extractor to return document details."""
@@ -133,6 +137,9 @@ class Evidence(BaseModel):
     """Grouped evidence for a synthesized finding, linked to its source document."""
     document_id: str = Field(description="The ID of the source document.")
     quotes: list[str] = Field(description="List of context-padded verbatim quotes supporting the finding.")
+    recommendation_strength: str | None = Field(default=None, description="The recommendation strength stated in this specific document.")
+    evidence_grade: str | None = Field(default=None, description="The evidence grade stated in this specific document.")
+    grade_quotes: list[str] | None = Field(default=None, description="The exact quote from the document proving the grade/strength.")
 
 class SynthesizedFinding(BaseModel):
     """A high-level clinical finding consolidated across multiple source documents."""
@@ -144,6 +151,7 @@ class SynthesizedFinding(BaseModel):
     avg_actionability: float = Field(description="Average actionability score from the auditor.")
     avg_cohesion: float = Field(description="Average logical cohesion score from the auditor.")
     trust_score: float = Field(description="A composite score based on evidence frequency and source level.")
+    certainty_level: str = Field(description="Clinical certainty of the finding (Høy, Moderat, or Lav) derived from the trust_score.")
     supporting_evidence: list[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
 
 class ExcludedDocument(BaseModel):
