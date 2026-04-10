@@ -112,7 +112,6 @@ class VbpWorkflowAgent(BaseAgent):
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Processing {total_files} documents...")]))
 
         # --- PHASE 3: PARALLEL PIPELINE EXECUTION ---
-        semaphore = asyncio.Semaphore(max_concurrency)
         progress_queue = asyncio.Queue()
         progress_state = WorkflowProgress()
         state_lock = asyncio.Lock()

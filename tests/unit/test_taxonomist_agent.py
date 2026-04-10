@@ -74,10 +74,10 @@ async def test_taxonomist_encapsulation():
     async for ev in taxonomist.run_async(ctx):
         if ev.is_final_response():
             data_dict = safe_parse_json(ev)
-            if not data_dict: continue
+            if not data_dict:
+                continue
 
-            if ev.author == "diagnosis_taxonomist":
-                icnp_diag_mappings = DiagnosisMappingResponse.model_validate(data_dict)
+            if ev.author == "diagnosis_taxonomist":                icnp_diag_mappings = DiagnosisMappingResponse.model_validate(data_dict)
             elif ev.author == "fo_classifier":
                 functional_areas = FunctionalAreaResponse.model_validate(data_dict)
 

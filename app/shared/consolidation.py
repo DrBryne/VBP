@@ -13,6 +13,7 @@ from app.shared.models import (
     Evidence,
     ExcludedDocument,
     ExecutionSummary,
+    MappedTerm,
     ProcessedDocument,
     SynthesisResponse,
     SynthesizedFinding,
@@ -20,11 +21,26 @@ from app.shared.models import (
 
 logger = VBPLogger("vbp_consolidation")
 
+# IDs that are too generic to act as a merge parent for siblings
+BLOCKED_ROOT_PARENTS = {
+    "138875005", # SNOMED CT Concept
+    "404684003", # Clinical finding
+    "71388002",  # Procedure
+    "362981000", # Nursing diagnosis
+    "243735000", # Nursing care
+}
+
+# Cache for display terms of concepts fetched during audit (to avoid re-fetching in finalize)
+global_id_cache: dict[str, str] = {}
+
 async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTerminologyClient) -> dict[str, str]:
     """
     Queries the FHIR server to find hierarchical relationships between a set of ICNP IDs.
     Returns a mapping of {child_id: parent_id} for concepts that should be merged.
-    If an ID has no parent in the set, it maps to itself.
+    
+    Implements two-pass deduplication:
+    1. Vertical: Direct subsumption (Child -> Parent already in set).
+    2. Horizontal: Sibling merge (Child A & Child B share a non-generic parent).
     """
     id_list = list(unique_ids)
     rewrite_map = {cid: cid for cid in id_list}
@@ -32,7 +48,7 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
     if len(id_list) < 2:
         return rewrite_map
 
-    # Create all possible pairs (A, B) to check if A is subsumed by B
+    # --- PASS 1: Vertical Subsumption ---
     tasks = []
     pairs = []
     for i in range(len(id_list)):
@@ -41,16 +57,48 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
                 tasks.append(fhir_client.check_subsumption(id_list[i], id_list[j]))
                 pairs.append((id_list[i], id_list[j]))
 
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+    sub_results = await asyncio.gather(*tasks, return_exceptions=True)
 
-    for (child, parent), result in zip(pairs, results, strict=False):
-        if isinstance(result, Exception):
-            logger.error(f"FHIR Audit Error: {result}", child=child, parent=parent)
-            continue
-
-        if result == "subsumed-by":
-            logger.info(f"[Semantic Merge] '{child}' is a sub-concept of '{parent}'. Merging.")
+    for (child, parent), result in zip(pairs, sub_results, strict=False):
+        if not isinstance(result, Exception) and result == "subsumed-by":
+            logger.info(f"[Semantic Merge] '{child}' is a sub-concept of '{parent}'. Vertical merge.")
             rewrite_map[child] = parent
+
+    # --- PASS 2: Sibling Merge ---
+    # Only check IDs that haven't already been merged vertically
+    remaining_ids = [cid for cid, pid in rewrite_map.items() if cid == pid]
+    if len(remaining_ids) < 2:
+        return rewrite_map
+
+    lookup_tasks = [fhir_client.lookup_concept(cid) for cid in remaining_ids]
+    lookup_results = await asyncio.gather(*lookup_tasks, return_exceptions=True)
+
+    parent_to_children = {}
+    for cid, result in zip(remaining_ids, lookup_results, strict=False):
+        if isinstance(result, dict) and result.get("parent_ids"):
+            # Store display term in global cache
+            if cid not in global_id_cache:
+                global_id_cache[cid] = result.get("display", "Unknown")
+
+            # Use the first immediate parent for sibling grouping
+            first_parent = result["parent_ids"][0]
+            if first_parent not in BLOCKED_ROOT_PARENTS:
+                if first_parent not in parent_to_children:
+                    parent_to_children[first_parent] = []
+                parent_to_children[first_parent].append(cid)
+
+    # If a non-blocked parent has multiple children, merge them under that parent
+    for parent_id, children in parent_to_children.items():
+        if len(children) >= 2:
+            logger.info(f"[Sibling Merge] {len(children)} findings share parent '{parent_id}'. Horizontal merge.")
+            # Ensure we have the parent's display term
+            if parent_id not in global_id_cache:
+                p_info = await fhir_client.lookup_concept(parent_id)
+                if p_info:
+                    global_id_cache[parent_id] = p_info.get("display", "Unknown")
+
+            for child_id in children:
+                rewrite_map[child_id] = parent_id
 
     return rewrite_map
 
@@ -127,10 +175,16 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client: F
             # Apply the Semantic Rewrite Map
             group_key = global_rewrite_map.get(base_key, base_key)
 
+            # Extract the actual ID from the potentially rewritten key (Format: FO||ID)
+            final_id = group_key.split("||")[1] if "||" in group_key else ""
+
             if group_key not in groups:
+                # Use professional display term from FHIR cache if available
+                display_term = global_id_cache.get(final_id, finding.mapped_nursing_diagnosis.term)
+
                 groups[group_key] = {
                     "FO": finding.FO,
-                    "nursing_diagnosis": finding.mapped_nursing_diagnosis,
+                    "nursing_diagnosis": MappedTerm(term=display_term, ICNP_concept_id=final_id if final_id.isdigit() else ""),
                     "interventions": [],
                     "goals": [],
                     "supporting_evidence": {},

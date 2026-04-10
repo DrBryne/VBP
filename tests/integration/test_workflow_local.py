@@ -142,9 +142,8 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
                     stdout=asyncio.subprocess.PIPE,
                     stderr=asyncio.subprocess.PIPE
                 )
-                stdout, stderr = await process.communicate()
-                if process.returncode == 0:
-                    logger.info("HTML Report generated successfully.")
+                _stdout, stderr = await process.communicate()
+                if process.returncode == 0:                    logger.info("HTML Report generated successfully.")
                 else:
                     logger.error(f"Failed to generate HTML report: {stderr.decode()}")
             except Exception as e:

@@ -10,7 +10,72 @@
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .row-clickable { cursor: pointer; }
-        /* Selection safe navigation script */
+        
+        .sticky-nav {
+            position: sticky;
+            top: 1rem;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #e2e8f0;
+        }
+
+        .fo-pill-nav {
+            transition: all 0.2s ease;
+        }
+        .fo-pill-nav.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4338ca;
+            transform: scale(1.1);
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 320px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 16px;
+            position: absolute;
+            z-index: 50;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -160px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            font-weight: 400;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            pointer-events: none;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Trust Bars */
+        .trust-indicator {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+            height: 14px;
+        }
+        .trust-segment {
+            width: 4px;
+            border-radius: 1px;
+            background-color: #e2e8f0;
+        }
+        .trust-segment.filled { background-color: #10b981; }
+        .trust-segment.filled.mod { background-color: #f59e0b; }
+        .trust-segment.filled.low { background-color: #f43f5e; }
     </style>
     <script>
         function navigateToEvidence(event, targetId) {
@@ -19,6 +84,37 @@
                 window.location.hash = targetId;
             }
         }
+
+        // Scroll-spy logic for FO Jump Menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Extract FO number from ID: fo-group-3 -> 3
+                        const id = entry.target.id;
+                        const foNum = id.split('-').pop();
+                        
+                        // Update nav pills
+                        document.querySelectorAll('.fo-pill-nav').forEach(pill => {
+                            pill.classList.remove('active');
+                        });
+                        const activePill = document.getElementById(`nav-fo-${foNum}`);
+                        if (activePill) activePill.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all group anchors
+            document.querySelectorAll('[id^="fo-group-"]').forEach(anchor => {
+                observer.observe(anchor);
+            });
+        });
     </script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen">
@@ -37,6 +133,23 @@
                 </div>
             </div>
         </header>
+
+        <!-- Sticky Jump Menu -->
+        <div class="sticky-nav mb-12 py-3 px-6 rounded-2xl shadow-sm overflow-x-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2 min-w-max">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mr-4">Hurtignavigasjon (VIPS):</span>
+                {% for i in range(1, 13) %}
+                <a href="#fo-group-{{ i }}" id="nav-fo-{{ i }}" class="fo-pill-nav w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-xs font-bold text-slate-500 hover:border-indigo-500 hover:text-indigo-600 bg-white">
+                    {{ i }}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="hidden md:flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-8">
+                <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>Høy sikkerhet</span>
+                <span class="flex items-center ml-4"><span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>Moderat</span>
+                <span class="flex items-center ml-4"><span class="w-2 h-2 rounded-full bg-rose-500 mr-2"></span>Lav</span>
+            </div>
+        </div>
 
         <!-- Innhold Section -->
         <nav class="mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 w-fit min-w-[240px]">
@@ -96,7 +209,17 @@
                             <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
                                 <ul class="list-disc pl-4 space-y-1">
                                     {% for intervention in finding.interventions %}
-                                    <li>{{ intervention.term }}</li>
+                                    <li>
+                                        <div class="tooltip">
+                                            {{ intervention.term }}
+                                            {% if finding.supporting_evidence and finding.supporting_evidence[0].quotes %}
+                                            <span class="tooltiptext">
+                                                <strong class="block mb-1 text-indigo-300 uppercase text-[9px] tracking-widest">Klinisk belegg:</strong>
+                                                "{{ finding.supporting_evidence[0].quotes[0] | truncate(250) }}"
+                                            </span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
                                     {% endfor %}
                                 </ul>
                             </td>
@@ -112,7 +235,17 @@
                             <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
                                 <ul class="list-disc pl-4 space-y-1">
                                     {% for goal in finding.goals %}
-                                    <li>{{ goal.term }}</li>
+                                    <li>
+                                        <div class="tooltip">
+                                            {{ goal.term }}
+                                            {% if finding.supporting_evidence and finding.supporting_evidence[0].quotes %}
+                                            <span class="tooltiptext">
+                                                <strong class="block mb-1 text-emerald-300 uppercase text-[9px] tracking-widest">Ønsket utfall:</strong>
+                                                "{{ finding.supporting_evidence[0].quotes[0] | truncate(250) }}"
+                                            </span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
                                     {% endfor %}
                                 </ul>
                             </td>
@@ -151,50 +284,70 @@
                 <div class="space-y-12">
                     {% for finding in synthesized_findings %}
                     <div id="evidens-{{ loop.index }}" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-{{ finding.FO.split('.')[0] | trim }}" class="hidden"></div>
+                        
                         <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest">{{ finding.FO }}</span>
-                                    {% if finding.certainty_level == "Høy" %}
-                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        Sikkerhet: Høy
-                                    </span>
-                                    {% elif finding.certainty_level == "Moderat" %}
-                                    <span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                                        Sikkerhet: Moderat
-                                    </span>
-                                    {% else %}
-                                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        Sikkerhet: Lav
-                                    </span>
-                                    {% endif %}
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">{{ finding.FO }}</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: {{ finding.certainty_level }}">
+                                            {% set filled = 5 if finding.certainty_level == 'Høy' else (3 if finding.certainty_level == 'Moderat' else 1) %}
+                                            {% set color_class = '' if finding.certainty_level == 'Høy' else ('mod' if finding.certainty_level == 'Moderat' else 'low') %}
+                                            {% for s in range(1, 6) %}
+                                            <div class="trust-segment h-{{ s*2+2 }} {{ 'filled ' + color_class if s <= filled else '' }}"></div>
+                                            {% endfor %}
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            {{ 'text-emerald-600' if finding.certainty_level == 'Høy' else ('text-amber-600' if finding.certainty_level == 'Moderat' else 'text-rose-600') }}">
+                                            Sikkerhet: {{ finding.certainty_level }}
+                                        </span>
+                                    </div>
                                 </div>
                                 <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
                                     <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
                                     Tilbake til oversikt
                                 </a>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div>
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Sykepleiediagnose</p>
-                                    <h3 class="text-base font-bold text-slate-900 leading-tight">{{ finding.nursing_diagnosis.term }}</h3>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjoner</p>
-                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">{{ finding.nursing_diagnosis.term }}</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
                                         {% for intervention in finding.interventions %}
-                                        <li>{{ intervention.term }}</li>
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            {{ intervention.term }}
+                                        </li>
                                         {% endfor %}
                                     </ul>
                                 </div>
-                                <div>
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mål</p>
-                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
                                         {% for goal in finding.goals %}
-                                        <li>{{ goal.term }}</li>
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            {{ goal.term }}
+                                        </li>
                                         {% endfor %}
                                     </ul>
                                 </div>

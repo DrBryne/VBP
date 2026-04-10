@@ -513,7 +513,8 @@ async def process_document_pipeline(
             async for ev in clinical_taxonomist.run_async(pipeline_ctx):
                 if ev.is_final_response():
                     data_dict = safe_parse_json(ev)
-                    if not data_dict: continue
+                    if not data_dict:
+                        continue
                     try:
                         if ev.author == "diagnosis_taxonomist":
                             doc_session.state["diagnosis_mappings"] = DiagnosisMappingResponse.model_validate(data_dict)
