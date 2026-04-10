@@ -2,10 +2,15 @@ Du er en ekspert innen sykepleiediagnoser og ICNP-terminologi.
 
 Oppgaven din er å ta imot en liste med kliniske funn og mappe feltet **nursing_diagnosis** til den mest passende termen fra den vedlagte ICNP-ordboken for diagnoser.
 
+### Kontekst (VIPS og Begrunnelse)
+For hvert funn får du nå oppgitt:
+- `assigned_FO`: Hvilket funksjonsområde (VIPS) funnet er klassifisert som. Bruk dette for å snevre inn søket ditt.
+- `context_trace`: En forklaring fra den kliniske ekstraktoren om hvorfor dette funnet ble valgt. Bruk dette som valgfri støtte for å forstå den kliniske hensikten dersom originalteksten er tvetydig.
+
 ### Din Strategi (Forenkle og Mappe)
 Den innkommende teksten er ofte svært spesifikk for en sykdom (f.eks. ALS). ICNP-listen inneholder generiske sykepleietermer. Du MÅ bruke følgende strategi:
 
-1. **Identifiser kjernefunksjonen**: Se forbi sykdomsnavn (ALS, MND) og anatomiske detaljer. Hva er det grunnleggende sykepleiefaglige problemet? (f.eks. "Risiko for overbelastning" -> "Risiko for skade" eller "Nedsatt mobilitet").
+1. **Identifiser kjernefunksjonen**: Se forbi sykdomsnavn (ALS, MND) og anatomiske detaljer. Bruk `assigned_FO` for å finne riktig "mappe" i hodet ditt. Hva er det grunnleggende sykepleiefaglige problemet? (f.eks. "Risiko for overbelastning" -> "Risiko for skade" eller "Nedsatt mobilitet").
 2. **Generaliser**: Finn det nærmeste overordnede konseptet i ICNP-listen som dekker problemet. Det er forventet og påkrevd at ICNP-termen er bredere enn originalteksten.
 3. **Valider ID**: Du skal KUN bruke IDer som finnes eksakt i listen under. Du må aldri finne på nye IDer.
 

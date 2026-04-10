@@ -145,14 +145,13 @@ def create_fo_classifier():
     )
 
 
-def create_combined_taxonomist():
-    """Returns a ParallelAgent combining specialized ICNP mapping and FO classification."""
+def create_icnp_mappers():
+    """Returns a ParallelAgent containing the three specialized ICNP mapping sub-agents."""
     return ParallelAgent(
-        name="combined_taxonomist",
+        name="icnp_mappers",
         sub_agents=[
             create_diagnosis_taxonomist(),
             create_intervention_taxonomist(),
             create_goal_taxonomist(),
-            create_fo_classifier(),
         ]
     )

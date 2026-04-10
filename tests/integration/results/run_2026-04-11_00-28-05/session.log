@@ -1,0 +1,1075 @@
+Run ID: 2026-04-11_00-28-05
+Timestamp: 2026-04-10T22:28:05.017598
+----------------------------------------
+ALS/
+[INFO] 2026-04-10 22:28:05,616 - vbp_orchestrator - Processing 96 documents in parallel (limit: 30)
+[INFO] 2026-04-10 22:28:05,617 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-10 22:28:06,290 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-10 22:28:06,290 - vbp_processing - Processing document start: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:28:06,909 - vbp_processing - Invoking ClinicalExtractor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:28:06,909 - vbp_processing - Processing document start: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:28:07,521 - vbp_processing - Invoking ClinicalExtractor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:28:07,521 - vbp_processing - Processing document start: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:28:08,129 - vbp_processing - Invoking ClinicalExtractor for: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:28:08,129 - vbp_processing - Processing document start: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:28:08,823 - vbp_processing - Invoking ClinicalExtractor for: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:28:08,823 - vbp_processing - Processing document start: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:28:09,452 - vbp_processing - Invoking ClinicalExtractor for: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:28:09,453 - vbp_processing - Processing document start: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:28:10,087 - vbp_processing - Invoking ClinicalExtractor for: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:28:10,087 - vbp_processing - Processing document start: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:28:10,894 - vbp_processing - Invoking ClinicalExtractor for: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:28:10,894 - vbp_processing - Processing document start: 34786907_fulltext.xml
+[INFO] 2026-04-10 22:28:11,463 - vbp_processing - Invoking ClinicalExtractor for: 34786907_fulltext.xml
+[INFO] 2026-04-10 22:28:11,464 - vbp_processing - Processing document start: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:28:12,092 - vbp_processing - Invoking ClinicalExtractor for: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:28:12,092 - vbp_processing - Processing document start: 35309870_fulltext.xml
+[INFO] 2026-04-10 22:28:12,735 - vbp_processing - Invoking ClinicalExtractor for: 35309870_fulltext.xml
+[INFO] 2026-04-10 22:28:12,735 - vbp_processing - Processing document start: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:28:13,334 - vbp_processing - Invoking ClinicalExtractor for: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:28:13,334 - vbp_processing - Processing document start: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:28:13,967 - vbp_processing - Invoking ClinicalExtractor for: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:28:13,967 - vbp_processing - Processing document start: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:28:14,565 - vbp_processing - Invoking ClinicalExtractor for: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:28:14,565 - vbp_processing - Processing document start: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:28:20,329 - vbp_processing - Invoking ClinicalExtractor for: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:28:20,329 - vbp_processing - Processing document start: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:28:20,913 - vbp_processing - Invoking ClinicalExtractor for: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:28:20,913 - vbp_processing - Processing document start: 36834005_fulltext.xml
+[INFO] 2026-04-10 22:28:21,566 - vbp_processing - Invoking ClinicalExtractor for: 36834005_fulltext.xml
+[INFO] 2026-04-10 22:28:21,566 - vbp_processing - Processing document start: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:28:22,233 - vbp_processing - Invoking ClinicalExtractor for: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:28:22,233 - vbp_processing - Processing document start: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:28:22,875 - vbp_processing - Invoking ClinicalExtractor for: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:28:22,875 - vbp_processing - Processing document start: 37249667_fulltext.xml
+[INFO] 2026-04-10 22:28:23,483 - vbp_processing - Invoking ClinicalExtractor for: 37249667_fulltext.xml
+[INFO] 2026-04-10 22:28:23,483 - vbp_processing - Processing document start: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:28:24,311 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:28:24,311 - vbp_processing - Processing document start: 37436254_fulltext.xml
+[INFO] 2026-04-10 22:28:24,939 - vbp_processing - Invoking ClinicalExtractor for: 37436254_fulltext.xml
+[INFO] 2026-04-10 22:28:24,939 - vbp_processing - Processing document start: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:28:25,604 - vbp_processing - Invoking ClinicalExtractor for: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:28:25,604 - vbp_processing - Processing document start: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:28:26,208 - vbp_processing - Invoking ClinicalExtractor for: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:28:26,208 - vbp_processing - Processing document start: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:28:26,874 - vbp_processing - Invoking ClinicalExtractor for: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:28:26,875 - vbp_processing - Processing document start: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:28:27,484 - vbp_processing - Invoking ClinicalExtractor for: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:28:27,485 - vbp_processing - Processing document start: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:28:28,291 - vbp_processing - Invoking ClinicalExtractor for: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:28:28,291 - vbp_processing - Processing document start: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:28:28,905 - vbp_processing - Invoking ClinicalExtractor for: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:28:28,905 - vbp_processing - Processing document start: 38551974_fulltext.xml
+[INFO] 2026-04-10 22:28:29,545 - vbp_processing - Invoking ClinicalExtractor for: 38551974_fulltext.xml
+[INFO] 2026-04-10 22:28:29,545 - vbp_processing - Processing document start: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:28:30,167 - vbp_processing - Invoking ClinicalExtractor for: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:28:30,167 - vbp_processing - Processing document start: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:28:30,771 - vbp_processing - Invoking ClinicalExtractor for: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:28:30,771 - vbp_processing - Processing document start: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:28:31,401 - vbp_processing - Invoking ClinicalExtractor for: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:28:31,401 - vbp_processing - Processing document start: 38870470_fulltext.xml
+[INFO] 2026-04-10 22:28:32,013 - vbp_processing - Invoking ClinicalExtractor for: 38870470_fulltext.xml
+[INFO] 2026-04-10 22:28:32,013 - vbp_processing - Processing document start: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:28:32,581 - vbp_processing - Invoking ClinicalExtractor for: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:28:32,581 - vbp_processing - Processing document start: 39075493_fulltext.xml
+[INFO] 2026-04-10 22:28:33,199 - vbp_processing - Invoking ClinicalExtractor for: 39075493_fulltext.xml
+[INFO] 2026-04-10 22:28:33,200 - vbp_processing - Processing document start: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:28:33,983 - vbp_processing - Invoking ClinicalExtractor for: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:28:33,984 - vbp_processing - Processing document start: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:28:34,653 - vbp_processing - Invoking ClinicalExtractor for: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:28:34,653 - vbp_processing - Processing document start: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:28:35,333 - vbp_processing - Invoking ClinicalExtractor for: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:28:35,334 - vbp_processing - Processing document start: 39520111_fulltext.xml
+[INFO] 2026-04-10 22:28:35,985 - vbp_processing - Invoking ClinicalExtractor for: 39520111_fulltext.xml
+[INFO] 2026-04-10 22:28:35,986 - vbp_processing - Processing document start: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:28:36,567 - vbp_processing - Invoking ClinicalExtractor for: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:28:36,567 - vbp_processing - Processing document start: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:28:37,210 - vbp_processing - Invoking ClinicalExtractor for: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:28:37,211 - vbp_processing - Processing document start: 40091916_fulltext.xml
+[INFO] 2026-04-10 22:28:37,906 - vbp_processing - Invoking ClinicalExtractor for: 40091916_fulltext.xml
+[INFO] 2026-04-10 22:28:37,906 - vbp_processing - Processing document start: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:28:38,751 - vbp_processing - Invoking ClinicalExtractor for: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:28:38,751 - vbp_processing - Processing document start: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:28:39,398 - vbp_processing - Invoking ClinicalExtractor for: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:28:39,399 - vbp_processing - Processing document start: 40405710_fulltext.xml
+[INFO] 2026-04-10 22:28:40,039 - vbp_processing - Invoking ClinicalExtractor for: 40405710_fulltext.xml
+[INFO] 2026-04-10 22:28:40,039 - vbp_processing - Processing document start: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:28:40,731 - vbp_processing - Invoking ClinicalExtractor for: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:28:40,732 - vbp_processing - Processing document start: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:28:41,377 - vbp_processing - Invoking ClinicalExtractor for: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:28:41,378 - vbp_processing - Processing document start: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:28:42,154 - vbp_processing - Invoking ClinicalExtractor for: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:28:42,154 - vbp_processing - Processing document start: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:28:42,822 - vbp_processing - Invoking ClinicalExtractor for: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:28:42,822 - vbp_processing - Processing document start: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:28:43,527 - vbp_processing - Invoking ClinicalExtractor for: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:28:43,527 - vbp_processing - Processing document start: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:28:44,147 - vbp_processing - Invoking ClinicalExtractor for: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:28:44,147 - vbp_processing - Processing document start: 40802439_fulltext.xml
+[INFO] 2026-04-10 22:28:44,751 - vbp_processing - Invoking ClinicalExtractor for: 40802439_fulltext.xml
+[INFO] 2026-04-10 22:28:44,751 - vbp_processing - Processing document start: 41024175_fulltext.xml
+[INFO] 2026-04-10 22:28:45,351 - vbp_processing - Invoking ClinicalExtractor for: 41024175_fulltext.xml
+[INFO] 2026-04-10 22:28:45,351 - vbp_processing - Processing document start: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:28:45,942 - vbp_processing - Invoking ClinicalExtractor for: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:28:45,943 - vbp_processing - Processing document start: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 22:28:46,549 - vbp_processing - Invoking ClinicalExtractor for: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 22:28:46,549 - vbp_processing - Processing document start: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 22:28:47,212 - vbp_processing - Invoking ClinicalExtractor for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 22:28:47,212 - vbp_processing - Processing document start: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:28:47,938 - vbp_processing - Invoking ClinicalExtractor for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:28:47,938 - vbp_processing - Processing document start: CD004030.pdf
+[INFO] 2026-04-10 22:28:48,587 - vbp_processing - Invoking ClinicalExtractor for: CD004030.pdf
+[INFO] 2026-04-10 22:28:48,594 - vbp_processing - Processing document start: CD004157.pdf
+[INFO] 2026-04-10 22:28:49,380 - vbp_processing - Invoking ClinicalExtractor for: CD004157.pdf
+[INFO] 2026-04-10 22:28:49,380 - vbp_processing - Processing document start: CD004427.pdf
+[INFO] 2026-04-10 22:28:50,066 - vbp_processing - Invoking ClinicalExtractor for: CD004427.pdf
+[INFO] 2026-04-10 22:28:50,066 - vbp_processing - Processing document start: CD005226.pdf
+[INFO] 2026-04-10 22:28:50,708 - vbp_processing - Invoking ClinicalExtractor for: CD005226.pdf
+[INFO] 2026-04-10 22:28:50,709 - vbp_processing - Processing document start: CD005229.pdf
+[INFO] 2026-04-10 22:28:51,362 - vbp_processing - Invoking ClinicalExtractor for: CD005229.pdf
+[INFO] 2026-04-10 22:28:51,362 - vbp_processing - Processing document start: CD006049.pdf
+[INFO] 2026-04-10 22:28:52,017 - vbp_processing - Invoking ClinicalExtractor for: CD006049.pdf
+[INFO] 2026-04-10 22:28:52,017 - vbp_processing - Processing document start: CD006981.pdf
+[INFO] 2026-04-10 22:28:52,786 - vbp_processing - Invoking ClinicalExtractor for: CD006981.pdf
+[INFO] 2026-04-10 22:28:52,787 - vbp_processing - Processing document start: CD007593 (1).pdf
+[INFO] 2026-04-10 22:28:53,440 - vbp_processing - Invoking ClinicalExtractor for: CD007593 (1).pdf
+[INFO] 2026-04-10 22:28:53,440 - vbp_processing - Processing document start: CD007593.pdf
+[INFO] 2026-04-10 22:28:54,081 - vbp_processing - Invoking ClinicalExtractor for: CD007593.pdf
+[INFO] 2026-04-10 22:28:54,081 - vbp_processing - Processing document start: CD008554.pdf
+[INFO] 2026-04-10 22:28:54,710 - vbp_processing - Invoking ClinicalExtractor for: CD008554.pdf
+[INFO] 2026-04-10 22:28:54,710 - vbp_processing - Processing document start: CD011005.pdf
+[INFO] 2026-04-10 22:28:55,340 - vbp_processing - Invoking ClinicalExtractor for: CD011005.pdf
+[INFO] 2026-04-10 22:28:55,340 - vbp_processing - Processing document start: CD011742.pdf
+[INFO] 2026-04-10 22:28:56,045 - vbp_processing - Invoking ClinicalExtractor for: CD011742.pdf
+[INFO] 2026-04-10 22:28:56,046 - vbp_processing - Processing document start: CD011776.pdf
+[INFO] 2026-04-10 22:28:56,700 - vbp_processing - Invoking ClinicalExtractor for: CD011776.pdf
+[INFO] 2026-04-10 22:28:56,700 - vbp_processing - Processing document start: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:28:57,303 - vbp_processing - Invoking ClinicalExtractor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:28:57,303 - vbp_processing - Processing document start: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:28:57,968 - vbp_processing - Invoking ClinicalExtractor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:28:57,968 - vbp_processing - Processing document start: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:28:58,560 - vbp_processing - Invoking ClinicalExtractor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:28:58,560 - vbp_processing - Processing document start: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:28:59,206 - vbp_processing - Invoking ClinicalExtractor for: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:28:59,206 - vbp_processing - Processing document start: artikel_13034.pdf
+[INFO] 2026-04-10 22:28:59,806 - vbp_processing - Invoking ClinicalExtractor for: artikel_13034.pdf
+[INFO] 2026-04-10 22:28:59,807 - vbp_processing - Processing document start: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:29:00,429 - vbp_processing - Invoking ClinicalExtractor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:29:00,429 - vbp_processing - Processing document start: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 22:29:01,021 - vbp_processing - Invoking ClinicalExtractor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 22:29:01,022 - vbp_processing - Processing document start: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:29:01,654 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:29:01,655 - vbp_processing - Processing document start: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:29:02,271 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:29:02,271 - vbp_processing - Processing document start: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 22:29:03,108 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 22:29:03,108 - vbp_processing - Processing document start: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:29:03,733 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:29:03,734 - vbp_processing - Processing document start: pdf-export-51075.pdf
+[INFO] 2026-04-10 22:29:04,355 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51075.pdf
+[INFO] 2026-04-10 22:29:04,355 - vbp_processing - Processing document start: pdf-export-51157.pdf
+[INFO] 2026-04-10 22:29:04,978 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51157.pdf
+[INFO] 2026-04-10 22:29:04,978 - vbp_processing - Processing document start: pdf-export-51330.pdf
+[INFO] 2026-04-10 22:29:05,525 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51330.pdf
+[INFO] 2026-04-10 22:29:05,525 - vbp_processing - Processing document start: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:29:06,126 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:29:06,130 - vbp_processing - Processing document start: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:29:06,907 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:29:06,907 - vbp_processing - Processing document start: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:29:07,487 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:29:07,487 - vbp_processing - Processing document start: pdf-export-61011.pdf
+[INFO] 2026-04-10 22:29:08,093 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-61011.pdf
+[INFO] 2026-04-10 22:29:08,093 - vbp_processing - Processing document start: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:29:08,667 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:29:08,667 - vbp_processing - Processing document start: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:29:09,267 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:29:09,267 - vbp_processing - Processing document start: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 22:29:09,844 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 22:29:09,844 - vbp_processing - Processing document start: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 22:29:10,435 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 22:29:10,439 - vbp_processing - Processing document start: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:29:11,060 - vbp_processing - Invoking ClinicalExtractor for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:29:11,061 - vbp_processing - Processing document start: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:29:11,798 - vbp_processing - Invoking ClinicalExtractor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:29:11,798 - vbp_processing - Processing document start: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 22:29:12,503 - vbp_processing - Invoking ClinicalExtractor for: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 22:29:12,503 - vbp_processing - Processing document start: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:29:13,284 - vbp_processing - Invoking ClinicalExtractor for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:29:48,177 - vbp_processing - No findings identified in document: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 22:29:49,100 - vbp_processing - No findings identified in document: 38551974_fulltext.xml
+[INFO] 2026-04-10 22:29:51,148 - vbp_processing - No findings identified in document: 37249667_fulltext.xml
+[INFO] 2026-04-10 22:29:52,956 - vbp_processing - Invoking Clinical Auditor for: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:29:56,301 - vbp_processing - No findings identified in document: artikel_13034.pdf
+[INFO] 2026-04-10 22:29:56,764 - vbp_processing - No findings identified in document: 34786907_fulltext.xml
+[INFO] 2026-04-10 22:29:56,764 - vbp_orchestrator - *** Overall Progress: 5/96 processed (0 success) ***
+[INFO] 2026-04-10 22:29:57,944 - vbp_processing - Invoking Clinical Auditor for: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:29:58,714 - vbp_processing - Invoking Clinical Auditor for: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:29:59,118 - vbp_processing - Invoking Clinical Auditor for: CD004030.pdf
+[INFO] 2026-04-10 22:29:59,192 - vbp_processing - Invoking Clinical Auditor for: CD006981.pdf
+[INFO] 2026-04-10 22:29:59,266 - vbp_processing - Invoking Clinical Auditor for: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:30:01,045 - vbp_processing - Invoking Clinical Auditor for: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:30:01,396 - vbp_processing - No findings identified in document: 38870470_fulltext.xml
+[INFO] 2026-04-10 22:30:02,322 - vbp_processing - Invoking Clinical Auditor for: CD004427.pdf
+[INFO] 2026-04-10 22:30:02,442 - vbp_processing - No findings identified in document: pdf-export-51075.pdf
+[INFO] 2026-04-10 22:30:02,500 - vbp_processing - Invoking ClinicalTaxonomist for: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:30:02,997 - vbp_processing - Invoking Clinical Auditor for: CD011776.pdf
+[INFO] 2026-04-10 22:30:03,096 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf
+[INFO] 2026-04-10 22:30:03,378 - vbp_processing - Invoking Clinical Auditor for: CD011005.pdf
+[INFO] 2026-04-10 22:30:03,920 - vbp_processing - Invoking Clinical Auditor for: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:30:04,166 - vbp_processing - Invoking Clinical Auditor for: CD004157.pdf
+[INFO] 2026-04-10 22:30:04,640 - vbp_processing - Invoking Clinical Auditor for: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:30:04,711 - vbp_processing - Invoking Clinical Auditor for: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:30:04,995 - vbp_processing - Invoking Clinical Auditor for: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:30:05,068 - vbp_processing - Invoking Clinical Auditor for: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:30:05,142 - vbp_processing - Invoking Clinical Auditor for: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:30:05,489 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:30:05,569 - vbp_processing - Invoking Clinical Auditor for: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:30:05,846 - vbp_processing - Invoking Clinical Auditor for: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:30:05,962 - vbp_processing - Invoking Clinical Auditor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:30:06,312 - vbp_processing - No findings identified in document: CD008554.pdf
+[INFO] 2026-04-10 22:30:06,396 - vbp_processing - Invoking ClinicalTaxonomist for: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:30:06,661 - vbp_processing - Invoking ClinicalTaxonomist for: CD006981.pdf
+[INFO] 2026-04-10 22:30:07,585 - vbp_processing - Invoking ClinicalTaxonomist for: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:30:07,855 - vbp_processing - Invoking Clinical Auditor for: CD005226.pdf
+[INFO] 2026-04-10 22:30:07,995 - vbp_processing - Invoking Clinical Auditor for: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:30:08,297 - vbp_processing - Invoking Clinical Auditor for: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:30:08,725 - vbp_processing - Invoking ClinicalTaxonomist for: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:30:09,587 - vbp_processing - Invoking Clinical Auditor for: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:30:09,808 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf
+[INFO] 2026-04-10 22:30:10,074 - vbp_processing - Invoking ClinicalTaxonomist for: CD004427.pdf
+[INFO] 2026-04-10 22:30:10,835 - vbp_processing - Invoking Clinical Auditor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:30:11,194 - vbp_processing - Invoking ClinicalTaxonomist for: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:30:11,472 - vbp_processing - Invoking Clinical Auditor for: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:30:11,609 - vbp_processing - Invoking Clinical Auditor for: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:30:11,809 - vbp_processing - Invoking Clinical Auditor for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:30:12,082 - vbp_processing - Invoking Clinical Auditor for: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:30:12,252 - vbp_processing - Invoking Clinical Auditor for: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:30:12,469 - vbp_processing - Invoking ClinicalTaxonomist for: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:30:12,738 - vbp_processing - Invoking Clinical Auditor for: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:30:12,847 - vbp_processing - Invoking Clinical Auditor for: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:30:13,146 - vbp_processing - No findings identified in document: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 22:30:13,532 - vbp_processing - Invoking ClinicalTaxonomist for: CD004030.pdf
+[INFO] 2026-04-10 22:30:13,890 - vbp_processing - Invoking ClinicalTaxonomist for: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:30:14,503 - vbp_processing - Invoking ClinicalTaxonomist for: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:30:14,898 - vbp_processing - Invoking ClinicalTaxonomist for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:30:15,325 - vbp_processing - Invoking ClinicalTaxonomist for: CD004157.pdf
+[INFO] 2026-04-10 22:30:15,689 - vbp_processing - Invoking ClinicalTaxonomist for: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:30:16,184 - vbp_processing - Invoking ClinicalTaxonomist for: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:30:16,691 - vbp_processing - Invoking ClinicalTaxonomist for: CD011776.pdf
+[INFO] 2026-04-10 22:30:17,122 - vbp_processing - Invoking Clinical Auditor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:30:17,251 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:30:17,378 - vbp_processing - Invoking Clinical Auditor for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:30:17,517 - vbp_processing - Invoking ClinicalTaxonomist for: CD011005.pdf
+[INFO] 2026-04-10 22:30:17,518 - vbp_processing - Invoking Clinical Auditor for: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:30:18,626 - vbp_processing - Invoking ClinicalTaxonomist for: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:30:18,893 - vbp_processing - Invoking ClinicalTaxonomist for: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:30:19,359 - vbp_processing - Invoking ClinicalTaxonomist for: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:30:19,762 - vbp_processing - Invoking ClinicalTaxonomist for: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:30:20,264 - vbp_processing - Invoking ClinicalTaxonomist for: CD005226.pdf
+[INFO] 2026-04-10 22:30:20,763 - vbp_processing - Invoking ClinicalTaxonomist for: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:30:20,817 - vbp_processing - Invoking Clinical Auditor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:30:21,249 - vbp_processing - Invoking ClinicalTaxonomist for: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:30:21,257 - vbp_processing - Invoking ClinicalTaxonomist for: 39182937_fulltext.xml
+[WARNING] 2026-04-10 22:30:21,269 - vbp_processing - [Quality Guard] Dropped low-quality finding in 40470490_fulltext.xml: Kunnskapsmangel og emosjonell belastning hos pasient og pårørende knyttet til sykdomsbyrde og risikomomenter ved fysisk trening. (Score: 4.9)
+[INFO] 2026-04-10 22:30:21,306 - vbp_processing - Invoking ClinicalTaxonomist for: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:30:22,572 - vbp_processing - Invoking ClinicalTaxonomist for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:30:23,436 - vbp_processing - Invoking Clinical Auditor for: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:30:23,591 - vbp_processing - Invoking ClinicalTaxonomist for: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:30:23,604 - vbp_processing - Invoking Clinical Auditor for: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:30:24,021 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:30:24,120 - vbp_processing - Invoking Clinical Auditor for: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:30:24,294 - vbp_processing - Invoking Clinical Auditor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:30:24,987 - vbp_processing - Invoking Clinical Auditor for: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:30:25,059 - vbp_processing - Document processing success: 38334254_fulltext.xml
+[INFO] 2026-04-10 22:30:25,243 - vbp_orchestrator - *** Overall Progress: 10/96 processed (1 success) ***
+[INFO] 2026-04-10 22:30:25,250 - vbp_processing - Invoking ClinicalTaxonomist for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:30:25,558 - vbp_processing - Invoking Clinical Auditor for: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:30:25,719 - vbp_processing - Invoking ClinicalTaxonomist for: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:30:26,201 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:30:26,352 - vbp_processing - Document processing success: 36875937_fulltext.xml
+[INFO] 2026-04-10 22:30:26,569 - vbp_processing - Invoking ClinicalTaxonomist for: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:30:26,893 - vbp_processing - Invoking Clinical Auditor for: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:30:27,074 - vbp_processing - Invoking Clinical Auditor for: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:30:28,166 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:30:28,661 - vbp_processing - Invoking ClinicalTaxonomist for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:30:28,947 - vbp_processing - Invoking ClinicalTaxonomist for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:30:29,406 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:30:29,419 - vbp_processing - Invoking ClinicalTaxonomist for: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:30:29,421 - vbp_processing - Invoking ClinicalTaxonomist for: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:30:30,711 - vbp_processing - Invoking ClinicalTaxonomist for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:30:31,344 - vbp_processing - Document processing success: 40488544_fulltext.xml
+[INFO] 2026-04-10 22:30:31,569 - vbp_processing - Document processing success: CD006981.pdf
+[INFO] 2026-04-10 22:30:31,781 - vbp_processing - Invoking ClinicalTaxonomist for: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:30:32,112 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:30:32,118 - vbp_processing - Invoking Clinical Auditor for: CD011742.pdf
+[INFO] 2026-04-10 22:30:32,706 - vbp_processing - Document processing success: CD004157.pdf
+[INFO] 2026-04-10 22:30:32,953 - vbp_processing - Invoking ClinicalTaxonomist for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:30:33,298 - vbp_processing - Document processing success: CD004030.pdf
+[INFO] 2026-04-10 22:30:33,516 - vbp_orchestrator - *** Overall Progress: 15/96 processed (6 success) ***
+[INFO] 2026-04-10 22:30:33,517 - vbp_processing - Invoking Clinical Auditor for: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:30:33,619 - vbp_processing - Invoking Clinical Auditor for: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:30:33,707 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:30:33,800 - vbp_processing - Invoking Clinical Auditor for: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:30:33,916 - vbp_processing - Invoking ClinicalTaxonomist for: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:30:34,382 - vbp_processing - Document processing success: 250-254.pdf
+[INFO] 2026-04-10 22:30:34,646 - vbp_processing - Invoking Clinical Auditor for: 39075493_fulltext.xml
+[INFO] 2026-04-10 22:30:34,717 - vbp_processing - Invoking Clinical Auditor for: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:30:34,834 - vbp_processing - Invoking Clinical Auditor for: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:30:35,127 - vbp_processing - Document processing success: 39037980_fulltext.xml
+[INFO] 2026-04-10 22:30:35,320 - vbp_processing - Invoking ClinicalTaxonomist for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:30:35,324 - vbp_processing - Invoking ClinicalTaxonomist for: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:30:36,050 - vbp_processing - Invoking ClinicalTaxonomist for: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:30:36,062 - vbp_processing - Invoking Clinical Auditor for: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:30:36,690 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:30:37,202 - vbp_processing - Document processing success: CD011005.pdf
+[INFO] 2026-04-10 22:30:37,402 - vbp_processing - Invoking ClinicalTaxonomist for: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:30:37,412 - vbp_processing - Invoking Clinical Auditor for: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:30:37,543 - vbp_processing - Document processing success: 39678223_fulltext.xml
+[INFO] 2026-04-10 22:30:38,146 - vbp_processing - Invoking Clinical Auditor for: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:30:38,292 - vbp_processing - Document processing success: 40649976_fulltext.xml
+[INFO] 2026-04-10 22:30:38,484 - vbp_processing - Document processing success: 38517530_fulltext.xml
+[INFO] 2026-04-10 22:30:38,669 - vbp_processing - Invoking Clinical Auditor for: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:30:38,870 - vbp_processing - Document processing success: 40273110_fulltext.xml
+[INFO] 2026-04-10 22:30:39,074 - vbp_processing - Document processing success: 34421792_fulltext.xml
+[INFO] 2026-04-10 22:30:39,258 - vbp_processing - Invoking Clinical Auditor for: CD007593 (1).pdf
+[INFO] 2026-04-10 22:30:39,352 - vbp_processing - Document processing success: CD004427.pdf
+[INFO] 2026-04-10 22:30:40,277 - vbp_processing - Invoking Clinical Auditor for: CD006049.pdf
+[WARNING] 2026-04-10 22:30:40,346 - vbp_processing - [Quality Guard] Dropped low-quality finding in 38345764_fulltext.xml: Svekket livskvalitet relatert til tap av fysisk funksjon, respirasjonsbesvær og tap av kommunikasjonsevne. (Score: 4.8)
+[INFO] 2026-04-10 22:30:40,346 - vbp_processing - Invoking ClinicalTaxonomist for: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:30:40,647 - vbp_processing - Document processing success: 40245393_fulltext.xml
+[INFO] 2026-04-10 22:30:40,867 - vbp_orchestrator - *** Overall Progress: 25/96 processed (16 success) ***
+[INFO] 2026-04-10 22:30:41,632 - vbp_processing - Document processing success: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:30:41,827 - vbp_processing - Document processing success: 40470490_fulltext.xml
+[INFO] 2026-04-10 22:30:42,002 - vbp_processing - Document processing success: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:30:42,181 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:30:42,184 - vbp_processing - Invoking ClinicalTaxonomist for: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:30:42,185 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:30:43,290 - vbp_processing - Invoking Clinical Auditor for: 40091916_fulltext.xml
+[INFO] 2026-04-10 22:30:43,469 - vbp_processing - Invoking Clinical Auditor for: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:30:43,576 - vbp_processing - Invoking Clinical Auditor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:30:45,033 - vbp_processing - Document processing success: 39496035_fulltext.xml
+[INFO] 2026-04-10 22:30:45,220 - vbp_processing - Document processing success: 40563772_fulltext.xml
+[INFO] 2026-04-10 22:30:45,397 - vbp_orchestrator - *** Overall Progress: 30/96 processed (21 success) ***
+[INFO] 2026-04-10 22:30:45,401 - vbp_processing - Document processing success: CD011776.pdf
+[INFO] 2026-04-10 22:30:45,992 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 22:30:46,122 - vbp_processing - Invoking Clinical Auditor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 22:30:46,313 - vbp_processing - Invoking Clinical Auditor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:30:46,544 - vbp_processing - Invoking ClinicalTaxonomist for: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:30:46,833 - vbp_processing - Invoking ClinicalTaxonomist for: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:30:47,246 - vbp_processing - Document processing success: 40560475_fulltext.xml
+[INFO] 2026-04-10 22:30:47,502 - vbp_processing - Invoking Clinical Auditor for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:30:47,644 - vbp_processing - Document processing success: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 22:30:47,838 - vbp_processing - Invoking Clinical Auditor for: CD007593.pdf
+[INFO] 2026-04-10 22:30:47,932 - vbp_processing - Invoking ClinicalTaxonomist for: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:30:48,245 - vbp_processing - Invoking ClinicalTaxonomist for: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:30:48,688 - vbp_processing - Invoking Clinical Auditor for: CD005229.pdf
+[INFO] 2026-04-10 22:30:49,032 - vbp_processing - Invoking ClinicalTaxonomist for: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:30:49,460 - vbp_processing - Invoking ClinicalTaxonomist for: CD006049.pdf
+[INFO] 2026-04-10 22:30:49,887 - vbp_processing - Invoking ClinicalTaxonomist for: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:30:50,364 - vbp_processing - Invoking ClinicalTaxonomist for: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:30:50,375 - vbp_processing - Invoking ClinicalTaxonomist for: CD007593 (1).pdf
+[ERROR] 2026-04-10 22:30:50,719 - vbp_processing - ClinicalTaxonomist critical error for: CD007593 (1).pdf
+[INFO] 2026-04-10 22:30:50,729 - vbp_processing - Invoking Clinical Auditor for: 40405710_fulltext.xml
+[ERROR] 2026-04-10 22:30:50,730 - vbp_processing - CRITICAL DOCUMENT ERROR: 40405710_fulltext.xml
+[ERROR] 2026-04-10 22:30:50,733 - vbp_processing - ClinicalTaxonomist critical error for: 40077653_fulltext.xml
+[INFO] 2026-04-10 22:30:50,822 - vbp_processing - Invoking Clinical Auditor for: 33251776_fulltext.xml
+[ERROR] 2026-04-10 22:30:50,823 - vbp_processing - CRITICAL DOCUMENT ERROR: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:30:50,891 - vbp_processing - Invoking ClinicalTaxonomist for: CD011742.pdf
+[ERROR] 2026-04-10 22:30:50,913 - vbp_processing - ClinicalTaxonomist critical error for: CD011742.pdf
+[INFO] 2026-04-10 22:30:51,417 - vbp_processing - Document processing success: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 22:30:51,750 - vbp_processing - Invoking Clinical Auditor for: pdf-export-61011.pdf
+[ERROR] 2026-04-10 22:30:51,751 - vbp_processing - CRITICAL DOCUMENT ERROR: pdf-export-61011.pdf
+[INFO] 2026-04-10 22:30:51,751 - vbp_orchestrator - *** Overall Progress: 40/96 processed (25 success) ***
+[INFO] 2026-04-10 22:30:52,345 - vbp_processing - Invoking ClinicalTaxonomist for: 40091916_fulltext.xml
+[ERROR] 2026-04-10 22:30:52,350 - vbp_processing - ClinicalTaxonomist critical error for: 40091916_fulltext.xml
+[INFO] 2026-04-10 22:30:52,861 - vbp_processing - Document processing success: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 22:30:53,079 - vbp_processing - Document processing success: 41073116_fulltext.xml
+[INFO] 2026-04-10 22:30:53,605 - vbp_processing - Document processing success: 39182937_fulltext.xml
+[INFO] 2026-04-10 22:30:54,544 - vbp_processing - Document processing success: pdf-export-56871.pdf
+[INFO] 2026-04-10 22:30:54,702 - vbp_orchestrator - *** Overall Progress: 45/96 processed (29 success) ***
+[INFO] 2026-04-10 22:30:55,002 - vbp_processing - Invoking ClinicalTaxonomist for: 39075493_fulltext.xml
+[ERROR] 2026-04-10 22:30:55,007 - vbp_processing - ClinicalTaxonomist critical error for: 39075493_fulltext.xml
+[INFO] 2026-04-10 22:30:55,082 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-75545361935557.pdf
+[ERROR] 2026-04-10 22:30:55,083 - vbp_processing - CRITICAL DOCUMENT ERROR: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 22:30:56,068 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-49038.pdf
+[ERROR] 2026-04-10 22:30:56,073 - vbp_processing - ClinicalTaxonomist critical error for: pdf-export-49038.pdf
+[INFO] 2026-04-10 22:30:56,137 - vbp_processing - Document processing success: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 22:30:56,311 - vbp_processing - Document processing success: 38805448_fulltext.xml
+[INFO] 2026-04-10 22:30:56,461 - vbp_orchestrator - *** Overall Progress: 50/96 processed (31 success) ***
+[INFO] 2026-04-10 22:30:57,084 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2006--2523-5.pdf
+[ERROR] 2026-04-10 22:30:57,088 - vbp_processing - ClinicalTaxonomist critical error for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 22:30:57,209 - vbp_processing - Document processing success: 38345764_fulltext.xml
+[INFO] 2026-04-10 22:30:57,373 - vbp_processing - Invoking ClinicalTaxonomist for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 22:30:57,375 - vbp_processing - Invoking ClinicalTaxonomist for: 32910255_fulltext.xml
+[ERROR] 2026-04-10 22:30:57,387 - vbp_processing - ClinicalTaxonomist critical error for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[ERROR] 2026-04-10 22:30:57,388 - vbp_processing - ClinicalTaxonomist critical error for: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:30:57,388 - vbp_processing - Document processing success: 38622643_fulltext.xml
+[INFO] 2026-04-10 22:30:57,548 - vbp_orchestrator - *** Overall Progress: 55/96 processed (33 success) ***
+[INFO] 2026-04-10 22:30:57,550 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2009--628-31.pdf
+[ERROR] 2026-04-10 22:30:57,565 - vbp_processing - ClinicalTaxonomist critical error for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 22:30:57,955 - vbp_processing - Invoking ClinicalTaxonomist for: CD007593.pdf
+[ERROR] 2026-04-10 22:30:57,960 - vbp_processing - ClinicalTaxonomist critical error for: CD007593.pdf
+[INFO] 2026-04-10 22:30:58,357 - vbp_processing - Document processing success: 38415696_fulltext.xml
+[INFO] 2026-04-10 22:30:58,536 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml
+[ERROR] 2026-04-10 22:30:58,537 - vbp_processing - CRITICAL DOCUMENT ERROR: 35309870_fulltext.xml
+[INFO] 2026-04-10 22:30:59,183 - vbp_processing - Invoking Clinical Auditor for: ALS (amyotrofisk lateral sklerose).pdf
+[ERROR] 2026-04-10 22:30:59,184 - vbp_processing - CRITICAL DOCUMENT ERROR: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 22:30:59,184 - vbp_orchestrator - *** Overall Progress: 60/96 processed (34 success) ***
+[INFO] 2026-04-10 22:31:00,683 - vbp_processing - Invoking ClinicalTaxonomist for: CD005229.pdf
+[ERROR] 2026-04-10 22:31:00,688 - vbp_processing - ClinicalTaxonomist critical error for: CD005229.pdf
+[INFO] 2026-04-10 22:31:00,923 - vbp_processing - Invoking Clinical Auditor for: 40802439_fulltext.xml
+[ERROR] 2026-04-10 22:31:00,924 - vbp_processing - CRITICAL DOCUMENT ERROR: 40802439_fulltext.xml
+[INFO] 2026-04-10 22:31:01,670 - vbp_processing - Invoking ClinicalTaxonomist for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[ERROR] 2026-04-10 22:31:01,675 - vbp_processing - ClinicalTaxonomist critical error for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 22:31:01,867 - vbp_processing - Invoking Clinical Auditor for: 39520111_fulltext.xml
+[ERROR] 2026-04-10 22:31:01,868 - vbp_processing - CRITICAL DOCUMENT ERROR: 39520111_fulltext.xml
+[INFO] 2026-04-10 22:31:04,584 - vbp_processing - Document processing success: 36008057_fulltext.xml
+[INFO] 2026-04-10 22:31:04,736 - vbp_orchestrator - *** Overall Progress: 65/96 processed (35 success) ***
+[INFO] 2026-04-10 22:31:04,749 - vbp_processing - Invoking Clinical Auditor for: ALS - Socialstyrelsen.pdf
+[ERROR] 2026-04-10 22:31:04,749 - vbp_processing - CRITICAL DOCUMENT ERROR: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 22:31:05,700 - vbp_processing - Invoking ClinicalTaxonomist for: 40725930_fulltext.xml
+[ERROR] 2026-04-10 22:31:05,705 - vbp_processing - ClinicalTaxonomist critical error for: 40725930_fulltext.xml
+[INFO] 2026-04-10 22:31:06,057 - vbp_processing - Document processing success: 36341104_fulltext.xml
+[INFO] 2026-04-10 22:31:06,223 - vbp_processing - Document processing success: 38762656_fulltext.xml
+[INFO] 2026-04-10 22:31:06,710 - vbp_processing - Document processing success: 39375842_fulltext.xml
+[INFO] 2026-04-10 22:31:06,856 - vbp_orchestrator - *** Overall Progress: 70/96 processed (38 success) ***
+[INFO] 2026-04-10 22:31:07,208 - vbp_processing - Document processing success: 37837507_fulltext.xml
+[INFO] 2026-04-10 22:31:10,547 - vbp_processing - Document processing success: 35898325_fulltext.xml
+[INFO] 2026-04-10 22:31:10,709 - vbp_processing - Document processing success: 35235032_fulltext.xml
+[INFO] 2026-04-10 22:31:12,695 - vbp_processing - Document processing success: CD006049.pdf
+[INFO] 2026-04-10 22:31:14,264 - vbp_processing - Document processing success: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 22:31:14,410 - vbp_orchestrator - *** Overall Progress: 75/96 processed (43 success) ***
+[INFO] 2026-04-10 22:31:16,938 - vbp_processing - Document processing success: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 22:31:17,455 - vbp_processing - Document processing success: 35636801_fulltext.xml
+[INFO] 2026-04-10 22:31:18,765 - vbp_processing - Document processing success: Siewersetal2013.pdf
+[INFO] 2026-04-10 22:31:19,861 - vbp_processing - Document processing success: pdf-export-57942.pdf
+[INFO] 2026-04-10 22:31:20,410 - vbp_processing - Document processing success: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 22:31:20,553 - vbp_orchestrator - *** Overall Progress: 80/96 processed (48 success) ***
+[INFO] 2026-04-10 22:31:20,725 - vbp_processing - Document processing success: 37254833_fulltext.xml
+[INFO] 2026-04-10 22:31:21,378 - vbp_processing - Document processing success: CD005226.pdf
+[INFO] 2026-04-10 22:31:21,944 - vbp_processing - Document processing success: 36414305_fulltext.xml
+[INFO] 2026-04-10 22:31:23,195 - vbp_processing - Document processing success: 36995270_fulltext.xml
+[INFO] 2026-04-10 22:31:27,324 - vbp_processing - Document processing success: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 22:31:27,454 - vbp_orchestrator - *** Overall Progress: 85/96 processed (53 success) ***
+[INFO] 2026-04-10 22:31:31,954 - vbp_processing - Document processing success: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:31:33,299 - vbp_processing - Document processing success: pdf-export-57787.pdf
+[INFO] 2026-04-10 22:31:57,045 - vbp_processing - Document processing success: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 22:32:05,444 - vbp_processing - Document processing success: pdf-export-62504.pdf
+[INFO] 2026-04-10 22:32:17,830 - vbp_processing - Invoking Clinical Auditor for: pdf-export-51157.pdf
+[ERROR] 2026-04-10 22:32:17,831 - vbp_processing - CRITICAL DOCUMENT ERROR: pdf-export-51157.pdf
+[INFO] 2026-04-10 22:32:17,831 - vbp_orchestrator - *** Overall Progress: 90/96 processed (57 success) ***
+[INFO] 2026-04-10 22:32:20,555 - vbp_processing - Document processing success: 37610446_fulltext.xml
+[INFO] 2026-04-10 22:32:30,366 - vbp_processing - Invoking Clinical Auditor for: 37436254_fulltext.xml
+[ERROR] 2026-04-10 22:32:30,367 - vbp_processing - CRITICAL DOCUMENT ERROR: 37436254_fulltext.xml
+[INFO] 2026-04-10 22:32:37,162 - vbp_processing - Invoking Clinical Auditor for: 36834005_fulltext.xml
+[ERROR] 2026-04-10 22:32:37,163 - vbp_processing - CRITICAL DOCUMENT ERROR: 36834005_fulltext.xml
+[INFO] 2026-04-10 22:32:44,146 - vbp_processing - No findings identified in document: 41024175_fulltext.xml
+[INFO] 2026-04-10 22:33:02,734 - vbp_processing - Invoking Clinical Auditor for: pdf-export-51330.pdf
+[ERROR] 2026-04-10 22:33:02,734 - vbp_processing - CRITICAL DOCUMENT ERROR: pdf-export-51330.pdf
+[INFO] 2026-04-10 22:33:02,734 - vbp_orchestrator - *** Overall Progress: 95/96 processed (58 success) ***
+[INFO] 2026-04-10 22:33:11,353 - vbp_processing - Invoking ClinicalTaxonomist for: 33546507_fulltext.xml
+[ERROR] 2026-04-10 22:33:11,357 - vbp_processing - ClinicalTaxonomist critical error for: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:33:11,358 - vbp_orchestrator - *** Overall Progress: 96/96 processed (58 success) ***
+[INFO] 2026-04-10 22:33:11,358 - vbp_orchestrator - Consolidating 58 successful documents and 38 excluded documents.
+[INFO] 2026-04-10 22:33:11,358 - vbp_consolidation - Starting FHIR semantic audit for 10 Functional Areas.
+[WARNING] 2026-04-10 22:33:15,847 - fhir_client - FHIR Subsumption API Error: HTTP 400
+[WARNING] 2026-04-10 22:33:16,743 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,743 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,743 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,744 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,745 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,747 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,748 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,749 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,750 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,751 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,752 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,753 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,754 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,755 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,756 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,757 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,758 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,759 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,760 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,761 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,762 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,763 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,764 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,765 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[WARNING] 2026-04-10 22:33:16,766 - fhir_client - FHIR Subsumption Timeout
+[INFO] 2026-04-10 22:33:16,769 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-10 22:33:16,779 - test_workflow - --- Final Synthesis Complete ---
+[INFO] 2026-04-10 22:33:16,779 - test_workflow - Generating HTML Report...
+[INFO] 2026-04-10 22:33:17,022 - test_workflow - HTML Report generated successfully.

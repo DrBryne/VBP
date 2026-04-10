@@ -269,7 +269,8 @@ async def process_document_pipeline(
     target_group: str,
     project_id: str,
     clinical_extractor: BaseAgent,
-    clinical_taxonomist: BaseAgent,
+    fo_classifier: BaseAgent,
+    icnp_mappers: BaseAgent,
     clinical_auditor: BaseAgent,
     parent_ctx: InvocationContext,
     ephemeral_session_service: InMemorySessionService,
@@ -495,23 +496,65 @@ async def process_document_pipeline(
                 justification="Ingen av de identifiserte kliniske funnene oppfylte kvalitetskravene til spesifisitet og handlingskraft."
             )
 
-        # 8. Invoke Clinical Taxonomist (Using audited findings)
+        # 8. Step 1: Functional Area Classification
         lean_findings = []
         finding_map = {}
         for _idx, (finding, rating, score) in enumerate(audited_candidates):
             internal_id = str(uuid.uuid4())
             finding_map[internal_id] = (finding, rating, score)
             lean_findings.append({"finding_id": internal_id, "nursing_diagnosis": finding.nursing_diagnosis, "intervention": finding.intervention, "goal": finding.goal})
-        mapper_msg = types.Content(role="user", parts=[types.Part.from_text(text="Map these findings to ICNP and classify FO:"), types.Part.from_text(text=json.dumps(lean_findings))])
-        doc_session.events.append(Event(author="system", content=mapper_msg))
 
-        logger.info(f"Invoking ClinicalTaxonomist for: {filename}", finding_count=len(lean_findings))
+        logger.info(f"Invoking FO Classifier for: {filename}", finding_count=len(lean_findings))
+        fo_msg = types.Content(role="user", parts=[
+            types.Part.from_text(text="Classify these findings into VIPS Functional Areas (1-12):"),
+            types.Part.from_text(text=json.dumps(lean_findings)),
+            types.Part.from_text(text=f"Reasoning Context:\n{metadata.source_document.reasoning_trace}")
+        ])
+        doc_session.events.append(Event(author="system", content=fo_msg))
+
         try:
-            async for ev in clinical_taxonomist.run_async(pipeline_ctx):
+            async for ev in fo_classifier.run_async(pipeline_ctx):
                 if ev.is_final_response():
                     data_dict = safe_parse_json(ev)
-                    if not data_dict:
-                        continue
+                    if data_dict:
+                        doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
+        except Exception as e:
+            logger.error(f"FO Classifier error for: {filename}", error=str(e))
+
+        functional_areas: FunctionalAreaResponse = doc_session.state.get("functional_areas")
+        if not functional_areas:
+            async with state_lock:
+                progress_state.completed += 1
+                progress_state.failed += 1
+            logger.error(f"FO classification failed for: {filename}")
+            await progress_queue.put(f"DONE: {filename} (FO ERROR)")
+            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="Failed to classify findings into Functional Areas.")
+
+        # 9. Step 2: FO-Guided ICNP Mapping
+        fo_lookup = {res.finding_id: res.FO for res in functional_areas.results}
+
+        # Build enriched payload with FO context
+        guided_findings = []
+        for lf in lean_findings:
+            f_id = lf["finding_id"]
+            guided_findings.append({
+                **lf,
+                "assigned_FO": fo_lookup.get(f_id, "Unknown"),
+                "context_trace": metadata.source_document.reasoning_trace
+            })
+
+        logger.info(f"Invoking FO-Guided ICNP Mappers for: {filename}")
+        mapper_msg = types.Content(role="user", parts=[
+            types.Part.from_text(text="Map these findings to ICNP. Use the 'assigned_FO' and 'context_trace' to select the most accurate generic term:"),
+            types.Part.from_text(text=json.dumps(guided_findings))
+        ])
+        doc_session.events.append(Event(author="system", content=mapper_msg))
+
+        try:
+            async for ev in icnp_mappers.run_async(pipeline_ctx):
+                if ev.is_final_response():
+                    data_dict = safe_parse_json(ev)
+                    if not data_dict: continue
                     try:
                         if ev.author == "diagnosis_taxonomist":
                             doc_session.state["diagnosis_mappings"] = DiagnosisMappingResponse.model_validate(data_dict)
@@ -519,33 +562,16 @@ async def process_document_pipeline(
                             doc_session.state["intervention_mappings"] = InterventionMappingResponse.model_validate(data_dict)
                         elif ev.author == "goal_taxonomist":
                             doc_session.state["goal_mappings"] = GoalMappingResponse.model_validate(data_dict)
-                        elif ev.author == "fo_classifier":
-                            doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
                     except Exception as e:
-                        logger.error(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
-                        await progress_queue.put(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename} ({e})")
+                        logger.error(f"ICNP MAPPER ERROR ({ev.author}): {filename}", error=str(e))
         except Exception as e:
-            async with state_lock:
-                progress_state.completed += 1
-                progress_state.failed += 1
-            logger.error(f"ClinicalTaxonomist critical error for: {filename}", error=str(e))
-            await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {e})")
-            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
+            logger.error(f"ICNP mapping group error for: {filename}", error=str(e))
 
         diag_mappings: DiagnosisMappingResponse = doc_session.state.get("diagnosis_mappings")
         int_mappings: InterventionMappingResponse = doc_session.state.get("intervention_mappings")
         goal_mappings: GoalMappingResponse = doc_session.state.get("goal_mappings")
-        functional_areas: FunctionalAreaResponse = doc_session.state.get("functional_areas")
 
-        if not functional_areas:
-            async with state_lock:
-                progress_state.completed += 1
-                progress_state.failed += 1
-            logger.error(f"Taxonomist incomplete for: {filename}")
-            await progress_queue.put(f"DONE: {filename} (TAXONOMIST INCOMPLETE)")
-            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
-
-        # 9. Validate Taxonomy
+        # 10. Validate Taxonomy
         logger.debug(f"Validating taxonomy for: {filename}")
         processed_findings, taxonomy_error_count = validate_taxonomy(
             finding_map, diag_mappings, int_mappings, goal_mappings, functional_areas, doc_id_val, filename, progress_state, state_lock

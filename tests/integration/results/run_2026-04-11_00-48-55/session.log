@@ -1,0 +1,17 @@
+[INFO] 2026-04-10 22:48:55,926 - vbp_orchestrator - Starting discovery in: gs://veiledende_behandlingsplan/ALS/
+[INFO] 2026-04-10 22:48:56,473 - vbp_orchestrator - Processing 96 documents in parallel (limit: 30)
+[INFO] 2026-04-10 22:48:56,474 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-10 22:48:57,119 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-10 22:48:57,119 - vbp_processing - Processing document start: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:48:57,714 - vbp_processing - Invoking ClinicalExtractor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 22:48:57,714 - vbp_processing - Processing document start: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:48:58,340 - vbp_processing - Invoking ClinicalExtractor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 22:48:58,341 - vbp_processing - Processing document start: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:48:58,944 - vbp_processing - Invoking ClinicalExtractor for: 33251776_fulltext.xml
+[INFO] 2026-04-10 22:48:58,945 - vbp_processing - Processing document start: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:48:59,643 - vbp_processing - Invoking ClinicalExtractor for: 33333772_fulltext.xml
+[INFO] 2026-04-10 22:48:59,643 - vbp_processing - Processing document start: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:49:00,210 - vbp_processing - Invoking ClinicalExtractor for: 33530383_fulltext.xml
+[INFO] 2026-04-10 22:49:00,210 - vbp_processing - Processing document start: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:49:00,817 - vbp_processing - Invoking ClinicalExtractor for: 33546507_fulltext.xml
+[INFO] 2026-04-10 22:49:00,818 - vbp_processing - Processing document start: 34421792_fulltext.xml

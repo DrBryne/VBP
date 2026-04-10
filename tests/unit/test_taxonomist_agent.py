@@ -11,7 +11,10 @@ from google.adk.events import Event
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
-from app.agents.clinical_taxonomist.agent import create_combined_taxonomist
+from app.agents.clinical_taxonomist.agent import (
+    create_fo_classifier,
+    create_icnp_mappers,
+)
 from app.shared.models import (
     DiagnosisMappingResponse,
     FunctionalAreaResponse,
@@ -60,15 +63,15 @@ async def test_taxonomist_mapping_accuracy():
 
     assert project_id is not None, "GOOGLE_CLOUD_PROJECT must be set."
 
-    taxonomist = create_combined_taxonomist()
     session_service = InMemorySessionService()
     session = await session_service.create_session(app_name="test_app", user_id="test_user", session_id="test_session")
     import uuid
+    fo_agent = create_fo_classifier()
     ctx = InvocationContext(
         session=session,
         session_service=session_service,
         invocation_id=str(uuid.uuid4()),
-        agent=taxonomist,
+        agent=fo_agent,
         run_config=RunConfig()
     )
 
@@ -82,15 +85,53 @@ async def test_taxonomist_mapping_accuracy():
     )
     session.events.append(Event(author="system", content=mapper_msg))
 
-    # Run the agent
-    print(f"\nSending {len(TEST_FINDINGS)} complex findings to ClinicalTaxonomist...")
+    # Run Step 1: FO Classifier
+    print(f"\n[Step 1] Classifying Functional Areas for {len(TEST_FINDINGS)} findings...")
+
+    functional_areas = None
+    async for ev in fo_agent.run_async(ctx):
+        if ev.is_final_response():
+            data_dict = safe_parse_json(ev)
+            if data_dict:
+                functional_areas = FunctionalAreaResponse.model_validate(data_dict)
+
+    assert functional_areas is not None, "FO classifier failed."
+    fo_lookup = {res.finding_id: res.FO for res in functional_areas.results}
+
+    # Run Step 2: FO-Guided ICNP Mappers
+    print("\n[Step 2] Sending FO-guided findings to specialized ICNP Mappers...")
+    icnp_mappers = create_icnp_mappers()
+    ctx_mappers = InvocationContext(
+        session=session,
+        session_service=session_service,
+        invocation_id=str(uuid.uuid4()),
+        agent=icnp_mappers,
+        run_config=RunConfig()
+    )
+
+    guided_findings = []
+    for lf in TEST_FINDINGS:
+        guided_findings.append({
+            **lf,
+            "assigned_FO": fo_lookup.get(lf["finding_id"], "Unknown"),
+            "context_trace": "Simulated reasoning trace context for TDD."
+        })
+
+    # Re-prepare payload for mappers
+    mapper_msg = types.Content(
+        role="user",
+        parts=[
+            types.Part.from_text(text="Map these findings to ICNP:"),
+            types.Part.from_text(text=json.dumps(guided_findings))
+        ]
+    )
+    session.events.append(Event(author="system", content=mapper_msg))
 
     icnp_diag_mappings = None
     icnp_int_mappings = None
     icnp_goal_mappings = None
-    functional_areas = None
 
-    async for ev in taxonomist.run_async(ctx):
+    async for ev in icnp_mappers.run_async(ctx_mappers):
         if ev.is_final_response():
             data_dict = safe_parse_json(ev)
             if not data_dict:
@@ -103,14 +144,11 @@ async def test_taxonomist_mapping_accuracy():
                 icnp_int_mappings = InterventionMappingResponse.model_validate(data_dict)
             elif ev.author == "goal_taxonomist":
                 icnp_goal_mappings = GoalMappingResponse.model_validate(data_dict)
-            elif ev.author == "fo_classifier":
-                functional_areas = FunctionalAreaResponse.model_validate(data_dict)
 
     # 1. Assert Responses Exist
     assert icnp_diag_mappings is not None, "DiagnosisTaxonomist failed."
     assert icnp_int_mappings is not None, "InterventionTaxonomist failed."
     assert icnp_goal_mappings is not None, "GoalTaxonomist failed."
-    assert functional_areas is not None, "FO classifier failed."
 
     # 2. Assert ICNP IDs are VALID
     valid_icnp_ids = load_valid_icnp_ids()
