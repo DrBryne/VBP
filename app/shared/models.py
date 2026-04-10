@@ -3,10 +3,10 @@ Data models for the VBP Workflow.
 These schemas define the structural contract between the orchestrator and the LLM agents,
 enabling constrained generation and robust validation.
 """
-from typing import List, Optional, Dict, Literal
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
+
 from pydantic import BaseModel, Field
 
 # --- 1. SHARED CORE TYPES ---
@@ -33,13 +33,13 @@ class MappedTerm(BaseModel):
 
 class Document(BaseModel):
     """Metadata and identification for an analyzed clinical source file."""
-    document_id: Optional[str] = Field(default=None, description="Unique internal identifier.")
+    document_id: str | None = Field(default=None, description="Unique internal identifier.")
     source_uri: str = Field(description="Origin path (GCS URI) of the document.")
     title: str = Field(description="The extracted scientific title of the document.")
     publication_year: int = Field(description="Year of publication (0 if unknown).")
     doi: str = Field(description="Digital Object Identifier. Set to 'Not found' if missing.")
     evidence_level: str = Field(description="Quality classification based on the Knowledge Pyramid (e.g., 'Nivå 2: Systematiske oversikter').")
-    reasoning_trace: Optional[str] = Field(default=None, description="A step-by-step clinical justification for the selection of this document.")
+    reasoning_trace: str | None = Field(default=None, description="A step-by-step clinical justification for the selection of this document.")
 
 @dataclass
 class WorkflowProgress:
@@ -58,9 +58,9 @@ class ClinicalFinding(BaseModel):
     """A raw clinical finding extracted from a document before terminology mapping."""
     nursing_diagnosis: str = Field(description="The identified clinical problem or nursing diagnosis.")
     intervention: str = Field(description="The proposed nursing action or intervention.")
-    goal: Optional[str] = Field(default=None, description="The desired clinical outcome.")
-    supporting_sentence_ids: List[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
-    quotes: Optional[List[str]] = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
+    goal: str | None = Field(default=None, description="The desired clinical outcome.")
+    supporting_sentence_ids: list[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
+    quotes: list[str] | None = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
 
 class MetadataResponse(BaseModel):
     """Schema used by the Metadata Extractor to return document details."""
@@ -69,20 +69,20 @@ class MetadataResponse(BaseModel):
 class ClinicalFindingsResponse(BaseModel):
     """Schema used by the Finding Extractor to return identified findings and logic."""
     reasoning_trace: str = Field(description="An explanation of the logic used to select and formulate these findings.")
-    candidate_findings: List[ClinicalFinding]
+    candidate_findings: list[ClinicalFinding]
 
 # --- 3. TERM MAPPER (Mapping) ---
 
 class IcnpMapping(BaseModel):
     """Results of mapping a single finding's components to ICNP terms."""
     finding_id: str = Field(description="Links the mapping back to the original extracted finding.")
-    nursing_diagnosis: Optional[MappedTerm] = Field(None, description="The ICNP match for the diagnosis.")
-    intervention: Optional[MappedTerm] = Field(None, description="The ICNP match for the intervention.")
-    goal: Optional[MappedTerm] = Field(None, description="The ICNP match for the goal.")
+    nursing_diagnosis: MappedTerm | None = Field(None, description="The ICNP match for the diagnosis.")
+    intervention: MappedTerm | None = Field(None, description="The ICNP match for the intervention.")
+    goal: MappedTerm | None = Field(None, description="The ICNP match for the goal.")
 
 class IcnpMappingResponse(BaseModel):
     """Batch response from the ICNP mapping agent."""
-    results: List[IcnpMapping]
+    results: list[IcnpMapping]
 
 class FunctionalAreaClassification(BaseModel):
     """Assignment of a finding to one of the 12 standard functional areas."""
@@ -91,7 +91,7 @@ class FunctionalAreaClassification(BaseModel):
 
 class FunctionalAreaResponse(BaseModel):
     """Batch response from the Functional Area classifier agent."""
-    results: List[FunctionalAreaClassification]
+    results: list[FunctionalAreaClassification]
 
 # --- 4. INTERNAL WORKFLOW STATE ---
 
@@ -107,14 +107,14 @@ class ProcessedFinding(ClinicalFinding):
 class ProcessedDocument(BaseModel):
     """The complete processing result for a single document, containing its findings and metadata."""
     source_document: Document
-    mapped_findings: List[ProcessedFinding]
+    mapped_findings: list[ProcessedFinding]
 
 # --- 5. CONSOLIDATOR (Synthesis) ---
 
 class Evidence(BaseModel):
     """Grouped evidence for a synthesized finding, linked to its source document."""
     document_id: str = Field(description="The ID of the source document.")
-    quotes: List[str] = Field(description="List of context-padded verbatim quotes supporting the finding.")
+    quotes: list[str] = Field(description="List of context-padded verbatim quotes supporting the finding.")
 
 class SynthesizedFinding(BaseModel):
     """A high-level clinical finding consolidated across multiple source documents."""
@@ -122,7 +122,7 @@ class SynthesizedFinding(BaseModel):
     intervention: MappedTerm
     goal: MappedTerm
     FO: FunctionalArea = Field(description="The clinical category (Functional Area).")
-    supporting_evidence: List[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
+    supporting_evidence: list[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
 
 class ExcludedDocument(BaseModel):
     """A record of a document that was processed but rejected from the final synthesis."""
@@ -148,6 +148,6 @@ class ExecutionSummary(BaseModel):
 class SynthesisResponse(BaseModel):
     """The final structured clinical report generated by the VBP Workflow."""
     execution_summary: ExecutionSummary = Field(description="Metadata and performance metrics for the run.")
-    synthesized_findings: List[SynthesizedFinding] = Field(description="The core consolidated clinical evidence.")
-    source_documents: List[Document] = Field(description="Details of all documents that provided successful findings.")
-    excluded_documents: List[ExcludedDocument] = Field(default_factory=list, description="Audit trail of documents omitted from the synthesis.")
+    synthesized_findings: list[SynthesizedFinding] = Field(description="The core consolidated clinical evidence.")
+    source_documents: list[Document] = Field(description="Details of all documents that provided successful findings.")
+    excluded_documents: list[ExcludedDocument] = Field(default_factory=list, description="Audit trail of documents omitted from the synthesis.")

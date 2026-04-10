@@ -1,18 +1,20 @@
 import os
-from typing import List
+
 from google.adk.agents import Agent, ParallelAgent
 from google.genai import types
-from app.shared.models import IcnpMappingResponse, FunctionalAreaResponse
+
+from app.shared.models import FunctionalAreaResponse, IcnpMappingResponse
 from app.shared.tools import load_prompt
+
 
 def create_icnp_mapper():
     instructions = load_prompt("icnp_mapper")
-    
+
     current_dir = os.path.dirname(os.path.abspath(__file__))
     terms_path = os.path.join(current_dir, "data", "restructured_terms.txt")
-    with open(terms_path, "r", encoding="utf-8") as f:
+    with open(terms_path, encoding="utf-8") as f:
         icnp_terms = f.read()
-    
+
     instructions = instructions.replace("{{icnp_terms}}", icnp_terms)
 
     config = types.GenerateContentConfig(

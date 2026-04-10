@@ -1,4 +1,5 @@
 import os
+
 from google import genai
 
 project_id = "sunny-passage-362617"

@@ -1,8 +1,9 @@
-import os
 import asyncio
-import google.auth
+import os
+
 from google import genai
 from google.genai import types
+
 
 async def test():
     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "sunny-passage-362617")
@@ -16,7 +17,7 @@ async def test():
     client = genai.Client()
     uri = "gs://veiledende_behandlingsplan/ALS/250-254.pdf"
     mime_type = "application/octet-stream"
-    
+
     try:
         response = await client.aio.models.generate_content(
             model="gemini-3.1-pro-preview",

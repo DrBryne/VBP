@@ -1,5 +1,7 @@
 import asyncio
+
 from google.adk.sessions import InMemorySessionService
+
 
 async def test():
     svc = InMemorySessionService()

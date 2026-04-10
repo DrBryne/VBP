@@ -1,7 +1,7 @@
-import os
-import httpx
 import google.auth
+import httpx
 from google.auth.transport.requests import Request
+
 
 def get_token():
     credentials, project = google.auth.default()

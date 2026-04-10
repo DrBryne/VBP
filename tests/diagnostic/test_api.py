@@ -1,6 +1,8 @@
-import os
-from google import genai
 import asyncio
+import os
+
+from google import genai
+
 
 async def test():
     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "sunny-passage-362617")
@@ -18,7 +20,7 @@ async def test():
             contents="Hello"
         )
         print("Success:", response.text)
-    except Exception as e:
+    except Exception:
         import traceback
         traceback.print_exc()
 

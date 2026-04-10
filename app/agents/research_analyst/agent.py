@@ -1,8 +1,9 @@
-import os
 from google.adk.agents import Agent, ParallelAgent
 from google.genai import types
-from app.shared.models import MetadataResponse, ClinicalFindingsResponse
+
+from app.shared.models import ClinicalFindingsResponse, MetadataResponse
 from app.shared.tools import load_prompt
+
 
 def create_metadata_extractor():
     instructions = load_prompt("metadata_extractor")

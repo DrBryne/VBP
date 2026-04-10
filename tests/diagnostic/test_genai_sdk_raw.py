@@ -1,7 +1,8 @@
-import os
 import asyncio
-import aiohttp
 import json
+import os
+
+import aiohttp
 from google import genai
 from google.genai import types
 
@@ -28,22 +29,22 @@ async def run_diagnostic():
     # 2. Setup the exact environment the agent uses
     project_id = os.getenv("GOOGLE_CLOUD_PROJECT", "sunny-passage-362617")
     location = "global"
-    
+
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "true"
     os.environ["GOOGLE_CLOUD_LOCATION"] = location
     os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
 
     client = genai.Client()
-    
+
     uri = "gs://veiledende_behandlingsplan/ALS/250-254.pdf"
     target_group = "ALS - Amytrofisk lateral sklerose"
-    
+
     # 3. Replicate the payload
     parts = [
         types.Part.from_uri(file_uri=uri, mime_type="application/pdf"),
         types.Part.from_text(text=f"Bruksområde: {target_group}\n\nAnalyser den vedlagte artikkelen.")
     ]
-    
+
     config = types.GenerateContentConfig(
         temperature=1.0,
         thinking_config=types.ThinkingConfig(
@@ -51,12 +52,12 @@ async def run_diagnostic():
             thinking_level="high"
         )
     )
-    
-    print(f"Calling Gemini API directly via SDK...")
-    print(f"Model: gemini-3.1-pro-preview")
+
+    print("Calling Gemini API directly via SDK...")
+    print("Model: gemini-3.1-pro-preview")
     print(f"Location: {location}")
     print(f"URI: {uri}")
-    
+
     # 4. Execute the call
     try:
         response = await client.aio.models.generate_content(

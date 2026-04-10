@@ -1,27 +1,27 @@
 """
 Consolidation and Synthesis logic for the VBP Workflow.
-Handles the grouping of findings across documents and the assembly 
+Handles the grouping of findings across documents and the assembly
 of the final clinical report.
 """
-from typing import List, Dict
 from datetime import datetime
+
 from app.shared.models import (
-    ProcessedDocument, 
-    SynthesizedFinding, 
-    Evidence, 
-    MappedTerm, 
     Document,
+    Evidence,
     ExcludedDocument,
     ExecutionSummary,
-    SynthesisResponse
+    ProcessedDocument,
+    SynthesisResponse,
+    SynthesizedFinding,
 )
 
-def group_findings(processed_docs: List[ProcessedDocument]) -> Dict[str, Dict]:
+
+def group_findings(processed_docs: list[ProcessedDocument]) -> dict[str, dict]:
     """
     Groups individual findings by Functional Area (FO) and ICNP Concept ID.
-    
-    This is the core clinical synthesis step. It aggregates findings from 
-    multiple documents into a single representative finding for the final 
+
+    This is the core clinical synthesis step. It aggregates findings from
+    multiple documents into a single representative finding for the final
     report, preserving all supporting evidence.
 
     Args:
@@ -31,7 +31,7 @@ def group_findings(processed_docs: List[ProcessedDocument]) -> Dict[str, Dict]:
         A dictionary mapping group keys (FO||ICNP_ID) to aggregated finding data.
     """
     groups = {}
-    
+
     for doc in processed_docs:
         doc_id = doc.source_document.document_id
         for finding in doc.mapped_findings:
@@ -39,7 +39,7 @@ def group_findings(processed_docs: List[ProcessedDocument]) -> Dict[str, Dict]:
             # Fall back to the term text if no concept ID exists
             diag_id = finding.mapped_nursing_diagnosis.ICNP_concept_id or finding.mapped_nursing_diagnosis.term
             group_key = f"{finding.FO}||{diag_id}"
-            
+
             if group_key not in groups:
                 groups[group_key] = {
                     "FO": finding.FO,
@@ -49,18 +49,18 @@ def group_findings(processed_docs: List[ProcessedDocument]) -> Dict[str, Dict]:
                     "supporting_evidence": {}, # doc_id -> list of quotes
                     "all_findings": [] # List of raw findings for LLM context
                 }
-            
+
             # Aggregate quotes for this specific document in this group
             if doc_id not in groups[group_key]["supporting_evidence"]:
                 groups[group_key]["supporting_evidence"][doc_id] = []
-            
+
             # Extend quotes, avoiding duplicates
             for quote in finding.quotes:
                 if quote not in groups[group_key]["supporting_evidence"][doc_id]:
                     groups[group_key]["supporting_evidence"][doc_id].append(quote)
-            
+
             groups[group_key]["all_findings"].append(finding)
-            
+
     return groups
 
 def finalize_synthesis(
@@ -69,9 +69,9 @@ def finalize_synthesis(
     total_files_in_uri: int,
     execution_start_time: datetime,
     execution_end_time: datetime,
-    grouped_data: Dict[str, Dict],
-    source_documents: List[Document],
-    excluded_documents: List[ExcludedDocument],
+    grouped_data: dict[str, dict],
+    source_documents: list[Document],
+    excluded_documents: list[ExcludedDocument],
     total_hallucinated_citations: int = 0,
     total_dropped_findings: int = 0,
     total_taxonomy_errors: int = 0
@@ -96,13 +96,13 @@ def finalize_synthesis(
         A complete SynthesisResponse ready for the user.
     """
     synthesized_findings = []
-    
-    for group_key, data in grouped_data.items():
+
+    for _group_key, data in grouped_data.items():
         # Build the supporting evidence list of Evidence objects
         evidence_list = []
         for doc_id, quotes in data["supporting_evidence"].items():
             evidence_list.append(Evidence(document_id=doc_id, quotes=quotes))
-            
+
         synthesized_findings.append(SynthesizedFinding(
             nursing_diagnosis=data["nursing_diagnosis"],
             intervention=data["intervention"],
@@ -110,7 +110,7 @@ def finalize_synthesis(
             FO=data["FO"],
             supporting_evidence=evidence_list
         ))
-        
+
     summary = ExecutionSummary(
         target_group=target_group,
         source_uri=source_uri,
@@ -125,7 +125,7 @@ def finalize_synthesis(
         execution_start_time=execution_start_time,
         execution_end_time=execution_end_time
     )
-        
+
     return SynthesisResponse(
         execution_summary=summary,
         synthesized_findings=synthesized_findings,
