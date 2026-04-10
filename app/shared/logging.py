@@ -39,7 +39,16 @@ def get_logger(name="vbp_workflow"):
         if os.environ.get("LOG_FORMAT") == "json":
             handler.setFormatter(StructuredFormatter())
         else:
-            formatter = logging.Formatter(
+            # Custom formatter that appends extra fields to the message for local readability
+            class ContextFormatter(logging.Formatter):
+                def format(self, record):
+                    msg = super().format(record)
+                    if hasattr(record, "extra_fields") and record.extra_fields:
+                        ctx = ", ".join([f"{k}={v}" for k, v in record.extra_fields.items()])
+                        msg = f"{msg} [{ctx}]"
+                    return msg
+            
+            formatter = ContextFormatter(
                 "[%(levelname)s] %(asctime)s - %(name)s - %(message)s"
             )
             handler.setFormatter(formatter)

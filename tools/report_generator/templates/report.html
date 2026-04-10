@@ -57,6 +57,7 @@
                 <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                 Oversikt over kliniske funn
             </h2>
+            {% if synthesized_findings %}
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                 <table class="min-w-full divide-y divide-slate-200">
                     <thead class="bg-slate-50">
@@ -94,6 +95,11 @@
                     </tbody>
                 </table>
             </div>
+            {% else %}
+            <div class="bg-amber-50 border border-amber-100 rounded-xl p-6 text-amber-800 text-sm">
+                Ingen kliniske funn ble syntetisert i denne kjøringen.
+            </div>
+            {% endif %}
         </section>
 
         <!-- Quality Notes -->
@@ -108,6 +114,7 @@
         </section>
 
         <!-- Detailed Evidence Section -->
+        {% if synthesized_findings %}
         <section id="evidens" class="mb-16 scroll-mt-8">
             <h2 class="text-xl font-bold text-slate-900 mb-8 flex items-center">
                 <svg class="w-5 h-5 mr-2 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
@@ -141,13 +148,6 @@
                         </div>
                     </div>
                     <div class="p-8">
-                        <div class="mb-8">
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 italic">Oppsummering av evidens</h4>
-                            <div class="prose prose-slate max-w-none text-slate-700">
-                                {{ finding.evidence_summary_html | safe }}
-                            </div>
-                        </div>
-
                         <div class="space-y-6">
                             <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
                             {% for evidence in finding.supporting_evidence %}
@@ -174,6 +174,7 @@
                 {% endfor %}
             </div>
         </section>
+        {% endif %}
 
         <!-- Bibliography -->
         <section id="bibliografi" class="mb-16 scroll-mt-8">
@@ -181,6 +182,7 @@
                 <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                 Bibliografi
             </h2>
+            {% if source_documents %}
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
                 <table class="min-w-full divide-y divide-slate-200">
                     <thead class="bg-slate-50">
@@ -217,6 +219,11 @@
                     </tbody>
                 </table>
             </div>
+            {% else %}
+            <div class="bg-amber-50 border border-amber-100 rounded-xl p-6 text-amber-800 text-sm">
+                Ingen gyldige kildedokumenter ble inkludert i analysen.
+            </div>
+            {% endif %}
         </section>
 
         {% if excluded_documents %}

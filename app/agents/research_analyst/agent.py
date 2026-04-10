@@ -2,14 +2,10 @@ import os
 from google.adk.agents import Agent, ParallelAgent
 from google.genai import types
 from app.shared.models import MetadataResponse, ClinicalFindingsResponse
+from app.shared.tools import load_prompt
 
 def create_metadata_extractor():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-    prompt_path = os.path.join(project_root, "app", "prompts", "metadata_extractor.txt")
-
-    with open(prompt_path, "r", encoding="utf-8") as f:
-        instructions = f.read()
+    instructions = load_prompt("metadata_extractor")
 
     config = types.GenerateContentConfig(
         temperature=1.0,
@@ -36,12 +32,7 @@ def create_metadata_extractor():
     )
 
 def create_finding_extractor():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-    prompt_path = os.path.join(project_root, "app", "prompts", "finding_extractor.txt")
-
-    with open(prompt_path, "r", encoding="utf-8") as f:
-        instructions = f.read()
+    instructions = load_prompt("finding_extractor")
 
     config = types.GenerateContentConfig(
         temperature=1.0,

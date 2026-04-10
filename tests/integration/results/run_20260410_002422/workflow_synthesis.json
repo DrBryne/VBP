@@ -1,0 +1,186 @@
+{
+  "execution_summary": {
+    "target_group": "ALS - Amytrofisk lateral sklerose",
+    "source_uri": "gs://veiledende_behandlingsplan/ALS/",
+    "total_files_in_uri": 96,
+    "processed_files_count": 3,
+    "successful_files_count": 3,
+    "excluded_files_count": 0,
+    "total_synthesized_findings": 6,
+    "total_rectified_quotes": 0,
+    "total_taxonomy_errors": 0,
+    "total_dropped_findings": 0,
+    "execution_start_time": "2026-04-10T00:24:22.538842",
+    "execution_end_time": "2026-04-10T00:25:31.375865"
+  },
+  "synthesized_findings": [
+    {
+      "nursing_diagnosis": {
+        "term": "respirasjonssvikt",
+        "ICNP_concept_id": "409622000"
+      },
+      "intervention": {
+        "term": "handtering av noninvasiv mekanisk ventilasjon",
+        "ICNP_concept_id": "430191008"
+      },
+      "goal": {
+        "term": "tilfredsstillende respiratorisk status",
+        "ICNP_concept_id": "14751000202106"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "6a46bd95-58f8-4a74-b385-3c9ea054e6e1",
+          "quotes": [
+            "Mean vital capa- city was close to 40% of predicted, but significantly lower in the Duchenne patients (26% of predicted). Conclusion: Daytime sleepiness was the most common clinical symptom motivating home mechanical ventilation in this group of patients with chronic hypercapnic respiratory insufficiency secondary to neuro/myopathies. Respiratory function testing is therefore suggested to be included in the diagnostic work up of daytime sleepiness in these patients. J Rehabil Med 2006; 38: 250\u0001254 Correspondence address: Michael Laub, MD, Dept of Respiratory Medicine, University Hospital, SE-221 85, Lund, Sweden. E-mail: ml@laub.dk Submitted April 21, 2005; accepted March 17, 2006 INTRODUCTION Home mechanical ventilation (HMV) in patients with chronic alveolar hypoventilation secondary to neuromuscular diseases (NMD) has become widely acceptable, as the provision of ventilatory support can provide symptomatic relief and increase life expectancy (1). HMV can be applied as non-invasive ventilation (NIV) most often via a facemask, or as invasive ventilation via a tracheo- stomy. Generally, the use of NIV is much more prevalent than invasive ventilation. There are many reasons for this, some of which are that NIV is simpler and cheaper to administer and that most patients are ventilated initially during sleep only. Eventually, when the need for HMV exceeds 16\u000120/24 hours, some centres would consider a change to invasive ventilation, while others are more reluctant to take this step."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "redusert respiratorisk funksjon",
+        "ICNP_concept_id": "80954004"
+      },
+      "intervention": {
+        "term": "overvåking av respirasjonsbehandling",
+        "ICNP_concept_id": "425123005"
+      },
+      "goal": {
+        "term": "tilfredsstillende funksjon i respirasjonssystem",
+        "ICNP_concept_id": "278961000202103"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "6a46bd95-58f8-4a74-b385-3c9ea054e6e1",
+          "quotes": [
+            "We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well. Apart from the Duchenne group the mean VC was approximately 40% of the predicted value for all groups. 18. Kleopa KA, Sherman M, Neal B, Romano GJ, Heimann-Patterson T. Bipap improves survival and rate of pulmonary function decline in patients with ALS. J Neurol Sci 1999; 164: 82\u000188."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsett mobilitet",
+        "ICNP_concept_id": "82971005"
+      },
+      "intervention": {
+        "term": "oppmuntring til trening",
+        "ICNP_concept_id": "304549008"
+      },
+      "goal": {
+        "term": "i stand til å utføre daglige rutiner",
+        "ICNP_concept_id": "716398003"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "37683fec-362b-45d9-b250-890511c16157",
+          "quotes": [
+            "The prevalence rates of ALS are 4–10 cases per 100,000 ( 8 – 11 ). Muscle weakness is considered one of the major symptoms of ALS. In more than 70% of patients, the presenting symptom is muscle weakness in the focal upper or lower extremities ( 12 ). Although a few agents can inhibit the progression of symptoms, ALS has no cure ( 1 ). Therefore, patients with ALS must maintain activities of daily living as much as possible with symptomatic treatments such as therapeutic exercises ( 13 , 14 ). These exercises consist of strengthening, resistive, or active aerobic exercises ( 13 , 14 ). However, there are very few randomized, controlled, large-scale studies that have evaluated the potential benefits of therapeutic exercise in patients with ALS ( 15 , 16 ). Appropriate exercises may be physically and psychologically beneficial to patients with ALS, especially in the earlier stages of the disease and before significant muscular atrophy or deconditioning occurs. Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Our meta-analysis has some limitations. Conclusion In conclusion, in patients with ALS, therapeutic exercise was effective in reducing the rate of declination in general physical function. Therapeutic exercise may have a particularly positive therapeutic effect on cardiopulmonary functions rather than preventing weakness in denervated or atrophy limb muscles in patients with ALS. Author Contributions DP, YC, and MC: conceptualization."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for nedsett funksjon i respirasjonssystem",
+        "ICNP_concept_id": "704296008"
+      },
+      "intervention": {
+        "term": "respirasjonsbehandling",
+        "ICNP_concept_id": "53950000"
+      },
+      "goal": {
+        "term": "tilfredsstillende funksjon i respirasjonssystem",
+        "ICNP_concept_id": "278961000202103"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "37683fec-362b-45d9-b250-890511c16157",
+          "quotes": [
+            "This degeneration leads to progressive muscle atrophy and weakness ( 3 ). Patients with ALS usually succumb to respiratory complications, on average, within 5 years of symptom onset ( 1 , 4 – 7 ). Worldwide, the annual incidence rates for ALS are reportedly 0.4–2.4 cases per 100,000 ( 8 – 11 ). Further, we analyzed the respiratory and limb functions of patients with ALS. Interestingly, only the progression of respiratory dysfunction, as measured by the ALSFORD-R-Respiratory score (effect size: −0.81), was significantly less decreased in the exercise group as compared to the control group. There was no difference in the limb function scores of the two groups, as measured by the ALSFRS-R-Limb score. For this reason, we think the patients participated in these studies would have weakness mainly in limb muscles, but less in respiratory muscles. Accordingly, early initiation of therapeutic exercise would have been performed primarily for respiratory muscles rather than limb muscles. It has already been reported that the early initiation of exercise in patients with ALS is more effective than starting exercise at later stages of the disease ( 20 ), therefore therapeutic exercise would be more effective for maintaining respiratory function than limb motor function in patients with ALS. In five RCTs, adverse effects, such as increased muscle cramping, and muscle soreness or fatigue, were rarely reported by the investigators. Therapeutic exercise may have a particularly positive therapeutic effect on cardiopulmonary functions rather than preventing weakness in denervated or atrophy limb muscles in patients with ALS. Author Contributions DP, YC, and MC: conceptualization. SK and J-SP: methodology."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "kognitiv svikt",
+        "ICNP_concept_id": "386806002"
+      },
+      "intervention": {
+        "term": "kognitiv testing og vurdering",
+        "ICNP_concept_id": "113024001"
+      },
+      "goal": {
+        "term": "god livskvalitet",
+        "ICNP_concept_id": "1156447008"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "66f6cc0d-dea8-4e3f-b457-519ee41756fb",
+          "quotes": [
+            "To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/ . Background Up to 50% of people with amyotrophic lateral sclerosis (ALS) experience cognitive dysfunction, whilst depression and anxiety are reported in up to 44% and 33%, respectively. These symptoms impact on quality of life, and are associated with a poorer prognosis. Individuals with chronic physical illness and comorbid depression or anxiety often experience a higher level of somatic symptom burden that can impair functioning [ 16 ]. Symptoms of depression, anxiety and apathy reduce quality of life (QoL) for people with ALS [ 17 , 18 ]. Lower psychological well-being generally has been identified as predictive of disability and shorter survival in people with ALS [ 4 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. Assessments are often performed using tools which have not been adapted for people with physical disability or communication difficulties. Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. Whilst survival and functioning remain the gold standard outcome measures used in clinical trials, incorporation of measures of neuropsychiatric and cognitive function enable more holistic assessment of the impact of drugs. Awareness of how a candidate drug may affect extra-motor features is clinically revelant in disease management and quality of life. Including individuals with neuropsychiatric and cognitive impairments, and using assessments to evaluate changes in these areas as outcome measures will enable the trial teams to evaluate the impact of the candidate drugs on people with extra-motor features of ALS. Conclusion This study clearly demonstrates that the impact of candidate drugs on neuropsychiatric symptoms and cognition has been under-evaluated in clinical trials and that when these symptoms have been evaluated, the tools used may not be suitable for people with ALS. Accurate identification of neuropsychiatric comorbidity and cognitive impairment is an essential requirement to improve our understanding of how candidate drugs impact the extra-motor features of ALS. We recommend the evaluation of neuropsychiatric and cognitive symptoms as additional outcome measures in clinical trials of investigative medicinal products. Additionally, when evaluating these areas we recommend using tools which are designed to assess domains affected in ALS, with disease-specific impairment thresholds and those adapted to account for motor decline and communication difficulties. Electronic supplementary material Below is the link to the electronic supplementary material."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for belastande omsorgsgjevarrolle",
+        "ICNP_concept_id": "129700008"
+      },
+      "intervention": {
+        "term": "vurdering av stress hos omsorgsgjevar",
+        "ICNP_concept_id": "733861006"
+      },
+      "goal": {
+        "term": "redusert stress hos omsorgsgiver",
+        "ICNP_concept_id": "1149158002"
+      },
+      "FO": "10. Sosiale forhold/miljø",
+      "supporting_evidence": [
+        {
+          "document_id": "66f6cc0d-dea8-4e3f-b457-519ee41756fb",
+          "quotes": [
+            "Lower psychological well-being generally has been identified as predictive of disability and shorter survival in people with ALS [ 4 ]. Presence of concomitant neuropsychiatric conditions and cognitive impairment predicts greater carer distress [ 19 – 21 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. There is an urgent need for more effective treatment options in ALS. Whilst survival and functioning remain the gold standard outcome measures used in clinical trials, incorporation of measures of neuropsychiatric and cognitive function enable more holistic assessment of the impact of drugs. Awareness of how a candidate drug may affect extra-motor features is clinically revelant in disease management and quality of life. Conclusion This study clearly demonstrates that the impact of candidate drugs on neuropsychiatric symptoms and cognition has been under-evaluated in clinical trials and that when these symptoms have been evaluated, the tools used may not be suitable for people with ALS. Accurate identification of neuropsychiatric comorbidity and cognitive impairment is an essential requirement to improve our understanding of how candidate drugs impact the extra-motor features of ALS. We recommend the evaluation of neuropsychiatric and cognitive symptoms as additional outcome measures in clinical trials of investigative medicinal products."
+          ]
+        }
+      ]
+    }
+  ],
+  "source_documents": [
+    {
+      "document_id": "6a46bd95-58f8-4a74-b385-3c9ea054e6e1",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/250-254.pdf",
+      "title": "SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES",
+      "publication_year": 2006,
+      "doi": "10.1080/16501970600721033",
+      "evidence_level": "Nivå 1: Enkeltstudier",
+      "reasoning_trace": "Dokumentet omhandler indikatorer og kliniske funn som motiverer oppstart av hjemmerespiratorbehandling (HMV) / non-invasiv ventilasjon (NIV) hos pasienter med nevromuskulære sykdommer, inkludert ALS. Jeg har hentet ut to relevante sykepleiefunn knyttet til ALS-pasienter i en sykehuskontekst. Det første funnet omhandler håndtering av respirasjonssvikt/hypoventilasjon som ytrer seg som dyspné og uttalt søvnighet på dagtid, hvor tiltaket er å administrere og veilede i bruk av maskebasert NIV. Det andre funnet er knyttet til den raske forverringen av lungefunksjon spesifikk for ALS, der overvåking av BiPAP-behandling og håndtering av etiske problemstillinger rundt livsforlengende ventilasjonsstøtte er sentrale sykepleieoppgaver. Målene er delvis eksplisitte (økt overlevelse, symptomlindring) og delvis utledet basert på klinisk standard for NIV-behandling (bremse funksjonstap, bedre livskvalitet)."
+    },
+    {
+      "document_id": "37683fec-362b-45d9-b250-890511c16157",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32903629_fulltext.xml",
+      "title": "Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis",
+      "publication_year": 2020,
+      "doi": "10.3389/fneur.2020.00853",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "1. Analyserte dokumentet for å identifisere kliniske problemer forbundet med ALS, relevante tiltak og mål. Dokumentet er en metaanalyse av effekten av terapeutisk trening for ALS-pasienter.\n2. Identifiserte to hovedproblemer som er relevante for sykepleie: muskelvekkelse med påfølgende tap av fysisk funksjon/ADL, og gradvis tap av respirasjonsfunksjon med risiko for respiratoriske komplikasjoner.\n3. Intervensjonene i dokumentet er 'terapeutisk trening' (inkludert styrke-, motstands- og aerob trening). I en sykepleiekontekst innebærer dette å initiere, tilrettelegge og motivere pasienten til å utføre disse øvelsene (ofte i samarbeid med fysioterapeut), spesielt i tidlig fase av sykdommen.\n4. Målene ble utledet fra dokumentets konklusjoner: å bremse fallet i generell fysisk funksjon, opprettholde evnen til aktiviteter i dagliglivet (ADL), og bremse forverringen av respirasjons- og hjerte-/lungefunksjon.\n5. Konstruerte to konkrete funn med sykepleiediagnose, intervensjon og mål, og knyttet disse til de eksakte setnings-ID-ene som underbygger informasjonen."
+    },
+    {
+      "document_id": "66f6cc0d-dea8-4e3f-b457-519ee41756fb",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32910255_fulltext.xml",
+      "title": "A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis",
+      "publication_year": 2020,
+      "doi": "10.1007/s00415-020-10203-z",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er i hovedsak en systematisk gjennomgang av verktøy brukt i kliniske studier for å kartlegge kognitive og nevropsykiatriske symptomer hos ALS-pasienter. Det inneholder imidlertid viktig informasjon som er direkte overførbar til klinisk sykepleie. Teksten peker på at ekstra-motoriske symptomer som kognitiv svikt, depresjon, angst og apati er svært utbredt og reduserer livskvaliteten, men ofte underkjennes i klinisk praksis fordi standard kartleggingsverktøy ikke er tilpasset pasientenes fysiske eller kommunikative funksjonsnedsettelser. Ut fra dette trekker jeg ut et sykepleiefunn som retter seg mot nøyaktig kartlegging av disse symptomene ved bruk av tilpassede verktøy. I tillegg nevnes det at kognitiv og nevropsykiatrisk svikt predikerer økt belastning på pårørende, noe som gir grunnlag for et ekstra funn rettet mot forebygging av pårørendestress gjennom helhetlig kartlegging."
+    }
+  ],
+  "excluded_documents": []
+}

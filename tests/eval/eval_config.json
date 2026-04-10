@@ -8,12 +8,16 @@
       },
       "rubrics": [
         {
-          "rubricId": "relevance",
-          "rubricContent": { "textProperty": "The response directly addresses the user's query." }
+          "rubricId": "clinical_accuracy",
+          "rubricContent": { "textProperty": "The synthesized findings are clinically accurate and relevant to the specified target group." }
         },
         {
-          "rubricId": "helpfulness",
-          "rubricContent": { "textProperty": "The response is helpful and provides useful information." }
+          "rubricId": "structural_integrity",
+          "rubricContent": { "textProperty": "The response is a valid JSON object containing an execution_summary and synthesized_findings." }
+        },
+        {
+          "rubricId": "evidence_grounding",
+          "rubricContent": { "textProperty": "Every finding is supported by verbatim quotes extracted from the source documents." }
         }
       ]
     }

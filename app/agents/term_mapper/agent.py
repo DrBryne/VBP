@@ -3,19 +3,17 @@ from typing import List
 from google.adk.agents import Agent, ParallelAgent
 from google.genai import types
 from app.shared.models import IcnpMappingResponse, FunctionalAreaResponse
+from app.shared.tools import load_prompt
 
 def create_icnp_mapper():
+    instructions = load_prompt("icnp_mapper")
+    
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-    prompt_path = os.path.join(project_root, "app", "prompts", "icnp_mapper.txt")
     terms_path = os.path.join(current_dir, "data", "restructured_terms.txt")
-
-    with open(prompt_path, "r", encoding="utf-8") as f:
-        mapping_instructions = f.read()
     with open(terms_path, "r", encoding="utf-8") as f:
         icnp_terms = f.read()
     
-    mapping_instructions = mapping_instructions.replace("{{icnp_terms}}", icnp_terms)
+    instructions = instructions.replace("{{icnp_terms}}", icnp_terms)
 
     config = types.GenerateContentConfig(
         temperature=1.0,
@@ -35,19 +33,14 @@ def create_icnp_mapper():
     return Agent(
         name="icnp_mapper",
         model="gemini-3.1-pro-preview",
-        instruction=mapping_instructions,
+        instruction=instructions,
         output_schema=IcnpMappingResponse,
         output_key="icnp_mappings",
         generate_content_config=config
     )
 
 def create_fo_classifier():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-    prompt_path = os.path.join(project_root, "app", "prompts", "fo_classifier.txt")
-
-    with open(prompt_path, "r", encoding="utf-8") as f:
-        fo_instructions = f.read()
+    instructions = load_prompt("fo_classifier")
 
     config = types.GenerateContentConfig(
         temperature=1.0,
@@ -67,7 +60,7 @@ def create_fo_classifier():
     return Agent(
         name="fo_classifier",
         model="gemini-3-flash-preview",
-        instruction=fo_instructions,
+        instruction=instructions,
         output_schema=FunctionalAreaResponse,
         output_key="functional_areas",
         generate_content_config=config

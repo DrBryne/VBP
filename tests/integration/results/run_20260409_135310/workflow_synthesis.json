@@ -1,0 +1,37 @@
+{
+  "execution_summary": {
+    "target_group": "ALS - Amytrofisk lateral sklerose",
+    "source_uri": "gs://veiledende_behandlingsplan/ALS/",
+    "total_files_in_uri": 96,
+    "processed_files_count": 3,
+    "successful_files_count": 0,
+    "excluded_files_count": 3,
+    "total_synthesized_findings": 0,
+    "total_rectified_quotes": 0,
+    "total_unsupported_quotes_dropped": 0,
+    "total_taxonomy_errors": 0,
+    "total_dropped_findings": 0,
+    "execution_start_time": "2026-04-09T13:53:10.522635",
+    "execution_end_time": "2026-04-09T13:54:08.394191",
+    "quality_notes": "Det er ikke identifisert kliniske funn eller dokumentasjon med tilhørende evidensnivåer i det vurderte materialet. Det foreligger dermed ikke grunnlag for å evaluere evidensstyrke, samsvar mellom kilder eller kvaliteten på de kliniske dataene for dette behandlingsforløpet."
+  },
+  "synthesized_findings": [],
+  "source_documents": [],
+  "excluded_documents": [
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/250-254.pdf",
+      "title": "SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES",
+      "justification": "A critical error occurred during document processing: 'WorkflowProgress' object is not subscriptable"
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32903629_fulltext.xml",
+      "title": "Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis",
+      "justification": "A critical error occurred during document processing: 'WorkflowProgress' object is not subscriptable"
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32910255_fulltext.xml",
+      "title": "A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis",
+      "justification": "A critical error occurred during document processing: 'WorkflowProgress' object is not subscriptable"
+    }
+  ]
+}

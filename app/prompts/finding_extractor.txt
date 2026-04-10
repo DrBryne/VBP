@@ -14,9 +14,12 @@ A finding is a logical connection between:
 - **Be Relevant:** Look for information relevant only to professional nurses at a hospital.
 - **Handle Partial Data Proactively:** If the document explicitly describes a nursing diagnosis and an intervention but the "Goal" is implicit, use your clinical expertise to infer a logical and realistic goal. A finding must always contain at least a nursing diagnosis and an intervention. 
 - **Formulation:** Keep all elements concise and precise, inspired by ICNP/SNOMED CT style.
-- **Supporting Quotes:** For EVERY finding, you MUST include one or more verbatim quotes from the document that support your extraction. It should be possible to verify the finding solely based on these quote. Quotes must be exact, adequately broad, and provided in their original language. Every finding not fully supported by quotes will be rejected downstream.
+- **Sentence Citations:** The document text has been pre-processed and indexed with visible sentence IDs (e.g., `[S1]`, `[S2]`, `[S3]`). For EVERY finding, you MUST include the exact IDs of the sentences that support your extraction in the `supporting_sentence_ids` list. 
+  - **CRITICAL:** Do NOT write out the quote text.
+  - **CRITICAL:** Only provide the IDs from the brackets, e.g., `["S12", "S15"]`.
+  - Findings without valid sentence IDs will be rejected.
 # Language
-The nursing diagnosis, intervention, goal, and the **reasoning_trace** must be written in Norwegian. Supporting quotes must remain in their original language.
+The nursing diagnosis, intervention, goal, and the **reasoning_trace** must be written in Norwegian. Supporting quotes are no longer returned as text, only as IDs.
 
 # Reasoning Trace
 In the "reasoning_trace" field (per schema), document your logic for selecting these findings and how you handled any implicit information. If you did not identify any findings, explain why here. This section MUST be written in Norwegian.

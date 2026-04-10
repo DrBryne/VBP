@@ -21,3 +21,21 @@ def list_gcs_files(gcs_uri: str, project_id: str) -> List[str]:
     blobs = bucket.list_blobs(prefix=prefix)
     
     return [f"gs://{bucket_name}/{blob.name}" for blob in blobs if not blob.name.endswith("/")]
+
+def load_prompt(prompt_name: str) -> str:
+    """
+    Centralized utility to load prompt text files from the app/prompts directory.
+    Uses absolute pathing relative to the app root for portability.
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    app_root = os.path.dirname(current_dir)
+    prompt_path = os.path.join(app_root, "prompts", prompt_name)
+    
+    if not prompt_name.endswith(".txt"):
+        prompt_path += ".txt"
+        
+    try:
+        with open(prompt_path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Prompt file not found: {prompt_path}")

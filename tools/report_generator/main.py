@@ -68,14 +68,7 @@ def generate_report(input_path: str, output_path: str):
     # Convert overall quality notes
     context['quality_notes_html'] = markdown.markdown(synthesis.execution_summary.quality_notes)
     
-    # Convert individual finding summaries (mapped by finding_id to avoid mismatch after sort)
-    for finding in context.get('synthesized_findings', []):
-        # We find the original object to get the markdown summary
-        original = next((f for f in synthesis.synthesized_findings if f.nursing_diagnosis.term == finding['nursing_diagnosis']['term'] and f.FO == finding['FO']), None)
-        if original:
-            finding['evidence_summary_html'] = markdown.markdown(original.evidence_summary)
-        else:
-            finding['evidence_summary_html'] = markdown.markdown(finding.get('evidence_summary', ''))
+    # Convert individual finding summaries removed as evidence_summary is no longer in the model
 
     # 4. Render and save
     try:

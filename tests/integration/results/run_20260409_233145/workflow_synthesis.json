@@ -1,0 +1,1025 @@
+{
+  "execution_summary": {
+    "target_group": "ALS - Amytrofisk lateral sklerose",
+    "source_uri": "gs://veiledende_behandlingsplan/ALS/",
+    "total_files_in_uri": 96,
+    "processed_files_count": 20,
+    "successful_files_count": 17,
+    "excluded_files_count": 3,
+    "total_synthesized_findings": 32,
+    "total_rectified_quotes": 0,
+    "total_unsupported_quotes_dropped": 0,
+    "total_taxonomy_errors": 3,
+    "total_dropped_findings": 0,
+    "execution_start_time": "2026-04-09T23:31:45.383771",
+    "execution_end_time": "2026-04-09T23:39:18.831535",
+    "quality_notes": "Det kliniske kunnskapsgrunnlaget er i hovedsak basert på systematiske oversikter (nivå 2), supplert med enkeltstudier (nivå 1). Med 16 systematiske oversikter som kildegrunnlag for de 32 identifiserte funnene, anses evidensen for å ha høy metodisk styrke. Det er observert god konsistens i funnene på tvers av de ulike kildene, og det foreligger lite motstridende data. Samlet sett gir dette et pålitelig grunnlag for de kliniske anbefalingene."
+  },
+  "synthesized_findings": [
+    {
+      "nursing_diagnosis": {
+        "term": "somnolent",
+        "ICNP_concept_id": "271782001"
+      },
+      "intervention": {
+        "term": "vurdering av respirasjon",
+        "ICNP_concept_id": "422834003"
+      },
+      "goal": {
+        "term": "tilstrekkelig søvn",
+        "ICNP_concept_id": "1137437005"
+      },
+      "FO": "12. Annet/legedelegerte aktiviteter",
+      "supporting_evidence": [
+        {
+          "document_id": "20375647-3d6c-4029-9db5-db159f4ddd3f",
+          "quotes": [
+            "Mean vital capa- city was close to 40% of predicted, but significantly lower in the Duchenne patients (26% of predicted). Conclusion: Daytime sleepiness was the most common clinical symptom motivating home mechanical ventilation in this group of patients with chronic hypercapnic respiratory insufficiency secondary to neuro/myopathies. Respiratory function testing is therefore suggested to be included in the diagnostic work up of daytime sleepiness in these patients. Key words: respiratory failure, non-invasive ventilation, invasive ventilation, symptoms and signs. For patients starting therapy after January 1, 1996 (prospective part of the register n\u0002/970), we have data on blood gases (spontaneous breathing, room air), vital capacity and symptoms and signs motivating HMV. Only patients starting after this date and presenting neuromuscular diseases as the cause of respiratory failure (n\u0002/352) were included in our analysis, which was comprised of the following diagnostic groups: (a) post-polio syndrome, (b) amyotrophic lateral sclerosis (ALS), (c) Duchenne muscular dystrophy (DMD), (d) dystrophia myotonica (DM), (e) spinal muscular atrophy (SMA) and (f) other neuro/myopathies. Identical register forms were used by all the participating physicians, who thus relied on the same pre-defined criteria framing 10 different clinical motives leading to HMV. Table II. Motives for launching home mechanical ventilation electively in 268 patients Motive Average Post-polio ALS DMD DM SMA Other Sleepiness 56 68 45 54 68 30 56 ABG daytime 38 59 8 26 46 17 54 Dyspnoea 37 44 55 9 31 17 34 Cough insuff. 27 13 31 31 23 70* 24 Headache 21 28 12 34 23 4 20 Sleeping disorder 21 21 35 6 32 4 16 ABG night 18 18 7 43 18 13 18 Apnoeas 11 15 5 11 9 9 14 General 11 5 23 11 9 26 0 Oedema 6 13 0 3 9 4 4 Numbers in the columns show the percentage distribution for each motive in the different patient groups. *p B/0.01."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "dyspné",
+        "ICNP_concept_id": "267036007"
+      },
+      "intervention": {
+        "term": "handtering av noninvasiv mekanisk ventilasjon",
+        "ICNP_concept_id": "430191008"
+      },
+      "goal": {
+        "term": "ingen dyspné",
+        "ICNP_concept_id": "161938003"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "20375647-3d6c-4029-9db5-db159f4ddd3f",
+          "quotes": [
+            "J Rehabil Med 2006; 38: 250\u0001254 Correspondence address: Michael Laub, MD, Dept of Respiratory Medicine, University Hospital, SE-221 85, Lund, Sweden. E-mail: ml@laub.dk Submitted April 21, 2005; accepted March 17, 2006 INTRODUCTION Home mechanical ventilation (HMV) in patients with chronic alveolar hypoventilation secondary to neuromuscular diseases (NMD) has become widely acceptable, as the provision of ventilatory support can provide symptomatic relief and increase life expectancy (1). HMV can be applied as non-invasive ventilation (NIV) most often via a facemask, or as invasive ventilation via a tracheo- stomy. Generally, the use of NIV is much more prevalent than invasive ventilation. For patients starting therapy after January 1, 1996 (prospective part of the register n\u0002/970), we have data on blood gases (spontaneous breathing, room air), vital capacity and symptoms and signs motivating HMV. Only patients starting after this date and presenting neuromuscular diseases as the cause of respiratory failure (n\u0002/352) were included in our analysis, which was comprised of the following diagnostic groups: (a) post-polio syndrome, (b) amyotrophic lateral sclerosis (ALS), (c) Duchenne muscular dystrophy (DMD), (d) dystrophia myotonica (DM), (e) spinal muscular atrophy (SMA) and (f) other neuro/myopathies. Identical register forms were used by all the participating physicians, who thus relied on the same pre-defined criteria framing 10 different clinical motives leading to HMV. Table II. Motives for launching home mechanical ventilation electively in 268 patients Motive Average Post-polio ALS DMD DM SMA Other Sleepiness 56 68 45 54 68 30 56 ABG daytime 38 59 8 26 46 17 54 Dyspnoea 37 44 55 9 31 17 34 Cough insuff. 27 13 31 31 23 70* 24 Headache 21 28 12 34 23 4 20 Sleeping disorder 21 21 35 6 32 4 16 ABG night 18 18 7 43 18 13 18 Apnoeas 11 15 5 11 9 9 14 General 11 5 23 11 9 26 0 Oedema 6 13 0 3 9 4 4 Numbers in the columns show the percentage distribution for each motive in the different patient groups. *p B/0.01. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsett hostekraft",
+        "ICNP_concept_id": "388021000202109"
+      },
+      "intervention": {
+        "term": "vurdering av hoste",
+        "ICNP_concept_id": "337951000202106"
+      },
+      "goal": {
+        "term": "i stand til å oppretthalda frie luftvegar",
+        "ICNP_concept_id": "1145305006"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "20375647-3d6c-4029-9db5-db159f4ddd3f",
+          "quotes": [
+            "For patients starting therapy after January 1, 1996 (prospective part of the register n\u0002/970), we have data on blood gases (spontaneous breathing, room air), vital capacity and symptoms and signs motivating HMV. Only patients starting after this date and presenting neuromuscular diseases as the cause of respiratory failure (n\u0002/352) were included in our analysis, which was comprised of the following diagnostic groups: (a) post-polio syndrome, (b) amyotrophic lateral sclerosis (ALS), (c) Duchenne muscular dystrophy (DMD), (d) dystrophia myotonica (DM), (e) spinal muscular atrophy (SMA) and (f) other neuro/myopathies. Identical register forms were used by all the participating physicians, who thus relied on the same pre-defined criteria framing 10 different clinical motives leading to HMV. Altogether, the most common motive was daytime sleepiness. Cough insufficiency was a more frequent motive in the children with SMA (p B/0.01) compared with the other groups; no other statistically signifi- cant differences were seen between the diagnostic groups. The mean (SD) age in the patients with and without daytime sleepiness was 53 (20) and 46 (24) respectively, (p B/0.05). Table II. Motives for launching home mechanical ventilation electively in 268 patients Motive Average Post-polio ALS DMD DM SMA Other Sleepiness 56 68 45 54 68 30 56 ABG daytime 38 59 8 26 46 17 54 Dyspnoea 37 44 55 9 31 17 34 Cough insuff. 27 13 31 31 23 70* 24 Headache 21 28 12 34 23 4 20 Sleeping disorder 21 21 35 6 32 4 16 ABG night 18 18 7 43 18 13 18 Apnoeas 11 15 5 11 9 9 14 General 11 5 23 11 9 26 0 Oedema 6 13 0 3 9 4 4 Numbers in the columns show the percentage distribution for each motive in the different patient groups. *p B/0.01. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsett mobilitet",
+        "ICNP_concept_id": "82971005"
+      },
+      "intervention": {
+        "term": "individuelle øvelser",
+        "ICNP_concept_id": "25902004"
+      },
+      "goal": {
+        "term": "i stand til å utføre daglige rutiner",
+        "ICNP_concept_id": "716398003"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "449e4198-88d1-483c-919b-3cf6cde83e88",
+          "quotes": [
+            "amyotrophic lateral sclerosis therapeutic exercise conventional exercise motor function respiratory function meta-analysis pmc-status-qastatus 0 pmc-status-live yes pmc-status-embargo no pmc-status-released yes pmc-prop-open-access yes pmc-prop-olf no pmc-prop-manuscript no pmc-prop-legally-suppressed no pmc-prop-has-pdf yes pmc-prop-has-supplement no pmc-prop-pdf-only no pmc-prop-suppress-copyright no pmc-prop-is-real-version no pmc-prop-is-scanned-article no pmc-prop-preprint no pmc-prop-in-epmc yes pmc-license-ref CC BY Introduction Amyotrophic lateral sclerosis (ALS) is characterized by rapidly progressive degeneration of motor neurons in the primary motor cortex, brainstem, and spinal cord ( 1 , 2 ). This degeneration leads to progressive muscle atrophy and weakness ( 3 ). Patients with ALS usually succumb to respiratory complications, on average, within 5 years of symptom onset ( 1 , 4 – 7 ). The prevalence rates of ALS are 4–10 cases per 100,000 ( 8 – 11 ). Muscle weakness is considered one of the major symptoms of ALS. In more than 70% of patients, the presenting symptom is muscle weakness in the focal upper or lower extremities ( 12 ). Although a few agents can inhibit the progression of symptoms, ALS has no cure ( 1 ). Therefore, patients with ALS must maintain activities of daily living as much as possible with symptomatic treatments such as therapeutic exercises ( 13 , 14 ). These exercises consist of strengthening, resistive, or active aerobic exercises ( 13 , 14 ). However, there are very few randomized, controlled, large-scale studies that have evaluated the potential benefits of therapeutic exercise in patients with ALS ( 15 , 16 ). The effect sized was −0.87 and −0.44 for the ALFRS-Total and ALFRS-R-Total, respectively. Based on Cohen's study ( 26 ), these outcomes mean that therapeutic exercise has a large to moderate positive therapeutic effect for slowing down the rate of functional declines in patients with ALS. Further, we analyzed the respiratory and limb functions of patients with ALS. Appropriate exercises may be physically and psychologically beneficial to patients with ALS, especially in the earlier stages of the disease and before significant muscular atrophy or deconditioning occurs. Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Our meta-analysis has some limitations."
+          ]
+        },
+        {
+          "document_id": "c8bfce2f-3dc6-4a0e-a7da-6faf2cd32d54",
+          "quotes": [
+            "Introduction Amyotrophic lateral sclerosis (ALS) is a disease of the central nervous system (CNS) and is characterized by a progressive involution of motor neurons in the cortex of the brain (upper motor neurons) [ 1 ]. As a consequence, muscle weakness occurs, which causes paralysis, spreading from different body regions. It compromises motor autonomy, written and oral communication, swallowing and breathing; however, the ocular muscles, sensitivity and intellect are not altered [ 2 ]. It includes pharmacological, neurorehabilitation and symptomatic treatments [ 4 ]. Physical therapy consists in planned therapeutic physical exercise to correct postural abnormalities, combat pain and reduce muscle stiffness. In addition, it promotes functional independence, trains the patient to prevent falls, and re-educates walking, with certain technical aids if necessary [ 5 ]. The role of physical exercise begins prior to significant loss of strength and continues throughout the course of the disease, up to the last days of the person’s life. It seems that the measures of this scale are not linked to the probability of surviving a longer time [ 10 ]. However, some aspects were correlated with this scale, such as a deceleration of muscular atrophy that is normally caused by progressive inactivity, which is responsible for the involutional character of this disease [ 11 ]. In addition, aerobic fitness and respiratory function are benefited [ 12 , 14 ]. 5. Conclusions Therapeutic physical exercise could help to slow down the deterioration of the musculature of people with ALS, thus facilitating their performance of activities of daily living and, therefore, maintaining the levels of their scores on the ALSFRS-R functionality scale, especially in the medium and long terms, compared to those in ALS patients with mostly passive treatments. The survival of patients did not improve in relation to a therapeutic physical exercise programme, although their respiratory muscles did improve the levels measured in the FVC, which leads to an improvement in their quality of life until the end of their disease."
+          ]
+        },
+        {
+          "document_id": "2a1d230e-e8e8-4808-b4a0-155ad1a7e63e",
+          "quotes": [
+            "There was no significant difference in Forced vital capacity (FVC%) in the short term (0–4 months) ( P > 0.05). Conclusion More intensive exercise training may slow the decline in functional score of amyotrophic lateral sclerosis patients, and more studies should be carried out in the future to verify the effect of more intensive exercise training in patients with amyotrophic lateral sclerosis. amyotrophic lateral sclerosis exercise functional ability rehabilitation meta-analysis pmc-status-qastatus 0 pmc-status-live yes pmc-status-embargo no pmc-status-released yes pmc-prop-open-access yes pmc-prop-olf no pmc-prop-manuscript no pmc-prop-legally-suppressed no pmc-prop-has-pdf yes pmc-prop-has-supplement no pmc-prop-pdf-only no pmc-prop-suppress-copyright no pmc-prop-is-real-version no pmc-prop-is-scanned-article no pmc-prop-preprint no pmc-prop-in-epmc yes pmc-license-ref CC BY Introduction Amyotrophic lateral sclerosis (ALS) is a fatal motor neuron disease characterized by degenerative changes in upper and lower motor neurons ( 1 , 2 ). Generally, the disease is more common in middle-aged and elderly people, and the main clinical manifestations are progressive aggravation of skeletal muscle weakness, atrophy, muscle bundle fasciculations, bulbar paralysis and pyramidal bundle sign. The median survival time after symptoms appear is approximately equal to 3 years ( 3 ). According to a systematic review and meta-analysis of the prevalence and incidence of ALS published in 2020, the global prevalence of ALS is 4.42 per 100,000 person-years, and the incidence is 1.59 per 100,000 person-years, with the incidence increasing significantly each year since 1957 ( 5 ). The patient's quality of life is seriously affected by progressive muscle atrophy and loss of movement, swallowing, speaking and breathing. In recent years, studies have pointed out that exercise intervention for ALS patients can have a therapeutic effect on neuromuscular function, thus improving the functional ability of patients and delaying the deterioration of the disease ( 6 ). As a non-drug therapy technique, exercise training can promote the plasticity of muscle fibers and nerve tissue and have antioxidant and anti-inflammatory functions, which have a positive impact on cardiovascular, respiratory, musculoskeletal, metabolic and neuroendocrine systems ( 7 ). A large body of data suggests that mitochondrial damage leads to neuronal failure, which leads to severe muscle paralysis ( 19 ), while exercise may slow the degeneration of motor neurons, reduce oxidative stress on fast-contracting type II muscle fibers and help them transform into type I muscle fibers in muscles, making them more resistant to fatigue ( 20 ). On the other hand, exercise increases glucose utilization, which contributes to improved work performance and daily activities, and increased mitochondrial biogenesis enhances antioxidant defenses. Regular physical exercise may lead to increased muscle mass and induce regeneration by activating astrocytes, a process that may be altered in ALS ( 21 ), and could have possibly slow the decline in the observation index over the medium term (5–8 months) of the FRS score and FRS-R score. This issue should be taken into consideration when looking at early, middle or long-term effects: overall, a beneficial effects might be observed while continuing exercise training or after some discontinuation. Conclusion The meta-analysis of this study showed that more intensive exercise training could slow down the decline in functional scores of ALS patients in the short term (0–4 months) and the medium term (5–8 months). Therefore, it might be that ALS patients persist in more intensive exercise training in clinical practice to improve their functional ability. In the future, more long-term large-sample studies should be carried out to verify the effectiveness of exercise training in ALS patients."
+          ]
+        },
+        {
+          "document_id": "f50df173-e4ec-4b69-ab8c-80f586cb7828",
+          "quotes": [
+            "Introduction Amyotrophic lateral sclerosis (ALS) is a degenerative and disabling disease of the nervous system that involves the loss of motor neurons in the cortex, brainstem and spinal cord. 1 It is characterised by muscle weakness leading to loss of ambulation and functionality, swallowing difficulties, respiratory muscle dysfunction and death due to ventilator insufficiency. 2 3 ALS may be clinically classified according to symptom onset: spinal, which initially affects upper or lower limbs or both; and bulbar, which initially affects head and neck regions. Physical therapy is fundamental for the multidisciplinary team and must be adapted to the needs and objectives of the individual. The physical therapist must also focus on treating symptoms, maximising functions and activities and participation and providing quality of life to patients with ALS. 13 Patients with ALS widely accept physical activity involving range of motion and stretching exercises. Resistance exercises for the unaffected muscles (or affected muscles with strength of at least grade 3 or higher) using low to moderate loads and aerobic activities at submaximal levels (ie, 50%–65% of heart rate reserve), such as swimming, walking and stationary cycling, can be safe and effective to achieve therapeutic goals."
+          ]
+        },
+        {
+          "document_id": "11d1ac78-d7c8-4448-9ad1-974539bcddc1",
+          "quotes": [
+            "Keywords Exercise Amyotrophic lateral sclerosis Motor neuron disease Rehabilitation Outcome measures Abbreviations 6MWT, (6 Minute Walk Test) 25FWT, (25 Feet Walk Test) ALS, (amyotrophic lateral sclerosis) ALSFRS-R, (ALS Functional Rating Scale-Revised) DIGEST, (Dynamic Imaging Grade of Swallowing Toxicity) EAT-10, (Eating Assessment Tool) EMST, (Expiratory muscle strength training) FAC, (Functional Ambulation Categories) FIM, (Functional Independence Measurement) FOIS, (Functional Oral Intake Scale) FVC, (forced vital capacity) FSS, (Fatigue Severity Scale) IMST, (Inspiratory muscle strength training) ITT, (intention-to-treat) KEMS, (knee extension muscle strength) MEP, (maximum expiratory pressure) MIP, (maximum inspiratory pressure) MND, (motor neuron disease) MVIC, (maximum voluntary isometric contraction) PAS, (Penetration Aspiration Scale) PEF, (peak expiratory flow) PRISMA-2009, (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) RCTs, (randomized controlled trials) RPE, (rating of perceived exertion) SNIP, (sniff nasal inspiratory pressure) pmc-status-qastatus 0 pmc-status-live yes pmc-status-embargo no pmc-status-released yes pmc-prop-open-access yes pmc-prop-olf no pmc-prop-manuscript no pmc-prop-legally-suppressed no pmc-prop-has-pdf yes pmc-prop-has-supplement no pmc-prop-pdf-only no pmc-prop-suppress-copyright no pmc-prop-is-real-version no pmc-prop-is-scanned-article no pmc-prop-preprint no pmc-prop-in-epmc yes pmc-license-ref CC BY-NC-ND 1 Introduction Amyotrophic lateral sclerosis (ALS) is a neuromuscular disease resulting in degeneration of upper and lower motor neurons leading to spastic and flaccid paralysis of the limb, trunk, respiratory, and bulbar musculature. Motor declines drastically impede patients' abilities to complete activities of daily living and impacts quality of life [ 1 , 2 ]. Disease progression in people with ALS is rapid, with an average life expectancy of 2–5 years following diagnosis [ 3 ]. Exercise can result in a variety of neuromuscular benefits including cross-education (transference), increased motor unit activation and synchronization, as well as increased skeletal muscle fiber hypertrophy, protein synthesis, and capillary density, which may lead to more optimal functioning of the neuromuscular system [ 13 , 14 ]. While strenuous exercise has been avoided in people with ALS due to baseline fatigue, muscle atrophy and weakness from disuse and denervation, and concern for faster muscle degeneration [ 13 , [15] , [16] , [17] ], preliminary evidence demonstrates that moderate therapeutic exercise may be beneficial in symptom management and survival in people with ALS. While conducting exercise in people with ALS remains controversial in some settings, researchers have proposed a paradigm shift to a proactive management approach rather than a reactive one [ [18] , [19] , [20] ]. Despite heterogeneity across methodologies, most studies demonstrated that exercise-based interventions were safe, well-tolerated, and may lead to maintenance and/or improvements in function and quality of life for people with ALS with mild-moderate functional impairment. However, importantly, only a limited number of outcomes could be included in the meta-analysis, and furthermore, only one outcome (the ALSFRS-R) exhibited a favorable summary effect size due to the heterogeneity of outcomes and methodologies deployed across studies. Several other systematic reviews and meta-analyses have recently examined the effects of exercise regimens on function and quality of life in people with ALS [ [20] , [21] , [22] , [23] , [24] ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for nedsett funksjon i respirasjonssystem",
+        "ICNP_concept_id": "704296008"
+      },
+      "intervention": {
+        "term": "oppmuntring til fysisk aktivitet",
+        "ICNP_concept_id": "598021000202106"
+      },
+      "goal": {
+        "term": "tilfredsstillende respiratorisk status",
+        "ICNP_concept_id": "14751000202106"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "449e4198-88d1-483c-919b-3cf6cde83e88",
+          "quotes": [
+            "This has reinforced clinicians to caution against exercise for patients with ALS. In any case, the marked reduction in physical activity that often accompanies ALS can lead to cardiovascular deconditioning and muscle weakness secondary to disuse ( 18 ). These weaknesses are superimposed on the weakness caused by the disease itself. Further, we analyzed the respiratory and limb functions of patients with ALS. Interestingly, only the progression of respiratory dysfunction, as measured by the ALSFORD-R-Respiratory score (effect size: −0.81), was significantly less decreased in the exercise group as compared to the control group. There was no difference in the limb function scores of the two groups, as measured by the ALSFRS-R-Limb score. For this reason, we think the patients participated in these studies would have weakness mainly in limb muscles, but less in respiratory muscles. Accordingly, early initiation of therapeutic exercise would have been performed primarily for respiratory muscles rather than limb muscles. It has already been reported that the early initiation of exercise in patients with ALS is more effective than starting exercise at later stages of the disease ( 20 ), therefore therapeutic exercise would be more effective for maintaining respiratory function than limb motor function in patients with ALS. In five RCTs, adverse effects, such as increased muscle cramping, and muscle soreness or fatigue, were rarely reported by the investigators. The absence of strong evidence on the efficacy of therapeutic exercise can prevent its application to patients with ALS. Appropriate exercises may be physically and psychologically beneficial to patients with ALS, especially in the earlier stages of the disease and before significant muscular atrophy or deconditioning occurs. Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Conclusion In conclusion, in patients with ALS, therapeutic exercise was effective in reducing the rate of declination in general physical function. Therapeutic exercise may have a particularly positive therapeutic effect on cardiopulmonary functions rather than preventing weakness in denervated or atrophy limb muscles in patients with ALS. Author Contributions DP, YC, and MC: conceptualization."
+          ]
+        },
+        {
+          "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+          "quotes": [
+            "(2009) 19 38 7 Wound infection 2.63 (1/38) Oral antibiotics and repositioning or reinsertion of electrode Capnothorax 13 (5/38) Aspiration or observation. No hemodynamic instability or respiratory problem Injury to diaphragm, diaphragm laceration, solid organ damage, bleeding, bowel injury, conversion to open surgery, pneumothorax 0 NA Kotan, et al. (2016) 17 1 1 Failure of device implantation 0 (0/1) NA NA, no data available."
+          ]
+        },
+        {
+          "document_id": "99105d67-6b1e-40cf-91d7-18b41e76cf41",
+          "quotes": [
+            "Due to muscle weakness and spasticity, which are the primary symptoms reported in patients with ALS, the functional ability has been damaged in patients with ALS (Jensen et al., 2016 ). Moreover, musculoskeletal dysfunction would induce respiratory dysfunction, which is the most common cause of death in ALS patients (Corcia et al., 2008 ). ALS is one of the most common progressive neuromuscular diseases that is usually regarded as a disease that cannot be completely cured, and the majority of ALS patients are elderly population. For example, a randomized controlled trial conducted by Zucchi's team in 2019, which explored the effect of high-frequency motor rehabilitation for ALS patients, found that there was no significant difference between the effectiveness of high and usual frequency physical exercise on the ALS Functional Rating Scale—Revised (ALSFRS-R) scores, motor and respiratory functions, survival, fatigue, and quality of life of ALS patients. Moreover, a systematic review and meta-analysis published in 2014 demonstrated that there was limited evidence that inspiratory muscle training leads to the strengthening of inspiratory muscles in ALS. Improvements were minor in only a few parameters, but the survival time was significantly longer in the ALS patients who did inspiratory muscle training (Eidenberger and Nowotny, 2014 ). Another systematic review and meta-analysis conducted by Rahmati's team found that there was a statistically significant difference in favor of physical exercise in functional ability, overall quality of life, and aerobic capacity for ALS patients, but there was no significant difference in respiratory function, fatigue, pain, and body strength (Rahmati and Malakoutinia, 2021 )."
+          ]
+        },
+        {
+          "document_id": "2a1d230e-e8e8-4808-b4a0-155ad1a7e63e",
+          "quotes": [
+            "According to a systematic review and meta-analysis of the prevalence and incidence of ALS published in 2020, the global prevalence of ALS is 4.42 per 100,000 person-years, and the incidence is 1.59 per 100,000 person-years, with the incidence increasing significantly each year since 1957 ( 5 ). The patient's quality of life is seriously affected by progressive muscle atrophy and loss of movement, swallowing, speaking and breathing. In recent years, studies have pointed out that exercise intervention for ALS patients can have a therapeutic effect on neuromuscular function, thus improving the functional ability of patients and delaying the deterioration of the disease ( 6 ). The reason for this difference may be related to the fact that respiratory function is not significantly affected in the early stage of the disease. The ALSFRS-R adds the content related to breathing, sitting breathing and respiratory insufficiency, compared with the ALSFRS, while respiratory dysfunction appears months to years after diagnosis in ALS patients ( 22 ). In general, patients with medulla oblongata and thoracic medulla develop dyspnoea earlier than those with cervical and lumbar medulla. These may have resulted in no slowdown in ALSFRS-R scores in the short term (0–4 months). To explore the influence of respiratory function on the difference between FRS and FRS-R in the short term (0–4 months), the index FVC% was used in the pulmonary function in this meta-analysis. However, since there were only a few studies and the data were only observational indicators in the short term (0–4 months), the results showed no significance. However, the structural and functional characteristics of respiratory muscle fibers are not fixed and can be changed according to training ( 23 ), so whether FVC% can produce benefits in the medium and long term needs to be confirmed by multicentre studies with large sample sizes in the future. This study is the first to report the effect of more intensive exercise training on FRS-R observation indicators in ALS patients in the long term (9–12 months), and the results showed no statistical significance."
+          ]
+        },
+        {
+          "document_id": "11d1ac78-d7c8-4448-9ad1-974539bcddc1",
+          "quotes": [
+            "There are currently four prescription drugs approved by the Food and Drug Administration for use with people with ALS, with two drugs (riluzole and edaravone) purposed to increase survival – albeit minimally [ 4 ]. Effective therapies for ALS are postulated to inhibit excessive motor neuron activity, decrease oxidative stress, and delay respiratory decline – the latter being the major cause of mortality [ 5 , [10] , [11] , [12] ]. Until a cure is found, clinical care continues to involve early interventions promoting improved symptom management [ 5 ]. All four studies found that IMST led to improvements or attenuated declines in various measures of pulmonary function, although not all study results reached significance [ 47 , [50] , [51] , [52] ]. In addition to this, one study found that patients that completed IMST lived significantly longer [ 52 ]. No adverse events were reported."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "kognitiv svikt",
+        "ICNP_concept_id": "386806002"
+      },
+      "intervention": {
+        "term": "kognitiv testing og vurdering",
+        "ICNP_concept_id": "113024001"
+      },
+      "goal": {
+        "term": "Kognitive og atferdsmessige endringer identifiseres tidlig og nøyaktig slik at sykepleien og kommunikasjonen kan tilpasses pasientens forutsetninger.",
+        "ICNP_concept_id": ""
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "8394622e-413e-41c9-9fea-dd1d41a7511b",
+          "quotes": [
+            "These differences remain when focusing on a group more representative of the general individual with ALS, the older adult population [ 8 ]. Cognitive impairment is an additional extra-motor feature of ALS that is highly prevalent, with some form of cognitive or behavioural symptoms experienced by 30–50% of people with ALS [ 9 ]. 15% of people with ALS meet diagnostic criteria for frontotemporal dementia (FTD) [ 10 , 11 ]. Cognitive impairment in people with ALS is characterised by executive dysfunction, impairments in language and social cognition [ 12 – 14 ], whilst apathy is the most pronounced behavioural change [ 15 ]. Individuals with chronic physical illness and comorbid depression or anxiety often experience a higher level of somatic symptom burden that can impair functioning [ 16 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. Assessments are often performed using tools which have not been adapted for people with physical disability or communication difficulties. Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. The NPI-Q is a validated informant-based questionnaire to evaluate the presence and severity of 12 neuropsychiatric domains [ 47 ].The ability of the tool to discriminate effectively between different disorders has been questioned [ 48 ]. Of the eight trials that did assess cognitive and behaviour change as an outcome measure, six used tools where scoring was unaffected by physical disability or communication impairment and were specifically designed, and validated, to identify domains impaired in people with ALS. One trial used the ALS Cognitive Behavioral Screen (ALS-CBS) [ 49 ] and five trials used the Edinburgh Cognitive and Behavioural ALS Screen (ECAS) [ 50 ]. The ALS-CBS is a brief assessment of executive functions while the ECAS assesses a wider profile of cognitive and behavioural impairment in ALS including executive and language functions, fluency and social cognition. Both are designed to be completed by either written or spoken responses to be suitable for ALS patients with differing functional ability. Additionally, ECAS scoring is also corrected for differences in motor speed during both speech and writing tasks, to accommodate for a range in disability severity. Assessment of cognition in clinical trials The past 15 years of research has highlighted the ubiquity of cognitive and behavioural impairment in people with ALS, [ 50 , 57 ]. Whilst the assessment of these changes has become widely accepted in clinical care for people with ALS [ 58 ], clinical trials are lagging behind, with only 21% of the 216 trials reviewed in this study assessing cognition. The inclusion of cognitive assessment in clinical trial design as an additional outcome measure is progressing slightly. We recommend the evaluation of neuropsychiatric and cognitive symptoms as additional outcome measures in clinical trials of investigative medicinal products. Additionally, when evaluating these areas we recommend using tools which are designed to assess domains affected in ALS, with disease-specific impairment thresholds and those adapted to account for motor decline and communication difficulties. Electronic supplementary material Below is the link to the electronic supplementary material."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for negativ livskvalitet",
+        "ICNP_concept_id": "704681002"
+      },
+      "intervention": {
+        "term": "vurdering av psykisk helse",
+        "ICNP_concept_id": "391281002"
+      },
+      "goal": {
+        "term": "god livskvalitet",
+        "ICNP_concept_id": "1156447008"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "8394622e-413e-41c9-9fea-dd1d41a7511b",
+          "quotes": [
+            "To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/ . Background Up to 50% of people with amyotrophic lateral sclerosis (ALS) experience cognitive dysfunction, whilst depression and anxiety are reported in up to 44% and 33%, respectively. These symptoms impact on quality of life, and are associated with a poorer prognosis. Individuals with chronic physical illness and comorbid depression or anxiety often experience a higher level of somatic symptom burden that can impair functioning [ 16 ]. Symptoms of depression, anxiety and apathy reduce quality of life (QoL) for people with ALS [ 17 , 18 ]. Lower psychological well-being generally has been identified as predictive of disability and shorter survival in people with ALS [ 4 ]. Presence of concomitant neuropsychiatric conditions and cognitive impairment predicts greater carer distress [ 19 – 21 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. Assessments are often performed using tools which have not been adapted for people with physical disability or communication difficulties. Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. Scores may be significantly impacted by the overlap of somatic features of neuropsychiatric conditions and those attributable to the progression of ALS. In a group that is predominantly affected by motor impairment, speech and respiratory difficulties, lengthy administration time can also reduce the suitability of an tool. Whilst survival and functioning remain the gold standard outcome measures used in clinical trials, incorporation of measures of neuropsychiatric and cognitive function enable more holistic assessment of the impact of drugs. Awareness of how a candidate drug may affect extra-motor features is clinically revelant in disease management and quality of life. Including individuals with neuropsychiatric and cognitive impairments, and using assessments to evaluate changes in these areas as outcome measures will enable the trial teams to evaluate the impact of the candidate drugs on people with extra-motor features of ALS."
+          ]
+        },
+        {
+          "document_id": "b06e73c3-37e1-4359-8da0-8afbb2fa5b1e",
+          "quotes": [
+            "The main limitations reported by included studies were small sample size, lack of long-term evaluation of the intervention, lack of randomization and low generalizability of the results. Table 2 presents the characteristics and information of the included studies: author, year, country where study was conducted, objective of study, sample, intervention, standardized proof used, main results and conclusions of study following Cochrane Manual recommendations [ 25 ]. We observed that intervention studies conducted in MS and ALS patients could be classified into four clearly differentiated areas: fatigue, physical rehabilitation, cognitive interventions and others. Raglio et al. [ 58 ], 2016, Italy To evaluate the effectiveness of a music therapy and its influence on anxiety, depression or QoL. 30, ALS Music therapy There were only improvements in Mc Gill Quality of life Questionnaire. The music therapy program showed an improvement in the QoL. Reilly y Hynes. [ 58 ], 2016, Italy Other categories * Music therapy * CG: Participants received physical and speech rehabilitation, OT an psychological support IG: Music therapy sessions. OTs stimulates patients to communicate using instruments and express emotions. 4 Three-weekly half-hour sessions ALSFRS-R, HADS, MQoL-it, MTRS OT Block et al. This study showed significant improvements in self-efficacy and ability to achieve objectives [ 57 ]. The one study focusing in ALS evaluated the impact of music therapy programs on psychological aspects such as depression and anxiety [ 58 ]. In this study, occupational therapists stimulates patients to communicate using instruments and express emotions with positive results in quality of life. 4."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "redusert respiratorisk funksjon",
+        "ICNP_concept_id": "80954004"
+      },
+      "intervention": {
+        "term": "overvåking av respirasjonsbehandling",
+        "ICNP_concept_id": "425123005"
+      },
+      "goal": {
+        "term": "tilfredsstillende respiratorisk status",
+        "ICNP_concept_id": "14751000202106"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+          "quotes": [
+            "2 Mechanical ventilation can be used in those patients to support respiratory function 3 4 and alleviate sleep disorders. 5 It is, however, costly, requires continuous monitoring, and is associated with several complications. 6 7 Hence, clinicians must endeavor to prevent respiratory failure, a major cause of mortality in patients with ALS and spinal cord injury, 8 while deferring the need for mechanical ventilation as long as possible. 4 Diaphragm pacing is a technique with a history of over a half-century for respiratory assistance. 9 Diaphragm pacing provides respiratory support by stimulating diaphragm contractions with electrical impulses generated by implanted electrodes ( Fig."
+          ]
+        },
+        {
+          "document_id": "636fe311-8e5b-4bc6-ad26-f94a2c398616",
+          "quotes": [
+            "3.4. Amyotrophic Lateral Sclerosis Amyotrophic lateral sclerosis (ALS) is a deadly neurodegenerative disease characterized by the ongoing degeneration of motor neurons, which leads to progressive paralysis of skeletal muscle and death in 3–5 years after diagnosis. Neuroinflammation is currently considered a highly important driving force [ 162 , 163 ]. In a clinical case of a patient affected by sporadic ALS, oral supplementation with PEA-um improved the respiratory and motor functions, accompanied by the appearance of muscle tone, plausibly because of the control of neuroinflammation [ 97 ]. More recently, a broad clinical study performed on 64 patients suffering from ALS has shown that dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy (i.e., riluzole) significantly slowed down the decline in pulmonary function as measured by forced vital capacity (FVC), and lowered the severity of ALS symptoms, compared to patients treated with riluzole alone [ 98 ]. It is also noteworthy that a short-term add-on dietary PEA-um (600 mg twice daily for 1 week) proved to reduce the level of disability and improve muscular response to fatigue in 22 patients with myasthenia gravis (MG), as assessed by Repetitive Nerve Stimulation and Quantitative MG score [ 99 ]."
+          ]
+        },
+        {
+          "document_id": "c8bfce2f-3dc6-4a0e-a7da-6faf2cd32d54",
+          "quotes": [
+            "This could be related to the fact that, in this last study, the rehabilitation consisted in aerobic exercise and did not include strength exercises, in addition to the fact that it was performed only in three sessions per week, while in the trial that obtained the worst results, the frequency of training was daily, i.e., seven sessions per week. This shows the importance of cardiovascular training in these patients, since the respiratory muscles in more advanced stages of the disease are severely affected [ 30 ]. Cardiovascular training would be the object of study if moderate aerobic exercise would act as an adjunct against this critical factor of ALS, in order to reduce the anguish and fatigue that this generates in patients. Although, as has been seen in the case of multiple sclerosis, the mechanisms related to fatigue and corticospinal function are altered by the abnormalities in the CNS causing these neurological diseases, the response to exercise and fatigue seems to be different from that in healthy subjects [ 31 ]. If this fact is related to the measurement of FVC that this trial recorded from its patients (also at 6 months), it can be seen that the group that worked with a lower volume of sessions exceeded by more than 10% the group of cases in spirometry. Therefore, it is suggested that perhaps submaximal aerobic activity in patients with neuromuscular diseases, allowing for adequate rest, prevents overexertion [ 34 ], and that this is not effective for the achievement of greater lung capacity, although all treatments or physical exercise programmes must be adapted to the capacities of the patient with ALS [ 35 ]. Regarding the rest of the FVC percentages extracted from the long-term studies reviewed (6 months), it was observed that the patients in the control group had a decrease of around 15–25% in their spirometric values, while patients in the case groups had a decrease of around 7–15% in their spirometric values [ 5 , 13 , 15 , 17 ]. Therefore, it could be said that physical exercise therapy has a positive impact on slowing down the deterioration of the patient’s respiratory muscles. 4.4. Conclusions Therapeutic physical exercise could help to slow down the deterioration of the musculature of people with ALS, thus facilitating their performance of activities of daily living and, therefore, maintaining the levels of their scores on the ALSFRS-R functionality scale, especially in the medium and long terms, compared to those in ALS patients with mostly passive treatments. The survival of patients did not improve in relation to a therapeutic physical exercise programme, although their respiratory muscles did improve the levels measured in the FVC, which leads to an improvement in their quality of life until the end of their disease. Carrying out a treatment that includes physical activity in patients with ALS helps to counteract the muscle weakness caused by the degeneration of poorly innervated cells, as it strengthens healthy cells, and these patients obtained better results in the 6MWT after several months of rehabilitation."
+          ]
+        },
+        {
+          "document_id": "b06e73c3-37e1-4359-8da0-8afbb2fa5b1e",
+          "quotes": [
+            "Finally, the third category included two intervention studies which evaluated programs to decrease falls risk in MS patients, by sending them information related to falls and how to avoid them [ 52 ] or by giving them tape training sessions in order to improve balance reactions [ 53 ]. In relation to the ALS focused study, G\u0003omez-Fern\u0003andez et al., assessed the effectiveness of a multifactorial program by working on different aspects such as breathing, posture control or transfers using a multidisciplinary approach [ 54 ] which showed that ALS patients improved significantly on forced vital capacity. ijerph-18-01432-t002_Table 2 Table 2 Main characteristics of the studies included in the review. 6, ALS Multifactorial physical intervention with intensive rehabilitation programme. People improved significantly on forced vital capacity and Functional Rating Scales. Multifactorial rehabilitation works well for the health and survival. 5 Once-weekly two hours sessions Knowledge quizzes, CMSEQ, CSQ OT G\u0003omez-Fern\u0003andez et al. [ 54 ], 2001, Cuba Physical intervention * Multifactorial intervention * IG: Participants received a multifactorial treatment with breathing exercises; face, mouth and neck exercises, balance and walk exercises. OTs have to avoid participants fatigue in the treatment. This intervention did not provide valid results because participants did not perform the program in the established time, although there were significant differences after the intervention [ 51 ]. We only identified one study in ALS patients, where G\u0003omez-Fern\u0003andez et al., examined a multifactorial program in ALS, through postural control exercises, exercises with lips, breathing, walking or psycho-emotional support that showed significant improvements in forced vital capacity [ 54 ]. However, the sample is very small, which could cast doubt on the results [ 54 ]."
+          ]
+        },
+        {
+          "document_id": "9568c70e-05a0-4362-8aed-3fe51954b7ad",
+          "quotes": [
+            "The average survival time from symptom onset is 3–5 years; however, survival may be longer in patients with slow disease progression. 1 Progressive respiratory muscle weakness is one of the main complications affecting patients with ALS. 2 Lung volume reduces over time and leads to ineffective cough and worsening prognosis due to accumulation of secretions. 4 Forced vital capacity (FVC), maximum inspiratory pressure (MIP) and maximum expiratory pressure (MEP) are measures of respiratory function easily performed and monitored in the clinical environment. FVC is widely used in patients with ALS and associates with disease progression and survival (FVC of <50% indicates the beginning of respiratory failure). Sniff nasal inspiratory pressure (SNIP) is considered a more accessible alternative than MIP for monitoring respiratory muscle strength. 11–13 Impaired expiratory muscle contraction also decreases the ability to cough and clear secretions. Physiotherapists should assess and monitor vital capacity, MIP, SNIP or peak expiratory cough flow of patients with ALS at least every 3 months. 14 15 Physiotherapeutic interventions used in individuals with expiratory muscle weakness and secretion retention are lung volume recruitment, and airway clearance techniques with breath stacking, air stacking and manually assisted coughing. Discussion Clinical trials with patients with ALS often present inconsistent results due to the rapid progression of the disease and death. Despite knowledge regarding respiratory physiotherapy techniques for patients with ALS, synthesising and highlighting effective therapies for increasing lung function may help clinical practice; therefore, improving comfort. This systematic review will strengthen the level of evidence using information from randomised controlled trials and may be used as a guideline for the care of patients with ALS."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "forstyrra søvnmønster",
+        "ICNP_concept_id": "26677001"
+      },
+      "intervention": {
+        "term": "handtering av respirasjonsutstyr",
+        "ICNP_concept_id": "1217334008"
+      },
+      "goal": {
+        "term": "tilstrekkelig søvn",
+        "ICNP_concept_id": "1137437005"
+      },
+      "FO": "8. Smerte/søvn/hvile/velvære",
+      "supporting_evidence": [
+        {
+          "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+          "quotes": [
+            "2 Mechanical ventilation can be used in those patients to support respiratory function 3 4 and alleviate sleep disorders. 5 It is, however, costly, requires continuous monitoring, and is associated with several complications. 6 7 Hence, clinicians must endeavor to prevent respiratory failure, a major cause of mortality in patients with ALS and spinal cord injury, 8 while deferring the need for mechanical ventilation as long as possible. 11 Moreover, with most patients with ALS patients suffering from sleep deprivation, diaphragm pacing may improve their sleep quality. 12 Nowadays, DPS has been widely adopted for cervical spinal injuries and to manage respiratory dysfunction from neurodegenerative diseases, such as ALS. 13 As the procedure should be performed under general anesthesia, risks from anesthesia and concerns of procedure-related complications have hindered the use of diaphragm pacing in patients with neurological problems."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for djup venetrombose",
+        "ICNP_concept_id": "225999004"
+      },
+      "intervention": {
+        "term": "antikoagulasjonsbehandling",
+        "ICNP_concept_id": "182764009"
+      },
+      "goal": {
+        "term": "ingen dyp venetrombose",
+        "ICNP_concept_id": "1141709008"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+          "quotes": [
+            "(2009) 19 38 7 Perioperative mortality 0 NA Complications and adverse events Rezania, et al. (2014) 18 10 1 Deep vein thrombosis, pulmonary thromboembolism 20 (2/10) Warfarin, enoxaparin Onders, et al. (2009) 19 38 7 Wound infection 2.63 (1/38) Oral antibiotics and repositioning or reinsertion of electrode Capnothorax 13 (5/38) Aspiration or observation."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for infeksjon",
+        "ICNP_concept_id": "78648007"
+      },
+      "intervention": {
+        "term": "administrasjon av antibiotikum",
+        "ICNP_concept_id": "68322007"
+      },
+      "goal": {
+        "term": "ingen tegn eller symptomer på infeksjon",
+        "ICNP_concept_id": "397680002"
+      },
+      "FO": "6. Hud/vev/sår",
+      "supporting_evidence": [
+        {
+          "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+          "quotes": [
+            "(2014) 18 10 1 Deep vein thrombosis, pulmonary thromboembolism 20 (2/10) Warfarin, enoxaparin Onders, et al. (2009) 19 38 7 Wound infection 2.63 (1/38) Oral antibiotics and repositioning or reinsertion of electrode Capnothorax 13 (5/38) Aspiration or observation. No hemodynamic instability or respiratory problem Injury to diaphragm, diaphragm laceration, solid organ damage, bleeding, bowel injury, conversion to open surgery, pneumothorax 0 NA Kotan, et al."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "paralyse",
+        "ICNP_concept_id": "44695005"
+      },
+      "intervention": {
+        "term": "kartlegging av motorisk funksjon",
+        "ICNP_concept_id": "338051000202108"
+      },
+      "goal": {
+        "term": "oppretthalden rørsleevne",
+        "ICNP_concept_id": "13301000202109"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "636fe311-8e5b-4bc6-ad26-f94a2c398616",
+          "quotes": [
+            "3.4. Amyotrophic Lateral Sclerosis Amyotrophic lateral sclerosis (ALS) is a deadly neurodegenerative disease characterized by the ongoing degeneration of motor neurons, which leads to progressive paralysis of skeletal muscle and death in 3–5 years after diagnosis. Neuroinflammation is currently considered a highly important driving force [ 162 , 163 ]. In a clinical case of a patient affected by sporadic ALS, oral supplementation with PEA-um improved the respiratory and motor functions, accompanied by the appearance of muscle tone, plausibly because of the control of neuroinflammation [ 97 ]. More recently, a broad clinical study performed on 64 patients suffering from ALS has shown that dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy (i.e., riluzole) significantly slowed down the decline in pulmonary function as measured by forced vital capacity (FVC), and lowered the severity of ALS symptoms, compared to patients treated with riluzole alone [ 98 ]. It is also noteworthy that a short-term add-on dietary PEA-um (600 mg twice daily for 1 week) proved to reduce the level of disability and improve muscular response to fatigue in 22 patients with myasthenia gravis (MG), as assessed by Repetitive Nerve Stimulation and Quantitative MG score [ 99 ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for fall",
+        "ICNP_concept_id": "129839007"
+      },
+      "intervention": {
+        "term": "fallforebygging",
+        "ICNP_concept_id": "386296001"
+      },
+      "goal": {
+        "term": "redusert fallfrekvens",
+        "ICNP_concept_id": "1144480005"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "c8bfce2f-3dc6-4a0e-a7da-6faf2cd32d54",
+          "quotes": [
+            "Physical therapy consists in planned therapeutic physical exercise to correct postural abnormalities, combat pain and reduce muscle stiffness. In addition, it promotes functional independence, trains the patient to prevent falls, and re-educates walking, with certain technical aids if necessary [ 5 ]. The role of physical exercise begins prior to significant loss of strength and continues throughout the course of the disease, up to the last days of the person’s life. These values represent an involution of 6.25% and 14.1%, respectively, as patients treated with therapeutic exercise benefited most at a functional level compared to those who continued with a more sedentary lifestyle, who experienced an involution (measured with ALSFRS-R) of between 6.13 [ 13 ] and 9.6 [ 15 ], which implies an involution (measured with ALSFRS-R, 0–48 points) of 12.77% and 20%, respectively. Some functional results of groups (physical exercise or stretching) were similar; however, an analysis of the falls of patients was subsequently carried out, showing that the group that worked with strength and resistance had fewer falls compared to the group that worked with joint range of motion and stretching [ 13 ]. Both the number and frequency of falls decreased in other neurodegenerative pathologies (such as Parkinson’s disease) thanks to a programme of therapeutic physical exercise [ 27 ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for aktivitetsintoleranse",
+        "ICNP_concept_id": "80601004"
+      },
+      "intervention": {
+        "term": "overvåking av aktivitetstoleranse",
+        "ICNP_concept_id": "711004004"
+      },
+      "goal": {
+        "term": "ingen fatigue",
+        "ICNP_concept_id": "1141720008"
+      },
+      "FO": "8. Smerte/søvn/hvile/velvære",
+      "supporting_evidence": [
+        {
+          "document_id": "b06e73c3-37e1-4359-8da0-8afbb2fa5b1e",
+          "quotes": [
+            "[ 54 ], 2001, Cuba Physical intervention * Multifactorial intervention * IG: Participants received a multifactorial treatment with breathing exercises; face, mouth and neck exercises, balance and walk exercises. OTs have to avoid participants fatigue in the treatment. Pre-test/post-test."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "kommunikasjonsforstyrring",
+        "ICNP_concept_id": "278919001"
+      },
+      "intervention": {
+        "term": "sørge for kommunikasjonshjelpemiddel",
+        "ICNP_concept_id": "228620008"
+      },
+      "goal": {
+        "term": "tilfredsstillande kommunikasjon",
+        "ICNP_concept_id": "15981000202104"
+      },
+      "FO": "1. Kommunikasjon/sanser",
+      "supporting_evidence": [
+        {
+          "document_id": "b06e73c3-37e1-4359-8da0-8afbb2fa5b1e",
+          "quotes": [
+            "The remaining studies evaluated interventions related to improvement of memory, attention, processing speed and strategies to compensate these cognitive strategies [ 20 , 42 , 43 , 44 ] with different results ( Table 2 ) Only one study was carried out in people with ALS [ 41 ]. This study evaluated the feasibility and usability of an assistive technology prototype in users who have different degrees of muscular impairment to improve interaction with environment. 3.3. [ 41 ], 2015, Italy To evaluate the feasibility and usability of an assistive technology prototype for communication. 8, ALS Cognitive intervention in usability of an assistive technology prototype for communication and home control There were no significant differences between the different measures. The study shows the feasibility and usability of assistive technology prototype. 3 Twice-weekly sixty minutes sessions CMT, SRSI, MIST, CVLT-II, MFQ, AQ, FBP, CMDI, FAMS OT Schettini et al. [ 41 ], 2015, Italy Cognitive intervention * Assistive technology prototype for communication and home control * IG 1 : Participants were asked to control a standalone P300-speller based BCI to test the ability to control a BCI system and to subsequently compare the performance obtained with the BCI with that observed while controlling the assistive technology prototype with the BCI channel. IG 2 : Users, who operated via a conventional or an alternative input device (eg, mouse, buttons) that best matched their residual motor abilities controlling the assistive technology. Only one cognitive intervention was identified for ALS. Schettini et al., evaluated the reliability of an assistive technology device for home automation control and communication, and there were no significant improvements. This could be due to the fact that the sample included only eight people, which may be too small to provide strong evidence [ 41 ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "frykt",
+        "ICNP_concept_id": "1402001"
+      },
+      "intervention": {
+        "term": "rådgivning om frykt",
+        "ICNP_concept_id": "710199005"
+      },
+      "goal": {
+        "term": "redusert fryktnivå",
+        "ICNP_concept_id": "1149159005"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "cab8fa72-092f-4f96-974a-4b57a6532461",
+          "quotes": [
+            "Further, many patients experience substantial functional communication and cognitive difficulties, which may interfere with communication at later stages of the disease ( 6 ). Effective discussions about end of life help alleviate anticipatory fears, especially around choking ( 6 ); guide decisions about life-sustaining therapies ( 18 – 20 ); facilitate decisions that are consistent with patients' and families' priorities and needs over time ( 6 , 21 , 22 ); and preserve patient autonomy and dignity ( 23 ). Compounding a complex communication environment and in the ongoing absence of a cure or treatment, ALS is perceived by patients and their families as a ‑death sentence‑ ( 24 ), ‑the self under attack‑ or a ‑downward journey‑ ( 25 ). ( 92 ) Improve or amend communication content (21) Health professionals (14), Family members (1), Unspecified (7) … fears of ‑choking to death‑ are unwarranted. This information should be available to ALS patients at the time when ventilatory options are discussed . ( 89 ) More research is needed (18) Researchers (18) … qualitative research in this area is needed to fully understand ACP [advance care planning] preferences and practices among patients . ( 129 ) Communication guidelines or standards needed (15) Health professionals (4), ALS support organizations (1)‑ Medical education (1), Researchers (1), Unspecified (12) More widely available guidelines for the provision of gastrostomy and advice on the best way to impart information to patients and caregivers about gastrostomy and NIV appear to be needed ."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "vansker med å kommunisere verbalt",
+        "ICNP_concept_id": "32000005"
+      },
+      "intervention": {
+        "term": "sørge for kommunikasjonshjelpemiddel",
+        "ICNP_concept_id": "228620008"
+      },
+      "goal": {
+        "term": "i stand til å kommunisere",
+        "ICNP_concept_id": "288575003"
+      },
+      "FO": "1. Kommunikasjon/sanser",
+      "supporting_evidence": [
+        {
+          "document_id": "cab8fa72-092f-4f96-974a-4b57a6532461",
+          "quotes": [
+            "Therapies introduced for symptom management, such as non-invasive ventilation, may rapidly become life-sustaining, thus changing the natural disease trajectory and making it difficult to predict when a patient is entering the last months of life ( 16 , 17 ). Further, many patients experience substantial functional communication and cognitive difficulties, which may interfere with communication at later stages of the disease ( 6 ). Effective discussions about end of life help alleviate anticipatory fears, especially around choking ( 6 ); guide decisions about life-sustaining therapies ( 18 – 20 ); facilitate decisions that are consistent with patients' and families' priorities and needs over time ( 6 , 21 , 22 ); and preserve patient autonomy and dignity ( 23 ). Twenty-four articles focused on communicating an ALS diagnosis. Articles drawing attention to functional communication challenges related to a motor speech disorder ( n = 45) primarily highlighted the severity of communication impairments ( n = 27) and strategies to address speech loss ( n = 22) ( Table 5 ). Recommendations Sixty-seven articles made ‑actionable‑ recommendations. Finally, this analysis highlighted functional communication challenges. Almost all ALS patients experience motor speech disorder with disease progression ( 176 , 177 ). This presents a unique challenge for those seeking to facilitate full and ongoing patient participation in discussions and decisions about end of life. Thematic analysis makes an important contribution to understanding of the recommendations emerging from the analyzed articles."
+          ]
+        },
+        {
+          "document_id": "6fd83b45-4166-4d7a-b3cf-39f0d945d0e7",
+          "quotes": [
+            "The same guideline indicates that cognitive and behavioural changes are assessed only sporadically. A publication from Brazil illustrates the ‘narrative competence’ 89 of HCP by presenting a case of a PALS with a locked-in syndrome and resulting communication deficits. Narrative competence is the ‘ability to acknowledge, to absorb, to interpret, and to respond to a person’s story’. 89 Such a competence enables HCP to respond appropriately to a wish to die by reflecting its seriousness and talking about its underlying motives, as shown in a case study by a palliative care nurse. 117 According to another case study, the chaplain’s perspective focuses more on the patient’s beliefs about life and death, his or her understanding of suffering and what that means for his or her spirituality."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "beslutningskonflikt",
+        "ICNP_concept_id": "53209001"
+      },
+      "intervention": {
+        "term": "gjennomføring av førehandssamtale om livets sluttfase",
+        "ICNP_concept_id": "713603004"
+      },
+      "goal": {
+        "term": "i stand til å ta avgjerder",
+        "ICNP_concept_id": "719743007"
+      },
+      "FO": "12. Annet/legedelegerte aktiviteter",
+      "supporting_evidence": [
+        {
+          "document_id": "cab8fa72-092f-4f96-974a-4b57a6532461",
+          "quotes": [
+            "Further, many patients experience substantial functional communication and cognitive difficulties, which may interfere with communication at later stages of the disease ( 6 ). Effective discussions about end of life help alleviate anticipatory fears, especially around choking ( 6 ); guide decisions about life-sustaining therapies ( 18 – 20 ); facilitate decisions that are consistent with patients' and families' priorities and needs over time ( 6 , 21 , 22 ); and preserve patient autonomy and dignity ( 23 ). Compounding a complex communication environment and in the ongoing absence of a cure or treatment, ALS is perceived by patients and their families as a ‑death sentence‑ ( 24 ), ‑the self under attack‑ or a ‑downward journey‑ ( 25 ). Moreover, increasing discussion and legalization of voluntary assisted death across jurisdictions, including both physician-assisted suicide and euthanasia ( 28 – 30 ), and a focus on ALS in court cases, case studies published in medical journals, and media portrayals of voluntary assisted death ( 31 – 35 ) raises the possibility that this option may become the focus of end-of-life discussions with ALS patients, highlighting the need for effective communication about end-of-life decision-making. Consensus-based guidelines from Canada, Europe and the United States recommend discussing preferences for life-sustaining therapies and end-of-life care on a regular basis with ALS patients ( 16 , 36 , 37 ). However, guidelines for discussions about end of life with ALS patients have not been published. Findings, however, bring attention to the importance of providing substantive and sufficient disease-related information, including information about symptom management and assistive devices, when discussing end-of-life issues. For people living with ALS, decisions about symptom management, for example dyspnea or dysphagia, may change the natural disease trajectory as technologies introduced for symptom management become life-support technologies ( 16 ). Recommendations for communication about end of life with ALS patients primarily target health professionals, providing only general suggestions for improving communication rather than specific, actionable guidelines similar to published guidelines for disclosing an ALS diagnosis ( 36 , 38 , 39 ). Second, throughout the disease course, clinicians must effectively communicate both the chronic and terminal facets of ALS ( 107 ). For example, clinicians must guide patients and families through iterative decisions about initiating, maintaining and potentially withdrawing life-sustaining support for nutritional and respiratory needs. Finally, this analysis highlighted functional communication challenges."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "svelgevansker",
+        "ICNP_concept_id": "288939007"
+      },
+      "intervention": {
+        "term": "kostregulering",
+        "ICNP_concept_id": "507551000202107"
+      },
+      "goal": {
+        "term": "i stand til å svelge",
+        "ICNP_concept_id": "288936000"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "supporting_evidence": [
+        {
+          "document_id": "f4e0e9e3-d1fd-4fd8-a58a-e8824ab9cac7",
+          "quotes": [
+            "Symptomatic management is the main course of treatment [ 4 ]; thus, identification and exploration of mechanisms of impairment by researchers and clinicians are of significant importance. One of the most frequent and devastating symptoms of MND is dysphagia, a group of symptoms characterised as difficulty forming the bolus and progressing it safely and efficiently from the mouth to the stomach [ 5 ]. Evidence suggests that almost all people with MND (PwMND), regardless of subtype, will eventually experience some degree of dysphagia [ 6 ]. Dysphagia in MND may occur during any stage of the swallow due to the weakening of the bulbar, respiratory and limb musculature [ 7 , 8 ]. As MND progresses, individuals will experience a worsening of dysphagia symptoms, leading to complications, such as dehydration, weight loss, malnutrition and aspiration pneumonia [ 1 , 8 ]. Indeed, aspiration pneumonia is the leading cause of death in this clinical population [ 9 ]. Sensory stimulation did not alter the hypopharyngeal contractile integral as significantly, except the carbonated bolus, which increased this measure. Altering Bolus Consistency Normal saline liquid and viscous boluses were trialled with PwMND in Cock and Colleagues’ [ 25 ] study. The addition of viscosity resulted in a reduction in pharyngeal peak pressure in PwMND. Effects of the viscous bolus on the swallow of PwMND can be found in Table 4 .",
+            "Evidence suggests that almost all people with MND (PwMND), regardless of subtype, will eventually experience some degree of dysphagia [ 6 ]. Dysphagia in MND may occur during any stage of the swallow due to the weakening of the bulbar, respiratory and limb musculature [ 7 , 8 ]. As MND progresses, individuals will experience a worsening of dysphagia symptoms, leading to complications, such as dehydration, weight loss, malnutrition and aspiration pneumonia [ 1 , 8 ]. Data from the remaining participant are reported in Table 4 . Cold, sour and carbonated boluses caused a considerable increase on the velopharyngeal mesopharyngeal and global pharyngeal contractile vigour. Sensory stimulation did not alter the hypopharyngeal contractile integral as significantly, except the carbonated bolus, which increased this measure."
+          ]
+        },
+        {
+          "document_id": "11d1ac78-d7c8-4448-9ad1-974539bcddc1",
+          "quotes": [
+            "Disease progression in people with ALS is rapid, with an average life expectancy of 2–5 years following diagnosis [ 3 ]. Life expectancy is frequently shorter for patients with bulbar onset (typically manifested by dysphagia [swallowing problem] and dysarthria [slurred speech]), comprising approximately one-third of cases [ [4] , [5] , [6] , [7] ]. The remaining two-thirds of cases will have initial symptom onset in the limbs. Two studies found that EMST led to positive improvements in swallow function as well [ 48 , 49 ]. IMST : Of the four studies examining IMST, one was a case study, one was a cohort study ( N = 34), and two were randomized, controlled trials ( N = 19, N = 26) [ 47 , [50] , [51] , [52] ]. Across studies, IMST was well-tolerated and attrition rates ranged from 0 to 23.1% [ 50 , 51 ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for aspirasjon",
+        "ICNP_concept_id": "371736008"
+      },
+      "intervention": {
+        "term": "svelgjefremjande behandling",
+        "ICNP_concept_id": "311677003"
+      },
+      "goal": {
+        "term": "ingen aspirasjon til luftveier",
+        "ICNP_concept_id": "1141704003"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "supporting_evidence": [
+        {
+          "document_id": "f4e0e9e3-d1fd-4fd8-a58a-e8824ab9cac7",
+          "quotes": [
+            "Effects of the viscous bolus on the swallow of PwMND can be found in Table 4 . Manoeuvres Effortful Swallow Both PwMND included in Heslin’s [ 27 ] study tolerated and completed the effortful swallow manoeuvre. UES relaxation duration was increased in both participants when the manoeuvre was applied. Further effects of such are outlined in Table 4 ."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "dødsangst",
+        "ICNP_concept_id": "129869000"
+      },
+      "intervention": {
+        "term": "gjennomføring av førehandssamtale om livets sluttfase",
+        "ICNP_concept_id": "713603004"
+      },
+      "goal": {
+        "term": "redusert fryktnivå",
+        "ICNP_concept_id": "1149159005"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "6fd83b45-4166-4d7a-b3cf-39f0d945d0e7",
+          "quotes": [
+            "Challenges for patients, family members and HCPs identified in the publications. Topics Challenges identified in the publications Illness progression and coping Discussing concerns about illness progression 18 Different information needs of patients depending on their coping with the illness 4 , 19 , 20 Considering family members’/dependents’ (different) psychosocial needs and wishes, 21 , 22 burdens and capacities and their relationships to PALS and organized support/resources 23 Anticipating suffering in later stages of the illness 13 or estimating the quality of life 24 – 26 Changing perceptions of the quality of life, and of life and death wishes 26 Changing preferences regarding therapy options 22 To be asked for an exact prognosis 27 as an HCP and to estimate it for individual patients 22 Decision making Discussing end-of-life issues/decisions, 18 , 28 – 31 especially to reduce fears about death and to support patients’ feelings of maintaining control and considering burdens and emotional situation 20 – 22 , 32 Addressing palliative care and advance care planning early and continuously, 22 also applying strategies to support coping with (anticipated) bereavement 19 , 33 and considering ethical aspects in communication and decision making 34 , 35 Discussing decisions for life-sustaining therapy options, 21 , 36 , 37 such as artificial nutrition and mechanical ventilation, and considering family management, 4 family care capacities 23 or the use of social services 38 for decision making Lack of decision making by the patient 4 Different opinions between patients, families 39 and HCP regarding therapy or care options 38 , 40 , 41 Finding out the patient’s will when the patient is no longer able to communicate (orally or with eye movements) 24 , 37 , 42 Identifying cognitive deficits 43 and estimating how deficits in cognitive and behavioural function influence the decision-making capacity 44 Deciding for or against life-sustaining measures in an emergency situation (e.g. tracheotomy) if the patient does not have an advance (care) directive 13 Deciding whether to call an ambulance in emergency situations if the patient wants to die at home 4 Dealing with wishes to die Being confronted with wishes to die early after diagnosis 45 Withdrawal of mechanical ventilation is practically, emotionally 46 and ethically challenging 47 because of a possible misperception as assisted suicide 48 or euthanasia 49 , 50 Receiving a request for assisted suicide provokes a sense of hopelessness and failure 51 Predicting only 6 months survival before the prescription of drugs for assisted suicide 52 Confrontation with one’s own (professional) attitudes, perceptions and values, especially regarding PALS’ wishes to die and therapy options 53 Insufficient health care system and care options or inexperienced HCP 4 , 31 , 54 – 56 HCPs, health care professionals; PALS, people with amyotrophic lateral sclerosis."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for svekt kommunikasjonsevne",
+        "ICNP_concept_id": "12871000202103"
+      },
+      "intervention": {
+        "term": "gjennomføring av førehandssamtale om livets sluttfase",
+        "ICNP_concept_id": "713603004"
+      },
+      "goal": {
+        "term": "i stand til å ta avgjerder",
+        "ICNP_concept_id": "719743007"
+      },
+      "FO": "12. Annet/legedelegerte aktiviteter",
+      "supporting_evidence": [
+        {
+          "document_id": "6fd83b45-4166-4d7a-b3cf-39f0d945d0e7",
+          "quotes": [
+            "103 , 119 Engaging in ACP ACP is particularly important for PALS who suffer from diminished abilities to communicate and wish to discontinue life-sustaining treatment under certain conditions, especially in IV users 120 or people with reduced decision-making ability due to frontotemporal dementia. 44 , 90 Therefore, 16 publications mention different tools for ACP offered to PALS (including ADs or other documents, such as a preferred priorities for care document, end-of-life care plan or letter for future care). 14 , 42 , 60 , 61 , 64 , 70 , 73 , 78 , 87 , 93 , 107 , 109 , 110 , 121 – 123 However, the guidance to conclude such a document is sometimes more 61 , 87 , 103 , 115 and sometimes less sufficient. 47 Prevalence rates for completed documents vary according to the time of data collection and national context."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "forsvarspreget mestring",
+        "ICNP_concept_id": "129882008"
+      },
+      "intervention": {
+        "term": "tilrettelegging for kommunikasjon",
+        "ICNP_concept_id": "12201000202107"
+      },
+      "goal": {
+        "term": "i stand til å delta i planlegging av helsehjelp",
+        "ICNP_concept_id": "1137426009"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "6fd83b45-4166-4d7a-b3cf-39f0d945d0e7",
+          "quotes": [
+            "If the patient follows a coping strategy of denial, communication should, nevertheless, be offered whenever an opportunity occurs until the patient is ready to discuss these issues. As a recent US study shows, hospitalization of PALS is a good opportunity for ACP counselling and setting goals of care. The likelihood of completing an ACP document increased significantly with involvement of specialized palliative care consultants in the hospital."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsatt evne til å holde luftveiene frie",
+        "ICNP_concept_id": "67750007"
+      },
+      "intervention": {
+        "term": "slimmobilisering ved bruk av hostemaskin",
+        "ICNP_concept_id": "1089591000202105"
+      },
+      "goal": {
+        "term": "i stand til å oppretthalda frie luftvegar",
+        "ICNP_concept_id": "1145305006"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "supporting_evidence": [
+        {
+          "document_id": "9568c70e-05a0-4362-8aed-3fe51954b7ad",
+          "quotes": [
+            "1 Progressive respiratory muscle weakness is one of the main complications affecting patients with ALS. 2 Lung volume reduces over time and leads to ineffective cough and worsening prognosis due to accumulation of secretions. 3 Respiratory failure is primarily determined by impaired inspiratory muscle strength associated with loss of motor unit of intercostal and axial muscles. Also, adequate pressures to develop compressive forces and clear airway secretions are not achieved in the presence of glottic insufficiency. 11–13 Impaired expiratory muscle contraction also decreases the ability to cough and clear secretions. Physiotherapists should assess and monitor vital capacity, MIP, SNIP or peak expiratory cough flow of patients with ALS at least every 3 months. 14 15 Physiotherapeutic interventions used in individuals with expiratory muscle weakness and secretion retention are lung volume recruitment, and airway clearance techniques with breath stacking, air stacking and manually assisted coughing. 16–19 In addition, inspiratory muscle training, lung volume recruitment training and mechanical insufflation-exsufflation may also improve survival and should be included in the overall management of ALS. 15 20 This systematic review will investigate the effects of respiratory physiotherapy on lung function, cough efficacy and functional status of patients with ALS."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "fatigue",
+        "ICNP_concept_id": "84229001"
+      },
+      "intervention": {
+        "term": "oppmuntring til trening",
+        "ICNP_concept_id": "304549008"
+      },
+      "goal": {
+        "term": "redusert fatigue",
+        "ICNP_concept_id": "1149160000"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "99105d67-6b1e-40cf-91d7-18b41e76cf41",
+          "quotes": [
+            "No use, distribution or reproduction is permitted which does not comply with these terms. Background Amyotrophic lateral sclerosis (ALS) is a progressive neuromuscular disease whose primary hallmark is the progressive degeneration of motor neurons in the brainstem, spinal cord, and cerebral cortex that leads to weakness, spasticity, fatigue, skeletal muscle atrophy, paralysis, and even death. Exercise, as a non-pharmacological tool, may generally improve muscle strength, cardiovascular function, and quality of life. Result There were 10 studies included, with the agreement between authors reaching a kappa-value of 0.73. The network meta-analysis, which was conducted under the consistency model, identified that a combined program of aerobic exercise, resistance exercise, and standard rehabilitation showed the highest potential to improve quality of life (0.64 to be the best) and reduce the fatigue (0.39 to be the best) for ALS patients, while exercise program of aerobic and resistance training showed the highest potential (0.51 to be the best) to improve ALS patients' physical function. The effect of exercise on the respiratory was still unclear. The main findings of this review are as follows. First, for ALS patients, a combined program of AE, resistance exercise, and SR might be the best intervention to improve their quality of life and reduce their perceived fatigue, while exercise programs of aerobic and RT showed the highest potential to improve their overall physical function. Moreover, only maintaining DAs might not be beneficial to ALS patients in relieving perceived fatigue or improving their quality of life. Therefore, the weight distribution of this network meta-analysis might be too average, so the results need to be interpreted with caution. Conclusion A multi-modal exercise and rehabilitation program that contains aerobic, resistance, and stretching elements would be more beneficial to ALS patients. However, the safety and guide for practice remain unclear, and randomized controlled trials with a larger sample and higher quality are still needed in the future."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for inaktivitet",
+        "ICNP_concept_id": "129694002"
+      },
+      "intervention": {
+        "term": "individuelle øvelser",
+        "ICNP_concept_id": "25902004"
+      },
+      "goal": {
+        "term": "tilfredsstillande aktivt rørsleutslag",
+        "ICNP_concept_id": "278671000202103"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "supporting_evidence": [
+        {
+          "document_id": "99105d67-6b1e-40cf-91d7-18b41e76cf41",
+          "quotes": [
+            "Some animal experiments have also explored the physiological and psychological mechanisms of the multi-modal exercise program, an animal trial with rats as subjects explored the curative effect and possible mechanism by observing the changes in behavior, inflammatory factors, and intestinal flora in rats after exercise, claiming that the mechanism of exercise training to improve the depressive behavior of rats might be related to inhibiting the expression of proinflammatory factors and increasing the number of lactic acid bacteria in the intestine (Yang et al., 2021 ). When it comes to stretching exercises, stretching exercises could improve flexibility, maintain the extensibility of muscle and soft tissue, improve joint mobility, and prevent contractures. As patients with ALS usually have weaker muscles, they easily get an imbalance between agonist and antagonist muscle groups, predisposing themselves to muscle shortening, joint contractures, and poor posture such as Claw hand deformity. Stretching weakened and unaffected muscle groups could prevent contractures, maintain good alignment of body segments, reduce pain from hypomobility, and help lessen the potential complexities of functional mobility and performing activities of daily living (White and Dressendorfer, 2004 ). Besides, the results of this network meta-analysis also demonstrated that exercise programs of aerobic and RT showed the highest potential to improve their overall physical function."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for lavt næringsinntak",
+        "ICNP_concept_id": "129845004"
+      },
+      "intervention": {
+        "term": "administrasjon av næringstilskudd",
+        "ICNP_concept_id": "709542007"
+      },
+      "goal": {
+        "term": "godt ernært",
+        "ICNP_concept_id": "248324001"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "supporting_evidence": [
+        {
+          "document_id": "9e533910-0a9c-46d3-ab0c-9aacb1237feb",
+          "quotes": [
+            "10 Marin et al 11 demonstrated that 5% of body weight loss increases the risk of death by 30% in patients with ALS. Thus, nutritional care is essential for maintaining adequate nutritional status, which positively affects these patients’ functional capacity, quality of life and survival time. 12–14 Several risk factors such as dysphagia, anorexia, gastrointestinal disorders, cognitive impairment, apathy, psychological disorders, and inadequate energy and nutrient intake contribute to malnutrition in patients with ALS. Also, the effectiveness of interventions will be verified through clinical trials. Weight loss, low BMI and malnutrition are frequent in patients with ALS. According to the guideline conducted by Burgos et al , 30 the BMI reduction in patients with ALS is associated with shortened survival and high risk of mortality. For example, gastrostomy is indicated if oral intake is insufficient or is no longer safe. 31 Dorst et al found that high-energy supplementation effectively stabilises the body weight of patients with ALS and no side effects were detected. The authors also observed a positive impact on the survival of the patients. Scientific entities specialised in ALS recognise nutrition as integral part of care during the course of the disease and address some nutritional recommendations. 34 35 Nutrition therapy seeks to prevent malnutrition, maintain adequate nutritional status, promote haemodynamic stability, reduce the rate of disease progression and positively impact the quality of life and survival of patients with ALS. 36 Thus, identifying consistent recommendations for nutrition intervention in ALS is of the utmost importance and will contribute to more assertive patient care."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "utilstrekkelig peroralt matinntak",
+        "ICNP_concept_id": "699653008"
+      },
+      "intervention": {
+        "term": "håndtering av enteral ernæring",
+        "ICNP_concept_id": "408909002"
+      },
+      "goal": {
+        "term": "næringsinntak i samsvar med behov",
+        "ICNP_concept_id": "1156885001"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "supporting_evidence": [
+        {
+          "document_id": "9e533910-0a9c-46d3-ab0c-9aacb1237feb",
+          "quotes": [
+            "Thus, nutritional care is essential for maintaining adequate nutritional status, which positively affects these patients’ functional capacity, quality of life and survival time. 12–14 Several risk factors such as dysphagia, anorexia, gastrointestinal disorders, cognitive impairment, apathy, psychological disorders, and inadequate energy and nutrient intake contribute to malnutrition in patients with ALS. In addition, hypermetabolism may be present and can increase the risk of malnutrition or aggravate this condition, especially in the absence of nutritional care. Furthermore, the review highlights that dietary intervention can help improve nutrition status. For example, gastrostomy is indicated if oral intake is insufficient or is no longer safe. 31 Dorst et al found that high-energy supplementation effectively stabilises the body weight of patients with ALS and no side effects were detected. 37–40 Nevertheless, systematic reviews and guidelines about ALS nutritional therapy are scarce and some of them present gaps because they do not discuss specific aspects regarding nutritional treatment and management that should be implemented in this type of patient. For example, the recommendations by del Olmo Garc\u0000\u0000a et al 41 describe the nutritional aspects of ALS and nutritional management with recommendations for high-energy intake and those related to enteral and parenteral nutrition. However, it does not address percentages of macronutrient distribution, micronutrient requirements or adjuvant nutritional supplements."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "fatigue",
+        "ICNP_concept_id": "84229001"
+      },
+      "intervention": {
+        "term": "håndtering av energiøkonomisering",
+        "ICNP_concept_id": "385689004"
+      },
+      "goal": {
+        "term": "redusert fatigue",
+        "ICNP_concept_id": "1149160000"
+      },
+      "FO": "8. Smerte/søvn/hvile/velvære",
+      "supporting_evidence": [
+        {
+          "document_id": "f50df173-e4ec-4b69-ab8c-80f586cb7828",
+          "quotes": [
+            "8 Although this progression varies substantially between individuals, it usually begins with the involvement of limbs, followed by other body regions. Individuals with ALS also report fatigue, which is experienced as a generalised feeling of tiredness and difficulty performing maximal muscle contraction. 9 Spasticity is another disabling symptom that is present in most individuals with ALS. 16 Furthermore, most studies evaluating physical therapy exercises or motor techniques in ALS demonstrated improved physical function, quality of life and fatigue. 9 17 18 Therefore, this review aims to critically assess whether physical therapy interventions are effective for improving functional capacity, quality of life and fatigue of individuals with ALS. Methods and analysis This systematic review protocol was conducted according to the Preferred Reporting Items for Systematic Review and Meta-Analysis Protocols (PRISMA-P) 19 and registered in the International Prospective Register of Systematic Reviews (PROSPERO). Participants we will include participants of both sexes, with a clinical or probable diagnosis of ALS at any stage of the disease, without any other neurological disease, aged 18 or above and who have undergone motor physical therapy methods or techniques in RCTs. Interventions and comparators We will consider intervention as any physical therapy practice acting on motor symptoms of patients with ALS: therapeutic exercises, stretching, aerobic exercises, relaxation techniques, massage therapy, electrostimulation and energy conservation techniques. Any other non-physiotherapeutic method or technique, placebo, no intervention or minimal intervention (eg, minimum guidance and booklets) will be considered for the control group."
+          ]
+        },
+        {
+          "document_id": "11d1ac78-d7c8-4448-9ad1-974539bcddc1",
+          "quotes": [
+            "Exercise can result in a variety of neuromuscular benefits including cross-education (transference), increased motor unit activation and synchronization, as well as increased skeletal muscle fiber hypertrophy, protein synthesis, and capillary density, which may lead to more optimal functioning of the neuromuscular system [ 13 , 14 ]. While strenuous exercise has been avoided in people with ALS due to baseline fatigue, muscle atrophy and weakness from disuse and denervation, and concern for faster muscle degeneration [ 13 , [15] , [16] , [17] ], preliminary evidence demonstrates that moderate therapeutic exercise may be beneficial in symptom management and survival in people with ALS. While conducting exercise in people with ALS remains controversial in some settings, researchers have proposed a paradigm shift to a proactive management approach rather than a reactive one [ [18] , [19] , [20] ]. Furthermore, one study found that an intensive exercise regimen (defined as 5 sessions/week) led to an increase in FSS scores, suggesting an increase in overall fatigue severity that may impact patients' function [ 35 ]. 3.5 Resistance exercise Three studies examined resistance exercise employing a case study or case series design, with participants ranging from one to six participants. No study reported adverse outcomes and one patient withdrew for reasons unrelated to the exercise program [ 40 ]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "Spastisitet med medfølgende ubehag og funksjonshemming",
+        "ICNP_concept_id": ""
+      },
+      "intervention": {
+        "term": "avslappingsterapi",
+        "ICNP_concept_id": "64299003"
+      },
+      "goal": {
+        "term": "redusert ubehag",
+        "ICNP_concept_id": "18251000202105"
+      },
+      "FO": "8. Smerte/søvn/hvile/velvære",
+      "supporting_evidence": [
+        {
+          "document_id": "f50df173-e4ec-4b69-ab8c-80f586cb7828",
+          "quotes": [
+            "Individuals with ALS also report fatigue, which is experienced as a generalised feeling of tiredness and difficulty performing maximal muscle contraction. 9 Spasticity is another disabling symptom that is present in most individuals with ALS. 10 Considering the prognosis and lethal characteristics of ALS, the treatment consists of individualised general care. Physical therapy is fundamental for the multidisciplinary team and must be adapted to the needs and objectives of the individual. The physical therapist must also focus on treating symptoms, maximising functions and activities and participation and providing quality of life to patients with ALS. 13 Patients with ALS widely accept physical activity involving range of motion and stretching exercises. Participants We will include participants of both sexes, with a clinical or probable diagnosis of ALS at any stage of the disease, without any other neurological disease, aged 18 or above and who have undergone motor physical therapy methods or techniques in RCTs. Interventions and comparators We will consider intervention as any physical therapy practice acting on motor symptoms of patients with ALS: therapeutic exercises, stretching, aerobic exercises, relaxation techniques, massage therapy, electrostimulation and energy conservation techniques. Any other non-physiotherapeutic method or technique, placebo, no intervention or minimal intervention (eg, minimum guidance and booklets) will be considered for the control group."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "mangelfull kunnskap om sykdomsprosess",
+        "ICNP_concept_id": "129864005"
+      },
+      "intervention": {
+        "term": "pårørandeundervisning om sjukdom",
+        "ICNP_concept_id": "710755005"
+      },
+      "goal": {
+        "term": "pårørande viser kunnskap om sjukdomsforløp",
+        "ICNP_concept_id": "1144471005"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "f815c996-e8f9-4c11-a58a-8d203acf961f",
+          "quotes": [
+            "Conversely, the findings demonstrated that the carers’ prior knowledge about MND can also have a positive impact on anticipatory and post-death grief processes (Ray et al., 2014 ). The carers’ prior knowledge enabled them to construct the death of the person living with MND as a positive release from MND, while carers’ lack of knowledge (being unprepared for the symptoms of dying) led to greater loss of hope, negatively affecting anticipatory and post-death grief processes (Ray et al., 2014 ). Uncertainty and unpredictability Three qualitative studies highlighted that the trajectory and progression of MND arose feelings of uncertainty and unpredictability in carers of people living with MND, impacting negatively on their anticipatory and post-death grief processes (Ray et al., 2014 ; Ray & Street, 2007 ; Warrier et al., 2019 ). The findings suggested that there may be factors particularly important to target during the early diagnosis of MND as they might affect both anticipatory and post-death grief. These factors included carers’ need for greater knowledge about the progression of the disease, coping with changes in the relationship with the care recipient, reduction of anxiety and depressive symptoms of carers, and encouragement of planning for the death of the person living with MND. Findings also highlighted that how carers adjusted and rebuilt life without the person living with MND such as not being alone and engaging in activities, are important factors to consider during their post-death period. Considering the findings of the current review, multi-component interventions may be more beneficial for treating grief in this population. Early educational interventions aimed at providing information about MND symptoms, including how the disease may progress differently across people living with MND, and available support resources could be beneficial for coping with both anticipatory and post-death grief. However, these should be provided with psychological support or counseling as increased knowledge could lead to greater anticipatory grief before it can help carers to cope with post-death grief. Psychological interventions and counseling could also be beneficial to support carers from the point of diagnosis."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for dysfunksjonell sorg hos pårørande",
+        "ICNP_concept_id": "704674009"
+      },
+      "intervention": {
+        "term": "gjennomføring av førehandssamtale om livets sluttfase",
+        "ICNP_concept_id": "713603004"
+      },
+      "goal": {
+        "term": "tilfredsstillande meistring hos pårørande",
+        "ICNP_concept_id": "1141941008"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "supporting_evidence": [
+        {
+          "document_id": "f815c996-e8f9-4c11-a58a-8d203acf961f",
+          "quotes": [
+            "Additionally, carers experienced a sense of relief when the person living with MND died as the suffering ended, leading to a positive post-death grief process (Warrier et al., 2019 ). Preparing/planning for death Four qualitative studies reported that the carer and the person living with MND planning for death together, such as discussing wishes about how they preferred death to occur, helped carers prepare for their grieving processes before death and during their bereavement (Aoun, Noonan, et al., 2021 ; Poppe et al., 2022 ; Ray et al., 2014 ; Solomon & Hansen, 2015 ). For example, having conversations and making plans on dying and death allowed carers to experience some comfort and these had positive impacts on carers’ anticipatory and post-death grief (Ray et al., 2014 ) and lowered the risk of developing PGD (Aoun, Noonan, et al., 2021 ). Furthermore, supporting the person living with MND in their desire to die at home, created an ideal environment for carers’ post-death grieving process and gave carers time to be prepared mentally and emotionally for the person living with MND’s death (Solomon & Hansen, 2015 ). The findings suggested that there may be factors particularly important to target during the early diagnosis of MND as they might affect both anticipatory and post-death grief. These factors included carers’ need for greater knowledge about the progression of the disease, coping with changes in the relationship with the care recipient, reduction of anxiety and depressive symptoms of carers, and encouragement of planning for the death of the person living with MND. Findings also highlighted that how carers adjusted and rebuilt life without the person living with MND such as not being alone and engaging in activities, are important factors to consider during their post-death period. These could help carers to cope with the emotional impact of the changes in their roles and relationships, reduce anxiety and depressive symptoms and facilitate emotional acceptance rather than emotional avoidance. Designing interventions tailoring end-of-life care for planning for the death could reduce post-death grief symptoms and PGD risk. Additionally, it would be beneficial to consider educational interventions with healthcare professionals to raise awareness and provide information on how the relationship between healthcare professionals and carers impacts carers’ emotional wellbeing."
+          ]
+        }
+      ]
+    }
+  ],
+  "source_documents": [
+    {
+      "document_id": "20375647-3d6c-4029-9db5-db159f4ddd3f",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/250-254.pdf",
+      "title": "SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES",
+      "publication_year": 2006,
+      "doi": "10.1080/16501970600721033",
+      "evidence_level": "Nivå 1: Enkeltstudier",
+      "reasoning_trace": "Dokumentet analyserer motiver for oppstart av hjemmerespiratorbehandling (inkludert non-invasiv ventilasjon - NIV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om teksten er en medisinsk studie, gir den et solid grunnlag for å trekke ut sykepleierelevante problemstillinger knyttet til respirasjonssvikt. Sykepleiediagnosene identifiseres fra de hyppigste kliniske symptomene som motiverer behandling, som søvnighet på dagtid, dyspné og hosteinsuffisiens. Intervensjonene fokuserer på sykepleierens rolle i å administrere ventilasjonsstøtte og utføre respirasjonsovervåkning. Målene er klinisk utledet som den ønskede effekten av disse intervensjonene (f.eks. symptomlindring, bedret søvn og frie luftveier)."
+    },
+    {
+      "document_id": "449e4198-88d1-483c-919b-3cf6cde83e88",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32903629_fulltext.xml",
+      "title": "Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis",
+      "publication_year": 2020,
+      "doi": "10.3389/fneur.2020.00853",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en metaanalyse som undersøker effekten av terapeutisk trening hos pasienter med ALS (Amyotrofisk lateral sklerose). Jeg har identifisert to hovedområder som er relevante for sykepleiepraksis: 1) Muskelatrofi og nedsatt fysisk mobilitet, og 2) Risiko for nedsatt respirasjonsfunksjon. Sykepleieintervensjonene er fokusert på å veilede, tilrettelegge og oppmuntre til terapeutiske øvelser (som lette/moderate styrkeøvelser og aerob trening) som et symptomatisk tiltak, spesielt tidlig i sykdomsforløpet. Målene for disse tiltakene er tydelig beskrevet som å forsinke funksjonsnedsettelse, opprettholde hjerte- og lungefunksjon, samt bevare pasientens evne til å utføre dagliglivets aktiviteter (ADL) så lenge som mulig."
+    },
+    {
+      "document_id": "8394622e-413e-41c9-9fea-dd1d41a7511b",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32910255_fulltext.xml",
+      "title": "A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis",
+      "publication_year": 2020,
+      "doi": "10.1007/s00415-020-10203-z",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er i hovedsak en systematisk oversiktsartikkel om bruken av nevropsykiatriske og kognitive kartleggingsverktøy i kliniske studier for ALS-pasienter. Imidlertid belyser teksten sentrale kliniske utfordringer som er høyst relevante for sykepleiere i sykehus: at kognitiv svikt, apati, depresjon og angst er svært utbredt, reduserer livskvaliteten og ofte forblir uoppdaget i den vanlige kliniske omsorgen. I tillegg påpekes det at standard kartleggingsverktøy kan gi feilaktige resultater fordi de ikke er tilpasset pasientenes motoriske svekkelser, kommunikasjonsvansker eller de overlappende somatiske symptomene. Ut fra dette har jeg formulert to kliniske funn sentrert rundt sykepleiediagnosene kognitiv/atferdsmessig svikt og nevropsykiatriske symptomer (depresjon/angst). Tiltakene innebærer regelmessig, tilpasset kartlegging, og målet (delvis implisitt men faglig forankret) er tidlig identifisering for å tilpasse omsorg, redusere pårørendebelastning og optimalisere livskvalitet."
+    },
+    {
+      "document_id": "0bc04fc9-71fc-4894-b9d2-a2b8198db181",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/33251776_fulltext.xml",
+      "title": "Assisted Breathing with a Diaphragm Pacing System: A Systematic Review",
+      "publication_year": 2020,
+      "doi": "10.3349/ymj.2020.61.12.1024",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en systematisk oversikt over bruk av diafragmapacing og mekanisk ventilasjon hos pasienter med blant annet ALS. Teksten er sterkt medisinsk, men inneholder avgjørende informasjon om tilstander og tiltak som i høyeste grad involverer sykepleie. ALS-pasienter opplever progressiv respirasjonssvikt og trenger respirasjonsstøtte som mekanisk ventilasjon. Teksten nevner eksplisitt at dette 'requires continuous monitoring' (S19), noe som er en sentral sykepleieoppgave. Pasientgruppen sliter også med søvnmangel (S30), der respirasjonsstøtte brukes for å lindre disse plagene (S18). Videre nevner tabellene postoperative komplikasjoner som sykepleiere overvåker og behandler på sykehus, inkludert dyp venetrombose der antikoagulantia gis (S185), sårinfeksjoner som krever sårstell og antibiotika (S186), og observasjon av hemodynamisk status for å fange opp respirasjonsproblemer ved f.eks. kapnotoraks (S187). Jeg har trukket ut disse sykepleieterknyttede handlingene, problemene og målene."
+    },
+    {
+      "document_id": "636fe311-8e5b-4bc6-ad26-f94a2c398616",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/33333772_fulltext.xml",
+      "title": "Palmitoylethanolamide: A Nutritional Approach to Keep Neuroinflammation within Physiological Boundaries—A Systematic Review",
+      "publication_year": 2020,
+      "doi": "10.3390/ijms21249526",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet nevner Amyotrofisk lateral sklerose (ALS) i avsnitt 3.4. Det beskrives at ALS fører til progressiv lammelse av skjelettmuskulatur, noe som rammer motorikk og respirasjon, og at nevroinflammasjon er en pådrivende faktor [S111, S112]. Studier omtalt i teksten viser at administrering av Palmitoylethanolamide (PEA-um) som tilleggsbehandling bedret motorisk funksjon og muskeltonus, i tillegg til at det bremset nedgangen i lungefunksjon (FVC) og symptomutvikling [S113, S114]. Ut fra dette er det identifisert funn knyttet til to hovedproblemer for sykepleien: nedsatt lungefunksjon og nedsatt motorisk funksjon. Sykepleieintervensjonene innebærer å administrere forordnet oral behandling med PEA-um samt systematisk overvåkning av respirasjons- og motorisk status. Målene er direkte knyttet til å bevare funksjonene lengst mulig, noe som understøttes av studiens positive utfall."
+    },
+    {
+      "document_id": "c8bfce2f-3dc6-4a0e-a7da-6faf2cd32d54",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/33530383_fulltext.xml",
+      "title": "Systematic Review of Therapeutic Physical Exercise in Patients with Amyotrophic Lateral Sclerosis over Time",
+      "publication_year": 2021,
+      "doi": "10.3390/ijerph18031074",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet beskriver effekten av terapeutisk fysisk trening (TFE) for pasienter med Amyotrofisk lateral sklerose (ALS). Teksten belyser flere sentrale sykepleiediagnoser knyttet til funksjonsnedsettelse, slik som progressiv muskelsvakhet, redusert evne til å utføre aktiviteter i dagliglivet (ADL), fallrisiko, og nedsatt respirasjonsfunksjon ledsaget av fatigue/utmattelse. Intervensjonene fokuserer på tilpasset fysisk trening (aerob, styrke og motstand), postural korrigering, fallforebygging og tilpassede hvileperioder for å unngå overanstrengelse. Målene er primært utledet fra dokumentets beskrivelse av positive fysiologiske og funksjonelle gevinster, slik som forsinket muskelatrofi, reduksjon i antall fall, bevart respirasjonsmuskulatur og økt livskvalitet."
+    },
+    {
+      "document_id": "b06e73c3-37e1-4359-8da0-8afbb2fa5b1e",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/33546507_fulltext.xml",
+      "title": "Occupational Therapy Interventions in Adults with Multiple Sclerosis or Amyotrophic Lateral Sclerosis: A Scoping Review",
+      "publication_year": 2021,
+      "doi": "10.3390/ijerph18041432",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet omhandler ergoterapi for pasienter med multippel sklerose (MS) og amyotrofisk lateral sklerose (ALS). For å trekke ut funn relevant for målgruppen (ALS), ble teksten systematisk gjennomgått for spesifikke ALS-intervensjoner. Det ble identifisert flere tiltak som også er høyst relevante for sykepleiepraksis og det tverrfaglige samarbeidet på et sykehus: 1) Et multifaktorielt program som inkluderer pusteøvelser og holdningskontroll for å forbedre lungekapasiteten (vital kapasitet). 2) Nødvendigheten av å tilpasse aktivitet/behandling for å unngå utmattelse (fatigue) hos ALS-pasienter. 3) Bruk av assisterende teknologi for å hjelpe pasienter med muskulær svekkelse med kommunikasjon og omgivelseskontroll. 4) Bruk av musikkterapi/instrumenter for å la pasienten uttrykke følelser, noe som reduserer angst og depresjon, og øker livskvaliteten. Disse funnene ble formulert som sykepleiediagnoser med tilhørende intervensjoner og mål i tråd med standard klinisk terminologi."
+    },
+    {
+      "document_id": "cab8fa72-092f-4f96-974a-4b57a6532461",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/34421792_fulltext.xml",
+      "title": "Communication About End of Life for Patients Living With Amyotrophic Lateral Sclerosis: A Scoping Review of the Empirical Evidence",
+      "publication_year": 2021,
+      "doi": "10.3389/fneur.2021.683197",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en oversiktsartikkel om kommunikasjon ved livets slutt for pasienter med ALS. For å utlede relevante sykepleiefunn har jeg identifisert kliniske pasientproblemer (sykepleiediagnoser) omtalt i teksten: frykt for kvelning, nedsatt verbal kommunikasjon (dysartri/motorisk talesvikt), og usikkerhet rundt beslutninger om livsforlengende behandling. Intervensjonene er trukket fra tekstens anbefalinger om å gi spesifikk og betryggende informasjon tidlig, tilrettelegge for alternativ kommunikasjon (ASK/AAC), og gjennomføre jevnlige samtaler om livsforlengende tiltak og palliasjon. Der målene var underforstått, har jeg brukt klinisk ekspertise til å utlede logiske mål som bevaring av autonomi, trygghet og aktiv deltakelse i beslutninger."
+    },
+    {
+      "document_id": "f4e0e9e3-d1fd-4fd8-a58a-e8824ab9cac7",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/35235032_fulltext.xml",
+      "title": "Use of Pharyngeal High-Resolution Manometry to Evaluate Dysphagia in Adults with Motor Neurone Disease: A Scoping Review",
+      "publication_year": 2022,
+      "doi": "10.1007/s00455-022-10418-4",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet fokuserer primært på bruk av Pharyngeal High-Resolution Manometry (PHRM) for å evaluere dysfagi hos pasienter med motorneuronsykdommer som ALS (MND). Selv om artikkelen omhandler en instrumental undersøkelse, beskriver den tre konkrete intervensjoner knyttet til svelgevansker som håndteres og støttes av sykepleiere: tilpasning av boluskonsistens, bruk av sensorisk stimulering og bruk av svelgemanøvrer (effortful swallow). Jeg har identifisert sykepleiediagnoser relatert til dysfagi og dens potensielle alvorlige komplikasjoner for målgruppen. Tiltakene baserer seg på tekstens gjennomgang av effektfulle intervensjoner for å kompensere for nedsatt funksjon. Målene er delvis eksplisitte (forhindre aspirasjon/vekttap) og delvis utledet basert på beskrevet positiv klinisk virkning av tiltakene (forbedret svelgekontraksjon og sikker boluspassasje)."
+    },
+    {
+      "document_id": "6fd83b45-4166-4d7a-b3cf-39f0d945d0e7",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/35309870_fulltext.xml",
+      "title": "Talking about the end of life: communication patterns in amyotrophic lateral sclerosis – a scoping review",
+      "publication_year": 2022,
+      "doi": "10.1177/26323524221083676",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en kunnskapsoppsummering som fokuserer på kommunikasjonsmønstre og utfordringer rundt livsforlengende og livsavsluttende behandling for pasienter med amyotrofisk lateralsklerose (ALS). For å trekke ut klinisk relevante funn for sykepleiere, har jeg fokusert på pasientnære problemstillinger knyttet til frykt for døden, kommunikasjonsbarrierer, redusert samtykkekompetanse i senfaser, og mestringsstrategier som benektelse. Tiltakene innebærer psykososial støtte, anvendelse av narrativ kompetanse (inkludert palliativ sykepleie), tilrettelegging for forhåndsplanlegging (Advance Care Planning - ACP) og strategier for å møte pasienter i benektelse. Gjennom klinisk skjønn er implisitte pasientmål formulert basert på de beskrevne tiltakene."
+    },
+    {
+      "document_id": "9568c70e-05a0-4362-8aed-3fe51954b7ad",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/35636801_fulltext.xml",
+      "title": "Effects of respiratory physiotherapy in patients with amyotrophic lateral sclerosis: protocol for a systematic review of randomised controlled trials",
+      "publication_year": 2022,
+      "doi": "10.1136/bmjopen-2022-061624",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet omhandler en protokoll for effekten av respirasjonsfysioterapi hos ALS-pasienter. De kliniske funnene er utledet basert på pasientgruppens typiske respiratoriske utfordringer. Diagnosene fokuserer på nedsatt respirasjonsmuskulatur som fører til ineffektiv hoste og slimretensjon. Selv om teksten spesifikt nevner fysioterapeuter i enkelte avsnitt, er tiltak som overvåking av respirasjonsstatus, assistert hoste, lungevolumrekruttering og bruk av hostemaskin (mekanisk insufflasjon-eksufflasjon) svært sentrale sykepleieoppgaver i den tverrfaglige og daglige oppfølgingen av ALS-pasienter på sykehus. Målene er hentet fra tekstens fokus på bedret lungefunksjon, komfort og hosteeffektivitet, og er utdypet med klinisk skjønn der teksten er implisitt."
+    },
+    {
+      "document_id": "99105d67-6b1e-40cf-91d7-18b41e76cf41",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/35898325_fulltext.xml",
+      "title": "Mixed Comparison of Different Exercise Interventions for Function, Respiratory, Fatigue, and Quality of Life in Adults With Amyotrophic Lateral Sclerosis: Systematic Review and Network Meta-Analysis",
+      "publication_year": 2022,
+      "doi": "10.3389/fnagi.2022.919059",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en meta-analyse som evaluerer effekten av ulike trenings- og rehabiliteringsprogrammer for pasienter med Amyotrofisk lateral sklerose (ALS). For å utlede sykepleierelevante funn, har jeg fokusert på pasientproblemer knyttet til redusert livskvalitet, fatigue, muskelsvakhet med fare for kontrakturer og redusert respirasjonsfunksjon. Dette er kjerneproblemer sykepleiere håndterer og observerer i avdelingen. Intervensjonene fokuserer på de praktiske handlingene sykepleiere og det tverrfaglige teamet utfører, slik som å tilrettelegge for trening, utføre tøyningsøvelser og veilede i respirasjonsøvelser. Målene er direkte utledet fra teksten, for eksempel å forebygge feilstillinger, lindre smerte, øke funksjonsnivå og bedre pasientens generelle livskvalitet."
+    },
+    {
+      "document_id": "9e533910-0a9c-46d3-ab0c-9aacb1237feb",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36008057_fulltext.xml",
+      "title": "Nutritional therapy in amyotrophic lateral sclerosis: protocol for a systematic review and meta-analysis",
+      "publication_year": 2022,
+      "doi": "10.1136/bmjopen-2022-064086",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en forskningsprotokoll som omhandler ernæringsbehandling ved amyotrofisk lateralsklerose (ALS). Ved gjennomgang av teksten ble det identifisert at ALS-pasienter har høy risiko for vekttap og underernæring, blant annet på grunn av hypermetabolisme og dysfagi (S37, S38, S115). Sykepleiere har et hovedansvar på sykehus for oppfølging av ernæring, inkludert det å gi persontilpasset ernæringsbehandling og høyenergitilskudd for å stabilisere vekten (S121, S126). I tillegg beskrives situasjoner der oralt inntak blir utilstrekkelig eller utrygt (eksempelvis ved alvorlig svelgebesvær/dysfagi), hvor intervensjonen er å benytte gastrostomi for enteral ernæring (S120, S129). Målene er eksplisitt og implisitt utledet fra tekstens fokus på å opprettholde ernæringsstatus, unngå underernæring og sørge for et trygt inntak."
+    },
+    {
+      "document_id": "2a1d230e-e8e8-4808-b4a0-155ad1a7e63e",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36341104_fulltext.xml",
+      "title": "Different observation period of exercise training in amyotrophic lateral sclerosis patients: A meta-analysis",
+      "publication_year": 2022,
+      "doi": "10.3389/fneur.2022.986882",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en metaanalyse som undersøker effekten av intensiv fysisk trening hos pasienter med ALS. Teksten beskriver hvordan ALS fører til progressiv muskelsvekkelse, nedsatt mobilitet og etter hvert redusert respirasjonsfunksjon. I en sykepleiekontekst på sykehus er det høyst relevant å trekke ut kliniske funn knyttet til ivaretakelse av fysisk og respiratorisk funksjon. Den første sykepleiediagnosen omhandler nedsatt fysisk mobilitet på grunn av muskelatrofi, hvor sykepleierens tiltak vil være å motivere og tilrettelegge for intensiv fysisk trening, med det eksplisitte målet om å forsinke funksjonsfallet og bevare ADL-ferdigheter (Activities of Daily Living). Den andre sykepleiediagnosen er knyttet til risiko for respirasjonssvikt. Tiltaket her involverer systematisk observasjon av lungefunksjon (f.eks. FVC%) og tilrettelegging for respirasjonsøvelser, med mål om å påvirke og bevare respirasjonsmuskulaturens funksjon lengst mulig. Målene og sykepleieintervensjonene er logisk utledet ved å koble studiens medisinske funn om treningseffekt over til praktiske, kliniske sykepleietiltak."
+    },
+    {
+      "document_id": "f50df173-e4ec-4b69-ab8c-80f586cb7828",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36414305_fulltext.xml",
+      "title": "Physical therapy for the management of motor symptoms in amyotrophic lateral sclerosis: protocol for a systematic review",
+      "publication_year": 2022,
+      "doi": "10.1136/bmjopen-2022-063689",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en protokoll for en systematisk oversikt om fysioterapi for ALS-pasienter, men inneholder sentrale kliniske problemstillinger (sykepleiediagnoser) og intervensjoner som er høyst relevante for sykepleiere i sykehus. De viktigste funnene knytter seg til utmattelse (fatigue), muskelsvakhet/nedsatt mobilitet, og spastisitet. Sykepleiere spiller en viktig tverrfaglig rolle ved å veilede i energibesparende teknikker for å håndtere utmattelse, assistere med tøyninger og bevegelsesøvelser (range of motion) for å bevare funksjon ved muskelsvakhet, samt benytte avspenningsteknikker og massasje for å lindre ubehag ved spastisitet. Målene er eksplisitt og implisitt utledet fra tekstens fokus på symptomlindring, forbedret livskvalitet og optimalisering av gjenværende funksjon."
+    },
+    {
+      "document_id": "11d1ac78-d7c8-4448-9ad1-974539bcddc1",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36875937_fulltext.xml",
+      "title": "A meta-analysis of post-exercise outcomes in people with amyotrophic lateral sclerosis",
+      "publication_year": 2023,
+      "doi": "10.1016/j.ensci.2023.100452",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Gjennomgangen av metaanalysen viser at ALS-pasienter opplever gradvis tap av motorisk funksjon, noe som påvirker respirasjon, svelging (dysfagi), daglige aktiviteter (ADL) og forårsaker utmattelse (fatigue). Dokumentet fremhever at tilpasset fysisk trening (aerob, styrke, tøyninger) og respirasjonsmuskeltrening (IMST/EMST) er trygt og har en positiv effekt, spesielt ved mild til moderat sykdomsgrad. Jeg har trukket ut fire hovedområder for sykepleie: 1) Nedsatt fysisk mobilitet og ADL, der tiltaket er tilpasset moderat trening for å opprettholde funksjon. 2) Respirasjonssvikt, der tiltaket er inspiratorisk/ekspiratorisk muskeltrening for å bevare lungekapasitet. 3) Dysfagi og aspirasjonsrisiko, der ekspiratorisk trening bedrer svelgefunksjon. 4) Fatigue, der overvåking og unngåelse av for intensiv trening er viktig for å bevare energi. Målene er formulert for å gjenspeile ønskede utfall basert på sykepleiefokus i sykehus og rehabiliteringssettinger."
+    },
+    {
+      "document_id": "f815c996-e8f9-4c11-a58a-8d203acf961f",
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36995270_fulltext.xml",
+      "title": "Factors associated with grief in informal carers of people living with Motor Neuron Disease: A mixed methods systematic review",
+      "publication_year": 2023,
+      "doi": "10.1080/07481187.2023.2191351",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet omhandler sorgprosesser (ventesorg, sorg etter dødsfall og forlenget sorgforstyrrelse) hos pårørende til pasienter med ALS/MND. For å trekke ut relevante sykepleiefunn rettet mot sykehus/sykepleiepraksis, har jeg fokusert på utfordringer hos pårørende som kan lindres eller forebygges via kliniske intervensjoner. Manglende kunnskap om sykdomsprogresjon og manglende forberedelse på livets slutt ble identifisert som faktorer som forverrer sorgen. Derfor ble to funn utformet: 1) Informasjonsmangel og behov for psykoedukasjon kombinert med emosjonell støtte, og 2) Manglende forberedelse på døden, med intervensjon om å fasilitere samtaler om livets slutt (Advance Care Planning). Begge inneholder sykepleiediagnose (problemet), intervensjon og et utledet sykepleiemål i samsvar med kliniske retningslinjer for pårørendestøtte."
+    }
+  ],
+  "excluded_documents": [
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/34786907_fulltext.xml",
+      "title": "Evidence-based position paper on Physical and Rehabilitation Medicine practice for people with amyotrophic lateral sclerosis",
+      "justification": "Dokumentet er et sammendrag av en vitenskapelig artikkel (position paper) som omhandler rollen til leger innen fysikalsk medisin og rehabilitering (PRM) i behandlingen av pasienter med amyotrofisk lateral sklerose (ALS). Teksten beskriver sykdommen medisinsk og nevner at rehabiliteringsprogrammet bør leveres og overvåkes av et tverrfaglig team der PRM-legen er hovedkoordinator. Dokumentet inneholder imidlertid ingen spesifikke sykepleiediagnoser, konkrete sykepleieintervensjoner eller mål rettet mot sykepleiepraksis. Av denne grunn er det ikke identifisert noen relevante funn i henhold til kravene."
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/36834005_fulltext.xml",
+      "title": "Measurement Properties of Self-Report Questionnaires for Amyotrophic Lateral Sclerosis: A Systematic Review and Meta-Analysis of Commonly Used Instruments",
+      "justification": "Dokumentet er en systematisk litteraturstudie og meta-analyse som evaluerer måleegenskapene til ulike selvrapporteringsskjemaer (PROMs) brukt for å kartlegge livskvalitet, søvn, utmattelse, angst og depresjon hos pasienter med amyotrofisk lateral sklerose (ALS). Teksten nevner generelt at tverrfaglig behandling, diettendringer, logopedi, non-invasiv ventilasjon og fysisk trening er relevant (S22-S24), men den beskriver ingen konkrete sykepleiediagnoser koblet til spesifikke sykepleieintervensjoner og mål slik de utføres av sykepleiere på et sykehus. Siden teksten utelukkende fokuserer på validering av spørreskjemaer og forskningsmetodikk, inneholder den ingen kliniske funn som oppfyller definisjonen for uttrekk."
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/37249667_fulltext.xml",
+      "title": "Safety and efficacy of edaravone in patients with amyotrophic lateral sclerosis: a systematic review and meta-analysis",
+      "justification": "Dokumentet er en systematisk oversiktsartikkel og metaanalyse som undersøker sikkerhet og effekt av den medisinske behandlingen edaravone hos pasienter med amyotrofisk lateral sklerose (ALS). Selv om teksten nevner flere pasientproblemer og symptomer som danner grunnlag for sykepleiediagnoser (for eksempel muskelsvakhet, svelgevansker/dysfagi, respirasjonssvikt og forstoppelse), beskriver ikke dokumentet noen spesifikke sykepleieintervensjoner rettet mot disse problemene. Teksten fokuserer utelukkende på farmakologisk intervensjon, statistiske overlevelsesrater og medisinske bivirkningsprofiler. Siden et gyldig funn krever en logisk sammenheng mellom en sykepleiediagnose og en spesifikk sykepleieintervensjon, er det ikke identifisert noen relevante funn for sykepleiere i sykehus i dette dokumentet."
+    }
+  ]
+}

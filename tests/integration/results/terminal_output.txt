@@ -1,0 +1,1078 @@
+bryne_bryne_altostrat_com@dev:~/code/VBP$ uv run python tests/integration/test_workflow_local.py
+--- Starting ADK 2.0 Local Workflow Test ---
+Project: sunny-passage-362617
+Model Location: global
+Target Group: ALS - Amytrofisk lateral sklerose
+Source Bucket: gs://veiledende_behandlingsplan/ALS/
+File Limit: None
+Max Concurrency: 10
+--------------------------------------------
+
+Executing workflow...
+[Agent]: Starting discovery in: gs://veiledende_behandlingsplan/ALS/
+[Agent]: Processing 96 documents in parallel (limit: 10)...
+[Agent]: [Progress] START: 250-254.pdf
+[Agent]: [Progress] START: 32903629_fulltext.xml
+[Agent]: [Progress] START: 32910255_fulltext.xml
+[Agent]: [Progress] START: 33251776_fulltext.xml
+[Agent]: [Progress] START: 33333772_fulltext.xml
+[Agent]: [Progress] START: 33530383_fulltext.xml
+[Agent]: [Progress] START: 33546507_fulltext.xml
+[Agent]: [Progress] START: 34421792_fulltext.xml
+[Agent]: [Progress] START: 34786907_fulltext.xml
+[Agent]: [Progress] START: 35235032_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 34786907_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 34786907_fulltext.xml
+[Agent]: [Progress] START: 35309870_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 33546507_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 33530383_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 33530383_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 33530383_fulltext.xml
+[Agent]: [Progress] START: 35636801_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 33333772_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 32903629_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 33546507_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: 250-254.pdf
+[Agent]: [Progress] ANALYST DONE: 35309870_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 35235032_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 32903629_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 5/96 documents processed (0 with findings) ***
+[Agent]: [Progress] ANALYST DONE: 33251776_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 33251776_fulltext.xml
+[Agent]: [Progress] START: 35898325_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 34421792_fulltext.xml
+[Agent]: [Progress] MAPPER INCOMPLETE (fo_results): 32903629_fulltext.xml
+[Agent]: [Progress] START: 36008057_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 33546507_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): 33546507_fulltext.xml
+[Agent]: [Progress] START: 36341104_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 250-254.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 10/96 documents processed (0 with findings) ***
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results): 250-254.pdf
+[Agent]: [Progress] START: 36414305_fulltext.xml
+[Agent]: [Progress] SUCCESS: 33333772_fulltext.xml (1 findings)
+[Agent]: [Progress] START: 36834005_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 34421792_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results): 34421792_fulltext.xml
+[Agent]: [Progress] START: 36875937_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 32910255_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 32910255_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 15/96 documents processed (1 with findings) ***
+[Agent]: [Progress] NO FINDINGS: 32910255_fulltext.xml
+[Agent]: [Progress] START: 36995270_fulltext.xml
+[Agent]: [Progress] SUCCESS: 35309870_fulltext.xml (3 findings)
+[Agent]: [Progress] START: 37249667_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 35636801_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 35898325_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 35898325_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 35898325_fulltext.xml
+[Agent]: [Progress] START: 37254833_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 35636801_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 20/96 documents processed (2 with findings) ***
+[Agent]: [Progress] ANALYST DONE: 36341104_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 36341104_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 36341104_fulltext.xml
+[Agent]: [Progress] START: 37436254_fulltext.xml
+[Agent]: [Progress] SUCCESS: 35235032_fulltext.xml (3 findings)
+[Agent]: [Progress] START: 37610446_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 35636801_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): 35636801_fulltext.xml
+[Agent]: *** Overall Progress: 25/96 documents processed (3 with findings) ***
+[Agent]: [Progress] START: 37837507_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 37249667_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 37249667_fulltext.xml
+[Agent]: [Progress] START: 38334254_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 36875937_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 36008057_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 36834005_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 36834005_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 36834005_fulltext.xml
+[Agent]: [Progress] START: 38345764_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 36995270_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 36995270_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 36995270_fulltext.xml
+[Agent]: *** Overall Progress: 30/96 documents processed (3 with findings) ***
+[Agent]: [Progress] START: 38415696_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 36875937_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] SUCCESS: 36008057_fulltext.xml (1 findings)
+[Agent]: [Progress] START: 38517530_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38334254_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 38334254_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 38334254_fulltext.xml
+[Agent]: [Progress] START: 38551974_fulltext.xml
+[Agent]: [Progress] MAPPER INCOMPLETE (fo_results): 36875937_fulltext.xml
+[Agent]: *** Overall Progress: 35/96 documents processed (4 with findings) ***
+[Agent]: [Progress] START: 38622643_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 37610446_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 37254833_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 37254833_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 37254833_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 37837507_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 37837507_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 37837507_fulltext.xml
+[Agent]: [Progress] START: 38762656_fulltext.xml
+[Agent]: [Progress] START: 38805448_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 37436254_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38345764_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 38345764_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 40/96 documents processed (4 with findings) ***
+[Agent]: [Progress] NO FINDINGS: 38345764_fulltext.xml
+[Agent]: [Progress] START: 38870470_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 37610446_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: 38415696_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 38415696_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 38415696_fulltext.xml
+[Agent]: [Progress] START: 39037980_fulltext.xml
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results): 37610446_fulltext.xml
+[Agent]: *** Overall Progress: 45/96 documents processed (4 with findings) ***
+[Agent]: [Progress] START: 39075493_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38805448_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 38805448_fulltext.xml
+[Agent]: [Progress] START: 39182937_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38517530_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 36414305_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 36414305_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 36414305_fulltext.xml
+[Agent]: [Progress] START: 39375842_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38762656_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38551974_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 38551974_fulltext.xml
+[Agent]: [Progress] START: 39496035_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38622643_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 38870470_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 38870470_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 50/96 documents processed (4 with findings) ***
+[Agent]: [Progress] NO FINDINGS: 38870470_fulltext.xml
+[Agent]: [Progress] START: 39520111_fulltext.xml
+[Agent]: [Progress] SUCCESS: 38517530_fulltext.xml (3 findings)
+[Agent]: [Progress] START: 39678223_fulltext.xml
+[Agent]: [Progress] SUCCESS: 38762656_fulltext.xml (4 findings)
+[Agent]: [Progress] START: 40077653_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39075493_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39375842_fulltext.xml
+[Agent]: [Progress] SUCCESS: 37436254_fulltext.xml (2 findings)
+[Agent]: [Progress] START: 40091916_fulltext.xml
+[Agent]: [Progress] SUCCESS: 38622643_fulltext.xml (3 findings)
+[Agent]: *** Overall Progress: 55/96 documents processed (8 with findings) ***
+[Agent]: [Progress] START: 40245393_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39037980_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39496035_fulltext.xml
+[Agent]: [Progress] NO FINDINGS: 39496035_fulltext.xml
+[Agent]: [Progress] START: 40273110_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39520111_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 39520111_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 39520111_fulltext.xml
+[Agent]: [Progress] START: 40405710_fulltext.xml
+[Agent]: [Progress] SUCCESS: 39375842_fulltext.xml (1 findings)
+[Agent]: [Progress] START: 40470490_fulltext.xml
+[Agent]: [Progress] SUCCESS: 39037980_fulltext.xml (1 findings)
+[Agent]: *** Overall Progress: 60/96 documents processed (10 with findings) ***
+[Agent]: [Progress] START: 40488544_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40091916_fulltext.xml
+[Agent]: [Progress] SUCCESS: 39075493_fulltext.xml (3 findings)
+[Agent]: [Progress] START: 40560475_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 39678223_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 40091916_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: 40560475_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40560475_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40560475_fulltext.xml
+[Agent]: [Progress] START: 40563772_fulltext.xml
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results): 40091916_fulltext.xml
+[Agent]: *** Overall Progress: 65/96 documents processed (11 with findings) ***
+[Agent]: [Progress] START: 40649976_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40245393_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40245393_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40245393_fulltext.xml
+[Agent]: [Progress] START: 40725930_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40077653_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40273110_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40273110_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40273110_fulltext.xml
+[Agent]: [Progress] START: 40802439_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 39678223_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 70/96 documents processed (11 with findings) ***
+[Agent]: [Progress] ANALYST DONE: 40470490_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40470490_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40470490_fulltext.xml
+[Agent]: [Progress] START: 41024175_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40488544_fulltext.xml
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results): 39678223_fulltext.xml
+[Agent]: [Progress] START: 41073116_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40405710_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40405710_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40405710_fulltext.xml
+[Agent]: *** Overall Progress: 75/96 documents processed (11 with findings) ***
+[Agent]: [Progress] START: ALS (amyotrofisk lateral sklerose).pdf
+[Agent]: [Progress] ANALYST DONE: 39182937_fulltext.xml
+[Agent]: [Progress] SUCCESS: 40077653_fulltext.xml (3 findings)
+[Agent]: [Progress] START: ALS - Socialstyrelsen.pdf
+[Agent]: [Progress] ANALYST DONE: 40649976_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40649976_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40649976_fulltext.xml
+[Agent]: [Progress] START: Amyotrophic lateral sclerosis.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 40488544_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: 41024175_fulltext.xml
+[Agent]: [Progress] ANALYST DONE: 40802439_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40802439_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 80/96 documents processed (12 with findings) ***
+[Agent]: [Progress] NO FINDINGS: 40802439_fulltext.xml
+[Agent]: [Progress] START: CD004030.pdf
+[Agent]: [Progress] SUCCESS: 39182937_fulltext.xml (1 findings)
+[Agent]: [Progress] START: CD004157.pdf
+[Agent]: [Progress] ANALYST DONE: 40725930_fulltext.xml
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 40488544_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): 40488544_fulltext.xml
+[Agent]: [Progress] START: CD004427.pdf
+[Agent]: [Progress] ANALYST DONE: ALS - Socialstyrelsen.pdf
+[Agent]: [Progress] ANALYST DONE: 41073116_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 41073116_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 85/96 documents processed (13 with findings) ***
+[Agent]: [Progress] NO FINDINGS: 41073116_fulltext.xml
+[Agent]: [Progress] START: CD005226.pdf
+[Agent]: [Progress] ANALYST DONE: 40563772_fulltext.xml
+[Agent]: [Progress] ANALYST PARSE ERROR: 40563772_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: 40563772_fulltext.xml
+[Agent]: [Progress] START: CD005229.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 41024175_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (fo_results): 41024175_fulltext.xml
+[Agent]: *** Overall Progress: 90/96 documents processed (13 with findings) ***
+[Agent]: [Progress] START: CD006049.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): 40725930_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): 40725930_fulltext.xml (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): 40725930_fulltext.xml
+[Agent]: [Progress] START: CD006981.pdf
+[Agent]: [Progress] ANALYST DONE: Amyotrophic lateral sclerosis.pdf
+[Agent]: [Progress] ANALYST DONE: CD004157.pdf
+[Agent]: [Progress] NO FINDINGS: CD004157.pdf
+[Agent]: [Progress] START: CD007593 (1).pdf
+[Agent]: [Progress] ANALYST DONE: CD006049.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD006049.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 95/96 documents processed (13 with findings) ***
+[Agent]: [Progress] NO FINDINGS: CD006049.pdf
+[Agent]: *** Overall Progress: 96/96 documents processed (13 with findings) ***
+[Agent]: [Progress] START: CD007593.pdf
+[Agent]: [Progress] ANALYST DONE: CD004427.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD004427.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD004427.pdf
+[Agent]: [Progress] START: CD008554.pdf
+[Agent]: [Progress] ANALYST DONE: ALS (amyotrofisk lateral sklerose).pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: ALS (amyotrofisk lateral sklerose).pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: ALS (amyotrofisk lateral sklerose).pdf
+[Agent]: *** Overall Progress: 100/96 documents processed (13 with findings) ***
+[Agent]: [Progress] START: CD011005.pdf
+[Agent]: [Progress] ANALYST DONE: CD005226.pdf
+[Agent]: [Progress] NO FINDINGS: CD005226.pdf
+[Agent]: [Progress] START: CD011742.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): Amyotrophic lateral sclerosis.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: CD008554.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD008554.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD008554.pdf
+[Agent]: [Progress] START: CD011776.pdf
+[Agent]: [Progress] ANALYST DONE: CD007593 (1).pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD007593 (1).pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 105/96 documents processed (13 with findings) ***
+[Agent]: [Progress] NO FINDINGS: CD007593 (1).pdf
+[Agent]: [Progress] START: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[Agent]: [Progress] ANALYST DONE: CD006981.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD006981.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD006981.pdf
+[Agent]: [Progress] START: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[Agent]: [Progress] ANALYST DONE: CD005229.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD005229.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD005229.pdf
+[Agent]: *** Overall Progress: 110/96 documents processed (13 with findings) ***
+[Agent]: [Progress] START: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): Amyotrophic lateral sclerosis.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): Amyotrophic lateral sclerosis.pdf
+[Agent]: [Progress] START: Siewersetal2013.pdf
+[Agent]: [Progress] ANALYST DONE: CD011742.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD011742.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD011742.pdf
+[Agent]: [Progress] START: artikel_13034.pdf
+[Agent]: [Progress] ANALYST DONE: CD007593.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD007593.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 115/96 documents processed (13 with findings) ***
+[Agent]: [Progress] NO FINDINGS: CD007593.pdf
+[Agent]: [Progress] START: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[Agent]: [Progress] SUCCESS: ALS - Socialstyrelsen.pdf (3 findings)
+[Agent]: [Progress] START: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[Agent]: [Progress] ANALYST DONE: CD011005.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD011005.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: CD011005.pdf
+[Agent]: [Progress] START: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[Agent]: [Progress] ANALYST DONE: CD011776.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: CD011776.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 120/96 documents processed (14 with findings) ***
+[Agent]: [Progress] NO FINDINGS: CD011776.pdf
+[Agent]: [Progress] START: motor-neurone-disease-pdf-3060858249925.pdf
+[Agent]: [Progress] ANALYST DONE: CD004030.pdf
+[Agent]: [Progress] ANALYST DONE: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[Agent]: [Progress] ANALYST DONE: artikel_13034.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: artikel_13034.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: artikel_13034.pdf
+[Agent]: [Progress] START: motor-neurone-disease-pdf-75545361935557.pdf
+[Agent]: [Progress] ANALYST DONE: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): CD004030.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): CD004030.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 125/96 documents processed (14 with findings) ***
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): CD004030.pdf
+[Agent]: [Progress] START: pdf-export-49038.pdf
+[Agent]: [Progress] ANALYST DONE: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[Agent]: [Progress] SUCCESS: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf (3 findings)
+[Agent]: [Progress] START: pdf-export-51075.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: Siewersetal2013.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: Siewersetal2013.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: Siewersetal2013.pdf
+[Agent]: *** Overall Progress: 130/96 documents processed (15 with findings) ***
+[Agent]: [Progress] START: pdf-export-51157.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[Agent]: [Progress] START: pdf-export-51330.pdf
+[Agent]: [Progress] ANALYST DONE: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[Agent]: [Progress] START: pdf-export-56871.pdf
+[Agent]: [Progress] ANALYST DONE: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-49038.pdf
+[Agent]: [Progress] NO FINDINGS: pdf-export-49038.pdf
+[Agent]: *** Overall Progress: 135/96 documents processed (15 with findings) ***
+[Agent]: [Progress] START: pdf-export-57787.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] ANALYST DONE: pdf-export-51075.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-51075.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-51075.pdf
+[Agent]: [Progress] START: pdf-export-57942.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[Agent]: *** Overall Progress: 140/96 documents processed (15 with findings) ***
+[Agent]: [Progress] START: pdf-export-61011.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-51330.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-51330.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-51330.pdf
+[Agent]: [Progress] START: pdf-export-62504.pdf
+[Agent]: [Progress] ANALYST DONE: motor-neurone-disease-pdf-3060858249925.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: motor-neurone-disease-pdf-3060858249925.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: motor-neurone-disease-pdf-3060858249925.pdf
+[Agent]: [Progress] START: pdf2006--2520-2.pdf
+[Agent]: [Progress] ANALYST DONE: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 145/96 documents processed (15 with findings) ***
+[Agent]: [Progress] NO FINDINGS: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[Agent]: [Progress] START: pdf2006--2523-5.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-57787.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-57787.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-57787.pdf
+[Agent]: [Progress] START: pdf2006--3297-9.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-51157.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-51157.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-51157.pdf
+[Agent]: *** Overall Progress: 150/96 documents processed (15 with findings) ***
+[Agent]: [Progress] START: pdf2009--628-31.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-56871.pdf
+[Agent]: [Progress] NO FINDINGS: pdf-export-56871.pdf
+[Agent]: [Progress] START: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[Agent]: [Progress] ANALYST DONE: motor-neurone-disease-pdf-75545361935557.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: motor-neurone-disease-pdf-75545361935557.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: motor-neurone-disease-pdf-75545361935557.pdf
+[Agent]: [Progress] START: rapport_2015_08_naltrekson-sma-doser.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER PARSE ERROR (icnp_mapper): motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 155/96 documents processed (15 with findings) ***
+[Agent]: [Progress] MAPPER INCOMPLETE (icnp_results, fo_results): motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[Agent]: [Progress] START: rapport_2016_als_litteratursok.pdf
+[Agent]: [Progress] ANALYST DONE: rapport_2015_08_naltrekson-sma-doser.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: rapport_2015_08_naltrekson-sma-doser.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: rapport_2015_08_naltrekson-sma-doser.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-62504.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-62504.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-62504.pdf
+[Agent]: *** Overall Progress: 160/96 documents processed (15 with findings) ***
+[Agent]: [Progress] ANALYST DONE: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[Agent]: [Progress] ANALYST DONE: pdf2006--2520-2.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf2006--2520-2.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf2006--2520-2.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-57942.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-57942.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 165/96 documents processed (15 with findings) ***
+[Agent]: [Progress] NO FINDINGS: pdf-export-57942.pdf
+[Agent]: [Progress] ANALYST DONE: pdf2006--2523-5.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf2006--2523-5.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf2006--2523-5.pdf
+[Agent]: [Progress] ANALYST DONE: pdf2006--3297-9.pdf
+[Agent]: [Progress] ANALYST DONE: pdf-export-61011.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf-export-61011.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf-export-61011.pdf
+[Agent]: *** Overall Progress: 170/96 documents processed (15 with findings) ***
+[Agent]: [Progress] ANALYST DONE: pdf2009--628-31.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: pdf2009--628-31.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] NO FINDINGS: pdf2009--628-31.pdf
+[Agent]: [Progress] MAPPER PARSE ERROR (fo_classifier): pdf2006--3297-9.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: [Progress] MAPPER INCOMPLETE (fo_results): pdf2006--3297-9.pdf
+[Agent]: [Progress] ANALYST DONE: rapport_2016_als_litteratursok.pdf
+[Agent]: [Progress] ANALYST PARSE ERROR: rapport_2016_als_litteratursok.pdf (Expecting value: line 1 column 1 (char 0))
+[Agent]: *** Overall Progress: 175/96 documents processed (15 with findings) ***
+[Agent]: [Progress] NO FINDINGS: rapport_2016_als_litteratursok.pdf
+[Agent]: Processed 15/96 documents successfully.
+[Agent]: Starting final synthesis of all collected findings...
+[Agent]: {"target_group": "ALS - Amytrofisk lateral sklerose", "synthesized_findings": [{"nursing_diagnosis": {"term": "redusert respiratorisk funksjon", "ICNP_concept_id": "80954004"}, "intervention": {"term": "handtering av noninvasiv mekanisk ventilasjon", "ICNP_concept_id": "430191008"}, "goal": {"term": "tilfredsstillende respiratorisk status", "ICNP_concept_id": "14751000202106"}, "FO": "3. Respirasjon/sirkulasjon", "evidence_summary": "Forskning og retningslinjer viser at ALS-pasienter med svakhet i respirasjonsmuskulatur har behov for tidlig igangsetting og overvåking av non-invasiv ventilasjon (NIV) eller invasiv ventilasjon for å lindre hypoventilasjon og øke overlevelse. Sykepleierens rolle inkluderer også forebygging av maske-relaterte komplikasjoner og optimalisering av komfort.", "supporting_evidence": [{"document_id": "a7956f52-4d8b-4e87-a11d-01d132550d4d", "quotes": ["It has been consistently demonstrated that NIV therapy relieves the symptoms of chronic hypoventilation and increases survival.", "Patients should begin NIV at the time of their first signs and symptoms of hypoventilation."]}, {"document_id": "3701b884-9860-45ea-9eff-0a39e031d0ce", "quotes": ["While NIV helps alleviate respiratory symptoms, acknowledging limitations such as potential dependence and challenges like nasal bridge ulceration during continuous use is crucial [37]. Moreover, NIV may reduce overall patient comfort, impede communication, and hinder mobility [29]. Exploring mitigation measures like hydrocolloid dressings and alternate mask systems is crucial. Strategies such as switching between traditional nasal masks and nasal cushion systems, using a mouthpiece during wakefulness (requiring some facial muscle strength), and considering intermittent abdominal pressure ventilation or cuirass ventilators can aid patients [37]."]}, {"document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c", "quotes": ["Peripheral skeletal muscles are often primarily affected, i.e. the small muscles of the hands and feet. This is inevitably followed by respiratory failure due to severe functional impairment of intercostal and other muscles critical for breathing [9, 10].", "Given the rapid progression of muscle failure ventilator therapy significantly increases survival in ALS [15]. Different modes of ventilation such as non-invasive ventilation (NIV) via face mask or invasive ventilation (IV) via tracheostomy [16] may be applied to patients with ALS."]}]}, {"nursing_diagnosis": {"term": "nedsatt evne til å holde luftveiene frie", "ICNP_concept_id": "67750007"}, "intervention": {"term": "slimmobilisering ved bruk av hostemaskin", "ICNP_concept_id": "1089591000202105"}, "goal": {"term": "i stand til å oppretthalda frie luftvegar", "ICNP_concept_id": "1145305006"}, "FO": "3. Respirasjon/sirkulasjon", "evidence_summary": "Svakhet i orofaryngeal muskulatur gjør det vanskelig for ALS-pasienter å hoste opp slim og spytt, noe som øker faren for bronkoaspirasjon. Tiltak som mekanisk hostestøtte (hostemaskin), slimløsende medikamenter, pusteøvelser og bruk av slimsug er effektivt for å fasilitere sekretmobilisering.", "supporting_evidence": [{"document_id": "a7956f52-4d8b-4e87-a11d-01d132550d4d", "quotes": ["This is facilitated by the inability of individuals to eliminate secretions and weakness of their oropharyngeal musculature, with consequent bronchoaspiration.", "A recent study demonstrated that there was an improvement in survival when the use of NIV was started with a vital capacity < 80% of the expected value and by incorporating a device for mechanical assistance for coughing."]}, {"document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3", "quotes": ["Svag muskulatur gör det också svårt att hosta, och personer med ALS kan därför ha mycket slem i luftvägarna och svalget. Andningsövningar kan göra det lättare att få upp slemmet. Det kan också vara bra att undvika livsmedel med mjölkprotein eftersom de kan leda till ökad slembildning. Behandling med läkemedel som acetylcystein (brustablett eller inhalationsform) kan göra slemmet tunnare och enklare att få upp. Andra alternativ som kan prövas är teofyllin och betablockerare. Det finns även hjälpmedel som kan användas för att få bort saliv och slem. En slemsugapparat kan ordineras och användas av sjuksköterska för att suga upp saliv och slem som samlas i munnen."]}]}, {"nursing_diagnosis": {"term": "dyspné", "ICNP_concept_id": "267036007"}, "intervention": {"term": "veiledning i pusteteknikk for avslapping", "ICNP_concept_id": "1281860000"}, "goal": {"term": "ingen dyspné", "ICNP_concept_id": "161938003"}, "FO": "3. Respirasjon/sirkulasjon", "evidence_summary": "Åndenød og dyspné er utbredt ved ALS. Sykepleie støtter både ikke-farmakologiske intervensjoner som stillingsendring, temperaturregulering og pusteteknikker, samt administrering av farmakologisk symptomlindring (opioider/benzodiazepiner) for å redusere respirasjonsarbeid og tilknyttet angst.", "supporting_evidence": [{"document_id": "3701b884-9860-45ea-9eff-0a39e031d0ce", "quotes": ["Participants employed various strategies to relieve episodic breathlessness, including reducing activity, changing positions (standing still, sitting, lying down), cognitive techniques (concentration, positive thinking), distraction methods, and the use of breathing techniques (such as, lip breathing, abdominal breathing, leaning forward, or putting the arms up) [21]. Positions for relief varied, with preferences for lying down, standing up, or using pillows. Fresh air, cold temperature, and moistening the mouth were commonly cited as helpful.", "Symptom management was performed by PALC in all 9 patients from the PALC group. Four of these were treated for dyspnea with opioids, benzodiazepines, nebulizers, and supplemental oxygen. Anxiety related to dyspnea was treated with benzodiazepines.", "In managing dyspnea, opioids’ therapeutic effect is enhanced by reducing overall oxygen consumption through alleviating anxiety, fear, and panic [10]. Additionally, decreased respiratory effort reduces oxygen consumption of the respiratory muscles [10]."]}]}, {"nursing_diagnosis": {"term": "svelgevansker", "ICNP_concept_id": "288939007"}, "intervention": {"term": "svelgjefremjande behandling", "ICNP_concept_id": "311677003"}, "goal": {"term": "i stand til å svelge", "ICNP_concept_id": "288936000"}, "FO": "4. Ernæring/væske/elektrolyttbalanse", "evidence_summary": "Dysfagi oppstår hos de fleste ALS-pasienter, med fare for aspirasjonspneumoni og underernæring. Sykepleietiltak inkluderer screening for aspirasjonsfare, tilpasning av boluskonsistens og temperatur, sensorisk stimulering, små måltider, sitteposisjon under måltid og veiledning i spesifikke svelgeteknikker (effortful swallow/chin tuck).", "supporting_evidence": [{"document_id": "eac9ff9e-60f6-408c-b487-73b65757f2b4", "quotes": ["Normal saline liquid and viscous boluses were trialled with PwMND in Cock and Colleagues’ [25] study. The addition of viscosity resulted in a reduction in pharyngeal peak pressure in PwMND.", "Cold, sour and carbonated boluses caused a considerable increase on the velopharyngeal mesopharyngeal and global pharyngeal contractile vigour.", "Participants complete a normal swallow and then told to swallow and “Squeeze hard with all of your muscles”"]}, {"document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0", "quotes": ["Patients with dysphagia are at greater risk of aspiration of liquids and/or foods of varying consistencies, which can lead to pulmonary infections.", "This may include modifying food consistency and preparation, encouraging smaller, more frequent meals, using oral nutritional supplements (ONS), adjusting posture during meals, eating slowly, employing swallowing techniques such as the chin tuck maneuver, and ensuring proper oral hygiene."]}, {"document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3", "quotes": ["Många upplever att det är lättare att svälja vätskor som innehåller förtjockningsmedel, kolsyra eller citronsyra. Särskilt vid spastisk förlamning av mun- och halsmuskulaturen kan det vara lättare att dricka iskall vätska."]}, {"document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b", "quotes": ["Reports have shown that ALSFRS-R bulbar subscale and EAT-10 could effectively identify unsafe swallowing and aspiration in PwALS [29, 30]."]}]}, {"nursing_diagnosis": {"term": "risiko for lavt næringsinntak", "ICNP_concept_id": "129845004"}, "intervention": {"term": "ernæringsvurdering", "ICNP_concept_id": "310243009"}, "goal": {"term": "stabil vekt", "ICNP_concept_id": "271398006"}, "FO": "4. Ernæring/væske/elektrolyttbalanse", "evidence_summary": "ALS medfører økt energiforbruk (hypermetabolisme) og redusert inntak grunnet dysfagi og anoreksi. Kontinuerlig overvåking av vekt, BMI og kartlegging av energiforbruk er essensielt for å skreddersy kaloribehov og fange opp utilsiktet vekttap tidlig.", "supporting_evidence": [{"document_id": "760a2eef-0387-464a-b737-6c5b2ddb395e", "quotes": ["A decline in the nutritional status of patients is associated with exacerbated weight loss and shortened survival. Assessments of energy expenditure, using a variety of methods, are important to ensure an adequate energy intake to prevent malnutrition-associated weight loss.", "The accurate determination of an individual’s total daily energy expenditure (TDEE; an estimate of how many calories the human body burns over a 24-hour period [kcal/day]) is important to quantify nutritional energy requirements and provide informed energy intake goals for patients."]}, {"document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0", "quotes": ["Weight, nutritional status, and swallowing should be regularly assessed at each visit or every 3 months by the nutritionist and/or multidisciplinary team. This helps identify possible causes of nutritional deficits, such as weight loss, loss of appetite, reduced food and liquid intake, and disease-related factors, including dysphagia, insufficient respiratory capacity, psychological disorders, muscle atrophy and weakness."]}, {"document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b", "quotes": ["Three studies [18, 20, 22] considered BMI and weight loss as a criterion for PEG insertion.", "BMI can be a predictor of overall survival and specific survival after PEG placement [38]."]}]}, {"nursing_diagnosis": {"term": "risiko for undervekt", "ICNP_concept_id": "1144779008"}, "intervention": {"term": "administrasjon av næringstilskudd", "ICNP_concept_id": "709542007"}, "goal": {"term": "betra ernæringsstatus", "ICNP_concept_id": "1145522009"}, "FO": "4. Ernæring/væske/elektrolyttbalanse", "evidence_summary": "For å forebygge underernæring anbefales tilskudd av høykalariprodukter og spesifikke tilskudd (som PEA-um). Slike kostholdstiltak har vist seg å stabilisere kroppsvekten, bremse tap av motorisk/pulmonal funksjon og øke overlevelsen.", "supporting_evidence": [{"document_id": "1edf52c2-10d5-45c5-a18f-b07322abf394", "quotes": ["Dorst et al found that high-energy supplementation effectively stabilises the body weight of patients with ALS and no side effects were detected.", "Nutrition therapy seeks to prevent malnutrition, maintain adequate nutritional status, promote haemodynamic stability, reduce the rate of disease progression and positively impact the quality of life and survival of patients with ALS."]}, {"document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0", "quotes": ["Malnutrition and weight loss are common in ALS patients. High-calorie and ultra-high-calorie supplements can play an important role in increasing the body weight of ALS patients."]}, {"document_id": "a19129cc-1013-4ff2-99db-b9d5165459e8", "quotes": ["More recently, a broad clinical study performed on 64 patients suffering from ALS has shown that dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy (i.e., riluzole) significantly slowed down the decline in pulmonary function as measured by forced vital capacity (FVC), and lowered the severity of ALS symptoms, compared to patients treated with riluzole alone."]}]}, {"nursing_diagnosis": {"term": "utilstrekkelig peroralt matinntak", "ICNP_concept_id": "699653008"}, "intervention": {"term": "håndtering av enteral ernæring", "ICNP_concept_id": "408909002"}, "goal": {"term": "godt ernært", "ICNP_concept_id": "248324001"}, "FO": "4. Ernæring/væske/elektrolyttbalanse", "evidence_summary": "Når oralt inntak blir utilstrekkelig eller utrygt på grunn av alvorlig dysfagi, bør sykepleier kartlegge behovet for, samt håndtere enteral ernæring (via PEG eller nasogastrisk sonde). Dette er sentralt for å sikre adekvat tilførsel av mat, medisiner og væske, forlenge overlevelse og hindre kvelning.", "supporting_evidence": [{"document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b", "quotes": ["When per os feeding becomes impossible or unsafe, nutrition and hydration are usually provided through Percutaneous Endoscopic Gastrostomy (PEG) [4, 6].", "With advancing dysphagia, PEG insertion can provide long-term nutritional support, prevent starvation, malnutrition, dehydration, pneumonia, and hypoxia, the latter when PEG insertion is accompanied by non-invasive ventilation [27]."]}, {"document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c", "quotes": ["Additionally artificial nutrition via nasogastric (NG) tube or percutaneous endoscopic gastrostomy (PEG) tube counteracts weight loss due to dysphagia, and these invasive measures may also prolong survival in ALS [17]."]}, {"document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0", "quotes": ["For patients with severe dysphagia and progressive weight loss, alternative feeding methods, such PEG, may be required to reduce the risk of choking while ensuring adequate nutrition and hydration. When feasible, enteral tube feeding should complement, rather than replace, oral feeding. However, it provides a safer and more convenient method of delivering food, medications, and water, helping to maintain or restore their nutritional and hydration status in ALS patients."]}]}, {"nursing_diagnosis": {"term": "vanskar med å delta i planlegging av helsehjelp", "ICNP_concept_id": "705045007"}, "intervention": {"term": "gjennomføring av førehandssamtale om livets sluttfase", "ICNP_concept_id": "713603004"}, "goal": {"term": "i stand til å delta i planlegging av helsehjelp", "ICNP_concept_id": "1137426009"}, "FO": "2. Kunnskap/utvikling/psykisk", "evidence_summary": "På grunn av rask progresjon og tap av kommunikasjonsevne, er det avgjørende å integrere forhåndssamtaler (ACP) og beslutningsstøtte tidlig. Dette minsker frykten for døden, reduserer beslutningskonflikt, og sikrer at livsforlengende tiltak som respiratorbehandling reflekterer pasientens reelle ønsker.", "supporting_evidence": [{"document_id": "a404149d-ea0e-4003-8c17-2c4159d8feb3", "quotes": ["Discussing end-of-life issues/decisions, especially to reduce fears about death and to support patients’ feelings of maintaining control and considering burdens and emotional situation", "In a study by Levi et al., computer-based decision aids were introduced to improve end-of-life communication about treatment preferences. The intervention resulted in a significantly higher concordance between the patients’ wishes and treatment decisions of the clinicians, evaluated by clinical vignettes."]}, {"document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c", "quotes": ["Early and continuously revisited ACP is generally viewed as a key element when treating patients with ALS, considering the loss of communicative function, cognitive impairment and often rapid physical decline [9, 10]."]}]}, {"nursing_diagnosis": {"term": "vansker med å kommunisere verbalt", "ICNP_concept_id": "32000005"}, "intervention": {"term": "sørge for kommunikasjonshjelpemiddel", "ICNP_concept_id": "228620008"}, "goal": {"term": "kommuniserer behov og ønsker", "ICNP_concept_id": "288784001"}, "FO": "1. Kommunikasjon/sanser", "evidence_summary": "Når verbalspråket tapes, blir bruk av tilpassede kommunikasjonshjelpemidler (øyeblink, staveplater) nødvendig. Helsepersonell må vise narrativ kompetanse og nøye observere signaler for å kunne tolke pasientens underliggende behov og bevare muligheten for meningsfull toveiskommunikasjon.", "supporting_evidence": [{"document_id": "a404149d-ea0e-4003-8c17-2c4159d8feb3", "quotes": ["A publication from Brazil illustrates the ‘narrative competence’ of HCP by presenting a case of a PALS with a locked-in syndrome and resulting communication deficits. Narrative competence is the ‘ability to acknowledge, to absorb, to interpret, and to respond to a person’s story’.", "Such a competence enables HCP to respond appropriately to a wish to die by reflecting its seriousness and talking about its underlying motives, as shown in a case study by a palliative care nurse."]}, {"document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1", "quotes": ["Når personen med ALS ikke længere kan udtrykke sig verbalt, findes der forskellige former for hjælpemidler til at sikre fortsat kommunikation. Mange bruger øjenblink og staveplader.", "De etiske dilemmaer opstår bl.a., hvis det bliver usikkert, om den, der modtager beskederne, ser det, der egentlig bliver sagt. Blinkene kan på grund af svaghed i øjenmuskulaturen blive så ukoordinerede, at det rent faktisk er umuligt at vide med sikkerhed, om der bliver sagt ”ja” eller ”nej” til de spørgsmål, der stilles."]}]}, {"nursing_diagnosis": {"term": "nedsett mobilitet", "ICNP_concept_id": "82971005"}, "intervention": {"term": "fremming av fysisk mobilitet", "ICNP_concept_id": "710122006"}, "goal": {"term": "oppretthalden rørsleevne", "ICNP_concept_id": "13301000202109"}, "FO": "7. Aktivitet/funksjonsstatus", "evidence_summary": "Fremadskridende muskelsvakhet gir betydelig tap av funksjon i hverdagen. Lav- til moderat aerob- og motstandstrening i affeksjonsfrie muskler, tøyningsøvelser og massasje bidrar til å bevare global funksjon kortvarig og lindre muskelkramper og -stivhet.", "supporting_evidence": [{"document_id": "098bbd6c-6a94-4cc2-bbe7-904843c68d1f", "quotes": ["Therefore, low to moderate-intensity aerobic and resistance exercises focused on muscle groups that are less affected or unaffected by the disease can be beneficial, especially in the early and middle stages of ALS [<xref rid=\"pone.0307470.ref012\" ref-type=\"bibr\">12</xref>]. Those exercises may preserve trunk and limb muscle strength and improve aerobic fitness and function.", "Additionally, therapeutic exercises can help reduce muscle deterioration in people with ALS and facilitate the performance of daily life activities [<xref rid=\"pone.0307470.ref013\" ref-type=\"bibr\">13</xref>]."]}, {"document_id": "21ba7c8d-ec52-4b63-9706-a9b46b9aef27", "quotes": ["When applied by a physical therapist, a physical activity involving a range of motion and stretching exercises is generally well accepted by individuals with ALS.", "Physical therapy intervention may improve the global function of individuals with ALS in the short term;"]}, {"document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0", "quotes": ["Additionally, massage has been shown to help relieve clinical symptoms of ALS, such as muscle stiffness and cramping, by activating the parasympathetic nervous system through force on the skin surface and exerting pressure on the muscles to increase blood flow."]}]}, {"nursing_diagnosis": {"term": "mestringsvansker", "ICNP_concept_id": "18232000"}, "intervention": {"term": "meistringsstøtte", "ICNP_concept_id": "385722003"}, "goal": {"term": "oppleving av meistring", "ICNP_concept_id": "477591000202100"}, "FO": "2. Kunnskap/utvikling/psykisk", "evidence_summary": "Pasienter med ALS sliter med depresjon, overveldende emosjonell byrde og et stort behov for skreddersydd informasjon om behandlingsforløpet. Tiltak som lystbetonte samtaler, gradvis informasjonsflyt samt oppmerksomhetstrening (mindfulness) bygger trygghet og fremmer emosjonell mestring.", "supporting_evidence": [{"document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3", "quotes": ["Både den som är sjuk och de närstående behöver information och stöd. Det kan vara svårt både för den som själv är sjuk och för de närstående att ta till sig information om sjukdomen omedelbart efter beskedet. Informationen behöver därför ges stegvis vid flera tillfällen och följas upp."]}, {"document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0", "quotes": ["PSI may help ALS patients with depression and improve their quality of life. For example, hypnosis and mindfulness-based psychological interventions improved patients' quality of life and relieved their pain, depression, and anxiety while also slowing disease progression."]}, {"document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1", "quotes": ["Deltagerne i interviewene kendte til de forskellige foldere, men oplevede, at det var svært at modtage den skriftlige information. De gav udtryk for, at de havde behov for løbende kontakt med professionelle, og at det var nemmere at forstå informationerne, hvis de kom gradvist."]}]}, {"nursing_diagnosis": {"term": "risiko for belastande omsorgsgjevarrolle", "ICNP_concept_id": "129700008"}, "intervention": {"term": "parørandesamtale", "ICNP_concept_id": "347381000202101"}, "goal": {"term": "omsorgsgjevar i stand til meistring", "ICNP_concept_id": "1345133004"}, "FO": "10. Sosialt/planlegging av utskrivelse", "evidence_summary": "Pårørende til ALS-pasienter er svært utsatt for emosjonell utmattelse og belastning. Planlagte dialogmøter og familiesamtaler muliggjør adressering av 'forbudte' følelser, og bidrar til å identifisere utfordringer i familien tidlig slik at adekvat avlastning og støtte kan gis.", "supporting_evidence": [{"document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1", "quotes": ["Interviewene viser, at der er behov for flere dialogmøder mellem personen med ALS, de pårørende og de sundhedsprofessionelle. Det er vigtigt, at personalet i sådanne forløb medvirker til at italesætte de svære emner og legalisere de svære og forbudte følelser.", "Der bør afsættes tid til familiesamtale, når personen med ALS er indlagt eller kommer ambulant. Pårørende bør som standard deltage, og det er vigtigt, at personalet medvirker til at identificere eventuelle problemstillinger, som kan eller skal afhjælpes."]}]}], "total_documents_processed": 12, "quality_notes": "Datakvaliteten vurderes som høy, ettersom funnene primært hviler på systematiske oversiktsartikler (Nivå 2). Informasjonen er konsistent på tvers av artiklene, spesielt for respiratorisk omsorg, ernæringsstøtte (PEG/tilskudd) og betydningen av tidlig forhåndsplanlegging av pleie (ACP). Relevante sykepleiediagnoser og ICNP-koder er slått sammen til større logiske temakategorier for å sikre en robust klinisk behandlingsplan.", "source_documents": [{"title": "Palmitoylethanolamide: A Nutritional Approach to Keep Neuroinflammation within Physiological Boundaries—A Systematic Review", "publication_year": 2020, "doi": "10.3390/ijms21249526", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Identifiser og trekk ut metadata for kildefilen: Tittelen på artikkelen er 'Palmitoylethanolamide: A Nutritional Approach to Keep Neuroinflammation within Physiological Boundaries—A Systematic Review'. Publikasjonsåret er 2020. DOI-nummeret er oppgitt til 10.3390/ijms21249526.", "2. Bestem evidensnivået: Artikkelen er merket som en 'Review' (systematisk oversiktsartikkel). I henhold til instruksjonen for Kunnskapspyramiden klassifiseres dette som 'Nivå 2: Systematiske oversikter'.", "3. Filtrer teksten for informasjon relatert til oppgitt bruksområde: 'ALS - Amytrofisk lateral sklerose'. Seksjon 3.4 i artikkelen har overskriften 'Amyotrophic Lateral Sclerosis' og inneholder relevant informasjon.", "4. Utled sykepleiediagnose: Teksten beskriver pasientenes symptomer med 'progressive paralysis of skeletal muscle' og 'decline in pulmonary function'. Som sykepleiediagnose knyttet til opplevelse og funksjonsproblem kan dette formuleres som: 'Svekket lungefunksjon og motorisk funksjon som følge av muskellammelse'.", "5. Utled intervensjon: I teksten beskrives det at pasienter gis 'oral supplementation with PEA-um' eller 'dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy'. Som en sykepleieintervensjon på et sykehus vil dette være: 'Administrere oralt tilskudd av ultra-mikronisert palmitoylethanolamide (PEA-um) som tillegg til standard behandling'.", "6. Utled mål: Teksten viser til at PEA-um 'improved the respiratory and motor functions' og 'slowed down the decline in pulmonary function'. Målet oversettes til norsk som: 'Bremsing av reduksjon i lungefunksjon, samt bedring av respiratorisk og motorisk funksjon'.", "7. Trekk ut støttende sitater: Direkte sitater som støtter de tre elementene er hentet ut nøyaktig slik de fremstår på originalspråket fra seksjon 3.4.", "8. Validering: Alle felter i JSON-strukturen er populert i henhold til skjemaet. Funnene utgjør en helhetlig sammenheng mellom problem (diagnose), tiltak (intervensjon) og ønsket resultat (mål) som er relevant for sykepleie, støttet av korrekte sitater."]}, {"title": "Use of Pharyngeal High-Resolution Manometry to Evaluate Dysphagia in Adults with Motor Neurone Disease: A Scoping Review", "publication_year": 2022, "doi": "10.1007/s00455-022-10418-4", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte kildetekstens metadata for å hente ut tittel, publikasjonsår (2022), DOI og evidensnivå. Siden teksten er en 'scoping review', klassifiseres den under 'Nivå 2: Systematiske oversikter'.", "2. Identifiserte bruksområdet: Pasienter med Motor Neurone Disease (ALS) med fokus på vurdering og håndtering av dysfagi (svelgevansker).", "3. Søkte gjennom teksten etter sykepleiediagnoser relatert til tilstanden. Artikkelen beskriver dysfagi som fører til komplikasjoner som aspirasjon og underernæring, noe som oversettes til 'Svekket evne til å svelge'.", "4. Søkte etter intervensjoner som kan utføres av sykepleiere i sykehus. Kildeteksten nevner tre spesifikke ikke-kirurgiske intervensjoner for dysfagi: endring av boluskonsistens (viskøs vs. flytende), sensorisk stimulering (kald, sur, kullsyreholdig), og svelgemanøvre (innsatsfylt svelging/effortful swallow).", "5. Identifiserte mål (goals) knyttet til de spesifikke intervensjonene basert på funnene av intervensjonenes effekt på svelgemekanismen (f.eks. forlenget relaksasjon av UES, forbedret kontraktilitet og redusert faryngealt peak-trykk). Målene ble formulert positivt og observerbart.", "6. Hentet ut eksakte, ordrette sitater fra kildeteksten (på engelsk) som støtter hver unike kombinasjon av sykepleiediagnose, intervensjon og mål.", "7. Gjennomgikk kravene for å sikre at all utpakket tekst (med unntak av sitatene) er på norsk, konsist formulert, og at JSON-strukturen er gyldig uten unødvendige kontrolltegn."]}, {"title": "Talking about the end of life: communication patterns in amyotrophic lateral sclerosis – a scoping review", "publication_year": 2022, "doi": "10.1177/26323524221083676", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyser metadata: Artikkelen er en 'scoping review' publisert i 2022 med tittelen 'Talking about the end of life...'. DOI er oppgitt. Fordi dette er en type oversiktsartikkel som systematisk kartlegger litteratur, klassifiseres den under 'Nivå 2: Systematiske oversikter'.", "2. Søk etter sykepleiediagnoser og pasientproblemer: Teksten fremhever problemstillinger hos ALS-pasienter, som frykt for døden, tap av kontroll og komplekse beslutningsprosesser ved slutten av livet. Den beskriver også kommunikasjonsvansker som gjør det krevende å fange opp reelle behandlingsønsker eller bakenforliggende motiver for å ville dø.", "3. Identifiser sykepleieintervensjoner: I tekstens tabeller og diskusjon omtales viktige tiltak: Tidlig og kontinuerlig samtale om livets slutt og 'advance care planning' (ACP) for å redusere frykt, bruk av 'narrativ kompetanse' for å tolke pasientens underliggende motiver (f.eks. vedlocked-in syndrom og dødsønsker), og bruk av databaserte beslutningsstøtteverktøy.", "4. Formuler mål: Målene for disse intervensjonene er redusert frykt, en opplevelse av å bevare kontrollen over eget liv, økt grad av selvbestemmelse og lavere beslutningskonflikt.", "5. Ekstraher sitater: Finn eksakte setninger i teksten som direkte støtter sammenhengen mellom disse diagnosene, intervensjonene og målene.", "6. Oversett funn: Sørg for at sykepleiediagnosene, intervensjonene og målene er formulert kortfattet, presist og på norsk (inspirert av ICNP/SNOMED-terminologi), mens de støttende sitatene beholdes ordrett på engelsk.", "7. Validering: Sjekk alle dataelementer mot skjemaets krav og begrensninger, og formater resultatet som et feilfritt JSON-objekt."]}, {"title": "Nutritional therapy in amyotrophic lateral sclerosis: protocol for a systematic review and meta-analysis", "publication_year": 2022, "doi": "10.1136/bmjopen-2022-064086", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyser kildeteksten for å identifisere metadata: Tittelen er oppgitt til 'Nutritional therapy in amyotrophic lateral sclerosis: protocol for a systematic review and meta-analysis'. Publisert i 2022 med DOI 10.1136/bmjopen-2022-064086.", "2. Evaluer evidensnivå: Dokumentet er en protokoll for en systematisk oversikt og meta-analyse. Den tilhører metodesporet for systematiske oversikter og tagges som artikkeltypen 'systematic-review' i kildekoden, dermed klassifiseres den under 'Nivå 2: Systematiske oversikter'.", "3. Søk etter sykepleiediagnoser, intervensjoner og mål relatert til ALS i sykehuskontekst: Introduksjonen og diskusjonsdelen beskriver at ALS-pasienter er sterkt utsatt for underernæring (Risiko for underernæring/svekket ernæringsstatus) på grunn av dysfagi, anoreksi og hypermetabolisme.", "4. Kartlegg sykepleieintervensjoner: Sykepleiere overvåker ernæring og gir ernæringsstøtte. Teksten fremhever kostholdsintervensjoner, inkludert energirike kosttilskudd, og vurdering av gastrostomi hvis oralt inntak blir utrygt (f.eks. ved alvorlig dysfagi).", "5. Identifiser mål: Det uttalte formålet med intervensjonene er å forhindre underernæring, stabilisere kroppsvekt og opprettholde adekvat ernæringsstatus.", "6. Hent ut eksakte og ordrette sitater fra kildeteksten som direkte understøtter den utledede sykepleiediagnosen, intervensjonen og målet.", "7. Formuler funnet kortfattet på norsk i henhold til instruksene, med sitatene ivaretatt på originalspråket (engelsk). Sørg for at JSON-strukturen er gyldig og uten forbudte kontrolltegn."]}, {"title": "Noninvasive mechanical ventilation assistance in amyotrophic lateral sclerosis: a systematic review", "publication_year": 2023, "doi": "10.1590/1516-3180.2022.0470.R1.100423", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte metadata fra kildeteksten for å hente ut tittel, publikasjonsår (2023) og DOI.", "2. Klassifiserte evidensnivået til 'Nivå 2: Systematiske oversikter' ettersom kildeteksten er en systematisk oversiktsartikkel.", "3. Gjennomgikk teksten for å finne informasjon om pasientgruppen (ALS) og sykepleierelevante problemstillinger (symptomer/funksjonssvikt).", "4. Identifiserte det første funnet: Pasienter med ALS utvikler svakhet i respirasjonsmuskulatur som fører til hypoventilasjon. Sykepleiediagnosen formuleres som 'Svekket respirasjonsfunksjon og hypoventilasjon'. Intervensjonen er å starte/overvåke non-invasiv ventilasjon (NIV), med mål om å lindre symptomer og opprettholde livskvalitet.", "5. Identifiserte det andre funnet: Pasienter har nedsatt evne til å fjerne sekret på grunn av orofaryngeal muskelsvakhet, noe som gir fare for aspirasjon. Sykepleiediagnosen formuleres som 'Svekket evne til å fjerne luftveissekret med risiko for aspirasjon'. Intervensjonen er å bruke mekanisk hostestøtte (hostemaskin), med mål om frie luftveier uten aspirasjon.", "6. Sikret at alle intervensjoner ligger innenfor sykepleierens ansvarsområde i et sykehus og at målene er positivt formulert og observerbare.", "7. Ekstraherte ordrette, støttende sitater på originalspråket (engelsk) fra kildeteksten for å validere hvert funn."]}, {"title": "Dysphagia Assessments as Criteria in the ‘Decision-Making Process’ for Percutaneous Endoscopic Gastrostomy Placement in People with Amyotrophic Lateral Sclerosis: A Systematic Review", "publication_year": 2024, "doi": "10.1007/s00455-024-10686-2", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Gjennomgikk artikkelens metadata for å identifisere tittel, publikasjonsår, DOI og studiedesign. Artikkelen er en systematisk oversikt, noe som plasserer den på 'Nivå 2: Systematiske oversikter' i Kunnskapspyramiden.", "2. Definerte oppgavens rammer: Finne relevant klinisk informasjon for sykehussykepleiere (sykepleiediagnose, intervensjon, mål) knyttet til pasientgruppen med Amyotrofisk lateral sklerose (ALS) fra kildeteksten.", "3. Leste gjennom abstraktet og introduksjonen, som fastslår at ALS-pasienter utvikler svelgevansker (dysfagi), og at dette fører til risiko for underernæring, dehydrering og aspirasjonspneumoni.", "4. Identifiserte det første funnet knyttet til nedsatt svelgefunksjon. Sykepleiediagnose: 'Svekket svelgefunksjon'. Intervensjoner som kan utføres av sykepleiere inkluderer administrering av ernæring og væske via PEG, og bidra i kartlegging. Målet er å opprettholde ernærings- og væskestatus. Fant støttende sitater knyttet til PEG og forebygging av sult/dehydrering.", "5. Identifiserte et andre funn relatert til vektnedgang og feilernæring på grunn av dysfagi. Sykepleiediagnose: 'Risiko for feilernæring'. Intervensjonen innebærer å kartlegge kroppsmasseindeks (BMI) og vektutvikling. Målet er stabil vekt/opprettholdt ernæringsstatus. Sitater om vektnedgang og BMI som kriterier for PEG-innleggelse understøtter dette.", "6. Identifiserte et tredje funn om risikoen for aspirasjon. Sykepleiediagnose: 'Risiko for aspirasjon'. Intervensjonen er å vurdere/skrinlegge pasienten for utrygg svelging (f.eks. via anerkjente verktøy som EAT-10, som også benyttes av eller i samarbeid med sykepleier) for å forhindre komplikasjoner. Målet er fravær av aspirasjon og lungebetennelse.", "7. Kvalitetssikret funnene mot retningslinjene for å sikre at diagnoser er negative pasientutfall, intervensjonene er handlingsrettede for sykepleiere, målene er positive/målbare, og sitatene er ordrett kopiert fra teksten."]}, {"title": "Optimizing breathlessness management in amyotrophic lateral sclerosis: insights from a comprehensive systematic review", "publication_year": 2024, "doi": "10.1186/s12904-024-01429-z", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte kildedokumentet for å identifisere tittel, forfattere, publiseringsår, DOI og evidensnivå. Kilden er en systematisk oversikt publisert i 2024 med DOI 10.1186/s12904-024-01429-z, noe som klassifiserer den som 'Nivå 2: Systematiske oversikter'.", "2. Gikk systematisk gjennom teksten for å trekke ut klinisk relevant informasjon for sykepleiere i sykehus som behandler ALS-pasienter med dyspné.", "3. Ekstraherte Funn 1 knyttet til ikke-farmakologiske strategier. Sykepleiediagnosen ble formulert som 'Opplevelse av åndenød (dyspné)'. Intervensjonen ble beskrevet som tilrettelegging med stillingsendring, temperaturregulering (frisk/kald luft), og veiledning i puste- og avspenningsteknikker. Målet er 'Redusert opplevelse av tungpustethet og økt velvære'. Direkte sitat som beskriver disse strategiene ble hentet ut.", "4. Ekstraherte Funn 2 som omhandler farmakologisk symptomlindring. Sykepleiediagnosen er 'Opplevelse av åndenød (dyspné) og tilhørende angst'. Intervensjonen omfatter å administrere og observere effekt av forordnede lindrende medikamenter som opioider og benzodiazepiner. Målet er 'Lindring av åndenød og fravær av frykt og angst knyttet til pustebesvær'. Sitater som underbygger bruken av disse for å redusere oksygenforbruk og dempe panikk ble funnet og lagt til.", "5. Ekstraherte Funn 3 som omhandler pleie ved bruk av ikke-invasiv ventilasjon (NIV). Sykepleiediagnosen er 'Svekket lungefunksjon og risiko for ubehag og hudkomplikasjoner relatert til bruk av NIV-maske'. Intervensjonen fokuserer på assistanse ved NIV og forebyggende tiltak mot trykksår, som bruk av hydrokolloidbandasjer og vurdering av alternative maskesystemer. Målet er 'Optimalisert respirasjon via NIV uten hudkomplikasjoner eller unødvendig ubehag'. Validerte dette med nøyaktig sitat fra teksten.", "6. Sjekket alle punkter mot de formelle retningslinjene: ingen kontrolltegn (som linjeskift eller tabulatorer) er brukt, elementer er på norsk (sitater på engelsk), format er et fullstendig, gyldig JSON-objekt."]}, {"title": "Efficacy of non-pharmacological interventions for individuals with amyotrophic lateral sclerosis: systematic review and network meta-analysis of randomized control trials", "publication_year": 2024, "doi": "10.1038/s41598-024-62213-w", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Leste og analyserte metadata fra artikkelen: Tittel ble identifisert. Publikasjonsåret ble hentet fra 'pub-date' (2024). DOI ble trukket ut direkte fra artikkel-metadatamarkørene.", "2. Evalueringsnivå: Tittelen spesifiserer at artikkelen er en 'systematic review and network meta-analysis'. Dette samsvarer nøyaktig med 'Nivå 2: Systematiske oversikter'.", "3. Leste dokumentet for å identifisere klinisk relevant informasjon for sykepleiere i sykehus, basert på instruksene (sykepleiediagnose, intervensjon og mål).", "4. Identifiserte funn nr 1: Artikkelen nevner at 'Malnutrition and weight loss are common in ALS patients'. En relevant sykepleiediagnose er 'Risiko for underernæring og vekttap'. Intervensjonen er å tilby høykaloritilskudd. Målet er å øke eller opprettholde kroppsvekt.", "5. Identifiserte funn nr 2: Artikkelen nevner 'muscle stiffness and cramping'. Sykepleiediagnosen blir 'Muskelstivhet og kramper'. Intervensjonen sykepleieren kan utføre er massasje. Målet er lindring av stivhet og kramper.", "6. Identifiserte funn nr 3: Artikkelen diskuterer respiratorisk svikt. Sykepleiediagnosen er 'Svekket lungefunksjon og pustebesvær'. Intervensjonen er å fasilitere respiratorisk trening. Målet er forbedret pusteevne.", "7. Identifiserte funn nr 4: Artikkelen nevner at ALS-pasienter sliter med depresjon og nedsatt livskvalitet. Sykepleiediagnosen er 'Depresjon, angst og smerter'. Sykepleiefaglig intervensjon innebærer psykologiske intervensjoner som oppmerksomhetstrening. Målet er forbedret livskvalitet og redusert depresjon/angst.", "8. Validerte hvert funn opp mot strenge krav: Er det sykepleiedrevet? Er målet observerbart? Finnes det eksakte sitater på engelsk som understøtter uttrekket? Alle sjekkpunkter er oppfylt.", "9. Konstruerte et gyldig JSON-objekt fritt for kontrolltegn (ingen newline eller tabulator) og kun med påkrevde strukturerklæringer."]}, {"title": "Physical therapy for muscle strengthening in individuals with amyotrophic lateral sclerosis: A protocol for a systematic review and meta-analysis", "publication_year": 2024, "doi": "10.1371/journal.pone.0307470", "evidence_level": "Nivå 0: Ingen kategori", "reasoning_trace": ["1. Analyserte kildeteksten for metadata. Tittelen er 'Physical therapy for muscle strengthening in individuals with amyotrophic lateral sclerosis: A protocol for a systematic review and meta-analysis'. Publikasjonsåret er 2024, og DOI er 10.1371/journal.pone.0307470.", "2. Vurderte evidensnivået. Kildeteksten er en protokoll for en systematisk oversikt og inneholder ikke resultater fra selve oversikten ennå. Den faller derfor ikke inn under Nivå 1 (Enkeltstudier) eller Nivå 2 (Ferdige systematiske oversikter), og klassifiseres dermed som 'Nivå 0: Ingen kategori'.", "3. Gjennomgikk bakgrunnsinformasjonen i artikkelen med fokus på bruksområdet ALS for å finne informasjon relevant for sykepleiepraksis.", "4. Identifiserte en sykepleiediagnose knyttet til muskelsvekkelse og funksjonstap som er karakteristisk for pasientgruppen.", "5. Identifiserte sykepleieintervensjoner som omhandler tilrettelegging og veiledning i terapeutiske øvelser (lav- til moderat aerob- og motstandstrening for lite berørte muskler). Selv om det ofte initieres av fysioterapeut, er tilrettelegging og veiledning i slike daglige funksjonsøvelser høyst aktuelt for sykepleiere i sengepost for å hindre komplikasjoner ved passivitet.", "6. Definerte et mål basert på teksten: å bevare muskelstyrke, redusere muskelforfall og fremme mestring av daglige aktiviteter.", "7. Validerte funnet ved å trekke ut nøyaktige sitater fra XML-kildeteksten (inkludert referansetagger) som beviser sammenhengen mellom diagnose, intervensjon og mål."]}, {"title": "Advance directives in amyotrophic lateral sclerosis – a systematic review and meta-analysis", "publication_year": 2024, "doi": "10.1186/s12904-024-01524-1", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte metadata for artikkelen for å identifisere tittel, publiseringsår og DOI. Utledet fra teksten at artikkelen er utgitt i 2024 med DOI 10.1186/s12904-024-01524-1.", "2. Bestemte evidensnivået til nivå 2, ettersom kildeteksten eksplisitt er beskrevet som en systematisk oversiktsartikkel (systematic review) og metaanalyse.", "3. Leste gjennom tekstens bakgrunn og metode for å identifisere spesifikke utfordringer for pasienter med ALS (bruksområdet). Fant at de sentrale funksjonstapene inkluderer tap av kommunikasjonsevne, svelgevansker (dysfagi) og pustebesvær (respirasjonssvikt).", "4. Utledet funn 1 knyttet til forhåndssamtaler (Advance Care Planning). Sykepleiediagnosen er pasientens reduserte evne til å kommunisere fremtidige valg. Intervensjonen ble definert som å tilrettelegge for tidlige og regelmessige forhåndssamtaler. Målet er å sikre at pasientens behandlingsønsker er kartlagt og dokumentert. Relevante sitater ble kopiert eksakt.", "5. Utledet funn 2 knyttet til svelgeproblemer og vekttap. Intervensjonen er vurdering og veiledning om kunstig ernæring (nasogastrisk sonde eller PEG). Sykepleiemålet er å opprettholde ernæringsstatus og forebygge vekttap. Relevante sitater ble identifisert og lagt ved.", "6. Utledet funn 3 knyttet til respirasjonssvikt. Sykepleieintervensjonen innebærer vurdering og opplæring i bruk av ventilasjonsstøtte som non-invasiv ventilasjon (NIV) eller trakeostomi. Målet er å optimalisere respirasjonen og forbedre overlevelse/livskvalitet. Støttende sitater ble ekstrahert ordrett.", "7. Validerte hvert funn opp mot definisjonen av de respektive elementene: Sykepleiediagnosene er formulert som negative problemer pasienten opplever, intervensjonene kan utføres/tilrettelegges av sykepleier (opplæring, veiledning, tilrettelegging for forhåndssamtaler), og målene er positive og realistiske tilstander i fremtiden.", "8. Sikret at det genererte JSON-objektet er en ren enlinjes-streng uten tabulatorer, linjeskift eller andre skjulte kontrolltegn for å strengt overholde systeminstruksjonen."]}, {"title": "Physical therapy for the management of global function, fatigue and quality of life in amyotrophic lateral sclerosis: systematic review and meta-analyses", "publication_year": 2024, "doi": "10.1136/bmjopen-2023-076541", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserer kildeteksten for metadata: Tittelen er oppgitt som 'Physical therapy for the management of global function...'. Publisert i 2024, og DOI er 10.1136/bmjopen-2023-076541. Dokumentet er en systematisk oversikt og metaanalyse, noe som plasserer den på 'Nivå 2: Systematiske oversikter' i kunnskapspyramiden.", "2. Søker etter relevante sykepleiediagnoser for ALS-pasienter i tekstens introduksjon og resultater. Teksten nevner 'progressive muscle weakness' og 'decreased functional ability', som oversettes til nedsatt fysisk funksjon og muskelsvakhet. 'Fatigue' nevnes også som et stort problem.", "3. Vurderer intervensjoner som kan utføres av sykepleiere. Mens studien primært ser på fysioterapi, nevnes 'range of motion and stretching exercises' som intervensjoner (ofte ansett som vanlig pleie/usual care) som er godt akseptert av pasientgruppen. Sykepleiere tilrettelegger og utfører ofte bevegelsesøvelser (ROM) og tøying for inneliggende pasienter for å bevare funksjon og forhindre kontrakturer.", "4. Vurderer effekten av intervensjonene. Studien konkluderer med at tiltak for å bedre tretthet (fatigue) og livskvalitet ikke var mer effektive enn kontrollgruppen, og mangler dermed evidens for å bli inkludert som et anbefalt tiltak her. For global funksjon konkluderer de med: 'Physical therapy intervention may improve the global function of individuals with ALS in the short term', selv om det påpekes klinisk usikkerhet.", "5. Formulerer et funn basert på funksjonsnedsettelse. Sykepleiediagnose: Nedsatt fysisk funksjon som følge av muskelsvakhet. Intervensjon: Tilrettelegge for fysisk aktivitet, inkludert bevegelses- og tøyningsøvelser. Mål: Forbedret eller opprettholdt global funksjon på kort sikt.", "6. Trekker ut de nøyaktige engelske sitatene som støtter kombinasjonen av diagnose, intervensjon og mål."]}, {"title": "Mapping the Evidence for Measuring Energy Expenditure and Indicating Hypermetabolism in Motor Neuron Disease: A Scoping Review", "publication_year": 2024, "doi": "10.1093/nutrit/nuae118", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte metadata fra kildeteksten: Tittelen er oppgitt til 'Mapping the Evidence for Measuring Energy Expenditure and Indicating Hypermetabolism in Motor Neuron Disease: A Scoping Review', publisert i 2024 (Epub dato), med DOI '10.1093/nutrit/nuae118'.", "2. Evalueringsnivå: Dokumentet beskrives som en 'Scoping Review' som systematisk har søkt i tre databaser og oppsummert 32 observasjonsstudier. Dette samsvarer best med definisjonen for 'Nivå 2: Systematiske oversikter'.", "3. Gjennomgikk teksten for å finne spesifikke helseutfordringer (sykepleiediagnoser) relatert til ALS/MND, tiltak sykepleiere kan utføre (intervensjoner), og ønskede pasientresultater (mål).", "4. Identifiserte en sentral helseutfordring: Nedgang i ernæringsstatus, energiubalanse og påfølgende risiko for underernæringsrelatert vekttap på grunn av blant annet hypermetabolisme og dysfagi.", "5. Identifiserte tilhørende intervensjon: Kartlegging og vurdering av pasientens energiforbruk (Total Daily Energy Expenditure) for å nøyaktig kunne beregne og tallfeste pasientens kalori- og ernæringsbehov. Dette er en sentral del av sykepleiers ansvar for ernæringsoppfølging på sykehus.", "6. Identifiserte målet for tiltaket: Å sikre et adekvat energiinntak for å forhindre vekttap knyttet til underernæring.", "7. Formulerte funnet presist og i tråd med SNOMED ICNP-inspirert terminologi.", "8. Fant og trakk ut ordrette sitater fra avsnittene 'Background' og 'Introduction' som direkte underbygger diagnose, intervensjon og mål."]}, {"title": "Evidence-Based Nutritional Recommendations for Maintaining or Restoring Nutritional Status in Patients with Amyotrophic Lateral Sclerosis: A Systematic Review", "publication_year": 2025, "doi": "10.3390/nu17050782", "evidence_level": "Nivå 2: Systematiske oversikter", "reasoning_trace": ["1. Analyserte metadata fra kildeteksten. Artikkelens tittel er identifisert, publikasjonsår er 2025, og DOI er oppgitt.", "2. Vurderte evidensnivå. Dokumentet er en systematisk oversiktsartikkel ('Systematic Review' i abstract/tittel), noe som plasserer den i kategorien 'Nivå 2: Systematiske oversikter'.", "3. Gjennomgikk abstrakt, resultater og sammendrag av anbefalinger med spesielt fokus på sykepleierrelaterte oppgaver innenfor ernæring og ALS på et sykehus.", "4. Identifiserte første kliniske funn: Dysfagi. Sykepleiediagnosen er 'Svekket svelgefunksjon med risiko for aspirasjon'. Relaterte intervensjoner som en sykepleier kan utføre inkluderer tilpasning av sittestilling, endring av matkonsistens, mindre måltider, svelgeteknikker og munnhygiene. Målet er trygg svelging uten aspirasjon. Valgte direkte sitater for å understøtte funnet.", "5. Identifiserte andre kliniske funn: Underernæring/vekttap. Sykepleiediagnosen er 'Risiko for underernæring relatert til nedsatt inntak og muskelsvakhet'. Sykepleieintervensjonen innebærer regelmessig kartlegging av vekt og inntak for å fange opp ernæringssvikt. Målet er stabilisert kroppsvekt og ernæringsstatus.", "6. Identifiserte tredje kliniske funn: Alvorlig dysfagi som krever alternativ ernæring (PEG). Sykepleiediagnosen er 'Utilstrekkelig oralt inntak'. Intervensjonene fokuserer på trygg administrering av enteral ernæring, væske og medisiner via sonde. Målet er å oppnå tilstrekkelig hydrering og ernæring uten fare for kvelning.", "7. Sjekket oversettelser for de norske elementene for å sikre presist fagspråk, beholdt engelsk originaltekst i sitatene. Sørget for at JSON-strukturen er gyldig uten unødvendige kontrolltegn."]}, {"title": "ALS", "publication_year": 2022, "doi": "Ikke funnet", "evidence_level": "Nivå 4: Kliniske oppslagsverk", "reasoning_trace": ["1. Analyserte kildeteksten for å identifisere metadata. Teksten er fra Socialstyrelsens kunnskapsdatabase for sjeldne tilstander. Den mangler DOI, men er sist revidert i 2022 og fungerer som et klinisk oppslagsverk basert på syntetisert kunnskap (Nivå 4).", "2. Leste gjennom dokumentet med fokus på sykepleierrelaterte oppgaver: pasientens utfordringer (sykepleiediagnoser), hva en sykepleier kan gjøre med dem (intervensjoner), og hva som er målet (mål).", "3. Identifiserte 'Sväljsvårigheter och viktnedgång'. Hentet ut en sykepleiediagnose knyttet til svekket evne til å svelge (dysfagi) med risiko for vekttap. Intervensjonene fokuserer på vektkontroll og konsistens- og temperaturtilpasning av væsker. Målet er å opprettholde ernæring og sikker svelging.", "4. Identifiserte 'Andningssvårigheter'. Hentet ut ineffektiv luftveisklarering grunnet svak muskulatur, med opphopning av slim og spytt i munnen. Intervensjonene fokuserer på veiledning i pusteøvelser, kostholdsråd (unngå melkeprotein som øker slim) og bruk av slimsug. Målet er frie luftveier fri for overflødig slim.", "5. Identifiserte pasientens og pårørendes behov for emosjonell støtte. Hentet ut en diagnose på svekket mestring/behov for støtte. Intervensjonene innebærer å gi psykologisk og sosial støtte, samt å porsjonere ut og gjenta informasjon over tid for at den skal være håndterbar. Målet er trygghet og god mestring for både pasient og pårørende.", "6. Kontrollerte at alle utledede elementer er tydelig knyttet til nøyaktige sitater på originalspråket og at innholdet er formulert kortfattet på norsk i tråd med instruksjonene."]}, {"title": "Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS", "publication_year": 2015, "doi": "Ikke funnet", "evidence_level": "Nivå 1: Studier", "reasoning_trace": ["1. Analyserer metadata for kildeteksten. Artikkelens tittel finnes i headingen: 'Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS'. Årstallet '2015' er oppgitt. Det er ingen angitt DOI. Fordi dette er en empirisk kvalitativ studie som bruker intervjuer, settes evidensnivået til 'Nivå 1: Studier'.", "2. Gjennomgår teksten for å identifisere utfordringer (sykepleiediagnoser) for pasientgruppen (ALS og deres pårørende), sykepleierintervensjoner, og tilhørende mål.", "3. Identifiserer det første funnet om pårørendes belastning: Artikkelen beskriver tydelig risiko for isolasjon, depresjon og overbelastning hos pårørende som bistår ALS-pasienter i respirator. Sykepleieintervensjonen for dette er å arrangere dialogmøter og avsette tid til familiesamtaler for å anerkjenne svære følelser og identifisere problemstillinger. Målet er å skape støtte og mestring for familien.", "4. Trekker ut et konkret, ordrett sitat fra kildeteksten som direkte understøtter det første funnet om familiesamtaler og dialogmøter.", "5. Identifiserer et andre funn angående kommunikasjonssvikt: Sykdommen fører til nedsatt taleevne, som er en vesentlig funksjonssvikt. Som intervensjon sikrer man bruk av alternative hjelpemidler som staveplate og øyeblink for å tyde pasientens vilje i etiske og kliniske dilemmaer. Målet er sikker og opprettholdt kommunikasjon med pasienten.", "6. Trekker ut et sitat som støtter funnet om kommunikasjonsverktøy og etiske dilemma ved tolking av øyeblink.", "7. Identifiserer et tredje funn om informasjonsbehov: Pasienter og pårørende opplever et stort informasjonsbehov som ikke alene dekkes av skriftlige foldere, og kan bli overveldet. Intervensjonen er at personalet gir gradvis informasjon, tilbyr løpende personlig kontakt, og aktivt italesetter konsekvenser for hele familien samt avslutning av behandling. Målet er at familien er adekvat informert og forberedt på behandlingsforløpet.", "8. Finner tilhørende sitater for informasjonsoppfølging, bekrefter at de er eksakte kopier fra den danske originalteksten.", "9. Formulerer diagnoser, intervensjoner og mål kortfattet og presist på norsk, mens sitater beholdes ordrett på dansk. Sjekker at alt er strukturert korrekt i henhold til JSON-schemaet."]}]}
+
+--- Workflow Synthesis Result ---
+{
+  "target_group": "ALS - Amytrofisk lateral sklerose",
+  "synthesized_findings": [
+    {
+      "nursing_diagnosis": {
+        "term": "redusert respiratorisk funksjon",
+        "ICNP_concept_id": "80954004"
+      },
+      "intervention": {
+        "term": "handtering av noninvasiv mekanisk ventilasjon",
+        "ICNP_concept_id": "430191008"
+      },
+      "goal": {
+        "term": "tilfredsstillende respiratorisk status",
+        "ICNP_concept_id": "14751000202106"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "evidence_summary": "Forskning og retningslinjer viser at ALS-pasienter med svakhet i respirasjonsmuskulatur har behov for tidlig igangsetting og overvåking av non-invasiv ventilasjon (NIV) eller invasiv ventilasjon for å lindre hypoventilasjon og øke overlevelse. Sykepleierens rolle inkluderer også forebygging av maske-relaterte komplikasjoner og optimalisering av komfort.",
+      "supporting_evidence": [
+        {
+          "document_id": "a7956f52-4d8b-4e87-a11d-01d132550d4d",
+          "quotes": [
+            "It has been consistently demonstrated that NIV therapy relieves the symptoms of chronic hypoventilation and increases survival.",
+            "Patients should begin NIV at the time of their first signs and symptoms of hypoventilation."
+          ]
+        },
+        {
+          "document_id": "3701b884-9860-45ea-9eff-0a39e031d0ce",
+          "quotes": [
+            "While NIV helps alleviate respiratory symptoms, acknowledging limitations such as potential dependence and challenges like nasal bridge ulceration during continuous use is crucial [37]. Moreover, NIV may reduce overall patient comfort, impede communication, and hinder mobility [29]. Exploring mitigation measures like hydrocolloid dressings and alternate mask systems is crucial. Strategies such as switching between traditional nasal masks and nasal cushion systems, using a mouthpiece during wakefulness (requiring some facial muscle strength), and considering intermittent abdominal pressure ventilation or cuirass ventilators can aid patients [37]."
+          ]
+        },
+        {
+          "document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c",
+          "quotes": [
+            "Peripheral skeletal muscles are often primarily affected, i.e. the small muscles of the hands and feet. This is inevitably followed by respiratory failure due to severe functional impairment of intercostal and other muscles critical for breathing [9, 10].",
+            "Given the rapid progression of muscle failure ventilator therapy significantly increases survival in ALS [15]. Different modes of ventilation such as non-invasive ventilation (NIV) via face mask or invasive ventilation (IV) via tracheostomy [16] may be applied to patients with ALS."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsatt evne til å holde luftveiene frie",
+        "ICNP_concept_id": "67750007"
+      },
+      "intervention": {
+        "term": "slimmobilisering ved bruk av hostemaskin",
+        "ICNP_concept_id": "1089591000202105"
+      },
+      "goal": {
+        "term": "i stand til å oppretthalda frie luftvegar",
+        "ICNP_concept_id": "1145305006"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "evidence_summary": "Svakhet i orofaryngeal muskulatur gjør det vanskelig for ALS-pasienter å hoste opp slim og spytt, noe som øker faren for bronkoaspirasjon. Tiltak som mekanisk hostestøtte (hostemaskin), slimløsende medikamenter, pusteøvelser og bruk av slimsug er effektivt for å fasilitere sekretmobilisering.",
+      "supporting_evidence": [
+        {
+          "document_id": "a7956f52-4d8b-4e87-a11d-01d132550d4d",
+          "quotes": [
+            "This is facilitated by the inability of individuals to eliminate secretions and weakness of their oropharyngeal musculature, with consequent bronchoaspiration.",
+            "A recent study demonstrated that there was an improvement in survival when the use of NIV was started with a vital capacity < 80% of the expected value and by incorporating a device for mechanical assistance for coughing."
+          ]
+        },
+        {
+          "document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3",
+          "quotes": [
+            "Svag muskulatur gör det också svårt att hosta, och personer med ALS kan därför ha mycket slem i luftvägarna och svalget. Andningsövningar kan göra det lättare att få upp slemmet. Det kan också vara bra att undvika livsmedel med mjölkprotein eftersom de kan leda till ökad slembildning. Behandling med läkemedel som acetylcystein (brustablett eller inhalationsform) kan göra slemmet tunnare och enklare att få upp. Andra alternativ som kan prövas är teofyllin och betablockerare. Det finns även hjälpmedel som kan användas för att få bort saliv och slem. En slemsugapparat kan ordineras och användas av sjuksköterska för att suga upp saliv och slem som samlas i munnen."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "dyspné",
+        "ICNP_concept_id": "267036007"
+      },
+      "intervention": {
+        "term": "veiledning i pusteteknikk for avslapping",
+        "ICNP_concept_id": "1281860000"
+      },
+      "goal": {
+        "term": "ingen dyspné",
+        "ICNP_concept_id": "161938003"
+      },
+      "FO": "3. Respirasjon/sirkulasjon",
+      "evidence_summary": "Åndenød og dyspné er utbredt ved ALS. Sykepleie støtter både ikke-farmakologiske intervensjoner som stillingsendring, temperaturregulering og pusteteknikker, samt administrering av farmakologisk symptomlindring (opioider/benzodiazepiner) for å redusere respirasjonsarbeid og tilknyttet angst.",
+      "supporting_evidence": [
+        {
+          "document_id": "3701b884-9860-45ea-9eff-0a39e031d0ce",
+          "quotes": [
+            "Participants employed various strategies to relieve episodic breathlessness, including reducing activity, changing positions (standing still, sitting, lying down), cognitive techniques (concentration, positive thinking), distraction methods, and the use of breathing techniques (such as, lip breathing, abdominal breathing, leaning forward, or putting the arms up) [21]. Positions for relief varied, with preferences for lying down, standing up, or using pillows. Fresh air, cold temperature, and moistening the mouth were commonly cited as helpful.",
+            "Symptom management was performed by PALC in all 9 patients from the PALC group. Four of these were treated for dyspnea with opioids, benzodiazepines, nebulizers, and supplemental oxygen. Anxiety related to dyspnea was treated with benzodiazepines.",
+            "In managing dyspnea, opioids’ therapeutic effect is enhanced by reducing overall oxygen consumption through alleviating anxiety, fear, and panic [10]. Additionally, decreased respiratory effort reduces oxygen consumption of the respiratory muscles [10]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "svelgevansker",
+        "ICNP_concept_id": "288939007"
+      },
+      "intervention": {
+        "term": "svelgjefremjande behandling",
+        "ICNP_concept_id": "311677003"
+      },
+      "goal": {
+        "term": "i stand til å svelge",
+        "ICNP_concept_id": "288936000"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "evidence_summary": "Dysfagi oppstår hos de fleste ALS-pasienter, med fare for aspirasjonspneumoni og underernæring. Sykepleietiltak inkluderer screening for aspirasjonsfare, tilpasning av boluskonsistens og temperatur, sensorisk stimulering, små måltider, sitteposisjon under måltid og veiledning i spesifikke svelgeteknikker (effortful swallow/chin tuck).",
+      "supporting_evidence": [
+        {
+          "document_id": "eac9ff9e-60f6-408c-b487-73b65757f2b4",
+          "quotes": [
+            "Normal saline liquid and viscous boluses were trialled with PwMND in Cock and Colleagues’ [25] study. The addition of viscosity resulted in a reduction in pharyngeal peak pressure in PwMND.",
+            "Cold, sour and carbonated boluses caused a considerable increase on the velopharyngeal mesopharyngeal and global pharyngeal contractile vigour.",
+            "Participants complete a normal swallow and then told to swallow and “Squeeze hard with all of your muscles”"
+          ]
+        },
+        {
+          "document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0",
+          "quotes": [
+            "Patients with dysphagia are at greater risk of aspiration of liquids and/or foods of varying consistencies, which can lead to pulmonary infections.",
+            "This may include modifying food consistency and preparation, encouraging smaller, more frequent meals, using oral nutritional supplements (ONS), adjusting posture during meals, eating slowly, employing swallowing techniques such as the chin tuck maneuver, and ensuring proper oral hygiene."
+          ]
+        },
+        {
+          "document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3",
+          "quotes": [
+            "Många upplever att det är lättare att svälja vätskor som innehåller förtjockningsmedel, kolsyra eller citronsyra. Särskilt vid spastisk förlamning av mun- och halsmuskulaturen kan det vara lättare att dricka iskall vätska."
+          ]
+        },
+        {
+          "document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b",
+          "quotes": [
+            "Reports have shown that ALSFRS-R bulbar subscale and EAT-10 could effectively identify unsafe swallowing and aspiration in PwALS [29, 30]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for lavt næringsinntak",
+        "ICNP_concept_id": "129845004"
+      },
+      "intervention": {
+        "term": "ernæringsvurdering",
+        "ICNP_concept_id": "310243009"
+      },
+      "goal": {
+        "term": "stabil vekt",
+        "ICNP_concept_id": "271398006"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "evidence_summary": "ALS medfører økt energiforbruk (hypermetabolisme) og redusert inntak grunnet dysfagi og anoreksi. Kontinuerlig overvåking av vekt, BMI og kartlegging av energiforbruk er essensielt for å skreddersy kaloribehov og fange opp utilsiktet vekttap tidlig.",
+      "supporting_evidence": [
+        {
+          "document_id": "760a2eef-0387-464a-b737-6c5b2ddb395e",
+          "quotes": [
+            "A decline in the nutritional status of patients is associated with exacerbated weight loss and shortened survival. Assessments of energy expenditure, using a variety of methods, are important to ensure an adequate energy intake to prevent malnutrition-associated weight loss.",
+            "The accurate determination of an individual’s total daily energy expenditure (TDEE; an estimate of how many calories the human body burns over a 24-hour period [kcal/day]) is important to quantify nutritional energy requirements and provide informed energy intake goals for patients."
+          ]
+        },
+        {
+          "document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0",
+          "quotes": [
+            "Weight, nutritional status, and swallowing should be regularly assessed at each visit or every 3 months by the nutritionist and/or multidisciplinary team. This helps identify possible causes of nutritional deficits, such as weight loss, loss of appetite, reduced food and liquid intake, and disease-related factors, including dysphagia, insufficient respiratory capacity, psychological disorders, muscle atrophy and weakness."
+          ]
+        },
+        {
+          "document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b",
+          "quotes": [
+            "Three studies [18, 20, 22] considered BMI and weight loss as a criterion for PEG insertion.",
+            "BMI can be a predictor of overall survival and specific survival after PEG placement [38]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for undervekt",
+        "ICNP_concept_id": "1144779008"
+      },
+      "intervention": {
+        "term": "administrasjon av næringstilskudd",
+        "ICNP_concept_id": "709542007"
+      },
+      "goal": {
+        "term": "betra ernæringsstatus",
+        "ICNP_concept_id": "1145522009"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "evidence_summary": "For å forebygge underernæring anbefales tilskudd av høykalariprodukter og spesifikke tilskudd (som PEA-um). Slike kostholdstiltak har vist seg å stabilisere kroppsvekten, bremse tap av motorisk/pulmonal funksjon og øke overlevelsen.",
+      "supporting_evidence": [
+        {
+          "document_id": "1edf52c2-10d5-45c5-a18f-b07322abf394",
+          "quotes": [
+            "Dorst et al found that high-energy supplementation effectively stabilises the body weight of patients with ALS and no side effects were detected.",
+            "Nutrition therapy seeks to prevent malnutrition, maintain adequate nutritional status, promote haemodynamic stability, reduce the rate of disease progression and positively impact the quality of life and survival of patients with ALS."
+          ]
+        },
+        {
+          "document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0",
+          "quotes": [
+            "Malnutrition and weight loss are common in ALS patients. High-calorie and ultra-high-calorie supplements can play an important role in increasing the body weight of ALS patients."
+          ]
+        },
+        {
+          "document_id": "a19129cc-1013-4ff2-99db-b9d5165459e8",
+          "quotes": [
+            "More recently, a broad clinical study performed on 64 patients suffering from ALS has shown that dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy (i.e., riluzole) significantly slowed down the decline in pulmonary function as measured by forced vital capacity (FVC), and lowered the severity of ALS symptoms, compared to patients treated with riluzole alone."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "utilstrekkelig peroralt matinntak",
+        "ICNP_concept_id": "699653008"
+      },
+      "intervention": {
+        "term": "håndtering av enteral ernæring",
+        "ICNP_concept_id": "408909002"
+      },
+      "goal": {
+        "term": "godt ernært",
+        "ICNP_concept_id": "248324001"
+      },
+      "FO": "4. Ernæring/væske/elektrolyttbalanse",
+      "evidence_summary": "Når oralt inntak blir utilstrekkelig eller utrygt på grunn av alvorlig dysfagi, bør sykepleier kartlegge behovet for, samt håndtere enteral ernæring (via PEG eller nasogastrisk sonde). Dette er sentralt for å sikre adekvat tilførsel av mat, medisiner og væske, forlenge overlevelse og hindre kvelning.",
+      "supporting_evidence": [
+        {
+          "document_id": "54c29bad-e19e-4029-a789-7ecfd20e788b",
+          "quotes": [
+            "When per os feeding becomes impossible or unsafe, nutrition and hydration are usually provided through Percutaneous Endoscopic Gastrostomy (PEG) [4, 6].",
+            "With advancing dysphagia, PEG insertion can provide long-term nutritional support, prevent starvation, malnutrition, dehydration, pneumonia, and hypoxia, the latter when PEG insertion is accompanied by non-invasive ventilation [27]."
+          ]
+        },
+        {
+          "document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c",
+          "quotes": [
+            "Additionally artificial nutrition via nasogastric (NG) tube or percutaneous endoscopic gastrostomy (PEG) tube counteracts weight loss due to dysphagia, and these invasive measures may also prolong survival in ALS [17]."
+          ]
+        },
+        {
+          "document_id": "0e4e1558-0a97-4b2e-a0ff-d0832937aee0",
+          "quotes": [
+            "For patients with severe dysphagia and progressive weight loss, alternative feeding methods, such PEG, may be required to reduce the risk of choking while ensuring adequate nutrition and hydration. When feasible, enteral tube feeding should complement, rather than replace, oral feeding. However, it provides a safer and more convenient method of delivering food, medications, and water, helping to maintain or restore their nutritional and hydration status in ALS patients."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "vanskar med å delta i planlegging av helsehjelp",
+        "ICNP_concept_id": "705045007"
+      },
+      "intervention": {
+        "term": "gjennomføring av førehandssamtale om livets sluttfase",
+        "ICNP_concept_id": "713603004"
+      },
+      "goal": {
+        "term": "i stand til å delta i planlegging av helsehjelp",
+        "ICNP_concept_id": "1137426009"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "evidence_summary": "På grunn av rask progresjon og tap av kommunikasjonsevne, er det avgjørende å integrere forhåndssamtaler (ACP) og beslutningsstøtte tidlig. Dette minsker frykten for døden, reduserer beslutningskonflikt, og sikrer at livsforlengende tiltak som respiratorbehandling reflekterer pasientens reelle ønsker.",
+      "supporting_evidence": [
+        {
+          "document_id": "a404149d-ea0e-4003-8c17-2c4159d8feb3",
+          "quotes": [
+            "Discussing end-of-life issues/decisions, especially to reduce fears about death and to support patients’ feelings of maintaining control and considering burdens and emotional situation",
+            "In a study by Levi et al., computer-based decision aids were introduced to improve end-of-life communication about treatment preferences. The intervention resulted in a significantly higher concordance between the patients’ wishes and treatment decisions of the clinicians, evaluated by clinical vignettes."
+          ]
+        },
+        {
+          "document_id": "ed2260b7-3e13-4f45-8b7e-4b70489b036c",
+          "quotes": [
+            "Early and continuously revisited ACP is generally viewed as a key element when treating patients with ALS, considering the loss of communicative function, cognitive impairment and often rapid physical decline [9, 10]."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "vansker med å kommunisere verbalt",
+        "ICNP_concept_id": "32000005"
+      },
+      "intervention": {
+        "term": "sørge for kommunikasjonshjelpemiddel",
+        "ICNP_concept_id": "228620008"
+      },
+      "goal": {
+        "term": "kommuniserer behov og ønsker",
+        "ICNP_concept_id": "288784001"
+      },
+      "FO": "1. Kommunikasjon/sanser",
+      "evidence_summary": "Når verbalspråket tapes, blir bruk av tilpassede kommunikasjonshjelpemidler (øyeblink, staveplater) nødvendig. Helsepersonell må vise narrativ kompetanse og nøye observere signaler for å kunne tolke pasientens underliggende behov og bevare muligheten for meningsfull toveiskommunikasjon.",
+      "supporting_evidence": [
+        {
+          "document_id": "a404149d-ea0e-4003-8c17-2c4159d8feb3",
+          "quotes": [
+            "A publication from Brazil illustrates the ‘narrative competence’ of HCP by presenting a case of a PALS with a locked-in syndrome and resulting communication deficits. Narrative competence is the ‘ability to acknowledge, to absorb, to interpret, and to respond to a person’s story’.",
+            "Such a competence enables HCP to respond appropriately to a wish to die by reflecting its seriousness and talking about its underlying motives, as shown in a case study by a palliative care nurse."
+          ]
+        },
+        {
+          "document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1",
+          "quotes": [
+            "Når personen med ALS ikke længere kan udtrykke sig verbalt, findes der forskellige former for hjælpemidler til at sikre fortsat kommunikation. Mange bruger øjenblink og staveplader.",
+            "De etiske dilemmaer opstår bl.a., hvis det bliver usikkert, om den, der modtager beskederne, ser det, der egentlig bliver sagt. Blinkene kan på grund af svaghed i øjenmuskulaturen blive så ukoordinerede, at det rent faktisk er umuligt at vide med sikkerhed, om der bliver sagt ”ja” eller ”nej” til de spørgsmål, der stilles."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "nedsett mobilitet",
+        "ICNP_concept_id": "82971005"
+      },
+      "intervention": {
+        "term": "fremming av fysisk mobilitet",
+        "ICNP_concept_id": "710122006"
+      },
+      "goal": {
+        "term": "oppretthalden rørsleevne",
+        "ICNP_concept_id": "13301000202109"
+      },
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "evidence_summary": "Fremadskridende muskelsvakhet gir betydelig tap av funksjon i hverdagen. Lav- til moderat aerob- og motstandstrening i affeksjonsfrie muskler, tøyningsøvelser og massasje bidrar til å bevare global funksjon kortvarig og lindre muskelkramper og -stivhet.",
+      "supporting_evidence": [
+        {
+          "document_id": "098bbd6c-6a94-4cc2-bbe7-904843c68d1f",
+          "quotes": [
+            "Therefore, low to moderate-intensity aerobic and resistance exercises focused on muscle groups that are less affected or unaffected by the disease can be beneficial, especially in the early and middle stages of ALS [<xref rid=\"pone.0307470.ref012\" ref-type=\"bibr\">12</xref>]. Those exercises may preserve trunk and limb muscle strength and improve aerobic fitness and function.",
+            "Additionally, therapeutic exercises can help reduce muscle deterioration in people with ALS and facilitate the performance of daily life activities [<xref rid=\"pone.0307470.ref013\" ref-type=\"bibr\">13</xref>]."
+          ]
+        },
+        {
+          "document_id": "21ba7c8d-ec52-4b63-9706-a9b46b9aef27",
+          "quotes": [
+            "When applied by a physical therapist, a physical activity involving a range of motion and stretching exercises is generally well accepted by individuals with ALS.",
+            "Physical therapy intervention may improve the global function of individuals with ALS in the short term;"
+          ]
+        },
+        {
+          "document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0",
+          "quotes": [
+            "Additionally, massage has been shown to help relieve clinical symptoms of ALS, such as muscle stiffness and cramping, by activating the parasympathetic nervous system through force on the skin surface and exerting pressure on the muscles to increase blood flow."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "mestringsvansker",
+        "ICNP_concept_id": "18232000"
+      },
+      "intervention": {
+        "term": "meistringsstøtte",
+        "ICNP_concept_id": "385722003"
+      },
+      "goal": {
+        "term": "oppleving av meistring",
+        "ICNP_concept_id": "477591000202100"
+      },
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "evidence_summary": "Pasienter med ALS sliter med depresjon, overveldende emosjonell byrde og et stort behov for skreddersydd informasjon om behandlingsforløpet. Tiltak som lystbetonte samtaler, gradvis informasjonsflyt samt oppmerksomhetstrening (mindfulness) bygger trygghet og fremmer emosjonell mestring.",
+      "supporting_evidence": [
+        {
+          "document_id": "863b3b0c-22df-48c8-91ac-07d59b1b35f3",
+          "quotes": [
+            "Både den som är sjuk och de närstående behöver information och stöd. Det kan vara svårt både för den som själv är sjuk och för de närstående att ta till sig information om sjukdomen omedelbart efter beskedet. Informationen behöver därför ges stegvis vid flera tillfällen och följas upp."
+          ]
+        },
+        {
+          "document_id": "5ee559f8-070b-4dc7-90bc-dcf04a6148e0",
+          "quotes": [
+            "PSI may help ALS patients with depression and improve their quality of life. For example, hypnosis and mindfulness-based psychological interventions improved patients' quality of life and relieved their pain, depression, and anxiety while also slowing disease progression."
+          ]
+        },
+        {
+          "document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1",
+          "quotes": [
+            "Deltagerne i interviewene kendte til de forskellige foldere, men oplevede, at det var svært at modtage den skriftlige information. De gav udtryk for, at de havde behov for løbende kontakt med professionelle, og at det var nemmere at forstå informationerne, hvis de kom gradvist."
+          ]
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for belastande omsorgsgjevarrolle",
+        "ICNP_concept_id": "129700008"
+      },
+      "intervention": {
+        "term": "parørandesamtale",
+        "ICNP_concept_id": "347381000202101"
+      },
+      "goal": {
+        "term": "omsorgsgjevar i stand til meistring",
+        "ICNP_concept_id": "1345133004"
+      },
+      "FO": "10. Sosialt/planlegging av utskrivelse",
+      "evidence_summary": "Pårørende til ALS-pasienter er svært utsatt for emosjonell utmattelse og belastning. Planlagte dialogmøter og familiesamtaler muliggjør adressering av 'forbudte' følelser, og bidrar til å identifisere utfordringer i familien tidlig slik at adekvat avlastning og støtte kan gis.",
+      "supporting_evidence": [
+        {
+          "document_id": "3a1c97f0-b65a-417f-8912-97de0895a8e1",
+          "quotes": [
+            "Interviewene viser, at der er behov for flere dialogmøder mellem personen med ALS, de pårørende og de sundhedsprofessionelle. Det er vigtigt, at personalet i sådanne forløb medvirker til at italesætte de svære emner og legalisere de svære og forbudte følelser.",
+            "Der bør afsættes tid til familiesamtale, når personen med ALS er indlagt eller kommer ambulant. Pårørende bør som standard deltage, og det er vigtigt, at personalet medvirker til at identificere eventuelle problemstillinger, som kan eller skal afhjælpes."
+          ]
+        }
+      ]
+    }
+  ],
+  "total_documents_processed": 12,
+  "quality_notes": "Datakvaliteten vurderes som høy, ettersom funnene primært hviler på systematiske oversiktsartikler (Nivå 2). Informasjonen er konsistent på tvers av artiklene, spesielt for respiratorisk omsorg, ernæringsstøtte (PEG/tilskudd) og betydningen av tidlig forhåndsplanlegging av pleie (ACP). Relevante sykepleiediagnoser og ICNP-koder er slått sammen til større logiske temakategorier for å sikre en robust klinisk behandlingsplan.",
+  "source_documents": [
+    {
+      "title": "Palmitoylethanolamide: A Nutritional Approach to Keep Neuroinflammation within Physiological Boundaries—A Systematic Review",
+      "publication_year": 2020,
+      "doi": "10.3390/ijms21249526",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Identifiser og trekk ut metadata for kildefilen: Tittelen på artikkelen er 'Palmitoylethanolamide: A Nutritional Approach to Keep Neuroinflammation within Physiological Boundaries—A Systematic Review'. Publikasjonsåret er 2020. DOI-nummeret er oppgitt til 10.3390/ijms21249526.",
+        "2. Bestem evidensnivået: Artikkelen er merket som en 'Review' (systematisk oversiktsartikkel). I henhold til instruksjonen for Kunnskapspyramiden klassifiseres dette som 'Nivå 2: Systematiske oversikter'.",
+        "3. Filtrer teksten for informasjon relatert til oppgitt bruksområde: 'ALS - Amytrofisk lateral sklerose'. Seksjon 3.4 i artikkelen har overskriften 'Amyotrophic Lateral Sclerosis' og inneholder relevant informasjon.",
+        "4. Utled sykepleiediagnose: Teksten beskriver pasientenes symptomer med 'progressive paralysis of skeletal muscle' og 'decline in pulmonary function'. Som sykepleiediagnose knyttet til opplevelse og funksjonsproblem kan dette formuleres som: 'Svekket lungefunksjon og motorisk funksjon som følge av muskellammelse'.",
+        "5. Utled intervensjon: I teksten beskrives det at pasienter gis 'oral supplementation with PEA-um' eller 'dietary administration of PEA-um (600 mg twice daily for 6 months) added to standard therapy'. Som en sykepleieintervensjon på et sykehus vil dette være: 'Administrere oralt tilskudd av ultra-mikronisert palmitoylethanolamide (PEA-um) som tillegg til standard behandling'.",
+        "6. Utled mål: Teksten viser til at PEA-um 'improved the respiratory and motor functions' og 'slowed down the decline in pulmonary function'. Målet oversettes til norsk som: 'Bremsing av reduksjon i lungefunksjon, samt bedring av respiratorisk og motorisk funksjon'.",
+        "7. Trekk ut støttende sitater: Direkte sitater som støtter de tre elementene er hentet ut nøyaktig slik de fremstår på originalspråket fra seksjon 3.4.",
+        "8. Validering: Alle felter i JSON-strukturen er populert i henhold til skjemaet. Funnene utgjør en helhetlig sammenheng mellom problem (diagnose), tiltak (intervensjon) og ønsket resultat (mål) som er relevant for sykepleie, støttet av korrekte sitater."
+      ]
+    },
+    {
+      "title": "Use of Pharyngeal High-Resolution Manometry to Evaluate Dysphagia in Adults with Motor Neurone Disease: A Scoping Review",
+      "publication_year": 2022,
+      "doi": "10.1007/s00455-022-10418-4",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte kildetekstens metadata for å hente ut tittel, publikasjonsår (2022), DOI og evidensnivå. Siden teksten er en 'scoping review', klassifiseres den under 'Nivå 2: Systematiske oversikter'.",
+        "2. Identifiserte bruksområdet: Pasienter med Motor Neurone Disease (ALS) med fokus på vurdering og håndtering av dysfagi (svelgevansker).",
+        "3. Søkte gjennom teksten etter sykepleiediagnoser relatert til tilstanden. Artikkelen beskriver dysfagi som fører til komplikasjoner som aspirasjon og underernæring, noe som oversettes til 'Svekket evne til å svelge'.",
+        "4. Søkte etter intervensjoner som kan utføres av sykepleiere i sykehus. Kildeteksten nevner tre spesifikke ikke-kirurgiske intervensjoner for dysfagi: endring av boluskonsistens (viskøs vs. flytende), sensorisk stimulering (kald, sur, kullsyreholdig), og svelgemanøvre (innsatsfylt svelging/effortful swallow).",
+        "5. Identifiserte mål (goals) knyttet til de spesifikke intervensjonene basert på funnene av intervensjonenes effekt på svelgemekanismen (f.eks. forlenget relaksasjon av UES, forbedret kontraktilitet og redusert faryngealt peak-trykk). Målene ble formulert positivt og observerbart.",
+        "6. Hentet ut eksakte, ordrette sitater fra kildeteksten (på engelsk) som støtter hver unike kombinasjon av sykepleiediagnose, intervensjon og mål.",
+        "7. Gjennomgikk kravene for å sikre at all utpakket tekst (med unntak av sitatene) er på norsk, konsist formulert, og at JSON-strukturen er gyldig uten unødvendige kontrolltegn."
+      ]
+    },
+    {
+      "title": "Talking about the end of life: communication patterns in amyotrophic lateral sclerosis – a scoping review",
+      "publication_year": 2022,
+      "doi": "10.1177/26323524221083676",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyser metadata: Artikkelen er en 'scoping review' publisert i 2022 med tittelen 'Talking about the end of life...'. DOI er oppgitt. Fordi dette er en type oversiktsartikkel som systematisk kartlegger litteratur, klassifiseres den under 'Nivå 2: Systematiske oversikter'.",
+        "2. Søk etter sykepleiediagnoser og pasientproblemer: Teksten fremhever problemstillinger hos ALS-pasienter, som frykt for døden, tap av kontroll og komplekse beslutningsprosesser ved slutten av livet. Den beskriver også kommunikasjonsvansker som gjør det krevende å fange opp reelle behandlingsønsker eller bakenforliggende motiver for å ville dø.",
+        "3. Identifiser sykepleieintervensjoner: I tekstens tabeller og diskusjon omtales viktige tiltak: Tidlig og kontinuerlig samtale om livets slutt og 'advance care planning' (ACP) for å redusere frykt, bruk av 'narrativ kompetanse' for å tolke pasientens underliggende motiver (f.eks. vedlocked-in syndrom og dødsønsker), og bruk av databaserte beslutningsstøtteverktøy.",
+        "4. Formuler mål: Målene for disse intervensjonene er redusert frykt, en opplevelse av å bevare kontrollen over eget liv, økt grad av selvbestemmelse og lavere beslutningskonflikt.",
+        "5. Ekstraher sitater: Finn eksakte setninger i teksten som direkte støtter sammenhengen mellom disse diagnosene, intervensjonene og målene.",
+        "6. Oversett funn: Sørg for at sykepleiediagnosene, intervensjonene og målene er formulert kortfattet, presist og på norsk (inspirert av ICNP/SNOMED-terminologi), mens de støttende sitatene beholdes ordrett på engelsk.",
+        "7. Validering: Sjekk alle dataelementer mot skjemaets krav og begrensninger, og formater resultatet som et feilfritt JSON-objekt."
+      ]
+    },
+    {
+      "title": "Nutritional therapy in amyotrophic lateral sclerosis: protocol for a systematic review and meta-analysis",
+      "publication_year": 2022,
+      "doi": "10.1136/bmjopen-2022-064086",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyser kildeteksten for å identifisere metadata: Tittelen er oppgitt til 'Nutritional therapy in amyotrophic lateral sclerosis: protocol for a systematic review and meta-analysis'. Publisert i 2022 med DOI 10.1136/bmjopen-2022-064086.",
+        "2. Evaluer evidensnivå: Dokumentet er en protokoll for en systematisk oversikt og meta-analyse. Den tilhører metodesporet for systematiske oversikter og tagges som artikkeltypen 'systematic-review' i kildekoden, dermed klassifiseres den under 'Nivå 2: Systematiske oversikter'.",
+        "3. Søk etter sykepleiediagnoser, intervensjoner og mål relatert til ALS i sykehuskontekst: Introduksjonen og diskusjonsdelen beskriver at ALS-pasienter er sterkt utsatt for underernæring (Risiko for underernæring/svekket ernæringsstatus) på grunn av dysfagi, anoreksi og hypermetabolisme.",
+        "4. Kartlegg sykepleieintervensjoner: Sykepleiere overvåker ernæring og gir ernæringsstøtte. Teksten fremhever kostholdsintervensjoner, inkludert energirike kosttilskudd, og vurdering av gastrostomi hvis oralt inntak blir utrygt (f.eks. ved alvorlig dysfagi).",
+        "5. Identifiser mål: Det uttalte formålet med intervensjonene er å forhindre underernæring, stabilisere kroppsvekt og opprettholde adekvat ernæringsstatus.",
+        "6. Hent ut eksakte og ordrette sitater fra kildeteksten som direkte understøtter den utledede sykepleiediagnosen, intervensjonen og målet.",
+        "7. Formuler funnet kortfattet på norsk i henhold til instruksene, med sitatene ivaretatt på originalspråket (engelsk). Sørg for at JSON-strukturen er gyldig og uten forbudte kontrolltegn."
+      ]
+    },
+    {
+      "title": "Noninvasive mechanical ventilation assistance in amyotrophic lateral sclerosis: a systematic review",
+      "publication_year": 2023,
+      "doi": "10.1590/1516-3180.2022.0470.R1.100423",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte metadata fra kildeteksten for å hente ut tittel, publikasjonsår (2023) og DOI.",
+        "2. Klassifiserte evidensnivået til 'Nivå 2: Systematiske oversikter' ettersom kildeteksten er en systematisk oversiktsartikkel.",
+        "3. Gjennomgikk teksten for å finne informasjon om pasientgruppen (ALS) og sykepleierelevante problemstillinger (symptomer/funksjonssvikt).",
+        "4. Identifiserte det første funnet: Pasienter med ALS utvikler svakhet i respirasjonsmuskulatur som fører til hypoventilasjon. Sykepleiediagnosen formuleres som 'Svekket respirasjonsfunksjon og hypoventilasjon'. Intervensjonen er å starte/overvåke non-invasiv ventilasjon (NIV), med mål om å lindre symptomer og opprettholde livskvalitet.",
+        "5. Identifiserte det andre funnet: Pasienter har nedsatt evne til å fjerne sekret på grunn av orofaryngeal muskelsvakhet, noe som gir fare for aspirasjon. Sykepleiediagnosen formuleres som 'Svekket evne til å fjerne luftveissekret med risiko for aspirasjon'. Intervensjonen er å bruke mekanisk hostestøtte (hostemaskin), med mål om frie luftveier uten aspirasjon.",
+        "6. Sikret at alle intervensjoner ligger innenfor sykepleierens ansvarsområde i et sykehus og at målene er positivt formulert og observerbare.",
+        "7. Ekstraherte ordrette, støttende sitater på originalspråket (engelsk) fra kildeteksten for å validere hvert funn."
+      ]
+    },
+    {
+      "title": "Dysphagia Assessments as Criteria in the ‘Decision-Making Process’ for Percutaneous Endoscopic Gastrostomy Placement in People with Amyotrophic Lateral Sclerosis: A Systematic Review",
+      "publication_year": 2024,
+      "doi": "10.1007/s00455-024-10686-2",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Gjennomgikk artikkelens metadata for å identifisere tittel, publikasjonsår, DOI og studiedesign. Artikkelen er en systematisk oversikt, noe som plasserer den på 'Nivå 2: Systematiske oversikter' i Kunnskapspyramiden.",
+        "2. Definerte oppgavens rammer: Finne relevant klinisk informasjon for sykehussykepleiere (sykepleiediagnose, intervensjon, mål) knyttet til pasientgruppen med Amyotrofisk lateral sklerose (ALS) fra kildeteksten.",
+        "3. Leste gjennom abstraktet og introduksjonen, som fastslår at ALS-pasienter utvikler svelgevansker (dysfagi), og at dette fører til risiko for underernæring, dehydrering og aspirasjonspneumoni.",
+        "4. Identifiserte det første funnet knyttet til nedsatt svelgefunksjon. Sykepleiediagnose: 'Svekket svelgefunksjon'. Intervensjoner som kan utføres av sykepleiere inkluderer administrering av ernæring og væske via PEG, og bidra i kartlegging. Målet er å opprettholde ernærings- og væskestatus. Fant støttende sitater knyttet til PEG og forebygging av sult/dehydrering.",
+        "5. Identifiserte et andre funn relatert til vektnedgang og feilernæring på grunn av dysfagi. Sykepleiediagnose: 'Risiko for feilernæring'. Intervensjonen innebærer å kartlegge kroppsmasseindeks (BMI) og vektutvikling. Målet er stabil vekt/opprettholdt ernæringsstatus. Sitater om vektnedgang og BMI som kriterier for PEG-innleggelse understøtter dette.",
+        "6. Identifiserte et tredje funn om risikoen for aspirasjon. Sykepleiediagnose: 'Risiko for aspirasjon'. Intervensjonen er å vurdere/skrinlegge pasienten for utrygg svelging (f.eks. via anerkjente verktøy som EAT-10, som også benyttes av eller i samarbeid med sykepleier) for å forhindre komplikasjoner. Målet er fravær av aspirasjon og lungebetennelse.",
+        "7. Kvalitetssikret funnene mot retningslinjene for å sikre at diagnoser er negative pasientutfall, intervensjonene er handlingsrettede for sykepleiere, målene er positive/målbare, og sitatene er ordrett kopiert fra teksten."
+      ]
+    },
+    {
+      "title": "Optimizing breathlessness management in amyotrophic lateral sclerosis: insights from a comprehensive systematic review",
+      "publication_year": 2024,
+      "doi": "10.1186/s12904-024-01429-z",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte kildedokumentet for å identifisere tittel, forfattere, publiseringsår, DOI og evidensnivå. Kilden er en systematisk oversikt publisert i 2024 med DOI 10.1186/s12904-024-01429-z, noe som klassifiserer den som 'Nivå 2: Systematiske oversikter'.",
+        "2. Gikk systematisk gjennom teksten for å trekke ut klinisk relevant informasjon for sykepleiere i sykehus som behandler ALS-pasienter med dyspné.",
+        "3. Ekstraherte Funn 1 knyttet til ikke-farmakologiske strategier. Sykepleiediagnosen ble formulert som 'Opplevelse av åndenød (dyspné)'. Intervensjonen ble beskrevet som tilrettelegging med stillingsendring, temperaturregulering (frisk/kald luft), og veiledning i puste- og avspenningsteknikker. Målet er 'Redusert opplevelse av tungpustethet og økt velvære'. Direkte sitat som beskriver disse strategiene ble hentet ut.",
+        "4. Ekstraherte Funn 2 som omhandler farmakologisk symptomlindring. Sykepleiediagnosen er 'Opplevelse av åndenød (dyspné) og tilhørende angst'. Intervensjonen omfatter å administrere og observere effekt av forordnede lindrende medikamenter som opioider og benzodiazepiner. Målet er 'Lindring av åndenød og fravær av frykt og angst knyttet til pustebesvær'. Sitater som underbygger bruken av disse for å redusere oksygenforbruk og dempe panikk ble funnet og lagt til.",
+        "5. Ekstraherte Funn 3 som omhandler pleie ved bruk av ikke-invasiv ventilasjon (NIV). Sykepleiediagnosen er 'Svekket lungefunksjon og risiko for ubehag og hudkomplikasjoner relatert til bruk av NIV-maske'. Intervensjonen fokuserer på assistanse ved NIV og forebyggende tiltak mot trykksår, som bruk av hydrokolloidbandasjer og vurdering av alternative maskesystemer. Målet er 'Optimalisert respirasjon via NIV uten hudkomplikasjoner eller unødvendig ubehag'. Validerte dette med nøyaktig sitat fra teksten.",
+        "6. Sjekket alle punkter mot de formelle retningslinjene: ingen kontrolltegn (som linjeskift eller tabulatorer) er brukt, elementer er på norsk (sitater på engelsk), format er et fullstendig, gyldig JSON-objekt."
+      ]
+    },
+    {
+      "title": "Efficacy of non-pharmacological interventions for individuals with amyotrophic lateral sclerosis: systematic review and network meta-analysis of randomized control trials",
+      "publication_year": 2024,
+      "doi": "10.1038/s41598-024-62213-w",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Leste og analyserte metadata fra artikkelen: Tittel ble identifisert. Publikasjonsåret ble hentet fra 'pub-date' (2024). DOI ble trukket ut direkte fra artikkel-metadatamarkørene.",
+        "2. Evalueringsnivå: Tittelen spesifiserer at artikkelen er en 'systematic review and network meta-analysis'. Dette samsvarer nøyaktig med 'Nivå 2: Systematiske oversikter'.",
+        "3. Leste dokumentet for å identifisere klinisk relevant informasjon for sykepleiere i sykehus, basert på instruksene (sykepleiediagnose, intervensjon og mål).",
+        "4. Identifiserte funn nr 1: Artikkelen nevner at 'Malnutrition and weight loss are common in ALS patients'. En relevant sykepleiediagnose er 'Risiko for underernæring og vekttap'. Intervensjonen er å tilby høykaloritilskudd. Målet er å øke eller opprettholde kroppsvekt.",
+        "5. Identifiserte funn nr 2: Artikkelen nevner 'muscle stiffness and cramping'. Sykepleiediagnosen blir 'Muskelstivhet og kramper'. Intervensjonen sykepleieren kan utføre er massasje. Målet er lindring av stivhet og kramper.",
+        "6. Identifiserte funn nr 3: Artikkelen diskuterer respiratorisk svikt. Sykepleiediagnosen er 'Svekket lungefunksjon og pustebesvær'. Intervensjonen er å fasilitere respiratorisk trening. Målet er forbedret pusteevne.",
+        "7. Identifiserte funn nr 4: Artikkelen nevner at ALS-pasienter sliter med depresjon og nedsatt livskvalitet. Sykepleiediagnosen er 'Depresjon, angst og smerter'. Sykepleiefaglig intervensjon innebærer psykologiske intervensjoner som oppmerksomhetstrening. Målet er forbedret livskvalitet og redusert depresjon/angst.",
+        "8. Validerte hvert funn opp mot strenge krav: Er det sykepleiedrevet? Er målet observerbart? Finnes det eksakte sitater på engelsk som understøtter uttrekket? Alle sjekkpunkter er oppfylt.",
+        "9. Konstruerte et gyldig JSON-objekt fritt for kontrolltegn (ingen newline eller tabulator) og kun med påkrevde strukturerklæringer."
+      ]
+    },
+    {
+      "title": "Physical therapy for muscle strengthening in individuals with amyotrophic lateral sclerosis: A protocol for a systematic review and meta-analysis",
+      "publication_year": 2024,
+      "doi": "10.1371/journal.pone.0307470",
+      "evidence_level": "Nivå 0: Ingen kategori",
+      "reasoning_trace": [
+        "1. Analyserte kildeteksten for metadata. Tittelen er 'Physical therapy for muscle strengthening in individuals with amyotrophic lateral sclerosis: A protocol for a systematic review and meta-analysis'. Publikasjonsåret er 2024, og DOI er 10.1371/journal.pone.0307470.",
+        "2. Vurderte evidensnivået. Kildeteksten er en protokoll for en systematisk oversikt og inneholder ikke resultater fra selve oversikten ennå. Den faller derfor ikke inn under Nivå 1 (Enkeltstudier) eller Nivå 2 (Ferdige systematiske oversikter), og klassifiseres dermed som 'Nivå 0: Ingen kategori'.",
+        "3. Gjennomgikk bakgrunnsinformasjonen i artikkelen med fokus på bruksområdet ALS for å finne informasjon relevant for sykepleiepraksis.",
+        "4. Identifiserte en sykepleiediagnose knyttet til muskelsvekkelse og funksjonstap som er karakteristisk for pasientgruppen.",
+        "5. Identifiserte sykepleieintervensjoner som omhandler tilrettelegging og veiledning i terapeutiske øvelser (lav- til moderat aerob- og motstandstrening for lite berørte muskler). Selv om det ofte initieres av fysioterapeut, er tilrettelegging og veiledning i slike daglige funksjonsøvelser høyst aktuelt for sykepleiere i sengepost for å hindre komplikasjoner ved passivitet.",
+        "6. Definerte et mål basert på teksten: å bevare muskelstyrke, redusere muskelforfall og fremme mestring av daglige aktiviteter.",
+        "7. Validerte funnet ved å trekke ut nøyaktige sitater fra XML-kildeteksten (inkludert referansetagger) som beviser sammenhengen mellom diagnose, intervensjon og mål."
+      ]
+    },
+    {
+      "title": "Advance directives in amyotrophic lateral sclerosis – a systematic review and meta-analysis",
+      "publication_year": 2024,
+      "doi": "10.1186/s12904-024-01524-1",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte metadata for artikkelen for å identifisere tittel, publiseringsår og DOI. Utledet fra teksten at artikkelen er utgitt i 2024 med DOI 10.1186/s12904-024-01524-1.",
+        "2. Bestemte evidensnivået til nivå 2, ettersom kildeteksten eksplisitt er beskrevet som en systematisk oversiktsartikkel (systematic review) og metaanalyse.",
+        "3. Leste gjennom tekstens bakgrunn og metode for å identifisere spesifikke utfordringer for pasienter med ALS (bruksområdet). Fant at de sentrale funksjonstapene inkluderer tap av kommunikasjonsevne, svelgevansker (dysfagi) og pustebesvær (respirasjonssvikt).",
+        "4. Utledet funn 1 knyttet til forhåndssamtaler (Advance Care Planning). Sykepleiediagnosen er pasientens reduserte evne til å kommunisere fremtidige valg. Intervensjonen ble definert som å tilrettelegge for tidlige og regelmessige forhåndssamtaler. Målet er å sikre at pasientens behandlingsønsker er kartlagt og dokumentert. Relevante sitater ble kopiert eksakt.",
+        "5. Utledet funn 2 knyttet til svelgeproblemer og vekttap. Intervensjonen er vurdering og veiledning om kunstig ernæring (nasogastrisk sonde eller PEG). Sykepleiemålet er å opprettholde ernæringsstatus og forebygge vekttap. Relevante sitater ble identifisert og lagt ved.",
+        "6. Utledet funn 3 knyttet til respirasjonssvikt. Sykepleieintervensjonen innebærer vurdering og opplæring i bruk av ventilasjonsstøtte som non-invasiv ventilasjon (NIV) eller trakeostomi. Målet er å optimalisere respirasjonen og forbedre overlevelse/livskvalitet. Støttende sitater ble ekstrahert ordrett.",
+        "7. Validerte hvert funn opp mot definisjonen av de respektive elementene: Sykepleiediagnosene er formulert som negative problemer pasienten opplever, intervensjonene kan utføres/tilrettelegges av sykepleier (opplæring, veiledning, tilrettelegging for forhåndssamtaler), og målene er positive og realistiske tilstander i fremtiden.",
+        "8. Sikret at det genererte JSON-objektet er en ren enlinjes-streng uten tabulatorer, linjeskift eller andre skjulte kontrolltegn for å strengt overholde systeminstruksjonen."
+      ]
+    },
+    {
+      "title": "Physical therapy for the management of global function, fatigue and quality of life in amyotrophic lateral sclerosis: systematic review and meta-analyses",
+      "publication_year": 2024,
+      "doi": "10.1136/bmjopen-2023-076541",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserer kildeteksten for metadata: Tittelen er oppgitt som 'Physical therapy for the management of global function...'. Publisert i 2024, og DOI er 10.1136/bmjopen-2023-076541. Dokumentet er en systematisk oversikt og metaanalyse, noe som plasserer den på 'Nivå 2: Systematiske oversikter' i kunnskapspyramiden.",
+        "2. Søker etter relevante sykepleiediagnoser for ALS-pasienter i tekstens introduksjon og resultater. Teksten nevner 'progressive muscle weakness' og 'decreased functional ability', som oversettes til nedsatt fysisk funksjon og muskelsvakhet. 'Fatigue' nevnes også som et stort problem.",
+        "3. Vurderer intervensjoner som kan utføres av sykepleiere. Mens studien primært ser på fysioterapi, nevnes 'range of motion and stretching exercises' som intervensjoner (ofte ansett som vanlig pleie/usual care) som er godt akseptert av pasientgruppen. Sykepleiere tilrettelegger og utfører ofte bevegelsesøvelser (ROM) og tøying for inneliggende pasienter for å bevare funksjon og forhindre kontrakturer.",
+        "4. Vurderer effekten av intervensjonene. Studien konkluderer med at tiltak for å bedre tretthet (fatigue) og livskvalitet ikke var mer effektive enn kontrollgruppen, og mangler dermed evidens for å bli inkludert som et anbefalt tiltak her. For global funksjon konkluderer de med: 'Physical therapy intervention may improve the global function of individuals with ALS in the short term', selv om det påpekes klinisk usikkerhet.",
+        "5. Formulerer et funn basert på funksjonsnedsettelse. Sykepleiediagnose: Nedsatt fysisk funksjon som følge av muskelsvakhet. Intervensjon: Tilrettelegge for fysisk aktivitet, inkludert bevegelses- og tøyningsøvelser. Mål: Forbedret eller opprettholdt global funksjon på kort sikt.",
+        "6. Trekker ut de nøyaktige engelske sitatene som støtter kombinasjonen av diagnose, intervensjon og mål."
+      ]
+    },
+    {
+      "title": "Mapping the Evidence for Measuring Energy Expenditure and Indicating Hypermetabolism in Motor Neuron Disease: A Scoping Review",
+      "publication_year": 2024,
+      "doi": "10.1093/nutrit/nuae118",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte metadata fra kildeteksten: Tittelen er oppgitt til 'Mapping the Evidence for Measuring Energy Expenditure and Indicating Hypermetabolism in Motor Neuron Disease: A Scoping Review', publisert i 2024 (Epub dato), med DOI '10.1093/nutrit/nuae118'.",
+        "2. Evalueringsnivå: Dokumentet beskrives som en 'Scoping Review' som systematisk har søkt i tre databaser og oppsummert 32 observasjonsstudier. Dette samsvarer best med definisjonen for 'Nivå 2: Systematiske oversikter'.",
+        "3. Gjennomgikk teksten for å finne spesifikke helseutfordringer (sykepleiediagnoser) relatert til ALS/MND, tiltak sykepleiere kan utføre (intervensjoner), og ønskede pasientresultater (mål).",
+        "4. Identifiserte en sentral helseutfordring: Nedgang i ernæringsstatus, energiubalanse og påfølgende risiko for underernæringsrelatert vekttap på grunn av blant annet hypermetabolisme og dysfagi.",
+        "5. Identifiserte tilhørende intervensjon: Kartlegging og vurdering av pasientens energiforbruk (Total Daily Energy Expenditure) for å nøyaktig kunne beregne og tallfeste pasientens kalori- og ernæringsbehov. Dette er en sentral del av sykepleiers ansvar for ernæringsoppfølging på sykehus.",
+        "6. Identifiserte målet for tiltaket: Å sikre et adekvat energiinntak for å forhindre vekttap knyttet til underernæring.",
+        "7. Formulerte funnet presist og i tråd med SNOMED ICNP-inspirert terminologi.",
+        "8. Fant og trakk ut ordrette sitater fra avsnittene 'Background' og 'Introduction' som direkte underbygger diagnose, intervensjon og mål."
+      ]
+    },
+    {
+      "title": "Evidence-Based Nutritional Recommendations for Maintaining or Restoring Nutritional Status in Patients with Amyotrophic Lateral Sclerosis: A Systematic Review",
+      "publication_year": 2025,
+      "doi": "10.3390/nu17050782",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": [
+        "1. Analyserte metadata fra kildeteksten. Artikkelens tittel er identifisert, publikasjonsår er 2025, og DOI er oppgitt.",
+        "2. Vurderte evidensnivå. Dokumentet er en systematisk oversiktsartikkel ('Systematic Review' i abstract/tittel), noe som plasserer den i kategorien 'Nivå 2: Systematiske oversikter'.",
+        "3. Gjennomgikk abstrakt, resultater og sammendrag av anbefalinger med spesielt fokus på sykepleierrelaterte oppgaver innenfor ernæring og ALS på et sykehus.",
+        "4. Identifiserte første kliniske funn: Dysfagi. Sykepleiediagnosen er 'Svekket svelgefunksjon med risiko for aspirasjon'. Relaterte intervensjoner som en sykepleier kan utføre inkluderer tilpasning av sittestilling, endring av matkonsistens, mindre måltider, svelgeteknikker og munnhygiene. Målet er trygg svelging uten aspirasjon. Valgte direkte sitater for å understøtte funnet.",
+        "5. Identifiserte andre kliniske funn: Underernæring/vekttap. Sykepleiediagnosen er 'Risiko for underernæring relatert til nedsatt inntak og muskelsvakhet'. Sykepleieintervensjonen innebærer regelmessig kartlegging av vekt og inntak for å fange opp ernæringssvikt. Målet er stabilisert kroppsvekt og ernæringsstatus.",
+        "6. Identifiserte tredje kliniske funn: Alvorlig dysfagi som krever alternativ ernæring (PEG). Sykepleiediagnosen er 'Utilstrekkelig oralt inntak'. Intervensjonene fokuserer på trygg administrering av enteral ernæring, væske og medisiner via sonde. Målet er å oppnå tilstrekkelig hydrering og ernæring uten fare for kvelning.",
+        "7. Sjekket oversettelser for de norske elementene for å sikre presist fagspråk, beholdt engelsk originaltekst i sitatene. Sørget for at JSON-strukturen er gyldig uten unødvendige kontrolltegn."
+      ]
+    },
+    {
+      "title": "ALS",
+      "publication_year": 2022,
+      "doi": "Ikke funnet",
+      "evidence_level": "Nivå 4: Kliniske oppslagsverk",
+      "reasoning_trace": [
+        "1. Analyserte kildeteksten for å identifisere metadata. Teksten er fra Socialstyrelsens kunnskapsdatabase for sjeldne tilstander. Den mangler DOI, men er sist revidert i 2022 og fungerer som et klinisk oppslagsverk basert på syntetisert kunnskap (Nivå 4).",
+        "2. Leste gjennom dokumentet med fokus på sykepleierrelaterte oppgaver: pasientens utfordringer (sykepleiediagnoser), hva en sykepleier kan gjøre med dem (intervensjoner), og hva som er målet (mål).",
+        "3. Identifiserte 'Sväljsvårigheter och viktnedgång'. Hentet ut en sykepleiediagnose knyttet til svekket evne til å svelge (dysfagi) med risiko for vekttap. Intervensjonene fokuserer på vektkontroll og konsistens- og temperaturtilpasning av væsker. Målet er å opprettholde ernæring og sikker svelging.",
+        "4. Identifiserte 'Andningssvårigheter'. Hentet ut ineffektiv luftveisklarering grunnet svak muskulatur, med opphopning av slim og spytt i munnen. Intervensjonene fokuserer på veiledning i pusteøvelser, kostholdsråd (unngå melkeprotein som øker slim) og bruk av slimsug. Målet er frie luftveier fri for overflødig slim.",
+        "5. Identifiserte pasientens og pårørendes behov for emosjonell støtte. Hentet ut en diagnose på svekket mestring/behov for støtte. Intervensjonene innebærer å gi psykologisk og sosial støtte, samt å porsjonere ut og gjenta informasjon over tid for at den skal være håndterbar. Målet er trygghet og god mestring for både pasient og pårørende.",
+        "6. Kontrollerte at alle utledede elementer er tydelig knyttet til nøyaktige sitater på originalspråket og at innholdet er formulert kortfattet på norsk i tråd med instruksjonene."
+      ]
+    },
+    {
+      "title": "Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS",
+      "publication_year": 2015,
+      "doi": "Ikke funnet",
+      "evidence_level": "Nivå 1: Studier",
+      "reasoning_trace": [
+        "1. Analyserer metadata for kildeteksten. Artikkelens tittel finnes i headingen: 'Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS'. Årstallet '2015' er oppgitt. Det er ingen angitt DOI. Fordi dette er en empirisk kvalitativ studie som bruker intervjuer, settes evidensnivået til 'Nivå 1: Studier'.",
+        "2. Gjennomgår teksten for å identifisere utfordringer (sykepleiediagnoser) for pasientgruppen (ALS og deres pårørende), sykepleierintervensjoner, og tilhørende mål.",
+        "3. Identifiserer det første funnet om pårørendes belastning: Artikkelen beskriver tydelig risiko for isolasjon, depresjon og overbelastning hos pårørende som bistår ALS-pasienter i respirator. Sykepleieintervensjonen for dette er å arrangere dialogmøter og avsette tid til familiesamtaler for å anerkjenne svære følelser og identifisere problemstillinger. Målet er å skape støtte og mestring for familien.",
+        "4. Trekker ut et konkret, ordrett sitat fra kildeteksten som direkte understøtter det første funnet om familiesamtaler og dialogmøter.",
+        "5. Identifiserer et andre funn angående kommunikasjonssvikt: Sykdommen fører til nedsatt taleevne, som er en vesentlig funksjonssvikt. Som intervensjon sikrer man bruk av alternative hjelpemidler som staveplate og øyeblink for å tyde pasientens vilje i etiske og kliniske dilemmaer. Målet er sikker og opprettholdt kommunikasjon med pasienten.",
+        "6. Trekker ut et sitat som støtter funnet om kommunikasjonsverktøy og etiske dilemma ved tolking av øyeblink.",
+        "7. Identifiserer et tredje funn om informasjonsbehov: Pasienter og pårørende opplever et stort informasjonsbehov som ikke alene dekkes av skriftlige foldere, og kan bli overveldet. Intervensjonen er at personalet gir gradvis informasjon, tilbyr løpende personlig kontakt, og aktivt italesetter konsekvenser for hele familien samt avslutning av behandling. Målet er at familien er adekvat informert og forberedt på behandlingsforløpet.",
+        "8. Finner tilhørende sitater for informasjonsoppfølging, bekrefter at de er eksakte kopier fra den danske originalteksten.",
+        "9. Formulerer diagnoser, intervensjoner og mål kortfattet og presist på norsk, mens sitater beholdes ordrett på dansk. Sjekker at alt er strukturert korrekt i henhold til JSON-schemaet."
+      ]
+    }
+  ]
+}
+
+Result saved to: tests/integration/results/workflow_synthesis.json
+bryne_bryne_altostrat_com@dev:~/code/VBP$ 
+
