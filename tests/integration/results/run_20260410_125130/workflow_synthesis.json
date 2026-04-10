@@ -1,0 +1,35 @@
+{
+  "execution_summary": {
+    "target_group": "ALS - Amytrofisk lateral sklerose",
+    "source_uri": "gs://veiledende_behandlingsplan/ALS/",
+    "total_files_in_uri": 96,
+    "processed_files_count": 3,
+    "successful_files_count": 0,
+    "excluded_files_count": 3,
+    "total_synthesized_findings": 0,
+    "total_hallucinated_citations": 0,
+    "total_taxonomy_errors": 0,
+    "total_dropped_findings": 0,
+    "execution_start_time": "2026-04-10T12:51:30.134811",
+    "execution_end_time": "2026-04-10T12:52:01.736816"
+  },
+  "synthesized_findings": [],
+  "source_documents": [],
+  "excluded_documents": [
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/250-254.pdf",
+      "title": "250-254.pdf",
+      "justification": "The document could not be read or its format was unsupported for analysis."
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32903629_fulltext.xml",
+      "title": "32903629_fulltext.xml",
+      "justification": "The document could not be read or its format was unsupported for analysis."
+    },
+    {
+      "source_uri": "gs://veiledende_behandlingsplan/ALS/32910255_fulltext.xml",
+      "title": "32910255_fulltext.xml",
+      "justification": "The document could not be read or its format was unsupported for analysis."
+    }
+  ]
+}

@@ -6,6 +6,7 @@ enabling constrained generation and robust validation.
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
+from typing import Any, Dict, List, Literal, Optional, Tuple, Union
 
 from pydantic import BaseModel, Field
 
@@ -58,9 +59,11 @@ class ClinicalFinding(BaseModel):
     """A raw clinical finding extracted from a document before terminology mapping."""
     nursing_diagnosis: str = Field(description="The identified clinical problem or nursing diagnosis.")
     intervention: str = Field(description="The proposed nursing action or intervention.")
-    goal: str | None = Field(default=None, description="The desired clinical outcome.")
-    supporting_sentence_ids: list[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
-    quotes: list[str] | None = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
+    goal: Optional[str] = Field(default=None, description="The desired clinical outcome.")
+    supporting_sentence_ids: List[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
+    clinical_specificity: int = Field(description="Self-score (1-10): How specific is this finding to the target group? (1=Generic, 10=Highly Condition-Specific)")
+    actionability_score: int = Field(description="Self-score (1-10): How concrete and measurable is this intervention? (1=Vague, 10=Fully Actionable)")
+    quotes: Optional[List[str]] = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
 
 class MetadataResponse(BaseModel):
     """Schema used by the Metadata Extractor to return document details."""
@@ -91,9 +94,23 @@ class FunctionalAreaClassification(BaseModel):
 
 class FunctionalAreaResponse(BaseModel):
     """Batch response from the Functional Area classifier agent."""
-    results: list[FunctionalAreaClassification]
+    results: List[FunctionalAreaClassification]
 
-# --- 4. INTERNAL WORKFLOW STATE ---
+# --- 4. AUDITOR (Quality Shield) ---
+
+class AuditorRating(BaseModel):
+    """A quality assessment of a clinical triplet (Diagnosis->Intervention->Goal)."""
+    finding_id: str = Field(description="Unique identifier matching the input data.")
+    specificity_score: int = Field(description="Score (1-10): Generic nursing (1) vs specialized care (10).")
+    actionability_score: int = Field(description="Score (1-10): Vague instructions (1) vs precise/measurable (10).")
+    cohesion_score: int = Field(description="Score (1-10): Logical disconnect (1) vs logically consistent clinical chain (10).")
+    auditor_comment: str = Field(description="A brief (one-sentence) justification for the scores.")
+
+class AuditorResponse(BaseModel):
+    """Batch response from the Clinical Auditor agent."""
+    results: List[AuditorRating]
+
+# --- 5. INTERNAL WORKFLOW STATE ---
 
 class ProcessedFinding(ClinicalFinding):
     """The enriched version of a finding containing both raw text and formal terminology mappings."""
@@ -103,6 +120,8 @@ class ProcessedFinding(ClinicalFinding):
     mapped_intervention: MappedTerm
     mapped_goal: MappedTerm
     FO: FunctionalArea
+    auditor_rating: Optional[AuditorRating] = None
+    weighted_quality_score: float = 0.0
 
 class ProcessedDocument(BaseModel):
     """The complete processing result for a single document, containing its findings and metadata."""
@@ -122,7 +141,11 @@ class SynthesizedFinding(BaseModel):
     intervention: MappedTerm
     goal: MappedTerm
     FO: FunctionalArea = Field(description="The clinical category (Functional Area).")
-    supporting_evidence: list[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
+    avg_specificity: float = Field(description="Average specificity score from the auditor.")
+    avg_actionability: float = Field(description="Average actionability score from the auditor.")
+    avg_cohesion: float = Field(description="Average logical cohesion score from the auditor.")
+    trust_score: float = Field(description="A composite score based on evidence frequency and source level.")
+    supporting_evidence: List[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
 
 class ExcludedDocument(BaseModel):
     """A record of a document that was processed but rejected from the final synthesis."""

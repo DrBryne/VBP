@@ -13,6 +13,7 @@ from google.genai import types
 
 from app.agents.research_analyst.agent import create_research_analyst
 from app.agents.term_mapper.agent import create_term_mapper
+from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.shared.consolidation import finalize_synthesis, group_findings
 from app.shared.logging import VBPLogger
 from app.shared.models import (
@@ -40,6 +41,7 @@ class VbpWorkflowAgent(BaseAgent):
         super().__init__(name=name)
         self._research_analyst = create_research_analyst()
         self._term_mapper = create_term_mapper()
+        self._auditor = create_clinical_auditor()
 
     @property
     def research_analyst(self):
@@ -50,6 +52,11 @@ class VbpWorkflowAgent(BaseAgent):
     def term_mapper(self):
         """The agent responsible for ICNP mapping and Functional Area classification."""
         return self._term_mapper
+
+    @property
+    def auditor(self):
+        """The agent responsible for multi-dimensional quality scoring."""
+        return self._auditor
 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
@@ -110,19 +117,20 @@ class VbpWorkflowAgent(BaseAgent):
         ephemeral_session_service = InMemorySessionService()
 
         async def process_task(uri: str) -> ProcessedDocument | ExcludedDocument:
-            async with semaphore:
-                return await process_document_pipeline(
-                    uri=uri,
-                    target_group=target_group,
-                    project_id=project_id,
-                    research_analyst=self.research_analyst,
-                    term_mapper=self.term_mapper,
-                    parent_ctx=ctx,
-                    ephemeral_session_service=ephemeral_session_service,
-                    progress_state=progress_state,
-                    state_lock=state_lock,
-                    progress_queue=progress_queue
-                )
+            # Delegate detailed doc-level work to the encapsulated pipeline
+            return await process_document_pipeline(
+                uri=uri,
+                target_group=target_group,
+                project_id=project_id,
+                research_analyst=self.research_analyst,
+                term_mapper=self.term_mapper,
+                clinical_auditor=self.auditor,
+                parent_ctx=ctx,
+                ephemeral_session_service=ephemeral_session_service,
+                progress_state=progress_state,
+                state_lock=state_lock,
+                progress_queue=progress_queue
+            )
 
         tasks = [process_task(f) for f in files]
         async def run_gather(): return await asyncio.gather(*tasks)

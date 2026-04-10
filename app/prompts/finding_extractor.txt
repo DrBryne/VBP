@@ -18,6 +18,9 @@ A finding is a logical connection between:
   - **CRITICAL:** Do NOT write out the quote text.
   - **CRITICAL:** Only provide the IDs from the brackets, e.g., `["S12", "S15"]`.
   - Findings without valid sentence IDs will be rejected.
+- **Self-Scoring:** For EVERY finding, you must provide two quality scores:
+  1. `clinical_specificity` (1-10): How specific is this finding to the target group? (1=Generic nursing care applicable to anyone, 10=Highly specific to the target condition).
+  2. `actionability_score` (1-10): How concrete and measurable is this intervention/goal? (1=Vague/General, 10=Directly executable instruction).
 # Language
 The nursing diagnosis, intervention, goal, and the **reasoning_trace** must be written in Norwegian. Supporting quotes are no longer returned as text, only as IDs.
 

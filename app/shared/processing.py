@@ -10,7 +10,7 @@ import mimetypes
 import os
 import re
 import uuid
-from typing import Any
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import fitz  # PyMuPDF
 import nltk
@@ -24,6 +24,8 @@ from google.genai import types
 
 from app.shared.logging import VBPLogger
 from app.shared.models import (
+    AuditorRating,
+    AuditorResponse,
     ClinicalFinding,
     ClinicalFindingsResponse,
     Document,
@@ -246,12 +248,13 @@ async def process_document_pipeline(
     project_id: str,
     research_analyst: BaseAgent,
     term_mapper: BaseAgent,
+    clinical_auditor: BaseAgent,
     parent_ctx: InvocationContext,
     ephemeral_session_service: InMemorySessionService,
     progress_state: WorkflowProgress,
     state_lock: asyncio.Lock,
     progress_queue: asyncio.Queue
-) -> ProcessedDocument | ExcludedDocument:
+) -> Union[ProcessedDocument, ExcludedDocument]:
     """
     Executes the full extraction and mapping pipeline for a single document.
 
@@ -402,12 +405,80 @@ async def process_document_pipeline(
         metadata.source_document.document_id = doc_id_val
         metadata.source_document.reasoning_trace = clinical_findings.reasoning_trace
 
-        # 6. Invoke Term Mapper
+        # 6. Clinical Audit (Quality Layer 2)
+        logger.info(f"Invoking Clinical Auditor for: {filename}", finding_count=len(verified_findings))
+        audit_payload = [
+            {
+                "finding_id": str(i),
+                "nursing_diagnosis": f.nursing_diagnosis,
+                "intervention": f.intervention,
+                "goal": f.goal
+            }
+            for i, f in enumerate(verified_findings)
+        ]
+        audit_msg = types.Content(role="user", parts=[
+            types.Part.from_text(text=f"Audit these clinical findings for {target_group}:"),
+            types.Part.from_text(text=json.dumps(audit_payload))
+        ])
+        
+        doc_session.events.append(Event(author="system", content=audit_msg))
+        audit_results = {}
+        
+        # Manually inject target_group into the auditor's instruction for this run
+        original_instr = clinical_auditor.instruction
+        clinical_auditor.instruction = original_instr.replace("{{target_group}}", target_group)
+        
+        try:
+            async for ev in clinical_auditor.run_async(pipeline_ctx):
+                if ev.is_final_response():
+                    data_dict = safe_parse_json(ev)
+                    if data_dict:
+                        try:
+                            audit_resp = AuditorResponse.model_validate(data_dict)
+                            audit_results = {res.finding_id: res for res in audit_resp.results}
+                        except Exception as e:
+                            logger.error(f"AUDITOR VALIDATION ERROR: {filename}", error=str(e))
+        finally:
+            # Restore original instruction template
+            clinical_auditor.instruction = original_instr
+
+        # 7. Weighted Filtering
+        audited_candidates = []
+        for i, f in enumerate(verified_findings):
+            rating = audit_results.get(str(i))
+            if rating:
+                # Weighted Score: Cohesion (40%) + Specificity (30%) + Actionability (30%)
+                weighted_score = (rating.cohesion_score * 0.4) + (rating.specificity_score * 0.3) + (rating.actionability_score * 0.3)
+                
+                if weighted_score < 5.0:
+                    logger.warning(f"[Quality Guard] Dropped low-quality finding in {filename}: {f.nursing_diagnosis} (Score: {weighted_score:.1f})", reason=rating.auditor_comment)
+                    async with state_lock:
+                        progress_state.dropped_findings += 1
+                    continue
+                
+                # Use a tuple to pass both the finding and its rating downstream
+                audited_candidates.append((f, rating, weighted_score))
+            else:
+                audited_candidates.append((f, None, 5.0))
+
+        if not audited_candidates:
+            async with state_lock:
+                progress_state.completed += 1
+                progress_state.no_findings += 1
+            logger.warning(f"No findings passed the clinical quality threshold for: {filename}")
+            await progress_queue.put(f"DONE: {filename} (DROPPED BY AUDITOR)")
+            return ExcludedDocument(
+                source_uri=uri,
+                title=metadata.source_document.title,
+                justification="Ingen av de identifiserte kliniske funnene oppfylte kvalitetskravene til spesifisitet og handlingskraft."
+            )
+
+        # 8. Invoke Term Mapper (Using audited findings)
         lean_findings = []
         finding_map = {}
-        for finding in clinical_findings.candidate_findings:
+        for idx, (finding, rating, score) in enumerate(audited_candidates):
             internal_id = str(uuid.uuid4())
-            finding_map[internal_id] = finding
+            finding_map[internal_id] = (finding, rating, score)
             lean_findings.append({"finding_id": internal_id, "nursing_diagnosis": finding.nursing_diagnosis, "intervention": finding.intervention, "goal": finding.goal})
         mapper_msg = types.Content(role="user", parts=[types.Part.from_text(text="Map these findings to ICNP and classify FO:"), types.Part.from_text(text=json.dumps(lean_findings))])
         doc_session.events.append(Event(author="system", content=mapper_msg))
@@ -480,14 +551,14 @@ async def process_document_pipeline(
         return ExcludedDocument(source_uri=uri, title=filename, justification="The document could not be read or its format was unsupported for analysis.")
 
 def validate_taxonomy(
-    finding_map: dict[str, ClinicalFinding],
-    icnp_lookup: dict,
-    fo_lookup: dict,
+    finding_map: Dict[str, Tuple[ClinicalFinding, Optional[AuditorRating], float]], 
+    icnp_lookup: Dict, 
+    fo_lookup: Dict, 
     doc_id: str,
-    filename: str,
-    progress_state: WorkflowProgress,
+    filename: str, 
+    progress_state: WorkflowProgress, 
     state_lock: asyncio.Lock
-) -> tuple[list[ProcessedFinding], int]:
+) -> Tuple[List[ProcessedFinding], int]:
     """
     Cross-references LLM mapping results against the master ICNP dictionary.
 
@@ -511,7 +582,7 @@ def validate_taxonomy(
     taxonomy_error_count = 0
 
     logger.debug(f"Validating taxonomy for {len(finding_map)} findings in {filename}")
-    for f_id, original in finding_map.items():
+    for f_id, (original, auditor_rating, quality_score) in finding_map.items():
         icnp_match = icnp_lookup.get(f_id)
         fo_val = fo_lookup.get(f_id, get_default_fo())
 
@@ -524,23 +595,30 @@ def validate_taxonomy(
                 concept_id = mapping_field.ICNP_concept_id
                 if concept_id and concept_id not in valid_icnp_ids:
                     taxonomy_error_count += 1
-                    logger.warning(f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.", field=field_name, finding_id=current_f_id)
+                    logger.warning(
+                        f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.", 
+                        field=field_name, finding_id=current_f_id
+                    )
                     concept_id = ""
                 return MappedTerm(term=mapping_field.term, ICNP_concept_id=concept_id)
             return MappedTerm(term=orig_val, ICNP_concept_id="")
 
         processed_findings.append(ProcessedFinding(
-            finding_id=f_id,
-            document_id=doc_id,
+            finding_id=f_id, 
+            document_id=doc_id, 
             nursing_diagnosis=original.nursing_diagnosis,
-            intervention=original.intervention,
-            goal=original.goal,
+            intervention=original.intervention, 
+            goal=original.goal, 
             supporting_sentence_ids=original.supporting_sentence_ids,
+            clinical_specificity=original.clinical_specificity,
+            actionability_score=original.actionability_score,
             quotes=original.quotes,
             mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, icnp_match.nursing_diagnosis if icnp_match else None, "nursing_diagnosis"),
             mapped_intervention=resolve(original.intervention, icnp_match.intervention if icnp_match else None, "intervention"),
             mapped_goal=resolve(original.goal, icnp_match.goal if icnp_match else None, "goal"),
-            FO=fo_val
+            FO=fo_val,
+            auditor_rating=auditor_rating,
+            weighted_quality_score=quality_score
         ))
 
     if taxonomy_error_count > 0:

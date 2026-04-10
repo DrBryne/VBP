@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import json
 import os
@@ -18,7 +19,7 @@ from app.shared.logging import VBPLogger
 # Initialize test logger
 logger = VBPLogger("test_workflow")
 
-async def run_local_test():
+async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
     project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
     run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
     run_dir = f"tests/integration/results/run_{run_id}"
@@ -35,18 +36,17 @@ async def run_local_test():
         return
 
     # Define test parameters
-    test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/"
+    test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/" 
     test_target_group = "ALS - Amytrofisk lateral sklerose"
-    limit_files = 3 # Process 3 files
-    max_concurrency = 3 # Lower concurrency for limited test
 
-
-    logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---",
-                project=project_id,
+    logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---", 
+                project=project_id, 
                 location=location,
                 target_group=test_target_group,
                 bucket=test_gcs_uri,
-                results_dir=run_dir)
+                results_dir=run_dir,
+                limit=limit_files,
+                concurrency=max_concurrency)
 
     # Initialize the ADK Runner with a session service
     session_service = InMemorySessionService()
@@ -135,4 +135,9 @@ async def run_local_test():
     await asyncio.sleep(0.25)
 
 if __name__ == "__main__":
-    asyncio.run(run_local_test())
+    parser = argparse.ArgumentParser(description="Run local VBP workflow test.")
+    parser.add_argument("--limit", type=int, default=3, help="Limit number of files to process.")
+    parser.add_argument("--concurrency", type=int, default=3, help="Maximum concurrent document tasks.")
+    
+    args = parser.parse_args()
+    asyncio.run(run_local_test(limit_files=args.limit, max_concurrency=args.concurrency))
