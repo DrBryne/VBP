@@ -1,8 +1,10 @@
 import argparse
 import asyncio
 import json
+import logging
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 
@@ -21,10 +23,17 @@ logger = VBPLogger("test_workflow")
 
 async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
     project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_id = datetime.now(ZoneInfo("Europe/Oslo")).strftime("%Y-%m-%d_%H-%M-%S")
     run_dir = f"tests/integration/results/run_{run_id}"
     os.makedirs(run_dir, exist_ok=True)
     log_file_path = os.path.join(run_dir, "session.log")
+
+    # Capture all terminal output to the session.log file
+    file_handler = logging.FileHandler(log_file_path, encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(name)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    logging.getLogger().addHandler(file_handler)
 
     # Force Vertex AI backend and use global location for preview models
     location = "global"
@@ -133,6 +142,15 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
 
     await runner.close()
     await asyncio.sleep(0.25)
+
+    # Print final summary to terminal
+    print("\n" + "="*45)
+    print("TEST RUN COMPLETED SUCCESSFULLY")
+    print(f"Run ID: {run_id}")
+    print(f"Results stored in: {run_dir}/")
+    print("  - Synthesis JSON: workflow_synthesis.json")
+    print("  - Execution Log: session.log")
+    print("="*45 + "\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run local VBP workflow test.")
