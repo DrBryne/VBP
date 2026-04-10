@@ -46,10 +46,10 @@ class AgentEngineApp(AdkApp):
         feedback_obj = Feedback.model_validate(feedback)
         self.logger.log_struct(feedback_obj.model_dump(), severity="INFO")
 
-    def register_operations(self) -> dict[str, list[str]]:
+    def register_operations(self):
         """Registers the operations of the Agent."""
         operations = super().register_operations()
-        operations[""] = operations.get("", []) + ["register_feedback"]
+        operations[""] = [*operations.get("", []), "register_feedback"]
         return operations
 
 

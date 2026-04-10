@@ -361,9 +361,14 @@
                                     <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
                                         <div class="mb-4">
                                             <div class="flex justify-between items-start">
-                                                <a href="#doc-{{ evidence.document_id }}" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline pr-4">
-                                                    {{ doc.title if doc else 'Ukjent dokument' }} ({{ doc.publication_year if doc else 'År ukjent' }})
-                                                </a>
+                                                <div class="flex-1">
+                                                    <a href="#doc-{{ evidence.document_id }}" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        {{ doc.title if doc else 'Ukjent dokument' }} ({{ doc.publication_year if doc else 'År ukjent' }})
+                                                    </a>
+                                                    {% if doc and doc.doi %}
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: {{ doc.doi }}</div>
+                                                    {% endif %}
+                                                </div>
                                                 <div class="flex items-center space-x-3 flex-shrink-0">
                                                     {% if doc and doc.http_uri %}
                                                     <a href="{{ doc.http_uri }}" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
@@ -389,14 +394,14 @@
                                             {% if doc and doc.reasoning_trace %}
                                             <details class="group mt-2">
                                                 <summary class="list-none cursor-pointer flex flex-col">
-                                                    <div class="text-sm text-slate-500 italic line-clamp-3 group-open:hidden leading-relaxed">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
                                                         {{ doc.reasoning_trace }}
                                                     </div>
-                                                    <div class="hidden group-open:block text-sm text-slate-500 italic leading-relaxed">
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
                                                         {{ doc.reasoning_trace }}
                                                     </div>
                                                     <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
-                                                        <span class="group-open:hidden">Mer...</span>
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
                                                         <span class="hidden group-open:inline">Vis mindre</span>
                                                     </div>
                                                 </summary>
@@ -406,7 +411,10 @@
 
                                         <div class="space-y-4">
                                             <div>
-                                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Sitat</p>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
                                                 <ul class="space-y-3">
                                                     {% for quote in evidence.quotes %}
                                                     <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"{{ quote }}"</li>

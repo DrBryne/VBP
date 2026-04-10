@@ -1,85 +1,83 @@
-# VBP Workflow Architecture (ADK 2.0)
+# VBP Workflow: Design Specification (ADK 2.0)
 
-## 1. Goal
-The VBP (Veiledende Behandlingsplan) Workflow is designed to process large volumes of clinical documents and synthesize them into structured, evidence-based treatment plans. The system prioritizes **clinical data integrity**, **traceability**, and **transparency** to build trust with medical professionals.
-
----
-
-## 2. Pillars of Clinical Trust
-
-To move beyond "black box" AI, the VBP architecture is built on three foundational pillars:
-
-### 2.1 100% Verbatim Evidence (Anti-Hallucination)
-The system employs a **"Read & Point" (Sentence Indexing)** architecture. Instead of generating verbatim text, the LLM identifies specific sentence identifiers (e.g., `["S12", "S15"]`) from a pre-indexed version of the document. The final clinical report uses Python logic to resolve these IDs back into the exact original text, ensuring that every quote is 100% verbatim and free from LLM rephrasing or hallucinations.
-
-### 2.2 Strict Taxonomy Enforcement
-All extracted findings (Nursing Diagnoses, Interventions, and Goals) are mapped to the official Norwegian **ICNP (International Classification for Nursing Practice)** terminology. 
-- Functional Areas (FO) are strictly enforced via Pydantic Enums (1-12).
-- ICNP Concept IDs are validated against a master dictionary in Python.
-- Any finding that cannot be grounded in the official taxonomy or lacks valid evidence is excluded from the final report.
-
-### 2.3 Comprehensive Traceability
-Every run produces an **ExecutionSummary** that tracks exactly how many documents were processed, excluded, or encountered errors. Furthermore, every finding includes a `reasoning_trace`—a step-by-step clinical justification for why the document was selected and how the finding was derived.
+## Objective
+The VBP (Veiledende Behandlingsplan) Workflow is an automated clinical synthesis engine designed to process large volumes of nursing literature and generate condensed, evidence-based treatment plans. It prioritizes **Verbatim Evidence**, **Taxonomy Adherence**, and **Deduplicated Consensus**.
 
 ---
 
-## 3. High-Level Workflow
+## 🏗 High-Level Architecture
 
-The workflow is managed by a root **VBP Orchestrator** that handles massive data parallelism and state consolidation.
+The workflow follows a 4-stage pipeline orchestrated by the `DocumentOrchestrator`:
+
+1. **Extraction (ClinicalExtractor)**: Reads documents and extracts structured Diagnosis-Intervention-Goal triplets with Sentence IDs.
+2. **Quality Audit (ClinicalAuditor)**: Evaluates extracted triplets for Specificity, Actionability, and Cohesion.
+3. **Taxonomy (ClinicalTaxonomist)**: Maps findings to ICNP and VIPS Functional Areas.
+4. **Consolidation (Python)**: Merges related findings, calculates TrustScores, and generates the Dashboard.
 
 ```mermaid
 graph TD
-    A[GCS Document Bucket] --> B[VBP Orchestrator]
-    B --> C[Discovery & Parallel Batching]
-    subgraph "Parallel Processing (N=30)"
-        C --> D[Document Pipeline 1]
-        C --> E[Document Pipeline 2]
-        C --> F[Document Pipeline ...]
+    A[GCS Document Bucket] --> B[DocumentOrchestrator]
+    subgraph Parallel Document Pipeline
+        B --> C[ClinicalExtractor]
+        C --> D[Sentence Resolution]
+        D --> E[ClinicalAuditor]
+        E --> F[ClinicalTaxonomist]
     end
-    D & E & F --> G[Structured Results Collection]
-    G --> H[Python-based Consolidation]
-    H --> I[Execution Summary & Quality Guard]
-    I --> J[Final Synthesis JSON]
+    F --> G[Semantic Consolidation]
+    G --> H[FHIR Sibling Merge]
+    H --> I[Clinical Dashboard UI]
 ```
 
 ---
 
-## 4. The Document Processing Pipeline
+## 🛡 Pillars of Clinical Trust
 
-Each document undergoes a rigorous, multi-stage transformation that balances LLM intelligence with deterministic Python safety checks.
+### 1. Zero-Hallucination Evidence
+We use a **"Read & Point"** architecture.
+- The LLM never writes the quote text itself.
+- It only provides **Sentence IDs** (e.g., `[S12]`).
+- Python code deterministically resolves these IDs to exact text with a +/- 1 sentence context window.
 
-```mermaid
-sequenceDiagram
-    participant P as Python (Deterministic)
-    participant G as Gemini (LLM)
-    
-    Note over P: Load & Clean
-    P->>P: Extract Text (PDF/XML/TXT)
-    P->>P: Index Sentences (S1...Sn)
-    
-    Note over G: Analyst Step
-    P->>G: Send Tagged Text
-    G->>G: Identify Nursing Findings
-    G->>P: Return Sentence IDs & Reasoning
-    
-    Note over P: Resolution Step
-    P->>P: Resolve IDs to Verbatim Text
-    P->>P: Context Padding (+/- 1 sentence)
-    
-    Note over G: Mapping Step
-    P->>G: Send Lean Findings
-    G->>G: Map to ICNP & FO
-    G->>P: Return Terminology Matches
-    
-    Note over P: Taxonomy Guard
-    P->>P: Validate ICNP IDs vs. Dictionary
-    P->>P: Finalize ProcessedDocument
-```
+### 2. Multi-Dimensional Quality Shield
+Every finding must pass through the `ClinicalAuditor` agent, which assigns three metrics (1-10):
+- **Specificity**: Is this specialized or generic nursing care?
+- **Actionability**: Is the instruction precise and measurable?
+- **Cohesion**: Does the Intervention logically treat the Diagnosis?
+- *Rule*: Findings with a weighted score below **5.0** are automatically dropped.
+
+### 3. Verification of GRADE Evidence
+The system extracts explicit **Recommendation Strengths** and **Evidence Grades** if present.
+- The LLM MUST provide a **Grade Sentence ID** to prove the claim.
+- If the ID is invalid, the grade is stripped to prevent over-claiming clinical certainty.
 
 ---
 
-## 5. Technical Stack
-- **Framework**: ADK 2.0 (Agent Development Kit)
-- **Model**: Gemini 3.1 Pro (Mapping) and Gemini 3.0 Flash (Extraction & Validation)
-- **Orchestration**: Asynchronous Data Parallelism (`asyncio.gather`)
-- **Safety**: PyMuPDF (PDF Parsing), BeautifulSoup (XML Cleaning), NLTK (Sentence Tokenization)
+## 🔍 The ClinicalTaxonomist (Quad-Agent Architecture)
+
+To solve context saturation and improve mapping accuracy, the `ClinicalTaxonomist` is a specialized sequential orchestrator:
+
+1. **Step 1: FO Classification**: Assigns the VIPS Functional Area (1-12) using the finding and reasoning trace.
+2. **Step 2: Specialized Mapping**: Three sub-agents (`diag_taxonomist`, `int_taxonomist`, `goal_taxonomist`) map the raw text to standard ICNP concepts using the assigned FO as a semantic guardrail.
+
+---
+
+## 📊 Semantic Consolidation & Presentation
+
+### 1. Sibling Merging (FHIR Subsumption)
+The consolidator uses a FHIR Terminology Server to deterministically merge findings.
+- **Vertical Merge**: Merges child concepts into parents.
+- **Horizontal Merge**: Merges "sibling" concepts that share a specific common clinical parent.
+- *Result*: Achieved an **80% reduction** in redundancy across 96 documents.
+
+### 2. Clinical Problem Centers
+Findings are presented as "Problem Centers" rather than a list of raw data.
+- **Diagnosis**: The high-level consolidated ICNP concept.
+- **Interventions**: A list of all unique actions discovered across the literature.
+- **Certainty (Sikkerhet)**: A clinical badge (Høy, Moderat, Lav) derived from document frequency and the scientific level of the evidence.
+
+---
+
+## 💻 Technical Stack
+- **Framework**: google-adk (ADK 2.0)
+- **Models**: Gemini 3.1 Pro (Mapping/Synthesis), Gemini 3.0 Flash (Extraction/Audit)
+- **Infrastructure**: Python 3.11+, asyncio, FHIR Ontoserver (CSIRO)

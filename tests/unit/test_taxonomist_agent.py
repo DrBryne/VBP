@@ -32,6 +32,18 @@ TEST_FINDINGS = [
         "nursing_diagnosis": "Svelgevansker med økt risiko for aspirasjon og feilernæring.",
         "intervention": "Henvisning til logoped for vurdering av svelgefunksjon og tilpasning av konsistens.",
         "goal": "Sikker oral inntak uten tegn til aspirasjonspneumoni."
+    },
+    {
+        "finding_id": "test_respiration",
+        "nursing_diagnosis": "Respirasjonssvikt type 2 (hyperkapnisk) grunnet svakhet i respirasjonsmuskulatur.",
+        "intervention": "Oppstart og tilpasning av non-invasiv ventilasjon (NIV) med BIPAP.",
+        "goal": "Normalisering av pCO2 og lindring av dyspné."
+    },
+    {
+        "finding_id": "test_unmappable",
+        "nursing_diagnosis": "Dokumentet er skrevet i fonten Times New Roman med 12 punkts størrelse og dobbel linjeavstand.",
+        "intervention": "Endre skrifttype til Arial for bedre lesbarhet på skjerm.",
+        "goal": "Økt lesehastighet for saksbehandler."
     }
 ]
 
@@ -41,7 +53,6 @@ async def test_taxonomist_encapsulation():
     Tests that the ClinicalTaxonomist correctly orchestrates its internal
     sequential FO classification and ICNP mapping flow.
     """
-    project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "true"
     os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
 
@@ -77,7 +88,8 @@ async def test_taxonomist_encapsulation():
             if not data_dict:
                 continue
 
-            if ev.author == "diagnosis_taxonomist":                icnp_diag_mappings = DiagnosisMappingResponse.model_validate(data_dict)
+            if ev.author == "diagnosis_taxonomist":
+                icnp_diag_mappings = DiagnosisMappingResponse.model_validate(data_dict)
             elif ev.author == "fo_classifier":
                 functional_areas = FunctionalAreaResponse.model_validate(data_dict)
 
@@ -85,11 +97,18 @@ async def test_taxonomist_encapsulation():
     assert functional_areas is not None, "Internal FO classification failed."
     assert icnp_diag_mappings is not None, "Internal ICNP mapping failed."
 
-    # 2. Verify validity
+    # 2. Verify validity and rejection
     valid_icnp_ids = load_valid_icnp_ids()
     for res in icnp_diag_mappings.results:
         diag_id = res.nursing_diagnosis.ICNP_concept_id if res.nursing_diagnosis else ""
-        print(f"Finding {res.finding_id} -> Mapped ID: {diag_id}")
-        assert diag_id in valid_icnp_ids
+        print(f"Finding {res.finding_id} -> Mapped ID: '{diag_id}'")
 
-    print("\n✅ SUCCESS: ClinicalTaxonomist correctly orchestrated its internal sub-agents.")
+        if res.finding_id == "test_unmappable":
+            # REJECTION TEST: Should be empty for non-clinical text
+            assert diag_id == "", f"Taxonomist should have rejected non-clinical finding {res.finding_id} but returned {diag_id}"
+        else:
+            # MAPPING TEST: Should have a valid ID for clinical text
+            assert diag_id != "", f"Failed to map clinical diagnosis for {res.finding_id}"
+            assert diag_id in valid_icnp_ids
+
+    print("\n✅ SUCCESS: ClinicalTaxonomist correctly mapped clinical text and rejected non-clinical text.")
