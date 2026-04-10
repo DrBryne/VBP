@@ -36,11 +36,11 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
         return
 
     # Define test parameters
-    test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/" 
+    test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/"
     test_target_group = "ALS - Amytrofisk lateral sklerose"
 
-    logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---", 
-                project=project_id, 
+    logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---",
+                project=project_id,
                 location=location,
                 target_group=test_target_group,
                 bucket=test_gcs_uri,
@@ -138,6 +138,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run local VBP workflow test.")
     parser.add_argument("--limit", type=int, default=3, help="Limit number of files to process.")
     parser.add_argument("--concurrency", type=int, default=3, help="Maximum concurrent document tasks.")
-    
+
     args = parser.parse_args()
     asyncio.run(run_local_test(limit_files=args.limit, max_concurrency=args.concurrency))

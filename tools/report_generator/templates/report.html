@@ -93,13 +93,37 @@
                             <td class="px-2 py-4 align-top">
                                 <div class="mono text-slate-500 font-medium select-all">{{ finding.nursing_diagnosis.ICNP_concept_id or '—' }}</div>
                             </td>
-                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">{{ finding.intervention.term }}</td>
-                            <td class="px-2 py-4 align-top">
-                                <div class="mono text-slate-500 font-medium select-all">{{ finding.intervention.ICNP_concept_id or '—' }}</div>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    {% for intervention in finding.interventions %}
+                                    <li>{{ intervention.term }}</li>
+                                    {% endfor %}
+                                </ul>
                             </td>
-                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">{{ finding.goal.term }}</td>
-                            <td class="px-2 py-4 align-top">
-                                <div class="mono text-slate-500 font-medium select-all">{{ finding.goal.ICNP_concept_id or '—' }}</div>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    {% for intervention in finding.interventions %}
+                                    {% if intervention.ICNP_concept_id %}
+                                    <div class="mb-1">{{ intervention.ICNP_concept_id }}</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    {% for goal in finding.goals %}
+                                    <li>{{ goal.term }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    {% for goal in finding.goals %}
+                                    {% if goal.ICNP_concept_id %}
+                                    <div class="mb-1">{{ goal.ICNP_concept_id }}</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}
@@ -141,12 +165,20 @@
                                     <h3 class="text-base font-bold text-slate-900 leading-tight">{{ finding.nursing_diagnosis.term }}</h3>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjon</p>
-                                    <h3 class="text-base font-bold text-slate-800 leading-tight">{{ finding.intervention.term }}</h3>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjoner</p>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        {% for intervention in finding.interventions %}
+                                        <li>{{ intervention.term }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mål</p>
-                                    <h3 class="text-base font-bold text-slate-800 leading-tight">{{ finding.goal.term }}</h3>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        {% for goal in finding.goals %}
+                                        <li>{{ goal.term }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </div>
                         </div>

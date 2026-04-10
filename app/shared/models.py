@@ -6,7 +6,6 @@ enabling constrained generation and robust validation.
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Literal, Optional, Tuple, Union
 
 from pydantic import BaseModel, Field
 
@@ -59,11 +58,11 @@ class ClinicalFinding(BaseModel):
     """A raw clinical finding extracted from a document before terminology mapping."""
     nursing_diagnosis: str = Field(description="The identified clinical problem or nursing diagnosis.")
     intervention: str = Field(description="The proposed nursing action or intervention.")
-    goal: Optional[str] = Field(default=None, description="The desired clinical outcome.")
-    supporting_sentence_ids: List[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
+    goal: str | None = Field(default=None, description="The desired clinical outcome.")
+    supporting_sentence_ids: list[str] = Field(description="Ordered list of sentence IDs (e.g., ['S12', 'S13']) from the indexed text that prove this finding.")
     clinical_specificity: int = Field(description="Self-score (1-10): How specific is this finding to the target group? (1=Generic, 10=Highly Condition-Specific)")
     actionability_score: int = Field(description="Self-score (1-10): How concrete and measurable is this intervention? (1=Vague, 10=Fully Actionable)")
-    quotes: Optional[List[str]] = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
+    quotes: list[str] | None = Field(default=None, description="Verbatim text resolved from IDs (internal use).")
 
 class MetadataResponse(BaseModel):
     """Schema used by the Metadata Extractor to return document details."""
@@ -94,7 +93,7 @@ class FunctionalAreaClassification(BaseModel):
 
 class FunctionalAreaResponse(BaseModel):
     """Batch response from the Functional Area classifier agent."""
-    results: List[FunctionalAreaClassification]
+    results: list[FunctionalAreaClassification]
 
 # --- 4. AUDITOR (Quality Shield) ---
 
@@ -108,7 +107,7 @@ class AuditorRating(BaseModel):
 
 class AuditorResponse(BaseModel):
     """Batch response from the Clinical Auditor agent."""
-    results: List[AuditorRating]
+    results: list[AuditorRating]
 
 # --- 5. INTERNAL WORKFLOW STATE ---
 
@@ -120,7 +119,7 @@ class ProcessedFinding(ClinicalFinding):
     mapped_intervention: MappedTerm
     mapped_goal: MappedTerm
     FO: FunctionalArea
-    auditor_rating: Optional[AuditorRating] = None
+    auditor_rating: AuditorRating | None = None
     weighted_quality_score: float = 0.0
 
 class ProcessedDocument(BaseModel):
@@ -138,14 +137,14 @@ class Evidence(BaseModel):
 class SynthesizedFinding(BaseModel):
     """A high-level clinical finding consolidated across multiple source documents."""
     nursing_diagnosis: MappedTerm
-    intervention: MappedTerm
-    goal: MappedTerm
+    interventions: list[MappedTerm] = Field(description="All unique nursing interventions identified for this diagnosis.")
+    goals: list[MappedTerm] = Field(description="All unique clinical goals identified for this diagnosis.")
     FO: FunctionalArea = Field(description="The clinical category (Functional Area).")
     avg_specificity: float = Field(description="Average specificity score from the auditor.")
     avg_actionability: float = Field(description="Average actionability score from the auditor.")
     avg_cohesion: float = Field(description="Average logical cohesion score from the auditor.")
     trust_score: float = Field(description="A composite score based on evidence frequency and source level.")
-    supporting_evidence: List[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
+    supporting_evidence: list[Evidence] = Field(description="The specific verbatim evidence gathered from various sources.")
 
 class ExcludedDocument(BaseModel):
     """A record of a document that was processed but rejected from the final synthesis."""

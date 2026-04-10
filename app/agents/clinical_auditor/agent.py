@@ -1,8 +1,9 @@
-import os
 from google.adk.agents import Agent
 from google.genai import types
+
 from app.shared.models import AuditorResponse
 from app.shared.tools import load_prompt
+
 
 def create_clinical_auditor():
     """

@@ -1,6 +1,7 @@
-import aiohttp
 import asyncio
-from typing import Optional, Dict, Any
+from typing import Any
+
+import aiohttp
 
 from app.shared.logging import VBPLogger
 
@@ -11,7 +12,7 @@ class FhirTerminologyClient:
     Asynchronous client for interacting with a FHIR Terminology Server (e.g., Ontoserver).
     Provides methods to query SNOMED CT/ICNP hierarchies for deterministic semantic merging.
     """
-    
+
     # Public sandbox server for testing (uses International SNOMED release)
     BASE_URL = "https://r4.ontoserver.csiro.au/fhir"
     SYSTEM = "http://snomed.info/sct"
@@ -44,7 +45,7 @@ class FhirTerminologyClient:
         """
         if not code_a or not code_b:
             return "not-subsumed"
-            
+
         url = f"{self.BASE_URL}/CodeSystem/$subsumes"
         params = {
             "system": self.SYSTEM,
@@ -63,16 +64,16 @@ class FhirTerminologyClient:
                                 return param.get("valueCode", "not-subsumed")
                     else:
                         logger.warning(f"FHIR Subsumption API Error: HTTP {response.status}", code_a=code_a, code_b=code_b)
-                        
+
         except asyncio.TimeoutError:
-            logger.warning(f"FHIR Subsumption Timeout", code_a=code_a, code_b=code_b)
+            logger.warning("FHIR Subsumption Timeout", code_a=code_a, code_b=code_b)
         except Exception as e:
             logger.error(f"FHIR Subsumption Connection Error: {e}", code_a=code_a, code_b=code_b)
-            
+
         # Safe fallback: if anything fails, assume they are distinct concepts
         return "not-subsumed"
 
-    async def lookup_concept(self, code: str) -> Optional[Dict[str, Any]]:
+    async def lookup_concept(self, code: str) -> dict[str, Any] | None:
         """
         Retrieves detailed information about a specific SNOMED CT concept, 
         including its parent concepts.
@@ -86,7 +87,7 @@ class FhirTerminologyClient:
         """
         if not code:
             return None
-            
+
         url = f"{self.BASE_URL}/CodeSystem/$lookup"
         params = {
             "system": self.SYSTEM,
@@ -99,12 +100,12 @@ class FhirTerminologyClient:
                 async with session.get(url, params=params) as response:
                     if response.status == 200:
                         data = await response.json()
-                        
+
                         result = {
                             "display": "Unknown",
                             "parent_ids": []
                         }
-                        
+
                         # Parse the FHIR Parameters resource
                         for param in data.get("parameter", []):
                             if param.get("name") == "display":
@@ -117,14 +118,14 @@ class FhirTerminologyClient:
                                     for p in prop_parts:
                                         if p.get("name") == "value":
                                             result["parent_ids"].append(p.get("valueCode"))
-                                            
+
                         return result
                     else:
                         logger.warning(f"FHIR Lookup API Error: HTTP {response.status}", code=code)
-                        
+
         except asyncio.TimeoutError:
-            logger.warning(f"FHIR Lookup Timeout", code=code)
+            logger.warning("FHIR Lookup Timeout", code=code)
         except Exception as e:
             logger.error(f"FHIR Lookup Connection Error: {e}", code=code)
-            
+
         return None

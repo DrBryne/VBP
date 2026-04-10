@@ -11,10 +11,11 @@ from google.adk.events import Event
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
+from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.research_analyst.agent import create_research_analyst
 from app.agents.term_mapper.agent import create_term_mapper
-from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.shared.consolidation import finalize_synthesis, group_findings
+from app.shared.fhir_client import FhirTerminologyClient
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     ExcludedDocument,
@@ -42,6 +43,7 @@ class VbpWorkflowAgent(BaseAgent):
         self._research_analyst = create_research_analyst()
         self._term_mapper = create_term_mapper()
         self._auditor = create_clinical_auditor()
+        self._fhir_client = FhirTerminologyClient()
 
     @property
     def research_analyst(self):
@@ -166,9 +168,8 @@ class VbpWorkflowAgent(BaseAgent):
         logger.info(f"Consolidating {len(successful_results)} successful documents and {len(excluded_results)} excluded documents.")
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="Consolidating findings...")]))
 
-        grouped_data = group_findings(successful_results)
+        grouped_data = await group_findings(successful_results, self._fhir_client)
         source_docs = [r.source_document for r in successful_results]
-
         # 1. Finalize
         execution_end_time = datetime.now()
         async with state_lock:

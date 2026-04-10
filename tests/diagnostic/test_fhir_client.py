@@ -1,5 +1,7 @@
 import pytest
+
 from app.shared.fhir_client import FhirTerminologyClient
+
 
 @pytest.fixture
 def fhir_client():
@@ -41,7 +43,7 @@ async def test_lookup_concept(fhir_client):
     # Look up details for 'Risk for fall' (129839007)
     code = "129839007"
     result = await fhir_client.lookup_concept(code)
-    
+
     assert result is not None
     assert "At risk of falls" in result.get("display", "")
     assert isinstance(result.get("parent_ids"), list)
@@ -55,7 +57,7 @@ async def test_client_handles_invalid_code_gracefully(fhir_client):
     code = "9999999999999999999"
     result = await fhir_client.lookup_concept(code)
     assert result is None
-    
+
     # Subsumption with invalid code
     sub_result = await fhir_client.check_subsumption(code, "404684003")
     assert sub_result == "not-subsumed"

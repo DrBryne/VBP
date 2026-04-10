@@ -10,7 +10,7 @@ import mimetypes
 import os
 import re
 import uuid
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any
 
 import fitz  # PyMuPDF
 import nltk
@@ -254,7 +254,7 @@ async def process_document_pipeline(
     progress_state: WorkflowProgress,
     state_lock: asyncio.Lock,
     progress_queue: asyncio.Queue
-) -> Union[ProcessedDocument, ExcludedDocument]:
+) -> ProcessedDocument | ExcludedDocument:
     """
     Executes the full extraction and mapping pipeline for a single document.
 
@@ -420,14 +420,14 @@ async def process_document_pipeline(
             types.Part.from_text(text=f"Audit these clinical findings for {target_group}:"),
             types.Part.from_text(text=json.dumps(audit_payload))
         ])
-        
+
         doc_session.events.append(Event(author="system", content=audit_msg))
         audit_results = {}
-        
+
         # Manually inject target_group into the auditor's instruction for this run
         original_instr = clinical_auditor.instruction
         clinical_auditor.instruction = original_instr.replace("{{target_group}}", target_group)
-        
+
         try:
             async for ev in clinical_auditor.run_async(pipeline_ctx):
                 if ev.is_final_response():
@@ -449,13 +449,13 @@ async def process_document_pipeline(
             if rating:
                 # Weighted Score: Cohesion (40%) + Specificity (30%) + Actionability (30%)
                 weighted_score = (rating.cohesion_score * 0.4) + (rating.specificity_score * 0.3) + (rating.actionability_score * 0.3)
-                
+
                 if weighted_score < 5.0:
                     logger.warning(f"[Quality Guard] Dropped low-quality finding in {filename}: {f.nursing_diagnosis} (Score: {weighted_score:.1f})", reason=rating.auditor_comment)
                     async with state_lock:
                         progress_state.dropped_findings += 1
                     continue
-                
+
                 # Use a tuple to pass both the finding and its rating downstream
                 audited_candidates.append((f, rating, weighted_score))
             else:
@@ -476,7 +476,7 @@ async def process_document_pipeline(
         # 8. Invoke Term Mapper (Using audited findings)
         lean_findings = []
         finding_map = {}
-        for idx, (finding, rating, score) in enumerate(audited_candidates):
+        for _idx, (finding, rating, score) in enumerate(audited_candidates):
             internal_id = str(uuid.uuid4())
             finding_map[internal_id] = (finding, rating, score)
             lean_findings.append({"finding_id": internal_id, "nursing_diagnosis": finding.nursing_diagnosis, "intervention": finding.intervention, "goal": finding.goal})
@@ -551,14 +551,14 @@ async def process_document_pipeline(
         return ExcludedDocument(source_uri=uri, title=filename, justification="The document could not be read or its format was unsupported for analysis.")
 
 def validate_taxonomy(
-    finding_map: Dict[str, Tuple[ClinicalFinding, Optional[AuditorRating], float]], 
-    icnp_lookup: Dict, 
-    fo_lookup: Dict, 
+    finding_map: dict[str, tuple[ClinicalFinding, AuditorRating | None, float]],
+    icnp_lookup: dict,
+    fo_lookup: dict,
     doc_id: str,
-    filename: str, 
-    progress_state: WorkflowProgress, 
+    filename: str,
+    progress_state: WorkflowProgress,
     state_lock: asyncio.Lock
-) -> Tuple[List[ProcessedFinding], int]:
+) -> tuple[list[ProcessedFinding], int]:
     """
     Cross-references LLM mapping results against the master ICNP dictionary.
 
@@ -596,7 +596,7 @@ def validate_taxonomy(
                 if concept_id and concept_id not in valid_icnp_ids:
                     taxonomy_error_count += 1
                     logger.warning(
-                        f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.", 
+                        f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.",
                         field=field_name, finding_id=current_f_id
                     )
                     concept_id = ""
@@ -604,11 +604,11 @@ def validate_taxonomy(
             return MappedTerm(term=orig_val, ICNP_concept_id="")
 
         processed_findings.append(ProcessedFinding(
-            finding_id=f_id, 
-            document_id=doc_id, 
+            finding_id=f_id,
+            document_id=doc_id,
             nursing_diagnosis=original.nursing_diagnosis,
-            intervention=original.intervention, 
-            goal=original.goal, 
+            intervention=original.intervention,
+            goal=original.goal,
             supporting_sentence_ids=original.supporting_sentence_ids,
             clinical_specificity=original.clinical_specificity,
             actionability_score=original.actionability_score,
