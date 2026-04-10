@@ -32,8 +32,8 @@ def create_metadata_extractor():
         generate_content_config=config
     )
 
-def create_finding_extractor():
-    instructions = load_prompt("finding_extractor")
+def create_clinical_extractor():
+    instructions = load_prompt("clinical_extractor")
 
     config = types.GenerateContentConfig(
         temperature=1.0,
@@ -54,7 +54,7 @@ def create_finding_extractor():
     )
 
     return Agent(
-        name="finding_extractor",
+        name="clinical_extractor",
         model="gemini-3.1-pro-preview",
         instruction=instructions,
         output_schema=ClinicalFindingsResponse,
@@ -62,12 +62,12 @@ def create_finding_extractor():
         generate_content_config=config
     )
 
-def create_research_analyst():
-    """Returns a ParallelAgent combining Metadata and Finding extraction."""
+def create_combined_extractor():
+    """Returns a ParallelAgent combining Metadata and Clinical extraction."""
     return ParallelAgent(
-        name="research_analyst",
+        name="combined_extractor",
         sub_agents=[
             create_metadata_extractor(),
-            create_finding_extractor()
+            create_clinical_extractor()
         ]
     )

@@ -1,0 +1,25 @@
+Run ID: 2026-04-10_20-39-51
+Timestamp: 2026-04-10T18:39:51.897322
+----------------------------------------
+ALS/
+[INFO] 2026-04-10 18:39:52,466 - vbp_orchestrator - Processing 3 documents in parallel (limit: 3)
+[INFO] 2026-04-10 18:39:52,466 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-10 18:39:53,118 - vbp_processing - Invoking Research Analyst for: 250-254.pdf
+[INFO] 2026-04-10 18:39:53,118 - vbp_processing - Processing document start: 32903629_fulltext.xml
+[INFO] 2026-04-10 18:39:53,751 - vbp_processing - Invoking Research Analyst for: 32903629_fulltext.xml
+[INFO] 2026-04-10 18:39:53,751 - vbp_processing - Processing document start: 32910255_fulltext.xml
+[INFO] 2026-04-10 18:39:54,378 - vbp_processing - Invoking Research Analyst for: 32910255_fulltext.xml
+[INFO] 2026-04-10 18:40:29,684 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf
+[INFO] 2026-04-10 18:40:33,450 - vbp_processing - Invoking Clinical Auditor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 18:40:37,632 - vbp_processing - Invoking Clinical Auditor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 18:40:40,146 - vbp_processing - Invoking Term Mapper for: 250-254.pdf
+[INFO] 2026-04-10 18:40:40,373 - vbp_processing - Invoking Term Mapper for: 32910255_fulltext.xml
+[INFO] 2026-04-10 18:40:46,581 - vbp_processing - Invoking Term Mapper for: 32903629_fulltext.xml
+[INFO] 2026-04-10 18:41:04,251 - vbp_processing - Document processing success: 32910255_fulltext.xml
+[INFO] 2026-04-10 18:41:17,202 - vbp_processing - Document processing success: 250-254.pdf
+[INFO] 2026-04-10 18:41:53,689 - vbp_processing - Document processing success: 32903629_fulltext.xml
+[INFO] 2026-04-10 18:41:53,817 - vbp_orchestrator - *** Overall Progress: 3/3 processed (3 success) ***
+[INFO] 2026-04-10 18:41:53,817 - vbp_orchestrator - Consolidating 3 successful documents and 0 excluded documents.
+[INFO] 2026-04-10 18:41:53,817 - vbp_consolidation - Starting FHIR semantic audit for 4 Functional Areas.
+[INFO] 2026-04-10 18:41:55,232 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-10 18:41:55,233 - test_workflow - --- Final Synthesis Complete ---

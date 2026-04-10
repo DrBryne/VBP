@@ -246,8 +246,8 @@ async def process_document_pipeline(
     uri: str,
     target_group: str,
     project_id: str,
-    research_analyst: BaseAgent,
-    term_mapper: BaseAgent,
+    clinical_extractor: BaseAgent,
+    clinical_taxonomist: BaseAgent,
     clinical_auditor: BaseAgent,
     parent_ctx: InvocationContext,
     ephemeral_session_service: InMemorySessionService,
@@ -318,7 +318,7 @@ async def process_document_pipeline(
         doc_session_id = str(uuid.uuid4())
         doc_session = await ephemeral_session_service.create_session(app_name="vbp_workflow", user_id="system", session_id=doc_session_id)
 
-        # 4. Invoke Research Analyst
+        # 4. Invoke ClinicalExtractor
         static_context = types.Part.from_text(text=f"Target Group: {target_group}\n\nAnalyze the attached document.")
         analyst_msg = types.Content(role="user", parts=[static_context, types.Part.from_text(text=f"Document Content (with Sentence IDs):\n{tagged_text}")])
         doc_session.events.append(Event(author="system", content=analyst_msg))
@@ -333,8 +333,8 @@ async def process_document_pipeline(
             "session_service": ephemeral_session_service
         })
 
-        logger.info(f"Invoking Research Analyst for: {filename}")
-        async for ev in research_analyst.run_async(pipeline_ctx):
+        logger.info(f"Invoking ClinicalExtractor for: {filename}")
+        async for ev in clinical_extractor.run_async(pipeline_ctx):
             if ev.is_final_response():
                 data_dict = safe_parse_json(ev)
                 if not data_dict:
@@ -343,12 +343,12 @@ async def process_document_pipeline(
                     if ev.author == "metadata_extractor":
                         doc_session.state["metadata"] = MetadataResponse.model_validate(data_dict)
                         logger.debug(f"Metadata extracted for: {filename}", title=data_dict.get("source_document", {}).get("title"))
-                    elif ev.author == "finding_extractor":
+                    elif ev.author == "clinical_extractor":
                         doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
                         logger.debug(f"Findings extracted for: {filename}", count=len(data_dict.get("candidate_findings", [])))
                 except Exception as e:
-                    logger.error(f"ANALYST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
-                    await progress_queue.put(f"ANALYST VALIDATION ERROR ({ev.author}): {filename} ({e})")
+                    logger.error(f"EXTRACTOR VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                    await progress_queue.put(f"EXTRACTOR VALIDATION ERROR ({ev.author}): {filename} ({e})")
 
         metadata: MetadataResponse = doc_session.state.get("metadata")
         clinical_findings: ClinicalFindingsResponse = doc_session.state.get("clinical_findings")
@@ -473,7 +473,7 @@ async def process_document_pipeline(
                 justification="Ingen av de identifiserte kliniske funnene oppfylte kvalitetskravene til spesifisitet og handlingskraft."
             )
 
-        # 8. Invoke Term Mapper (Using audited findings)
+        # 8. Invoke Clinical Taxonomist (Using audited findings)
         lean_findings = []
         finding_map = {}
         for _idx, (finding, rating, score) in enumerate(audited_candidates):
@@ -483,27 +483,27 @@ async def process_document_pipeline(
         mapper_msg = types.Content(role="user", parts=[types.Part.from_text(text="Map these findings to ICNP and classify FO:"), types.Part.from_text(text=json.dumps(lean_findings))])
         doc_session.events.append(Event(author="system", content=mapper_msg))
 
-        logger.info(f"Invoking Term Mapper for: {filename}", finding_count=len(lean_findings))
+        logger.info(f"Invoking ClinicalTaxonomist for: {filename}", finding_count=len(lean_findings))
         try:
-            async for ev in term_mapper.run_async(pipeline_ctx):
+            async for ev in clinical_taxonomist.run_async(pipeline_ctx):
                 if ev.is_final_response():
                     data_dict = safe_parse_json(ev)
                     if not data_dict:
                         continue
                     try:
-                        if ev.author == "icnp_mapper":
+                        if ev.author == "clinical_taxonomist":
                             doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
                         elif ev.author == "fo_classifier":
                             doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
                     except Exception as e:
-                        logger.error(f"MAPPER VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
-                        await progress_queue.put(f"MAPPER VALIDATION ERROR ({ev.author}): {filename} ({e})")
+                        logger.error(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                        await progress_queue.put(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename} ({e})")
         except Exception as e:
             async with state_lock:
                 progress_state.completed += 1
                 progress_state.failed += 1
-            logger.error(f"Term Mapper critical error for: {filename}", error=str(e))
-            await progress_queue.put(f"DONE: {filename} (MAPPER ERROR: {e})")
+            logger.error(f"ClinicalTaxonomist critical error for: {filename}", error=str(e))
+            await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {e})")
             return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
 
         icnp_mappings: IcnpMappingResponse = doc_session.state.get("icnp_mappings")

@@ -8,7 +8,7 @@ from app.shared.tools import load_prompt
 
 
 def create_icnp_mapper():
-    instructions = load_prompt("icnp_mapper")
+    instructions = load_prompt("clinical_taxonomist")
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     terms_path = os.path.join(current_dir, "data", "restructured_terms.txt")
@@ -68,8 +68,8 @@ def create_fo_classifier():
         generate_content_config=config
     )
 
-def create_term_mapper():
+def create_combined_taxonomist():
     return ParallelAgent(
-        name="term_mapper",
+        name="combined_taxonomist",
         sub_agents=[create_icnp_mapper(), create_fo_classifier()]
     )

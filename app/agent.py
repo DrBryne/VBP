@@ -12,8 +12,8 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 from app.agents.clinical_auditor.agent import create_clinical_auditor
-from app.agents.research_analyst.agent import create_research_analyst
-from app.agents.term_mapper.agent import create_term_mapper
+from app.agents.clinical_extractor.agent import create_combined_extractor
+from app.agents.clinical_taxonomist.agent import create_combined_taxonomist
 from app.shared.consolidation import finalize_synthesis, group_findings
 from app.shared.fhir_client import FhirTerminologyClient
 from app.shared.logging import VBPLogger
@@ -40,20 +40,20 @@ class VbpWorkflowAgent(BaseAgent):
     """
     def __init__(self, name: str = "vbp_workflow_agent"):
         super().__init__(name=name)
-        self._research_analyst = create_research_analyst()
-        self._term_mapper = create_term_mapper()
+        self._extractor = create_combined_extractor()
+        self._taxonomist = create_combined_taxonomist()
         self._auditor = create_clinical_auditor()
         self._fhir_client = FhirTerminologyClient()
 
     @property
-    def research_analyst(self):
+    def extractor(self):
         """The agent responsible for finding extraction and metadata identification."""
-        return self._research_analyst
+        return self._extractor
 
     @property
-    def term_mapper(self):
+    def taxonomist(self):
         """The agent responsible for ICNP mapping and Functional Area classification."""
-        return self._term_mapper
+        return self._taxonomist
 
     @property
     def auditor(self):
@@ -124,8 +124,8 @@ class VbpWorkflowAgent(BaseAgent):
                 uri=uri,
                 target_group=target_group,
                 project_id=project_id,
-                research_analyst=self.research_analyst,
-                term_mapper=self.term_mapper,
+                clinical_extractor=self.extractor,
+                clinical_taxonomist=self.taxonomist,
                 clinical_auditor=self.auditor,
                 parent_ctx=ctx,
                 ephemeral_session_service=ephemeral_session_service,
