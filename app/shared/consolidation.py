@@ -56,11 +56,9 @@ def finalize_synthesis(
     execution_start_time: datetime,
     execution_end_time: datetime,
     grouped_data: Dict[str, Dict],
-    quality_notes: str,
     source_documents: List[Document],
     excluded_documents: List[ExcludedDocument],
     total_rectified_quotes: int = 0,
-    total_unsupported_quotes_dropped: int = 0,
     total_dropped_findings: int = 0,
     total_taxonomy_errors: int = 0
 ) -> SynthesisResponse:
@@ -92,12 +90,10 @@ def finalize_synthesis(
         excluded_files_count=len(excluded_documents),
         total_synthesized_findings=len(synthesized_findings),
         total_rectified_quotes=total_rectified_quotes,
-        total_unsupported_quotes_dropped=total_unsupported_quotes_dropped,
         total_dropped_findings=total_dropped_findings,
         total_taxonomy_errors=total_taxonomy_errors,
         execution_start_time=execution_start_time,
-        execution_end_time=execution_end_time,
-        quality_notes=quality_notes
+        execution_end_time=execution_end_time
     )
         
     return SynthesisResponse(

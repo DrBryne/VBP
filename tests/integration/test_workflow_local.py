@@ -39,6 +39,7 @@ async def run_local_test():
     test_target_group = "ALS - Amytrofisk lateral sklerose"
     limit_files = 3 # Process 3 files
     max_concurrency = 3 # Lower concurrency for limited test
+
     
     logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---", 
                 project=project_id, 

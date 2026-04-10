@@ -1,9 +1,24 @@
 from typing import List, Optional, Dict, Literal
 from datetime import datetime
 from dataclasses import dataclass
+from enum import Enum
 from pydantic import BaseModel, Field
 
 # --- 1. SHARED CORE TYPES ---
+class FunctionalArea(str, Enum):
+    FO1 = "1. Kommunikasjon/sanser"
+    FO2 = "2. Kunnskap/utvikling/psykisk"
+    FO3 = "3. Respirasjon/sirkulasjon"
+    FO4 = "4. Ernæring/væske/elektrolyttbalanse"
+    FO5 = "5. Eliminasjon"
+    FO6 = "6. Hud/vev/sår"
+    FO7 = "7. Aktivitet/funksjonsstatus"
+    FO8 = "8. Smerte/søvn/hvile/velvære"
+    FO9 = "9. Seksualitet/reproduksjon"
+    FO10 = "10. Sosiale forhold/miljø"
+    FO11 = "11. Åndelig/kulturelt/livsavslutning"
+    FO12 = "12. Annet/legedelegerte aktiviteter"
+
 class MappedTerm(BaseModel):
     term: str = Field(description="The Norwegian ICNP term (Term_NO) if a match is found, otherwise the original text.")
     ICNP_concept_id: str = Field(description="The corresponding ICNP ID (Concept Id) if a match is found, otherwise an empty string.")
@@ -25,7 +40,6 @@ class WorkflowProgress:
     no_findings: int = 0
     rectified_quotes: int = 0
     dropped_findings: int = 0
-    total_unsupported_quotes_dropped: int = 0
     total_taxonomy_errors: int = 0
 
 # --- 2. RESEARCH ANALYST (Extraction) ---
@@ -57,7 +71,7 @@ class IcnpMappingResponse(BaseModel):
 
 class FunctionalAreaClassification(BaseModel):
     finding_id: str = Field(description="Unique identifier matching the input data.")
-    FO: str = Field(description="The selected functional area (name and number).")
+    FO: FunctionalArea = Field(description="The selected functional area (name and number).")
 
 class FunctionalAreaResponse(BaseModel):
     results: List[FunctionalAreaClassification]
@@ -70,7 +84,7 @@ class ProcessedFinding(ClinicalFinding):
     mapped_nursing_diagnosis: MappedTerm
     mapped_intervention: MappedTerm
     mapped_goal: MappedTerm
-    FO: str
+    FO: FunctionalArea
 
 class ProcessedDocument(BaseModel):
     """Result from processing a single document through Analyst and Mapper."""
@@ -86,7 +100,7 @@ class SynthesizedFinding(BaseModel):
     nursing_diagnosis: MappedTerm
     intervention: MappedTerm
     goal: MappedTerm
-    FO: str = Field(description="Functional Area (1-12).")
+    FO: FunctionalArea = Field(description="Functional Area (1-12).")
     supporting_evidence: List[Evidence] = Field(description="Specific quotes from sources supporting the finding.")
 
 class ExcludedDocument(BaseModel):
@@ -103,25 +117,10 @@ class ExecutionSummary(BaseModel):
     excluded_files_count: int = Field(description="Number of files excluded due to lack of findings or errors.")
     total_synthesized_findings: int = Field(description="Total number of unique clinical findings consolidated.")
     total_rectified_quotes: int = Field(description="Total number of hallucinated quotes that were successfully fixed via fuzzy matching.")
-    total_unsupported_quotes_dropped: int = Field(description="Total number of verbatim quotes that were dropped because they did not semantically support the finding.")
     total_taxonomy_errors: int = Field(description="Total number of hallucinated ICNP IDs or invalid Functional Areas caught and corrected.")
     total_dropped_findings: int = Field(description="Total number of findings that were dropped due to no valid quotes.")
     execution_start_time: datetime = Field(description="Timestamp when the workflow execution started.")
     execution_end_time: datetime = Field(description="Timestamp when the workflow execution completed.")
-    quality_notes: str = Field(description="Notes from clinical quality control.")
-
-# --- 6. SEMANTIC VALIDATION ---
-class QuoteValidation(BaseModel):
-    quote: str = Field(description="The verbatim quote being validated.")
-    status: Literal["kept", "dropped"] = Field(description="Whether the quote should be kept or dropped.")
-    reason: str = Field(description="Brief clinical justification for the decision.")
-
-class FindingValidation(BaseModel):
-    finding_id: str = Field(description="Unique identifier matching the input data.")
-    quote_validations: List[QuoteValidation] = Field(description="Validation results for each quote in this finding.")
-
-class EvidenceValidationResponse(BaseModel):
-    results: List[FindingValidation]
 
 class SynthesisResponse(BaseModel):
     execution_summary: ExecutionSummary = Field(description="Summary of the workflow execution and descriptive statistics.")
