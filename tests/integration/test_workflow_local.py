@@ -131,6 +131,25 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
                 f.write(formatted_json)
             logger.info("--- Final Synthesis Complete ---", output_file=output_file)
 
+            # --- Auto-Generate HTML Report ---
+            report_file = os.path.join(run_dir, "report.html")
+            logger.info("Generating HTML Report...", report_file=report_file)
+            try:
+                process = await asyncio.create_subprocess_exec(
+                    "uv", "run", "python", "tools/report_generator/main.py",
+                    "--input", output_file,
+                    "--output", report_file,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE
+                )
+                stdout, stderr = await process.communicate()
+                if process.returncode == 0:
+                    logger.info("HTML Report generated successfully.")
+                else:
+                    logger.error(f"Failed to generate HTML report: {stderr.decode()}")
+            except Exception as e:
+                logger.error(f"Error launching report generator: {e}")
+
         except json.JSONDecodeError:
             logger.warning("Failed to parse synthesis as JSON. Saving raw text.")
             output_file = os.path.join(run_dir, "workflow_synthesis_raw.txt")
@@ -149,7 +168,8 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
     print(f"Run ID: {run_id}")
     print(f"Results stored in: {run_dir}/")
     print("  - Synthesis JSON: workflow_synthesis.json")
-    print("  - Execution Log: session.log")
+    print("  - HTML Report:    report.html")
+    print("  - Execution Log:  session.log")
     print("="*45 + "\n")
 
 if __name__ == "__main__":
