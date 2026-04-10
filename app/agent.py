@@ -47,7 +47,10 @@ logger = VBPLogger("vbp_orchestrator")
 class VbpWorkflowAgent(BaseAgent):
     """
     Root orchestrator for the VBP (Veiledende Behandlingsplan) Workflow.
-    This BaseAgent implements a data-driven parallel workflow with isolated contexts.
+    
+    This agent implements high-level coordination for massive clinical document 
+    analysis. It manages file discovery, task-level parallelism with 
+    concurrency control, and state-driven consolidation.
     """
     def __init__(self, name: str = "vbp_workflow_agent"):
         super().__init__(name=name)
@@ -56,13 +59,16 @@ class VbpWorkflowAgent(BaseAgent):
 
     @property
     def research_analyst(self):
+        """The agent responsible for finding extraction and metadata identification."""
         return self._research_analyst
 
     @property
     def term_mapper(self):
+        """The agent responsible for ICNP mapping and Functional Area classification."""
         return self._term_mapper
 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
         execution_start_time = datetime.now()
         gcs_uri = ctx.session.state.get("gcs_uri")
         target_group = ctx.session.state.get("target_group")
@@ -88,6 +94,7 @@ class VbpWorkflowAgent(BaseAgent):
             logger.error(err); yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=err)]))
             return
 
+        # --- PHASE 2: DOCUMENT DISCOVERY ---
         logger.info(f"Starting discovery in: {gcs_uri}")
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Discovery in {gcs_uri}")]))
         
@@ -107,6 +114,7 @@ class VbpWorkflowAgent(BaseAgent):
         logger.info(f"Processing {total_files} documents in parallel (limit: {max_concurrency})")
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Processing {total_files} documents...")]))
 
+        # --- PHASE 3: PARALLEL PIPELINE EXECUTION ---
         semaphore = asyncio.Semaphore(max_concurrency)
         progress_queue = asyncio.Queue()
         progress_state = WorkflowProgress()
@@ -154,7 +162,7 @@ class VbpWorkflowAgent(BaseAgent):
             yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="No documents were successfully processed.")]))
             return
 
-        # --- HYBRID PYTHON CONSOLIDATION ---
+        # --- PHASE 4: CONSOLIDATION & SYNTHESIS ---
         logger.info(f"Consolidating {len(successful_results)} successful documents and {len(excluded_results)} excluded documents.")
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="Consolidating findings...")]))
         

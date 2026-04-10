@@ -1,3 +1,8 @@
+"""
+Core processing logic for the VBP Workflow.
+Handles document preparation, sentence indexing, LLM response parsing, 
+and deterministic taxonomy validation.
+"""
 import asyncio
 import re
 import nltk
@@ -45,14 +50,33 @@ except LookupError:
     nltk.download('punkt_tab')
 
 def index_document_sentences(text: str) -> Dict[str, str]:
-    """Splits text into sentences and assigns unique IDs (S1, S2, ...)."""
+    """
+    Splits document text into individual sentences and assigns unique IDs.
+    
+    This indexing is the foundation of our 'Read & Point' architecture, 
+    eliminating LLM quote hallucinations by resolving evidence via IDs.
+
+    Args:
+        text: The raw document text extracted from PDF/XML/TXT.
+
+    Returns:
+        A dictionary mapping IDs (S1, S2, ...) to raw sentence strings.
+    """
     # Clean up excessive whitespace but preserve basic structure
     text = re.sub(r'\s+', ' ', text).strip()
     sentences = nltk.sent_tokenize(text)
     return {f"S{i+1}": sent for i, sent in enumerate(sentences)}
 
 def format_indexed_text(indexed_sentences: Dict[str, str]) -> str:
-    """Reconstructs the document with visible sentence IDs for the LLM."""
+    """
+    Reconstructs the document with visible sentence IDs for LLM consumption.
+
+    Args:
+        indexed_sentences: Dictionary mapping IDs to text.
+
+    Returns:
+        A single string where each sentence is prefixed by its ID, e.g., '[S1] Text...'
+    """
     parts = []
     for sid, text in indexed_sentences.items():
         parts.append(f"[{sid}] {text}")
@@ -83,7 +107,18 @@ def strip_xml_tags(text: str) -> str:
         return text # Fallback
 
 def safe_parse_json(event: Event) -> Optional[Dict[str, Any]]:
-    """Safely extracts and parses JSON from an ADK Event."""
+    """
+    Safely extracts and parses JSON from an ADK Event.
+    
+    Uses strict guards for content and parts to prevent AttributeError 
+    if an agent returns an empty or safety-blocked response.
+
+    Args:
+        event: The final response event from an ADK Agent.
+
+    Returns:
+        The parsed dictionary or None if parsing/validation fails.
+    """
     if not event.content or not event.content.parts or not event.content.parts[0].text:
         return None
     try:
@@ -94,9 +129,14 @@ def safe_parse_json(event: Event) -> Optional[Dict[str, Any]]:
 
 def load_and_prep_document(uri: str, project_id: str) -> Tuple[str, str, str]:
     """
-    Downloads a document from GCS, extracts its text based on MIME type,
-    and performs necessary cleaning (like XML tag stripping).
-    Returns (filename, mime_type, raw_text).
+    Downloads and cleans document text based on its file format.
+
+    Args:
+        uri: The GCS path to the document.
+        project_id: The GCP Project ID for storage access.
+
+    Returns:
+        A tuple of (filename, mime_type, cleaned_text).
     """
     filename = uri.split("/")[-1]
     mime_type, _ = mimetypes.guess_type(uri)
@@ -126,8 +166,21 @@ async def resolve_sentence_ids(
     progress_queue: asyncio.Queue
 ) -> List[ClinicalFinding]:
     """
-    Resolves supporting_sentence_ids back into actual text quotes with a context window.
-    Loads the index from disk to save memory.
+    Resolves citation IDs back into verbatim text with a surrounding context window.
+    
+    To improve clinical readability and validation accuracy, this function fetches 
+    the cited sentence plus one sentence immediately before and after.
+
+    Args:
+        finding_candidates: List of findings with 'supporting_sentence_ids'.
+        doc_id: Unique ID used to retrieve the sentence index from disk.
+        filename: Name of the document (for logging).
+        progress_state: Shared progress tracker.
+        state_lock: Async lock for thread-safe counter updates.
+        progress_queue: Queue for real-time user events.
+
+    Returns:
+        List of findings with resolved 'quotes' text.
     """
     cache_dir = _get_cache_dir()
     cache_path = os.path.join(cache_dir, f"{doc_id}_index.json")
@@ -199,8 +252,25 @@ async def process_document_pipeline(
     progress_queue: asyncio.Queue
 ) -> Union[ProcessedDocument, ExcludedDocument]:
     """
-    Complete processing pipeline for a single document: 
-    Loading -> Indexing -> Analyst -> Resolution -> Mapper -> Taxonomy.
+    Executes the full extraction and mapping pipeline for a single document.
+    
+    This is an encapsulated 'Sub-Workflow' that handles the transition from 
+    unstructured text to validated, mapped clinical findings.
+
+    Args:
+        uri: Document GCS location.
+        target_group: The clinical scope (e.g., 'ALS').
+        project_id: GCP project.
+        research_analyst: Agent for finding extraction.
+        term_mapper: Agent for terminology mapping.
+        parent_ctx: InvocationContext for trace inheritance.
+        ephemeral_session_service: Service for isolated doc sessions.
+        progress_state: Shared progress dataclass.
+        state_lock: Concurrency lock.
+        progress_queue: User event queue.
+
+    Returns:
+        A ProcessedDocument on success, or an ExcludedDocument on failure.
     """
     doc_id = str(uuid.uuid4())
     try:
@@ -398,8 +468,22 @@ def validate_taxonomy(
     state_lock: asyncio.Lock
 ) -> Tuple[List[ProcessedFinding], int]:
     """
-    Cross-references findings with the ICNP taxonomy and Functional Areas (FO).
-    Handles hallucinated IDs and defaults invalid FO categories.
+    Cross-references LLM mapping results against the master ICNP dictionary.
+    
+    This deterministic step ensures that even if an LLM hallucinates a 
+    terminology code, it is cleared before reaching the final report.
+
+    Args:
+        finding_map: Original clinical findings.
+        icnp_lookup: Terminology matches from TermMapper.
+        fo_lookup: Functional Area assignments.
+        doc_id: Source document ID.
+        filename: Source document name.
+        progress_state: Progress tracking dataclass.
+        state_lock: Concurrency lock.
+
+    Returns:
+        Tuple of (List of validated findings, error count).
     """
     valid_icnp_ids = load_valid_icnp_ids()
     processed_findings = []

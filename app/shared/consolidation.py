@@ -1,3 +1,8 @@
+"""
+Consolidation and Synthesis logic for the VBP Workflow.
+Handles the grouping of findings across documents and the assembly 
+of the final clinical report.
+"""
 from typing import List, Dict
 from datetime import datetime
 from app.shared.models import (
@@ -13,8 +18,17 @@ from app.shared.models import (
 
 def group_findings(processed_docs: List[ProcessedDocument]) -> Dict[str, Dict]:
     """
-    Groups findings by Functional Area (FO) and ICNP Concept ID.
-    Returns a dictionary structure suitable for synthesis.
+    Groups individual findings by Functional Area (FO) and ICNP Concept ID.
+    
+    This is the core clinical synthesis step. It aggregates findings from 
+    multiple documents into a single representative finding for the final 
+    report, preserving all supporting evidence.
+
+    Args:
+        processed_docs: List of successfully processed documents with findings.
+
+    Returns:
+        A dictionary mapping group keys (FO||ICNP_ID) to aggregated finding data.
     """
     groups = {}
     
@@ -63,7 +77,23 @@ def finalize_synthesis(
     total_taxonomy_errors: int = 0
 ) -> SynthesisResponse:
     """
-    Assembles the final SynthesisResponse object.
+    Assembles the final SynthesisResponse object with all clinical and operational data.
+
+    Args:
+        target_group: The clinical scope of the analysis.
+        source_uri: The GCS path scanned.
+        total_files_in_uri: Number of files discovered in GCS.
+        execution_start_time: Start timestamp.
+        execution_end_time: Finish timestamp.
+        grouped_data: Findings aggregated by FO and ICNP ID.
+        source_documents: Successful document metadata.
+        excluded_documents: Omitted document metadata and justifications.
+        total_hallucinated_citations: Count of corrected citation IDs.
+        total_dropped_findings: Count of removed unsupported findings.
+        total_taxonomy_errors: Count of corrected taxonomy codes.
+
+    Returns:
+        A complete SynthesisResponse ready for the user.
     """
     synthesized_findings = []
     
