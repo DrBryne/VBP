@@ -79,16 +79,26 @@ class ClinicalFindingsResponse(BaseModel):
 
 # --- 3. TERM MAPPER (Mapping) ---
 
-class IcnpMapping(BaseModel):
-    """Results of mapping a single finding's components to ICNP terms."""
+class DiagnosisMapping(BaseModel):
     finding_id: str = Field(description="Links the mapping back to the original extracted finding.")
     nursing_diagnosis: MappedTerm | None = Field(None, description="The ICNP match for the diagnosis.")
+
+class DiagnosisMappingResponse(BaseModel):
+    results: list[DiagnosisMapping]
+
+class InterventionMapping(BaseModel):
+    finding_id: str = Field(description="Links the mapping back to the original extracted finding.")
     intervention: MappedTerm | None = Field(None, description="The ICNP match for the intervention.")
+
+class InterventionMappingResponse(BaseModel):
+    results: list[InterventionMapping]
+
+class GoalMapping(BaseModel):
+    finding_id: str = Field(description="Links the mapping back to the original extracted finding.")
     goal: MappedTerm | None = Field(None, description="The ICNP match for the goal.")
 
-class IcnpMappingResponse(BaseModel):
-    """Batch response from the ICNP mapping agent."""
-    results: list[IcnpMapping]
+class GoalMappingResponse(BaseModel):
+    results: list[GoalMapping]
 
 class FunctionalAreaClassification(BaseModel):
     """Assignment of a finding to one of the 12 standard functional areas."""

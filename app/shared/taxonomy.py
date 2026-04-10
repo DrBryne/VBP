@@ -20,23 +20,26 @@ VALID_FO_CATEGORIES = [
 
 @lru_cache(maxsize=1)
 def load_valid_icnp_ids() -> set[str]:
-    """Loads all valid ICNP Concept IDs from the reference file."""
+    """Loads all valid ICNP Concept IDs from the specialized reference files."""
     valid_ids = set()
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(os.path.dirname(current_dir))
-    file_path = os.path.join(project_root, "app", "agents", "clinical_taxonomist", "data", "restructured_terms.txt")
-
-    if not os.path.exists(file_path):
-        return valid_ids
+    data_dir = os.path.join(project_root, "app", "agents", "clinical_taxonomist", "data")
 
     # Regex to match the start of lines that contain IDs (digits followed by |)
     id_pattern = re.compile(r'^(\d+)\|')
 
-    with open(file_path, encoding="utf-8") as f:
-        for line in f:
-            match = id_pattern.match(line)
-            if match:
-                valid_ids.add(match.group(1))
+    # Load from all three split files
+    for filename in ["diagnoses.txt", "interventions.txt", "goals.txt"]:
+        file_path = os.path.join(data_dir, filename)
+        if os.path.exists(file_path):
+            with open(file_path, encoding="utf-8") as f:
+                for line in f:
+                    match = id_pattern.match(line)
+                    if match:
+                        valid_ids.add(match.group(1))
+        else:
+            print(f"Warning: Terminology file not found: {file_path}")
 
     return valid_ids
 

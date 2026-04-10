@@ -1,0 +1,494 @@
+Run ID: 2026-04-10_22-12-12
+Timestamp: 2026-04-10T20:12:12.162972
+----------------------------------------
+ALS/
+[INFO] 2026-04-10 20:12:12,715 - vbp_orchestrator - Processing 96 documents in parallel (limit: 30)
+[INFO] 2026-04-10 20:12:12,716 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-10 20:12:13,340 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-10 20:12:13,340 - vbp_processing - Processing document start: 32903629_fulltext.xml
+[INFO] 2026-04-10 20:12:13,935 - vbp_processing - Invoking ClinicalExtractor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 20:12:13,935 - vbp_processing - Processing document start: 32910255_fulltext.xml
+[INFO] 2026-04-10 20:12:14,548 - vbp_processing - Invoking ClinicalExtractor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 20:12:14,548 - vbp_processing - Processing document start: 33251776_fulltext.xml
+[INFO] 2026-04-10 20:12:15,152 - vbp_processing - Invoking ClinicalExtractor for: 33251776_fulltext.xml
+[INFO] 2026-04-10 20:12:15,153 - vbp_processing - Processing document start: 33333772_fulltext.xml
+[INFO] 2026-04-10 20:12:15,913 - vbp_processing - Invoking ClinicalExtractor for: 33333772_fulltext.xml
+[INFO] 2026-04-10 20:12:15,914 - vbp_processing - Processing document start: 33530383_fulltext.xml
+[INFO] 2026-04-10 20:12:16,558 - vbp_processing - Invoking ClinicalExtractor for: 33530383_fulltext.xml
+[INFO] 2026-04-10 20:12:16,558 - vbp_processing - Processing document start: 33546507_fulltext.xml
+[INFO] 2026-04-10 20:12:17,159 - vbp_processing - Invoking ClinicalExtractor for: 33546507_fulltext.xml
+[INFO] 2026-04-10 20:12:17,159 - vbp_processing - Processing document start: 34421792_fulltext.xml
+[INFO] 2026-04-10 20:12:17,973 - vbp_processing - Invoking ClinicalExtractor for: 34421792_fulltext.xml
+[INFO] 2026-04-10 20:12:17,973 - vbp_processing - Processing document start: 34786907_fulltext.xml
+[INFO] 2026-04-10 20:12:18,540 - vbp_processing - Invoking ClinicalExtractor for: 34786907_fulltext.xml
+[INFO] 2026-04-10 20:12:18,540 - vbp_processing - Processing document start: 35235032_fulltext.xml
+[INFO] 2026-04-10 20:12:19,137 - vbp_processing - Invoking ClinicalExtractor for: 35235032_fulltext.xml
+[INFO] 2026-04-10 20:12:19,138 - vbp_processing - Processing document start: 35309870_fulltext.xml
+[INFO] 2026-04-10 20:12:19,896 - vbp_processing - Invoking ClinicalExtractor for: 35309870_fulltext.xml
+[INFO] 2026-04-10 20:12:19,896 - vbp_processing - Processing document start: 35636801_fulltext.xml
+[INFO] 2026-04-10 20:12:20,596 - vbp_processing - Invoking ClinicalExtractor for: 35636801_fulltext.xml
+[INFO] 2026-04-10 20:12:20,596 - vbp_processing - Processing document start: 35898325_fulltext.xml
+[INFO] 2026-04-10 20:12:21,234 - vbp_processing - Invoking ClinicalExtractor for: 35898325_fulltext.xml
+[INFO] 2026-04-10 20:12:21,234 - vbp_processing - Processing document start: 36008057_fulltext.xml
+[INFO] 2026-04-10 20:12:21,842 - vbp_processing - Invoking ClinicalExtractor for: 36008057_fulltext.xml
+[INFO] 2026-04-10 20:12:21,842 - vbp_processing - Processing document start: 36341104_fulltext.xml
+[INFO] 2026-04-10 20:12:22,408 - vbp_processing - Invoking ClinicalExtractor for: 36341104_fulltext.xml
+[INFO] 2026-04-10 20:12:22,409 - vbp_processing - Processing document start: 36414305_fulltext.xml
+[INFO] 2026-04-10 20:12:23,152 - vbp_processing - Invoking ClinicalExtractor for: 36414305_fulltext.xml
+[INFO] 2026-04-10 20:12:23,152 - vbp_processing - Processing document start: 36834005_fulltext.xml
+[INFO] 2026-04-10 20:12:23,802 - vbp_processing - Invoking ClinicalExtractor for: 36834005_fulltext.xml
+[INFO] 2026-04-10 20:12:23,802 - vbp_processing - Processing document start: 36875937_fulltext.xml
+[INFO] 2026-04-10 20:12:24,490 - vbp_processing - Invoking ClinicalExtractor for: 36875937_fulltext.xml
+[INFO] 2026-04-10 20:12:24,490 - vbp_processing - Processing document start: 36995270_fulltext.xml
+[INFO] 2026-04-10 20:12:25,063 - vbp_processing - Invoking ClinicalExtractor for: 36995270_fulltext.xml
+[INFO] 2026-04-10 20:12:25,064 - vbp_processing - Processing document start: 37249667_fulltext.xml
+[INFO] 2026-04-10 20:12:25,663 - vbp_processing - Invoking ClinicalExtractor for: 37249667_fulltext.xml
+[INFO] 2026-04-10 20:12:25,664 - vbp_processing - Processing document start: 37254833_fulltext.xml
+[INFO] 2026-04-10 20:12:26,356 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-10 20:12:26,356 - vbp_processing - Processing document start: 37436254_fulltext.xml
+[INFO] 2026-04-10 20:12:27,178 - vbp_processing - Invoking ClinicalExtractor for: 37436254_fulltext.xml
+[INFO] 2026-04-10 20:12:27,178 - vbp_processing - Processing document start: 37610446_fulltext.xml
+[INFO] 2026-04-10 20:12:27,774 - vbp_processing - Invoking ClinicalExtractor for: 37610446_fulltext.xml
+[INFO] 2026-04-10 20:12:27,774 - vbp_processing - Processing document start: 37837507_fulltext.xml
+[INFO] 2026-04-10 20:12:28,371 - vbp_processing - Invoking ClinicalExtractor for: 37837507_fulltext.xml
+[INFO] 2026-04-10 20:12:28,371 - vbp_processing - Processing document start: 38334254_fulltext.xml
+[INFO] 2026-04-10 20:12:29,076 - vbp_processing - Invoking ClinicalExtractor for: 38334254_fulltext.xml
+[INFO] 2026-04-10 20:12:29,077 - vbp_processing - Processing document start: 38345764_fulltext.xml
+[INFO] 2026-04-10 20:12:29,676 - vbp_processing - Invoking ClinicalExtractor for: 38345764_fulltext.xml
+[INFO] 2026-04-10 20:12:29,676 - vbp_processing - Processing document start: 38415696_fulltext.xml
+[INFO] 2026-04-10 20:12:30,313 - vbp_processing - Invoking ClinicalExtractor for: 38415696_fulltext.xml
+[INFO] 2026-04-10 20:12:30,313 - vbp_processing - Processing document start: 38517530_fulltext.xml
+[INFO] 2026-04-10 20:12:31,103 - vbp_processing - Invoking ClinicalExtractor for: 38517530_fulltext.xml
+[INFO] 2026-04-10 20:12:31,103 - vbp_processing - Processing document start: 38551974_fulltext.xml
+[INFO] 2026-04-10 20:12:31,750 - vbp_processing - Invoking ClinicalExtractor for: 38551974_fulltext.xml
+[INFO] 2026-04-10 20:12:31,751 - vbp_processing - Processing document start: 38622643_fulltext.xml
+[INFO] 2026-04-10 20:12:32,346 - vbp_processing - Invoking ClinicalExtractor for: 38622643_fulltext.xml
+[INFO] 2026-04-10 20:12:32,347 - vbp_processing - Processing document start: 38762656_fulltext.xml
+[INFO] 2026-04-10 20:12:32,968 - vbp_processing - Invoking ClinicalExtractor for: 38762656_fulltext.xml
+[INFO] 2026-04-10 20:12:32,969 - vbp_processing - Processing document start: 38805448_fulltext.xml
+[INFO] 2026-04-10 20:12:33,553 - vbp_processing - Invoking ClinicalExtractor for: 38805448_fulltext.xml
+[INFO] 2026-04-10 20:12:33,553 - vbp_processing - Processing document start: 38870470_fulltext.xml
+[INFO] 2026-04-10 20:12:34,140 - vbp_processing - Invoking ClinicalExtractor for: 38870470_fulltext.xml
+[INFO] 2026-04-10 20:12:34,140 - vbp_processing - Processing document start: 39037980_fulltext.xml
+[INFO] 2026-04-10 20:12:35,072 - vbp_processing - Invoking ClinicalExtractor for: 39037980_fulltext.xml
+[INFO] 2026-04-10 20:12:35,073 - vbp_processing - Processing document start: 39075493_fulltext.xml
+[INFO] 2026-04-10 20:12:35,682 - vbp_processing - Invoking ClinicalExtractor for: 39075493_fulltext.xml
+[INFO] 2026-04-10 20:12:35,682 - vbp_processing - Processing document start: 39182937_fulltext.xml
+[INFO] 2026-04-10 20:12:36,276 - vbp_processing - Invoking ClinicalExtractor for: 39182937_fulltext.xml
+[INFO] 2026-04-10 20:12:36,277 - vbp_processing - Processing document start: 39375842_fulltext.xml
+[INFO] 2026-04-10 20:12:37,123 - vbp_processing - Invoking ClinicalExtractor for: 39375842_fulltext.xml
+[INFO] 2026-04-10 20:12:37,123 - vbp_processing - Processing document start: 39496035_fulltext.xml
+[INFO] 2026-04-10 20:12:37,759 - vbp_processing - Invoking ClinicalExtractor for: 39496035_fulltext.xml
+[INFO] 2026-04-10 20:12:37,759 - vbp_processing - Processing document start: 39520111_fulltext.xml
+[INFO] 2026-04-10 20:12:38,413 - vbp_processing - Invoking ClinicalExtractor for: 39520111_fulltext.xml
+[INFO] 2026-04-10 20:12:38,413 - vbp_processing - Processing document start: 39678223_fulltext.xml
+[INFO] 2026-04-10 20:12:38,994 - vbp_processing - Invoking ClinicalExtractor for: 39678223_fulltext.xml
+[INFO] 2026-04-10 20:12:38,995 - vbp_processing - Processing document start: 40077653_fulltext.xml
+[INFO] 2026-04-10 20:12:39,594 - vbp_processing - Invoking ClinicalExtractor for: 40077653_fulltext.xml
+[INFO] 2026-04-10 20:12:39,595 - vbp_processing - Processing document start: 40091916_fulltext.xml
+[INFO] 2026-04-10 20:12:40,224 - vbp_processing - Invoking ClinicalExtractor for: 40091916_fulltext.xml
+[INFO] 2026-04-10 20:12:40,224 - vbp_processing - Processing document start: 40245393_fulltext.xml
+[INFO] 2026-04-10 20:12:41,051 - vbp_processing - Invoking ClinicalExtractor for: 40245393_fulltext.xml
+[INFO] 2026-04-10 20:12:41,051 - vbp_processing - Processing document start: 40273110_fulltext.xml
+[INFO] 2026-04-10 20:12:41,688 - vbp_processing - Invoking ClinicalExtractor for: 40273110_fulltext.xml
+[INFO] 2026-04-10 20:12:41,688 - vbp_processing - Processing document start: 40405710_fulltext.xml
+[INFO] 2026-04-10 20:12:42,334 - vbp_processing - Invoking ClinicalExtractor for: 40405710_fulltext.xml
+[INFO] 2026-04-10 20:12:42,335 - vbp_processing - Processing document start: 40470490_fulltext.xml
+[INFO] 2026-04-10 20:12:42,931 - vbp_processing - Invoking ClinicalExtractor for: 40470490_fulltext.xml
+[INFO] 2026-04-10 20:12:42,931 - vbp_processing - Processing document start: 40488544_fulltext.xml
+[INFO] 2026-04-10 20:12:43,550 - vbp_processing - Invoking ClinicalExtractor for: 40488544_fulltext.xml
+[INFO] 2026-04-10 20:12:43,550 - vbp_processing - Processing document start: 40560475_fulltext.xml
+[INFO] 2026-04-10 20:12:44,147 - vbp_processing - Invoking ClinicalExtractor for: 40560475_fulltext.xml
+[INFO] 2026-04-10 20:12:44,147 - vbp_processing - Processing document start: 40563772_fulltext.xml
+[INFO] 2026-04-10 20:12:44,916 - vbp_processing - Invoking ClinicalExtractor for: 40563772_fulltext.xml
+[INFO] 2026-04-10 20:12:44,916 - vbp_processing - Processing document start: 40649976_fulltext.xml
+[INFO] 2026-04-10 20:12:45,613 - vbp_processing - Invoking ClinicalExtractor for: 40649976_fulltext.xml
+[INFO] 2026-04-10 20:12:45,613 - vbp_processing - Processing document start: 40725930_fulltext.xml
+[INFO] 2026-04-10 20:12:46,184 - vbp_processing - Invoking ClinicalExtractor for: 40725930_fulltext.xml
+[INFO] 2026-04-10 20:12:46,184 - vbp_processing - Processing document start: 40802439_fulltext.xml
+[INFO] 2026-04-10 20:12:51,789 - vbp_processing - Invoking ClinicalExtractor for: 40802439_fulltext.xml
+[INFO] 2026-04-10 20:12:51,789 - vbp_processing - Processing document start: 41024175_fulltext.xml
+[INFO] 2026-04-10 20:12:52,378 - vbp_processing - Invoking ClinicalExtractor for: 41024175_fulltext.xml
+[INFO] 2026-04-10 20:12:52,378 - vbp_processing - Processing document start: 41073116_fulltext.xml
+[INFO] 2026-04-10 20:12:52,954 - vbp_processing - Invoking ClinicalExtractor for: 41073116_fulltext.xml
+[INFO] 2026-04-10 20:12:52,954 - vbp_processing - Processing document start: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 20:12:53,542 - vbp_processing - Invoking ClinicalExtractor for: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 20:12:53,543 - vbp_processing - Processing document start: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 20:12:54,166 - vbp_processing - Invoking ClinicalExtractor for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 20:12:54,167 - vbp_processing - Processing document start: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 20:12:54,932 - vbp_processing - Invoking ClinicalExtractor for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 20:12:54,932 - vbp_processing - Processing document start: CD004030.pdf
+[INFO] 2026-04-10 20:12:55,589 - vbp_processing - Invoking ClinicalExtractor for: CD004030.pdf
+[INFO] 2026-04-10 20:12:55,593 - vbp_processing - Processing document start: CD004157.pdf
+[INFO] 2026-04-10 20:12:56,294 - vbp_processing - Invoking ClinicalExtractor for: CD004157.pdf
+[INFO] 2026-04-10 20:12:56,295 - vbp_processing - Processing document start: CD004427.pdf
+[INFO] 2026-04-10 20:12:57,007 - vbp_processing - Invoking ClinicalExtractor for: CD004427.pdf
+[INFO] 2026-04-10 20:12:57,007 - vbp_processing - Processing document start: CD005226.pdf
+[INFO] 2026-04-10 20:12:57,629 - vbp_processing - Invoking ClinicalExtractor for: CD005226.pdf
+[INFO] 2026-04-10 20:12:57,629 - vbp_processing - Processing document start: CD005229.pdf
+[INFO] 2026-04-10 20:12:58,243 - vbp_processing - Invoking ClinicalExtractor for: CD005229.pdf
+[INFO] 2026-04-10 20:12:58,244 - vbp_processing - Processing document start: CD006049.pdf
+[INFO] 2026-04-10 20:12:58,887 - vbp_processing - Invoking ClinicalExtractor for: CD006049.pdf
+[INFO] 2026-04-10 20:12:58,887 - vbp_processing - Processing document start: CD006981.pdf
+[INFO] 2026-04-10 20:12:59,631 - vbp_processing - Invoking ClinicalExtractor for: CD006981.pdf
+[INFO] 2026-04-10 20:12:59,631 - vbp_processing - Processing document start: CD007593 (1).pdf
+[INFO] 2026-04-10 20:13:00,250 - vbp_processing - Invoking ClinicalExtractor for: CD007593 (1).pdf
+[INFO] 2026-04-10 20:13:00,250 - vbp_processing - Processing document start: CD007593.pdf
+[INFO] 2026-04-10 20:13:00,878 - vbp_processing - Invoking ClinicalExtractor for: CD007593.pdf
+[INFO] 2026-04-10 20:13:00,879 - vbp_processing - Processing document start: CD008554.pdf
+[INFO] 2026-04-10 20:13:01,535 - vbp_processing - Invoking ClinicalExtractor for: CD008554.pdf
+[INFO] 2026-04-10 20:13:01,535 - vbp_processing - Processing document start: CD011005.pdf
+[INFO] 2026-04-10 20:13:02,185 - vbp_processing - Invoking ClinicalExtractor for: CD011005.pdf
+[INFO] 2026-04-10 20:13:02,185 - vbp_processing - Processing document start: CD011742.pdf
+[INFO] 2026-04-10 20:13:02,866 - vbp_processing - Invoking ClinicalExtractor for: CD011742.pdf
+[INFO] 2026-04-10 20:13:02,866 - vbp_processing - Processing document start: CD011776.pdf
+[INFO] 2026-04-10 20:13:03,520 - vbp_processing - Invoking ClinicalExtractor for: CD011776.pdf
+[INFO] 2026-04-10 20:13:03,520 - vbp_processing - Processing document start: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 20:13:04,106 - vbp_processing - Invoking ClinicalExtractor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 20:13:04,106 - vbp_processing - Processing document start: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 20:13:04,731 - vbp_processing - Invoking ClinicalExtractor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 20:13:04,731 - vbp_processing - Processing document start: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 20:13:05,319 - vbp_processing - Invoking ClinicalExtractor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 20:13:05,319 - vbp_processing - Processing document start: Siewersetal2013.pdf
+[INFO] 2026-04-10 20:13:05,946 - vbp_processing - Invoking ClinicalExtractor for: Siewersetal2013.pdf
+[INFO] 2026-04-10 20:13:05,946 - vbp_processing - Processing document start: artikel_13034.pdf
+[INFO] 2026-04-10 20:13:06,593 - vbp_processing - Invoking ClinicalExtractor for: artikel_13034.pdf
+[INFO] 2026-04-10 20:13:06,593 - vbp_processing - Processing document start: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 20:13:07,247 - vbp_processing - Invoking ClinicalExtractor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 20:13:07,247 - vbp_processing - Processing document start: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 20:13:07,837 - vbp_processing - Invoking ClinicalExtractor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 20:13:07,837 - vbp_processing - Processing document start: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 20:13:08,475 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 20:13:08,475 - vbp_processing - Processing document start: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 20:13:09,060 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 20:13:09,060 - vbp_processing - Processing document start: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 20:13:09,668 - vbp_processing - Invoking ClinicalExtractor for: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 20:13:09,668 - vbp_processing - Processing document start: pdf-export-49038.pdf
+[INFO] 2026-04-10 20:13:10,276 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-49038.pdf
+[INFO] 2026-04-10 20:13:10,276 - vbp_processing - Processing document start: pdf-export-51075.pdf
+[INFO] 2026-04-10 20:13:10,840 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51075.pdf
+[INFO] 2026-04-10 20:13:10,840 - vbp_processing - Processing document start: pdf-export-51157.pdf
+[INFO] 2026-04-10 20:13:11,424 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51157.pdf
+[INFO] 2026-04-10 20:13:11,424 - vbp_processing - Processing document start: pdf-export-51330.pdf
+[INFO] 2026-04-10 20:13:11,977 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-51330.pdf
+[INFO] 2026-04-10 20:13:11,977 - vbp_processing - Processing document start: pdf-export-56871.pdf
+[INFO] 2026-04-10 20:13:12,610 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-56871.pdf
+[INFO] 2026-04-10 20:13:12,611 - vbp_processing - Processing document start: pdf-export-57787.pdf
+[INFO] 2026-04-10 20:13:13,195 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57787.pdf
+[INFO] 2026-04-10 20:13:13,195 - vbp_processing - Processing document start: pdf-export-57942.pdf
+[INFO] 2026-04-10 20:13:13,738 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-57942.pdf
+[INFO] 2026-04-10 20:13:13,742 - vbp_processing - Processing document start: pdf-export-61011.pdf
+[INFO] 2026-04-10 20:13:14,329 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-61011.pdf
+[INFO] 2026-04-10 20:13:14,329 - vbp_processing - Processing document start: pdf-export-62504.pdf
+[INFO] 2026-04-10 20:13:14,909 - vbp_processing - Invoking ClinicalExtractor for: pdf-export-62504.pdf
+[INFO] 2026-04-10 20:13:14,909 - vbp_processing - Processing document start: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 20:13:15,496 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 20:13:15,496 - vbp_processing - Processing document start: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 20:13:16,049 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 20:13:16,050 - vbp_processing - Processing document start: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 20:13:16,646 - vbp_processing - Invoking ClinicalExtractor for: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 20:13:16,647 - vbp_processing - Processing document start: pdf2009--628-31.pdf
+[INFO] 2026-04-10 20:13:17,261 - vbp_processing - Invoking ClinicalExtractor for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 20:13:17,261 - vbp_processing - Processing document start: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 20:13:17,994 - vbp_processing - Invoking ClinicalExtractor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 20:13:17,995 - vbp_processing - Processing document start: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 20:13:18,695 - vbp_processing - Invoking ClinicalExtractor for: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 20:13:18,695 - vbp_processing - Processing document start: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 20:13:19,494 - vbp_processing - Invoking ClinicalExtractor for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 20:13:52,844 - vbp_processing - No findings identified in document: rapport_2015_08_naltrekson-sma-doser.pdf
+[INFO] 2026-04-10 20:13:58,584 - vbp_processing - No findings identified in document: 34786907_fulltext.xml
+[INFO] 2026-04-10 20:14:00,143 - vbp_processing - Invoking Clinical Auditor for: 39496035_fulltext.xml
+[INFO] 2026-04-10 20:14:01,947 - vbp_processing - No findings identified in document: 38551974_fulltext.xml
+[INFO] 2026-04-10 20:14:02,264 - vbp_processing - No findings identified in document: 37249667_fulltext.xml
+[INFO] 2026-04-10 20:14:02,409 - vbp_processing - Invoking Clinical Auditor for: 33333772_fulltext.xml
+[INFO] 2026-04-10 20:14:02,697 - vbp_processing - No findings identified in document: CD008554.pdf
+[INFO] 2026-04-10 20:14:02,697 - vbp_orchestrator - *** Overall Progress: 5/96 processed (0 success) ***
+[INFO] 2026-04-10 20:14:02,904 - vbp_processing - Invoking Clinical Auditor for: 39678223_fulltext.xml
+[INFO] 2026-04-10 20:14:03,294 - vbp_processing - Invoking Clinical Auditor for: 36875937_fulltext.xml
+[INFO] 2026-04-10 20:14:04,487 - vbp_processing - No findings identified in document: 41024175_fulltext.xml
+[INFO] 2026-04-10 20:14:04,738 - vbp_processing - Invoking ClinicalTaxonomist for: 39496035_fulltext.xml
+[INFO] 2026-04-10 20:14:05,893 - vbp_processing - Invoking Clinical Auditor for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 20:14:05,971 - vbp_processing - Invoking Clinical Auditor for: 38334254_fulltext.xml
+[INFO] 2026-04-10 20:14:06,332 - vbp_processing - Invoking Clinical Auditor for: 40488544_fulltext.xml
+[INFO] 2026-04-10 20:14:07,975 - vbp_processing - Invoking ClinicalTaxonomist for: 33333772_fulltext.xml
+[INFO] 2026-04-10 20:14:08,114 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf
+[INFO] 2026-04-10 20:14:08,300 - vbp_processing - No findings identified in document: pdf-export-51075.pdf
+[INFO] 2026-04-10 20:14:10,234 - vbp_processing - Invoking Clinical Auditor for: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 20:14:10,303 - vbp_processing - Invoking ClinicalTaxonomist for: 39678223_fulltext.xml
+[INFO] 2026-04-10 20:14:11,077 - vbp_processing - Invoking Clinical Auditor for: CD004030.pdf
+[INFO] 2026-04-10 20:14:11,346 - vbp_processing - Invoking Clinical Auditor for: CD005229.pdf
+[INFO] 2026-04-10 20:14:11,529 - vbp_processing - Invoking Clinical Auditor for: CD004427.pdf
+[INFO] 2026-04-10 20:14:11,788 - vbp_processing - Invoking Clinical Auditor for: 36341104_fulltext.xml
+[INFO] 2026-04-10 20:14:11,860 - vbp_processing - Invoking Clinical Auditor for: 32903629_fulltext.xml
+[INFO] 2026-04-10 20:14:12,224 - vbp_processing - Invoking Clinical Auditor for: 36995270_fulltext.xml
+[INFO] 2026-04-10 20:14:13,250 - vbp_processing - Invoking Clinical Auditor for: 36834005_fulltext.xml
+[INFO] 2026-04-10 20:14:13,692 - vbp_processing - Invoking Clinical Auditor for: 35898325_fulltext.xml
+[INFO] 2026-04-10 20:14:14,163 - vbp_processing - Invoking Clinical Auditor for: 34421792_fulltext.xml
+[INFO] 2026-04-10 20:14:14,234 - vbp_processing - Invoking Clinical Auditor for: 32910255_fulltext.xml
+[INFO] 2026-04-10 20:14:14,312 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 20:14:14,379 - vbp_processing - Invoking ClinicalTaxonomist for: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 20:14:14,591 - vbp_processing - Invoking Clinical Auditor for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 20:14:14,708 - vbp_processing - Invoking ClinicalTaxonomist for: 38334254_fulltext.xml
+[INFO] 2026-04-10 20:14:14,961 - vbp_processing - Invoking Clinical Auditor for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 20:14:15,093 - vbp_processing - Invoking ClinicalTaxonomist for: 40488544_fulltext.xml
+[INFO] 2026-04-10 20:14:15,527 - vbp_processing - Invoking Clinical Auditor for: CD006981.pdf
+[INFO] 2026-04-10 20:14:15,713 - vbp_processing - Invoking Clinical Auditor for: 38762656_fulltext.xml
+[INFO] 2026-04-10 20:14:16,078 - vbp_processing - Invoking Clinical Auditor for: pdf-export-61011.pdf
+[INFO] 2026-04-10 20:14:16,286 - vbp_processing - Invoking Clinical Auditor for: CD004157.pdf
+[INFO] 2026-04-10 20:14:16,714 - vbp_processing - Invoking Clinical Auditor for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 20:14:17,037 - vbp_processing - Invoking ClinicalTaxonomist for: 36341104_fulltext.xml
+[INFO] 2026-04-10 20:14:17,408 - vbp_processing - Invoking Clinical Auditor for: 39375842_fulltext.xml
+[INFO] 2026-04-10 20:14:17,569 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf
+[INFO] 2026-04-10 20:14:18,358 - vbp_processing - Invoking ClinicalTaxonomist for: 36875937_fulltext.xml
+[INFO] 2026-04-10 20:14:18,498 - vbp_processing - Invoking Clinical Auditor for: 40077653_fulltext.xml
+[INFO] 2026-04-10 20:14:18,571 - vbp_processing - Invoking Clinical Auditor for: CD011005.pdf
+[INFO] 2026-04-10 20:14:18,789 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 20:14:18,901 - vbp_processing - Invoking Clinical Auditor for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 20:14:19,259 - vbp_processing - Invoking Clinical Auditor for: pdf-export-62504.pdf
+[INFO] 2026-04-10 20:14:19,425 - vbp_processing - Invoking Clinical Auditor for: CD011776.pdf
+[INFO] 2026-04-10 20:14:19,529 - vbp_processing - Invoking Clinical Auditor for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 20:14:19,888 - vbp_processing - Invoking Clinical Auditor for: pdf-export-56871.pdf
+[INFO] 2026-04-10 20:14:20,098 - vbp_processing - Invoking Clinical Auditor for: 39075493_fulltext.xml
+[INFO] 2026-04-10 20:14:20,164 - vbp_processing - Invoking ClinicalTaxonomist for: CD004030.pdf
+[INFO] 2026-04-10 20:14:20,686 - vbp_processing - Invoking ClinicalTaxonomist for: 36834005_fulltext.xml
+[INFO] 2026-04-10 20:14:21,274 - vbp_processing - Document processing success: 39678223_fulltext.xml
+[INFO] 2026-04-10 20:14:21,715 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 20:14:22,085 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 20:14:22,152 - vbp_processing - Invoking ClinicalTaxonomist for: 36995270_fulltext.xml
+[INFO] 2026-04-10 20:14:22,337 - vbp_processing - Invoking Clinical Auditor for: 36414305_fulltext.xml
+[INFO] 2026-04-10 20:14:22,484 - vbp_processing - Invoking Clinical Auditor for: CD011742.pdf
+[INFO] 2026-04-10 20:14:22,606 - vbp_processing - Invoking ClinicalTaxonomist for: 35898325_fulltext.xml
+[INFO] 2026-04-10 20:14:22,822 - vbp_processing - Document processing success: 33333772_fulltext.xml
+[INFO] 2026-04-10 20:14:22,999 - vbp_processing - Invoking Clinical Auditor for: 40273110_fulltext.xml
+[INFO] 2026-04-10 20:14:23,081 - vbp_processing - Invoking ClinicalTaxonomist for: 32910255_fulltext.xml
+[INFO] 2026-04-10 20:14:23,279 - vbp_processing - Invoking ClinicalTaxonomist for: CD006981.pdf
+[INFO] 2026-04-10 20:14:23,524 - vbp_processing - Invoking Clinical Auditor for: 33546507_fulltext.xml
+[INFO] 2026-04-10 20:14:23,638 - vbp_processing - Document processing success: 39496035_fulltext.xml
+[INFO] 2026-04-10 20:14:23,818 - vbp_processing - Invoking ClinicalTaxonomist for: CD005229.pdf
+[INFO] 2026-04-10 20:14:24,004 - vbp_processing - Invoking ClinicalTaxonomist for: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 20:14:24,007 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 20:14:24,009 - vbp_orchestrator - *** Overall Progress: 10/96 processed (3 success) ***
+[INFO] 2026-04-10 20:14:24,344 - vbp_processing - Invoking Clinical Auditor for: 36008057_fulltext.xml
+[INFO] 2026-04-10 20:14:24,483 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-61011.pdf
+[INFO] 2026-04-10 20:14:24,751 - vbp_processing - Invoking ClinicalTaxonomist for: 34421792_fulltext.xml
+[INFO] 2026-04-10 20:14:25,015 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57787.pdf
+[INFO] 2026-04-10 20:14:25,128 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml
+[INFO] 2026-04-10 20:14:25,359 - vbp_processing - Invoking ClinicalTaxonomist for: 32903629_fulltext.xml
+[INFO] 2026-04-10 20:14:25,567 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-56871.pdf
+[INFO] 2026-04-10 20:14:25,775 - vbp_processing - Invoking Clinical Auditor for: 38622643_fulltext.xml
+[INFO] 2026-04-10 20:14:25,905 - vbp_processing - Invoking Clinical Auditor for: 37436254_fulltext.xml
+[INFO] 2026-04-10 20:14:26,004 - vbp_processing - Invoking Clinical Auditor for: Siewersetal2013.pdf
+[INFO] 2026-04-10 20:14:26,118 - vbp_processing - Invoking ClinicalTaxonomist for: 38762656_fulltext.xml
+[INFO] 2026-04-10 20:14:26,747 - vbp_processing - Invoking Clinical Auditor for: 35636801_fulltext.xml
+[INFO] 2026-04-10 20:14:26,885 - vbp_processing - Invoking Clinical Auditor for: 38805448_fulltext.xml
+[INFO] 2026-04-10 20:14:26,961 - vbp_processing - Invoking ClinicalTaxonomist for: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 20:14:27,099 - vbp_processing - Invoking ClinicalTaxonomist for: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 20:14:27,671 - vbp_processing - Invoking ClinicalTaxonomist for: CD011776.pdf
+[INFO] 2026-04-10 20:14:27,895 - vbp_processing - Invoking ClinicalTaxonomist for: 40077653_fulltext.xml
+[INFO] 2026-04-10 20:14:28,922 - vbp_processing - Invoking Clinical Auditor for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 20:14:29,055 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 20:14:29,217 - vbp_processing - Invoking Clinical Auditor for: 37837507_fulltext.xml
+[INFO] 2026-04-10 20:14:29,432 - vbp_processing - Invoking ClinicalTaxonomist for: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 20:14:29,657 - vbp_processing - Invoking Clinical Auditor for: 38415696_fulltext.xml
+[INFO] 2026-04-10 20:14:29,895 - vbp_processing - Invoking ClinicalTaxonomist for: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 20:14:30,294 - vbp_processing - Invoking Clinical Auditor for: 40245393_fulltext.xml
+[INFO] 2026-04-10 20:14:30,649 - vbp_processing - Invoking Clinical Auditor for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 20:14:31,090 - vbp_processing - Invoking ClinicalTaxonomist for: CD004427.pdf
+[INFO] 2026-04-10 20:14:31,371 - vbp_processing - Invoking Clinical Auditor for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 20:14:31,544 - vbp_processing - Invoking Clinical Auditor for: 38345764_fulltext.xml
+[INFO] 2026-04-10 20:14:31,723 - vbp_processing - Invoking Clinical Auditor for: pdf-export-57942.pdf
+[INFO] 2026-04-10 20:14:31,795 - vbp_processing - Invoking Clinical Auditor for: 37610446_fulltext.xml
+[INFO] 2026-04-10 20:14:31,918 - vbp_processing - No findings identified in document: pdf-export-51157.pdf
+[INFO] 2026-04-10 20:14:32,195 - vbp_processing - Invoking ClinicalTaxonomist for: 36008057_fulltext.xml
+[INFO] 2026-04-10 20:14:32,627 - vbp_processing - Invoking Clinical Auditor for: 40649976_fulltext.xml
+[INFO] 2026-04-10 20:14:32,712 - vbp_processing - Invoking ClinicalTaxonomist for: 33546507_fulltext.xml
+[INFO] 2026-04-10 20:14:32,862 - vbp_processing - Invoking ClinicalTaxonomist for: 37436254_fulltext.xml
+[INFO] 2026-04-10 20:14:33,019 - vbp_processing - Invoking ClinicalTaxonomist for: CD004157.pdf
+[INFO] 2026-04-10 20:14:33,023 - vbp_processing - Document processing success: 36341104_fulltext.xml
+[INFO] 2026-04-10 20:14:33,344 - vbp_processing - Invoking ClinicalTaxonomist for: 37254833_fulltext.xml
+[INFO] 2026-04-10 20:14:33,601 - vbp_processing - Invoking Clinical Auditor for: 39037980_fulltext.xml
+[INFO] 2026-04-10 20:14:33,850 - vbp_processing - Invoking ClinicalTaxonomist for: CD011005.pdf
+[INFO] 2026-04-10 20:14:34,054 - vbp_processing - Invoking ClinicalTaxonomist for: 36414305_fulltext.xml
+[INFO] 2026-04-10 20:14:34,245 - vbp_processing - Invoking Clinical Auditor for: 40725930_fulltext.xml
+[INFO] 2026-04-10 20:14:34,583 - vbp_processing - Invoking ClinicalTaxonomist for: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 20:14:35,144 - vbp_processing - Invoking ClinicalTaxonomist for: 38622643_fulltext.xml
+[INFO] 2026-04-10 20:14:35,279 - vbp_processing - Invoking ClinicalTaxonomist for: CD011742.pdf
+[INFO] 2026-04-10 20:14:35,428 - vbp_processing - Document processing success: 38334254_fulltext.xml
+[INFO] 2026-04-10 20:14:35,607 - vbp_processing - Invoking ClinicalTaxonomist for: 38805448_fulltext.xml
+[INFO] 2026-04-10 20:14:35,611 - vbp_processing - Invoking Clinical Auditor for: 40091916_fulltext.xml
+[INFO] 2026-04-10 20:14:35,820 - vbp_processing - Invoking ClinicalTaxonomist for: Siewersetal2013.pdf
+[INFO] 2026-04-10 20:14:36,096 - vbp_processing - Document processing success: 40488544_fulltext.xml
+[INFO] 2026-04-10 20:14:36,309 - vbp_processing - Invoking Clinical Auditor for: 39520111_fulltext.xml
+[INFO] 2026-04-10 20:14:36,418 - vbp_processing - Document processing success: 250-254.pdf
+[INFO] 2026-04-10 20:14:36,603 - vbp_orchestrator - *** Overall Progress: 15/96 processed (7 success) ***
+[INFO] 2026-04-10 20:14:36,608 - vbp_processing - Invoking Clinical Auditor for: 38517530_fulltext.xml
+[INFO] 2026-04-10 20:14:36,812 - vbp_processing - Invoking ClinicalTaxonomist for: 38415696_fulltext.xml
+[INFO] 2026-04-10 20:14:37,341 - vbp_processing - Invoking Clinical Auditor for: 40560475_fulltext.xml
+[INFO] 2026-04-10 20:14:37,512 - vbp_processing - Document processing success: CD004030.pdf
+[INFO] 2026-04-10 20:14:37,680 - vbp_processing - Invoking ClinicalTaxonomist for: 39075493_fulltext.xml
+[INFO] 2026-04-10 20:14:37,958 - vbp_processing - Invoking ClinicalTaxonomist for: 38345764_fulltext.xml
+[INFO] 2026-04-10 20:14:38,460 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-57787.pdf
+[INFO] 2026-04-10 20:14:38,597 - vbp_processing - Invoking Clinical Auditor for: 41073116_fulltext.xml
+[INFO] 2026-04-10 20:14:38,680 - vbp_processing - Invoking ClinicalTaxonomist for: 35636801_fulltext.xml
+[INFO] 2026-04-10 20:14:39,580 - vbp_processing - Invoking Clinical Auditor for: CD005226.pdf
+[INFO] 2026-04-10 20:14:39,954 - vbp_processing - Invoking Clinical Auditor for: pdf-export-51330.pdf
+[INFO] 2026-04-10 20:14:40,167 - vbp_processing - Invoking Clinical Auditor for: 40470490_fulltext.xml
+[INFO] 2026-04-10 20:14:40,418 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-57942.pdf
+[INFO] 2026-04-10 20:14:41,744 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-62504.pdf
+[INFO] 2026-04-10 20:14:41,882 - vbp_processing - Invoking ClinicalTaxonomist for: 40273110_fulltext.xml
+[INFO] 2026-04-10 20:14:41,885 - vbp_processing - Invoking ClinicalTaxonomist for: 40091916_fulltext.xml
+[INFO] 2026-04-10 20:14:42,158 - vbp_processing - Invoking ClinicalTaxonomist for: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 20:14:42,168 - vbp_processing - Invoking Clinical Auditor for: artikel_13034.pdf
+[INFO] 2026-04-10 20:14:42,284 - vbp_processing - Document processing success: intramuscular-diaphragm-stimulation-for-ventilatordependent-chronic-respiratory-failure-caused-by-motor-neurone-disease-pdf-1809594286719685.pdf
+[INFO] 2026-04-10 20:14:42,499 - vbp_processing - Invoking Clinical Auditor for: 35235032_fulltext.xml
+[INFO] 2026-04-10 20:14:42,762 - vbp_processing - Document processing success: Edinburgh_Cognitive_Behavioural_ALS_Screen.pdf
+[INFO] 2026-04-10 20:14:43,020 - vbp_processing - Document processing success: pdf2006--3297-9.pdf
+[INFO] 2026-04-10 20:14:43,237 - vbp_processing - Invoking ClinicalTaxonomist for: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 20:14:43,422 - vbp_processing - Invoking ClinicalTaxonomist for: 37837507_fulltext.xml
+[INFO] 2026-04-10 20:14:43,423 - vbp_processing - Invoking Clinical Auditor for: 33530383_fulltext.xml
+[INFO] 2026-04-10 20:14:43,740 - vbp_processing - Invoking ClinicalTaxonomist for: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 20:14:43,928 - vbp_processing - Invoking ClinicalTaxonomist for: 40245393_fulltext.xml
+[INFO] 2026-04-10 20:14:44,184 - vbp_processing - Invoking ClinicalTaxonomist for: 40725930_fulltext.xml
+[INFO] 2026-04-10 20:14:44,204 - vbp_processing - Invoking Clinical Auditor for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 20:14:44,543 - vbp_processing - Invoking ClinicalTaxonomist for: 39037980_fulltext.xml
+[INFO] 2026-04-10 20:14:44,550 - vbp_processing - Invoking Clinical Auditor for: CD007593.pdf
+[INFO] 2026-04-10 20:14:44,974 - vbp_processing - Invoking Clinical Auditor for: 40563772_fulltext.xml
+[INFO] 2026-04-10 20:14:45,173 - vbp_processing - Invoking ClinicalTaxonomist for: 39520111_fulltext.xml
+[INFO] 2026-04-10 20:14:45,396 - vbp_processing - Invoking ClinicalTaxonomist for: 41073116_fulltext.xml
+[INFO] 2026-04-10 20:14:45,401 - vbp_processing - Invoking ClinicalTaxonomist for: 39375842_fulltext.xml
+[WARNING] 2026-04-10 20:14:45,710 - vbp_processing - [Quality Guard] Dropped low-quality finding in 40649976_fulltext.xml: Nedsatt evne til å håndtere daglige gjøremål og ivareta egen personlig hygiene på grunn av svikt i oppmerksomhet og eksekutive funksjoner. (Score: 4.7)
+[INFO] 2026-04-10 20:14:45,712 - vbp_processing - Invoking ClinicalTaxonomist for: 40649976_fulltext.xml
+[INFO] 2026-04-10 20:14:45,723 - vbp_processing - Document processing success: 36875937_fulltext.xml
+[INFO] 2026-04-10 20:14:46,179 - vbp_orchestrator - *** Overall Progress: 20/96 processed (12 success) ***
+[INFO] 2026-04-10 20:14:46,254 - vbp_processing - Document processing success: CD005229.pdf
+[INFO] 2026-04-10 20:14:46,437 - vbp_processing - Invoking ClinicalTaxonomist for: 37610446_fulltext.xml
+[INFO] 2026-04-10 20:14:46,603 - vbp_processing - Document processing success: 32903629_fulltext.xml
+[INFO] 2026-04-10 20:14:46,791 - vbp_processing - Invoking ClinicalTaxonomist for: 38517530_fulltext.xml
+[INFO] 2026-04-10 20:14:46,983 - vbp_processing - Document processing success: 36834005_fulltext.xml
+[INFO] 2026-04-10 20:14:47,166 - vbp_processing - Invoking ClinicalTaxonomist for: CD005226.pdf
+[INFO] 2026-04-10 20:14:47,531 - vbp_processing - Document processing success: pdf-export-56871.pdf
+[INFO] 2026-04-10 20:14:47,752 - vbp_processing - Invoking Clinical Auditor for: pdf-export-49038.pdf
+[INFO] 2026-04-10 20:14:48,053 - vbp_processing - Document processing success: CD006981.pdf
+[INFO] 2026-04-10 20:14:48,230 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-51330.pdf
+[INFO] 2026-04-10 20:14:48,230 - vbp_orchestrator - *** Overall Progress: 25/96 processed (17 success) ***
+[INFO] 2026-04-10 20:14:48,367 - vbp_processing - Document processing success: 32910255_fulltext.xml
+[INFO] 2026-04-10 20:14:48,543 - vbp_processing - Document processing success: Råd om kosthold ved ulike diagnoser og sykdomstilstander.pdf
+[INFO] 2026-04-10 20:14:49,352 - vbp_processing - Document processing success: pdf-export-61011.pdf
+[INFO] 2026-04-10 20:14:49,708 - vbp_processing - Invoking ClinicalTaxonomist for: 40560475_fulltext.xml
+[INFO] 2026-04-10 20:14:49,853 - vbp_processing - Invoking ClinicalTaxonomist for: 40470490_fulltext.xml
+[INFO] 2026-04-10 20:14:50,094 - vbp_processing - Document processing success: 38762656_fulltext.xml
+[INFO] 2026-04-10 20:14:50,314 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml
+[INFO] 2026-04-10 20:14:50,402 - vbp_processing - Invoking ClinicalTaxonomist for: 35235032_fulltext.xml
+[INFO] 2026-04-10 20:14:50,957 - vbp_processing - Document processing success: 37436254_fulltext.xml
+[INFO] 2026-04-10 20:14:51,118 - vbp_orchestrator - *** Overall Progress: 30/96 processed (22 success) ***
+[INFO] 2026-04-10 20:14:51,144 - vbp_processing - Invoking ClinicalTaxonomist for: artikel_13034.pdf
+[INFO] 2026-04-10 20:14:51,371 - vbp_processing - Document processing success: 38805448_fulltext.xml
+[INFO] 2026-04-10 20:14:51,952 - vbp_processing - Invoking ClinicalTaxonomist for: pdf2009--628-31.pdf
+[INFO] 2026-04-10 20:14:52,182 - vbp_processing - Document processing success: pdf2006--2520-2.pdf
+[INFO] 2026-04-10 20:14:52,362 - vbp_processing - Document processing success: Pårørendes oplevelser af livsforlængende behandling til mennesker med ALS _ dsr.dk.pdf
+[INFO] 2026-04-10 20:14:52,544 - vbp_processing - Document processing success: 33546507_fulltext.xml
+[INFO] 2026-04-10 20:14:52,963 - vbp_processing - Invoking Clinical Auditor for: 33251776_fulltext.xml
+[INFO] 2026-04-10 20:14:53,386 - vbp_processing - Document processing success: 36008057_fulltext.xml
+[INFO] 2026-04-10 20:14:53,551 - vbp_orchestrator - *** Overall Progress: 35/96 processed (27 success) ***
+[INFO] 2026-04-10 20:14:53,749 - vbp_processing - Invoking Clinical Auditor for: 40802439_fulltext.xml
+[INFO] 2026-04-10 20:14:54,211 - vbp_processing - Document processing success: 40077653_fulltext.xml
+[INFO] 2026-04-10 20:14:54,388 - vbp_processing - Document processing success: 36414305_fulltext.xml
+[INFO] 2026-04-10 20:14:54,660 - vbp_processing - Invoking Clinical Auditor for: 38870470_fulltext.xml
+[INFO] 2026-04-10 20:14:54,789 - vbp_processing - Document processing success: 35898325_fulltext.xml
+[INFO] 2026-04-10 20:14:54,961 - vbp_processing - Invoking ClinicalTaxonomist for: CD007593.pdf
+[INFO] 2026-04-10 20:14:55,173 - vbp_processing - Document processing success: 38415696_fulltext.xml
+[INFO] 2026-04-10 20:14:55,342 - vbp_processing - Invoking ClinicalTaxonomist for: 33530383_fulltext.xml
+[INFO] 2026-04-10 20:14:55,483 - vbp_processing - Document processing success: 35636801_fulltext.xml
+[INFO] 2026-04-10 20:14:55,649 - vbp_orchestrator - *** Overall Progress: 40/96 processed (32 success) ***
+[INFO] 2026-04-10 20:14:56,251 - vbp_processing - Document processing success: motor-neurone-disease-pdf-3060858249925.pdf
+[INFO] 2026-04-10 20:14:56,406 - vbp_processing - Document processing success: 38345764_fulltext.xml
+[INFO] 2026-04-10 20:14:56,543 - vbp_processing - Invoking ClinicalTaxonomist for: 40563772_fulltext.xml
+[INFO] 2026-04-10 20:14:56,685 - vbp_processing - Invoking ClinicalTaxonomist for: pdf-export-49038.pdf
+[INFO] 2026-04-10 20:14:56,851 - vbp_processing - Document processing success: rapport-del-1_2012_langtids_mekanisk_ventilasjon.pdf
+[INFO] 2026-04-10 20:14:57,068 - vbp_processing - Document processing success: Siewersetal2013.pdf
+[INFO] 2026-04-10 20:14:57,824 - vbp_processing - Document processing success: 37254833_fulltext.xml
+[INFO] 2026-04-10 20:14:57,966 - vbp_orchestrator - *** Overall Progress: 45/96 processed (37 success) ***
+[INFO] 2026-04-10 20:14:58,922 - vbp_processing - Invoking Clinical Auditor for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 20:14:59,276 - vbp_processing - Invoking ClinicalTaxonomist for: 35309870_fulltext.xml
+[INFO] 2026-04-10 20:14:59,933 - vbp_processing - Document processing success: 36995270_fulltext.xml
+[INFO] 2026-04-10 20:15:00,309 - vbp_processing - Document processing success: pdf2006--2523-5.pdf
+[INFO] 2026-04-10 20:15:00,489 - vbp_processing - Document processing success: CD011005.pdf
+[INFO] 2026-04-10 20:15:00,743 - vbp_processing - Document processing success: CD004157.pdf
+[INFO] 2026-04-10 20:15:00,893 - vbp_processing - Document processing success: CD011776.pdf
+[INFO] 2026-04-10 20:15:01,028 - vbp_orchestrator - *** Overall Progress: 50/96 processed (42 success) ***
+[INFO] 2026-04-10 20:15:01,941 - vbp_processing - Document processing success: artikel_13034.pdf
+[INFO] 2026-04-10 20:15:02,600 - vbp_processing - Invoking ClinicalTaxonomist for: 38870470_fulltext.xml
+[INFO] 2026-04-10 20:15:03,954 - vbp_processing - Document processing success: pdf-export-62504.pdf
+[INFO] 2026-04-10 20:15:04,209 - vbp_processing - Invoking Clinical Auditor for: CD007593 (1).pdf
+[INFO] 2026-04-10 20:15:04,348 - vbp_processing - Document processing success: 40245393_fulltext.xml
+[INFO] 2026-04-10 20:15:04,603 - vbp_processing - Invoking ClinicalTaxonomist for: 40802439_fulltext.xml
+[INFO] 2026-04-10 20:15:04,782 - vbp_processing - Document processing success: 39037980_fulltext.xml
+[INFO] 2026-04-10 20:15:05,142 - vbp_processing - Document processing success: 40273110_fulltext.xml
+[INFO] 2026-04-10 20:15:05,277 - vbp_orchestrator - *** Overall Progress: 55/96 processed (47 success) ***
+[INFO] 2026-04-10 20:15:05,406 - vbp_processing - Invoking Clinical Auditor for: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 20:15:06,168 - vbp_processing - Document processing success: 38517530_fulltext.xml
+[INFO] 2026-04-10 20:15:06,314 - vbp_processing - Document processing success: CD004427.pdf
+[INFO] 2026-04-10 20:15:06,441 - vbp_processing - Invoking ClinicalTaxonomist for: 33251776_fulltext.xml
+[INFO] 2026-04-10 20:15:06,588 - vbp_processing - Document processing success: 40725930_fulltext.xml
+[INFO] 2026-04-10 20:15:06,750 - vbp_processing - Document processing success: 37837507_fulltext.xml
+[INFO] 2026-04-10 20:15:06,923 - vbp_processing - Document processing success: 34421792_fulltext.xml
+[INFO] 2026-04-10 20:15:07,069 - vbp_processing - Document processing success: CD005226.pdf
+[INFO] 2026-04-10 20:15:07,205 - vbp_processing - Document processing success: CD011742.pdf
+[INFO] 2026-04-10 20:15:07,442 - vbp_processing - Document processing success: 40091916_fulltext.xml
+[INFO] 2026-04-10 20:15:07,798 - vbp_processing - Invoking Clinical Auditor for: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 20:15:09,247 - vbp_processing - Invoking Clinical Auditor for: 40405710_fulltext.xml
+[INFO] 2026-04-10 20:15:09,435 - vbp_processing - Document processing success: 40560475_fulltext.xml
+[INFO] 2026-04-10 20:15:10,012 - vbp_processing - Invoking ClinicalTaxonomist for: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 20:15:10,469 - vbp_processing - Document processing success: pdf-export-57942.pdf
+[INFO] 2026-04-10 20:15:10,618 - vbp_orchestrator - *** Overall Progress: 65/96 processed (57 success) ***
+[INFO] 2026-04-10 20:15:10,783 - vbp_processing - Invoking Clinical Auditor for: 39182937_fulltext.xml
+[INFO] 2026-04-10 20:15:11,791 - vbp_processing - Document processing success: 35235032_fulltext.xml
+[INFO] 2026-04-10 20:15:11,954 - vbp_processing - Document processing success: 41073116_fulltext.xml
+[INFO] 2026-04-10 20:15:12,135 - vbp_processing - Document processing success: 37610446_fulltext.xml
+[INFO] 2026-04-10 20:15:12,437 - vbp_processing - Document processing success: 39520111_fulltext.xml
+[INFO] 2026-04-10 20:15:13,246 - vbp_processing - Document processing success: 38622643_fulltext.xml
+[INFO] 2026-04-10 20:15:13,386 - vbp_orchestrator - *** Overall Progress: 70/96 processed (62 success) ***
+[INFO] 2026-04-10 20:15:13,389 - vbp_processing - Document processing success: rapport_2016_als_litteratursok.pdf
+[INFO] 2026-04-10 20:15:14,383 - vbp_processing - Document processing success: pdf-export-57787.pdf
+[INFO] 2026-04-10 20:15:15,315 - vbp_processing - Invoking ClinicalTaxonomist for: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 20:15:15,761 - vbp_processing - Document processing success: motor-neurone-disease-assessment-and-management-pdf-1837449470149.pdf
+[INFO] 2026-04-10 20:15:15,923 - vbp_processing - Document processing success: martinsen-et-al-2024-work-aged-family-caregivers-experiences-in-severe-neurological-diseases-and-sustainability-in.pdf
+[INFO] 2026-04-10 20:15:17,336 - vbp_processing - Invoking ClinicalTaxonomist for: 40405710_fulltext.xml
+[INFO] 2026-04-10 20:15:17,473 - vbp_processing - Invoking ClinicalTaxonomist for: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 20:15:18,607 - vbp_processing - Document processing success: 39375842_fulltext.xml
+[INFO] 2026-04-10 20:15:18,733 - vbp_orchestrator - *** Overall Progress: 75/96 processed (67 success) ***
+[INFO] 2026-04-10 20:15:19,949 - vbp_processing - Document processing success: 33251776_fulltext.xml
+[INFO] 2026-04-10 20:15:20,261 - vbp_processing - Document processing success: 40470490_fulltext.xml
+[INFO] 2026-04-10 20:15:20,956 - vbp_processing - Document processing success: 38870470_fulltext.xml
+[INFO] 2026-04-10 20:15:21,816 - vbp_processing - Invoking ClinicalTaxonomist for: 39182937_fulltext.xml
+[INFO] 2026-04-10 20:15:21,959 - vbp_processing - Invoking ClinicalTaxonomist for: CD007593 (1).pdf
+[INFO] 2026-04-10 20:15:22,117 - vbp_processing - Document processing success: 33530383_fulltext.xml
+[INFO] 2026-04-10 20:15:22,871 - vbp_processing - Document processing success: Amyotrophic lateral sclerosis.pdf
+[INFO] 2026-04-10 20:15:22,994 - vbp_orchestrator - *** Overall Progress: 80/96 processed (72 success) ***
+[INFO] 2026-04-10 20:15:24,443 - vbp_processing - Document processing success: CD007593.pdf
+[INFO] 2026-04-10 20:15:25,458 - vbp_processing - Document processing success: pdf-export-49038.pdf
+[INFO] 2026-04-10 20:15:26,662 - vbp_processing - Document processing success: 40563772_fulltext.xml
+[INFO] 2026-04-10 20:15:32,081 - vbp_processing - Document processing success: pdf2009--628-31.pdf
+[INFO] 2026-04-10 20:15:35,016 - vbp_processing - Document processing success: ALS - Socialstyrelsen.pdf
+[INFO] 2026-04-10 20:15:35,137 - vbp_orchestrator - *** Overall Progress: 85/96 processed (77 success) ***
+[INFO] 2026-04-10 20:15:37,042 - vbp_processing - Document processing success: 35309870_fulltext.xml
+[INFO] 2026-04-10 20:15:37,327 - vbp_processing - Document processing success: 40802439_fulltext.xml
+[INFO] 2026-04-10 20:15:42,278 - vbp_processing - Invoking Clinical Auditor for: CD006049.pdf
+[INFO] 2026-04-10 20:15:43,910 - vbp_processing - Document processing success: 39075493_fulltext.xml
+[INFO] 2026-04-10 20:15:45,937 - vbp_processing - Document processing success: pdf-export-51330.pdf
+[INFO] 2026-04-10 20:15:46,760 - vbp_processing - Document processing success: ALS (amyotrofisk lateral sklerose).pdf
+[INFO] 2026-04-10 20:15:46,888 - vbp_orchestrator - *** Overall Progress: 90/96 processed (82 success) ***
+[INFO] 2026-04-10 20:15:48,835 - vbp_processing - Document processing success: CD007593 (1).pdf
+[INFO] 2026-04-10 20:15:51,255 - vbp_processing - Document processing success: 39182937_fulltext.xml
+[INFO] 2026-04-10 20:15:51,422 - vbp_processing - Invoking ClinicalTaxonomist for: CD006049.pdf
+[INFO] 2026-04-10 20:15:53,063 - vbp_processing - Document processing success: motor-neurone-disease-pdf-75545361935557.pdf
+[INFO] 2026-04-10 20:15:58,554 - vbp_processing - Document processing success: 40405710_fulltext.xml
+[INFO] 2026-04-10 20:16:15,123 - vbp_processing - Document processing success: 40649976_fulltext.xml
+[INFO] 2026-04-10 20:16:15,246 - vbp_orchestrator - *** Overall Progress: 95/96 processed (87 success) ***
+[INFO] 2026-04-10 20:16:21,094 - vbp_processing - Document processing success: CD006049.pdf
+[INFO] 2026-04-10 20:16:21,214 - vbp_orchestrator - *** Overall Progress: 96/96 processed (88 success) ***
+[INFO] 2026-04-10 20:16:21,214 - vbp_orchestrator - Consolidating 88 successful documents and 8 excluded documents.
+[INFO] 2026-04-10 20:16:21,218 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-10 20:16:21,238 - test_workflow - --- Final Synthesis Complete ---
+[INFO] 2026-04-10 20:16:21,238 - test_workflow - Generating HTML Report...
+[INFO] 2026-04-10 20:16:21,494 - test_workflow - HTML Report generated successfully.

@@ -12,7 +12,12 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 from app.agents.clinical_taxonomist.agent import create_combined_taxonomist
-from app.shared.models import FunctionalAreaResponse, IcnpMappingResponse
+from app.shared.models import (
+    DiagnosisMappingResponse,
+    FunctionalAreaResponse,
+    GoalMappingResponse,
+    InterventionMappingResponse,
+)
 from app.shared.processing import load_valid_icnp_ids, safe_parse_json
 
 # A selection of challenging, highly specific raw findings from the VBP run
@@ -80,7 +85,9 @@ async def test_taxonomist_mapping_accuracy():
     # Run the agent
     print(f"\nSending {len(TEST_FINDINGS)} complex findings to ClinicalTaxonomist...")
 
-    icnp_mappings = None
+    icnp_diag_mappings = None
+    icnp_int_mappings = None
+    icnp_goal_mappings = None
     functional_areas = None
 
     async for ev in taxonomist.run_async(ctx):
@@ -90,32 +97,42 @@ async def test_taxonomist_mapping_accuracy():
                 print(f"\n[ERROR] Failed to parse JSON from {ev.author}. Raw output:\n{ev.content.parts[0].text if ev.content and ev.content.parts else 'Empty'}")
                 continue
 
-            if ev.author == "icnp_mapper":
-                icnp_mappings = IcnpMappingResponse.model_validate(data_dict)
+            if ev.author == "diagnosis_taxonomist":
+                icnp_diag_mappings = DiagnosisMappingResponse.model_validate(data_dict)
+            elif ev.author == "intervention_taxonomist":
+                icnp_int_mappings = InterventionMappingResponse.model_validate(data_dict)
+            elif ev.author == "goal_taxonomist":
+                icnp_goal_mappings = GoalMappingResponse.model_validate(data_dict)
             elif ev.author == "fo_classifier":
                 functional_areas = FunctionalAreaResponse.model_validate(data_dict)
 
     # 1. Assert Responses Exist
-    assert icnp_mappings is not None, "Taxonomist failed to return ICNP mappings."
-    assert functional_areas is not None, "Taxonomist failed to return FO classifications."
-    assert len(icnp_mappings.results) == len(TEST_FINDINGS), "Did not return a mapping for every finding."
+    assert icnp_diag_mappings is not None, "DiagnosisTaxonomist failed."
+    assert icnp_int_mappings is not None, "InterventionTaxonomist failed."
+    assert icnp_goal_mappings is not None, "GoalTaxonomist failed."
+    assert functional_areas is not None, "FO classifier failed."
 
-    # 2. Assert ICNP IDs are VALID (This is the bug we are fixing)
+    # 2. Assert ICNP IDs are VALID
     valid_icnp_ids = load_valid_icnp_ids()
 
-    success_count = 0
-    for result in icnp_mappings.results:
-        diag_id = result.nursing_diagnosis.ICNP_concept_id if result.nursing_diagnosis else ""
-        interv_id = result.intervention.ICNP_concept_id if result.intervention else ""
+    # Stitch results for assertion
+    diag_lookup = {res.finding_id: res.nursing_diagnosis for res in icnp_diag_mappings.results}
+    int_lookup = {res.finding_id: res.intervention for res in icnp_int_mappings.results}
 
-        print(f"\nFinding ID: {result.finding_id}")
+    success_count = 0
+    for finding in TEST_FINDINGS:
+        f_id = finding["finding_id"]
+        diag = diag_lookup.get(f_id)
+        interv = int_lookup.get(f_id)
+
+        diag_id = diag.ICNP_concept_id if diag else ""
+        interv_id = interv.ICNP_concept_id if interv else ""
+
+        print(f"\nFinding ID: {f_id}")
         print(f"  Diagnosis Mapped ID: '{diag_id}'")
         print(f"  Intervention Mapped ID: '{interv_id}'")
 
-        # The core assertion: The LLM must not return an empty ID or a hallucinated ID for the diagnosis
-        assert diag_id != "", f"Failed to map a diagnosis for finding {result.finding_id}"
-        assert diag_id in valid_icnp_ids, f"Hallucinated Diagnosis ID: {diag_id} for finding {result.finding_id}"
-
+        assert diag_id != "", f"Failed to map diagnosis for {f_id}"
+        assert diag_id in valid_icnp_ids, f"Hallucinated diag ID for {f_id}"
         success_count += 1
-
     print(f"\n✅ SUCCESS: {success_count}/{len(TEST_FINDINGS)} findings successfully mapped to valid ICNP IDs.")

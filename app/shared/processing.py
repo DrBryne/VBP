@@ -28,10 +28,12 @@ from app.shared.models import (
     AuditorResponse,
     ClinicalFinding,
     ClinicalFindingsResponse,
+    DiagnosisMappingResponse,
     Document,
     ExcludedDocument,
     FunctionalAreaResponse,
-    IcnpMappingResponse,
+    GoalMappingResponse,
+    InterventionMappingResponse,
     MappedTerm,
     MetadataResponse,
     ProcessedDocument,
@@ -511,8 +513,12 @@ async def process_document_pipeline(
                     if not data_dict:
                         continue
                     try:
-                        if ev.author == "clinical_taxonomist":
-                            doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
+                        if ev.author == "diagnosis_taxonomist":
+                            doc_session.state["diagnosis_mappings"] = DiagnosisMappingResponse.model_validate(data_dict)
+                        elif ev.author == "intervention_taxonomist":
+                            doc_session.state["intervention_mappings"] = InterventionMappingResponse.model_validate(data_dict)
+                        elif ev.author == "goal_taxonomist":
+                            doc_session.state["goal_mappings"] = GoalMappingResponse.model_validate(data_dict)
                         elif ev.author == "fo_classifier":
                             doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
                     except Exception as e:
@@ -526,22 +532,24 @@ async def process_document_pipeline(
             await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {e})")
             return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
 
-        icnp_mappings: IcnpMappingResponse = doc_session.state.get("icnp_mappings")
+        diag_mappings: DiagnosisMappingResponse = doc_session.state.get("diagnosis_mappings")
+        int_mappings: InterventionMappingResponse = doc_session.state.get("intervention_mappings")
+        goal_mappings: GoalMappingResponse = doc_session.state.get("goal_mappings")
         functional_areas: FunctionalAreaResponse = doc_session.state.get("functional_areas")
+
         if not functional_areas:
             async with state_lock:
                 progress_state.completed += 1
                 progress_state.failed += 1
-            logger.error(f"Mapper incomplete for: {filename}")
-            await progress_queue.put(f"DONE: {filename} (MAPPER INCOMPLETE)")
+            logger.error(f"Taxonomist incomplete for: {filename}")
+            await progress_queue.put(f"DONE: {filename} (TAXONOMIST INCOMPLETE)")
             return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="The document content was unexpected or incompatible with the standardized clinical mapping terminology.")
 
-        icnp_lookup = {res.finding_id: res for res in icnp_mappings.results} if icnp_mappings else {}
-        fo_lookup = {res.finding_id: res.FO for res in functional_areas.results}
-
-        # 7. Validate Taxonomy
+        # 9. Validate Taxonomy
         logger.debug(f"Validating taxonomy for: {filename}")
-        processed_findings, taxonomy_error_count = validate_taxonomy(finding_map, icnp_lookup, fo_lookup, doc_id_val, filename, progress_state, state_lock)
+        processed_findings, taxonomy_error_count = validate_taxonomy(
+            finding_map, diag_mappings, int_mappings, goal_mappings, functional_areas, doc_id_val, filename, progress_state, state_lock
+        )
         if taxonomy_error_count > 0:
             async with state_lock:
                 progress_state.total_taxonomy_errors += taxonomy_error_count
@@ -572,8 +580,10 @@ async def process_document_pipeline(
 
 def validate_taxonomy(
     finding_map: dict[str, tuple[ClinicalFinding, AuditorRating | None, float]],
-    icnp_lookup: dict,
-    fo_lookup: dict,
+    diag_mappings: DiagnosisMappingResponse,
+    int_mappings: InterventionMappingResponse,
+    goal_mappings: GoalMappingResponse,
+    fo_mappings: FunctionalAreaResponse,
     doc_id: str,
     filename: str,
     progress_state: WorkflowProgress,
@@ -601,13 +611,15 @@ def validate_taxonomy(
     processed_findings = []
     taxonomy_error_count = 0
 
+    # Create lookups for the three split streams
+    diag_lookup = {res.finding_id: res.nursing_diagnosis for res in diag_mappings.results} if diag_mappings else {}
+    int_lookup = {res.finding_id: res.intervention for res in int_mappings.results} if int_mappings else {}
+    goal_lookup = {res.finding_id: res.goal for res in goal_mappings.results} if goal_mappings else {}
+    fo_lookup = {res.finding_id: res.FO for res in fo_mappings.results} if fo_mappings else {}
+
     logger.debug(f"Validating taxonomy for {len(finding_map)} findings in {filename}")
     for f_id, (original, auditor_rating, quality_score) in finding_map.items():
-        icnp_match = icnp_lookup.get(f_id)
         fo_val = fo_lookup.get(f_id, get_default_fo())
-
-        # FO is now validated by Pydantic Enum in the mapper, so we don't need manual check here
-        # but we use get_default_fo() as a safe fallback for the dict lookup above.
 
         def resolve(orig_val, mapping_field, field_name, current_f_id=f_id):
             nonlocal taxonomy_error_count
@@ -630,17 +642,20 @@ def validate_taxonomy(
             intervention=original.intervention,
             goal=original.goal,
             supporting_sentence_ids=original.supporting_sentence_ids,
+            recommendation_strength=original.recommendation_strength,
+            evidence_grade=original.evidence_grade,
+            grade_sentence_ids=original.grade_sentence_ids,
             clinical_specificity=original.clinical_specificity,
             actionability_score=original.actionability_score,
             quotes=original.quotes,
-            mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, icnp_match.nursing_diagnosis if icnp_match else None, "nursing_diagnosis"),
-            mapped_intervention=resolve(original.intervention, icnp_match.intervention if icnp_match else None, "intervention"),
-            mapped_goal=resolve(original.goal, icnp_match.goal if icnp_match else None, "goal"),
+            grade_quotes=original.grade_quotes,
+            mapped_nursing_diagnosis=resolve(original.nursing_diagnosis, diag_lookup.get(f_id), "nursing_diagnosis"),
+            mapped_intervention=resolve(original.intervention, int_lookup.get(f_id), "intervention"),
+            mapped_goal=resolve(original.goal, goal_lookup.get(f_id), "goal"),
             FO=fo_val,
             auditor_rating=auditor_rating,
             weighted_quality_score=quality_score
         ))
-
     if taxonomy_error_count > 0:
         logger.info(f"Taxonomy validation complete for {filename}: {taxonomy_error_count} errors corrected.", filename=filename)
 

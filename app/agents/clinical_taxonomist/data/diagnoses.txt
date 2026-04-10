@@ -1,0 +1,703 @@
+ID|Term_EN|Term_NO
+225999004|At increased risk of deep vein thrombosis (finding)|risiko for djup venetrombose
+714884000|Difficulty transferring location (finding)|vansker med forflytning
+22791000175108|At increased risk of intimate partner violence (finding)|risiko for mishandling fra intimpartner
+213148006|Transplanted organ rejection (disorder)|avstøtning av transplantert organ
+17226007|Adjustment disorder (disorder)|tilpassingsforstyrring
+371754007|Discharge planning (procedure)|planlegging av utskriving
+443903000|Extravasation of lymph onto skin (disorder)|lymfelekkasje til hud
+704351003|At increased risk of impaired family coping (finding)|risiko for svekket familiemestring
+422650009|Social isolation (finding)|sosial isolasjon
+82971005|Impaired mobility (finding)|nedsett mobilitet
+704421005|At increased risk of coping impairment (finding)|risiko for mestringssvikt
+386661006|Fever (finding)|feber
+397878005|Overflow incontinence of urine (finding)|overløpsinkontinens
+419635000|Surgical wound finding (finding)|funn om operasjonssår
+423754004|Difficulty with caretaking responsibilities (finding)|vansker med omsorgsgiveransvar
+714664001|At increased risk of ulcer of foot due to diabetes mellitus (finding)|risiko for diabetisk fotsår
+377411000202103|Need for management of belief, values and spiritual needs (finding)|behov for ivaretakelse av livssyn, verdier og eksistensielle behov
+704416007|At increased risk of negative response to patient controlled analgesia (finding)|risiko for negativ respons på pasientstyrt analgesi
+58424009|Overeating (finding)|overeting
+286688002|Splitting - mental defense mechanism (finding)|splitting - psykisk forsvarsmekanisme
+126946000|Excessive cerumen in ear canal (disorder)|opphoping av øyrevoks i øyregang
+288939007|Difficulty swallowing (finding)|svelgevansker
+129701007|At increased risk for spiritual distress (finding)|risiko for eksistensiell krise
+131145007|Altered immunity (finding)|endret immunitet
+238131007|Overweight (finding)|overvektig
+704662005|Noncompliance with exercise regimen (finding)|etterlever ikke treningsopplegg
+85949006|Euphoria (finding)|eufori
+306741005|Poor manual dexterity (finding)|nedsett finmotorikk i hand
+80954004|Decreased respiratory function (finding)|redusert respiratorisk funksjon
+66590003|Alcohol dependence (disorder)|alkoholavhengnad
+225943002|At increased risk of cross-infection (finding)|risiko for kryssinfeksjon
+704489009|Lack of family support (finding)|manglende pårørendestøtte
+704681002|At increased risk of negative quality of life (finding)|risiko for negativ livskvalitet
+284670008|Nutritionally compromised (finding)|svekt ernæringsstatus
+704370008|Impairment of infant development (finding)|nedsett spedbarnsutvikling
+363681007|Pregnancy with abortive outcome (disorder)|svangerskap som blir avslutta med spontan eller provosert abort
+425022003|Inadequate social support (finding)|utilstrekkeleg sosial støtte
+301822002|Abnormal vaginal bleeding (finding)|unormal vaginalblødning
+704363008|At increased risk of impaired infant development (finding)|risiko for forseinka spedbarnsutvikling
+2472002|Anuria (finding)|anuri
+277843001|Problem behavior (finding)|problemåtferd
+406161008|Alteration in parenting (finding)|endring i foreldreskap
+698247007|Cardiac arrhythmia (disorder)|hjartearytmi
+413588007|At increased risk for dysfunctional grieving (finding)|risiko for dysfunksjonell sorg
+284778005|Difficulty performing personal care activity (finding)|vanskar med utføring av eigenomsorg
+705045007|Difficulty participating in care planning (finding)|vanskar med å delta i planlegging av helsehjelp
+48867003|Bradycardia (finding)|bradykardi
+409032006|Perioperative positioning injury (disorder)|perioperativ leiringsskade
+247404004|Allodynia (finding)|allodyni
+704402002|Deficient knowledge of physical therapy (finding)|mangelfull kunnskap om fysioterapi
+416909000|Impaired psychomotor performance (finding)|nedsett psykomotorisk funksjon
+32000005|Difficulty using verbal communication (finding)|vansker med å kommunisere verbalt
+289159000|Thirst finding (finding)|funn om tørste
+1269553009|At increased risk for perinatal disorder (finding)|risiko for perinatal sykdom
+704423008|Fear of abandonment (finding)|redd for å bli forlaten
+130948000|Renal alteration (finding)|nyreforandring
+129711000|At increased risk for relocation stress syndrome (finding)|risiko for stressliding ved omplassering
+289116005|Difficulty coughing (finding)|vanskar med å hosta
+704406004|Deficient knowledge of symptom (finding)|mangelfull kunnskap om symptom
+129834002|Noncompliance with medication regimen (finding)|mangelfull etterlevelse av forskrevet medisin
+129829001|Ineffective community therapeutic regimen management (finding)|ineffektiv handtering av behandlingsregime på lokalt nivå
+409031004|At increased risk for perioperative injury (finding)|risiko for perioperativ skade
+300777006|Does not play (finding)|leikar ikkje
+409030003|Ineffective family coping (finding)|ineffektiv familiemeistring
+61578001|Abnormal digestive tract function (finding)|unormal fordøyelsesfunksjon
+65971000052100|Acute psychosis (disorder)|akutt psykose
+733741005|Impaired cardiovascular system function (finding)|nedsett kardiovaskulær funksjon
+7058009|Noncompliance with treatment (finding)|manglende etterlevelse av behandling
+713452008|Deficient knowledge of fetal development (finding)|mangelfull kunnskap om fosterutvikling
+1137438000|Pain due to arthritis (finding)|smerter forårsaket av artritt
+704302001|Lack of symptom control (finding)|manglande symptomkontroll
+160932005|Financial problem (finding)|økonomisk problem
+129832003|Noncompliance with dietary regimen (finding)|etterlever ikkje kosthaldsregime
+129872007|Socialization alteration (finding)|endret sosialisering
+68978004|Hyperventilation (finding)|hyperventilering
+1144748009|Impaired concentration (finding)|nedsett konsentrasjon
+32422007|Hemispatial neglect (finding)|neglekt
+440301000124106|Below expected growth rate (finding)|under forventet veksthastighet
+477521000202103|At increased risk of visual impairment (finding)|risiko for svekket syn
+477681000202101|Palliative phase of illness (finding)|palliativ fase
+77427003|Activity intolerance (finding)|aktivitetsintoleranse
+497611000202103|Deficient knowledge about health (finding)|mangelfull helsekunnskap
+300255008|Oral cavity problem (finding)|problem i munnhule
+457601000202105|At increased risk of disturbed dying process (finding)|risiko for forstyrra dødsprosess
+81935006|Family conflict (finding)|familiekonflikt
+578151000202105|Medical equipment problem (finding)|problem med medisinsk utstyr
+414285001|Allergy to food (finding)|matallergi
+1163215007|Pressure injury (disorder)|trykksår
+704304000|Impairment of child development (finding)|nedsatt utvikling hos barn
+70944005|Impaired gas exchange (finding)|svekt gassutveksling
+249481003|Finding of insufficient fluid intake (finding)|utilstrekkeleg væskeinntak
+67750007|Ineffective airway clearance (finding)|nedsatt evne til å holde luftveiene frie
+58126003|Postoperative wound infection (disorder)|postoperativ sårinfeksjon
+402294001|Chapping of lips (disorder)|tørr og/eller sprokken leppe
+23935006|Diversional activity deficit (finding)|mangel på avledende aktiviteter
+130971003|Disorganized infant response to environment (finding)|desorganisert atferd hos spedbarn
+129691005|At increased risk for constipation (finding)|risiko for obstipasjon
+248342006|Underweight (finding)|undervektig
+29738008|Proteinuria (finding)|protein i urin
+866240007|At increased risk of cerebrovascular accident (finding)|risiko for hjerneslag
+228153004|Personal hygiene disability (finding)|utfordring med å utføra personleg hygiene
+289084000|Difficulty performing breastfeeding (finding)|vansker med amming
+129900004|Cardiac output alteration (finding)|endra minuttvolum
+64581007|Postoperative nausea (disorder)|postoperativ kvalme
+129835001|Noncompliance with safety precautions (finding)|etterlever ikkje tryggingstiltak
+517861000202105|Need for multidisciplinary cooperation (finding)|behov for tverrfagleg samarbeid
+567621000202100|Lack of cooperation from family (situation)|manglende samarbeid fra pårørende
+105531004|Housing unsatisfactory (finding)|problem med dårlege buforhold
+715238005|At increased risk of electrolyte imbalance (finding)|risiko for forstyrring i elektrolyttbalanse
+271719001|Raised intracranial pressure (finding)|auka intrakranialt trykk
+409033001|Altered growth and development (finding)|endring i vekst og utvikling
+95933007|Neglected elder (finding)|utsatt for omsorgssvikt som eldre
+102946008|Abnormal sexual behavior (finding)|unormal seksuell åtferd
+129833008|Noncompliance with fluid volume regimen (finding)|etterlever ikkje væskeregime
+704344007|Conflicting attitude towards care (finding)|motstridande haldning til pleie
+82423001|Chronic pain (finding)|langvarige smerter
+130988005|Chronic confusion (finding)|kronisk forvirring
+130987000|Acute confusion (finding)|akutt forvirring
+409054008|Alteration in tissue perfusion (finding)|endring i vevsperfusjon
+704295007|At increased risk for depressed mood (finding)|risiko for depressivt stemningsleie
+42427004|At increased risk for suffocation (finding)|risiko for kveling
+588721000202105|At increased risk for infertility (finding)|risiko for infertilitet
+720824009|Victim of child neglect (finding)|utsett for omsorgssvikt som barn
+14461000202100|At increased risk for raised intracranial pressure (finding)|risiko for økt intrakranialt trykk
+1220761000202103|Uspesifisert forstyrrelse i urinveier eller kjønnsorganer etter kirurgiske eller medisinske prosedyrer [n99.9] (finding)|uspesifisert forstyrrelse i urinveier eller kjønnsorganer etter kirurgiske eller medisinske prosedyrer
+704356008|At increased risk of health care associated complication (finding)|risiko for helsetenesteassosiert komplikasjon
+271809000|Peripheral edema (disorder)|perifert ødem
+699653008|Inadequate oral food intake for physiological needs (finding)|utilstrekkelig peroralt matinntak
+33084007|Personal identity confusion (finding)|identitetsforvirring
+704366000|Inappropriate self disclosure (finding)|upassende grad av åpenhet om seg selv
+366979004|Depressed mood (finding)|depressivt stemningsleie
+129868008|Deficient knowledge of therapeutic regimen (finding)|mangelfull kunnskap om behandlingsregime
+361055000|Misuses drugs (finding)|misbruker legemiddel eller rusmiddel
+13331000202101|Difficulty balancing activity and rest (finding)|problem med aktivitetsbalanse
+706912001|Complication of health care (disorder)|komplikasjon til behandling
+129713002|At increased risk for powerlessness (finding)|risiko for maktesløshet
+387603000|Impairment of balance (finding)|nedsatt balanse
+414487007|Ineffective health maintenance (finding)|nedsatt ivaretakelse av egen helse
+22761000175104|At increased risk for social isolation (finding)|risiko for sosial isolasjon
+706876006|Suspicion (finding)|mistenksomhet
+274663001|Acute pain (finding)|akutte smerter
+17361000202103|Patient not affected by gurgling breath (finding)|pasienten er ikke plaget av surklete pust
+187831000202107|Fear of male sexual dysfunction (finding)|engsteleg for seksuell dysfunksjon hos mann
+714658008|At increased risk of radiation exposure (finding)|risiko for strålingseksponering
+24436009|Gurgling (finding)|gurglelydar
+161838002|Infant feeding problem (finding)|problem med mating av spedbarn
+75408008|Feeling angry (finding)|føler seg sint
+21522001|Abdominal pain (finding)|abdominalsmerter
+289560001|Profuse vaginal discharge (finding)|stor mengd vaginal utflod
+62476001|Disorientated (finding)|desorientert
+226077000|Therapeutic diet (finding)|terapeutisk diett
+386689009|Hypothermia (finding)|hypotermi
+704448006|Tendency to wander (finding)|tendens til vandring
+418107008|Unconscious (finding)|medvitslaus
+299960009|Nervous system problem (finding)|problem med nervesystemet
+130969003|Health seeking behavior (finding)|helsesøkende atferd
+704659007|Child at increased risk of abuse (finding)|barn i risiko for mishandling
+278040002|Loss of hair (finding)|hårtap
+704413004|At increased risk of vomiting (finding)|risiko for oppkast
+449918009|Cramp in lower leg (finding)|leggkramper
+130985008|Disturbed sensory perception (finding)|sensorisk persepsjonsforstyrrelse
+1236741000|Parenting stress (finding)|foreldrestress
+713459004|Family grieving (situation)|familie i sorg
+2073000|Delusion (finding)|vrangforestillinger
+457581000202104|Low activity level (finding)|lågt aktivitetsnivå
+123640000|Mucous membrane dryness (finding)|slimhinnetørrhet
+64379006|Decrease in appetite (finding)|nedsatt matlyst
+55406008|Hyperalgesia (finding)|hyperalgesi
+129882008|Dysfunctional coping using self defense mechanisms (finding)|forsvarspreget mestring
+161047009|Poor adaptation to disability (finding)|dårlig tilpasning til funksjonsnedsettelse
+249480002|Increased fluid intake (finding)|auka væskeinntak
+1149254008|Temporary disruption in family processes (finding)|midlertidig forstyrret familieprosess
+129694002|At increased risk for disuse syndrome (finding)|risiko for inaktivitet
+706881002|Barrier to communication (finding)|kommunikasjonshinder
+704361005|At increased risk of deficient food intake (finding)|risiko for mangelfullt matinntak
+497601000202100|Has child as next of kin (finding)|har barn som pårørande
+213151004|Heart transplant failure and rejection (disorder)|svikt i og avstøtning av hjertetransplantat
+733826000|Pain due to fracture (finding)|fraktursmerter
+128139000|Inflammatory disorder (disorder)|inflammatorisk sykdom
+84229001|Fatigue (finding)|fatigue
+276306002|Loss of initiative (finding)|tap av initiativ
+102912007|Fear of death (finding)|frykt for død
+497731000202101|Family in need of support (finding)|behov for varetaking av pårørande
+704340003|Conflicting attitude towards treatment (finding)|motstridende holdning til behandling
+225012006|Feeling ashamed (finding)|føler skam
+704447001|Lack of self awareness (finding)|manglande sjølvinnsikt
+430576002|At increased risk for injury due to fall (finding)|risiko for fallskade
+129860001|Kinesthetic alteration (finding)|endret dybdesensibilitet
+48694002|Anxiety (finding)|angst
+213299007|Postoperative pain (finding)|postoperative smerter
+313424005|At increased risk of disease (finding)|risiko for sjukdom
+102835006|Difficulty passing urine (finding)|problemer med vannlating
+16399001|Difficulty coping with pain (finding)|vanskar med å meistra smerte
+7653001|Self-feeding deficit (finding)|nedsatt evne til å spise selv
+129899009|Blood pressure alteration (finding)|endring i blodtrykk
+248062006|Self-injurious behavior (finding)|selvskading
+129815002|Delayed growth and development (finding)|forseinka vekst og utvikling
+714669006|Impaired attitude to nutritional status (finding)|svekt haldning til ernæringsstatus
+289894009|Menstrual bleeding present (finding)|pågående menstruasjon
+39093002|Post-trauma response (finding)|posttraumatisk reaksjon
+706871001|Poor response to enteral nutrition (situation)|dårlig respons på enteral ernæring
+704352005|At increased risk of delayed growth (finding)|risiko for forseinka vekst
+1259140002|Blood glucose level unstable (finding)|ustabilt blodsukkernivå
+70693003|At increased risk for impaired skin integrity (finding)|risiko for svekt hudintegritet
+1156957002|At increased risk of food intake greater than requirement (finding)|risiko for matinntak høgare enn kroppen treng
+248004009|Physical aggression (finding)|fysisk voldelig atferd
+248549001|Labored breathing (finding)|anstrengt respirasjon
+57161000202105|Complex rehabilitation therapy requested (situation)|kompleks rehabilitering
+704424002|Fear of being a burden to others (finding)|frykt for å være til bry
+713398008|Deficient knowledge of travel health (finding)|mangelfull kunnskap om helse ved reise
+162116003|Increased frequency of urination (finding)|hyppig vasslating
+1144586002|Increased pain (finding)|auka smerter
+704359001|At increased risk of polypharmacy (finding)|risiko for polyfarmasi
+271801002|Taste sense altered (finding)|endret smakssans
+301364008|Pain of skin (finding)|hudsmerter
+1149253002|Breastfeeding temporarily discontinued (finding)|mellombels slutta å dia
+714662002|At increased risk of impaired fetal development (finding)|risiko for nedsatt fosterutvikling
+67175002|Impaired home maintenance management (finding)|nedsett varetaking av husarbeid
+704415006|At increased risk of impaired school performance (finding)|risiko for nedsatt skoleprestasjon
+568071000202108|At increased risk of neurological deficit (finding)|risiko for nevrologisk utfallssymptom
+706893006|Victim of intimate partner abuse (finding)|utsett for partnarvald
+300723007|Difficulty performing shopping activities (finding)|vansker med å utføre innkjøp
+1286875007|At increased risk for unplanned pregnancy (finding)|risiko for ikke-planlagt svangerskap
+66383009|Gingivitis (disorder)|gingivitt
+14621004|Anticipatory grief (finding)|ventesorg
+704372000|Lack of trust in healthcare provider (finding)|manglende tillit til helsepersonell
+704294006|At increased risk for depressed mood during postpartum period (finding)|risiko for depressivt stemningsleie i postpartumperioden
+129904008|Impaired dentition (finding)|nedsett tannstatus
+129862009|Deficient knowledge of diagnostic testing (finding)|mangelfull kunnskap om diagnostisk test
+79890006|Loss of appetite (finding)|tap av matlyst
+432843002|Acute rejection of cardiac transplant (disorder)|akutt avstøyting av hjartetransplantat
+444673007|Hyperemesis (disorder)|hyperemesis
+386033004|Neuropathy (disorder)|nevropati
+704660002|Impairment of older adult development (finding)|nedsatt utvikling hos eldre voksen
+7919002|Impaired skin integrity (finding)|svekt hudintegritet
+56925008|Abnormal sexual function (finding)|unormal seksualfunksjon
+229665008|Expressive dysphasia (finding)|ekspressiv afasi
+3424008|Tachycardia (finding)|takykardi
+56890008|Victim of sexual aggression (finding)|utsatt for seksuell vold
+704368004|At increased risk of elopement from healthcare setting (finding)|risiko for rømming frå helseteneste
+26628009|Disturbance in thinking (finding)|tankeforstyrring
+284799008|Unable to perform bathing activity (finding)|ikke i stand til å utføre kroppsvask
+705086000|Deficient knowledge of patient controlled analgesia (finding)|mangelfull kunnskap om pasientstyrt analgesi
+91175000|Seizure (finding)|anfall
+704297004|At increased risk of impaired nervous system function (finding)|risiko for nedsatt funksjon i nervesystemet
+445261000124106|Nutrition impaired (finding)|ernæringssvikt
+130983001|At increased risk for autonomic dysreflexia (finding)|risiko for autonom dysrefleksi
+704658004|Child at increased risk of neglect (finding)|barn i risiko for omsorgssvikt
+46742003|Skin ulcer (disorder)|hudsår
+713447003|Deficient knowledge of parenting (finding)|mangelfull kunnskap om foreldreskap
+1144747004|Impaired impulse control (finding)|nedsatt impulskontroll
+704369007|Fatigue due to treatment (finding)|fatigue forårsaket av behandling
+1296884009|At increased risk of exposure to communicable disease (finding)|risiko for eksponering for smittsam sjukdom
+131148009|Bleeding (finding)|blødning
+301336003|Body weight problem (finding)|problem med kroppsvekt
+271737000|Anemia (disorder)|anemi
+130970002|Health seeking behavior alteration (finding)|endring i helsesøkende atferd
+129885005|Ineffective community coping (finding)|ineffektiv meistring i lokalsamfunnet
+422930008|Spiritual beliefs conflicting with healthcare plan (finding)|konflikt mellom åndelig tro og pleieplan
+129867003|Deficient knowledge of safety precautions (finding)|mangelfull kunnskap om sikkerhetstiltak
+14721000202104|Family situation changed (finding)|endra familiesituasjon
+424466003|Water supply insufficient (finding)|utilstrekkeleg vassforsyning
+129708001|At increased risk for self-mutilation (finding)|risiko for sjølvmutilering
+13954005|Ischemic ulcer (disorder)|arterielt sår
+713448008|Deficient knowledge of infant feeding (finding)|mangelfull kunnskap om mating av spedbarn
+33300005|Feeling powerless (finding)|føler seg maktesløs
+704305004|Impairment of caregiver child attachment (finding)|svekket tilknytning mellom omsorgsperson og barn
+704301008|Cultural belief conflict (finding)|konflikt knyttet til kulturelle oppfatninger
+183644000|Surgical follow-up (finding)|kirurgisk oppfølging
+58219009|Lactation problem (finding)|problem med laktasjon
+27179007|Disturbance in role performance (finding)|vanskar med rolleutøving
+284489004|Avoidance behavior (finding)|unngåelsesatferd
+416462003|Wound (disorder)|sår
+704429007|Abnormal acid-base balance (finding)|unormal syre-base-balanse
+705039004|Conflicting attitude of caregiver (finding)|motstridande haldning hos omsorgsgjevar
+714661009|At increased risk of impaired gastrointestinal system function (finding)|risiko for svekket gastrointestinal funksjon
+38671000119103|Abnormal urination (finding)|unormal vannlating
+714665000|At increased risk of adverse drug interaction (finding)|risiko for uønskt lækjemiddelinteraksjon
+1144780006|At increased risk of embolism (finding)|risiko for emboli
+704661003|Noncompliance with immunization regimen (finding)|etterlever ikkje vaksinasjonsprogram
+129831005|Noncompliance with diagnostic testing (finding)|etterlever ikke diagnostisk testing
+87557004|Urge incontinence of urine (finding)|urgeinkontinens
+53339009|Dysfunctional grieving (finding)|dysfunksjonell sorg
+337611000202102|At risk of cerebrospinal fluid leak (finding)|risiko for lekkasje av cerebrospinalvæske
+704373005|Lack of trust (finding)|manglande tillit
+110483000|Tobacco user (finding)|bruker tobakk
+129692003|At increased risk for urge incontinence (finding)|risiko for urgeinkontinens
+427551000202106|Changed sexual function (finding)|endra seksualfunksjon
+704422003|At increased risk of apnea (finding)|risiko for apné
+129693008|At increased risk for imbalanced fluid volume (finding)|risiko for væskeubalanse
+8317005|At increased risk for deficient parenting (finding)|risiko for utilstrekkelig foreldreskap
+64313000|Alteration in family processes (finding)|endring i familieforhold
+129849005|At increased risk for excess fluid volume (finding)|risiko for overskot av væskevolum
+422838000|Moral distress (finding)|moralsk krise
+365112008|Finding of walking aid use (finding)|funn om bruk av ganghjelpemiddel
+422183001|Skin ulcer due to diabetes mellitus (disorder)|diabetisk hudsår
+248577005|Rattling breathing (finding)|surklende respirasjon
+169746009|Breastfeeding stopped (finding)|slutta å dia
+704377006|Deficient knowledge of peritoneal dialysis (finding)|mangelfull kunnskap om peritonealdialyse
+286457005|Difficulty preparing food for eating (finding)|vansker med å tilberede måltid
+398254007|Pre-eclampsia (disorder)|preeklampsi
+15167005|Harmful pattern of use of alcohol (disorder)|skadelig bruksmønster for alkohol
+704426000|Impairment of mental alertness (finding)|svekket mental årvåkenhet
+706877002|Problem with high complexity of treatment regime (finding)|vanskar med høg kompleksitet i behandlingsregimet
+80394007|Hyperglycemia (disorder)|hyperglykemi
+422923002|Inadequate community resources (finding)|utilstrekkelige fasiliteter i nærområdet
+29857009|Chest pain (finding)|brystsmerter
+309615009|Bowel problem (finding)|tarmproblem
+704360006|At increased risk for infection of eye (finding)|risiko for øyeinfeksjon
+129837009|Ineffective protection (finding)|ineffektiv beskyttelse
+386806002|Impaired cognition (finding)|kognitiv svikt
+706873003|Suffering (finding)|lidelse
+706874009|At increased risk of elder neglect (finding)|eldre i risiko for omsorgssvikt
+74530003|Uncompensated sensory deficit (finding)|ikkje-kompensert sensorisk utfall
+213152006|Heart-lung transplant failure and rejection (disorder)|svikt i og avstøtning av transplantert hjerte og lunge
+24441001|Health maintenance alteration (finding)|endret ivaretakelse av egen helse
+423192007|At increased risk for acute confusion (finding)|risiko for akutt forvirring
+704404001|Deficient knowledge of pain management (finding)|mangelfull kunnskap om smertebehandling
+705047004|Fear of contagion (finding)|frykt for smitte
+713451001|Deficient knowledge of labor and delivery (finding)|mangelfull kunnskap om fødsel
+22253000|Pain (finding)|smerter
+704306003|At increased risk of bradycardia (finding)|risiko for bradykardi
+347341000202106|At increased risk of cramp (finding)|risiko for krampe
+735250009|Lack of opportunity for privacy (finding)|manglende mulighet for privatliv
+423245001|At increased risk for compromised human dignity (finding)|risiko for krenkt verdigheit
+1149251000|Impaired peripheral neurovascular function (finding)|nedsett perifer nevrovaskulær funksjon
+129846003|Polypharmacy (finding)|polyfarmasi
+70153002|Hemorrhoids (disorder)|hemoroidar
+704680001|Deficient knowledge of behavior change process (finding)|mangelfull kunnskap om atferdsendring
+129897006|Dysfunctional ventilatory weaning response (finding)|problem med respiratoravvenning
+310389000|Next of kin information status (finding)|pårørendes informasjonsstatus
+413307004|Mental health problem (finding)|problem med mental helse
+1179627006|Neonatal respiratory distress (finding)|respirasjonsbesvær hos nyfødt
+289128002|Difficulty performing mouthcare activities (finding)|vanskar med å utføra munnhygiene
+704364002|At increased risk of ineffective tissue perfusion (finding)|risiko for ineffektiv vevsperfusjon
+405273008|Manic mood (finding)|manisk stemningsleie
+129710004|At increased risk for post-trauma syndrome (finding)|risiko for posttraumatisk reaksjon
+430794006|At increased risk for delirium (finding)|risiko for delirium
+704420006|At increased risk of dehydration (finding)|risiko for dehydrering
+129859006|Impaired bed mobility (finding)|nedsatt mobilitet i seng
+419076005|Allergic reaction (disorder)|allergisk reaksjon
+278951000202101|Adequate reproductive system function (finding)|tilfredsstillande funksjon i reproduksjonssystem
+129706002|At increased risk for disorganized infant behavior (finding)|risiko for desorganisert spedbarnsåtferd
+706869001|Deficient knowledge of medication (finding)|mangelfull kunnskap om legemiddel
+713142003|At increased risk from passive smoking (finding)|risiko for passiv røyking
+17971005|Sedated (finding)|sedert
+714667008|Fear about medication side effects (finding)|frykt for legemiddelbivirkninger
+713458007|Lack of access to transportation (finding)|manglande tilgang på transport
+300686005|Difficulty managing personal financial activities (finding)|vanskar med å handtera eigen økonomi
+26110006|Spiritual distress (finding)|eksistensiell krise
+129847007|Functional urinary incontinence (finding)|funksjonell urininkontinens
+278021000202107|Impaired neurological status (finding)|svekt nevrologisk status
+129588001|Adult failure to thrive syndrome (disorder)|failure to thrive hos voksen
+45346005|Alteration in nutrition: more than body requirements (finding)|høyere næringsinntak enn kroppen behøver
+704400005|Deficient knowledge of community services (finding)|mangelfull kunnskap om lokalt tenestetilbod
+18963009|Mood swings (finding)|labilt stemningsleie
+419567006|Delirious (finding)|delirisk
+26677001|Sleep pattern disturbance (finding)|forstyrra søvnmønster
+1223891000202107|Contact with and exposure to other communicable diseases (situation)|kontakt med eller eksponering for annan smittsam sjukdom
+129888007|Spiritual state alteration (finding)|endra åndeleg tilstand
+286650004|Lacking belief in own ability (finding)|manglende tro på egne evner
+81548002|Elevated mood (finding)|forhøyet stemningsleie
+406555004|Low risk of harm to others (finding)|lav risiko for å skade andre
+75803007|Posterior rhinorrhea (disorder)|bakre rhinoré
+129869000|Death anxiety (finding)|dødsangst
+704682009|At increased risk of transfer injury (finding)|risiko for forflyttingsskade
+417284009|Current drug user (finding)|nåværende rusmiddelbruk
+85623003|Ineffective thermoregulation (finding)|ineffektiv temperaturregulering
+190902006|Fluid imbalance (disorder)|væskeubalanse
+720822008|Withdrawal symptom (finding)|abstinenssymptom
+298222004|Active range of joint movement reduced (finding)|redusert aktivt bevegelsesutslag
+65108000|At increased risk for violence (finding)|risiko for vald
+198609003|Complication of pregnancy, childbirth and/or puerperium (disorder)|komplikasjon ved svangerskap, fødsel og/eller barseltid
+129871000|Situational low self-esteem (finding)|situasjonsbunden låg sjølvkjensle
+266154004|Candidiasis of mouth and esophagus (disorder)|candidiasis i munn og øsofagus
+16331000|Heartburn (finding)|halsbrann
+286933003|Confusional state (disorder)|forvirringstilstand
+307077003|Feeling hopeless (finding)|vonløyse
+87486003|Aphasia (finding)|afasi
+31491000119109|Disruptions of 24 hour sleep-wake cycle (disorder)|forstyrret døgnrytme
+1402001|Fear (finding)|frykt
+423875000|Deficient knowledge of family planning methods (finding)|mangelfull kunnskap om familieplanleggingsmetodar
+1156331007|Excessive euphoria (finding)|overdriven eufori
+704419000|At increased risk of diarrhea (finding)|risiko for diaré
+52475004|Xeroderma (disorder)|xeroderma
+704296008|At increased risk of impaired respiratory system function (finding)|risiko for nedsett funksjon i respirasjonssystem
+129866007|Deficient knowledge of medication regimen (finding)|mangelfull kunnskap om lækjemiddelregime
+1.23E+15|Need for continuous supervision (situation)|behov for kontinuerlig tilsyn
+12479006|Compulsive behavior (finding)|tvangsprega åtferd
+13791008|Asthenia (finding)|asteni
+28442001|Polyuria (finding)|polyuri
+392562007|At increased risk for sudden infant death syndrome (finding)|risiko for krybbedød
+258149004|Swallowing finding (finding)|funn om svelging
+1269476005|At increased risk for complication during labor and delivery (finding)|risiko for komplikasjon under fødselsarbeid og forløsning
+14760008|Constipation (finding)|obstipasjon
+48851009|Impaired tissue integrity (finding)|svekket vevskvalitet
+704355007|At increased risk of impaired caregiver child attachment (finding)|risiko for svekt tilknyting mellom omsorgsgjevar og barn
+497701000202109|Planned home death (finding)|planlagd heimedød
+225507001|Altered body image (finding)|endret kroppsbilde
+418363000|Itching of skin (finding)|hudkløe
+443371007|Decreased level of consciousness (finding)|nedsatt bevissthetsnivå
+1145523004|Wound due to malignant neoplastic disease (disorder)|malignt sår
+371597004|Emaciated (finding)|avmagra
+129845004|At increased risk for imbalanced nutrition, less than body requirements (finding)|risiko for lavt næringsinntak
+249366005|Bleeding from nose (finding)|nasebløding
+68345001|Apraxia (finding)|apraksi
+160507001|Abandoned child (finding)|forlate barn
+704365001|At increased risk of dissatisfaction with healthcare (finding)|risiko for misnøye med helsehjelp
+20573003|Ineffective breathing pattern (finding)|ineffektivt respirasjonsmønster
+285304000|At risk of pressure injury (finding)|risiko for trykksår
+271825005|Respiratory distress (finding)|respiratorisk stress
+129898001|Cardiovascular system alteration (finding)|endring i kardiovaskulært system
+588781000202106|Increased risk of ineffective implementation of care (finding)|risiko for ineffektiv gjennomføring av behandling
+704403007|Deficient knowledge of fall prevention (finding)|mangelfull kunnskap om fallforebygging
+225465005|Unwilling (finding)|uvillig
+129688005|Disturbed energy field (finding)|forstyrret energifelt
+704418008|At increased risk of infection of oral mucous membrane (finding)|risiko for infeksjon i munnslimhinne
+278919001|Communication disorder (disorder)|kommunikasjonsforstyrring
+286647002|Low self-esteem (finding)|lav selvfølelse
+714663007|At increased risk of impaired ability to perform caretaking (finding)|risiko for nedsatt evne til omsorgsutøvelse
+704309005|Difficulty managing nephrostomy care (finding)|vansker med å håndtere nefrostomistell
+1217332007|Persistent sadness (finding)|vedvarende tristhet
+705019003|Difficulty managing stoma care (finding)|vansker med å håndtere stomistell
+40733004|Infectious disease (disorder)|infeksjonssykdom
+129839007|At increased risk for falls (finding)|risiko for fall
+225956009|At increased risk of urinary tract infection (finding)|risiko for urinveisinfeksjon
+422587007|Nausea (finding)|kvalme
+1269478006|At increased risk for male infertility (finding)|risiko for mannleg infertilitet
+40095003|Injury of kidney (disorder)|nyreskade
+56018004|Wheezing (finding)|pipande respirasjon
+41236000|Abnormal vital signs (finding)|unormale vitale teikn
+704427009|Impairment of adult development (finding)|nedsatt utvikling hos voksen
+264552009|Neurological deficit (finding)|nevrologisk utfallssymptom
+1306692000|Harmful pattern of substance use (disorder)|skadelig bruksmønster for substans
+497531000202107|Maternal breastfeeding interrupted (finding)|avbroten amming
+704383009|Deficient knowledge of child development (finding)|mangelfull kunnskap om barns utvikling
+424100000|Limited ability to think abstractly (finding)|begrenset evne til abstrakt tenkning
+1254812006|Substance dependence (disorder)|substansavhengighet
+373191003|Self-toileting deficit (finding)|nedsett evne til å utføra toalettbesøk
+19585003|Postoperative state (finding)|postoperativ tilstand
+409055009|Ineffective tissue perfusion (finding)|ineffektiv vevsperfusjon
+129870004|Chronic low self-esteem (finding)|kronisk låg sjølvkjensle
+278601000202108|At increased risk of late effect due to and following disorder (finding)|risiko for sekvele etter sykdom
+714666004|Difficulty obtaining medication (finding)|vansker med å skaffe legemiddel
+386807006|Memory impairment (finding)|svekt hukommelse
+95930005|Victim of neglect (finding)|utsatt for omsorgssvikt
+87715008|Xerostomia (finding)|munntørrheit
+371736008|At increased risk for aspiration (finding)|risiko for aspirasjon
+419145002|Nightmares (finding)|mareritt
+129838004|At increased risk for situational low self-esteem (finding)|risiko for situasjonsbetinget lav selvfølelse
+44695005|Paralysis (finding)|paralyse
+704381006|Deficient knowledge of oral hygiene (finding)|mangelfull kunnskap om munnhygiene
+704353000|At increased risk for environmental injury (finding)|risiko for miljøskade
+26079004|Tremor (finding)|tremor
+1279828000|At increased risk for disorder due to contraceptive use (finding)|risiko for sjukdom som kjem av prevensjonsbruk
+704439001|Difficulty performing personal grooming activity (finding)|vanskar med å stella seg
+160689007|Housebound (finding)|bunden til huset
+162031009|Indigestion (finding)|dyspepsi
+162221009|Restlessness (finding)|rastløshet
+704446005|Deficient knowledge of exercise (finding)|mangelfull kunnskap om trening
+705046008|Deficit of medication supply (finding)|manglande tilgang på lækjemiddel
+704308002|Difficulty managing peritoneal dialysis (finding)|vanskar med å handtera peritonealdialyse
+704303006|Problem with continuity of care (finding)|problem med kontinuitet i helsehjelp
+228151002|Personal care disability (finding)|funksjonsnedsetjing knytt til eigenomsorg
+248042003|Uncooperative behavior (finding)|samarbeidsuvillig atferd
+34095006|Dehydration (disorder)|dehydrering
+91249009|Criminal behavior (finding)|kriminell åtferd
+81763001|At increased risk for traumatic injury (finding)|risiko for skade
+130968006|Self-mutilation (finding)|sjølvmutilering
+160707003|Inadequate sanitation (finding)|utilstrekkelige sanitære forhold
+705000008|Low self-control (finding)|låg sjølvkontroll
+14783006|Hyperbilirubinemia (disorder)|hyperbilirubinemi
+704428004|Impairment of adolescent development (finding)|nedsatt utvikling i ungdomsalder
+54840006|Failure to thrive (disorder)|failure to thrive
+413585005|Aspiration into respiratory tract (finding)|aspirasjon til luftveier
+1230052008|Impaired ability to manage medication regime (finding)|svekket evne til å håndtere legemiddelregime
+225444004|At increased risk for suicide (finding)|risiko for sjølvmord
+160685001|Bed-ridden (finding)|sengebunden
+385486001|Postoperative complication (disorder)|postoperativ komplikasjon
+267036007|Dyspnea (finding)|dyspné
+816082000|Hypovolemia (finding)|hypovolemi
+420038007|Feeling unhappy (finding)|kjenner seg ulukkeleg
+714656007|Impaired fetal development (finding)|nedsatt fosterutvikling
+53209001|Decisional conflict (finding)|beslutningskonflikt
+704349002|At increased risk of elder abuse (finding)|eldre i risiko for mishandling
+33910007|Postoperative infection (disorder)|postoperativ infeksjon
+422400008|Vomiting (disorder)|oppkast
+129618003|Autonomic dysreflexia (disorder)|autonom dysrefleksi
+397940009|Victim of child abuse (finding)|utsatt for mishandling som barn
+705044006|Caregiver difficulty performing caretaking (finding)|omsorgsgiver har nedsatt evne til å utføre omsorg
+16320008|Feeling mixed emotions (finding)|kjenner seg ambivalent
+271782001|Drowsy (finding)|somnolent
+20301004|Dysphasia (finding)|dysfasi
+363168001|Inflammation of skin and/or subcutaneous tissue (disorder)|inflammasjon i hud og/eller subkutant vev
+76114004|Decreased renal function (finding)|nedsett nyrefunksjon
+183976008|Operative procedure planned (situation)|operasjon planlagd
+50048006|At increased risk for deficient fluid volume (finding)|risiko for underskot av væske
+714659000|At increased risk of impaired urinary system function (finding)|risiko for nedsatt funksjon i urinsystem
+161052004|At increased risk for hypothermia (finding)|risiko for hypotermi
+448177004|Adverse drug interaction (disorder)|uønskt lækjemiddelinteraksjon
+704354006|At increased risk of anaphylaxis (finding)|risiko for anafylaksi
+1137439008|On complex medication regime (finding)|sammensatt legemiddelregime
+39623008|At increased risk for poisoning injury (finding)|risiko for forgiftning
+361137007|Irregular heart beat (finding)|uregelmessige hjarteslag
+704299001|Health belief conflict (finding)|konfliktfylt helseoppfatning
+297982009|Skin problem (finding)|hudproblem
+278461000202109|At increased risk of spreading communicable disease (finding)|risiko for å spre smitte
+1237116009|Venous ulcer of lower limb (disorder)|venøst sår på underekstremitet
+129689002|At increased risk for nutritional problem (finding)|risiko for ernæringsproblem
+161133008|School attendance poor (finding)|lav skoledeltakelse
+704348005|At increased risk of hemorrhage (finding)|risiko for blødning
+424167000|At increased risk for unstable blood glucose level (finding)|risiko for ustabilt blodsukkernivå
+704357004|At increased risk of self-injurious behavior (finding)|risiko for selvskadingsatferd
+388021000202109|Impaired cough strength (finding)|nedsett hostekraft
+401207004|Medication side effects present (finding)|lækjemiddelbiverknader til stades
+247444006|Excoriation of skin (disorder)|ekskoriasjon
+225472006|Feels life is meaningless (finding)|føler at livet er meningsløst
+1003755004|Allergy to Hevea brasiliensis latex protein (finding)|lateksallergi
+704678007|Depressed mood with postpartum onset (finding)|depressivt stemningsleie etter fødsel
+55222007|Tenderness of breast (finding)|ømhet i bryst
+14501000202100|At increased risk for necrotizing enterocolitis in fetus OR newborn (finding)|risiko for nekrotiserende enterokolitt hos foster eller nyfødt
+706879004|Physical injury due to physical abuse (disorder)|fysisk skade som kjem av fysisk mishandling
+129703005|At increased risk for perioperative positioning injury (finding)|risiko for perioperativ leiringsskade
+8821000202101|Complication of stoma (disorder)|komplikasjon med stomi
+1269477001|At increased risk for female infertility (finding)|risiko for kvinneleg infertilitet
+78648007|At increased risk for infection (finding)|risiko for infeksjon
+160822004|Relationship problem (finding)|relasjonsproblem
+47295007|Psychomotor agitation (finding)|psykomotorisk agitasjon
+161941007|Dyspnea at rest (finding)|kviledyspné
+706875005|Insufficient food supply (finding)|utilstrekkeleg matforsyning
+129891007|Caregiver role strain (finding)|belastande omsorgsgjevarrolle
+69322001|Psychotic disorder (disorder)|psykotisk liding
+105593004|Electrolyte imbalance (disorder)|forstyrrelse i elektrolyttbalanse
+705049001|Difficulty self monitoring disease (finding)|vanskar med sjølvmonitorering av sjukdom
+409622000|Respiratory failure (disorder)|respirasjonssvikt
+129699007|At increased risk for impaired parent to child or infant attachment (finding)|risiko for svekket tilknytning mellom forelder og barn/spedbarn
+1217330004|Impairment of integrity of oral mucous membrane (finding)|svekket munnslimhinne
+424860001|Low income (finding)|låg inntekt
+22220005|Genuine stress incontinence (finding)|stressinkontinens
+704300009|Environmental safety problem (finding)|problem med miljøsikkerhet
+3006004|Disturbance of consciousness (finding)|bevissthetsforstyrrelse
+417531000202108|At increased risk of syncope (finding)|risiko for synkope
+710110008|Phantom pain (disorder)|fantomsmerter
+247347003|Discomfort (finding)|ubehag
+704379009|Deficient knowledge of sexual behavior (finding)|mangelfull kunnskap om seksuell atferd
+704307007|At increased risk of complication of stoma (finding)|risiko for stomikomplikasjon
+129892000|Disuse syndrome (finding)|inaktivitetssyndrom
+405786003|Poor response to treatment (situation)|dårlig respons på behandling
+704417003|At increased risk of medication side effect (finding)|risiko for legemiddelbivirkning
+705021008|Difficulty managing exercise regime (finding)|vansker med å utføre treningsopplegg
+88202002|Alteration in nutrition: less than body requirements (finding)|lavere næringsinntak enn kroppen behøver
+387431000202100|At increased risk of drug abuse (finding)|risiko for lækjemiddel- eller rusmisbruk
+129875009|Alteration in social interaction (finding)|endra sosial interaksjon
+417716002|At increased risk of neglect by others (finding)|risiko for å bli utsett for omsorgssvikt
+704675005|Inadequate pain control (finding)|utilstrekkeleg smertekontroll
+705051002|Difficulty managing dietary regimen (finding)|vanskar med å handtera kostregime
+300936002|Terminal illness (finding)|uhelbredelig sykdom
+18232000|Difficulty coping (finding)|mestringsvansker
+237355007|Milk engorgement of breast (disorder)|brystspreng
+129696000|At increased risk for latex allergy response (finding)|risiko for lateksallergi
+284972002|Difficulty performing dressing activity (finding)|vansker med på- og avkledning
+508011000202100|At increased risk of general health deterioration (finding)|risiko for forverring av generell helsetilstand
+588771000202109|In need of healthcare knowledge (finding)|behov for helsekunnskap
+387951000202104|Need for individualized care (finding)|behov for individualisert pleie
+74506000|Bereavement (finding)|sorg
+21639008|Hypervolemia (finding)|hypervolemi
+129705003|At increased risk for disproportionate growth (finding)|risiko for uproporsjonal vekst
+8765009|Hematemesis (disorder)|hematemese
+1860003|Fluid volume disorder (disorder)|forstyrrelse i væskebalanse
+262890007|Injury of urinary tract proper (disorder)|urinvegsskade
+130994002|Endocrine system alteration (finding)|endring i det endokrine systemet
+1137675004|Relocation stress syndrome (finding)|stresslidelse ved omplassering
+716749005|Fatigue associated with malignant neoplastic disease (finding)|kreftrelatert fatigue
+16985007|Fasting (finding)|fastende
+419284004|Altered mental status (finding)|endret mental status
+14631000202109|At increased risk of paralysis (finding)|risiko for paralyse
+90987003|Reflex incontinence of urine (finding)|refleksinkontinens
+371087003|Ulcer of foot due to diabetes mellitus (disorder)|diabetisk fotsår
+705016005|Acute health crisis (finding)|akutt helsekrise
+315594003|Interpreter needed (finding)|behov for tolk
+424582000|Stress overload (finding)|overbelastende stress
+1156448003|Impaired urinary system function (finding)|nedsett funksjon i urinvegane
+129698004|At increased risk for loneliness (finding)|risiko for ensomhet
+129836000|Noncompliance with therapeutic regimen (finding)|etterlever ikke behandlingsregime
+129863004|Deficient knowledge of dietary regimen (finding)|mangelfull kunnskap om kostholdsregime
+78633001|Altered thought processes (finding)|endra tankeprosess
+289739009|Uterine contractions problem (finding)|problem med uteruskontraksjoner
+417163006|Traumatic or non-traumatic injury (disorder)|fysisk skade
+1231386001|Deficient knowledge of complementary therapy (finding)|mangelfull kunnskap om alternativ behandling
+129857008|Impaired wheelchair mobility (finding)|nedsatt rullestolmobilitet
+234097001|Lymphedema (disorder)|lymfødem
+129702000|At increased risk for peripheral neurovascular dysfunction (finding)|risiko for perifer nevrovaskulær dysfunksjon
+50177009|Body temperature above reference range (finding)|kroppstemperatur over normalområdet
+1237117000|Venous ulcer of lower leg (disorder)|venøst leggsår
+12871000202103|At increased risk of impaired ability to communicate (finding)|risiko for svekt kommunikasjonsevne
+713449000|Deficient knowledge of infant care (finding)|mangelfull kunnskap om spedbarnsomsorg
+131182003|Visual alteration (finding)|synsendring
+1269562006|At increased risk for postpartum disorder (finding)|risiko for sykdom i barseltid
+714660005|At increased risk of impaired psychological state (finding)|risiko for redusert psykisk tilstand
+714657003|At increased risk of radiation injury (finding)|risiko for stråleskade
+706889000|Transfer injury (disorder)|forflytningsskade
+112105008|Sense of smell altered (finding)|endret luktesans
+704371007|Impairment of newborn development (finding)|nedsett utvikling hos nyfødd
+386816005|Emotional problems (finding)|emosjonelle problemer
+267064002|Retention of urine (disorder)|urinretensjon
+6471006|Suicidal thoughts (finding)|selvmordstanker
+71897006|Venous stasis (finding)|venestase
+704343001|Conflicting attitude towards dietary regime (finding)|motstridende holdning til kostholdsregime
+413320001|Physical health problem (finding)|problem med fysisk helse
+129895003|Impaired spontaneous ventilation (finding)|nedsatt spontan ventilasjon
+228158008|Walking disability (finding)|nedsett gangfunksjon
+704414005|At increased risk of sleep impairment (finding)|risiko for søvnproblem
+704367009|At increased risk of conflict between religious belief and healthcare recommendation (finding)|risiko for konflikt mellom religiøs tru og tilråding frå helsevesen
+423949003|At increased risk for environmental contamination (finding)|risiko for kontaminasjon fra miljø
+165232002|Urinary incontinence (finding)|urininkontinens
+62315008|Diarrhea (finding)|diaré
+44635007|Fecal impaction (disorder)|fekalom
+281600005|Intestinal stoma (morphologic abnormality)|intestinal stomi
+110477003|Unrealistic expectation from treatment (finding)|urealistiske forventninger til behandling
+609328004|Allergic disposition (finding)|allergi
+2901004|Melena (disorder)|melena
+61372001|Aggressive behavior (finding)|aggressiv atferd
+300228004|Hearing problem (finding)|hørselsproblem
+714670007|Deficient knowledge of pregnancy (finding)|mangelfull kunnskap om svangerskap
+14621000202107|At increased risk of paresis (finding)|risiko for parese
+704375003|Deficient knowledge of breastfeeding (finding)|mangelfull kunnskap om amming
+76039005|Disturbance of attention (finding)|oppmerksomhetsforstyrrelse
+704342006|Conflicting attitude towards exercise (finding)|motstridande haldning til trening
+704674009|At increased risk of dysfunctional family grieving (finding)|risiko for dysfunksjonell sorg hos pårørande
+15401000202103|Excessive activity level (finding)|problematisk høyt aktivitetsnivå
+781474001|Allergic disorder (disorder)|allergisk sykdom
+704298009|At increased risk of impaired cardiac function (finding)|risiko for svekket hjertefunksjon
+130993008|Decreased intracranial pressure adaptive capacity (finding)|redusert intrakraniell adaptiv kapasitet
+704341004|Conflicting attitude towards medication management (finding)|motstridande haldning til lækjemiddelhandtering
+1144779008|At increased risk of being underweight (finding)|risiko for undervekt
+1217126006|Deficient knowledge of fluid regimen (finding)|mangelfull kunnskap om væskeregime
+72042002|Incontinence of feces (finding)|avføringsinkontinens
+276249004|Withdrawn behavior (finding)|tilbaketrukket atferd
+429054002|Disorder related to transplantation (disorder)|liding knytt til transplantasjon
+442545002|Random blood glucose outside reference range (finding)|blodsukker utanfor referanseområdet ved tilfeldig måling
+262286000|Weight increased (finding)|vektauke
+225508006|Poor self-image (finding)|dårleg sjølvbilete
+24199005|Feeling agitated (finding)|føler seg agitert
+871869008|Difficulty demonstrating health literacy (finding)|vanskar med å visa helsekompetanse
+301179007|Poor venous access (finding)|vanskeleg venøs tilgang
+704676006|At increased risk of negative response to nurse controlled analgesia (finding)|risiko for negativ respons på sjukepleiestyrt analgesi
+129853007|Total urinary incontinence (finding)|total urininkontinens
+129828009|Ineffective family therapeutic regimen management (finding)|ineffektiv håndtering av familieterapeutisk behandlingsregime
+129821003|Delayed surgical recovery (finding)|forseinka postoperativ recovery
+77151000202109|Care of child as next of kin (situation)|ivareta barn som pårørende
+733904000|Lack of psychological resilience (finding)|manglende psykologisk resiliens
+704449003|Impairment of peripheral tissue perfusion (finding)|nedsett perifer vevsperfusjon
+704374004|Lack of pride (finding)|manglende stolthet
+49971008|Apprehension (finding)|engstelse
+9097005|Stigma (finding)|stigma
+78222005|Denial - mental defense mechanism (finding)|fornekting
+704425001|Chronic fever (finding)|kronisk feber
+557661000202104|Need for medication dosage tapering (finding)|behov for medikamentnedtrapping
+704657009|Delayed physical recovery (finding)|forseinka fysisk recovery
+497721000202103|Impaired oral health (finding)|svekket munnhelse
+704362003|At increased risk of hyperthermia (finding)|risiko for hypertermi
+1023001|Apnea (finding)|apné
+705053004|Difficulty managing incontinence appliance (finding)|vansker med å håndtere inkontinensutstyr
+105981003|Disorder of cardiac function (disorder)|forstyrrelse i hjertefunksjon
+129827004|Ineffective therapeutic regimen management (finding)|ineffektiv håndtering av behandlingsregime
+129864005|Deficient knowledge of disease process (finding)|mangelfull kunnskap om sykdomsprosess
+129851009|Alteration in bowel elimination (finding)|endring i defekasjon
+130989002|Sleep deprivation (finding)|søvnmangel
+706880001|At increased risk of confusion (finding)|risiko for forvirring
+705017001|Impairment of acceptance of health status (finding)|vanskar med å akseptera helsetilstand
+129700008|At increased risk for caregiver role strain (finding)|risiko for belastande omsorgsgjevarrolle
+704350002|At increased risk of impaired child development (finding)|risiko for forseinka utvikling hos barn
+17029006|Feeling despair (finding)|kjenner seg fortvila
+75478009|Poisoning (disorder)|forgiftning
+55300003|Cramp (finding)|kramper
+302866003|Hypoglycemia (disorder)|hypoglykemi
+125666000|Burn (disorder)|brannskade
+1144750001|Difficulty in coping in new situations (finding)|vanskar med å meistra nye situasjonar
+714668003|Religious belief and healthcare recommendation conflict (finding)|konflikt mellom religiøs tru og tilråding frå helsevesen
+49727002|Cough (finding)|hoste
+129893005|Respiratory alteration (finding)|endret respirasjon
+7011001|Hallucinations (finding)|hallusinasjoner
+161112004|Illiteracy (finding)|analfabetisme
+129878006|Dysfunctional family due to alcoholism (finding)|alkoholrelatert dysfunksjon i familie
+14891000202106|At increased risk of disturbance of consciousness (finding)|risiko for medvitsforstyrring
+80601004|At increased risk for activity intolerance (finding)|risiko for aktivitetsintoleranse
+706872008|Victim of elder abuse (finding)|utsatt for overgrep som eldre
+405651005|Equipment problem (finding)|problem med utstyr
+68566005|Urinary tract infectious disease (disorder)|urinvegsinfeksjon
+704488001|Impairment of psychological status (finding)|svekt psykisk status
+112633009|Surgical wound (morphologic abnormality)|operasjonssår
+422935003|Environment contains biological hazards (finding)|omgivelser inneholder biologisk fare
+75148009|Employment problem (finding)|vansker med arbeid
+129890008|Musculoskeletal alteration (finding)|endra funksjon i muskel- og skjelettsystem
+704486002|Difficulty managing urinary catheter (finding)|vanskar med å handtera urinkateter
+713460009|Denial about illness severity (finding)|fornektelse av sykdommens alvorlighetsgrad
+277321000202105|At increased risk of complication during pregnancy (finding)|risiko for svangerskapskomplikasjon
+417471000202109|At increased risk of decreased renal function (finding)|risiko for nedsett nyrefunksjon
+404640003|Dizziness (finding)|svimmelhet
+130984007|Tactile alteration (finding)|endret følesans
+423797009|Inadequate healthcare provision (finding)|mangelfull helsehjelp
+161898004|Falls (finding)|faller

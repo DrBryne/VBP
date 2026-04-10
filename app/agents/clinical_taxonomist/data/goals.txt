@@ -1,0 +1,495 @@
+ID|Term_EN|Term_NO
+1141694001|Demonstrates knowledge of parenting (finding)|viser kunnskap om foreldreskap
+161036002|Housing adequate (finding)|tilfredsstillande buforhold
+370994008|Seizure free (finding)|ingen anfall
+14751000202106|Adequate respiratory status (finding)|tilfredsstillende respiratorisk status
+280948003|Normal sense of identity (finding)|normal identitetskjensle
+1345133004|Caregiver able to cope (situation)|omsorgsgjevar i stand til meistring
+497541000202101|Adequate mucus membrane (finding)|tilfredsstillande slimhinne
+9501000202103|Adequate wound healing (finding)|tilfredsstillende sårtilheling
+1141690005|Demonstrates knowledge of fetal development (finding)|viser kunnskap om fosterutvikling
+1137685003|Normal tissue perfusion (finding)|normal vevsperfusjon
+300738008|Able to participate in leisure activities (finding)|i stand til å delta i fritidsaktivitet
+1149392006|No injury due to perioperative positioning (situation)|ingen perioperativ leiringsskade
+830123008|Normal state of mind (finding)|normal sinnstilstand
+278571000202104|Adequate level of blood glucose (finding)|tilfredsstillande blodsukkernivå
+1149081002|Feeling proud (finding)|kjenner seg stolt
+1149391004|Demonstrates knowledge of sexual behavior (finding)|viser kunnskap om seksuell atferd
+130970002|Health seeking behavior alteration (finding)|endring i helsesøkende atferd
+657881000202100|Adequate ventilation (finding)|tilfredsstillende ventilasjon
+1141692002|Demonstrates knowledge of infant feeding (finding)|viser kunnskap om mating av spedbarn
+1141695000|Demonstrates knowledge of patient controlled analgesia (finding)|viser kunnskap om pasientstyrt analgesi
+1145305006|Able to clear airway effectively (finding)|i stand til å oppretthalda frie luftvegar
+225658008|Mood stable (finding)|stabilt stemningsleie
+11231000202108|Reduced duration of seizures (finding)|redusert anfallsvarighet
+6281000202103|Improved food intake (finding)|betra matinntak
+1141650007|Demonstrates knowledge of behavior change process (finding)|viser kunnskap om åtferdsendring
+279031000202103|Adequate tactile sensation (finding)|tilfredsstillande kjenslesans
+717241000|Improved sensory function (finding)|bedret sensibilitet
+1148791007|Normal gastrointestinal system function (finding)|normal gastrointestinal funksjon
+1149243003|Managing to control symptoms (finding)|kontrollerer symptomer
+1156885001|Composition of nutrient intake consistent with requirement (finding)|næringsinntak i samsvar med behov
+300199007|Able to hear (finding)|i stand til å høre
+1144481009|Feeling more empowered (finding)|føler seg mer myndiggjort
+10321000202109|Adequate musculoskeletal system function (finding)|tilfredsstillande muskel- og skjelettfunksjon
+1149158002|Decreased caregiver stress (situation)|redusert stress hos omsorgsgiver
+248234008|Mentally alert (finding)|klar og orientert
+14761000202109|Adequate urinary tract function (finding)|tilfredsstillende funksjon i urinveier
+285848000|Able to control anger (finding)|i stand til å kontrollera sinne
+297341000202109|No cramp (situation)|ingen krampe
+1137433009|Does accept health status (finding)|aksepterer helsetilstand
+279051000202107|Adequate tissue perfusion (finding)|tilfredsstillende vevsperfusjon
+161825005|Appetite normal (finding)|normal matlyst
+1157030006|Not sedated (situation)|ikkje sedert
+6291000202101|Improved cognition (finding)|betra kognisjon
+17361000202103|Patient not affected by gurgling breath (finding)|pasienten er ikke plaget av surklete pust
+426798008|Ready for enhanced family processes (finding)|klar for betra familieprosess
+183645004|Surgical follow-up - normal (finding)|normal kirurgisk oppfølging
+79365001|Decreased stress (finding)|redusert stress
+72892002|Normal pregnancy (finding)|normalt svangerskap
+1148972003|Able to perform health maintenance (finding)|i stand til å oppretthalda helse
+733742003|Improved balance (finding)|bedret balanse
+31342001|Increased vision (finding)|bedret syn
+278831000202104|Adequate endocrine system (finding)|tilfredsstillende endokrint system
+397658000|Absence of signs and symptoms of chemical injury (situation)|ingen teikn eller symptom på kjemisk skade
+278951000202101|Adequate reproductive system function (finding)|tilfredsstillande funksjon i reproduksjonssystem
+507591000202102|Maintained safety status (finding)|oppretthalden tryggleiksstatus
+1149351002|No perioperative injury (situation)|ingen perioperativ skade
+1137434003|Has access to transportation (finding)|har tilgang til transport
+1137437005|Has adequate sleep (finding)|tilstrekkelig søvn
+225795001|Is informed (finding)|er informert
+1149346008|No wandering (situation)|ingen vandring
+557651000202102|Reduced itching (finding)|redusert kløe
+12341000202101|Adequate respiratory pattern (finding)|tilfredsstillande respirasjonsmønster
+9761000202107|Improved response to rape trauma (finding)|bedret traumereaksjon etter voldtekt
+17151000202103|No delusions (situation)|ingen vrangførestillingar
+307083000|Able to process information (finding)|i stand til å bearbeida informasjon
+11281000202107|Adequate elimination (finding)|tilfredsstillande eliminasjon
+1148837002|Acid-base balance within reference range (finding)|syre-base-balanse innanfor normalområdet
+301570003|Able to mobilize using mobility aids (finding)|i stand til å mobilisera med hjelpemiddel
+14641000202103|Effective family communication (finding)|tilfredsstillande kommunikasjon med pårørande
+416751004|Reduced drugs misuse (finding)|redusert misbruk av legemiddel eller rusmiddel
+386673006|Does comply with treatment (finding)|etterlever behandling
+716398003|Able to carry out daily routine (finding)|i stand til å utføre daglige rutiner
+764816006|Physically prepared to undergo surgery (finding)|fysisk klargjord til operasjon
+417541000202102|Experiences dignified dying (finding)|opplever å gå en verdig død i møte
+1149349001|No thermal injury (situation)|ingen termisk skade
+300719004|Able to perform shopping activities (finding)|i stand til å utføre innkjøp
+78469002|Good therapeutic response (finding)|god respons på behandling
+365399009|Finding of adequacy of dialysis (finding)|adekvat dialyse
+11161000202105|Increased self-care (finding)|økt egenomsorg
+1141724004|No injury due to laser (situation)|ingen laserskade
+1137426009|Able to participate in care planning (finding)|i stand til å delta i planlegging av helsehjelp
+302261000|Nervous system normal (finding)|normalt nervesystem
+497561000202100|Adequate digestive system function (finding)|tilfredsstillende fordøyelsesfunksjon
+1148840002|Family able to participate in care planning (situation)|pårørende i stand til å delta i planlegging av helsehjelp
+9581000202105|Adequate older adult development (finding)|tilfredsstillande utvikling hos eldre vaksen
+1144674006|Adequately hydrated (finding)|tilstrekkeleg hydrert
+17001000202100|Decreased grief (finding)|redusert sorg
+816133002|Sensation of pain reduced (finding)|redusert smertefølelse
+1157057008|No complication of stoma (situation)|ingen stomikomplikasjon
+279011000202108|Adequate sexual function (finding)|tilfredsstillende seksuell funksjon
+18191000202107|Health promoting behavior (finding)|helsefremmende atferd
+387911000202103|No postoperative pulmonary complication (situation)|ingen postoperative lungekomplikasjonar
+289148009|Normal infant feeding (finding)|normal spiseatferd hos spedbarn
+288848001|Able to breathe (finding)|i stand til å puste
+68051000202102|Ready for employment (finding)|klar for å være i arbeid
+225504008|High self-esteem (finding)|høg sjølvkjensle
+517841000202109|Multidisciplinary cooperation maintained (finding)|tverrfaglig samarbeid ivaretatt
+1148974002|Physically well (finding)|i fysisk fin form
+1144857008|Improvement in acid-base balance (finding)|betra syre-base-balanse
+278751000202103|Neurological status adequate (finding)|tilfredsstillende nevrologisk status
+162089003|Feces normal (finding)|normal avføring
+733818008|Decreased despair (finding)|redusert fortvilelse
+1149083004|Caregiver has positive attitude (situation)|positiv holdning hos omsorgsgiver
+282144007|Able to walk (finding)|i stand til å gå
+278691000202104|Electrolytes adequate (finding)|tilfredsstillande elektrolyttnivå
+707810004|Cares for self (finding)|mestrer egenomsorg
+860635002|No anemia present (situation)|ingen anemi
+300561007|Genitourinary tract normal (finding)|normal tilstand i urogenitalsystemet
+16211000202105|Able to use alarm system (finding)|i stand til å bruke alarmsystem
+102894008|Feeling calm (finding)|føler seg rolig
+1141705002|No bleeding (situation)|ingen blødning
+1137673006|Improvement in level of depressed mood (finding)|bedret depressivt stemningsleie
+87273009|Temperature normal (finding)|normal kroppstemperatur
+15531000202107|Improved behavior (finding)|betra åtferd
+162062008|No vomiting (situation)|ikke noe oppkast
+347391000202104|Warning signs for violence is identified (finding)|førevarsel til valdeleg åtferd identifisert
+249480002|Increased fluid intake (finding)|auka væskeinntak
+1366668004|Effective community coping (finding)|tilfredsstillende mestring i lokalsamfunnet
+1149155004|Reduced level of agitation (finding)|redusert agitasjon
+1145525006|Musculoskeletal system normal (finding)|normalt muskel- og skjelettsystem
+417481000202106|No heartburn (situation)|ingen halsbrann
+288575003|Able to communicate (finding)|i stand til å kommunisere
+1141696004|Demonstrates knowledge of pregnancy (finding)|viser kunnskap om svangerskap
+397680002|Absence of signs and symptoms of infection (situation)|ingen tegn eller symptomer på infeksjon
+1145307003|Exclusively breastfed (finding)|blir fullammet
+1144549003|Good response to enteral nutrition (situation)|god respons på enteral ernæring
+1157027004|No pressure injury (situation)|ingen trykksår
+397699006|Demonstrates knowledge of medication management (finding)|viser kunnskap om legemiddelregime
+716186003|No known allergy (situation)|ingen kjent allergi
+297351000202107|Adequate heart rate (finding)|tilfredsstillende hjertefrekvens
+278741000202101|Musculoskeletal system adequate (finding)|tilfredsstillande muskel- og skjelettsystem
+715045000|Able to obtain medication (finding)|i stand til å skaffe legemiddel
+15831000202109|Adequate blood pressure (finding)|tilfredsstillande blodtrykk
+426533003|Ready for enhanced spiritual well-being (finding)|klar for betra åndeleg velvære
+284774007|Able to perform personal care activity (finding)|i stand til å utføre egenomsorg
+1156282007|Complies with fluid regime (finding)|etterlever væskeregime
+1141720008|No fatigue (situation)|ingen fatigue
+1149156003|Reduced level of anxiety (finding)|redusert angst
+11981000202102|Self-mastery of daily living (finding)|egenmestring i dagliglivet
+278991000202106|Adequate sensory perception (finding)|tilfredsstillende sensorisk persepsjon
+15411000202101|Adequate activity level (finding)|tilfredsstillande aktivitetsnivå
+1145285005|Appropriate disclosure of information about self (finding)|sosialt akseptabel grad av åpenhet om seg selv
+1149080001|Positive attitude towards care (finding)|positiv holdning til helsehjelp
+300463007|Efficient emptying of urinary bladder (finding)|effektiv blæretømming
+17931000202109|Adequate knowledge of pressure ulcer prevention (finding)|tilstrekkeleg kunnskap om førebygging av trykksår
+278771000202109|Adequate acid-base balance (finding)|tilfredsstillende syre-base-balanse
+507831000202101|Assessment of signs and symptoms of urinary rentention (regime/therapy)|vurdering av tegn og symptomer på urinretensjon
+225509003|Good self-image (finding)|godt selvbilde
+1141974008|No peripheral edema present (situation)|ingen perifere ødemer
+22803001|Normal respiratory function (finding)|normal funksjon i respirasjonssystem
+278921000202108|Adequate peripheral vascular function (finding)|tilfredsstillende perifer vaskulær funksjon
+426049007|Ready for enhanced community coping (finding)|klar for auka meistring i lokalsamfunnet
+1156286005|Complies with rehabilitation regime (finding)|etterlever rehabiliteringsprogram
+1148785005|Good caregiver child attachment (finding)|god tilknytning mellom omsorgsgiver og barn
+1144528004|Normal sense of position and movement (finding)|normal kinestetisk sans
+1144534006|Good recovery from abuse (finding)|god recovery etter misbruk
+1144475001|Demonstrates knowledge of drug abuse (finding)|viser kunnskap om misbruk av rusmidler og legemidler
+1149389007|Normal urinary system function (finding)|normal funksjon i urinvegar
+337621000202105|No cerebrospinal fluid leak (situation)|ingen lekkasje av cerebrospinalvæske
+228367002|Does not misuse drugs (situation)|misbruker ikkje lækjemiddel eller rusmiddel
+288599003|Able to use verbal communication (finding)|i stand til å kommunisera verbalt
+1156279002|Complies with exercise regime (finding)|etterlever treningsprogram
+15981000202104|Adequate communication (finding)|tilfredsstillande kommunikasjon
+337401000202102|Demonstrates knowledge about prevention of constipation (finding)|viser kunnskap om førebygging av obstipasjon
+278911000202100|Adequate nervous system function (finding)|tilfredsstillende funksjon i nervesystemet
+477651000202109|Demonstrates knowledge of peritoneal dialysis (finding)|viser kunnskap om peritonealdialyse
+302042005|Able to mobilize (finding)|i stand til mobilisering
+14961000202106|Stable drug use (finding)|stabil rusmiddelbruk
+15241000202104|Reduced self-injurious behavior (finding)|redusert selvskadingsatferd
+1144478004|Demonstrates knowledge of medication (finding)|viser kunnskap om legemiddel
+18061000202100|Adequate orientation (finding)|tilfredsstillende orienteringsevne
+1156450006|Satisfied with healthcare (finding)|fornøyd med helsetjeneste
+1141651006|Demonstrates knowledge of labor and delivery (finding)|viser kunnskap om fødsel
+282298003|Able to balance (finding)|i stand til å halda balansen
+289124000|Able to perform mouthcare activities (finding)|i stand til å utføre munnhygiene
+764815005|Psychologically prepared to undergo surgery (finding)|mentalt klar for operasjon
+161922009|No cough (situation)|ingen hoste
+733817003|Decreased social isolation (finding)|redusert sosial isolasjon
+579031000202106|Able to self-administer medication (finding)|i stand til å administrera lækjemiddel sjølv
+394686003|Moderate suicide risk (finding)|moderat sjølvmordsrisiko
+517811000202108|Reduced intensity of suicidal thoughts (finding)|redusert intensitet i selvmordstanker
+704441000|Able to perform personal grooming activity (finding)|i stand til å stelle seg
+13811000202103|Accepts health care (finding)|aksepterer nødvendig helsehjelp
+14861000202103|No manic state (situation)|ingen manisk tilstand
+388001000202103|User controlled admission (finding)|brukarstyrt innlegging
+871870009|Able to demonstrate health literacy (finding)|i stand til å visa helsekompetanse
+166685005|Electrolytes within reference range (finding)|normal elektrolyttbalanse
+1148786006|Normal cardiac output (finding)|normalt minuttvolum
+9571000202108|Adequate wound perfusion (finding)|tilfredsstillande sårperfusjon
+278761000202100|Adequate spiritual status (finding)|tilfredsstillende åndelig tilstand
+278731000202107|Memory function adequate (finding)|tilfredsstillende hukommelsesfunksjon
+408358005|No significant drug interactions (finding)|ingen signifikante legemiddelinteraksjoner
+9491000202106|Adequate cardiac function (finding)|tilfredsstillande hjartefunksjon
+12911000202101|No withdrawal symptom (situation)|ingen abstinenssymptom
+45332005|Normal capillary filling (finding)|normal kapillærfylling
+300438007|Gastrointestinal tract normal (finding)|normal gastrointestinaltraktus
+24029004|Bowels: fully continent (finding)|kontinent for avføring
+1141700007|Demonstrates knowledge of wound care (finding)|viser kunnskap om sårbehandling
+1148838007|Normal cardiac function (finding)|normal hjartefunksjon
+1144885005|Demonstrates knowledge of diagnostic testing (finding)|viser kunnskap om diagnostisk test
+225439006|Not confused (finding)|ingen forvirring
+278022001|Neutral fluid balance (finding)|væskebalanse innanfor normalområdet
+1144886006|Demonstrates knowledge of procedure (finding)|viser kunnskap om prosedyre
+477501000202109|Increased ability to cope with compulsive behavior (finding)|auka meistring av tvangsåtferd
+1148806002|Normal immune system function (finding)|normalt immunforsvar
+278891000202103|Adequate micturition (finding)|tilfredsstillande vasslating
+1148784009|Feeling comfortable (finding)|føler seg komfortabel
+17471000202104|Family cared for (situation)|pårørende ivaretatt
+10491000202101|No postpartum complication (situation)|ingen postpartum komplikasjon
+247602005|Memory function normal (finding)|normal hukommelsesfunksjon
+1148839004|Normal intracranial pressure adaptive capacity (finding)|normal intrakraniell adaptiv kapasitet
+517911000202104|Adequate circadian rythm (finding)|tilfredsstillende døgnrytme
+1141721007|No hospital acquired complication (situation)|ingen sykehuservervet komplikasjon
+279101000202107|Sense of smell adequate (finding)|tilfredsstillande luktesans
+1149350001|No tobacco abuse (situation)|ikkje noko tobakkmisbruk
+449892005|Feeling safe (finding)|opplever tryggleik
+287981000202104|Reduced frequency of urinary tract infection (finding)|redusert hyppigheit av urinvegsinfeksjon
+102834005|Normal micturition (finding)|normal vannlating
+733816007|Decreased withdrawn behavior (finding)|redusert tilbaketrekkingsåtferd
+1157056004|No poisoning (situation)|inga forgifting
+1137684004|Normal wound perfusion (finding)|normal sårperfusjon
+1157029001|No self mutilation (situation)|ingen selvmutilering
+13241000202103|Able to balance activity and rest (finding)|i stand til å balansera aktivitet og kvile
+1137679005|Good response to medication (finding)|god legemiddelrespons
+387941000202102|Assessment of wound pain (procedure)|vurdering av sårsmerter
+16161000202103|Decreased nausea (finding)|redusert kvalme
+288784001|Does communicate needs and wishes (finding)|kommuniserer behov og ønsker
+719743007|Able to make decisions (finding)|i stand til å ta avgjerder
+394687007|At low risk for suicide (finding)|låg sjølvmordsrisiko
+397712006|Absence of signs and symptoms of electrical injury (situation)|ingen tegn eller symptomer på elektrisk skade
+1141941008|Effective family coping behavior (finding)|tilfredsstillande meistring hos pårørande
+397724004|Demonstrates knowledge of pain management (finding)|viser kunnskap om smertebehandling
+9641000202101|Adequate environmental safety (finding)|tilfredsstillende miljøsikkerhet
+1149348009|No injury during transfer (situation)|ingen forflyttingsskade
+1231385002|Demonstrates knowledge of complementary therapy (finding)|viser kunnskap om alternativ behandling
+300682007|Able to manage personal financial activities (finding)|i stand til å handtera personleg økonomi
+408508002|Has shown no side effects from medication (finding)|ingen teikn til lækjemiddelbiverknader
+289738001|Uterine contractions normal (finding)|uteruskontraksjoner innenfor normalområdet
+1144883003|Improvement in level of self control (finding)|bedret selvkontroll
+507881000202102|Optimal treatment of withdrawal symptoms (regime/therapy)|optimal abstinensbehandling
+162056003|No nausea (situation)|ingen kvalme
+166921001|Blood glucose within reference range (finding)|normalt blodsukker
+507861000202108|Accountability (procedure)|ansvarleggjering
+1148789004|Normal endocrine system function (finding)|normal endokrin funksjon
+16191000202106|Maintained cognition (finding)|oppretthalden kognisjon
+1157152000|Not at risk of elopement from healthcare setting (situation)|ingen risiko for rømming fra helsetjeneste
+48782003|Delivery normal (finding)|normal forløsning
+719143004|Able to be hopeful for future (finding)|i stand til å ha von om framtida
+11512006|Normal sexual function (finding)|normal seksuell funksjon
+6591000202104|Improved electrolyte balance (finding)|bedret elektrolyttbalanse
+588731000202107|Blood glucose level stable (finding)|stabilt blodsukkernivå
+1156446004|Demonstrates adequate pain control (finding)|viser tilfredsstillende smertekontroll
+1141689001|Demonstrates knowledge of fall prevention (finding)|viser kunnskap om fallforebygging
+397644002|Right to privacy maintained (finding)|ivaretatt rett til privatliv
+1141711004|No dizziness (situation)|inga svimmelheit
+1078229009|Food security (finding)|matsikkerheit
+457611000202107|Adequate liver function (finding)|tilfredsstillende leverfunksjon
+397621000202104|Cooperates with health care provider (finding)|samarbeider med helsepersonell
+9861000202101|Adequate immune system function (finding)|tilfredsstillande immunforsvar
+278851000202108|Adequate exchange of respiratory gases (finding)|tilfredsstillende respiratorisk gassutveksling
+668251000202102|Reduced unnecessary fasting (finding)|redusert unødvendig faste
+1145522009|Improvement in nutritional status (finding)|betra ernæringsstatus
+162028008|No indigestion (finding)|ingen dyspepsi
+224964008|No injuries apparent (finding)|ingen synlige skader
+279021000202100|Adequate state of mind (finding)|tilfredsstillende sinnstilstand
+279001000202106|Adequate sexual behavior (finding)|tilfredsstillande seksuell åtferd
+477591000202100|Sense of coping (finding)|oppleving av meistring
+279061000202105|Adequate thermoregulation (finding)|tilfredsstillande temperaturregulering
+278971000202107|Adequate respiratory system (finding)|tilfredsstillende respirasjonssystem
+716396004|Able to be aware of self (finding)|i stand til sjølvinnsikt
+1144537004|Good recovery from sexual assault (finding)|god bedringsprosess etter seksuelt overgrep
+278841000202105|Adequate endocrine system function (finding)|tilfredsstillande endokrin funksjon
+12151000202100|Adequate quality of skin (finding)|tilfredsstillande hudkvalitet
+284475009|Maintains self-control (finding)|held på sjølvkontrollen
+10331000202106|Adequate peripheral neurovascular function (finding)|tilfredsstillende perifer nevrovaskulær funksjon
+1137421004|Able to manage medication regime using memory technique (finding)|i stand til å håndtere legemiddelregime ved bruk av hukommelsesteknikk
+299901006|Sense of taste normal (finding)|normal smakssans
+278961000202103|Adequate respiratory function (finding)|tilfredsstillende funksjon i respirasjonssystem
+9511000202101|Adequate infant behavior (finding)|tilfredsstillande spedbarnsåtferd
+1144480005|Reduction in number of falls (finding)|redusert fallfrekvens
+367851000202108|No injury due to seizure (situation)|ingen anfallsrelaterte skadar
+301681008|Able to move in bed (finding)|i stand til å bevega seg i seng
+1217127002|Effective continuity of care (finding)|tilfredsstillende kontinuitet i helsehjelp
+11181000202104|Adequate condition in oral cavity (finding)|tilfredsstillande tilstand i munnhole
+251359002|Hearing improved (finding)|bedret hørsel
+598001000202100|Controlled bleeding (finding)|kontrollert blødning
+33861001|Weight maintenance regimen (finding)|vektbevarande kosthald
+1157354009|Demonstrates knowledge of physical therapy (finding)|viser kunnskap om fysioterapi
+278671000202103|Active range of joint movement adequate (finding)|tilfredsstillande aktivt rørsleutslag
+278871000202102|Adequate infant feeding (finding)|tilfredsstillande eteåtferd hos spedbarn
+278681000202101|Cardiovascular status adequate (finding)|tilfredsstillende kardiovaskulær status
+1144522003|Tolerating diet (finding)|tåler forordnet diett
+497551000202103|Ready for surgery (finding)|klar til operasjon
+301180005|Cardiovascular system normal (finding)|normalt kardiovaskulært system
+300375001|Able to defecate (finding)|i stand til å defekera
+733827009|Euphoria absent (situation)|ingen eufori
+1141649007|Family functions effectively (finding)|velfungerende familie
+17141000202101|No hallucinations (situation)|ingen hallusinasjonar
+271720007|Normal intracranial pressure (finding)|normalt intrakranielt trykk
+426251001|Ready for enhanced parenting (finding)|klar for bedret foreldreskap
+1149390003|Demonstrates knowledge of safety measure (finding)|viser kunnskap om sikkerhetstiltak
+10121000202106|Reduced hemi-neglect (finding)|redusert neglekt
+69840006|Normal breastfeeding (finding)|tilfredsstillende amming
+166611006|Serum bilirubin within reference range (finding)|serumbilirubin innenfor referanseområde
+13197004|Uses contraception (finding)|bruker prevensjon
+1156284008|Complies with immunization regime (finding)|etterlever vaksinasjonsprogram
+1144884009|Improvement in level of integrity of skin (finding)|betra hudintegritet
+1149161001|Reduced level of decisional conflict (finding)|redusert avgjerdskonflikt
+733744002|Improvement in ability to use toilet independently (finding)|betra evne til å utføra toalettbesøk
+1144471005|Family demonstrates knowledge of disease process (situation)|pårørande viser kunnskap om sjukdomsforløp
+1157028009|No self destructive behavior (situation)|ingen selvdestruktiv atferd
+705075002|Able to see (finding)|i stand til å se
+299900007|Sense of smell normal (finding)|normal luktesans
+425726009|Ready for enhanced individual coping (finding)|klar for økt mestring
+1149252007|Improvement in response to trauma (finding)|betra traumereaksjon
+1141693007|Demonstrates knowledge of oral hygiene (finding)|viser kunnskap om munnhygiene
+279111000202109|Sense of taste adequate (finding)|tilfredsstillende smakssans
+1145005000|Demonstrates knowledge of fluid regime (finding)|viser kunnskap om væskeregime
+1144561006|Adequate sanitation (finding)|tilfredsstillende sanitære forhold
+1141688009|Demonstrates knowledge of contraception (finding)|viser kunnskap om prevensjon
+225909006|Able to cope (finding)|i stand til meistring
+733740006|Ischemic ulcer absent (situation)|ingen arterielle sår
+14871000202107|No apnea (situation)|ingen apné
+367861000202106|Nausea prevention (procedure)|førebygging av kvalme
+161938003|No breathlessness (situation)|ingen dyspné
+278801000202107|Adequate cardiac output (finding)|tilfredsstillende minuttvolum
+271398006|Weight steady (finding)|stabil vekt
+76863003|Normal heart rate (finding)|normal hjartefrekvens
+714883006|Able to transfer location (finding)|i stand til å forflytta seg
+1144472003|Demonstrates knowledge of alcohol abuse (finding)|viser kunnskap om alkoholmisbruk
+1141717000|No injury due to fall (situation)|ingen fallrelatert skade
+1144842001|Able to perform domestic activities (finding)|i stand til å utføra husarbeid
+1149237000|No issues with spiritual beliefs (situation)|ingen problem med åndeleg tru
+6431000202101|No perinatal complication (situation)|ingen perinatal komplikasjon
+17061000202101|Reduced hallucinations (finding)|reduserte hallusinasjoner
+507951000202103|At decreased risk of violent behavior (finding)|redusert risiko for voldsutøvelse
+81141003|Normal renal function (finding)|normal nyrefunksjon
+248324001|Well nourished (finding)|godt ernært
+1141715008|No falling event (situation)|ingen fall
+279091000202102|Adequate physical state (finding)|tilfredsstillende fysisk form
+1145284009|Complies with diagnostic test protocol (finding)|etterlever diagnostisk testing
+507621000202104|Feeling symptom relief (finding)|opplever symptombetring
+327601000202101|Coping with altered taste sense (finding)|meistrar endra smakssans
+1144841008|Able to perform caretaking (finding)|i stand til å utøve omsorg
+182884001|Drug compliance good (finding)|etterlever lækjemiddelregime
+338041000202105|No allergic reaction (finding)|ingen allergisk reaksjon
+225911002|Able to cope with pain (finding)|i stand til smertemeistring
+286489001|Able to prepare meal (finding)|i stand til å tilberede måltid
+1144530002|Able to parent effectively (finding)|i stand til å utøva foreldreskap
+1137672001|Decreased level of confusion (finding)|redusert forvirring
+427561000202109|Motivated for substance use treatment (finding)|motivert for rusbehandling
+1137420003|Able to communicate about pain (finding)|i stand til å kommunisera om smerte
+102945007|Normal sexual behavior (finding)|normal seksuell åtferd
+18460000|Normal nervous system function (finding)|normal funksjon i nervesystemet
+1144864005|Decrease in level of disorientation (finding)|redusert desorientering
+11221000202106|Reduced frequency of seizures (finding)|redusert anfallshyppigheit
+1141702004|No aggressive behavior (situation)|inga aggressiv åtferd
+1149160000|Reduced level of fatigue (finding)|redusert fatigue
+427305007|Ready for enhanced decision making (finding)|klar for betra avgjerdstaking
+1141652004|Demonstrates knowledge of community services (finding)|viser kunnskap om lokalt tjenestetilbud
+1137677007|Normal physiological development of fetus (finding)|normal fosterutvikling
+11251000202104|Able to manage risk of infection (finding)|i stand til å handtera risiko for infeksjon
+418404007|Family notified (situation)|pårørende informert
+1144523008|Normal activity tolerance (finding)|normal aktivitetstoleranse
+1156447008|Good quality of life (finding)|god livskvalitet
+1148956006|Normal endocrine system (finding)|normalt endokrint system
+1156449006|Ready to learn (finding)|klar for læring
+827086006|Normal tactile sensation (finding)|normal kjenslesans
+1145306007|Good social support (finding)|god sosial støtte
+284780004|Able to perform personal hygiene activity (finding)|i stand til å utføra personleg hygiene
+262286000|Weight increased (finding)|vektauke
+1148955005|Normal childhood development (finding)|normal utvikling i barndom
+9031000202103|Able to adjust (finding)|i stand til å tilpassa seg
+162081000|Not constipated (finding)|ingen obstipasjon
+733903006|Psychological resilience (finding)|psykologisk resiliens
+1157171003|Does not use denial as a defense mechanism (finding)|bruker ikke fornektelse som forsvarsmekanisme
+702975009|Ex-tobacco user (finding)|tidlegare brukt tobakk
+1141697008|Demonstrates knowledge of disease process (finding)|viser kunnskap om sjukdom
+1156445000|Complies with safety precaution (finding)|etterlever tryggingstiltak
+1297124002|No evidence of alcohol use disorder (situation)|ingen indikasjoner på alkoholbrukslidelse
+830130002|Wound healing well (finding)|god sårtilheling
+1145283003|Able to participate in social activities (finding)|i stand til sosialisering
+1148835005|Caregiver able to perform caring activities (situation)|omsorgsgjevar i stand til å utøva omsorg
+1148973008|Normal peripheral neurovascular function (finding)|normal perifer nevrovaskulær funksjon
+1144585003|Good response to weaning from ventilator (finding)|god respons på respiratoravvenning
+247700009|Normal perception (finding)|normal persepsjon
+14021000202102|Improved gait (finding)|betra gangfunksjon
+387931000202108|Adequate bowel action (finding)|tilfredsstillende avføringsmønster
+18251000202105|Reduced discomfort (finding)|redusert ubehag
+284968001|Able to perform dressing activity (finding)|i stand til på- og avkleding
+162104009|Diarrhea not present (situation)|ingen diaré
+129830006|Effective therapeutic regimen management (finding)|tilfredsstillende håndtering av behandlingsregime
+14911000202109|No drug use (situation)|ingen rusmiddelbruk
+1145007008|Demonstrates knowledge of treatment regime (finding)|viser kunnskap om behandlingsregime
+1141691009|Demonstrates knowledge about care of infant (finding)|viser kunnskap om spedbarnsomsorg
+1297136008|No evidence of substance use disorder (situation)|ingen indikasjoner på substansbrukslidelse
+557631000202106|Child as next of kin cared for (situation)|barn som pårørande er vareteke
+1149082009|Satisfied with body image (finding)|positivt kroppsbilete
+289000006|Able to feed self (finding)|i stand til å spise selv
+15901000202106|No inappropriate sexual behavior (situation)|ingen upassende seksuell atferd
+1157202002|Reduced level of persistent sadness (finding)|redusert vedvarande tristheit
+327591000202109|Coping with hair loss (finding)|meistrar hårtap
+14071000202103|Spiritual needs met (finding)|eksistensielle behov varetekne
+288936000|Able to swallow (finding)|i stand til å svelge
+1157172005|Normal musculoskeletal system function (finding)|normal muskel- og skjelettfunksjon
+1149085006|Satisfied with management of pain (finding)|tilfreds med smertehåndtering
+9751000202109|Adequate activity tolerance (finding)|tilfredsstillende aktivitetstoleranse
+278811000202109|Adequate cardiovascular function (finding)|tilfredsstillende kardiovaskulær funksjon
+43664005|Normal weight (finding)|normal vekt
+1148841003|Adequate family support (finding)|tilfredsstillande pårørandestøtte
+14851000202101|No anxiety (situation)|ingen angst
+397606006|Absence of signs and symptoms of radiation injury (situation)|ingen teikn eller symptom på stråleskade
+10401000202105|Adequate development (finding)|tilfredsstillande utvikling
+18181000202105|Positive relationship (finding)|har positive relasjonar
+278861000202106|Adequate gastrointestinal system function (finding)|tilfredsstillande gastrointestinal funksjon
+1148805003|Normal peripheral vascular function (finding)|normal perifer vaskulær funksjon
+1156330008|Normal respiratory system (finding)|normalt respirasjonssystem
+733819000|Improved mood (finding)|betra stemningsleie
+1156332000|Self efficacy (finding)|mestringstro
+1145004001|Demonstrates knowledge of diet regime (finding)|viser kunnskap om kosthaldsregime
+417551000202104|Appropriate use of social media (finding)|hensiktsmessig bruk av sosiale medier
+871480003|No psychosis present (situation)|ingen psykose
+16361000202101|Adequate personal hygiene (finding)|tilfredsstillande personleg hygiene
+706954003|Able to perform intermittent urethral self-catheterization (finding)|i stand til å utføre intermitterende blærekateterisering på egen hånd
+284803009|Able to bath self (finding)|i stand til å vaska seg sjølv
+72970002|Normal vital signs (finding)|normale vitale teikn
+327611000202104|Maintains integrity of nails (finding)|opprettholder neglkvalitet
+10301000202103|Adequate interaction with others (finding)|tilfredsstillande sosialt samspel
+1149159005|Reduced level of fear (finding)|redusert fryktnivå
+285036002|Does manage medication (finding)|handterer lækjemiddel sjølv
+1144583005|Good recovery following surgery (finding)|god postoperativ recovery
+17051000202104|Decreased delusions (finding)|reduserte vrangførestillingar
+15211000202100|Reduced behavioral problem (finding)|redusert atferdsproblem
+2004005|Blood pressure within reference range (finding)|normalt blodtrykk
+709014002|Compliance with prescribed diet (finding)|etterlever forordnet diett
+733739009|Improved dentition (finding)|bedret tannstatus
+278941000202104|Adequate renal function (finding)|tilfredsstillende nyrefunksjon
+298229008|Active range of joint movement normal (finding)|normalt aktivt rørsleutslag
+1141704003|No aspiration into respiratory tract (situation)|ingen aspirasjon til luftveier
+1304232008|Entered into clinical trial (finding)|inkludert i klinisk studie
+61618002|Normal cardiovascular function (finding)|normal kardiovaskulær funksjon
+278611000202105|Demonstrates knowledge of prevention of late effect of disorder (finding)|viser kunnskap om førebygging av seinfølgjer
+944361000000106|Able to maintain life roles (finding)|i stand til rolleutøvelse
+1171000175109|Increased physical activity (finding)|økt fysisk aktivitet
+401187007|No itch (situation)|ingen kløe
+112080002|Cheerful mood (finding)|godt humør
+449888003|Normal cognition (finding)|normal kognisjon
+507581000202104|Maintained patient risk management status (finding)|oppretthalden utgangsstatus
+444884003|Intact skin (finding)|intakt hud
+1144527009|Interacts with others normally (finding)|normalt sosialt samspill
+507661000202109|Adequate vital signs (finding)|tilfredsstillande vitale teikn
+1149248007|Intact oral mucosa (finding)|intakt munnslimhinne
+657731000202107|Adequately sedated (finding)|tilstrekkelig sedert
+417511000202103|Adequate amount of urine output (finding)|tilfredsstillende urinproduksjon
+1144566001|Managing to control withdrawal symptoms (finding)|kontrollerer abstinenssymptomer
+81765008|No pain (situation)|ingen smerter
+1148601009|Able to thrive (finding)|i stand til å trives
+1144584004|Normal thermoregulation (finding)|normal temperaturregulering
+1137680008|Normal sensory perception (finding)|normal sensorisk persepsjon
+387921000202106|Normal scarring after surgery (finding)|normal postoperativ arrdannelse
+1157058003|Organized infant behavior (finding)|organisert spedbarnsatferd
+430567009|Ready for discharge (finding)|klar for utskrivelse
+1141709008|No deep vein thrombosis (situation)|ingen dyp venetrombose
+11931000202101|Able to manage personal health (finding)|i stand til å håndtere egen helse
+271591004|Fully conscious (finding)|fullt medviten
+278881000202100|Adequate intracranial pressure adaptive capacity (finding)|tilfredsstillende intrakraniell adaptiv kapasitet
+1137678002|Normal exchange of respiratory gases (finding)|normal respiratorisk gassutveksling
+301146007|Peripheral pulse palpable (finding)|palpabel perifer puls
+278981000202109|Adequate sense of position and movement (finding)|tilfredsstillende kinestetisk sans
+507851000202105|Education about everyday coping (procedure)|undervisning om hverdagsmestring
+54009003|Normal circadian rhythm (finding)|normal døgnrytme
+284907009|Able to use toilet (finding)|i stand til å utføre toalettbesøk
+298345007|Does not fall (finding)|faller ikke
+1148836006|Decreased spatial neglect (finding)|redusert spatial neglekt
+45850009|Continent of urine (finding)|kontinent for urin
+278701000202104|Adequate oral mucosa (finding)|tilfredsstillande munnslimhinne
+709008009|Complies with therapeutic regimen (finding)|etterlever behandlingsregime
+1137676003|Decreased level of spiritual stress (finding)|redusert grad av åndelig stress
+17821000202100|Adequate eating pattern (finding)|tilfredsstillende spisemønster
+719732004|Able to recognize own symptoms (finding)|i stand til å kjenna att eigne symptom
+1156934008|Effective protective ability (finding)|tilfredsstillande beskyttelsesevne
+1141698003|Demonstrates knowledge of exercise (finding)|viser kunnskap om trening
+1149054002|Normal reproductive system function (finding)|normal funksjon i reproduksjonssystem
+417461000202100|No embolism (situation)|ingen emboli
+225466006|Willing (finding)|villig
+1145036008|Demonstrates knowledge of psychosocial response to procedure (finding)|viser kunnskap om psykososial respons på prosedyre
+297661000202102|Reduced apprehension (finding)|redusert engsting
+285034004|Able to manage medication (finding)|i stand til å handtera lækjemiddel
+13301000202109|Maintained mobility (finding)|oppretthalden rørsleevne
+1137674000|Decreased level of relocation stress (finding)|redusert stressyndrom ved omplassering
+58236001|Normal growth (finding)|normal vekst
+1137417006|Able to communicate about nausea (finding)|i stand til å kommunisera om kvalme
+1149438008|Reduced distortion in thinking (finding)|redusert tankeforstyrring
+24441001|Health maintenance alteration (finding)|endret ivaretakelse av egen helse
