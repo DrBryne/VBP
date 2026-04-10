@@ -164,7 +164,7 @@ class VbpWorkflowAgent(BaseAgent):
         # 1. Finalize
         execution_end_time = datetime.now()
         async with state_lock:
-            rectified_total = progress_state.rectified_quotes
+            hallucinated_total = progress_state.hallucinated_citations
             dropped_total = progress_state.dropped_findings
             taxonomy_total = progress_state.total_taxonomy_errors
 
@@ -177,7 +177,7 @@ class VbpWorkflowAgent(BaseAgent):
             grouped_data, 
             source_docs, 
             excluded_results,
-            total_rectified_quotes=rectified_total,
+            total_hallucinated_citations=hallucinated_total,
             total_dropped_findings=dropped_total,
             total_taxonomy_errors=taxonomy_total
         )

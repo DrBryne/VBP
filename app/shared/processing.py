@@ -82,6 +82,16 @@ def strip_xml_tags(text: str) -> str:
         logger.error(f"Error stripping XML tags: {e}")
         return text # Fallback
 
+def safe_parse_json(event: Event) -> Optional[Dict[str, Any]]:
+    """Safely extracts and parses JSON from an ADK Event."""
+    if not event.content or not event.content.parts or not event.content.parts[0].text:
+        return None
+    try:
+        return json.loads(event.content.parts[0].text.strip())
+    except (json.JSONDecodeError, AttributeError) as e:
+        logger.error(f"Failed to parse LLM response: {e}")
+        return None
+
 def load_and_prep_document(uri: str, project_id: str) -> Tuple[str, str, str]:
     """
     Downloads a document from GCS, extracts its text based on MIME type,
@@ -145,7 +155,14 @@ async def resolve_sentence_ids(
                     target_id = f"S{idx + offset}"
                     if target_id in indexed_sentences:
                         unique_ids.add(target_id)
+                    elif offset == 0:
+                        # Only count the primary ID as hallucinated if missing
+                        async with state_lock:
+                            progress_state.hallucinated_citations += 1
+                        logger.warning(f"[Indexing] Hallucinated Sentence ID '{sid}' in {filename}")
             except (ValueError, IndexError):
+                async with state_lock:
+                    progress_state.hallucinated_citations += 1
                 logger.warning(f"[Indexing] Malformed Sentence ID '{sid}' in {filename}")
 
         if unique_ids:
@@ -242,9 +259,11 @@ async def process_document_pipeline(
 
         logger.info(f"Invoking Research Analyst for: {filename}")
         async for ev in research_analyst.run_async(pipeline_ctx):
-            if ev.is_final_response() and ev.content and ev.content.parts:
+            if ev.is_final_response():
+                data_dict = safe_parse_json(ev)
+                if not data_dict:
+                    continue
                 try:
-                    data_dict = json.loads(ev.content.parts[0].text)
                     if ev.author == "metadata_extractor": 
                         doc_session.state["metadata"] = MetadataResponse.model_validate(data_dict)
                         logger.debug(f"Metadata extracted for: {filename}", title=data_dict.get("source_document", {}).get("title"))
@@ -252,8 +271,8 @@ async def process_document_pipeline(
                         doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
                         logger.debug(f"Findings extracted for: {filename}", count=len(data_dict.get("candidate_findings", [])))
                 except Exception as e: 
-                    logger.error(f"ANALYST PARSE ERROR ({ev.author}): {filename}", error=str(e))
-                    await progress_queue.put(f"ANALYST PARSE ERROR ({ev.author}): {filename} ({e})")
+                    logger.error(f"ANALYST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                    await progress_queue.put(f"ANALYST VALIDATION ERROR ({ev.author}): {filename} ({e})")
 
         metadata: MetadataResponse = doc_session.state.get("metadata")
         clinical_findings: ClinicalFindingsResponse = doc_session.state.get("clinical_findings")
@@ -317,14 +336,16 @@ async def process_document_pipeline(
         logger.info(f"Invoking Term Mapper for: {filename}", finding_count=len(lean_findings))
         try:
             async for ev in term_mapper.run_async(pipeline_ctx):
-                if ev.is_final_response() and ev.content and ev.content.parts:
+                if ev.is_final_response():
+                    data_dict = safe_parse_json(ev)
+                    if not data_dict:
+                        continue
                     try:
-                        data_dict = json.loads(ev.content.parts[0].text)
                         if ev.author == "icnp_mapper": doc_session.state["icnp_mappings"] = IcnpMappingResponse.model_validate(data_dict)
                         elif ev.author == "fo_classifier": doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
                     except Exception as e: 
-                        logger.error(f"MAPPER PARSE ERROR ({ev.author}): {filename}", error=str(e))
-                        await progress_queue.put(f"MAPPER PARSE ERROR ({ev.author}): {filename} ({e})")
+                        logger.error(f"MAPPER VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                        await progress_queue.put(f"MAPPER VALIDATION ERROR ({ev.author}): {filename} ({e})")
         except Exception as e:
             async with state_lock: progress_state.completed += 1; progress_state.failed += 1
             logger.error(f"Term Mapper critical error for: {filename}", error=str(e))
@@ -363,7 +384,8 @@ async def process_document_pipeline(
         if 'cache_path' in locals() and os.path.exists(cache_path): os.remove(cache_path)
         async with state_lock: progress_state.completed += 1; progress_state.failed += 1
         logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(doc_e), uri=uri)
-        await progress_queue.put(f"DONE: {filename} (CRITICAL ERROR: {doc_e})")
+        err_msg = f"Failed to process document: {filename} (Error: {str(doc_e)})"
+        await progress_queue.put(f"WARNING: {err_msg}")
         return ExcludedDocument(source_uri=uri, title=filename, justification="The document could not be read or its format was unsupported for analysis.")
 
 def validate_taxonomy(
@@ -388,11 +410,8 @@ def validate_taxonomy(
         icnp_match = icnp_lookup.get(f_id)
         fo_val = fo_lookup.get(f_id, get_default_fo())
         
-        # Validate FO
-        if not is_valid_fo(fo_val):
-            taxonomy_error_count += 1
-            logger.warning(f"[Taxonomy Validation] Invalid FO '{fo_val}' in {filename}, defaulting.", finding_id=f_id)
-            fo_val = get_default_fo()
+        # FO is now validated by Pydantic Enum in the mapper, so we don't need manual check here
+        # but we use get_default_fo() as a safe fallback for the dict lookup above.
 
         def resolve(orig_val, mapping_field, field_name):
             nonlocal taxonomy_error_count

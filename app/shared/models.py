@@ -38,7 +38,7 @@ class WorkflowProgress:
     success: int = 0
     failed: int = 0
     no_findings: int = 0
-    rectified_quotes: int = 0
+    hallucinated_citations: int = 0
     dropped_findings: int = 0
     total_taxonomy_errors: int = 0
 
@@ -116,7 +116,7 @@ class ExecutionSummary(BaseModel):
     successful_files_count: int = Field(description="Number of files that yielded clinical findings.")
     excluded_files_count: int = Field(description="Number of files excluded due to lack of findings or errors.")
     total_synthesized_findings: int = Field(description="Total number of unique clinical findings consolidated.")
-    total_rectified_quotes: int = Field(description="Total number of hallucinated quotes that were successfully fixed via fuzzy matching.")
+    total_hallucinated_citations: int = Field(description="Total number of hallucinated sentence IDs returned by the LLM that did not exist in the document.")
     total_taxonomy_errors: int = Field(description="Total number of hallucinated ICNP IDs or invalid Functional Areas caught and corrected.")
     total_dropped_findings: int = Field(description="Total number of findings that were dropped due to no valid quotes.")
     execution_start_time: datetime = Field(description="Timestamp when the workflow execution started.")

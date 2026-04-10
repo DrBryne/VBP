@@ -58,7 +58,7 @@ def finalize_synthesis(
     grouped_data: Dict[str, Dict],
     source_documents: List[Document],
     excluded_documents: List[ExcludedDocument],
-    total_rectified_quotes: int = 0,
+    total_hallucinated_citations: int = 0,
     total_dropped_findings: int = 0,
     total_taxonomy_errors: int = 0
 ) -> SynthesisResponse:
@@ -89,7 +89,7 @@ def finalize_synthesis(
         successful_files_count=len(source_documents),
         excluded_files_count=len(excluded_documents),
         total_synthesized_findings=len(synthesized_findings),
-        total_rectified_quotes=total_rectified_quotes,
+        total_hallucinated_citations=total_hallucinated_citations,
         total_dropped_findings=total_dropped_findings,
         total_taxonomy_errors=total_taxonomy_errors,
         execution_start_time=execution_start_time,
