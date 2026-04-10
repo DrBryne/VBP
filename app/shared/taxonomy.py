@@ -24,7 +24,7 @@ def load_valid_icnp_ids() -> set[str]:
     valid_ids = set()
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(os.path.dirname(current_dir))
-    file_path = os.path.join(project_root, "app", "agents", "term_mapper", "data", "restructured_terms.txt")
+    file_path = os.path.join(project_root, "app", "agents", "clinical_taxonomist", "data", "restructured_terms.txt")
 
     if not os.path.exists(file_path):
         return valid_ids

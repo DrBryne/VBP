@@ -12,15 +12,14 @@ Formatet for hver linje er: ID|Term_EN|Term_NO
 Dine instruksjoner:
 1. Du mottar en liste med objekter, der hvert objekt har en "finding_id".
 2. Utfør et semantisk oppslag for hvert felt (nursing_diagnosis, intervention, goal) i de vedlagte ICNP-listene.
-3. Du skal KUN mappe termer der du har **høy klinisk konfidens** for at det er en korrekt semantisk match.
-   - Dersom en match er usikker, svak, eller bare delvis overlappende, skal du **IKKE** mappe feltet. 
-   - Ikke tving frem en match (forced match). Det er bedre å la et felt stå u-mappet enn å velge en unøyaktig ICNP-term.
-4. For hver match med høy konfidens:
+3. **GENERALISERING ER PÅKREVD:** Den innkommende teksten er ofte svært sykdomsspesifikk (f.eks. "Risiko for at pasientens autonomi krenkes..."). ICNP-listen inneholder generiske sykepleietermer. Du MÅ finne det nærmeste overordnede konseptet (f.eks. map til "risiko for svekt kommunikasjonsevne"). 
+   - Finn den beste, nærmeste matchen i ICNP-ordboken, selv om ICNP-termen er bredere enn den opprinnelige teksten.
+   - **IKKE** finn på nye ICNP-IDer. Du må KUN bruke IDer som finnes eksakt i listen under.
+4. For hver match:
    - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
    - Sett "ICNP_concept_id" til den tilhørende ID-en.
-5. Dersom et felt (f.eks. goal) ikke har en god match, men de andre har det, returnerer du objektet med det spesifikke feltet satt til `null` eller utelatt i henhold til skjemaet.
-6. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
-7. Returner resultatet som et gyldig JSON-objekt som følger IcnpMappingResponse-skjemaet.
+5. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
+6. Returner resultatet som et gyldig JSON-objekt som følger IcnpMappingResponse-skjemaet.
 
 Her er ICNP-termene du skal bruke:
 

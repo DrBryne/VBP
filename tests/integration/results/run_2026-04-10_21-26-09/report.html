@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkast Veiledende Behandlingsplan - ALS - Amytrofisk lateral sklerose</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .row-clickable { cursor: pointer; }
+        /* Selection safe navigation script */
+    </style>
+    <script>
+        function navigateToEvidence(event, targetId) {
+            const selection = window.getSelection();
+            if (selection.toString().length === 0) {
+                window.location.hash = targetId;
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-[90rem] mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Utkast Veiledende Behandlingsplan</h1>
+                    <p class="text-lg text-slate-600">Målgruppe: <span class="font-semibold text-slate-800">ALS - Amytrofisk lateral sklerose</span></p>
+                </div>
+                <div class="text-right text-sm text-slate-500 space-y-1">
+                    <p class="font-medium text-slate-900">Rapport generert: 10.04.2026 19:27</p>
+                    <p>Antall dokumenter oppdaget: <span class="font-bold text-slate-700">96</span></p>
+                    <p>Antall kliniske funn: <span class="font-bold text-slate-700">2</span></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Innhold Section -->
+        <nav class="mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 w-fit min-w-[240px]">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Innhold</h2>
+            <ul class="space-y-3">
+                <li>
+                    <a href="#oversikt" class="flex items-center text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-indigo-500 mr-3"></span>
+                        KLINISKE FUNN
+                    </a>
+                </li>
+                <li>
+                    <a href="#evidens" class="flex items-center text-sm font-bold text-slate-600 hover:text-amber-600 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-amber-500 mr-3"></span>
+                        KUNNSKAPSGRUNNLAG
+                    </a>
+                </li>
+                <li>
+                    <a href="#bibliografi" class="flex items-center text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-slate-600 mr-3"></span>
+                        BIBLIOGRAFI
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Summary Table of Findings -->
+        <section id="oversikt" class="mb-20 scroll-mt-12">
+            <h2 class="text-xl font-bold text-slate-900 mb-2 flex items-center max-w-6xl">
+                <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                Oversikt over kliniske funn
+            </h2>
+            <p class="text-xs text-slate-400 mb-6 italic max-w-6xl">Klikk på en rad for å se kildegrunnlag. Du kan fortsatt markere og kopiere tekst direkte fra tabellen.</p>
+            
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-24">FO Område</th>
+                            <th class="px-4 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sykepleiediagnose</th>
+                            <th class="px-2 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">ICNP ID</th>
+                            <th class="px-4 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider border-l border-slate-100">Intervensjon</th>
+                            <th class="px-2 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">ICNP ID</th>
+                            <th class="px-4 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider border-l border-slate-100">Mål</th>
+                            <th class="px-2 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">ICNP ID</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white">
+                        
+                        <tr class="hover:bg-slate-50 transition-colors text-sm row-clickable" onclick="navigateToEvidence(event, 'evidens-1')">
+                            <td class="px-4 py-4 font-bold text-slate-500 align-top">3. Respirasjon/sirkulasjon</td>
+                            <td class="px-4 py-4 align-top font-bold text-slate-900">Respiratorisk svikt og tiltagende pleiebehov grunnet rask sykdomsprogresjon ved ALS, med risiko for redusert livskvalitet og etiske dilemmaer ved avansert livsforlengende behandling.</td>
+                            <td class="px-2 py-4 align-top">
+                                <div class="mono text-slate-500 font-medium select-all">—</div>
+                            </td>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    
+                                    <li>Administrere mekanisk ventilasjonsstøtte (fortrinnsvis non-invasiv ventilasjon (NIV) via ansiktsmaske, eventuelt invasiv ventilasjon via trakeostomi). Tilpasse omsorgen under den raske forverringen og systematisk ivareta de etiske aspektene knyttet til behandlingsvalg.</li>
+                                    
+                                </ul>
+                            </td>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    
+                                    
+                                    
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    
+                                    <li>Lindre pasientens symptomer, forbedre våkenhet og søvnkvalitet, øke forventet levetid, og sikre at behandlingsvalg er etisk forsvarlige gjennom hele sykdomsforløpet.</li>
+                                    
+                                </ul>
+                            </td>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    
+                                    
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-slate-50 transition-colors text-sm row-clickable" onclick="navigateToEvidence(event, 'evidens-2')">
+                            <td class="px-4 py-4 font-bold text-slate-500 align-top">3. Respirasjon/sirkulasjon</td>
+                            <td class="px-4 py-4 align-top font-bold text-slate-900">Svekket gassutveksling og kronisk hypoventilasjon relatert til ALS, som resulterer i uttalt tretthet på dagtid (daytime sleepiness), dyspné og søvnforstyrrelser.</td>
+                            <td class="px-2 py-4 align-top">
+                                <div class="mono text-slate-500 font-medium select-all">—</div>
+                            </td>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    
+                                    <li>Observere kliniske symptomer på hypoventilasjon og kartlegge pasientens grad av dagtretthet. Assistere ved gjennomføring av lungefunksjonstester (vital kapasitet) og blodgassmålinger for å vurdere behov for elektiv oppstart av respiratorbehandling.</li>
+                                    
+                                </ul>
+                            </td>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    
+                                    
+                                    
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 align-top border-l border-slate-100 text-slate-700 leading-tight">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    
+                                    <li>Tidlig identifisering av respirasjonssvikt for å muliggjøre planlagt oppstart av ventilasjonsstøtte, og dermed unngå at pasienten havner i en akutt respiratorisk krise.</li>
+                                    
+                                </ul>
+                            </td>
+                            <td class="px-4 py-4 align-top w-28 whitespace-nowrap bg-slate-50/50">
+                                <div class="mono text-slate-500 font-medium select-all">
+                                    
+                                    
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4 text-[10px] text-slate-400 italic px-2 max-w-6xl">Tips: Du kan dobbeltklikke på ICNP-koder eller termer for å raskt markere dem for kopiering.</p>
+            
+        </section>
+
+        <!-- Detailed Content Container -->
+        <div class="max-w-6xl">
+            <!-- Detailed Evidence Section -->
+            
+            <section id="evidens" class="mb-20 scroll-mt-12">
+                <h2 class="text-xl font-bold text-slate-900 mb-8 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    Kunnskapsgrunnlag for funn
+                </h2>
+                
+                <div class="space-y-12">
+                    
+                    <div id="evidens-1" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest">3. Respirasjon/sirkulasjon</span>
+                                    
+                                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Sikkerhet: Lav
+                                    </span>
+                                    
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Sykepleiediagnose</p>
+                                    <h3 class="text-base font-bold text-slate-900 leading-tight">Respiratorisk svikt og tiltagende pleiebehov grunnet rask sykdomsprogresjon ved ALS, med risiko for redusert livskvalitet og etiske dilemmaer ved avansert livsforlengende behandling.</h3>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjoner</p>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        
+                                        <li>Administrere mekanisk ventilasjonsstøtte (fortrinnsvis non-invasiv ventilasjon (NIV) via ansiktsmaske, eventuelt invasiv ventilasjon via trakeostomi). Tilpasse omsorgen under den raske forverringen og systematisk ivareta de etiske aspektene knyttet til behandlingsvalg.</li>
+                                        
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mål</p>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        
+                                        <li>Lindre pasientens symptomer, forbedre våkenhet og søvnkvalitet, øke forventet levetid, og sikre at behandlingsvalg er etisk forsvarlige gjennom hele sykdomsforløpet.</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <a href="#doc-0a98eac3-4fe3-4c59-8b6d-75331c02dfcd" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline pr-4">
+                                                    SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)
+                                                </a>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/veiledende_behandlingsplan/ALS/250-254.pdf" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-blue-100 text-blue-700 border border-blue-200
+                                                            ">
+                                                            Nivå 1
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 italic line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en medisinsk vitenskapelig artikkel om motivene for å starte med hjemmerespirator (HMV) hos pasienter med nevromuskulære sykdommer, hvor ALS er en spesifikk undergruppe. For sykepleiere på sykehus er informasjonen høyst relevant i form av klinisk observasjon, kartlegging og tiltak ved respirasjonssvikt. Jeg har identifisert to sentrale sykepleiefaglige funn: 1) Utfordringen med at hypoventilasjon ved ALS ofte manifesterer seg som tretthet på dagtid, noe som krever aktiv observasjon og lungefunksjonstesting for å starte elektiv ventilasjonsstøtte før tilstanden blir akutt. 2) Håndtering og overvåkning av selve ventilasjonsbehandlingen (NIV via maske eller invasivt via trakeostomi) for å lindre symptomer, med et særskilt behov for å ivareta de etiske aspektene ved rask sykdomsforverring hos ALS-pasienter. Siden dokumentet ikke oppgir en eksplisitt GRADE-vurdering eller evidensgrad med formelle termer (som &#39;Sterk anbefaling&#39; eller &#39;Evidensgrad A&#39;), er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 italic leading-relaxed">
+                                                        Dokumentet er en medisinsk vitenskapelig artikkel om motivene for å starte med hjemmerespirator (HMV) hos pasienter med nevromuskulære sykdommer, hvor ALS er en spesifikk undergruppe. For sykepleiere på sykehus er informasjonen høyst relevant i form av klinisk observasjon, kartlegging og tiltak ved respirasjonssvikt. Jeg har identifisert to sentrale sykepleiefaglige funn: 1) Utfordringen med at hypoventilasjon ved ALS ofte manifesterer seg som tretthet på dagtid, noe som krever aktiv observasjon og lungefunksjonstesting for å starte elektiv ventilasjonsstøtte før tilstanden blir akutt. 2) Håndtering og overvåkning av selve ventilasjonsbehandlingen (NIV via maske eller invasivt via trakeostomi) for å lindre symptomer, med et særskilt behov for å ivareta de etiske aspektene ved rask sykdomsforverring hos ALS-pasienter. Siden dokumentet ikke oppgir en eksplisitt GRADE-vurdering eller evidensgrad med formelle termer (som &#39;Sterk anbefaling&#39; eller &#39;Evidensgrad A&#39;), er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Mer...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Sitat</p>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"J Rehabil Med 2006; 38: 250254 Correspondence address: Michael Laub, MD, Dept of Respiratory Medicine, University Hospital, SE-221 85, Lund, Sweden. E-mail: ml@laub.dk Submitted April 21, 2005; accepted March 17, 2006 INTRODUCTION Home mechanical ventilation (HMV) in patients with chronic alveolar hypoventilation secondary to neuromuscular diseases (NMD) has become widely acceptable, as the provision of ventilatory support can provide symptomatic relief and increase life expectancy (1). HMV can be applied as non-invasive ventilation (NIV) most often via a facemask, or as invasive ventilation via a tracheo- stomy. Generally, the use of NIV is much more prevalent than invasive ventilation. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well. Apart from the Duchenne group the mean VC was approximately 40% of the predicted value for all groups."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-2" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest">3. Respirasjon/sirkulasjon</span>
+                                    
+                                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Sikkerhet: Lav
+                                    </span>
+                                    
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Sykepleiediagnose</p>
+                                    <h3 class="text-base font-bold text-slate-900 leading-tight">Svekket gassutveksling og kronisk hypoventilasjon relatert til ALS, som resulterer i uttalt tretthet på dagtid (daytime sleepiness), dyspné og søvnforstyrrelser.</h3>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Intervensjoner</p>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        
+                                        <li>Observere kliniske symptomer på hypoventilasjon og kartlegge pasientens grad av dagtretthet. Assistere ved gjennomføring av lungefunksjonstester (vital kapasitet) og blodgassmålinger for å vurdere behov for elektiv oppstart av respiratorbehandling.</li>
+                                        
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mål</p>
+                                    <ul class="text-base font-bold text-slate-800 leading-tight list-disc pl-4">
+                                        
+                                        <li>Tidlig identifisering av respirasjonssvikt for å muliggjøre planlagt oppstart av ventilasjonsstøtte, og dermed unngå at pasienten havner i en akutt respiratorisk krise.</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <a href="#doc-0a98eac3-4fe3-4c59-8b6d-75331c02dfcd" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline pr-4">
+                                                    SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)
+                                                </a>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/veiledende_behandlingsplan/ALS/250-254.pdf" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-blue-100 text-blue-700 border border-blue-200
+                                                            ">
+                                                            Nivå 1
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 italic line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en medisinsk vitenskapelig artikkel om motivene for å starte med hjemmerespirator (HMV) hos pasienter med nevromuskulære sykdommer, hvor ALS er en spesifikk undergruppe. For sykepleiere på sykehus er informasjonen høyst relevant i form av klinisk observasjon, kartlegging og tiltak ved respirasjonssvikt. Jeg har identifisert to sentrale sykepleiefaglige funn: 1) Utfordringen med at hypoventilasjon ved ALS ofte manifesterer seg som tretthet på dagtid, noe som krever aktiv observasjon og lungefunksjonstesting for å starte elektiv ventilasjonsstøtte før tilstanden blir akutt. 2) Håndtering og overvåkning av selve ventilasjonsbehandlingen (NIV via maske eller invasivt via trakeostomi) for å lindre symptomer, med et særskilt behov for å ivareta de etiske aspektene ved rask sykdomsforverring hos ALS-pasienter. Siden dokumentet ikke oppgir en eksplisitt GRADE-vurdering eller evidensgrad med formelle termer (som &#39;Sterk anbefaling&#39; eller &#39;Evidensgrad A&#39;), er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 italic leading-relaxed">
+                                                        Dokumentet er en medisinsk vitenskapelig artikkel om motivene for å starte med hjemmerespirator (HMV) hos pasienter med nevromuskulære sykdommer, hvor ALS er en spesifikk undergruppe. For sykepleiere på sykehus er informasjonen høyst relevant i form av klinisk observasjon, kartlegging og tiltak ved respirasjonssvikt. Jeg har identifisert to sentrale sykepleiefaglige funn: 1) Utfordringen med at hypoventilasjon ved ALS ofte manifesterer seg som tretthet på dagtid, noe som krever aktiv observasjon og lungefunksjonstesting for å starte elektiv ventilasjonsstøtte før tilstanden blir akutt. 2) Håndtering og overvåkning av selve ventilasjonsbehandlingen (NIV via maske eller invasivt via trakeostomi) for å lindre symptomer, med et særskilt behov for å ivareta de etiske aspektene ved rask sykdomsforverring hos ALS-pasienter. Siden dokumentet ikke oppgir en eksplisitt GRADE-vurdering eller evidensgrad med formelle termer (som &#39;Sterk anbefaling&#39; eller &#39;Evidensgrad A&#39;), er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Mer...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Sitat</p>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Mean vital capa- city was close to 40% of predicted, but significantly lower in the Duchenne patients (26% of predicted). Conclusion: Daytime sleepiness was the most common clinical symptom motivating home mechanical ventilation in this group of patients with chronic hypercapnic respiratory insufficiency secondary to neuro/myopathies. Respiratory function testing is therefore suggested to be included in the diagnostic work up of daytime sleepiness in these patients. Key words: respiratory failure, non-invasive ventilation, invasive ventilation, symptoms and signs. ISSN 1650-1977 DOI: 10.1080/16501970600721033 J Rehabil Med 38 patients were defined as individuals starting ventilatory support according to plan over days or weeks. Opposing this, acute patients presented a rapid worsening in their condition, often induced by an infection, leading to severe respiratory insufficiency requiring immediate medical attention. Calculation of vital capacity in percent of the predicted value (VC%pred) in patients beyond 19 years of age was done according to Berglund et al. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Bibliography -->
+            <section id="bibliografi" class="mb-20 scroll-mt-12">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Bibliografi
+                </h2>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <table class="min-w-full divide-y divide-slate-200 text-sm">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tittel</th>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-24">År</th>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-40">Evidensnivå</th>
+                                <th class="px-6 py-3 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">Kilde</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            
+                            <tr id="doc-0a98eac3-4fe3-4c59-8b6d-75331c02dfcd" class="scroll-mt-8 hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="font-semibold text-slate-900 mb-1">SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)</div>
+                                    <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter mb-2">DOI: 10.1080/16501970600721033</div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">2006</td>
+                                <td class="px-6 py-4">
+                                    
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border
+                                         bg-blue-50 text-blue-700 border-blue-100
+                                        ">
+                                        Nivå 1: Enkeltstudier
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    
+                                    <a href="https://storage.googleapis.com/veiledende_behandlingsplan/ALS/250-254.pdf" target="_blank" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors whitespace-nowrap">
+                                        Åpne dokument
+                                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </section>
+
+            <footer class="mt-20 text-center text-[10px] text-slate-400 border-t border-slate-200 pt-8 uppercase tracking-[0.2em] max-w-6xl">
+                <p>Veiledende Behandlingsplan (VBP) Workflow — Generert med Google Gemini AI</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

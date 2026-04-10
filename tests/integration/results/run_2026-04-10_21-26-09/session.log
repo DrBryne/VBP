@@ -1,0 +1,16 @@
+Run ID: 2026-04-10_21-26-09
+Timestamp: 2026-04-10T19:26:09.433169
+----------------------------------------
+ALS/
+[INFO] 2026-04-10 19:26:09,976 - vbp_orchestrator - Processing 1 documents in parallel (limit: 1)
+[INFO] 2026-04-10 19:26:09,976 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-10 19:26:10,615 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-10 19:26:39,113 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf
+[INFO] 2026-04-10 19:26:46,845 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf
+[INFO] 2026-04-10 19:27:02,222 - vbp_processing - Document processing success: 250-254.pdf
+[INFO] 2026-04-10 19:27:02,343 - vbp_orchestrator - *** Overall Progress: 1/1 processed (1 success) ***
+[INFO] 2026-04-10 19:27:02,343 - vbp_orchestrator - Consolidating 1 successful documents and 0 excluded documents.
+[INFO] 2026-04-10 19:27:02,344 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-10 19:27:02,344 - test_workflow - --- Final Synthesis Complete ---
+[INFO] 2026-04-10 19:27:02,344 - test_workflow - Generating HTML Report...
+[INFO] 2026-04-10 19:27:02,556 - test_workflow - HTML Report generated successfully.
