@@ -1,0 +1,28 @@
+Run ID: 2026-04-11_19-10-14
+Timestamp: 2026-04-11T17:10:14.102114
+----------------------------------------
+/, target_group=ALS - Amytrofisk lateral sklerose
+[INFO] 2026-04-11 17:10:14,103 - vbp_orchestrator - Starting discovery in: gs://vbp-clinical-data-eu/ALS/
+[INFO] 2026-04-11 17:10:15,418 - vbp_orchestrator - Processing 3 documents in parallel (limit: 3)
+[INFO] 2026-04-11 17:10:15,419 - vbp_processing - Processing document start: 250-254.pdf
+[INFO] 2026-04-11 17:10:16,809 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-11 17:10:16,810 - vbp_processing - Processing document start: 32903629_fulltext.xml
+[INFO] 2026-04-11 17:10:18,034 - vbp_processing - Invoking ClinicalExtractor for: 32903629_fulltext.xml
+[INFO] 2026-04-11 17:10:18,038 - vbp_processing - Processing document start: 32910255_fulltext.xml
+[INFO] 2026-04-11 17:10:19,506 - vbp_processing - Invoking ClinicalExtractor for: 32910255_fulltext.xml
+[INFO] 2026-04-11 17:10:41,002 - vbp_processing - Invoking Clinical Auditor for: 32903629_fulltext.xml
+[INFO] 2026-04-11 17:10:45,784 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf
+[INFO] 2026-04-11 17:10:46,149 - vbp_processing - Invoking Clinical Auditor for: 32910255_fulltext.xml
+[INFO] 2026-04-11 17:10:48,618 - vbp_processing - Invoking ClinicalTaxonomist for: 32903629_fulltext.xml
+[INFO] 2026-04-11 17:10:52,944 - vbp_processing - Invoking ClinicalTaxonomist for: 32910255_fulltext.xml
+[INFO] 2026-04-11 17:10:58,026 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf
+[INFO] 2026-04-11 17:11:20,004 - vbp_processing - Document processing success: 32903629_fulltext.xml
+[INFO] 2026-04-11 17:11:46,993 - vbp_processing - Document processing success: 32910255_fulltext.xml
+[INFO] 2026-04-11 17:11:58,145 - vbp_processing - Document processing success: 250-254.pdf
+[INFO] 2026-04-11 17:11:58,272 - vbp_orchestrator - *** Overall Progress: 3/3 processed (3 success) ***
+[INFO] 2026-04-11 17:11:58,272 - vbp_orchestrator - Consolidating 3 successful documents and 0 excluded documents.
+[INFO] 2026-04-11 17:11:58,272 - vbp_consolidation - Starting FHIR semantic audit for 4 Functional Areas.
+[INFO] 2026-04-11 17:12:00,314 - vbp_orchestrator - Consolidation complete. Yielding final response.
+[INFO] 2026-04-11 17:12:00,315 - test_workflow - --- Final Synthesis Complete ---
+[INFO] 2026-04-11 17:12:00,315 - test_workflow - Generating and uploading HTML Report...
+[INFO] 2026-04-11 17:12:10,219 - test_workflow - HTML Report uploaded to GCS successfully.

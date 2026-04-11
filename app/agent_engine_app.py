@@ -30,17 +30,19 @@ from app.app_utils.typing import Feedback
 load_dotenv()
 
 
+from app.shared.config import config
+
 class AgentEngineApp(AdkApp):
     def set_up(self) -> None:
         """Initialize the agent engine app with logging and telemetry."""
-        vertexai.init()
+        vertexai.init(location=config.PREVIEW_MODEL_LOCATION)
         setup_telemetry()
         super().set_up()
         logging.basicConfig(level=logging.INFO)
         logging_client = google_cloud_logging.Client()
         self.logger = logging_client.logger(__name__)
-        if gemini_location:
-            os.environ["GOOGLE_CLOUD_LOCATION"] = gemini_location
+        # Ensure the underlying Google Cloud libraries use the configured location
+        os.environ["GOOGLE_CLOUD_LOCATION"] = config.PREVIEW_MODEL_LOCATION
 
     def register_feedback(self, feedback: dict[str, Any]) -> None:
         """Collect and log feedback."""
@@ -53,9 +55,8 @@ class AgentEngineApp(AdkApp):
         operations[""] = [*operations.get("", []), "register_feedback"]
         return operations
 
-
-gemini_location = os.environ.get("GOOGLE_CLOUD_LOCATION")
 logs_bucket_name = os.environ.get("LOGS_BUCKET_NAME")
+
 agent_engine = AgentEngineApp(
     app=adk_app,
     session_service_builder=lambda: InMemorySessionService(),

@@ -6,7 +6,10 @@ of the final clinical report.
 import asyncio
 from datetime import datetime
 
+from app.app_utils.telemetry import track_telemetry_span
+from app.shared.config import config
 from app.shared.fhir_client import FhirTerminologyClient
+from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     Document,
@@ -33,6 +36,27 @@ BLOCKED_ROOT_PARENTS = {
 # Cache for display terms of concepts fetched during audit (to avoid re-fetching in finalize)
 global_id_cache: dict[str, str] = {}
 
+# Persistent caches for taxonomy relationships
+# Structure: { "subsumption": { "child_id||parent_id": "outcome" }, "concepts": { "id": {info} } }
+taxonomy_cache: dict[str, dict] = {
+    "subsumption": {},
+    "concepts": {}
+}
+
+def load_taxonomy_cache():
+    """Initializes the taxonomy cache from GCS."""
+    global taxonomy_cache
+    remote_cache = download_json_from_gcs(config.TAXONOMY_CACHE_URI, config.PROJECT_ID)
+    if remote_cache:
+        taxonomy_cache["subsumption"].update(remote_cache.get("subsumption", {}))
+        taxonomy_cache["concepts"].update(remote_cache.get("concepts", {}))
+        logger.info(f"Taxonomy cache loaded: {len(taxonomy_cache['subsumption'])} links, {len(taxonomy_cache['concepts'])} concepts.")
+
+def save_taxonomy_cache():
+    """Persists the updated taxonomy cache back to GCS."""
+    upload_json_to_gcs(taxonomy_cache, config.TAXONOMY_CACHE_URI, config.PROJECT_ID)
+    logger.info("Taxonomy cache persisted to GCS.")
+
 async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTerminologyClient) -> dict[str, str]:
     """
     Queries the FHIR server to find hierarchical relationships between a set of ICNP IDs.
@@ -54,15 +78,29 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
     for i in range(len(id_list)):
         for j in range(len(id_list)):
             if i != j:
-                tasks.append(fhir_client.check_subsumption(id_list[i], id_list[j]))
-                pairs.append((id_list[i], id_list[j]))
+                # Check cache first
+                cache_key = f"{id_list[i]}||{id_list[j]}"
+                cached_res = taxonomy_cache["subsumption"].get(cache_key)
+                
+                if cached_res:
+                    if cached_res == "subsumed-by":
+                        rewrite_map[id_list[i]] = id_list[j]
+                else:
+                    tasks.append(fhir_client.check_subsumption(id_list[i], id_list[j]))
+                    pairs.append((id_list[i], id_list[j]))
 
-    sub_results = await asyncio.gather(*tasks, return_exceptions=True)
+    if tasks:
+        logger.info(f"Performing {len(tasks)} new FHIR subsumption checks.")
+        sub_results = await asyncio.gather(*tasks, return_exceptions=True)
 
-    for (child, parent), result in zip(pairs, sub_results, strict=False):
-        if not isinstance(result, Exception) and result == "subsumed-by":
-            logger.info(f"[Semantic Merge] '{child}' is a sub-concept of '{parent}'. Vertical merge.")
-            rewrite_map[child] = parent
+        for (child, parent), result in zip(pairs, sub_results, strict=False):
+            if not isinstance(result, Exception):
+                # Update cache
+                cache_key = f"{child}||{parent}"
+                taxonomy_cache["subsumption"][cache_key] = result
+                if result == "subsumed-by":
+                    logger.info(f"[Semantic Merge] '{child}' is a sub-concept of '{parent}'. Vertical merge.")
+                    rewrite_map[child] = parent
 
     # --- PASS 2: Sibling Merge ---
     # Only check IDs that haven't already been merged vertically
@@ -70,18 +108,34 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
     if len(remaining_ids) < 2:
         return rewrite_map
 
-    lookup_tasks = [fhir_client.lookup_concept(cid) for cid in remaining_ids]
-    lookup_results = await asyncio.gather(*lookup_tasks, return_exceptions=True)
-
-    parent_to_children = {}
-    for cid, result in zip(remaining_ids, lookup_results, strict=False):
-        if isinstance(result, dict) and result.get("parent_ids"):
-            # Store display term in global cache
+    lookup_tasks = []
+    lookup_ids = []
+    
+    for cid in remaining_ids:
+        if cid in taxonomy_cache["concepts"]:
+            # Populate global display cache from persistent cache
             if cid not in global_id_cache:
-                global_id_cache[cid] = result.get("display", "Unknown")
+                global_id_cache[cid] = taxonomy_cache["concepts"][cid].get("display", "Unknown")
+        else:
+            lookup_tasks.append(fhir_client.lookup_concept(cid))
+            lookup_ids.append(cid)
 
-            # Use the first immediate parent for sibling grouping
-            first_parent = result["parent_ids"][0]
+    if lookup_tasks:
+        logger.info(f"Performing {len(lookup_tasks)} new FHIR concept lookups.")
+        lookup_results = await asyncio.gather(*lookup_tasks, return_exceptions=True)
+
+        for cid, result in zip(lookup_ids, lookup_results, strict=False):
+            if isinstance(result, dict):
+                taxonomy_cache["concepts"][cid] = result
+                if cid not in global_id_cache:
+                    global_id_cache[cid] = result.get("display", "Unknown")
+
+    # Group siblings using the (now warmed) caches
+    parent_to_children = {}
+    for cid in remaining_ids:
+        c_info = taxonomy_cache["concepts"].get(cid)
+        if c_info and c_info.get("parent_ids"):
+            first_parent = c_info["parent_ids"][0]
             if first_parent not in BLOCKED_ROOT_PARENTS:
                 if first_parent not in parent_to_children:
                     parent_to_children[first_parent] = []
@@ -90,18 +144,23 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
     # If a non-blocked parent has multiple children, merge them under that parent
     for parent_id, children in parent_to_children.items():
         if len(children) >= 2:
-            logger.info(f"[Sibling Merge] {len(children)} findings share parent '{parent_id}'. Horizontal merge.")
-            # Ensure we have the parent's display term
-            if parent_id not in global_id_cache:
+            logger.info(f"[Sibling Merge] {len(children)} findings share parent '{parent_id}'.")
+            
+            # Ensure parent is in cache/global_id_cache
+            if parent_id not in taxonomy_cache["concepts"]:
                 p_info = await fhir_client.lookup_concept(parent_id)
                 if p_info:
-                    global_id_cache[parent_id] = p_info.get("display", "Unknown")
-
-            for child_id in children:
-                rewrite_map[child_id] = parent_id
+                    taxonomy_cache["concepts"][parent_id] = p_info
+            
+            p_info = taxonomy_cache["concepts"].get(parent_id)
+            if p_info:
+                global_id_cache[parent_id] = p_info.get("display", "Unknown")
+                for child_id in children:
+                    rewrite_map[child_id] = parent_id
 
     return rewrite_map
 
+@track_telemetry_span("Consolidation: Group and Merge")
 async def group_findings(processed_docs: list[ProcessedDocument], fhir_client: FhirTerminologyClient) -> dict[str, dict]:
     """
     Groups individual findings by Functional Area (FO) and ICNP Concept ID.

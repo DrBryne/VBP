@@ -1,0 +1,306 @@
+{
+  "execution_summary": {
+    "target_group": "ALS - Amytrofisk lateral sklerose",
+    "source_uri": "gs://vbp-clinical-data-eu/ALS/",
+    "total_files_in_uri": 96,
+    "processed_files_count": 3,
+    "successful_files_count": 3,
+    "excluded_files_count": 0,
+    "total_synthesized_findings": 7,
+    "total_hallucinated_citations": 0,
+    "total_taxonomy_errors": 0,
+    "total_dropped_findings": 0,
+    "execution_start_time": "2026-04-11T17:22:17.283524",
+    "execution_end_time": "2026-04-11T17:24:18.879731"
+  },
+  "synthesized_findings": [
+    {
+      "nursing_diagnosis": {
+        "term": "At increased risk of impaired respiratory system function",
+        "ICNP_concept_id": "704296008"
+      },
+      "interventions": [
+        {
+          "term": "overvaking av respirasjon",
+          "ICNP_concept_id": "53617003"
+        },
+        {
+          "term": "håndtering av treningsøvelser",
+          "ICNP_concept_id": "410335001"
+        }
+      ],
+      "goals": [
+        {
+          "term": "tilfredsstillende funksjon i respirasjonssystem",
+          "ICNP_concept_id": "278961000202103"
+        }
+      ],
+      "FO": "3. Respirasjon/sirkulasjon",
+      "avg_specificity": 7.0,
+      "avg_actionability": 5.0,
+      "avg_cohesion": 9.0,
+      "trust_score": 27.0,
+      "certainty_level": "Moderat",
+      "supporting_evidence": [
+        {
+          "document_id": "af25258c-6b6b-4da1-81c3-2a7661dff641",
+          "quotes": [
+            "ISSN 1650-1977 DOI: 10.1080/16501970600721033 J Rehabil Med 38 patients were defined as individuals starting ventilatory support according to plan over days or weeks. Opposing this, acute patients presented a rapid worsening in their condition, often induced by an infection, leading to severe respiratory insufficiency requiring immediate medical attention. Calculation of vital capacity in percent of the predicted value (VC%pred) in patients beyond 19 years of age was done according to Berglund et al. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        },
+        {
+          "document_id": "aa5bd722-9334-4c96-8e33-d8f184e10d65",
+          "quotes": [
+            "This degeneration leads to progressive muscle atrophy and weakness ( 3 ). Patients with ALS usually succumb to respiratory complications, on average, within 5 years of symptom onset ( 1 , 4 – 7 ). Worldwide, the annual incidence rates for ALS are reportedly 0.4–2.4 cases per 100,000 ( 8 – 11 ). For this reason, we think the patients participated in these studies would have weakness mainly in limb muscles, but less in respiratory muscles. Accordingly, early initiation of therapeutic exercise would have been performed primarily for respiratory muscles rather than limb muscles. It has already been reported that the early initiation of exercise in patients with ALS is more effective than starting exercise at later stages of the disease ( 20 ), therefore therapeutic exercise would be more effective for maintaining respiratory function than limb motor function in patients with ALS. In five RCTs, adverse effects, such as increased muscle cramping, and muscle soreness or fatigue, were rarely reported by the investigators. Conclusion In conclusion, in patients with ALS, therapeutic exercise was effective in reducing the rate of declination in general physical function. Therapeutic exercise may have a particularly positive therapeutic effect on cardiopulmonary functions rather than preventing weakness in denervated or atrophy limb muscles in patients with ALS. Author Contributions DP, YC, and MC: conceptualization."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "Impaired cognition",
+        "ICNP_concept_id": "386806002"
+      },
+      "interventions": [
+        {
+          "term": "kartlegging med kartleggingsverktøy",
+          "ICNP_concept_id": "445536008"
+        }
+      ],
+      "goals": [
+        {
+          "term": "tilfredsstillende sinnstilstand",
+          "ICNP_concept_id": "279021000202100"
+        }
+      ],
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "avg_specificity": 9.0,
+      "avg_actionability": 9.0,
+      "avg_cohesion": 10.0,
+      "trust_score": 15.0,
+      "certainty_level": "Moderat",
+      "supporting_evidence": [
+        {
+          "document_id": "f9f58421-d0d1-48d1-9605-4ed3c7c134d7",
+          "quotes": [
+            "Presence of concomitant neuropsychiatric conditions and cognitive impairment predicts greater carer distress [ 19 – 21 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. Assessments are often performed using tools which have not been adapted for people with physical disability or communication difficulties. Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. The NPI-Q is a validated informant-based questionnaire to evaluate the presence and severity of 12 neuropsychiatric domains [ 47 ].The ability of the tool to discriminate effectively between different disorders has been questioned [ 48 ]. Of the eight trials that did assess cognitive and behaviour change as an outcome measure, six used tools where scoring was unaffected by physical disability or communication impairment and were specifically designed, and validated, to identify domains impaired in people with ALS. One trial used the ALS Cognitive Behavioral Screen (ALS-CBS) [ 49 ] and five trials used the Edinburgh Cognitive and Behavioural ALS Screen (ECAS) [ 50 ]. Both are designed to be completed by either written or spoken responses to be suitable for ALS patients with differing functional ability. Additionally, ECAS scoring is also corrected for differences in motor speed during both speech and writing tasks, to accommodate for a range in disability severity. Additionally, the Montreal Cognitive Assessment Scale (MoCA) [ 51 ], Addenbrooke’s Cognitive Examination (ACE-III) [ 52 ] and Mini Mental State Examination (MMSE) were used to evaluate cognition in the trials reviewed. We recommend the evaluation of neuropsychiatric and cognitive symptoms as additional outcome measures in clinical trials of investigative medicinal products. Additionally, when evaluating these areas we recommend using tools which are designed to assess domains affected in ALS, with disease-specific impairment thresholds and those adapted to account for motor decline and communication difficulties. Electronic supplementary material Below is the link to the electronic supplementary material."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "At risk for depressed mood",
+        "ICNP_concept_id": "704295007"
+      },
+      "interventions": [
+        {
+          "term": "vurdering av stemningsleie",
+          "ICNP_concept_id": "709488003"
+        }
+      ],
+      "goals": [
+        {
+          "term": "tilfredsstillende sinnstilstand",
+          "ICNP_concept_id": "279021000202100"
+        }
+      ],
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "avg_specificity": 9.0,
+      "avg_actionability": 9.0,
+      "avg_cohesion": 10.0,
+      "trust_score": 15.0,
+      "certainty_level": "Moderat",
+      "supporting_evidence": [
+        {
+          "document_id": "f9f58421-d0d1-48d1-9605-4ed3c7c134d7",
+          "quotes": [
+            "Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. Scores may be significantly impacted by the overlap of somatic features of neuropsychiatric conditions and those attributable to the progression of ALS. In a group that is predominantly affected by motor impairment, speech and respiratory difficulties, lengthy administration time can also reduce the suitability of an tool. The BDI and HAM-D are extensively validated [ 42 , 43 ], well-established measures of depressive symptoms. However, their reliance on somatic features of depression mean scores may be confounded by physical decline and no ALS-specific impairment thresholds are available. The HADS is designed to reduce the focus on somatic symptoms and ALS-specific impairment thresholds have been proposed [ 44 ]. The C-SSRS is considered a useful tool to structure discussions of suicidal ideation and intent [ 45 ]."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "Suicidal thoughts",
+        "ICNP_concept_id": "6471006"
+      },
+      "interventions": [
+        {
+          "term": "vurdering av selvmordsrisiko",
+          "ICNP_concept_id": "225337009"
+        }
+      ],
+      "goals": [
+        {
+          "term": "opplever å gå en verdig død i møte",
+          "ICNP_concept_id": "417541000202102"
+        }
+      ],
+      "FO": "2. Kunnskap/utvikling/psykisk",
+      "avg_specificity": 8.0,
+      "avg_actionability": 8.0,
+      "avg_cohesion": 9.0,
+      "trust_score": 15.0,
+      "certainty_level": "Moderat",
+      "supporting_evidence": [
+        {
+          "document_id": "f9f58421-d0d1-48d1-9605-4ed3c7c134d7",
+          "quotes": [
+            "The HADS is designed to reduce the focus on somatic symptoms and ALS-specific impairment thresholds have been proposed [ 44 ]. The C-SSRS is considered a useful tool to structure discussions of suicidal ideation and intent [ 45 ]. However, the C-SSRS can be lengthy to administer, insufficient to cover the full spectrum of suicidal ideation [ 46 ] and responses to questions of end-of-life planning may be influenced by the presence of a terminal diagnosis. The NPI-Q is a validated informant-based questionnaire to evaluate the presence and severity of 12 neuropsychiatric domains [ 47 ].The ability of the tool to discriminate effectively between different disorders has been questioned [ 48 ]."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "risiko for inaktivitet",
+        "ICNP_concept_id": "129694002"
+      },
+      "interventions": [
+        {
+          "term": "undervisning om trening",
+          "ICNP_concept_id": "304507003"
+        }
+      ],
+      "goals": [
+        {
+          "term": "i stand til å utføre daglige rutiner",
+          "ICNP_concept_id": "716398003"
+        }
+      ],
+      "FO": "7. Aktivitet/funksjonsstatus",
+      "avg_specificity": 7.0,
+      "avg_actionability": 6.0,
+      "avg_cohesion": 9.0,
+      "trust_score": 15.0,
+      "certainty_level": "Moderat",
+      "supporting_evidence": [
+        {
+          "document_id": "aa5bd722-9334-4c96-8e33-d8f184e10d65",
+          "quotes": [
+            "Although a few agents can inhibit the progression of symptoms, ALS has no cure ( 1 ). Therefore, patients with ALS must maintain activities of daily living as much as possible with symptomatic treatments such as therapeutic exercises ( 13 , 14 ). These exercises consist of strengthening, resistive, or active aerobic exercises ( 13 , 14 ). However, there are very few randomized, controlled, large-scale studies that have evaluated the potential benefits of therapeutic exercise in patients with ALS ( 15 , 16 ). The role of therapeutic exercise in patients with ALS has been controversial, and the possibility of causing work-related damage secondary to excessive exercise or strengthening exercises is a concern ( 15 ). For example, highly repetitive or heavy resistance exercise can cause prolonged loss of muscle strength in weakened or denervated muscle. In addition, some previous epidemiologic data showed a higher incidence of ALS in individuals who performed intense work, or who regularly engaged in high levels of physical activity before disease onset ( 17 ). Appropriate exercises may be physically and psychologically beneficial to patients with ALS, especially in the earlier stages of the disease and before significant muscular atrophy or deconditioning occurs. Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Our meta-analysis has some limitations."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "Respiratory failure",
+        "ICNP_concept_id": "409622000"
+      },
+      "interventions": [
+        {
+          "term": "respirasjonsbehandling",
+          "ICNP_concept_id": "53950000"
+        }
+      ],
+      "goals": [
+        {
+          "term": "tilfredsstillende respiratorisk status",
+          "ICNP_concept_id": "14751000202106"
+        }
+      ],
+      "FO": "3. Respirasjon/sirkulasjon",
+      "avg_specificity": 9.0,
+      "avg_actionability": 7.0,
+      "avg_cohesion": 10.0,
+      "trust_score": 10.0,
+      "certainty_level": "Lav",
+      "supporting_evidence": [
+        {
+          "document_id": "af25258c-6b6b-4da1-81c3-2a7661dff641",
+          "quotes": [
+            "J Rehabil Med 2006; 38: 250\u0001254 Correspondence address: Michael Laub, MD, Dept of Respiratory Medicine, University Hospital, SE-221 85, Lund, Sweden. E-mail: ml@laub.dk Submitted April 21, 2005; accepted March 17, 2006 INTRODUCTION Home mechanical ventilation (HMV) in patients with chronic alveolar hypoventilation secondary to neuromuscular diseases (NMD) has become widely acceptable, as the provision of ventilatory support can provide symptomatic relief and increase life expectancy (1). HMV can be applied as non-invasive ventilation (NIV) most often via a facemask, or as invasive ventilation via a tracheo- stomy. Generally, the use of NIV is much more prevalent than invasive ventilation. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well. Apart from the Duchenne group the mean VC was approximately 40% of the predicted value for all groups."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    },
+    {
+      "nursing_diagnosis": {
+        "term": "forstyrra søvnmønster",
+        "ICNP_concept_id": "26677001"
+      },
+      "interventions": [
+        {
+          "term": "smertehåndtering",
+          "ICNP_concept_id": "278414003"
+        }
+      ],
+      "goals": [
+        {
+          "term": "tilstrekkelig søvn",
+          "ICNP_concept_id": "1137437005"
+        }
+      ],
+      "FO": "8. Smerte/søvn/hvile/velvære",
+      "avg_specificity": 8.0,
+      "avg_actionability": 6.0,
+      "avg_cohesion": 10.0,
+      "trust_score": 10.0,
+      "certainty_level": "Lav",
+      "supporting_evidence": [
+        {
+          "document_id": "af25258c-6b6b-4da1-81c3-2a7661dff641",
+          "quotes": [
+            "In our study nocturnal hypercap- nia may be the cause of the elevated base excess in patients with daytime sleepiness as motive (Table IV). Furthermore, chronic muscle or joint pain may disturb sleep and thereby cause daytime sleepiness. Table II. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."
+          ],
+          "recommendation_strength": null,
+          "evidence_grade": null,
+          "grade_quotes": null
+        }
+      ]
+    }
+  ],
+  "source_documents": [
+    {
+      "document_id": "af25258c-6b6b-4da1-81c3-2a7661dff641",
+      "source_uri": "gs://vbp-clinical-data-eu/ALS/250-254.pdf",
+      "title": "SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES",
+      "publication_year": 2006,
+      "doi": "10.1080/16501970600721033",
+      "evidence_level": "Nivå 1: Enkeltstudier",
+      "reasoning_trace": "Dokumentet er en registerstudie som undersøker indikasjoner og motiver for oppstart av hjemmerespirator (mekanisk ventilasjon) hos pasienter med nevromuskulære sykdommer, inkludert en spesifikk gruppe med ALS (amyotrofisk lateral sklerose). Selv om teksten primært har et medisinsk fokus på diagnostikk og blodgasser, inneholder den viktig informasjon relevant for sykepleie. Spesielt peker teksten på at ALS-pasienter presenterer med dyspné, søvnforstyrrelser og dagtretthet som hovedsymptomer på hypoventilasjon. Det fremheves også at forverring ofte skjer akutt ved infeksjoner, at kroniske smerter kan forverre søvn/dagtretthet, samt de spesielle etiske utfordringene knyttet til invasiv ventilasjon ved ALS på grunn av sykdommens raske progresjon. Sykepleiefunnene er utledet fra disse kliniske og symptomatiske observasjonene."
+    },
+    {
+      "document_id": "aa5bd722-9334-4c96-8e33-d8f184e10d65",
+      "source_uri": "gs://vbp-clinical-data-eu/ALS/32903629_fulltext.xml",
+      "title": "Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis",
+      "publication_year": 2020,
+      "doi": "10.3389/fneur.2020.00853",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en metaanalyse som vurderer effekten av terapeutisk trening for pasienter med Amyotrofisk lateral sklerose (ALS). For sykepleiere og helsepersonell på sykehus er det svært relevant å tilrettelegge for riktig aktivitetsnivå for å forebygge passivitet og komplikasjoner, uten å overbelaste pasienten. To hovedfunn ble identifisert: 1) Behovet for individuelt tilpasset trening med lav til moderat belastning for å opprettholde daglig funksjon og unngå forverring av muskelsvakhet ved overbelastning. 2) Viktigheten av å initiere trening tidlig i forløpet med spesifikt fokus på å bevare hjerte- og lungefunksjonen, da pasientene ofte rammes av respirasjonskomplikasjoner. Selv om teksten nevner at studiene har lav metodisk kvalitet, er det ingen formelle retningslinje-graderinger (som GRADE eller spesifikk anbefalingsstyrke) i teksten, så disse feltene settes til null."
+    },
+    {
+      "document_id": "f9f58421-d0d1-48d1-9605-4ed3c7c134d7",
+      "source_uri": "gs://vbp-clinical-data-eu/ALS/32910255_fulltext.xml",
+      "title": "A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis",
+      "publication_year": 2020,
+      "doi": "10.1007/s00415-020-10203-z",
+      "evidence_level": "Nivå 2: Systematiske oversikter",
+      "reasoning_trace": "Dokumentet er en systematisk oversiktsartikkel om kognitive og nevropsykiatriske kartleggingsverktøy ved ALS. Sykepleiere har en sentral rolle i symptomkartlegging. Funnene er trukket ut med fokus på at standardverktøy ofte ikke er egnet grunnet pasientens motoriske svikt, kommunikasjonsvansker og overlappende somatiske symptomer. Tiltakene retter seg mot å bruke tilpassede, sykdomsspesifikke verktøy for å sikre nøyaktig vurdering, samt en bevissthet rundt hvordan terminale diagnoser påvirker svar om livets slutt. Dokumentet inneholder ingen eksplisitte angivelser av GRADE eller evidensnivå."
+    }
+  ],
+  "excluded_documents": []
+}

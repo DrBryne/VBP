@@ -14,8 +14,11 @@ from google.genai import types
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
 from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
-from app.shared.consolidation import finalize_synthesis, group_findings
+from app.shared.config import config
+from app.shared.consolidation import finalize_synthesis, group_findings, load_taxonomy_cache, save_taxonomy_cache
 from app.shared.fhir_client import FhirTerminologyClient
+from app.app_utils.telemetry import setup_telemetry, track_telemetry_span
+setup_telemetry()
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     ExcludedDocument,
@@ -60,7 +63,10 @@ class VbpWorkflowAgent(BaseAgent):
         """The agent responsible for multi-dimensional quality scoring."""
         return self._auditor
 
+    @track_telemetry_span("Workflow: Orchestration")
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        # Initialize terminology cache
+        load_taxonomy_cache()
         # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
         execution_start_time = datetime.now()
         
@@ -71,25 +77,32 @@ class VbpWorkflowAgent(BaseAgent):
         max_files = custom_config.get("max_files")
         max_concurrency = custom_config.get("max_concurrency", 10)
 
-        # 2. Fallback to session state (Persistent sessions)
+        # 2. Try to extract from the triggering message in the session (Standard pattern)
+        if not gcs_uri and ctx.session.events:
+            for ev in ctx.session.events:
+                if ev.author in ["user", "system"] and ev.content and ev.content.parts:
+                    try:
+                        text_content = ev.content.parts[0].text
+                        if text_content and text_content.strip().startswith("{"):
+                            config_dict = json.loads(text_content)
+                            gcs_uri = config_dict.get("gcs_uri", gcs_uri)
+                            target_group = config_dict.get("target_group", target_group)
+                            max_files = config_dict.get("max_files", max_files)
+                            max_concurrency = config_dict.get("max_concurrency", max_concurrency)
+                            break
+                    except:
+                        continue
+
+        # 3. Fallback to session state (Persistent sessions)
         if not gcs_uri: gcs_uri = ctx.session.state.get("gcs_uri")
         if not target_group: target_group = ctx.session.state.get("target_group")
 
-        # 3. Fallback to latest message text (Direct JSON trigger)
-        if not gcs_uri or not target_group:
-            if ctx.session.events:
-                latest = ctx.session.events[-1]
-                if latest.content and latest.content.parts:
-                    try:
-                        # Attempt to parse the first part as JSON config
-                        text_payload = latest.content.parts[0].text
-                        config_dict = json.loads(text_payload)
-                        gcs_uri = config_dict.get("gcs_uri", gcs_uri)
-                        target_group = config_dict.get("target_group", target_group)
-                        max_files = config_dict.get("max_files", max_files)
-                        max_concurrency = config_dict.get("max_concurrency", max_concurrency)
-                    except (json.JSONDecodeError, AttributeError, ValueError):
-                        pass
+        # 4. Fallback to Environment Variables (Cloud Staging Defaults)
+        if not gcs_uri: gcs_uri = os.environ.get("VBP_GCS_URI")
+        if not target_group: target_group = os.environ.get("VBP_TARGET_GROUP")
+
+        # Log what we found for cloud debugging
+        logger.info(f"Config extracted: gcs_uri={gcs_uri}, target_group={target_group}")
 
         project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
         if not gcs_uri or not target_group:
@@ -127,20 +140,32 @@ class VbpWorkflowAgent(BaseAgent):
         ephemeral_session_service = InMemorySessionService()
 
         async def process_task(uri: str) -> ProcessedDocument | ExcludedDocument:
-            # Delegate detailed doc-level work to the encapsulated pipeline
-            return await process_document_pipeline(
-                uri=uri,
-                target_group=target_group,
-                project_id=project_id,
-                clinical_extractor=self.extractor,
-                clinical_taxonomist=self.taxonomist,
-                clinical_auditor=self.auditor,
-                parent_ctx=ctx,
-                ephemeral_session_service=ephemeral_session_service,
-                progress_state=progress_state,
-                state_lock=state_lock,
-                progress_queue=progress_queue
-            )
+            try:
+                # Delegate detailed doc-level work to the encapsulated pipeline
+                return await process_document_pipeline(
+                    uri=uri,
+                    target_group=target_group,
+                    project_id=project_id,
+                    clinical_extractor=self.extractor,
+                    clinical_taxonomist=self.taxonomist,
+                    clinical_auditor=self.auditor,
+                    parent_ctx=ctx,
+                    ephemeral_session_service=ephemeral_session_service,
+                    progress_state=progress_state,
+                    state_lock=state_lock,
+                    progress_queue=progress_queue
+                )
+            except Exception as e:
+                filename = uri.split("/")[-1]
+                logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(e), uri=uri)
+                async with state_lock:
+                    progress_state.completed += 1
+                    progress_state.failed += 1
+                return ExcludedDocument(
+                    source_uri=uri, 
+                    title=filename, 
+                    justification=f"A technical error occurred while processing this document: {e}"
+                )
 
         tasks = [process_task(f) for f in files]
         async def run_gather(): return await asyncio.gather(*tasks)
@@ -177,6 +202,8 @@ class VbpWorkflowAgent(BaseAgent):
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="Consolidating findings...")]))
 
         grouped_data = await group_findings(successful_results, self._fhir_client)
+        # Persist updated cache to GCS
+        save_taxonomy_cache()
         source_docs = [r.source_document for r in successful_results]
         # 1. Finalize
         execution_end_time = datetime.now()

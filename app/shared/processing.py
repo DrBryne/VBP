@@ -22,6 +22,7 @@ from google.adk.sessions import InMemorySessionService
 from google.cloud import storage
 from google.genai import types
 
+from app.app_utils.telemetry import track_telemetry_span
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     AuditorRating,
@@ -135,6 +136,7 @@ def safe_parse_json(event: Event) -> dict[str, Any] | None:
         logger.error(f"Failed to parse LLM response: {e}")
         return None
 
+@track_telemetry_span("Document: Load and Prep")
 def load_and_prep_document(uri: str, project_id: str) -> tuple[str, str, str]:
     """
     Downloads and cleans document text based on its file format.
@@ -147,24 +149,41 @@ def load_and_prep_document(uri: str, project_id: str) -> tuple[str, str, str]:
         A tuple of (filename, mime_type, cleaned_text).
     """
     filename = uri.split("/")[-1]
-    mime_type, _ = mimetypes.guess_type(uri)
+    print(f"\n[DEBUG-LOAD] Starting load for {filename}")
+    try:
+        mime_type, _ = mimetypes.guess_type(uri)
 
-    bucket_name, blob_name = parse_gcs_uri(uri)
-    storage_client = storage.Client(project=project_id)
-    blob = storage_client.bucket(bucket_name).blob(blob_name)
+        bucket_name, blob_name = parse_gcs_uri(uri)
+        print(f"\n[DEBUG-LOAD] Attempting {uri}")
 
-    if mime_type == "application/pdf":
-        pdf_bytes = blob.download_as_bytes()
-        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-        file_text = "".join([page.get_text() for page in doc])
-        doc.close()
-    else:
-        file_text = blob.download_as_bytes().decode('utf-8', errors='replace')
-        if mime_type in ["text/xml", "application/xml"]:
-            file_text = strip_xml_tags(file_text)
+        if os.environ.get("AGENT_ENGINE_ID"):
+            storage_client = storage.Client()
+        else:
+            storage_client = storage.Client(project=project_id)
 
-    return filename, mime_type, file_text
+        blob = storage_client.bucket(bucket_name).blob(blob_name)
+        if mime_type == "application/pdf":
+            pdf_bytes = blob.download_as_bytes()
+            print(f"[DEBUG-LOAD] Downloaded {len(pdf_bytes)} bytes for {filename}")
+            doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+            file_text = "".join([page.get_text() for page in doc])
+            doc.close()
+        else:
+            raw_bytes = blob.download_as_bytes()
+            print(f"[DEBUG-LOAD] Downloaded {len(raw_bytes)} bytes for {filename}")
+            file_text = raw_bytes.decode('utf-8', errors='replace')
+            if mime_type in ["text/xml", "application/xml"]:
+                file_text = strip_xml_tags(file_text)
 
+        print(f"[DEBUG-LOAD] Success preparing {filename}")
+        return filename, mime_type, file_text
+    except Exception as e:
+        print(f"[DEBUG-LOAD] CRITICAL FAILURE for {filename}: {e}")
+        import traceback
+        traceback.print_exc()
+        raise e
+
+@track_telemetry_span("Document: Resolve Sentence IDs")
 async def resolve_sentence_ids(
     finding_candidates: list[ClinicalFinding],
     doc_id: str,
@@ -267,6 +286,7 @@ async def resolve_sentence_ids(
     del indexed_sentences
     return verified_findings
 
+@track_telemetry_span("Document: Pipeline Execution")
 async def process_document_pipeline(
     uri: str,
     target_group: str,
@@ -591,7 +611,19 @@ async def process_document_pipeline(
         async with state_lock:
             progress_state.completed += 1
             progress_state.failed += 1
-        logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(doc_e), uri=uri)
+            
+        # If it's an ExceptionGroup (e.g. from TaskGroup), print the actual causes
+        if isinstance(doc_e, BaseExceptionGroup):
+            logger.error(f"CRITICAL DOCUMENT ERROR (ExceptionGroup): {filename}", uri=uri)
+            for i, sub_e in enumerate(doc_e.exceptions):
+                logger.error(f"  Sub-exception {i}: {type(sub_e).__name__} - {sub_e}")
+                import traceback
+                traceback.print_exception(type(sub_e), sub_e, sub_e.__traceback__)
+        else:
+            logger.error(f"CRITICAL DOCUMENT ERROR: {filename}", error=str(doc_e), uri=uri)
+            import traceback
+            traceback.print_exc()
+            
         err_msg = f"Failed to process document: {filename} (Error: {doc_e!s})"
         await progress_queue.put(f"WARNING: {err_msg}")
         return ExcludedDocument(source_uri=uri, title=filename, justification="The document could not be read or its format was unsupported for analysis.")

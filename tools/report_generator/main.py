@@ -33,23 +33,9 @@ def upload_to_gcs(content: str, gcs_uri: str):
     blob.upload_from_string(content, content_type="text/html")
     print(f"Report successfully uploaded to: {gcs_uri}")
 
-def generate_report(input_path: str, output_path: str):
-    """Generates an HTML report from a JSON synthesis result."""
-
-    # 1. Load and parse the JSON data
-    try:
-        with open(input_path, encoding='utf-8') as f:
-            data = json.load(f)
-
-        # Validate with Pydantic
-        # Note: Pydantic will handle the validation of the new schema
-        # (interventions/goals lists and quality scores) automatically.
-        synthesis = SynthesisResponse.model_validate(data)
-    except Exception as e:
-        print(f"Error parsing input JSON: {e}")
-        sys.exit(1)
-
-    # 2. Setup Jinja2 environment
+def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
+    """Generates an HTML report directly from a SynthesisResponse object."""
+    # Setup Jinja2 environment
     template_dir = Path(__file__).parent / "templates"
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader(template_dir),
@@ -62,7 +48,7 @@ def generate_report(input_path: str, output_path: str):
         print(f"Error loading template: {e}")
         sys.exit(1)
 
-    # 3. Prepare the context
+    # Prepare the context
     context = synthesis.model_dump()
 
     # Ensure Enums are converted to strings for the template
@@ -76,7 +62,7 @@ def generate_report(input_path: str, output_path: str):
     def get_fo_sort_key(finding):
         fo = finding.get('FO', '')
         try:
-            return int(fo.split('.')[0])
+            return int(str(fo).split('.')[0])
         except (ValueError, IndexError):
             return 999
 
@@ -93,7 +79,7 @@ def generate_report(input_path: str, output_path: str):
     q_notes = context.get("execution_summary", {}).get("quality_notes", "Ingen kvalitetsvurdering tilgjengelig.")
     context['quality_notes_html'] = markdown.markdown(q_notes)
 
-    # 4. Render and save
+    # Render and save
     try:
         html_output = template.render(**context)
 
@@ -107,6 +93,18 @@ def generate_report(input_path: str, output_path: str):
     except Exception as e:
         print(f"Error rendering template: {e}")
         sys.exit(1)
+
+def generate_report(input_path: str, output_path: str):
+    """Generates an HTML report from a JSON synthesis result."""
+    try:
+        with open(input_path, encoding='utf-8') as f:
+            data = json.load(f)
+        synthesis = SynthesisResponse.model_validate(data)
+    except Exception as e:
+        print(f"Error parsing input JSON: {e}")
+        sys.exit(1)
+        
+    generate_report_from_data(synthesis, output_path)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a clinical synthesis HTML report.")

@@ -17,12 +17,12 @@ async def run_remote_cloud_test():
     Uses the canonical ADK 2.0 stream_query pattern.
     """
     project_id = config.PROJECT_ID
-    location = config.DEPLOYMENT_LOCATION # europe-west1
+    location = config.DEPLOYMENT_LOCATION # us-central1
     
-    # Resource ID from our Belgian deployment
-    engine_id = "projects/293859476528/locations/europe-west1/reasoningEngines/8567649690328236032"
+    # Resource ID from our deployment
+    engine_id = "projects/293859476528/locations/us-central1/reasoningEngines/1977863638450438144"
 
-    print(f"--- Starting Agent Engine Remote Full Run (EUROPE) ---")
+    print(f"--- Starting Agent Engine Remote Full Run (US) ---")
     print(f"Target Agent: {engine_id}")
 
     # Use the higher-level client for better method mapping
@@ -32,11 +32,11 @@ async def run_remote_cloud_test():
     # Configuration Payload
     payload = {
         "project_id": project_id,
-        "location": config.PROCESSING_LOCATION, # Belgium
+        "location": config.PROCESSING_LOCATION, # us-central1
         "target_group": "ALS - Amytrofisk lateral sklerose",
         "bucket_uri": config.ALS_DOCS_URI,
         "max_concurrency": 30,
-        "limit": 96
+        "max_files": 96
     }
     
     # ADK 2.0 requires an invocation_id for cloud events
@@ -79,8 +79,63 @@ async def run_remote_cloud_test():
         
         if final_response_data:
             print("\n--- Final Synthesis Received ---")
-            # Automatically generated report link
-            print(f"\n[VIEW LATEST REPORT]: https://storage.googleapis.com/{config.GLOBAL_REPORT_URI[5:]}")
+            
+            # The final response is typically a JSON string in the first part
+            json_str = ""
+            if isinstance(final_response_data, str):
+                json_str = final_response_data
+            elif isinstance(final_response_data, dict) and "parts" in final_response_data:
+                json_str = final_response_data["parts"][0].get("text", "")
+                
+            if json_str:
+                try:
+                    data = json.loads(json_str)
+                    if "execution_summary" in data:
+                        summary = data["execution_summary"]
+                        print(f"Success Count: {summary.get('successful_files_count')}")
+                        print(f"Finding Count: {summary.get('total_synthesized_findings')}")
+
+                    # --- Local Report Generation ---
+                    run_id = start_time.strftime("%Y-%m-%d_%H-%M-%S")
+                    run_dir = f"tests/integration/results/run_{run_id}"
+                    os.makedirs(run_dir, exist_ok=True)
+                    
+                    json_path = os.path.join(run_dir, "workflow_synthesis.json")
+                    with open(json_path, "w", encoding="utf-8") as f:
+                        json.dump(data, f, indent=2, ensure_ascii=False)
+                        
+                    print(f"\nJSON Synthesis saved to: {json_path}")
+                    print(f"Generating HTML report...")
+                    
+                    local_report_path = os.path.join(run_dir, "report.html")
+                    
+                    # Run the report generator locally
+                    process = await asyncio.create_subprocess_exec(
+                        "uv", "run", "python", "tools/report_generator/main.py",
+                        "--input", json_path,
+                        "--output", local_report_path
+                    )
+                    await process.wait()
+                    
+                    # Upload to GCS scratch area
+                    process_gcs = await asyncio.create_subprocess_exec(
+                        "uv", "run", "python", "tools/report_generator/main.py",
+                        "--input", json_path,
+                        "--output", config.GLOBAL_REPORT_URI
+                    )
+                    await process_gcs.wait()
+                    
+                    if process.returncode == 0:
+                        print(f"Local report generated: {local_report_path}")
+                    if process_gcs.returncode == 0:
+                        report_url = f"https://storage.cloud.google.com/{config.GLOBAL_REPORT_URI[5:]}"
+                        print(f"\n[VIEW LATEST CLOUD REPORT]: {report_url}")
+                        
+                except Exception as parse_e:
+                    print(f"Error parsing final response JSON: {parse_e}")
+                    print("Received raw final response (unable to parse summary).")
+            else:
+                print("Final response was empty or malformed.")
             
     except Exception as e:
         print(f"\n[ERROR] Remote execution failed: {e}")

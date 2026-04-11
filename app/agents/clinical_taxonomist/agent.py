@@ -7,6 +7,7 @@ from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event
 from google.genai import types
 
+from app.app_utils.telemetry import track_telemetry_span
 from app.shared.models import (
     DiagnosisMappingResponse,
     FunctionalAreaResponse,
@@ -127,6 +128,7 @@ class ClinicalTaxonomist(BaseAgent):
             ]
         )
 
+    @track_telemetry_span("Agent: ClinicalTaxonomist Mapping")
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         # The raw findings list and reasoning trace are in the latest user event content parts
         findings_json = None

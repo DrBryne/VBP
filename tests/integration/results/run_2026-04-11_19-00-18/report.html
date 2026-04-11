@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkast Veiledende Behandlingsplan - ALS - Amytrofisk lateral sklerose</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .row-clickable { cursor: pointer; }
+        
+        .fo-pill-nav {
+            transition: all 0.2s ease;
+        }
+        .fo-pill-nav.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4338ca;
+            transform: scale(1.1);
+        }
+
+        /* Trust Bars */
+        .trust-indicator {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+            height: 14px;
+        }
+        .trust-segment {
+            width: 4px;
+            border-radius: 1px;
+            background-color: #e2e8f0;
+        }
+        .trust-segment.filled { background-color: #10b981; }
+        .trust-segment.filled.mod { background-color: #f59e0b; }
+        .trust-segment.filled.low { background-color: #f43f5e; }
+    </style>
+    <script>
+        function navigateToEvidence(event, targetId) {
+            const selection = window.getSelection();
+            if (selection.toString().length === 0) {
+                window.location.hash = targetId;
+            }
+        }
+
+        // Scroll-spy logic for FO Jump Menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Extract FO number from ID: fo-group-3 -> 3
+                        const id = entry.target.id;
+                        const foNum = id.split('-').pop();
+                        
+                        // Update nav pills
+                        document.querySelectorAll('.fo-pill-nav').forEach(pill => {
+                            pill.classList.remove('active');
+                        });
+                        const activePill = document.getElementById(`nav-fo-${foNum}`);
+                        if (activePill) activePill.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all group anchors
+            document.querySelectorAll('[id^="fo-group-"]').forEach(anchor => {
+                observer.observe(anchor);
+            });
+        });
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-[90rem] mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Utkast Veiledende Behandlingsplan</h1>
+                    <p class="text-lg text-slate-600">Målgruppe: <span class="font-semibold text-slate-800">ALS - Amytrofisk lateral sklerose</span></p>
+                </div>
+                <div class="text-right text-sm text-slate-500 space-y-1">
+                    <p class="font-medium text-slate-900">Rapport generert: 11.04.2026 17:02</p>
+                    <p>Antall dokumenter oppdaget: <span class="font-bold text-slate-700">96</span></p>
+                    <p>Antall kliniske funn: <span class="font-bold text-slate-700">7</span></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Section -->
+        <nav class="mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 w-fit min-w-[240px]">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Innhold</h2>
+            <ul class="space-y-3">
+                <li>
+                    <a href="#oversikt" class="flex items-center text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-indigo-500 mr-3"></span>
+                        KLINISKE FUNN
+                    </a>
+                </li>
+                <li>
+                    <a href="#evidens" class="flex items-center text-sm font-bold text-slate-600 hover:text-amber-600 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-amber-500 mr-3"></span>
+                        KUNNSKAPSGRUNNLAG
+                    </a>
+                </li>
+                <li>
+                    <a href="#bibliografi" class="flex items-center text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-slate-600 mr-3"></span>
+                        BIBLIOGRAFI
+                    </a>
+                </li>
+                <li>
+                    <a href="#ekskluderte" class="flex items-center text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors group">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-rose-500 mr-3"></span>
+                        EKSKLUDERTE DOKUMENTER
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Summary Table of Findings -->
+        <section id="oversikt" class="mb-20 scroll-mt-12">
+            <h2 class="text-xl font-bold text-slate-900 mb-2 flex items-center max-w-6xl">
+                <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                Oversikt over kliniske funn
+            </h2>
+            <p class="text-xs text-slate-400 mb-6 italic max-w-6xl">Klikk på en rad for å se kildegrunnlag. Du kan fortsatt markere og kopiere tekst direkte fra tabellen.</p>
+            
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider w-1/5">Funksjonsområde (VIPS)</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider w-1/5">Sykepleiediagnose</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider w-24">ID</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider border-l border-slate-100">Intervensjoner</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider w-24">ID</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider border-l border-slate-100">Mål</th>
+                            <th class="px-4 py-4 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider w-24">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white text-sm">
+                        
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-1')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-purple-50/50 text-purple-700">
+                                2. Kunnskap/utvikling/psykisk
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                risiko for redusert psykisk tilstand
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                714660005
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">kognitiv testing og vurdering</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">113024001</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">god livskvalitet</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">1156447008</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-2')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-blue-50/50 text-blue-700">
+                                3. Respirasjon/sirkulasjon
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                At increased risk of impaired respiratory system function
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                704296008
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">oppmuntring til trening</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">304549008</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">tilfredsstillende funksjon i respirasjonssystem</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">278961000202103</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-3')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-blue-50/50 text-blue-700">
+                                3. Respirasjon/sirkulasjon
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                Respiratory failure
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                409622000
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">handtering av noninvasiv mekanisk ventilasjon</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">430191008</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">tilfredsstillende respiratorisk status</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">14751000202106</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-4')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-blue-50/50 text-blue-700">
+                                3. Respirasjon/sirkulasjon
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                Respiratory depression
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                80954004
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">vurdering av respirasjon</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">422834003</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">tilfredsstillende ventilasjon</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">657881000202100</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-5')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-rose-50/50 text-rose-700">
+                                7. Aktivitet/funksjonsstatus
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                nedsett mobilitet
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                82971005
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">håndtering av treningsøvelser</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">410335001</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">i stand til å utføre daglige rutiner</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">716398003</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-6')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-cyan-50/50 text-cyan-700">
+                                10. Sosiale forhold/miljø
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                risiko for belastande omsorgsgjevarrolle
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                129700008
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">vurdering av stress hos omsorgsgjevar</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">733861006</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">omsorgsgjevar i stand til meistring</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">1345133004</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr class="hover:bg-slate-50 transition-colors row-clickable" onclick="navigateToEvidence(event, 'evidens-7')">
+                            <td class="px-4 py-5 align-top font-bold text-[11px] leading-tight border-r border-slate-100 bg-sky-50/50 text-sky-700">
+                                11. Åndelig/kulturelt/livsavslutning
+                            </td>
+                            <td class="px-4 py-5 align-top font-bold text-slate-900 leading-snug">
+                                behov for ivaretakelse av livssyn, verdier og eksistensielle behov
+                            </td>
+                            <td class="px-4 py-5 align-top mono text-[11px] text-slate-400">
+                                377411000202103
+                            </td>
+                            
+                            <!-- Interventions Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">gjennomføring av førehandssamtale om livets sluttfase</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">713603004</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+
+                            <!-- Goals Col -->
+                            <td class="px-0 py-0 align-top border-l border-slate-100">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-slate-700 leading-snug">eksistensielle behov varetekne</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                            <td class="px-0 py-0 align-top bg-slate-50/20">
+                                <table class="min-w-full divide-y divide-slate-50">
+                                    
+                                    <tr>
+                                        <td class="px-4 py-3 text-[11px] mono text-slate-400">14071000202103</td>
+                                    </tr>
+                                    
+                                </table>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4 text-[10px] text-slate-400 italic px-2 max-w-6xl">Tips: Du kan dobbeltklikke på ICNP-koder eller termer for å raskt markere dem for kopiering.</p>
+            
+        </section>
+
+        <!-- Detailed Content Container -->
+        <div class="max-w-6xl">
+            <!-- Detailed Evidence Section -->
+            
+            <section id="evidens" class="mb-20 scroll-mt-12">
+                <h2 class="text-xl font-bold text-slate-900 mb-8 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    Kunnskapsgrunnlag for funn
+                </h2>
+                
+                <div class="space-y-12">
+                    
+                    <div id="evidens-1" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-2" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">2. Kunnskap/utvikling/psykisk</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Moderat">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-6 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-8 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-amber-600">
+                                            Sikkerhet: Moderat
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">risiko for redusert psykisk tilstand</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            kognitiv testing og vurdering
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            god livskvalitet
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-eb36e95b-f2b9-462e-9be2-615cf65eeced" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis (2020)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.1007/s00415-020-10203-z</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32910255_fulltext.xml" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-green-100 text-green-700 border border-green-200
+                                                            ">
+                                                            Nivå 2
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en systematisk oversikt over bruken av nevropsykiatriske og kognitive kartleggingsverktøy i kliniske studier for pasienter med ALS. Selv om fokuset er på utforming av studier, gir teksten viktig klinisk kunnskap om at kognitive og psykiatriske symptomer (som depresjon, angst og apati) er utbredt, reduserer pasientens livskvalitet, og øker pårørendes omsorgsbelastning. Teksten belyser også at vanlige kartleggingsverktøy ofte er uegnet i klinikken fordi de ikke tar høyde for ALS-pasienters utfordringer med motorikk og kommunikasjon. Jeg har derfor trukket ut funn knyttet til sykepleierens rolle med å identifisere kognitive/nevropsykiatriske symptomer med egnede verktøy, samt å fange opp pårørendes belastning. Målene er delvis klinisk utledet for å møte kravet til et positivt, observerbart utfall, da dokumentet primært fokuserer på identifisering. Teksten oppgir ingen formell &#39;evidence_grade&#39; eller anbefalingsstyrke (eks. GRADE), så disse feltene settes til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en systematisk oversikt over bruken av nevropsykiatriske og kognitive kartleggingsverktøy i kliniske studier for pasienter med ALS. Selv om fokuset er på utforming av studier, gir teksten viktig klinisk kunnskap om at kognitive og psykiatriske symptomer (som depresjon, angst og apati) er utbredt, reduserer pasientens livskvalitet, og øker pårørendes omsorgsbelastning. Teksten belyser også at vanlige kartleggingsverktøy ofte er uegnet i klinikken fordi de ikke tar høyde for ALS-pasienters utfordringer med motorikk og kommunikasjon. Jeg har derfor trukket ut funn knyttet til sykepleierens rolle med å identifisere kognitive/nevropsykiatriske symptomer med egnede verktøy, samt å fange opp pårørendes belastning. Målene er delvis klinisk utledet for å møte kravet til et positivt, observerbart utfall, da dokumentet primært fokuserer på identifisering. Teksten oppgir ingen formell &#39;evidence_grade&#39; eller anbefalingsstyrke (eks. GRADE), så disse feltene settes til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Presence of concomitant neuropsychiatric conditions and cognitive impairment predicts greater carer distress [ 19 – 21 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care. Assessments are often performed using tools which have not been adapted for people with physical disability or communication difficulties. Assessments may also not be specifically addressing the cognitive domains impaired in people with ALS, or providing disease-specific thresholds for impairment. Conclusion This study clearly demonstrates that the impact of candidate drugs on neuropsychiatric symptoms and cognition has been under-evaluated in clinical trials and that when these symptoms have been evaluated, the tools used may not be suitable for people with ALS. Accurate identification of neuropsychiatric comorbidity and cognitive impairment is an essential requirement to improve our understanding of how candidate drugs impact the extra-motor features of ALS. We recommend the evaluation of neuropsychiatric and cognitive symptoms as additional outcome measures in clinical trials of investigative medicinal products. Additionally, when evaluating these areas we recommend using tools which are designed to assess domains affected in ALS, with disease-specific impairment thresholds and those adapted to account for motor decline and communication difficulties. Electronic supplementary material Below is the link to the electronic supplementary material."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-2" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-3" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">3. Respirasjon/sirkulasjon</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Moderat">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-6 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-8 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-amber-600">
+                                            Sikkerhet: Moderat
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">At increased risk of impaired respiratory system function</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            oppmuntring til trening
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            tilfredsstillende funksjon i respirasjonssystem
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-54a7aaa4-cab7-4fb2-a2c9-6ae7f64b7c64" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis (2020)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.3389/fneur.2020.00853</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32903629_fulltext.xml" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-green-100 text-green-700 border border-green-200
+                                                            ">
+                                                            Nivå 2
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en metaanalyse som undersøker effekten av terapeutisk trening hos pasienter med ALS. Det fremheves at sykdommen fører til progressiv muskelsvakhet, funksjonsfall og på sikt respirasjonssvikt. Sykepleiere har en viktig rolle i å veilede, motivere og tilrettelegge for helsefremmende tiltak. Jeg har trukket ut to hovedfunn: 1) Behovet for å opprettholde daglige funksjoner (ADL) gjennom tilpasset styrke- og kondisjonstrening. 2) Behovet for tidlig intervensjon med trening for å opprettholde respirasjonsfunksjon og forhindre inaktivitetsrelatert kardiovaskulær dekondisjonering. Ingen eksplisitt anbefalingsgrad (f.eks. GRADE) er formulert for klinisk retningslinjebruk, så feltene for dette er satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en metaanalyse som undersøker effekten av terapeutisk trening hos pasienter med ALS. Det fremheves at sykdommen fører til progressiv muskelsvakhet, funksjonsfall og på sikt respirasjonssvikt. Sykepleiere har en viktig rolle i å veilede, motivere og tilrettelegge for helsefremmende tiltak. Jeg har trukket ut to hovedfunn: 1) Behovet for å opprettholde daglige funksjoner (ADL) gjennom tilpasset styrke- og kondisjonstrening. 2) Behovet for tidlig intervensjon med trening for å opprettholde respirasjonsfunksjon og forhindre inaktivitetsrelatert kardiovaskulær dekondisjonering. Ingen eksplisitt anbefalingsgrad (f.eks. GRADE) er formulert for klinisk retningslinjebruk, så feltene for dette er satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"This has reinforced clinicians to caution against exercise for patients with ALS. In any case, the marked reduction in physical activity that often accompanies ALS can lead to cardiovascular deconditioning and muscle weakness secondary to disuse ( 18 ). These weaknesses are superimposed on the weakness caused by the disease itself. Accordingly, early initiation of therapeutic exercise would have been performed primarily for respiratory muscles rather than limb muscles. It has already been reported that the early initiation of exercise in patients with ALS is more effective than starting exercise at later stages of the disease ( 20 ), therefore therapeutic exercise would be more effective for maintaining respiratory function than limb motor function in patients with ALS. In five RCTs, adverse effects, such as increased muscle cramping, and muscle soreness or fatigue, were rarely reported by the investigators. Appropriate exercises may be physically and psychologically beneficial to patients with ALS, especially in the earlier stages of the disease and before significant muscular atrophy or deconditioning occurs. Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Our meta-analysis has some limitations. Conclusion In conclusion, in patients with ALS, therapeutic exercise was effective in reducing the rate of declination in general physical function. Therapeutic exercise may have a particularly positive therapeutic effect on cardiopulmonary functions rather than preventing weakness in denervated or atrophy limb muscles in patients with ALS. Author Contributions DP, YC, and MC: conceptualization."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-3" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-3" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">3. Respirasjon/sirkulasjon</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Lav">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled low"></div>
+                                            
+                                            <div class="trust-segment h-6 "></div>
+                                            
+                                            <div class="trust-segment h-8 "></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-rose-600">
+                                            Sikkerhet: Lav
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">Respiratory failure</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            handtering av noninvasiv mekanisk ventilasjon
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            tilfredsstillende respiratorisk status
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-740392bc-6b5c-47e7-9562-260b6d7159bf" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.1080/16501970600721033</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/250-254.pdf" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-blue-100 text-blue-700 border border-blue-200
+                                                            ">
+                                                            Nivå 1
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Mean vital capa- city was close to 40% of predicted, but significantly lower in the Duchenne patients (26% of predicted). Conclusion: Daytime sleepiness was the most common clinical symptom motivating home mechanical ventilation in this group of patients with chronic hypercapnic respiratory insufficiency secondary to neuro/myopathies. Respiratory function testing is therefore suggested to be included in the diagnostic work up of daytime sleepiness in these patients. J Rehabil Med 2006; 38: 250254 Correspondence address: Michael Laub, MD, Dept of Respiratory Medicine, University Hospital, SE-221 85, Lund, Sweden. E-mail: ml@laub.dk Submitted April 21, 2005; accepted March 17, 2006 INTRODUCTION Home mechanical ventilation (HMV) in patients with chronic alveolar hypoventilation secondary to neuromuscular diseases (NMD) has become widely acceptable, as the provision of ventilatory support can provide symptomatic relief and increase life expectancy (1). HMV can be applied as non-invasive ventilation (NIV) most often via a facemask, or as invasive ventilation via a tracheo- stomy. Generally, the use of NIV is much more prevalent than invasive ventilation. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-4" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-3" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">3. Respirasjon/sirkulasjon</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Lav">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled low"></div>
+                                            
+                                            <div class="trust-segment h-6 "></div>
+                                            
+                                            <div class="trust-segment h-8 "></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-rose-600">
+                                            Sikkerhet: Lav
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">Respiratory depression</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            vurdering av respirasjon
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            tilfredsstillende ventilasjon
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-740392bc-6b5c-47e7-9562-260b6d7159bf" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.1080/16501970600721033</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/250-254.pdf" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-blue-100 text-blue-700 border border-blue-200
+                                                            ">
+                                                            Nivå 1
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Mean vital capa- city was close to 40% of predicted, but significantly lower in the Duchenne patients (26% of predicted). Conclusion: Daytime sleepiness was the most common clinical symptom motivating home mechanical ventilation in this group of patients with chronic hypercapnic respiratory insufficiency secondary to neuro/myopathies. Respiratory function testing is therefore suggested to be included in the diagnostic work up of daytime sleepiness in these patients. Key words: respiratory failure, non-invasive ventilation, invasive ventilation, symptoms and signs. Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-5" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-7" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">7. Aktivitet/funksjonsstatus</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Moderat">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-6 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-8 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-amber-600">
+                                            Sikkerhet: Moderat
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">nedsett mobilitet</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            håndtering av treningsøvelser
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            i stand til å utføre daglige rutiner
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-54a7aaa4-cab7-4fb2-a2c9-6ae7f64b7c64" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis (2020)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.3389/fneur.2020.00853</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32903629_fulltext.xml" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-green-100 text-green-700 border border-green-200
+                                                            ">
+                                                            Nivå 2
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en metaanalyse som undersøker effekten av terapeutisk trening hos pasienter med ALS. Det fremheves at sykdommen fører til progressiv muskelsvakhet, funksjonsfall og på sikt respirasjonssvikt. Sykepleiere har en viktig rolle i å veilede, motivere og tilrettelegge for helsefremmende tiltak. Jeg har trukket ut to hovedfunn: 1) Behovet for å opprettholde daglige funksjoner (ADL) gjennom tilpasset styrke- og kondisjonstrening. 2) Behovet for tidlig intervensjon med trening for å opprettholde respirasjonsfunksjon og forhindre inaktivitetsrelatert kardiovaskulær dekondisjonering. Ingen eksplisitt anbefalingsgrad (f.eks. GRADE) er formulert for klinisk retningslinjebruk, så feltene for dette er satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en metaanalyse som undersøker effekten av terapeutisk trening hos pasienter med ALS. Det fremheves at sykdommen fører til progressiv muskelsvakhet, funksjonsfall og på sikt respirasjonssvikt. Sykepleiere har en viktig rolle i å veilede, motivere og tilrettelegge for helsefremmende tiltak. Jeg har trukket ut to hovedfunn: 1) Behovet for å opprettholde daglige funksjoner (ADL) gjennom tilpasset styrke- og kondisjonstrening. 2) Behovet for tidlig intervensjon med trening for å opprettholde respirasjonsfunksjon og forhindre inaktivitetsrelatert kardiovaskulær dekondisjonering. Ingen eksplisitt anbefalingsgrad (f.eks. GRADE) er formulert for klinisk retningslinjebruk, så feltene for dette er satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Although a few agents can inhibit the progression of symptoms, ALS has no cure ( 1 ). Therefore, patients with ALS must maintain activities of daily living as much as possible with symptomatic treatments such as therapeutic exercises ( 13 , 14 ). These exercises consist of strengthening, resistive, or active aerobic exercises ( 13 , 14 ). However, there are very few randomized, controlled, large-scale studies that have evaluated the potential benefits of therapeutic exercise in patients with ALS ( 15 , 16 ). Although exercise may not improve the strength of muscles already weakened by ALS, strengthening exercises with low to moderate weights, and aerobic exercises such as walking, swimming, and bicycling at submaximal levels (i.e., therapeutic exercise) may be important components of the overall therapeutic plan. Our meta-analysis has some limitations. First, a limited number of trials were included."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-6" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-10" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">10. Sosiale forhold/miljø</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Moderat">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-6 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-8 filled mod"></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-amber-600">
+                                            Sikkerhet: Moderat
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">risiko for belastande omsorgsgjevarrolle</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            vurdering av stress hos omsorgsgjevar
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            omsorgsgjevar i stand til meistring
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-eb36e95b-f2b9-462e-9be2-615cf65eeced" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis (2020)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.1007/s00415-020-10203-z</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32910255_fulltext.xml" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-green-100 text-green-700 border border-green-200
+                                                            ">
+                                                            Nivå 2
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en systematisk oversikt over bruken av nevropsykiatriske og kognitive kartleggingsverktøy i kliniske studier for pasienter med ALS. Selv om fokuset er på utforming av studier, gir teksten viktig klinisk kunnskap om at kognitive og psykiatriske symptomer (som depresjon, angst og apati) er utbredt, reduserer pasientens livskvalitet, og øker pårørendes omsorgsbelastning. Teksten belyser også at vanlige kartleggingsverktøy ofte er uegnet i klinikken fordi de ikke tar høyde for ALS-pasienters utfordringer med motorikk og kommunikasjon. Jeg har derfor trukket ut funn knyttet til sykepleierens rolle med å identifisere kognitive/nevropsykiatriske symptomer med egnede verktøy, samt å fange opp pårørendes belastning. Målene er delvis klinisk utledet for å møte kravet til et positivt, observerbart utfall, da dokumentet primært fokuserer på identifisering. Teksten oppgir ingen formell &#39;evidence_grade&#39; eller anbefalingsstyrke (eks. GRADE), så disse feltene settes til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en systematisk oversikt over bruken av nevropsykiatriske og kognitive kartleggingsverktøy i kliniske studier for pasienter med ALS. Selv om fokuset er på utforming av studier, gir teksten viktig klinisk kunnskap om at kognitive og psykiatriske symptomer (som depresjon, angst og apati) er utbredt, reduserer pasientens livskvalitet, og øker pårørendes omsorgsbelastning. Teksten belyser også at vanlige kartleggingsverktøy ofte er uegnet i klinikken fordi de ikke tar høyde for ALS-pasienters utfordringer med motorikk og kommunikasjon. Jeg har derfor trukket ut funn knyttet til sykepleierens rolle med å identifisere kognitive/nevropsykiatriske symptomer med egnede verktøy, samt å fange opp pårørendes belastning. Målene er delvis klinisk utledet for å møte kravet til et positivt, observerbart utfall, da dokumentet primært fokuserer på identifisering. Teksten oppgir ingen formell &#39;evidence_grade&#39; eller anbefalingsstyrke (eks. GRADE), så disse feltene settes til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"15% of people with ALS meet diagnostic criteria for frontotemporal dementia (FTD) [ 10 , 11 ]. Cognitive impairment in people with ALS is characterised by executive dysfunction, impairments in language and social cognition [ 12 – 14 ], whilst apathy is the most pronounced behavioural change [ 15 ]. Individuals with chronic physical illness and comorbid depression or anxiety often experience a higher level of somatic symptom burden that can impair functioning [ 16 ]. Lower psychological well-being generally has been identified as predictive of disability and shorter survival in people with ALS [ 4 ]. Presence of concomitant neuropsychiatric conditions and cognitive impairment predicts greater carer distress [ 19 – 21 ]. Despite this, neuropsychiatric symptoms are often under-recognised in clinical care."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="evidens-7" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden scroll-mt-8">
+                        <!-- Group Anchor for Nav -->
+                        <div id="fo-group-11" class="hidden"></div>
+                        
+                        <div class="bg-slate-50 border-b border-slate-200 px-8 py-6">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded uppercase tracking-widest border border-indigo-100">11. Åndelig/kulturelt/livsavslutning</span>
+                                    
+                                    <div class="flex items-center space-x-2">
+                                        <div class="trust-indicator" title="Sikkerhet: Lav">
+                                            
+                                            
+                                            
+                                            <div class="trust-segment h-4 filled low"></div>
+                                            
+                                            <div class="trust-segment h-6 "></div>
+                                            
+                                            <div class="trust-segment h-8 "></div>
+                                            
+                                            <div class="trust-segment h-10 "></div>
+                                            
+                                            <div class="trust-segment h-12 "></div>
+                                            
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider
+                                            text-rose-600">
+                                            Sikkerhet: Lav
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#oversikt" class="text-xs font-bold text-slate-400 hover:text-indigo-600 transition-colors flex items-center whitespace-nowrap">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                    Tilbake til oversikt
+                                </a>
+                            </div>
+
+                            <!-- Problem-First Header -->
+                            <div class="mb-8">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Sykepleiediagnose</p>
+                                <h3 class="text-2xl font-bold text-indigo-950 tracking-tight leading-tight">behov for ivaretakelse av livssyn, verdier og eksistensielle behov</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Planlagte Intervensjoner</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-indigo-400 mr-2">•</span>
+                                            gjennomføring av førehandssamtale om livets sluttfase
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="bg-white/50 rounded-xl p-4 border border-slate-200/60 shadow-sm">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Forventet Resultat (Mål)</p>
+                                    </div>
+                                    <ul class="text-sm font-semibold text-slate-800 space-y-2 list-none">
+                                        
+                                        <li class="flex items-start">
+                                            <span class="text-emerald-400 mr-2">•</span>
+                                            eksistensielle behov varetekne
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="space-y-8">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 italic">Kildehenvisninger og sitater</h4>
+                                
+                                    
+                                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex-1">
+                                                    <a href="#doc-740392bc-6b5c-47e7-9562-260b6d7159bf" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 hover:underline block mb-1 pr-4">
+                                                        SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)
+                                                    </a>
+                                                    
+                                                    <div class="text-[10px] text-slate-400 font-mono mb-2 uppercase tracking-tight">DOI: 10.1080/16501970600721033</div>
+                                                    
+                                                </div>
+                                                <div class="flex items-center space-x-3 flex-shrink-0">
+                                                    
+                                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/250-254.pdf" target="_blank" class="text-[10px] font-bold text-slate-400 hover:text-indigo-500 flex items-center transition-colors whitespace-nowrap">
+                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                        ÅPNE KILDE
+                                                    </a>
+                                                    
+                                                    
+                                                        
+                                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase
+                                                             bg-blue-100 text-blue-700 border border-blue-200
+                                                            ">
+                                                            Nivå 1
+                                                        </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!-- Reasoning Trace (3 lines expandable) -->
+                                            
+                                            <details class="group mt-2">
+                                                <summary class="list-none cursor-pointer flex flex-col">
+                                                    <div class="text-sm text-slate-500 line-clamp-3 group-open:hidden leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="hidden group-open:block text-sm text-slate-500 leading-relaxed">
+                                                        Dokumentet er en registerstudie som omhandler motiver for å starte hjemmerespiratorbehandling (HMV) hos pasienter med nevromuskulære sykdommer, deriblant ALS. Selv om studien har et medisinsk hovedfokus, beskriver den relevante kliniske symptomer (som tretthet på dagtid) og intervensjoner (NIV, lungefunksjonstesting, etiske vurderinger) der sykepleiere på sykehus spiller en sentral utøvende, assisterende og observerende rolle. Sykepleiediagnoser og intervensjoner er trukket ut og formulert basert på håndteringen av respirasjonssvikt, symptomlindring og den raske forverringen ved ALS. Dokumentet oppgir ingen eksplisitte formelle evidensgraderinger (som GRADE), dermed er disse feltene satt til null.
+                                                    </div>
+                                                    <div class="text-[10px] font-bold text-indigo-400 mt-1 uppercase">
+                                                        <span class="group-open:hidden">Les mer om kildevalg...</span>
+                                                        <span class="hidden group-open:inline">Vis mindre</span>
+                                                    </div>
+                                                </summary>
+                                            </details>
+                                            
+                                        </div>
+
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verbatim sitat</p>
+                                                    <span class="text-[10px] text-slate-400 italic">— Ordrett tekst fra kilden som støtter dette kliniske funnet</span>
+                                                </div>
+                                                <ul class="space-y-3">
+                                                    
+                                                    <li class="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-200 italic">"Furthermore, in these children the BE were significantly lower than in the other groups, which might indicate a more sufficient nocturnal ventilation in the SMA group suggesting an earlier recognition of their respiratory problem. We wish to point out that the ALS group fits well into the general pattern, with respect to acute vs elective launching of HMV, as well as to motives and physiological data. We call attention to this since there is a special focus on patients with ALS regarding not only the rapid aggravation in the disease but the ethical aspects on HMV, especially invasive ventilation, as well. Apart from the Duchenne group the mean VC was approximately 40% of the predicted value for all groups."</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Bibliography -->
+            <section id="bibliografi" class="mb-20 scroll-mt-12">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Bibliografi
+                </h2>
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <table class="min-w-full divide-y divide-slate-200 text-sm">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tittel</th>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-24">År</th>
+                                <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-40">Evidensnivå</th>
+                                <th class="px-6 py-3 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">Kilde</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            
+                            <tr id="doc-740392bc-6b5c-47e7-9562-260b6d7159bf" class="scroll-mt-8 hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="font-semibold text-slate-900 mb-1">SYMPTOMS, CLINICAL AND PHYSIOLOGICAL FINDINGS MOTIVATING HOME MECHANICAL VENTILATION IN PATIENTS WITH NEUROMUSCULAR DISEASES (2006)</div>
+                                    <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter mb-2">DOI: 10.1080/16501970600721033</div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">2006</td>
+                                <td class="px-6 py-4">
+                                    
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border
+                                         bg-blue-50 text-blue-700 border-blue-100
+                                        ">
+                                        Nivå 1: Enkeltstudier
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    
+                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/250-254.pdf" target="_blank" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors whitespace-nowrap">
+                                        Åpne dokument
+                                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr id="doc-54a7aaa4-cab7-4fb2-a2c9-6ae7f64b7c64" class="scroll-mt-8 hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="font-semibold text-slate-900 mb-1">Can Therapeutic Exercise Slow Down Progressive Functional Decline in Patients With Amyotrophic Lateral Sclerosis? A Meta-Analysis (2020)</div>
+                                    <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter mb-2">DOI: 10.3389/fneur.2020.00853</div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">2020</td>
+                                <td class="px-6 py-4">
+                                    
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border
+                                         bg-green-50 text-green-700 border-green-100
+                                        ">
+                                        Nivå 2: Systematiske oversikter
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    
+                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32903629_fulltext.xml" target="_blank" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors whitespace-nowrap">
+                                        Åpne dokument
+                                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr id="doc-eb36e95b-f2b9-462e-9be2-615cf65eeced" class="scroll-mt-8 hover:bg-slate-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="font-semibold text-slate-900 mb-1">A systematic review of neuropsychiatric and cognitive assessments used in clinical trials for amyotrophic lateral sclerosis (2020)</div>
+                                    <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter mb-2">DOI: 10.1007/s00415-020-10203-z</div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">2020</td>
+                                <td class="px-6 py-4">
+                                    
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border
+                                         bg-green-50 text-green-700 border-green-100
+                                        ">
+                                        Nivå 2: Systematiske oversikter
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    
+                                    <a href="https://storage.googleapis.com/vbp-clinical-data-eu/ALS/32910255_fulltext.xml" target="_blank" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors whitespace-nowrap">
+                                        Åpne dokument
+                                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </section>
+
+            <!-- Excluded Documents -->
+            <section id="ekskluderte" class="mb-20 scroll-mt-12">
+                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Ekskluderte dokumenter
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-100 rounded-xl p-6 text-slate-500 text-sm text-center italic">
+                    Ingen dokumenter ble ekskludert i denne kjøringen.
+                </div>
+                
+            </section>
+
+            <footer class="mt-20 text-center text-[10px] text-slate-400 border-t border-slate-200 pt-8 uppercase tracking-[0.2em] max-w-6xl">
+                <p>Veiledende Behandlingsplan (VBP) Workflow — Generert med Google Gemini AI</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
