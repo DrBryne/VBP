@@ -6,6 +6,7 @@ from pathlib import Path
 
 import jinja2
 import markdown
+from google.cloud import storage
 
 from app.shared.models import SynthesisResponse
 
@@ -15,6 +16,22 @@ def gcs_to_http(uri: str) -> str:
     if not uri or not uri.startswith("gs://"):
         return uri
     return f"https://storage.googleapis.com/{uri[5:]}"
+
+def upload_to_gcs(content: str, gcs_uri: str):
+    """Uploads string content to a GCS path."""
+    if not gcs_uri.startswith("gs://"):
+        return
+
+    parts = gcs_uri[5:].split("/", 1)
+    bucket_name = parts[0]
+    blob_name = parts[1] if len(parts) > 1 else ""
+
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(blob_name)
+
+    blob.upload_from_string(content, content_type="text/html")
+    print(f"Report successfully uploaded to: {gcs_uri}")
 
 def generate_report(input_path: str, output_path: str):
     """Generates an HTML report from a JSON synthesis result."""
@@ -79,12 +96,14 @@ def generate_report(input_path: str, output_path: str):
     # 4. Render and save
     try:
         html_output = template.render(**context)
-        os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html_output)
-
-        print(f"Report successfully generated at: {output_path}")
+        if output_path.startswith("gs://"):
+            upload_to_gcs(html_output, output_path)
+        else:
+            os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(html_output)
+            print(f"Report successfully generated at: {output_path}")
     except Exception as e:
         print(f"Error rendering template: {e}")
         sys.exit(1)

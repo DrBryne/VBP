@@ -16,13 +16,13 @@ from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 from app.agent import root_agent
+from app.shared.config import config
 from app.shared.logging import VBPLogger
 
 # Initialize test logger
 logger = VBPLogger("test_workflow")
-
 async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
-    project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
+    # Define run metadata
     run_id = datetime.now(ZoneInfo("Europe/Oslo")).strftime("%Y-%m-%d_%H-%M-%S")
     run_dir = f"tests/integration/results/run_{run_id}"
     os.makedirs(run_dir, exist_ok=True)
@@ -35,22 +35,21 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
     file_handler.setFormatter(formatter)
     logging.getLogger().addHandler(file_handler)
 
-    # Force Vertex AI backend and use global location for preview models
-    location = "global"
+    # Setup environment for Vertex AI and Regionality
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "true"
-    os.environ["GOOGLE_CLOUD_LOCATION"] = location
+    os.environ["GOOGLE_CLOUD_LOCATION"] = config.LOCATION
 
-    if not project_id:
-        logger.error("GOOGLE_CLOUD_PROJECT not set. Please set it in .env or your environment.")
+    if not config.PROJECT_ID:
+        logger.error("GOOGLE_CLOUD_PROJECT not set in config or environment.")
         return
 
     # Define test parameters
-    test_gcs_uri = "gs://veiledende_behandlingsplan/ALS/"
+    test_gcs_uri = config.ALS_DOCS_URI
     test_target_group = "ALS - Amytrofisk lateral sklerose"
 
     logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---",
-                project=project_id,
-                location=location,
+                project=config.PROJECT_ID,
+                location=config.LOCATION,
                 target_group=test_target_group,
                 bucket=test_gcs_uri,
                 results_dir=run_dir,
@@ -132,20 +131,35 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
             logger.info("--- Final Synthesis Complete ---", output_file=output_file)
 
             # --- Auto-Generate HTML Report ---
-            report_file = os.path.join(run_dir, "report.html")
-            logger.info("Generating HTML Report...", report_file=report_file)
+            # We save locally AND upload to the GCS scratch area for browser viewing
+            local_report_file = os.path.join(run_dir, "report.html")
+            gcs_report_uri = config.GLOBAL_REPORT_URI
+
+            logger.info("Generating and uploading HTML Report...", gcs_uri=gcs_report_uri)
             try:
-                process = await asyncio.create_subprocess_exec(
+                # Run twice or just once to GCS?
+                # Let's run it once to local, and then once to GCS to satisfy both requirements.
+                process_local = await asyncio.create_subprocess_exec(
                     "uv", "run", "python", "tools/report_generator/main.py",
                     "--input", output_file,
-                    "--output", report_file,
-                    stdout=asyncio.subprocess.PIPE,
-                    stderr=asyncio.subprocess.PIPE
+                    "--output", local_report_file
                 )
-                _stdout, stderr = await process.communicate()
-                if process.returncode == 0:                    logger.info("HTML Report generated successfully.")
+                await process_local.wait()
+
+                process_gcs = await asyncio.create_subprocess_exec(
+                    "uv", "run", "python", "tools/report_generator/main.py",
+                    "--input", output_file,
+                    "--output", gcs_report_uri
+                )
+                await process_gcs.wait()
+
+                if process_gcs.returncode == 0:
+                    logger.info("HTML Report uploaded to GCS successfully.")
+                    # Construct the cloud console URL from the gs:// URI
+                    report_url = f"https://storage.cloud.google.com/{config.GLOBAL_REPORT_URI[5:]}"
+                    print(f"\n[VIEW REPORT]: {report_url}")
                 else:
-                    logger.error(f"Failed to generate HTML report: {stderr.decode()}")
+                    logger.error("Failed to upload HTML report to GCS.")
             except Exception as e:
                 logger.error(f"Error launching report generator: {e}")
 

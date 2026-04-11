@@ -45,6 +45,9 @@ from app.shared.tools import parse_gcs_uri
 
 logger = VBPLogger("vbp_processing")
 
+# Semaphore to limit highly intensive taxonomy mapping tasks (large dictionary context)
+TAXONOMY_SEMAPHORE = asyncio.Semaphore(5)
+
 # List of supported MIME types
 ALLOWED_MIME_TYPES = {"application/pdf", "text/plain", "text/xml", "application/xml"}
 
@@ -369,8 +372,10 @@ async def process_document_pipeline(
                         doc_session.state["clinical_findings"] = ClinicalFindingsResponse.model_validate(data_dict)
                         logger.debug(f"Findings extracted for: {filename}", count=len(data_dict.get("candidate_findings", [])))
                 except Exception as e:
-                    logger.error(f"EXTRACTOR VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
-                    await progress_queue.put(f"EXTRACTOR VALIDATION ERROR ({ev.author}): {filename} ({e})")
+                    raw_text = json.dumps(data_dict, ensure_ascii=False)
+                    logger.error(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                    logger.error(f"[DEBUG] Raw response dict for {ev.author}: {raw_text}")
+                    await progress_queue.put(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename} ({e})")
 
         metadata: MetadataResponse = doc_session.state.get("metadata")
         clinical_findings: ClinicalFindingsResponse = doc_session.state.get("clinical_findings")
@@ -505,34 +510,42 @@ async def process_document_pipeline(
 
         logger.info(f"Invoking ClinicalTaxonomist for: {filename}", finding_count=len(lean_findings))
         mapper_msg = types.Content(role="user", parts=[
-            types.Part.from_text(text=json.dumps(lean_findings))
+            types.Part.from_text(text=json.dumps(lean_findings)),
+            types.Part.from_text(text=f"Reasoning Context:\n{metadata.source_document.reasoning_trace}")
         ])
         doc_session.events.append(Event(author="system", content=mapper_msg))
 
         try:
-            async for ev in clinical_taxonomist.run_async(pipeline_ctx):
-                if ev.is_final_response():
-                    data_dict = safe_parse_json(ev)
-                    if not data_dict:
-                        continue
-                    try:
-                        if ev.author == "diagnosis_taxonomist":
-                            doc_session.state["diagnosis_mappings"] = DiagnosisMappingResponse.model_validate(data_dict)
-                        elif ev.author == "intervention_taxonomist":
-                            doc_session.state["intervention_mappings"] = InterventionMappingResponse.model_validate(data_dict)
-                        elif ev.author == "goal_taxonomist":
-                            doc_session.state["goal_mappings"] = GoalMappingResponse.model_validate(data_dict)
-                        elif ev.author == "fo_classifier":
-                            doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
-                    except Exception as e:
-                        logger.error(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+            # Use semaphore to prevent context saturation during massive parallel runs
+            async with TAXONOMY_SEMAPHORE:
+                async for ev in clinical_taxonomist.run_async(pipeline_ctx):
+                    if ev.is_final_response():
+                        data_dict = safe_parse_json(ev)
+                        if not data_dict:
+                            continue
+                        try:
+                            if ev.author == "diagnosis_taxonomist":
+                                doc_session.state["diagnosis_mappings"] = DiagnosisMappingResponse.model_validate(data_dict)
+                            elif ev.author == "intervention_taxonomist":
+                                doc_session.state["intervention_mappings"] = InterventionMappingResponse.model_validate(data_dict)
+                            elif ev.author == "goal_taxonomist":
+                                doc_session.state["goal_mappings"] = GoalMappingResponse.model_validate(data_dict)
+                            elif ev.author == "fo_classifier":
+                                doc_session.state["functional_areas"] = FunctionalAreaResponse.model_validate(data_dict)
+                        except Exception as e:
+                            logger.error(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename}", error=str(e))
+                            await progress_queue.put(f"TAXONOMIST VALIDATION ERROR ({ev.author}): {filename} ({e})")
         except Exception as e:
             logger.error(f"ClinicalTaxonomist critical error for: {filename}", error=str(e))
             async with state_lock:
                 progress_state.completed += 1
                 progress_state.failed += 1
+
+            trace = metadata.source_document.reasoning_trace if metadata and metadata.source_document else "Kritisk feil under terminologimapping."
+            justification = f"{trace}\n\nMerk: Kunne ikke mappes til sykepleieterminologi."
+
             await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {e})")
-            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="Failed to map clinical terminology.")
+            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title if metadata else filename, justification=justification)
 
         diag_mappings: DiagnosisMappingResponse = doc_session.state.get("diagnosis_mappings")
         int_mappings: InterventionMappingResponse = doc_session.state.get("intervention_mappings")
@@ -544,9 +557,12 @@ async def process_document_pipeline(
                 progress_state.completed += 1
                 progress_state.failed += 1
             logger.error(f"Taxonomist failed to return FO classification for: {filename}")
-            await progress_queue.put(f"DONE: {filename} (FO ERROR)")
-            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification="Failed to classify findings into Functional Areas.")
 
+            trace = metadata.source_document.reasoning_trace if metadata and metadata.source_document else "Kategorisering av funksjonsområde feilet."
+            justification = f"{trace}\n\nMerk: Kunne ikke mappes til sykepleieterminologi."
+
+            await progress_queue.put(f"DONE: {filename} (FO ERROR)")
+            return ExcludedDocument(source_uri=uri, title=metadata.source_document.title, justification=justification)
         # 9. Validate Taxonomy
         logger.debug(f"Validating taxonomy for: {filename}")
         processed_findings, taxonomy_error_count = validate_taxonomy(

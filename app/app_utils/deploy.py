@@ -170,17 +170,17 @@ def setup_agent_identity(client: Any, project: str, display_name: str) -> Any:
 )
 @click.option(
     "--location",
-    default="us-central1",
-    help="GCP region (defaults to us-central1)",
+    default="us-west1",
+    help="GCP region (defaults to us-west1)",
 )
 @click.option(
     "--display-name",
-    default="vbp",
+    default="vbp-scaffold",
     help="Display name for the agent engine",
 )
 @click.option(
     "--description",
-    default="",
+    default="Simple ReAct agent",
     help="Description of the agent",
 )
 @click.option(

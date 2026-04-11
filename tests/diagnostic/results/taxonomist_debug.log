@@ -1,0 +1,207 @@
+--- Starting Focused Taxonomist Diagnostic Test ---
+Processing 10 documents that previously failed mapping.
+
+>>> DEBUGGING: 250-254.pdf
+[INFO] 2026-04-11 10:50:14,260 - vbp_processing - Processing document start: 250-254.pdf [uri=gs://veiledende_behandlingsplan/ALS/250-254.pdf]
+[INFO] 2026-04-11 10:50:14,898 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-11 10:50:41,975 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-11 10:50:48,577 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf [finding_count=2]
+
+[DEBUG-PAYLOAD] 250-254.pdf: [{"finding_id": "ff22671a-2e19-4ded-9829-fa8f59f2bf19", "nursing_diagnosis": "Tretthet på dagtid (daytime sleepiness) relatert til kronisk hypoventilasjon og respirasjonssvikt ved ALS", "intervention": "Observere og kartlegge pasienten for tretthet på dagtid, da dette er det mest vanlige kliniske symptomet som indikerer behov for oppstart av hjemmerespirator (non-invasiv ventilasjon)", "goal": "Tidlig identifisering av hypoventilasjon for å sikre rettidig respirasjonsstøtte og optimal symptomlindring"}, {"finding_id": "28a4ad4d-a18e-4b6f-913f-e160babdea50", "nursing_diagnosis": "Risiko for etisk utfordrende situasjoner relatert til rask sykdomsforverring og behov for ventilasjonsstøtte ved ALS", "intervention": "Være spesielt oppmerksom på den raske progresjonen av sykdommen og aktivt delta i tverrfaglige avklaringer av de etiske aspektene ved oppstart av hjemmerespirator, spesielt ved vurdering av invasiv ventilasjon", "goal": "Beslutninger om respirasjonsstøtte tas på et etisk forsvarlig grunnlag tilpasset pasientens verdier og medisinske tilstand"}]
+[INFO] 2026-04-11 10:52:53,267 - vbp_processing - Document processing success: 250-254.pdf [finding_count=2]
+RESULT: Document SUCCESS - 2 findings mapped.
+
+>>> DEBUGGING: 35309870_fulltext.xml
+[INFO] 2026-04-11 10:52:53,379 - vbp_processing - Processing document start: 35309870_fulltext.xml [uri=gs://veileden[INFO] 2026-04-11 10:53:10,575 - vbp_processing - Document processing success: 36414305_fulltext.xml [finding_count=2]
+RESULT: Document SUCCESS - 2 fi[INFO] 2026-04-11 10:53:27,254 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 10:53:36,316 - vbp_processing - Invoking ClinicalTaxonomist for: 35309870_fulltext.xml [finding_count=4]
+
+[DEBUG-PAYLOAD] 35309870_fulltext.xml: [{"finding_id": "f0808b62-5101-4559-a059-d9b23197533f", "nursing_diagnosis": "Angst, frykt eller emosjonell belastning knyttet til sykdomsprogresjon, tap av kroppsfunksjoner og livets slutt.", "intervention": "Diskuter spørsmål og beslutninger rundt livets slutt tidlig og konti[INFO] 2026-04-11 10:54:44,271 - vbp_processing - Document processing success: 36834005_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 36995270_fulltext.xml
+[INFO] 2026-04-11 10:54:44,388 - vbp_processing - Processing document start: 36995270_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36995270_fulltext.xml]
+[INFO] 2026-04-11 10:54:45,101 - vbp_processing - Invoking ClinicalExtractor for: 36995270_fulltext.xml
+[INFO] 2026-04-11 10:55:13,113 - vbp_processing - Invoking Clinical Auditor for: 36995270_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 10:55:21,683 - vbp_processing - Invoking ClinicalTaxonomist for: 36995270_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 10:56:27,510 - vbp_processing - Document processing success: 36995270_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 37254833_fulltext.xml
+[INFO] 2026-04-11 10:56:27,630 - vbp_processing - Processing document start: 37254833_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37254833_fulltext.xml]
+[INFO] 2026-04-11 10:56:28,245 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-11 10:57:22,762 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 10:57:31,702 - vbp_processing - Invoking ClinicalTaxonomist for: 37254833_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 10:58:18,997 - vbp_processing - Document processing success: 37254833_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 37610446_fulltext.xml
+[INFO] 2026-04-11 10:58:19,126 - vbp_processing - Processing document start: 37610446_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37610446_fulltext.xml]
+[INFO] 2026-04-11 10:58:19,739 - vbp_processing - Invoking ClinicalExtractor for: 37610446_fulltext.xml
+[INFO] 2026-04-11 10:59:01,875 - vbp_processing - Invoking Clinical Auditor for: 37610446_fulltext.xml [finding_count=1]
+[INFO] 2026-04-11 10:59:08,505 - vbp_processing - Invoking ClinicalTaxonomist for: 37610446_fulltext.xml [finding_count=1]
+[INFO] 2026-04-11 10:59:57,533 - vbp_processing - Document processing success: 37610446_fulltext.xml [finding_count=1]
+RESULT: Document SUCCESS - 1 findings mapped.
+
+>>> DEBUGGING: 38345764_fulltext.xml
+[INFO] 2026-04-11 10:59:57,714 - vbp_processing - Processing document start: 38345764_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38345764_fulltext.xml]
+[INFO] 2026-04-11 10:59:58,548 - vbp_processing - Invoking ClinicalExtractor for: 38345764_fulltext.xml
+[INFO] 2026-04-11 11:00:45,325 - vbp_processing - Invoking Clinical Auditor for: 38345764_fulltext.xml [finding_count=1]
+[INFO] 2026-04-11 11:00:50,438 - vbp_processing - Invoking ClinicalTaxonomist for: 38345764_fulltext.xml [finding_count=1]
+[INFO] 2026-04-11 11:01:20,765 - vbp_processing - Document processing success: 38345764_fulltext.xml [finding_count=1]
+RESULT: Document SUCCESS - 1 findings mapped.
+
+>>> DEBUGGING: 38622643_fulltext.xml
+[INFO] 2026-04-11 11:01:20,892 - vbp_processing - Processing document start: 38622643_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38622643_fulltext.xml]
+[INFO] 2026-04-11 11:01:21,548 - vbp_processing - Invoking ClinicalExtractor for: 38622643_fulltext.xml
+[INFO] 2026-04-11 11:01:58,159 - vbp_processing - Invoking Clinical Auditor for: 38622643_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:02:05,644 - vbp_processing - Invoking ClinicalTaxonomist for: 38622643_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:02:44,812 - vbp_processing - Document processing success: 38622643_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 38762656_fulltext.xml
+[INFO] 2026-04-11 11:02:44,946 - vbp_processing - Processing document start: 38762656_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38762656_fulltext.xml]
+[INFO] 2026-04-11 11:02:45,538 - vbp_processing - Invoking ClinicalExtractor for: 38762656_fulltext.xml
+[INFO] 2026-04-11 11:03:11,032 - vbp_processing - Invoking Clinical Auditor for: 38762656_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:03:18,639 - vbp_processing - Invoking ClinicalTaxonomist for: 38762656_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:03:59,419 - vbp_processing - Document processing success: 38762656_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+--- Diagnostic Test Complete ---
+--- Starting Focused Taxonomist Diagnostic Test ---
+Processing 10 documents that previously failed mapping.
+
+>>> DEBUGGING: 250-254.pdf
+[INFO] 2026-04-11 11:03:59,546 - vbp_processing - Processing document start: 250-254.pdf [uri=gs://veiledende_behandlingsplan/ALS/250-254.pdf]
+[INFO] 2026-04-11 11:04:00,096 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-11 11:04:44,567 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-11 11:04:50,697 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-11 11:05:32,325 - vbp_processing - Document processing success: 250-254.pdf [finding_count=2]
+RESULT: Document SUCCESS - 2 findings mapped.
+
+>>> DEBUGGING: 35309870_fulltext.xml
+[INFO] 2026-04-11 11:05:32,445 - vbp_processing - Processing document start: 35309870_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35309870_fulltext.xml]
+[INFO] 2026-04-11 11:05:33,076 - vbp_processing - Invoking ClinicalExtractor for: 35309870_fulltext.xml
+[INFO] 2026-04-11 11:06:09,460 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:06:17,765 - vbp_processing - Invoking ClinicalTaxonomist for: 35309870_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:07:15,102 - vbp_processing - Document processing success: 35309870_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 36414305_fulltext.xml
+[INFO] 2026-04-11 11:07:15,233 - vbp_processing - Processing document start: 36414305_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36414305_fulltext.xml]
+[INFO] 2026-04-11 11:07:15,802 - vbp_processing - Invoking ClinicalExtractor for: 36414305_fulltext.xml
+[INFO] 2026-04-11 11:07:58,515 - vbp_processing - Invoking Clinical Auditor for: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:08:05,523 - vbp_processing - Invoking ClinicalTaxonomist for: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:08:51,873 - vbp_processing - Document processing success: 36414305_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 36834005_fulltext.xml
+[INFO] 2026-04-11 11:08:51,991 - vbp_processing - Processing document start: 36834005_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36834005_fulltext.xml]
+[INFO] 2026-04-11 11:08:52,598 - vbp_processing - Invoking ClinicalExtractor for: 36834005_fulltext.xml
+[INFO] 2026-04-11 11:09:37,446 - vbp_processing - Invoking Clinical Auditor for: 36834005_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:09:46,508 - vbp_processing - Invoking ClinicalTaxonomist for: 36834005_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:11:02,573 - vbp_processing - Document processing success: 36834005_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 36995270_fulltext.xml
+[INFO] 2026-04-11 11:11:02,702 - vbp_processing - Processing document start: 36995270_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36995270_fulltext.xml]
+[INFO] 2026-04-11 11:11:03,331 - vbp_processing - Invoking ClinicalExtractor for: 36995270_fulltext.xml
+[INFO] 2026-04-11 11:11:37,848 - vbp_processing - Invoking Clinical Auditor for: 36995270_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:11:47,460 - vbp_processing - Invoking ClinicalTaxonomist for: 36995270_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:13:19,835 - vbp_processing - Document processing success: 36995270_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 37254833_fulltext.xml
+[INFO] 2026-04-11 11:13:19,957 - vbp_processing - Processing document start: 37254833_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37254833_fulltext.xml]
+[INFO] 2026-04-11 11:13:20,601 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-11 11:13:51,029 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:13:59,097 - vbp_processing - Invoking ClinicalTaxonomist for: 37254833_fulltext.xml [finding_count=3]
+het og manglende forberedelse på døden.", "intervention": "Legg til rette for samtaler mellom pasient, pårørende og helsepersonell for i fellesskap å planlegge livets slutt og kartlegge spesifikke ønsker rundt hvordan døden skal foregå.", "goal": "Pasient og pårørende er mentalt og emosjonelt forberedt på dødsfallet, pasientens ønsker blir ivaretatt, og pårørende opplever trygghet og trøst."}, {"finding_id": "6bd2096a-c5e0-467e-b06c-365cae69fcb8", "nursing_diagnosis": "Opplevelse av manglende støtte og isolasjon hos pårørende etter pasientens død, med forhøyet risiko for forlenget sorglidelse (PGD).", "intervention": "Sørg for proaktiv sorgstøtte og tilgjengelige tjenester i den tidlige fasen etter dødsfallet, og unngå brå avslutning av kontakten og helsetjenestene.", "goal": "Pårørende opplever trygghet, ivaretakelse og kontinuitet i hjelpen etter dødsfallet, noe som understøtter en normal sorgbearbeiding."}]
+[INFO] 2026-04-11 10:59:28,746 - vbp_processing - Document processing success: 36995270_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 37254833_fulltext.xml
+[INFO] 2026-04-11 10:59:28,873 - vbp_processing - Processing document start: 37254833_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37254833_fulltext.xml]
+[INFO] 2026-04-11 10:59:29,505 - vbp_processing - Invoking ClinicalExtractor for: 37254833_fulltext.xml
+[INFO] 2026-04-11 11:00:15,968 - vbp_processing - Invoking Clinical Auditor for: 37254833_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:00:23,587 - vbp_processing - Invoking ClinicalTaxonomist for: 37254833_fulltext.xml [finding_count=3]
+
+[DEBUG-PAYLOAD] 37254833_fulltext.xml: [{"finding_id": "6ba656fd-b627-4b7b-ad97-acc3f5af8497", "nursing_diagnosis": "Emosjonell respons, frykt eller angst knyttet til oppstart av intervensjoner som gastrostomi eller ventilasjonsstøtte (trussel mot normalitet og selvstendighet).", "intervention": "Utforsk aktivt pasientens forestillinger, verdier og emosjonelle respons på intervensjonene. Bruk en strukturert tilnærming for samtaler: be om tillatelse for å ta opp temaet, fordel informasjon over flere interaksjoner og tilby psykologisk støtte for å håndtere frykt og sikre deltakelse.", "goal": "Pasienten opplever mestring og anerkjennelse for sin emosjonelle reaksjon, redusert angst, og klarer å delta aktivt i beslutningsprosesser rundt egen behandling."}, {"finding_id": "2ec5a7f5-2b2b-4ce2-b43a-a14e78949650", "nursing_diagnosis": "Risiko for beslutningsvegring eller følelse av press som følge av for stor mengde eller motstridende informasjon fra ulike helsepersonell.", "intervention": "Koordiner informasjonen i det tverrfaglige teamet (MDT) for å unngå motstridende budskap. Tilpass mengde, tempo og stil på informasjonen til pasientens behov, og unngå å legge press på pasienten gjennom gjentatte og uønskede oppfordringer om å akseptere intervensjoner.", "goal": "Pasienten mottar konsekvent og tilpasset informasjon, unngår å bli overveldet, og fatter autonome beslutninger uten å føle press."}, {"finding_id": "32aeac7a-1ce5-44af-8935-2f05c914d9b6", "nursing_diagnosis": "Usikkerhet og vansker med å ta en rettidig beslutning om riktig tidspunkt for oppstart av gastrostomi eller ventilasjon.", "intervention": "Introduser intervensjonsalternativene tidlig i sykdomsforløpet. Gi konkret veiledning og støtt pasienten i å reflektere over hvordan de vil oppleve å leve med økt fremtidig symptombyrde, basert på pasientens egne verdier og mål.", "goal": "Pasienten tar et informert, rettidig og verdibasert valg om når intervensjonen skal starte, utsettes eller avvises."}]
+[INFO] 2026-04-11 11:01:26,725 - vbp_processing - Document processing success: 37254833_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 37610446_fulltext.xml
+[INFO] 2026-04-11 11:01:26,863 - vbp_processing - Processing document start: 37610446_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/37610446_fulltext.xml]
+[INFO] 2026-04-11 11:01:27,476 - vbp_processing - Invoking ClinicalExtractor for: 37610446_fulltext.xml
+[INFO] 2026-04-11 11:01:49,730 - vbp_processing - No findings identified in document: 37610446_fulltext.xml
+RESULT: Document EXCLUDED - Dokumentet er en medisinsk systematisk oversiktsartikkel som undersøker sensorisk nevropati hos pasienter med ALS, med hovedfokus på epidemiologi, kliniske kjennetegn, nevrofysiologi, genetikk og medisinske behandlinger (som IVIG og steroider). Teksten nevner flere symptomer og pasientproblemer knyttet til ALS, slik som smerte, fatigue, økt sekretproduksjon (sialoré) og nedsatt sensibilitet, men den beskriver ingen spesifikke sykepleieintervensjoner (f.eks. stell, pleie, observasjoner eller veiledning) rettet mot disse problemene. Ettersom et gyldig funn krever minst en sykepleiediagnose og en tilhørende sykepleieintervensjon, er det ikke grunnlag for å trekke ut noen kandidatfunn fra dette dokumentet.
+
+>>> DEBUGGING: 38345764_fulltext.xml
+[INFO] 2026-04-11 11:01:49,730 - vbp_processing - Processing document start: 38345764_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38345764_fulltext.xml]
+[INFO] 2026-04-11 11:01:50,376 - vbp_processing - Invoking ClinicalExtractor for: 38345764_fulltext.xml
+[INFO] 2026-04-11 11:02:36,092 - vbp_processing - Invoking Clinical Auditor for: 38345764_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:02:44,229 - vbp_processing - Invoking ClinicalTaxonomist for: 38345764_fulltext.xml [finding_count=3]
+
+[DEBUG-PAYLOAD] 38345764_fulltext.xml: [{"finding_id": "8568e938-a6f8-4173-a665-c6119e132649", "nursing_diagnosis": "Uoppdaget kognitiv og atferdsmessig svikt (som apati og irritabilitet) som kan forverre pasientens livskvalitet.", "intervention": "Benytt sykdomsspesifikke og flerdimensjonale kartleggingsverktøy (som f.eks. ECAS) for systematisk vurdering av kognitiv og atferdsmessig funksjon.", "goal": "Tidlig og nøyaktig identifisering av kognitive og atferdsmessige utfordringer for å kunne tilpasse personsentrert pleie og kommunikasjon."}, {"finding_id": "e5d14137-c62c-470c-8707-61b5406fadab", "nursing_diagnosis": "Fysiske plager og nedsatt livskvalitet relatert til tap av motorisk funksjon, respirasjonsbesvær og kommunikasjonsvansker.", "intervention": "Iverksett og følg opp kliniske tiltak rettet mot håndtering av tap av fysisk funksjon, inkludert tilrettelegging for respirasjon og alternativ kommunikasjon.", "goal": "Lindring av fysiske plager, optimalisert pustefunksjon og bevart evne til samhandling og behovsformidling."}, {"finding_id": "6880de04-4261-4481-b0ee-de242cdab0b0", "nursing_diagnosis": "Høy omsorgsbelastning og fare for redusert psykisk helse (f.eks. depresjon) hos pårørende som følge av pasientens sykdomsutvikling og atferdsendringer.", "intervention": "Observer samspillet mellom pasient og omsorgspersoner, kartlegg pårørendes belastning, og tilby veiledning og støtte til familier og systemet rundt pasienten.", "goal": "Pårørende og pasientens støttesystem opplever mestring, tilstrekkelig avlastning og redusert omsorgsbelastning."}]
+[INFO] 2026-04-11 11:03:51,299 - vbp_processing - Document processing success: 38345764_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 38622643_fulltext.xml
+[INFO] 2026-04-11 11:03:51,439 - vbp_processing - Processing document start: 38622643_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38622643_fulltext.xml]
+[INFO] 2026-04-11 11:03:52,048 - vbp_processing - Invoking ClinicalExtractor for: 38622643_fulltext.xml
+[INFO] 2026-04-11 11:04:46,044 - vbp_processing - Invoking Clinical Auditor for: 38622643_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:04:53,592 - vbp_processing - Invoking ClinicalTaxonomist for: 38622643_fulltext.xml [finding_count=4]
+
+[DEBUG-PAYLOAD] 38622643_fulltext.xml: [{"finding_id": "fd9a6d92-e85e-483a-8c3f-8c00e56cb0ca", "nursing_diagnosis": "Åndenød (dyspné) og lufthunger knyttet til nedsatt respirasjonsfunksjon og muskelsvakhet.", "intervention": "Tilrettelegg for og veiled pasienten i bruk av individuelle ikke-farmakologiske strategier som endring av stilling (f.eks. sitte, lene seg fremover), pusteteknikker (leppepust, magepust), tilførsel av frisk/kald luft, fukting av munnhulen og bruk av kognitive avledningsteknikker.", "goal": "Pasienten opplever best mulig lindring av åndenød og bedret respiratorisk komfort."}, {"finding_id": "c7b86221-8fec-4f48-a3a9-b834697daf2e", "nursing_diagnosis": "Risiko for trykksår (f.eks. på neseryggen) og nedsatt toleranse relatert til langvarig bruk av NIV-maske (non-invasiv ventilasjon).", "intervention": "Iverksett forebyggende tiltak mot trykkskader ved å bruke hydrokolloidbandasjer under masken, veksle mellom ulike maskesystemer (for eksempel tradisjonell nesemaske og neseputer), og vurder bruk av munnstykke i våken tilstand for å avlaste trykk.", "goal": "Pasienten opprettholder intakt hud og tolererer NIV-behandlingen med minimalt ubehag."}, {"finding_id": "4d811fd0-0bdc-4f7f-ad55-41407c316c4f", "nursing_diagnosis": "Angst, frykt og panikk relatert til opplevelse av åndenød og fare for kvelning, som igjen fører til økt oksygenforbruk og pusteinnsats.", "intervention": "Utfør tiltak for å dempe angst, frykt og panikk (f.eks. gjennom tryggende tilstedeværelse og psykososial støtte) for indirekte å redusere pasientens totale oksygenforbruk og avlaste respirasjonsmuskulaturen.", "goal": "Pasienten føler økt trygghet og opplever redusert angst, noe som bidrar til en roligere og mindre anstrengende respirasjon."}, {"finding_id": "d53c608d-96e9-46db-b11d-65ff7643cc32", "nursing_diagnosis": "Uavklart fremtidig behandlingsnivå og behov for trygghet knyttet til omsorgen i livets sluttfase, som følge av sykdommens uhelbredelige natur.", "intervention": "Initier og fasiliter tidlige og jevnlige samtaler om forhåndsplanlegging (Advance Care Planning), for å avklare mål for omsorgen (Goals of Care), pasientens og familiens ønsker for livets slutt, samt psykososiale og åndelige behov.", "goal": "Pasientens verdier, ønsker og preferanser for fremtidig behandling og livets sluttfase er kartlagt, dokumentert og respektert av helsepersonell."}]
+[INFO] 2026-04-11 11:05:29,738 - vbp_processing - Document processing success: 38622643_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 38762656_fulltext.xml
+[INFO] 2026-04-11 11:05:29,864 - vbp_processing - Processing document start: 38762656_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/38762656_fulltext.xml]
+[INFO] 2026-04-11 11:05:30,543 - vbp_processing - Invoking ClinicalExtractor for: 38762656_fulltext.xml
+[INFO] 2026-04-11 11:06:17,827 - vbp_processing - Invoking Clinical Auditor for: 38762656_fulltext.xml [finding_count=5]
+[INFO] 2026-04-11 11:06:26,772 - vbp_processing - Invoking ClinicalTaxonomist for: 38762656_fulltext.xml [finding_count=5]
+
+[DEBUG-PAYLOAD] 38762656_fulltext.xml: [{"finding_id": "5a9aaae5-a564-4ef2-90b3-0dd7e4ef7dfc", "nursing_diagnosis": "Nedsatt lungefunksjon og høy risiko for respirasjonssvikt", "intervention": "Tilby og veilede pasienten i respirasjonsfremmende tiltak (respirasjonsmuskeltrening og inspiratorisk muskeltrening).", "goal": "Beholde eller forbedre respirasjonsmuskelfunksjonen og pusteevnen så lenge som mulig."}, {"finding_id": "90af3d25-6f6a-4035-9535-3959d2e73d50", "nursing_diagnosis": "Vekttap og risiko for underernæring som følge av sykdomsprosessen", "intervention": "Sikre adekvat ernæring ved å administrere og veilede i bruk av høykaloritilskudd og hyperkalorisk ernæring.", "goal": "Øke eller opprettholde pasientens kroppsvekt for å forhindre underernæring."}, {"finding_id": "66c2e08d-1a90-478c-b09a-15f1b0bff66b", "nursing_diagnosis": "Nedsatt fysisk funksjonsevne og muskelsvakhet", "intervention": "Tilrettelegge for et strukturert, multimodalt treningsprogram (inkludert progressiv muskeltrening og aerob trening) som er individuelt tilpasset pasientens sykdomsfase og toleranseevne.", "goal": "Bremse tapet av funksjonsevne og opprettholde muskelstyrke for en bedre funksjonell status."}, {"finding_id": "dd297709-1661-4376-8fbf-df12a86f86c0", "nursing_diagnosis": "Ubehag i form av muskelstivhet og kramper", "intervention": "Utføre eller henvise til massasje av berørt muskulatur for å øke blodgjennomstrømningen og aktivere det parasympatiske nervesystemet.", "goal": "Lindre pasientens kliniske symptomer på muskelstivhet og kramper."}, {"finding_id": "266be4f9-fcf8-4e33-8792-78ec41d894bd", "nursing_diagnosis": "Depresjon, angst og nedsatt livskvalitet knyttet til sykdomsbyrden", "intervention": "Tilby eller formidle psykologiske intervensjoner som mindfulness-baserte metoder og veiledning for mental avspenning.", "goal": "Forbedre pasientens opplevde livskvalitet, lindre psykisk smerte og redusere graden av depresjon og angst."}]
+[INFO] 2026-04-11 11:07:08,515 - vbp_processing - Document processing success: 38762656_fulltext.xml [finding_count=5]
+RESULT: Document SUCCESS - 5 findings mapped.
+
+--- Diagnostic Test Complete ---
+--- Starting Focused Taxonomist Diagnostic Test ---
+Processing 10 documents that previously failed mapping.
+
+>>> DEBUGGING: 250-254.pdf
+[INFO] 2026-04-11 11:07:08,644 - vbp_processing - Processing document start: 250-254.pdf [uri=gs://veiledende_behandlingsplan/ALS/250-254.pdf]
+[INFO] 2026-04-11 11:07:09,233 - vbp_processing - Invoking ClinicalExtractor for: 250-254.pdf
+[INFO] 2026-04-11 11:07:36,118 - vbp_processing - Invoking Clinical Auditor for: 250-254.pdf [finding_count=2]
+[INFO] 2026-04-11 11:07:43,577 - vbp_processing - Invoking ClinicalTaxonomist for: 250-254.pdf [finding_count=2]
+
+[DEBUG-PAYLOAD] 250-254.pdf: [{"finding_id": "07f4a5c0-f334-4467-8030-3922ea453587", "nursing_diagnosis": "Dagtrøtthet og respirasjonssvikt relatert til kronisk alveolær hypoventilasjon ved ALS.", "intervention": "Kartlegge grad av dagtrøtthet og assistere ved lungefunksjonstesting/blodgassmåling som ledd i utredning for oppstart av maskeventilasjon (NIV) eller invasiv hjemmerespirator.", "goal": "Pasienten oppnår adekvat utredning for å få iverksatt ventilasjonsstøtte som kan gi symptomlindring og redusere trøtthet."}, {"finding_id": "c5ac81a9-1453-4ade-b77a-ba3669f1637e", "nursing_diagnosis": "Risiko for etisk utfordrende behandlingsvalg relatert til rask sykdomsforverring ved ALS og behov for hjemmerespirator.", "intervention": "Identifisere og støtte pasienten i etiske avveininger knyttet til oppstart av invasiv eller non-invasiv ventilasjonsstøtte, med særlig hensyn til den raske sykdomsprogresjonen.", "goal": "Pasienten opplever at egne verdier og etiske hensyn ivaretas på en trygg og verdig måte under beslutningsprosessen for ventilasjonsstøtte."}]
+[INFO] 2026-04-11 11:08:20,207 - vbp_processing - Document processing success: 250-254.pdf [finding_count=2]
+RESULT: Document SUCCESS - 2 findings mapped.
+
+>>> DEBUGGING: 35309870_fulltext.xml
+[INFO] 2026-04-11 11:08:20,325 - vbp_processing - Processing document start: 35309870_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/35309870_fulltext.xml]
+[INFO] 2026-04-11 11:08:20,944 - vbp_processing - Invoking ClinicalExtractor for: 35309870_fulltext.xml
+[INFO] 2026-04-11 11:09:19,311 - vbp_processing - Invoking Clinical Auditor for: 35309870_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:09:29,695 - vbp_processing - Invoking ClinicalTaxonomist for: 35309870_fulltext.xml [finding_count=4]
+
+[DEBUG-PAYLOAD] 35309870_fulltext.xml: [{"finding_id": "47e9f8ec-ae8e-41d7-8f9d-c464bcfd536d", "nursing_diagnosis": "Unngåelse eller frykt for å diskutere livets slutt og sykdomsprogresjon (mestringsstrategi preget av fornektelse).", "intervention": "Tilby samtaler om behandlingsvalg og fremtidig omsorg (Advance Care Planning) gjentatte ganger og ved enhver passende anledning, selv om pasienten i utgangspunktet er avvisende.", "goal": "Pasienten blir gradvis klar for å diskutere og ta eierskap til beslutninger om fremtidig omsorg og livets slutt."}, {"finding_id": "de3db976-43f5-4a4d-be66-9b45618e81f9", "nursing_diagnosis": "Uttrykt dødsønske knyttet til opplevelse av uutholdelig lidelse og tap av kontroll.", "intervention": "Møt pasientens dødsønske med narrativ kompetanse ved å aktivt lytte, ta ønsket på alvor og utforske motivene og årsakene til hvorfor livet oppleves uønsket, uten å avvise pasienten.", "goal": "Pasienten opplever å bli møtt med aksept og forståelse, og helsepersonell avdekker de reelle bakenforliggende kildene til lidelse for å kunne optimalisere lindrende omsorg."}, {"finding_id": "aff81dc5-eb26-41ff-8942-4bf4cfbf1a85", "nursing_diagnosis": "Risiko for manglende pasientmedvirkning og uønsket behandling (f.eks. ved akutt respirasjonssvikt) på grunn av tap av kommunikasjonsevne eller utvikling av frontotemporal demens.", "intervention": "Benytt sykehusinnleggelser til å initiere forhåndssamtaler (Advance Care Planning) for å kartlegge behandlingsmål, og involver ressurser fra palliativt team for støtte i prosessen.", "goal": "Pasientens verdier og preferanser for livsforlengende behandling er tydelig dokumentert i en forhåndserklæring før pasienten mister samtykkekompetanse eller evnen til å kommunisere."}, {"finding_id": "0bc0cde9-15e4-4d7e-9197-1e9365911ec9", "nursing_diagnosis": "Beslutningskonflikt og usikkerhet knyttet til komplekse valg om livsforlengende behandling.", "intervention": "Tilby og veilede pasienten i bruken av databaserte eller strukturerte beslutningsstøtteverktøy (decision aids) for å forberede dem på forhåndssamtaler.", "goal": "Pasienten opplever økt selvbestemmelse, lavere beslutningskonflikt og bedre samsvar mellom egne ønsker og den iverksatte behandlingen."}]
+[INFO] 2026-04-11 11:10:42,312 - vbp_processing - Document processing success: 35309870_fulltext.xml [finding_count=4]
+RESULT: Document SUCCESS - 4 findings mapped.
+
+>>> DEBUGGING: 36414305_fulltext.xml
+[INFO] 2026-04-11 11:10:42,442 - vbp_processing - Processing document start: 36414305_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36414305_fulltext.xml]
+[INFO] 2026-04-11 11:10:43,037 - vbp_processing - Invoking ClinicalExtractor for: 36414305_fulltext.xml
+[INFO] 2026-04-11 11:11:26,275 - vbp_processing - Invoking Clinical Auditor for: 36414305_fulltext.xml [finding_count=3]
+[INFO] 2026-04-11 11:11:35,862 - vbp_processing - Invoking ClinicalTaxonomist for: 36414305_fulltext.xml [finding_count=3]
+
+[DEBUG-PAYLOAD] 36414305_fulltext.xml: [{"finding_id": "bf6ccb6d-7293-4d4b-90c0-1a936a5b73fa", "nursing_diagnosis": "Nedsatt fysisk mobilitet knyttet til progressiv muskelsvakhet.", "intervention": "Tilrettelegge for og utføre bevegelsesutslagsøvelser (ROM), tøyninger, samt oppmuntre til skånsom og tilpasset utholdenhetstrening og styrketrening med lav til moderat belastning.", "goal": "Maksimere fysisk funksjonsevne, opprettholde dagliglivets aktiviteter (ADL) og bevare livskvalitet så lenge som mulig."}, {"finding_id": "610a357a-25a6-49b9-908c-0846398529b6", "nursing_diagnosis": "Uttalt fatigue og følelse av generell tretthet.", "intervention": "Veilede pasienten i energibesparende teknikker og avspenningsteknikker, samt tilpasse fysisk aktivitet til et submaksimalt nivå for å unngå overbelastning.", "goal": "Lindre opplevelsen av fatigue og forbedre pasientens generelle energinivå og livskvalitet."}, {"finding_id": "e2b93c85-94ba-427f-9c9b-2ff3ebb227cb", "nursing_diagnosis": "Smerter og nedsatt funksjon relatert til spastisitet.", "intervention": "Utføre regelmessige tøyningsøvelser og vurdere bruk av massasjeterapi for affiserte muskelgrupper.", "goal": "Lindre spastisitet, redusere ubehag og vedlikeholde pasientens bevegelsesutslag."}]
+[INFO] 2026-04-11 11:12:14,865 - vbp_processing - Document processing success: 36414305_fulltext.xml [finding_count=3]
+RESULT: Document SUCCESS - 3 findings mapped.
+
+>>> DEBUGGING: 36834005_fulltext.xml
+[INFO] 2026-04-11 11:12:14,976 - vbp_processing - Processing document start: 36834005_fulltext.xml [uri=gs://veiledende_behandlingsplan/ALS/36834005_fulltext.xml]
+[INFO] 2026-04-11 11:12:15,569 - vbp_processing - Invoking ClinicalExtractor for: 36834005_fulltext.xml
+[INFO] 2026-04-11 11:13:00,463 - vbp_processing - Invoking Clinical Auditor for: 36834005_fulltext.xml [finding_count=4]
+[INFO] 2026-04-11 11:13:09,147 - vbp_processing - Invoking ClinicalTaxonomist for: 36834005_fulltext.xml [finding_count=4]
