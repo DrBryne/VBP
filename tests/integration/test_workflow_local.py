@@ -37,7 +37,7 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
 
     # Setup environment for Vertex AI and Regionality
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "true"
-    os.environ["GOOGLE_CLOUD_LOCATION"] = config.LOCATION
+    os.environ["GOOGLE_CLOUD_LOCATION"] = config.PROCESSING_LOCATION
 
     if not config.PROJECT_ID:
         logger.error("GOOGLE_CLOUD_PROJECT not set in config or environment.")
@@ -49,7 +49,7 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
 
     logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---",
                 project=config.PROJECT_ID,
-                location=config.LOCATION,
+                location=config.PROCESSING_LOCATION,
                 target_group=test_target_group,
                 bucket=test_gcs_uri,
                 results_dir=run_dir,

@@ -63,23 +63,32 @@ class VbpWorkflowAgent(BaseAgent):
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
         execution_start_time = datetime.now()
-        gcs_uri = ctx.session.state.get("gcs_uri")
-        target_group = ctx.session.state.get("target_group")
-        max_files = ctx.session.state.get("max_files")
-        max_concurrency = ctx.session.state.get("max_concurrency", 10)
+        
+        # 1. Try to extract from run_config (Standard ADK 2.0 pattern)
+        custom_config = getattr(ctx.run_config, "custom_config", {}) or {}
+        gcs_uri = custom_config.get("gcs_uri")
+        target_group = custom_config.get("target_group")
+        max_files = custom_config.get("max_files")
+        max_concurrency = custom_config.get("max_concurrency", 10)
 
-        # Extract config from the latest message if not in state
+        # 2. Fallback to session state (Persistent sessions)
+        if not gcs_uri: gcs_uri = ctx.session.state.get("gcs_uri")
+        if not target_group: target_group = ctx.session.state.get("target_group")
+
+        # 3. Fallback to latest message text (Direct JSON trigger)
         if not gcs_uri or not target_group:
             if ctx.session.events:
                 latest = ctx.session.events[-1]
                 if latest.content and latest.content.parts:
                     try:
-                        config = json.loads(latest.content.parts[0].text)
-                        gcs_uri = config.get("gcs_uri", gcs_uri)
-                        target_group = config.get("target_group", target_group)
-                        max_files = config.get("max_files", max_files)
-                        max_concurrency = config.get("max_concurrency", max_concurrency)
-                    except (json.JSONDecodeError, AttributeError):
+                        # Attempt to parse the first part as JSON config
+                        text_payload = latest.content.parts[0].text
+                        config_dict = json.loads(text_payload)
+                        gcs_uri = config_dict.get("gcs_uri", gcs_uri)
+                        target_group = config_dict.get("target_group", target_group)
+                        max_files = config_dict.get("max_files", max_files)
+                        max_concurrency = config_dict.get("max_concurrency", max_concurrency)
+                    except (json.JSONDecodeError, AttributeError, ValueError):
                         pass
 
         project_id = os.getenv("GOOGLE_CLOUD_PROJECT")

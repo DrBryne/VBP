@@ -24,6 +24,7 @@ from typing import Any
 import click
 import google.auth
 import vertexai
+from app.shared.config import config
 from google.cloud import resourcemanager_v3
 from google.iam.v1 import iam_policy_pb2, policy_pb2
 from vertexai._genai import _agent_engines_utils
@@ -170,8 +171,8 @@ def setup_agent_identity(client: Any, project: str, display_name: str) -> Any:
 )
 @click.option(
     "--location",
-    default="us-west1",
-    help="GCP region (defaults to us-west1)",
+    default=config.DEPLOYMENT_LOCATION,
+    help=f"GCP region (defaults to {config.DEPLOYMENT_LOCATION})",
 )
 @click.option(
     "--display-name",

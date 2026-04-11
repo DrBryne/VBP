@@ -11,12 +11,16 @@ class VBPConfig:
     """
     # Google Cloud Project Details
     PROJECT_ID: str = os.environ.get("GOOGLE_CLOUD_PROJECT", "sunny-passage-362617")
-    LOCATION: str = os.environ.get("GOOGLE_CLOUD_LOCATION", "europe-west1")
+    
+    # The location where the Agent Engine managed service lives (API Control Plane)
+    DEPLOYMENT_LOCATION: str = os.environ.get("VBP_DEPLOY_LOCATION", "europe-west1")
+    
+    # The location where the clinical data processing occurs (Staging region)
+    PROCESSING_LOCATION: str = os.environ.get("GOOGLE_CLOUD_LOCATION", "europe-west1")
 
     # Storage Configuration
     # Note: Clinical data is now standardized in the Belgium region
     BASE_BUCKET: str = os.environ.get("VBP_DATA_BUCKET", "gs://vbp-clinical-data-eu")
-
     # Path to the ALS clinical documents
     ALS_DOCS_URI: str = f"{BASE_BUCKET}/ALS/"
 

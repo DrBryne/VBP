@@ -38,6 +38,7 @@ deploy:
 		--entrypoint-module=app.agent_engine_app \
 		--entrypoint-object=agent_engine \
 		--requirements-file=app/app_utils/.requirements.txt \
+		--set-env-vars="LOGS_BUCKET_NAME=vbp-clinical-data-eu" \
 		$(if $(AGENT_IDENTITY),--agent-identity) \
 		$(if $(filter command line,$(origin SECRETS)),--set-secrets="$(SECRETS)")
 
