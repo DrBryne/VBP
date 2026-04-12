@@ -35,7 +35,7 @@ async def run_remote_cloud_test():
         "location": config.PROCESSING_LOCATION, # us-central1
         "target_group": "ALS - Amytrofisk lateral sklerose",
         "bucket_uri": config.ALS_DOCS_URI,
-        "max_concurrency": 30,
+        "max_concurrency": 10,
         "max_files": 96
     }
     
@@ -64,14 +64,19 @@ async def run_remote_cloud_test():
             ev_type = event.get("event_type") if isinstance(event, dict) else getattr(event, "event_type", None)
             ev_content = event.get("content") if isinstance(event, dict) else getattr(event, "content", None)
             
-            if ev_type == "final_response":
+            # The cloud Agent Engine sometimes strips the custom 'event_type' tag during SSE streaming.
+            # We must manually sniff the content to see if it's the final JSON payload.
+            content_str = ""
+            if isinstance(ev_content, str):
+                content_str = ev_content
+            elif isinstance(ev_content, dict) and "parts" in ev_content:
+                content_str = ev_content["parts"][0].get("text", "")
+                
+            if ev_type == "final_response" or '{"execution_summary":' in content_str:
                 final_response_data = ev_content
-            elif ev_content:
-                # Print progress updates
-                if isinstance(ev_content, str):
-                    print(f"[Cloud] {ev_content}")
-                elif isinstance(ev_content, dict) and "parts" in ev_content:
-                    print(f"[Cloud] {ev_content['parts'][0].get('text')}")
+                # Do not print the massive JSON to stdout
+            elif content_str:
+                print(f"[Cloud] {content_str}")
 
         end_time = datetime.now()
         duration = end_time - start_time

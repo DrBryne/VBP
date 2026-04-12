@@ -10,6 +10,7 @@ from app.app_utils.telemetry import track_telemetry_span
 from app.shared.config import config
 from app.shared.fhir_client import FhirTerminologyClient
 from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
+from app.shared.taxonomy import get_norwegian_term
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     Document,
@@ -115,7 +116,9 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
         if cid in taxonomy_cache["concepts"]:
             # Populate global display cache from persistent cache
             if cid not in global_id_cache:
-                global_id_cache[cid] = taxonomy_cache["concepts"][cid].get("display", "Unknown")
+                # Prioritize Norwegian term if available, otherwise use cached display
+                nor_term = get_norwegian_term(cid, None)
+                global_id_cache[cid] = nor_term if nor_term else taxonomy_cache["concepts"][cid].get("display", "Unknown")
         else:
             lookup_tasks.append(fhir_client.lookup_concept(cid))
             lookup_ids.append(cid)
@@ -128,7 +131,9 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
             if isinstance(result, dict):
                 taxonomy_cache["concepts"][cid] = result
                 if cid not in global_id_cache:
-                    global_id_cache[cid] = result.get("display", "Unknown")
+                    # Check local Norwegian map first, even for new FHIR lookups
+                    nor_term = get_norwegian_term(cid, None)
+                    global_id_cache[cid] = nor_term if nor_term else result.get("display", "Unknown")
 
     # Group siblings using the (now warmed) caches
     parent_to_children = {}
@@ -238,8 +243,9 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client: F
             final_id = group_key.split("||")[1] if "||" in group_key else ""
 
             if group_key not in groups:
-                # Use professional display term from FHIR cache if available
-                display_term = global_id_cache.get(final_id, finding.mapped_nursing_diagnosis.term)
+                # Use professional display term from local Norwegian map or FHIR cache if available
+                nor_term = get_norwegian_term(final_id, None)
+                display_term = nor_term if nor_term else global_id_cache.get(final_id, finding.mapped_nursing_diagnosis.term)
 
                 groups[group_key] = {
                     "FO": finding.FO,

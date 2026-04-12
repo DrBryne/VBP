@@ -43,6 +43,33 @@ def load_valid_icnp_ids() -> set[str]:
 
     return valid_ids
 
+@lru_cache(maxsize=1)
+def load_norwegian_term_map() -> dict[str, str]:
+    """Loads a mapping of SNOMED/ICNP IDs to Norwegian preferred terms."""
+    term_map = {}
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(os.path.dirname(current_dir))
+    csv_path = os.path.join(project_root, "app", "agents", "clinical_taxonomist", "data", "SNOMED_ICNP.csv")
+    
+    if os.path.exists(csv_path):
+        import csv
+        with open(csv_path, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                # The CSV has 'Concept Id' and 'Preferred Term'
+                cid = row.get("Concept Id")
+                nor_term = row.get("Preferred Term")
+                if cid and nor_term:
+                    term_map[cid] = nor_term
+    return term_map
+
+def get_norwegian_term(concept_id: str, fallback: str) -> str:
+    """Returns the Norwegian preferred term for an ID if found in local data."""
+    if not concept_id:
+        return fallback
+    term_map = load_norwegian_term_map()
+    return term_map.get(concept_id, fallback)
+
 def is_valid_fo(fo_string: str) -> bool:
     """Checks if the FO string matches one of the 12 standard categories."""
     if not fo_string:

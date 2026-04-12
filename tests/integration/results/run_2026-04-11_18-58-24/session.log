@@ -1,6 +1,0 @@
-Run ID: 2026-04-11_18-58-24
-Timestamp: 2026-04-11T16:58:24.292540
-----------------------------------------
-R] 2026-04-11 16:58:24,293 - vbp_orchestrator - Missing required configuration (gcs_uri, target_group).
-[WARNING] 2026-04-11 16:58:24,293 - test_workflow - Failed to parse synthesis as JSON. Saving raw text.
-[INFO] 2026-04-11 16:58:24,293 - test_workflow - Raw result saved

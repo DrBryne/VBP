@@ -47,7 +47,14 @@ from app.shared.tools import parse_gcs_uri
 logger = VBPLogger("vbp_processing")
 
 # Semaphore to limit highly intensive taxonomy mapping tasks (large dictionary context)
-TAXONOMY_SEMAPHORE = asyncio.Semaphore(5)
+_TAXONOMY_SEMAPHORE = None
+
+def get_taxonomy_semaphore():
+    global _TAXONOMY_SEMAPHORE
+    import asyncio
+    if _TAXONOMY_SEMAPHORE is None:
+        _TAXONOMY_SEMAPHORE = asyncio.Semaphore(5)
+    return _TAXONOMY_SEMAPHORE
 
 # List of supported MIME types
 ALLOWED_MIME_TYPES = {"application/pdf", "text/plain", "text/xml", "application/xml"}
@@ -298,7 +305,8 @@ async def process_document_pipeline(
     ephemeral_session_service: InMemorySessionService,
     progress_state: WorkflowProgress,
     state_lock: asyncio.Lock,
-    progress_queue: asyncio.Queue
+    progress_queue: asyncio.Queue,
+    taxonomy_semaphore: asyncio.Semaphore
 ) -> ProcessedDocument | ExcludedDocument:
     """
     Executes the full extraction and mapping pipeline for a single document.
@@ -409,15 +417,20 @@ async def process_document_pipeline(
             async with state_lock:
                 progress_state.completed += 1
                 progress_state.no_findings += 1
-            logger.info(f"No findings identified in document: {filename}")
+            reasoning = clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert (No reasoning provided)."
+            logger.warning(
+                f"[Quality Guard] Document yielded NO FINDINGS: {filename} [reason={reasoning}]",
+                filename=filename,
+                uri=uri
+            )
             await progress_queue.put(f"DONE: {filename} (NO FINDINGS)")
             # Cleanup cache
             if os.path.exists(cache_path):
                 os.remove(cache_path)
             return ExcludedDocument(
                 source_uri=uri,
-                title=metadata.source_document.title,
-                justification=clinical_findings.reasoning_trace if clinical_findings else "Ingen kliniske funn identifisert."
+                title=metadata.source_document.title if metadata else filename,
+                justification=reasoning
             )
 
         # 5. Resolve Sentence IDs (Loads from Disk)
@@ -537,7 +550,7 @@ async def process_document_pipeline(
 
         try:
             # Use semaphore to prevent context saturation during massive parallel runs
-            async with TAXONOMY_SEMAPHORE:
+            async with taxonomy_semaphore:
                 async for ev in clinical_taxonomist.run_async(pipeline_ctx):
                     if ev.is_final_response():
                         data_dict = safe_parse_json(ev)
@@ -564,7 +577,13 @@ async def process_document_pipeline(
             trace = metadata.source_document.reasoning_trace if metadata and metadata.source_document else "Kritisk feil under terminologimapping."
             justification = f"{trace}\n\nMerk: Kunne ikke mappes til sykepleieterminologi."
 
-            await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {e})")
+            # Sanitize the error message to prevent unescaped JSON/newlines from breaking the SSE stream
+            safe_error_msg = str(e).replace("\n", " ").replace('"', "'")
+            # Truncate if it's a massive Pydantic validation dump
+            if len(safe_error_msg) > 150:
+                safe_error_msg = safe_error_msg[:150] + "..."
+
+            await progress_queue.put(f"DONE: {filename} (TAXONOMIST ERROR: {safe_error_msg})")
             return ExcludedDocument(source_uri=uri, title=metadata.source_document.title if metadata else filename, justification=justification)
 
         diag_mappings: DiagnosisMappingResponse = doc_session.state.get("diagnosis_mappings")
@@ -708,5 +727,8 @@ def validate_taxonomy(
         ))
     if taxonomy_error_count > 0:
         logger.info(f"Taxonomy validation complete for {filename}: {taxonomy_error_count} errors corrected.", filename=filename)
+
+    return processed_findings, taxonomy_error_count
+    logger.info(f"Taxonomy validation complete for {filename}: {taxonomy_error_count} errors corrected.", filename=filename)
 
     return processed_findings, taxonomy_error_count

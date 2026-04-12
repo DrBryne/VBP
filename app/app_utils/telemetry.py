@@ -17,11 +17,16 @@ import logging
 import os
 import asyncio
 from typing import Any, Callable
+
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.trace import Status, StatusCode
 from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
 from opentelemetry.sdk.resources import Resource
+
+from opentelemetry._logs import set_logger_provider
+from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
 
 # Global tracer instance for the VBP application
 tracer = trace.get_tracer("vbp_workflow")
@@ -34,10 +39,6 @@ def track_telemetry_span(span_name: str):
     def decorator(func: Callable):
         @functools.wraps(func)
         async def async_wrapper(*args, **kwargs) -> Any:
-            # Local console print for immediate insight
-            print(f"[Telemetry Start] {span_name}")
-            start_time = asyncio.get_event_loop().time()
-            
             with tracer.start_as_current_span(span_name) as span:
                 if kwargs.get('uri'):
                     span.set_attribute("vbp.uri", kwargs.get('uri'))
@@ -47,77 +48,77 @@ def track_telemetry_span(span_name: str):
                 try:
                     result = await func(*args, **kwargs)
                     span.set_status(Status(StatusCode.OK))
-                    elapsed = asyncio.get_event_loop().time() - start_time
-                    print(f"[Telemetry End] {span_name} ({elapsed:.2f}s)")
                     return result
                 except Exception as e:
                     span.record_exception(e)
                     span.set_status(Status(StatusCode.ERROR, str(e)))
-                    print(f"[Telemetry ERROR] {span_name} failed: {e}")
                     raise
 
         @functools.wraps(func)
         def sync_wrapper(*args, **kwargs) -> Any:
-            print(f"[Telemetry Start] {span_name}")
-            import time
-            start_time = time.perf_counter()
-            
             with tracer.start_as_current_span(span_name) as span:
                 try:
                     result = func(*args, **kwargs)
                     span.set_status(Status(StatusCode.OK))
-                    elapsed = time.perf_counter() - start_time
-                    print(f"[Telemetry End] {span_name} ({elapsed:.2f}s)")
                     return result
                 except Exception as e:
                     span.record_exception(e)
                     span.set_status(Status(StatusCode.ERROR, str(e)))
-                    print(f"[Telemetry ERROR] {span_name} failed: {e}")
                     raise
 
         return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
     return decorator
 
 def setup_telemetry() -> str | None:
-    """Configure OpenTelemetry and GenAI telemetry with GCS upload and Cloud Trace."""
+    """Configure OpenTelemetry and GenAI telemetry with GCS upload and Cloud Trace/Logging."""
     os.environ.setdefault("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "true")
+    
+    resource = Resource.create({
+        "service.name": "vbp_workflow",
+        "service.namespace": "vbp",
+    })
 
-    # 1. Initialize Cloud Trace if running in a managed environment
+    # Initialize providers
+    tracer_provider = TracerProvider(resource=resource)
+    logger_provider = LoggerProvider(resource=resource)
+    trace.set_tracer_provider(tracer_provider)
+    set_logger_provider(logger_provider)
+
+    # 1. Configure Cloud/Local Exporters
     if os.environ.get("AGENT_ENGINE_ID") or os.environ.get("GOOGLE_CLOUD_PROJECT"):
         try:
             from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+            from opentelemetry.exporter.cloud_logging import CloudLoggingExporter
 
-            resource = Resource.create({
-                "service.name": "vbp_workflow",
-                "service.namespace": "vbp",
-            })
-
-            provider = TracerProvider(resource=resource)
-            exporter = CloudTraceSpanExporter()
-            processor = BatchSpanProcessor(exporter)
-            provider.add_span_processor(processor)
-            trace.set_tracer_provider(provider)
-            logging.info("OpenTelemetry Cloud Trace initialized.")
+            tracer_provider.add_span_processor(BatchSpanProcessor(CloudTraceSpanExporter()))
+            logger_provider.add_log_record_processor(BatchLogRecordProcessor(CloudLoggingExporter()))
+            
+            logging.info("OpenTelemetry Cloud Trace and Cloud Logging initialized.")
         except ImportError:
-            logging.warning("CloudTraceSpanExporter not found. Falling back to local logging.")
+            logging.warning("Cloud Exporters not found. Falling back to local logging.")
+            tracer_provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+            logger_provider.add_log_record_processor(BatchLogRecordProcessor(ConsoleLogExporter()))
     else:
-        # Local development fallback: SimpleSpanProcessor for immediate visibility
-        provider = TracerProvider()
-        processor = SimpleSpanProcessor(ConsoleSpanExporter())
-        provider.add_span_processor(processor)
-        trace.set_tracer_provider(provider)
-        logging.info("OpenTelemetry Console Trace initialized (SimpleSpanProcessor).")
+        # Local development fallback
+        tracer_provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+        logger_provider.add_log_record_processor(BatchLogRecordProcessor(ConsoleLogExporter()))
+        logging.info("OpenTelemetry Console Trace and Console Logging initialized.")
+
+    # Attach OTel LoggingHandler to the root python logger
+    handler = LoggingHandler(logger_provider=logger_provider)
+    logging.getLogger().addHandler(handler)
 
     # 2. Existing GenAI metadata logging setup
     bucket = os.environ.get("LOGS_BUCKET_NAME")
     capture_content = os.environ.get(
-        "OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "false"
-    )
-    if bucket and capture_content != "false":
+        "OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "NO_CONTENT"
+    ).upper()
+
+    if bucket and capture_content in ("SPAN_ONLY", "EVENT_ONLY", "SPAN_AND_EVENT"):
         logging.info(
-            "Prompt-response logging enabled - mode: NO_CONTENT (metadata only, no prompts/responses)"
+            f"Prompt-response logging enabled - mode: {capture_content} (metadata and content)"
         )
-        os.environ["OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT"] = "NO_CONTENT"
+        os.environ["OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT"] = capture_content
         os.environ.setdefault("OTEL_INSTRUMENTATION_GENAI_UPLOAD_FORMAT", "jsonl")
         os.environ.setdefault("OTEL_INSTRUMENTATION_GENAI_COMPLETION_HOOK", "upload")
         os.environ.setdefault(

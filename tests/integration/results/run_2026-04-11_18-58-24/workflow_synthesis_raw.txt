@@ -1,1 +1,0 @@
-Missing required configuration (gcs_uri, target_group).

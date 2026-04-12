@@ -46,6 +46,40 @@ deploy:
 backend: deploy
 
 # ==============================================================================
+# Visualization & Reporting
+# ==============================================================================
+
+# Quickly re-generate the HTML report from a local or remote (GCS) result
+# Usage: 
+#   make report (uses latest local)
+#   make report INPUT=tests/integration/results/run_XYZ/workflow_synthesis.json
+#   make report INPUT=gs://bucket/runs/run_XYZ/workflow_synthesis.json
+report:
+	@uv sync --extra tools
+	@if echo "$(INPUT)" | grep -q "^gs://"; then \
+		echo "☁️ Downloading remote result: $(INPUT)"; \
+		gsutil cp $(INPUT) /tmp/vbp_input.json || exit 1; \
+		INPUT_PATH=/tmp/vbp_input.json; \
+	else \
+		LATEST_JSON=$$(ls -td tests/integration/results/run_*/workflow_synthesis.json 2>/dev/null | head -n 1); \
+		INPUT_PATH=$${INPUT:-$$LATEST_JSON}; \
+		if [ -z "$$INPUT_PATH" ]; then echo "❌ No local results found and no GCS path provided."; exit 1; fi; \
+	fi; \
+	DRAFT_URI=gs://veiledende_behandlingsplan/reports/draft_vbp_report.html; \
+	echo "📊 Generating report from: $$INPUT_PATH"; \
+	uv run python app/report_generator/main.py --input $$INPUT_PATH --output tests/integration/results/latest_report.html && \
+	uv run python app/report_generator/main.py --input $$INPUT_PATH --output $$DRAFT_URI
+
+	@echo "✅ Local: tests/integration/results/latest_report.html"
+	@echo "✅ Cloud: https://storage.cloud.google.com/veiledende_behandlingsplan/reports/draft_vbp_report.html"
+
+# Convenience target to generate report from the absolute latest run on Agent Engine
+report-latest-cloud:
+	@LATEST_RUN=$$(gsutil ls gs://veiledende_behandlingsplan/runs/ | tail -n 1); \
+	if [ -z "$$LATEST_RUN" ]; then echo "❌ No remote runs found."; exit 1; fi; \
+	$(MAKE) report INPUT=$${LATEST_RUN}workflow_synthesis.json
+
+# ==============================================================================
 # Testing & Code Quality
 # ==============================================================================
 

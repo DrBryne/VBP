@@ -16,17 +16,29 @@ from app.shared.models import (
 )
 from app.shared.tools import load_prompt
 
+# --- GLOBAL TERMINOLOGY CACHE ---
+# Load massive dictionary files once per container lifecycle to prevent OOM
+# and reduce string duplication during high-concurrency runs.
+# Because this is at the module level, it is shared by all sub-agents.
+_TERMINOLOGY_CACHE = {}
+
+def _get_cached_terms(filename: str) -> str:
+    if filename not in _TERMINOLOGY_CACHE:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        terms_path = os.path.join(current_dir, "data", filename)
+        with open(terms_path, encoding="utf-8") as f:
+            _TERMINOLOGY_CACHE[filename] = f.read()
+    return _TERMINOLOGY_CACHE[filename]
+
 
 def create_diagnosis_taxonomist():
     instructions = load_prompt("taxonomist_diagnosis")
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    terms_path = os.path.join(current_dir, "data", "diagnoses.txt")
-    with open(terms_path, encoding="utf-8") as f:
-        icnp_terms = f.read()
+    icnp_terms = _get_cached_terms("diagnoses.txt")
     instructions = instructions.replace("{{icnp_terms}}", icnp_terms)
 
     config = types.GenerateContentConfig(
         temperature=1.0,
+        max_output_tokens=8192,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -44,14 +56,12 @@ def create_diagnosis_taxonomist():
 
 def create_intervention_taxonomist():
     instructions = load_prompt("taxonomist_intervention")
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    terms_path = os.path.join(current_dir, "data", "interventions.txt")
-    with open(terms_path, encoding="utf-8") as f:
-        icnp_terms = f.read()
+    icnp_terms = _get_cached_terms("interventions.txt")
     instructions = instructions.replace("{{icnp_terms}}", icnp_terms)
 
     config = types.GenerateContentConfig(
         temperature=1.0,
+        max_output_tokens=8192,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -69,14 +79,12 @@ def create_intervention_taxonomist():
 
 def create_goal_taxonomist():
     instructions = load_prompt("taxonomist_goal")
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    terms_path = os.path.join(current_dir, "data", "goals.txt")
-    with open(terms_path, encoding="utf-8") as f:
-        icnp_terms = f.read()
+    icnp_terms = _get_cached_terms("goals.txt")
     instructions = instructions.replace("{{icnp_terms}}", icnp_terms)
 
     config = types.GenerateContentConfig(
         temperature=1.0,
+        max_output_tokens=8192,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -96,6 +104,7 @@ def create_fo_classifier():
     instructions = load_prompt("fo_classifier")
     config = types.GenerateContentConfig(
         temperature=1.0,
+        max_output_tokens=8192,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000

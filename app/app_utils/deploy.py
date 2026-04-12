@@ -301,11 +301,13 @@ def deploy_agent_engine_app(
 
     # Set deployment-specific environment variables
     env_vars["GOOGLE_CLOUD_REGION"] = location
+    from app.shared.config import VBPConfig
+    env_vars["GOOGLE_CLOUD_LOCATION"] = VBPConfig().PREVIEW_MODEL_LOCATION
     env_vars["NUM_WORKERS"] = str(num_workers)
 
     # Enable telemetry by default for Agent Engine
     env_vars.setdefault("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "true")
-    env_vars.setdefault("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "true")
+    env_vars.setdefault("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "EVENT_ONLY")
 
     if not project:
         _, project = google.auth.default()

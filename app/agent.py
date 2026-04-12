@@ -65,6 +65,12 @@ class VbpWorkflowAgent(BaseAgent):
 
     @track_telemetry_span("Workflow: Orchestration")
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        # A massive batch run requires overriding the default ADK 500-call limit
+        ctx.run_config.max_llm_calls = 5000
+        
+        # Buffer for session logging to be uploaded at the end
+        session_log_buffer = []
+        
         # Initialize terminology cache
         load_taxonomy_cache()
         # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
@@ -78,18 +84,26 @@ class VbpWorkflowAgent(BaseAgent):
         max_concurrency = custom_config.get("max_concurrency", 10)
 
         # 2. Try to extract from the triggering message in the session (Standard pattern)
-        if not gcs_uri and ctx.session.events:
-            for ev in ctx.session.events:
-                if ev.author in ["user", "system"] and ev.content and ev.content.parts:
+        if not gcs_uri:
+            # Check the direct new_message if available in the context
+            msg_sources = []
+            if hasattr(ctx, "new_message") and ctx.new_message:
+                msg_sources.append(ctx.new_message)
+            if ctx.session.events:
+                msg_sources.extend([ev.content for ev in ctx.session.events if ev.author in ["user", "system"]])
+
+            for content in msg_sources:
+                if content and content.parts:
                     try:
-                        text_content = ev.content.parts[0].text
+                        text_content = content.parts[0].text
                         if text_content and text_content.strip().startswith("{"):
                             config_dict = json.loads(text_content)
                             gcs_uri = config_dict.get("gcs_uri", gcs_uri)
                             target_group = config_dict.get("target_group", target_group)
                             max_files = config_dict.get("max_files", max_files)
                             max_concurrency = config_dict.get("max_concurrency", max_concurrency)
-                            break
+                            if gcs_uri and target_group:
+                                break
                     except:
                         continue
 
@@ -111,9 +125,15 @@ class VbpWorkflowAgent(BaseAgent):
             yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=err)]))
             return
 
-        # --- PHASE 2: DOCUMENT DISCOVERY ---
         logger.info(f"Starting discovery in: {gcs_uri}")
-        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"Discovery in {gcs_uri}")]))
+        
+        # Instantiate shared semaphore for child tasks
+        import asyncio
+        taxonomy_semaphore = asyncio.Semaphore(5)
+        
+        msg = f"Discovery in {gcs_uri}"
+        session_log_buffer.append(f"[Progress] {msg}")
+        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=msg)]))
 
         try:
             files = list_gcs_files(gcs_uri, project_id)
@@ -153,7 +173,8 @@ class VbpWorkflowAgent(BaseAgent):
                     ephemeral_session_service=ephemeral_session_service,
                     progress_state=progress_state,
                     state_lock=state_lock,
-                    progress_queue=progress_queue
+                    progress_queue=progress_queue,
+                    taxonomy_semaphore=taxonomy_semaphore
                 )
             except Exception as e:
                 filename = uri.split("/")[-1]
@@ -175,14 +196,16 @@ class VbpWorkflowAgent(BaseAgent):
         while not gather_task.done() or not progress_queue.empty():
             try:
                 msg = await asyncio.wait_for(progress_queue.get(), timeout=1.0)
+                session_log_buffer.append(f"[Progress] {msg}")
                 yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=f"[Progress] {msg}")]))
                 async with state_lock:
                     current_completed = progress_state.completed
                     current_success = progress_state.success
-                if current_completed > last_reported_completion:
-                    if current_completed % 5 == 0 or current_completed == total_files:
+
+                    if current_completed > last_reported_completion and current_completed % 5 == 0 or current_completed == total_files:
                         progress_msg = f"*** Overall Progress: {current_completed}/{total_files} processed ({current_success} success) ***"
                         logger.info(progress_msg)
+                        session_log_buffer.append(f"[Progress] {progress_msg}")
                         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=progress_msg)]))
                         last_reported_completion = current_completed
                 progress_queue.task_done()
@@ -199,7 +222,9 @@ class VbpWorkflowAgent(BaseAgent):
 
         # --- PHASE 4: CONSOLIDATION & SYNTHESIS ---
         logger.info(f"Consolidating {len(successful_results)} successful documents and {len(excluded_results)} excluded documents.")
-        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text="Consolidating findings...")]))
+        msg = "Consolidating findings..."
+        session_log_buffer.append(f"[Progress] {msg}")
+        yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=msg)]))
 
         grouped_data = await group_findings(successful_results, self._fhir_client)
         # Persist updated cache to GCS
@@ -225,6 +250,49 @@ class VbpWorkflowAgent(BaseAgent):
             total_dropped_findings=dropped_total,
             total_taxonomy_errors=taxonomy_total
         )
+
+        # --- PERMANENT STORAGE EXPORT ---
+        try:
+            from app.shared.tools import upload_json_to_gcs
+            from google.cloud import storage
+            from app.report_generator.main import generate_report_from_data
+            
+            run_id = execution_start_time.strftime("%Y-%m-%d_%H-%M-%S")
+            base_uri = f"{config.BASE_BUCKET}/runs/run_{run_id}"
+            
+            # 1. Upload the massive JSON
+            json_payload = json.loads(final_response.model_dump_json())
+            json_path = f"{base_uri}/workflow_synthesis.json"
+            upload_json_to_gcs(json_payload, json_path, project_id)
+            logger.info(f"Successfully backed up final synthesis to {json_path}")
+            
+            # 2. Generate and Upload the Visual HTML Reports
+            # We generate both a unique run report and the 'latest' convenience link
+            run_report_path = f"{base_uri}/report.html"
+            latest_report_path = config.GLOBAL_REPORT_URI
+            
+            logger.info(f"Generating clinical dashboard: {latest_report_path}")
+            try:
+                # Primary 'latest' report for stakeholder review
+                generate_report_from_data(final_response, latest_report_path)
+                # Audit report specific to this run
+                generate_report_from_data(final_response, run_report_path)
+            except Exception as report_e:
+                logger.error(f"Failed to generate HTML dashboard: {report_e}")
+
+            # 3. Upload the Session Log text
+            try:
+                bucket_name = config.BASE_BUCKET.replace("gs://", "").split("/")[0]
+                blob_name = f"runs/run_{run_id}/session.log"
+                client = storage.Client(project=project_id)
+                bucket = client.bucket(bucket_name)
+                blob = bucket.blob(blob_name)
+                blob.upload_from_string("\n".join(session_log_buffer), content_type="text/plain")
+            except Exception as log_e:
+                logger.error(f"Failed to upload session log to GCS: {log_e}")
+                
+        except Exception as e:
+            logger.error(f"Failed to backup final synthesis to GCS: {e}")
 
         logger.info("Consolidation complete. Yielding final response.")
         yield Event(

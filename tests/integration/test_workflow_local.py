@@ -130,38 +130,9 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
                 f.write(formatted_json)
             logger.info("--- Final Synthesis Complete ---", output_file=output_file)
 
-            # --- Auto-Generate HTML Report ---
-            # We save locally AND upload to the GCS scratch area for browser viewing
-            local_report_file = os.path.join(run_dir, "report.html")
-            gcs_report_uri = config.GLOBAL_REPORT_URI
-
-            logger.info("Generating and uploading HTML Report...", gcs_uri=gcs_report_uri)
-            try:
-                # Run twice or just once to GCS?
-                # Let's run it once to local, and then once to GCS to satisfy both requirements.
-                process_local = await asyncio.create_subprocess_exec(
-                    "uv", "run", "python", "tools/report_generator/main.py",
-                    "--input", output_file,
-                    "--output", local_report_file
-                )
-                await process_local.wait()
-
-                process_gcs = await asyncio.create_subprocess_exec(
-                    "uv", "run", "python", "tools/report_generator/main.py",
-                    "--input", output_file,
-                    "--output", gcs_report_uri
-                )
-                await process_gcs.wait()
-
-                if process_gcs.returncode == 0:
-                    logger.info("HTML Report uploaded to GCS successfully.")
-                    # Construct the cloud console URL from the gs:// URI
-                    report_url = f"https://storage.cloud.google.com/{config.GLOBAL_REPORT_URI[5:]}"
-                    print(f"\n[VIEW REPORT]: {report_url}")
-                else:
-                    logger.error("Failed to upload HTML report to GCS.")
-            except Exception as e:
-                logger.error(f"Error launching report generator: {e}")
+            # --- View Report Link ---
+            report_url = f"https://storage.cloud.google.com/{config.GLOBAL_REPORT_URI[5:]}"
+            print(f"\n[VIEW REPORT]: {report_url}")
 
         except json.JSONDecodeError:
             logger.warning("Failed to parse synthesis as JSON. Saving raw text.")

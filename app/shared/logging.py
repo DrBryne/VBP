@@ -1,76 +1,48 @@
-import json
 import logging
 import os
-import sys
-from datetime import datetime
-
-
-class StructuredFormatter(logging.Formatter):
-    """Formats log records as JSON for Cloud Logging compatibility."""
-    def format(self, record):
-        log_entry = {
-            "severity": record.levelname,
-            "message": record.getMessage(),
-            "timestamp": datetime.utcnow().isoformat() + "Z",
-            "logger": record.name,
-            "module": record.module,
-            "function": record.funcName,
-            "line": record.lineno,
-        }
-        # Add extra fields if they exist
-        if hasattr(record, "extra_fields"):
-            log_entry.update(record.extra_fields)
-
-        # Capture exception info if present
-        if record.exc_info:
-            log_entry["exception"] = self.formatException(record.exc_info)
-
-        return json.dumps(log_entry)
 
 def get_logger(name="vbp_workflow"):
+    """
+    Returns a standard python logger.
+    The actual formatting and Cloud syncing is handled by OpenTelemetry 
+    in app/app_utils/telemetry.py via the LoggingHandler.
+    """
     logger = logging.getLogger(name)
 
-    # Avoid duplicate handlers
-    if not logger.handlers:
-        handler = logging.StreamHandler(sys.stdout)
-
-        # Use structured logging if running in a container/cloud,
-        # otherwise use a readable format for local dev.
-        # You can force JSON by setting LOG_FORMAT=json
-        if os.environ.get("LOG_FORMAT") == "json":
-            handler.setFormatter(StructuredFormatter())
-        else:
-            # Custom formatter that appends extra fields to the message for local readability
-            class ContextFormatter(logging.Formatter):
-                def format(self, record):
-                    msg = super().format(record)
-                    if hasattr(record, "extra_fields") and record.extra_fields:
-                        ctx = ", ".join([f"{k}={v}" for k, v in record.extra_fields.items()])
-                        msg = f"{msg} [{ctx}]"
-                    return msg
-
-            formatter = ContextFormatter(
-                "[%(levelname)s] %(asctime)s - %(name)s - %(message)s"
-            )
-            handler.setFormatter(formatter)
-
-        logger.addHandler(handler)
-
-        # Set level from environment variable
-        level_name = os.environ.get("LOG_LEVEL", "INFO").upper()
-        level = getattr(logging, level_name, logging.INFO)
-        logger.setLevel(level)
+    # We do not add a StreamHandler here. OpenTelemetry's LoggingHandler 
+    # captures these logs and forwards them to GCP or Console.
+    
+    # Set level from environment variable
+    level_name = os.environ.get("LOG_LEVEL", "INFO").upper()
+    level = getattr(logging, level_name, logging.INFO)
+    logger.setLevel(level)
 
     return logger
 
-# Convenience class for logging with extra context
 class VBPLogger:
+    """
+    Convenience wrapper to maintain backward compatibility with existing codebase
+    that passes kwargs (like uri=...) to logger methods. 
+    OpenTelemetry handles these extra context fields natively if configured.
+    """
     def __init__(self, name="vbp_workflow"):
         self.logger = get_logger(name)
 
     def _log(self, level, msg, **kwargs):
-        extra = {"extra_fields": kwargs}
-        self.logger.log(level, msg, extra=extra)
+        # We append kwargs to the string so they are visible in simple log streams
+        if kwargs:
+            ctx = ", ".join([f"{k}={v}" for k, v in kwargs.items()])
+            msg = f"{msg} [{ctx}]"
+        
+        # --- SAFE TRUNCATION ---
+        # Cloud Logging has a 256KB limit per entry. 
+        # Large prompts/responses can easily exceed this and cause overhead.
+        # We truncate at 100k characters to be safe.
+        limit = 100000
+        if len(msg) > limit:
+            msg = msg[:limit] + "... [TRUNCATED]"
+            
+        self.logger.log(level, msg)
 
     def debug(self, msg, **kwargs): self._log(logging.DEBUG, msg, **kwargs)
     def info(self, msg, **kwargs): self._log(logging.INFO, msg, **kwargs)
