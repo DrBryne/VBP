@@ -9,8 +9,6 @@ from datetime import datetime
 from app.app_utils.telemetry import track_telemetry_span
 from app.shared.config import config
 from app.shared.fhir_client import FhirTerminologyClient
-from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
-from app.shared.taxonomy import get_norwegian_term
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     Document,
@@ -22,6 +20,8 @@ from app.shared.models import (
     SynthesisResponse,
     SynthesizedFinding,
 )
+from app.shared.taxonomy import get_norwegian_term
+from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
 
 logger = VBPLogger("vbp_consolidation")
 
@@ -82,7 +82,7 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
                 # Check cache first
                 cache_key = f"{id_list[i]}||{id_list[j]}"
                 cached_res = taxonomy_cache["subsumption"].get(cache_key)
-                
+
                 if cached_res:
                     if cached_res == "subsumed-by":
                         rewrite_map[id_list[i]] = id_list[j]
@@ -111,7 +111,7 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
 
     lookup_tasks = []
     lookup_ids = []
-    
+
     for cid in remaining_ids:
         if cid in taxonomy_cache["concepts"]:
             # Populate global display cache from persistent cache
@@ -150,13 +150,13 @@ async def audit_semantic_relationships(unique_ids: set[str], fhir_client: FhirTe
     for parent_id, children in parent_to_children.items():
         if len(children) >= 2:
             logger.info(f"[Sibling Merge] {len(children)} findings share parent '{parent_id}'.")
-            
+
             # Ensure parent is in cache/global_id_cache
             if parent_id not in taxonomy_cache["concepts"]:
                 p_info = await fhir_client.lookup_concept(parent_id)
                 if p_info:
                     taxonomy_cache["concepts"][parent_id] = p_info
-            
+
             p_info = taxonomy_cache["concepts"].get(parent_id)
             if p_info:
                 global_id_cache[parent_id] = p_info.get("display", "Unknown")

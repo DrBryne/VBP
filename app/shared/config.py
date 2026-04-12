@@ -21,7 +21,7 @@ class VBPConfig:
     # Storage Configuration
     # Note: Clinical data is now standardized in the US multi-region
     BASE_BUCKET: str = os.environ.get("VBP_DATA_BUCKET", "gs://veiledende_behandlingsplan")
-    
+
     # Path to the ALS clinical documents
     ALS_DOCS_URI: str = f"{BASE_BUCKET}/ALS/"
 

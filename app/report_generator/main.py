@@ -103,7 +103,7 @@ def generate_report(input_path: str, output_path: str):
     except Exception as e:
         print(f"Error parsing input JSON: {e}")
         sys.exit(1)
-        
+
     generate_report_from_data(synthesis, output_path)
 
 if __name__ == "__main__":

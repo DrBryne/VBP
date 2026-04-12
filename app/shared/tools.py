@@ -1,7 +1,9 @@
 import json
 import os
-from app.app_utils.telemetry import track_telemetry_span
+
 from google.cloud import storage
+
+from app.app_utils.telemetry import track_telemetry_span
 
 ...
 
@@ -13,10 +15,10 @@ def download_json_from_gcs(gcs_uri: str, project_id: str) -> dict | None:
         client = storage.Client(project=project_id)
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(blob_name)
-        
+
         if not blob.exists():
             return None
-            
+
         content = blob.download_as_text()
         return json.loads(content)
     except Exception as e:
@@ -32,7 +34,7 @@ def upload_json_to_gcs(data: dict, gcs_uri: str, project_id: str):
         client = storage.Client(project=project_id)
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(blob_name)
-        
+
         blob.upload_from_string(
             json.dumps(data, indent=2, ensure_ascii=False),
             content_type="application/json"

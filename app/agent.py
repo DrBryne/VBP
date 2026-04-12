@@ -11,21 +11,29 @@ from google.adk.events import Event
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
+from app.app_utils.telemetry import setup_telemetry, track_telemetry_span
+
+# 1. Critical Initialization
+setup_telemetry()
+
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
 from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
 from app.shared.config import config
-from app.shared.consolidation import finalize_synthesis, group_findings, load_taxonomy_cache, save_taxonomy_cache
+from app.shared.consolidation import (
+    finalize_synthesis,
+    group_findings,
+    load_taxonomy_cache,
+    save_taxonomy_cache,
+)
 from app.shared.fhir_client import FhirTerminologyClient
-from app.app_utils.telemetry import setup_telemetry, track_telemetry_span
-setup_telemetry()
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     ExcludedDocument,
     ProcessedDocument,
     WorkflowProgress,
 )
-from app.shared.processing import (
+from app.shared.pipeline import (
     process_document_pipeline,
 )
 from app.shared.tools import list_gcs_files
@@ -67,15 +75,16 @@ class VbpWorkflowAgent(BaseAgent):
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         # A massive batch run requires overriding the default ADK 500-call limit
         ctx.run_config.max_llm_calls = 5000
-        
+
+        # Initialize execution metadata
+        execution_start_time = datetime.now()
+        run_id = execution_start_time.strftime("%Y-%m-%d_%H-%M-%S")
+
         # Buffer for session logging to be uploaded at the end
         session_log_buffer = []
         
         # Initialize terminology cache
         load_taxonomy_cache()
-        # --- PHASE 1: CONFIGURATION & INITIALIZATION ---
-        execution_start_time = datetime.now()
-        
         # 1. Try to extract from run_config (Standard ADK 2.0 pattern)
         custom_config = getattr(ctx.run_config, "custom_config", {}) or {}
         gcs_uri = custom_config.get("gcs_uri")
@@ -104,16 +113,20 @@ class VbpWorkflowAgent(BaseAgent):
                             max_concurrency = config_dict.get("max_concurrency", max_concurrency)
                             if gcs_uri and target_group:
                                 break
-                    except:
+                    except Exception:
                         continue
 
         # 3. Fallback to session state (Persistent sessions)
-        if not gcs_uri: gcs_uri = ctx.session.state.get("gcs_uri")
-        if not target_group: target_group = ctx.session.state.get("target_group")
+        if not gcs_uri:
+            gcs_uri = ctx.session.state.get("gcs_uri")
+        if not target_group:
+            target_group = ctx.session.state.get("target_group")
 
         # 4. Fallback to Environment Variables (Cloud Staging Defaults)
-        if not gcs_uri: gcs_uri = os.environ.get("VBP_GCS_URI")
-        if not target_group: target_group = os.environ.get("VBP_TARGET_GROUP")
+        if not gcs_uri:
+            gcs_uri = os.environ.get("VBP_GCS_URI")
+        if not target_group:
+            target_group = os.environ.get("VBP_TARGET_GROUP")
 
         # Log what we found for cloud debugging
         logger.info(f"Config extracted: gcs_uri={gcs_uri}, target_group={target_group}")
@@ -126,11 +139,10 @@ class VbpWorkflowAgent(BaseAgent):
             return
 
         logger.info(f"Starting discovery in: {gcs_uri}")
-        
+
         # Instantiate shared semaphore for child tasks
-        import asyncio
         taxonomy_semaphore = asyncio.Semaphore(5)
-        
+
         msg = f"Discovery in {gcs_uri}"
         session_log_buffer.append(f"[Progress] {msg}")
         yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=msg)]))
@@ -183,8 +195,8 @@ class VbpWorkflowAgent(BaseAgent):
                     progress_state.completed += 1
                     progress_state.failed += 1
                 return ExcludedDocument(
-                    source_uri=uri, 
-                    title=filename, 
+                    source_uri=uri,
+                    title=filename,
                     justification=f"A technical error occurred while processing this document: {e}"
                 )
 
@@ -202,7 +214,7 @@ class VbpWorkflowAgent(BaseAgent):
                     current_completed = progress_state.completed
                     current_success = progress_state.success
 
-                    if current_completed > last_reported_completion and current_completed % 5 == 0 or current_completed == total_files:
+                    if (current_completed > last_reported_completion and current_completed % 5 == 0) or current_completed == total_files:
                         progress_msg = f"*** Overall Progress: {current_completed}/{total_files} processed ({current_success} success) ***"
                         logger.info(progress_msg)
                         session_log_buffer.append(f"[Progress] {progress_msg}")
@@ -253,24 +265,25 @@ class VbpWorkflowAgent(BaseAgent):
 
         # --- PERMANENT STORAGE EXPORT ---
         try:
-            from app.shared.tools import upload_json_to_gcs
             from google.cloud import storage
+
             from app.report_generator.main import generate_report_from_data
-            
+            from app.shared.tools import upload_json_to_gcs
+
             run_id = execution_start_time.strftime("%Y-%m-%d_%H-%M-%S")
             base_uri = f"{config.BASE_BUCKET}/runs/run_{run_id}"
-            
+
             # 1. Upload the massive JSON
             json_payload = json.loads(final_response.model_dump_json())
             json_path = f"{base_uri}/workflow_synthesis.json"
             upload_json_to_gcs(json_payload, json_path, project_id)
             logger.info(f"Successfully backed up final synthesis to {json_path}")
-            
+
             # 2. Generate and Upload the Visual HTML Reports
             # We generate both a unique run report and the 'latest' convenience link
             run_report_path = f"{base_uri}/report.html"
             latest_report_path = config.GLOBAL_REPORT_URI
-            
+
             logger.info(f"Generating clinical dashboard: {latest_report_path}")
             try:
                 # Primary 'latest' report for stakeholder review
@@ -290,14 +303,26 @@ class VbpWorkflowAgent(BaseAgent):
                 blob.upload_from_string("\n".join(session_log_buffer), content_type="text/plain")
             except Exception as log_e:
                 logger.error(f"Failed to upload session log to GCS: {log_e}")
-                
+
         except Exception as e:
             logger.error(f"Failed to backup final synthesis to GCS: {e}")
 
         logger.info("Consolidation complete. Yielding final response.")
+        # --- FINAL RESPONSE ---
+        # Instead of sending the massive model_dump_json over the wire (which causes 503s),
+        # we return a lightweight manifest with links to the GCS assets.
+        handover_manifest = {
+            "status": "success",
+            "run_id": run_id,
+            "target_group": target_group,
+            "synthesis_uri": f"{base_uri}/workflow_synthesis.json",
+            "report_url": f"https://storage.cloud.google.com/{config.BASE_BUCKET.replace('gs://', '')}/reports/latest_vbp_report.html",
+            "summary": final_response.execution_summary.model_dump()
+        }
+
         yield Event(
             author=self.name,
-            content=types.Content(parts=[types.Part.from_text(text=final_response.model_dump_json())]),
+            content=types.Content(parts=[types.Part.from_text(text=json.dumps(handover_manifest))]),
             event_type="final_response"
         )
 

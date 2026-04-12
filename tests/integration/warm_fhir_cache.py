@@ -1,27 +1,19 @@
 import asyncio
 import json
 import os
-import re
+import csv
 import aiohttp
-from collections import defaultdict
 from google.cloud import storage
 
 # Configure
 PROJECT_ID = "sunny-passage-362617"
 BUCKET_NAME = "veiledende_behandlingsplan"
 CACHE_BLOB_NAME = "cache/taxonomy_cache.json"
-FHIR_BASE_URL = "https://ontoserver.csiro.au/fhir"
-FHIR_SYSTEM = "http://projecticnp.org"
+FHIR_BASE_URL = "https://r4.ontoserver.csiro.au/fhir"
+FHIR_SYSTEM = "http://snomed.info/sct"
 
-# Extract failed code pairs from the text file
-failed_pairs = set()
-with open("tests/integration/results/recent_fhir_errors.txt", "r") as f:
-    for line in f:
-        match = re.search(r"code_a=(\d+), code_b=(\d+)", line)
-        if match:
-            failed_pairs.add((match.group(1), match.group(2)))
-
-print(f"Extracted {len(failed_pairs)} unique failed FHIR subsumption pairs.")
+# Path to the local CSV containing the terminology
+CSV_PATH = "app/agents/clinical_taxonomist/data/SNOMED_ICNP.csv"
 
 async def download_cache():
     client = storage.Client(project=PROJECT_ID)
@@ -30,51 +22,87 @@ async def download_cache():
     if blob.exists():
         data = blob.download_as_string()
         return json.loads(data)
-    return {"subsumption": {}, "concept": {}}
+    return {"subsumption": {}, "concepts": {}}
 
 async def upload_cache(cache_data):
     client = storage.Client(project=PROJECT_ID)
     bucket = client.bucket(BUCKET_NAME)
     blob = bucket.blob(CACHE_BLOB_NAME)
     blob.upload_from_string(json.dumps(cache_data, indent=2), content_type="application/json")
-    print(f"Successfully uploaded updated cache with {len(cache_data['subsumption'])} subsumption entries.")
+    print(f"Successfully uploaded updated cache with {len(cache_data.get('concepts', {}))} concept entries.")
 
-async def check_subsumption_with_retry(session, code_a, code_b):
-    url = f"{FHIR_BASE_URL}/CodeSystem/$subsumes"
-    params = {"system": FHIR_SYSTEM, "codeA": code_a, "codeB": code_b}
+async def lookup_concept_with_retry(session, code):
+    """Fetches display name and hierarchy for a concept."""
+    url = f"{FHIR_BASE_URL}/CodeSystem/$lookup"
+    params = {"system": FHIR_SYSTEM, "code": code}
     
     for attempt in range(5):
-        async with session.get(url, params=params) as response:
-            if response.status == 200:
-                data = await response.json()
-                for param in data.get("parameter", []):
-                    if param.get("name") == "outcome":
-                        return param.get("valueCode", "not-subsumed")
-                return "not-subsumed"
-            elif response.status == 429:
-                await asyncio.sleep(2 * (attempt + 1)) # Backoff
-            else:
-                return "error"
-    return "error"
+        try:
+            async with session.get(url, params=params, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    result = {"display": "Unknown", "parent_ids": []}
+                    for param in data.get("parameter", []):
+                        if param.get("name") == "display":
+                            result["display"] = param.get("valueString")
+                        if param.get("name") == "property":
+                            sub_params = param.get("part", [])
+                            is_parent_prop = False
+                            for sub in sub_params:
+                                if sub.get("name") == "code" and sub.get("valueCode") in ["parent", "subsumedBy"]:
+                                    is_parent_prop = True
+                                if is_parent_prop and sub.get("name") == "value":
+                                    result["parent_ids"].append(sub.get("valueCode"))
+                    return result
+                elif response.status == 429:
+                    await asyncio.sleep(2 * (attempt + 1))
+                else:
+                    return None
+        except Exception:
+            await asyncio.sleep(1)
+    return None
 
 async def main():
-    cache_data = await download_cache()
-    subsumption_cache = cache_data.setdefault("subsumption", {})
-    
-    async with aiohttp.ClientSession() as session:
-        for code_a, code_b in failed_pairs:
-            cache_key = f"{code_a}||{code_b}"
-            if cache_key in subsumption_cache:
-                continue
-                
-            print(f"Querying {code_a} vs {code_b}...")
-            result = await check_subsumption_with_retry(session, code_a, code_b)
-            if result != "error":
-                subsumption_cache[cache_key] = result
-            
-            # Rate limit ourselves to avoid triggering 429s again
-            await asyncio.sleep(0.5)
+    if not os.path.exists(CSV_PATH):
+        print(f"Error: CSV not found at {CSV_PATH}")
+        return
 
+    # 1. Load all unique IDs from CSV
+    all_ids = set()
+    with open(CSV_PATH, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            cid = row.get("Concept Id")
+            if cid:
+                all_ids.add(cid)
+    
+    print(f"Loaded {len(all_ids)} unique IDs from CSV.")
+
+    # 2. Load existing cache
+    cache_data = await download_cache()
+    concept_cache = cache_data.setdefault("concepts", {})
+    
+    # 3. Filter for IDs not already cached
+    missing_ids = [cid for cid in all_ids if cid not in concept_cache]
+    print(f"{len(missing_ids)} IDs are missing from cache. Starting warming...")
+
+    # 4. Warm up missing concepts (using a semaphore to avoid overloading the server)
+    semaphore = asyncio.Semaphore(10)
+    
+    async def warm_one(session, cid):
+        async with semaphore:
+            res = await lookup_concept_with_retry(session, cid)
+            if res:
+                concept_cache[cid] = res
+                print(f" [OK] {cid}: {res['display']}")
+            else:
+                print(f" [FAIL] {cid}")
+
+    async with aiohttp.ClientSession() as session:
+        tasks = [warm_one(session, cid) for cid in missing_ids]
+        await asyncio.gather(*tasks)
+
+    # 5. Save back to GCS
     await upload_cache(cache_data)
 
 if __name__ == "__main__":

@@ -24,11 +24,12 @@ from typing import Any
 import click
 import google.auth
 import vertexai
-from app.shared.config import config
 from google.cloud import resourcemanager_v3
 from google.iam.v1 import iam_policy_pb2, policy_pb2
 from vertexai._genai import _agent_engines_utils
 from vertexai._genai.types import AgentEngine, AgentEngineConfig, IdentityType
+
+from app.shared.config import config
 
 # Suppress google-cloud-storage version compatibility warning
 warnings.filterwarnings(

@@ -17,6 +17,7 @@ class FhirTerminologyClient:
     BASE_URL = "https://r4.ontoserver.csiro.au/fhir"
     SYSTEM = "http://snomed.info/sct"
 
+
     def __init__(self, timeout_seconds: int = 15):
         """
         Initializes the client with appropriate headers and timeouts.
@@ -77,7 +78,7 @@ class FhirTerminologyClient:
                     logger.warning("FHIR Subsumption Timeout", code_a=code_a, code_b=code_b)
                 except Exception as e:
                     logger.error(f"FHIR Subsumption Connection Error: {e}", code_a=code_a, code_b=code_b)
-                
+
                 # Small wait before retrying on non-429 connection errors/timeouts
                 await asyncio.sleep(1)
 
@@ -143,7 +144,7 @@ class FhirTerminologyClient:
                     logger.warning("FHIR Lookup Timeout", code=code)
                 except Exception as e:
                     logger.error(f"FHIR Lookup Connection Error: {e}", code=code)
-                
+
                 # Small wait before retrying on non-429 connection errors/timeouts
                 await asyncio.sleep(1)
 

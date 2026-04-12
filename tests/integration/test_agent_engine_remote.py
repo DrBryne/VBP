@@ -35,7 +35,7 @@ async def run_remote_cloud_test():
         "location": config.PROCESSING_LOCATION, # us-central1
         "target_group": "ALS - Amytrofisk lateral sklerose",
         "bucket_uri": config.ALS_DOCS_URI,
-        "max_concurrency": 10,
+        "max_concurrency": 5,
         "max_files": 96
     }
     
@@ -94,46 +94,57 @@ async def run_remote_cloud_test():
                 
             if json_str:
                 try:
-                    data = json.loads(json_str)
-                    if "execution_summary" in data:
-                        summary = data["execution_summary"]
+                    handover = json.loads(json_str)
+                    summary = handover.get("summary", handover.get("execution_summary", {}))
+                    synthesis_uri = handover.get("synthesis_uri")
+                    
+                    print("\n--- FINAL SYNTHESIS MANIFEST ---")
+                    print(f"Status: {handover.get('status')}")
+                    print(f"Run ID: {handover.get('run_id')}")
+                    print(f"Synthesis GCS URI: {synthesis_uri}")
+                    
+                    if summary:
+                        print(f"Processed Docs: {summary.get('processed_files_count')}")
                         print(f"Success Count: {summary.get('successful_files_count')}")
                         print(f"Finding Count: {summary.get('total_synthesized_findings')}")
 
-                    # --- Local Report Generation ---
+                    # --- Sync local copy for local report generation ---
                     run_id = start_time.strftime("%Y-%m-%d_%H-%M-%S")
                     run_dir = f"tests/integration/results/run_{run_id}"
                     os.makedirs(run_dir, exist_ok=True)
                     
                     json_path = os.path.join(run_dir, "workflow_synthesis.json")
-                    with open(json_path, "w", encoding="utf-8") as f:
-                        json.dump(data, f, indent=2, ensure_ascii=False)
+                    
+                    if synthesis_uri:
+                        print(f"Downloading full synthesis from GCS...")
+                        from google.cloud import storage
+                        bucket_name = synthesis_uri.split("/")[2]
+                        blob_name = "/".join(synthesis_uri.split("/")[3:])
+                        storage_client = storage.Client()
+                        bucket = storage_client.bucket(bucket_name)
+                        blob = bucket.blob(blob_name)
+                        blob.download_to_filename(json_path)
+                    else:
+                        # Fallback for local testing or old versions
+                        with open(json_path, "w", encoding="utf-8") as f:
+                            json.dump(handover, f, indent=2, ensure_ascii=False)
                         
                     print(f"\nJSON Synthesis saved to: {json_path}")
-                    print(f"Generating HTML report...")
+                    print(f"Generating local HTML report...")
                     
                     local_report_path = os.path.join(run_dir, "report.html")
                     
-                    # Run the report generator locally
+                    # Run the report generator locally (using the new app/ path)
                     process = await asyncio.create_subprocess_exec(
-                        "uv", "run", "python", "tools/report_generator/main.py",
+                        "uv", "run", "python", "app/report_generator/main.py",
                         "--input", json_path,
                         "--output", local_report_path
                     )
                     await process.wait()
                     
-                    # Upload to GCS scratch area
-                    process_gcs = await asyncio.create_subprocess_exec(
-                        "uv", "run", "python", "tools/report_generator/main.py",
-                        "--input", json_path,
-                        "--output", config.GLOBAL_REPORT_URI
-                    )
-                    await process_gcs.wait()
-                    
                     if process.returncode == 0:
                         print(f"Local report generated: {local_report_path}")
-                    if process_gcs.returncode == 0:
-                        report_url = f"https://storage.cloud.google.com/{config.GLOBAL_REPORT_URI[5:]}"
+                        report_url = handover.get("report_url", f"https://storage.cloud.google.com/{config.BASE_BUCKET.replace('gs://', '')}/reports/latest_vbp_report.html")
                         print(f"\n[VIEW LATEST CLOUD REPORT]: {report_url}")
                         
                 except Exception as parse_e:

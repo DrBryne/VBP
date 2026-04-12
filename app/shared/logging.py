@@ -1,6 +1,7 @@
 import logging
 import os
 
+
 def get_logger(name="vbp_workflow"):
     """
     Returns a standard python logger.
@@ -9,9 +10,9 @@ def get_logger(name="vbp_workflow"):
     """
     logger = logging.getLogger(name)
 
-    # We do not add a StreamHandler here. OpenTelemetry's LoggingHandler 
+    # We do not add a StreamHandler here. OpenTelemetry's LoggingHandler
     # captures these logs and forwards them to GCP or Console.
-    
+
     # Set level from environment variable
     level_name = os.environ.get("LOG_LEVEL", "INFO").upper()
     level = getattr(logging, level_name, logging.INFO)
@@ -33,15 +34,15 @@ class VBPLogger:
         if kwargs:
             ctx = ", ".join([f"{k}={v}" for k, v in kwargs.items()])
             msg = f"{msg} [{ctx}]"
-        
+
         # --- SAFE TRUNCATION ---
-        # Cloud Logging has a 256KB limit per entry. 
+        # Cloud Logging has a 256KB limit per entry.
         # Large prompts/responses can easily exceed this and cause overhead.
         # We truncate at 100k characters to be safe.
         limit = 100000
         if len(msg) > limit:
             msg = msg[:limit] + "... [TRUNCATED]"
-            
+
         self.logger.log(level, msg)
 
     def debug(self, msg, **kwargs): self._log(logging.DEBUG, msg, **kwargs)

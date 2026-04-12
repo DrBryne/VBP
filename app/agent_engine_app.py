@@ -32,6 +32,7 @@ load_dotenv()
 
 from app.shared.config import config
 
+
 class AgentEngineApp(AdkApp):
     def set_up(self) -> None:
         """Initialize the agent engine app with logging and telemetry."""

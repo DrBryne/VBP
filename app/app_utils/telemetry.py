@@ -12,21 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import asyncio
 import functools
 import logging
 import os
-import asyncio
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.trace import Status, StatusCode
-from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
-from opentelemetry.sdk.resources import Resource
-
 from opentelemetry._logs import set_logger_provider
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import (
+    BatchSpanProcessor,
+    ConsoleSpanExporter,
+    SimpleSpanProcessor,
+)
+from opentelemetry.trace import Status, StatusCode
 
 # Global tracer instance for the VBP application
 tracer = trace.get_tracer("vbp_workflow")
@@ -34,25 +38,30 @@ tracer = trace.get_tracer("vbp_workflow")
 def track_telemetry_span(span_name: str):
     """
     Creates a sub-span in the Cloud Trace waterfall for a function.
-    Automatically captures exceptions and sets the span status.
+    Uses start_span directly without attaching to context to avoid race conditions 
+    in high-concurrency async environments.
     """
     def decorator(func: Callable):
         @functools.wraps(func)
         async def async_wrapper(*args, **kwargs) -> Any:
-            with tracer.start_as_current_span(span_name) as span:
-                if kwargs.get('uri'):
-                    span.set_attribute("vbp.uri", kwargs.get('uri'))
-                elif args and isinstance(args[0], str) and args[0].startswith("gs://"):
-                    span.set_attribute("vbp.uri", args[0])
-                
-                try:
-                    result = await func(*args, **kwargs)
-                    span.set_status(Status(StatusCode.OK))
-                    return result
-                except Exception as e:
-                    span.record_exception(e)
-                    span.set_status(Status(StatusCode.ERROR, str(e)))
-                    raise
+            # We use start_span which is purely additive and doesn't manipulate 
+            # the active context stack, making it safe for high concurrency.
+            span = tracer.start_span(span_name)
+            if kwargs.get('uri'):
+                span.set_attribute("vbp.uri", kwargs.get('uri'))
+            elif args and isinstance(args[0], str) and args[0].startswith("gs://"):
+                span.set_attribute("vbp.uri", args[0])
+
+            try:
+                result = await func(*args, **kwargs)
+                span.set_status(Status(StatusCode.OK))
+                return result
+            except Exception as e:
+                span.record_exception(e)
+                span.set_status(Status(StatusCode.ERROR, str(e)))
+                raise
+            finally:
+                span.end()
 
         @functools.wraps(func)
         def sync_wrapper(*args, **kwargs) -> Any:
@@ -72,7 +81,7 @@ def track_telemetry_span(span_name: str):
 def setup_telemetry() -> str | None:
     """Configure OpenTelemetry and GenAI telemetry with GCS upload and Cloud Trace/Logging."""
     os.environ.setdefault("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "true")
-    
+
     resource = Resource.create({
         "service.name": "vbp_workflow",
         "service.namespace": "vbp",
@@ -87,12 +96,12 @@ def setup_telemetry() -> str | None:
     # 1. Configure Cloud/Local Exporters
     if os.environ.get("AGENT_ENGINE_ID") or os.environ.get("GOOGLE_CLOUD_PROJECT"):
         try:
-            from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
             from opentelemetry.exporter.cloud_logging import CloudLoggingExporter
+            from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 
             tracer_provider.add_span_processor(BatchSpanProcessor(CloudTraceSpanExporter()))
             logger_provider.add_log_record_processor(BatchLogRecordProcessor(CloudLoggingExporter()))
-            
+
             logging.info("OpenTelemetry Cloud Trace and Cloud Logging initialized.")
         except ImportError:
             logging.warning("Cloud Exporters not found. Falling back to local logging.")
