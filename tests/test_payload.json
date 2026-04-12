@@ -1,0 +1,6 @@
+{
+  "gcs_uri": "gs://veiledende_behandlingsplan/ALS/",
+  "target_group": "ALS - Amytrofisk lateral sklerose",
+  "max_files": 3,
+  "max_concurrency": 3
+}

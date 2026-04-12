@@ -1,0 +1,27 @@
+{
+  "eval_set_id": "clinical_golden_set",
+  "name": "ALS Clinical Synthesis Golden Set",
+  "description": "Verifies that the agent correctly distills complex documents into standardized ICNP findings for ALS.",
+  "eval_cases": [
+    {
+      "eval_id": "als_core_distillation",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Start clinical synthesis for ALS patients."}]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "vbp_workflow",
+        "user_id": "eval_user",
+        "state": {
+          "gcs_uri": "gs://veiledende_behandlingsplan/ALS/",
+          "target_group": "ALS - Amytrofisk lateral sklerose",
+          "max_files": 3,
+          "max_concurrency": 3
+        }
+      }
+    }
+  ]
+}

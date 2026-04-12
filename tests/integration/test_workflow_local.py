@@ -43,9 +43,20 @@ async def run_local_test(limit_files: int = 3, max_concurrency: int = 3):
         logger.error("GOOGLE_CLOUD_PROJECT not set in config or environment.")
         return
 
-    # Define test parameters
-    test_gcs_uri = config.ALS_DOCS_URI
-    test_target_group = "ALS - Amytrofisk lateral sklerose"
+    # Define test parameters - Load from central test_payload.json
+    payload_path = "tests/test_payload.json"
+    if not os.path.exists(payload_path):
+        logger.error(f"Test payload file missing: {payload_path}")
+        return
+
+    with open(payload_path) as f:
+        test_payload = json.load(f)
+
+    # Allow CLI overrides if provided, otherwise use payload values
+    test_gcs_uri = test_payload.get("gcs_uri")
+    test_target_group = test_payload.get("target_group")
+    limit_files = limit_files or test_payload.get("max_files", 3)
+    max_concurrency = max_concurrency or test_payload.get("max_concurrency", 3)
 
     logger.info(f"--- Starting ADK 2.0 Local Workflow Test (Run ID: {run_id}) ---",
                 project=config.PROJECT_ID,

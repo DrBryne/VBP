@@ -62,8 +62,8 @@ def save_taxonomy_cache():
 async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=None) -> dict[str, dict]:
     """
     Groups individual findings by Functional Area (FO) and ICNP Concept ID.
-    Relies strictly on the precomputed taxonomy_cache for display names and 
-    hierarchical merging, eliminating all external API calls.
+    Implements Hierarchical Merging for both Diagnoses and Interventions to 
+    distill a high-quality clinical template.
     """
     groups = {}
     global_id_cache = {}
@@ -76,32 +76,31 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
         "Nivå 4": 3.0,
     }
 
-    # 1. Warm up local display cache and build parent mapping
+    # 1. Build Comprehensive Parent Mapping (Diagnoses & Interventions)
     parent_to_children = {}
-    
-    # Extract unique IDs from the findings
     unique_ids = set()
+    
     for doc_findings in processed_docs:
         for finding in doc_findings.mapped_findings:
-            # Handle nursing_diagnosis which could be a MappedTerm or a string from extractor
-            diag = finding.nursing_diagnosis
-            cid = None
-            if hasattr(diag, "ICNP_concept_id"):
-                cid = diag.ICNP_concept_id
+            # Collect Diagnosis IDs
+            d_cid = finding.mapped_nursing_diagnosis.ICNP_concept_id
+            if d_cid and d_cid.isdigit():
+                unique_ids.add(d_cid)
+            
+            # Collect Intervention IDs
+            i_cid = finding.mapped_intervention.ICNP_concept_id
+            if i_cid and i_cid.isdigit():
+                unique_ids.add(i_cid)
 
-            if cid and cid.isdigit():
-                unique_ids.add(cid)
-
-
-    # Populate display cache and sibling merge map
+    # Populate display cache and sibling merge map from pre-fetched taxonomy
     for cid in unique_ids:
         c_info = taxonomy_cache["concepts"].get(cid)
         if c_info:
-            # 1. Display Term (Norwegian first)
+            # Terminology Rule: Use Norwegian Preferred Term (PT) if in cache, else source term
             nor_term = get_norwegian_term(cid, None)
-            global_id_cache[cid] = nor_term if nor_term else c_info.get("display", "Unknown")
+            global_id_cache[cid] = nor_term if nor_term else c_info.get("display", cid)
             
-            # 2. Hierarchy (Sibling Merge) - Map to ALL parents to increase merge hits
+            # Register parents for Sibling Merging (Subsumption)
             parents = c_info.get("parent_ids", [])
             for p_id in parents:
                 if p_id not in BLOCKED_ROOT_PARENTS:
@@ -110,34 +109,30 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                     parent_to_children[p_id].append(cid)
 
     # 2. Build Semantic Rewrite Map (FO||Child -> FO||Parent)
-    # If multiple IDs in the same FO share a parent, merge them under that parent
     global_rewrite_map = {}
-    
-    # We apply sibling merging per FO
     fo_id_map: dict[str, set[str]] = {}
+    
     for doc in processed_docs:
         for finding in doc.mapped_findings:
             fo = finding.FO
-            diag = finding.nursing_diagnosis
-            cid = None
-            if hasattr(diag, "ICNP_concept_id"):
-                cid = diag.ICNP_concept_id
+            d_cid = finding.mapped_nursing_diagnosis.ICNP_concept_id
+            i_cid = finding.mapped_intervention.ICNP_concept_id
             
-            if cid:
-                if fo not in fo_id_map:
-                    fo_id_map[fo] = set()
-                fo_id_map[fo].add(cid)
+            if fo not in fo_id_map:
+                fo_id_map[fo] = set()
+            if d_cid: fo_id_map[fo].add(d_cid)
+            if i_cid: fo_id_map[fo].add(i_cid)
 
     for fo, ids in fo_id_map.items():
         for cid in ids:
             found_parent = False
             for p_id, children in parent_to_children.items():
-                # We only merge siblings if there are at least 2 in this specific run
+                # We only merge siblings if at least 2 are present in this specific run/FO
                 siblings_in_this_run = [c for c in children if c in ids]
                 if cid in siblings_in_this_run and len(siblings_in_this_run) >= 2:
                     global_rewrite_map[f"{fo}||{cid}"] = f"{fo}||{p_id}"
                     
-                    # Ensure parent display is in cache
+                    # Ensure parent display is resolved (PT or Cache)
                     if p_id not in global_id_cache:
                         p_info = taxonomy_cache["concepts"].get(p_id)
                         nor_parent = get_norwegian_term(p_id, None)
@@ -147,7 +142,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
             if not found_parent:
                 global_rewrite_map[f"{fo}||{cid}"] = f"{fo}||{cid}"
 
-    # 3. Aggregation Phase
+    # 3. Aggregation & Template Distillation
     for doc in processed_docs:
         doc_id = doc.source_document.document_id
         source_level = doc.source_document.evidence_level
@@ -159,26 +154,20 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                 break
 
         for finding in doc.mapped_findings:
-            diag = finding.nursing_diagnosis
-            raw_icnp_id = None
-            raw_term = diag
-            if hasattr(diag, "ICNP_concept_id"):
-                raw_icnp_id = diag.ICNP_concept_id
-                raw_term = diag.term
+            # Resolve Diagnosis Display (PT or Original)
+            d_mapped = finding.mapped_nursing_diagnosis
+            d_base_key = f"{finding.FO}||{d_mapped.ICNP_concept_id}" if d_mapped.ICNP_concept_id else f"{finding.FO}||{finding.nursing_diagnosis}"
+            d_group_key = global_rewrite_map.get(d_base_key, d_base_key)
+            final_d_id = d_group_key.split("||")[1] if "||" in d_group_key else ""
 
-            base_key = f"{finding.FO}||{raw_icnp_id}" if raw_icnp_id else f"{finding.FO}||{raw_term}"
+            if d_group_key not in groups:
+                # If we have a Concept ID, use the cached PT, otherwise use raw text
+                display_diag = global_id_cache.get(final_d_id, finding.nursing_diagnosis)
 
-            # Apply the Semantic Rewrite Map
-            group_key = global_rewrite_map.get(base_key, base_key)
-            final_id = group_key.split("||")[1] if "||" in group_key else ""
-
-            if group_key not in groups:
-                display_term = global_id_cache.get(final_id, raw_term)
-
-                groups[group_key] = {
+                groups[d_group_key] = {
                     "FO": finding.FO,
-                    "nursing_diagnosis": MappedTerm(term=display_term, ICNP_concept_id=final_id if final_id.isdigit() else ""),
-                    "interventions": [],
+                    "nursing_diagnosis": MappedTerm(term=display_diag, ICNP_concept_id=final_d_id if final_d_id.isdigit() else ""),
+                    "intervention_pool": {}, # ID -> {MappedTerm, weighted_score, evidence_count}
                     "goals": [],
                     "supporting_evidence": {},
                     "specificity_scores": [],
@@ -188,14 +177,34 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                     "consensus_count": 0
                 }
 
-            # Aggregate interventions, goals, and evidence
-            if finding.mapped_intervention not in groups[group_key]["interventions"]:
-                groups[group_key]["interventions"].append(finding.mapped_intervention)
-            if finding.mapped_goal not in groups[group_key]["goals"]:
-                groups[group_key]["goals"].append(finding.mapped_goal)
+            # Distill Interventions (Apply Rewrite Map for Merging)
+            i_mapped = finding.mapped_intervention
+            i_base_key = f"{finding.FO}||{i_mapped.ICNP_concept_id}" if i_mapped.ICNP_concept_id else f"{finding.FO}||{finding.intervention}"
+            i_group_key = global_rewrite_map.get(i_base_key, i_base_key)
+            final_i_id = i_group_key.split("||")[1] if "||" in i_group_key else ""
+            display_int = global_id_cache.get(final_i_id, finding.intervention)
 
-            if doc_id not in groups[group_key]["supporting_evidence"]:
-                groups[group_key]["supporting_evidence"][doc_id] = {
+            if i_group_key not in groups[d_group_key]["intervention_pool"]:
+                groups[d_group_key]["intervention_pool"][i_group_key] = {
+                    "mapped_term": MappedTerm(term=display_int, ICNP_concept_id=final_i_id if final_i_id.isdigit() else ""),
+                    "weighted_quality": 0.0,
+                    "evidence_level_sum": 0.0,
+                    "consensus": 0
+                }
+            
+            # Update Intervention Metadata for Ranking
+            int_meta = groups[d_group_key]["intervention_pool"][i_group_key]
+            int_meta["consensus"] += 1
+            int_meta["evidence_level_sum"] += doc_weight
+            if finding.auditor_rating:
+                int_meta["weighted_quality"] += finding.auditor_rating.actionability_score
+
+            # Standard Aggregate for Evidence and Goals
+            if finding.mapped_goal not in groups[d_group_key]["goals"]:
+                groups[d_group_key]["goals"].append(finding.mapped_goal)
+
+            if doc_id not in groups[d_group_key]["supporting_evidence"]:
+                groups[d_group_key]["supporting_evidence"][doc_id] = {
                     "quotes": [],
                     "evidence_grade": finding.evidence_grade,
                     "recommendation_strength": finding.recommendation_strength,
@@ -203,18 +212,34 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                 }
 
             for quote in finding.quotes:
-                if quote not in groups[group_key]["supporting_evidence"][doc_id]["quotes"]:
-                    groups[group_key]["supporting_evidence"][doc_id]["quotes"].append(quote)
+                if quote not in groups[d_group_key]["supporting_evidence"][doc_id]["quotes"]:
+                    groups[d_group_key]["supporting_evidence"][doc_id]["quotes"].append(quote)
 
             if finding.auditor_rating:
-                groups[group_key]["specificity_scores"].append(finding.auditor_rating.specificity_score)
-                groups[group_key]["actionability_scores"].append(finding.auditor_rating.actionability_score)
-                groups[group_key]["cohesion_scores"].append(finding.auditor_rating.cohesion_score)
+                groups[d_group_key]["specificity_scores"].append(finding.auditor_rating.specificity_score)
+                groups[d_group_key]["actionability_scores"].append(finding.auditor_rating.actionability_score)
+                groups[d_group_key]["cohesion_scores"].append(finding.auditor_rating.cohesion_score)
 
-            groups[group_key]["weighted_sum"] += doc_weight
-            groups[group_key]["consensus_count"] += 1
+            groups[d_group_key]["weighted_sum"] += doc_weight
+            groups[d_group_key]["consensus_count"] += 1
 
-    return groups
+    # 4. Final Ranking & Selection (Distilling the Template)
+    final_output = {}
+    for diag_key, data in groups.items():
+        # Rank interventions: Priority = (Actionability * 0.4) + (Evidence Level * 0.6)
+        ranked_ints = []
+        for int_key, int_meta in data["intervention_pool"].items():
+            avg_quality = int_meta["weighted_quality"] / int_meta["consensus"] if int_meta["consensus"] > 0 else 5.0
+            rank_score = (avg_quality * 0.4) + (int_meta["evidence_level_sum"] * 0.6)
+            ranked_ints.append((int_meta["mapped_term"], rank_score))
+        
+        # Sort by rank and keep the terms
+        ranked_ints.sort(key=lambda x: x[1], reverse=True)
+        data["interventions"] = [x[0] for x in ranked_ints]
+        del data["intervention_pool"]
+        final_output[diag_key] = data
+
+    return final_output
 
 def finalize_synthesis(
     target_group: str,

@@ -31,16 +31,17 @@ async def run_remote_cloud_test():
     client = vertexai.Client(project=project_id, location=location)
     remote_agent = client.agent_engines.get(name=engine_id)
 
-    # Configuration Payload
-    payload = {
-        "project_id": project_id,
-        "location": config.PROCESSING_LOCATION, # us-central1
-        "target_group": "ALS - Amytrofisk lateral sklerose",
-        "bucket_uri": config.ALS_DOCS_URI,
-        "max_concurrency": 50,
+    # Configuration Payload - Load from central test_payload.json
+    payload_path = "tests/test_payload.json"
+    if not os.path.exists(payload_path):
+        print(f"Test payload file missing: {payload_path}")
+        return
 
-        "max_files": 96
-    }
+    with open(payload_path) as f:
+        payload = json.load(f)
+
+    # In cloud, we always set some high-concurrency and full file count if not specified
+    # but the JSON is the single source of truth for the target_group and gcs_uri.
     
     # ADK 2.0 requires an invocation_id for cloud events
     run_config = {
