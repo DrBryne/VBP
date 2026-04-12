@@ -13,11 +13,19 @@ from app.shared.tools import parse_gcs_uri
 
 logger = VBPLogger("document_loader")
 
-# Download NLTK data
+# Download NLTK data to a writable location on Agent Engine
+if os.environ.get("AGENT_ENGINE_ID"):
+    nltk_data_path = "/tmp/nltk_data"
+    os.makedirs(nltk_data_path, exist_ok=True)
+    if nltk_data_path not in nltk.data.path:
+        nltk.data.path.append(nltk_data_path)
+else:
+    nltk_data_path = None
+
 try:
     nltk.data.find('tokenizers/punkt_tab')
 except LookupError:
-    nltk.download('punkt_tab')
+    nltk.download('punkt_tab', download_dir=nltk_data_path)
 
 def index_document_sentences(text: str) -> dict[str, str]:
     """Splits document text into individual sentences and assigns unique IDs."""

@@ -20,7 +20,9 @@ async def run_remote_cloud_test():
     location = config.DEPLOYMENT_LOCATION # us-central1
     
     # Resource ID from our deployment
-    engine_id = "projects/293859476528/locations/us-central1/reasoningEngines/1977863638450438144"
+    with open("deployment_metadata.json") as f:
+        meta = json.load(f)
+        engine_id = meta["remote_agent_engine_id"]
 
     print(f"--- Starting Agent Engine Remote Full Run (US) ---")
     print(f"Target Agent: {engine_id}")
@@ -35,7 +37,8 @@ async def run_remote_cloud_test():
         "location": config.PROCESSING_LOCATION, # us-central1
         "target_group": "ALS - Amytrofisk lateral sklerose",
         "bucket_uri": config.ALS_DOCS_URI,
-        "max_concurrency": 5,
+        "max_concurrency": 50,
+
         "max_files": 96
     }
     

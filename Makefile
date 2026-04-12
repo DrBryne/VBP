@@ -28,19 +28,40 @@ playground:
 # ==============================================================================
 
 # Deploy the agent remotely
-# Usage: make deploy [AGENT_IDENTITY=true] [SECRETS="KEY=SECRET_ID,..."] - Set AGENT_IDENTITY=true to enable per-agent IAM identity (Preview)
-deploy:
-	# Export dependencies to requirements file using uv export.
-	(uv export --no-hashes --no-header --no-dev --no-emit-project --no-annotate > app/app_utils/.requirements.txt 2>/dev/null || \
-	uv export --no-hashes --no-header --no-dev --no-emit-project > app/app_utils/.requirements.txt) && \
+# Usage: 
+#   make deploy [SERVICE_ACCOUNT=sa@project.iam.gserviceaccount.com] [AGENT_IDENTITY=true] [SECRETS="KEY=SECRET_ID,..."]
+#
+# AGENT_IDENTITY: Set to true only if you need per-agent IAM identity (Preview).
+# SERVICE_ACCOUNT: Recommended for production/enterprise environments.
+deploy: requirements
 	uv run -m app.app_utils.deploy \
 		--source-packages=./app \
 		--entrypoint-module=app.agent_engine_app \
 		--entrypoint-object=agent_engine \
 		--requirements-file=app/app_utils/.requirements.txt \
 		--set-env-vars="LOGS_BUCKET_NAME=veiledende_behandlingsplan,VBP_GCS_URI=gs://veiledende_behandlingsplan/ALS/,VBP_TARGET_GROUP=ALS - Amytrofisk lateral sklerose" \
-		$(if $(AGENT_IDENTITY),--agent-identity) \
+		$(if $(SERVICE_ACCOUNT),--service-account="$(SERVICE_ACCOUNT)") \
+		$(if $(filter true,$(AGENT_IDENTITY)),--agent-identity) \
 		$(if $(filter command line,$(origin SECRETS)),--set-secrets="$(SECRETS)")
+
+# Export only top-level dependencies to speed up remote builds by using pre-cached versions
+requirements:
+	@echo "📦 Generating flexible requirements.txt..."
+	@echo "google-adk>=1.28.0" > app/app_utils/.requirements.txt
+	@echo "google-cloud-aiplatform[agent-engines]>=1.146.0" >> app/app_utils/.requirements.txt
+	@echo "jinja2" >> app/app_utils/.requirements.txt
+	@echo "markdown" >> app/app_utils/.requirements.txt
+	@echo "pymupdf" >> app/app_utils/.requirements.txt
+	@echo "nltk" >> app/app_utils/.requirements.txt
+	@echo "beautifulsoup4" >> app/app_utils/.requirements.txt
+	@echo "lxml" >> app/app_utils/.requirements.txt
+	@echo "gcsfs" >> app/app_utils/.requirements.txt
+	@echo "google-cloud-logging" >> app/app_utils/.requirements.txt
+	@echo "opentelemetry-instrumentation-google-genai" >> app/app_utils/.requirements.txt
+	@echo "opentelemetry-sdk" >> app/app_utils/.requirements.txt
+	@echo "opentelemetry-exporter-gcp-trace" >> app/app_utils/.requirements.txt
+	@echo "opentelemetry-exporter-gcp-logging" >> app/app_utils/.requirements.txt
+	@echo "python-dotenv" >> app/app_utils/.requirements.txt
 
 # Alias for 'make deploy' for backward compatibility
 backend: deploy

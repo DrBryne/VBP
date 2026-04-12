@@ -22,8 +22,11 @@ class VBPConfig:
     # Note: Clinical data is now standardized in the US multi-region
     BASE_BUCKET: str = os.environ.get("VBP_DATA_BUCKET", "gs://veiledende_behandlingsplan")
 
-    # Path to the ALS clinical documents
-    ALS_DOCS_URI: str = f"{BASE_BUCKET}/ALS/"
+    # Path to the clinical documents (configurable via environment)
+    ALS_DOCS_URI: str = os.environ.get("VBP_GCS_URI", f"{BASE_BUCKET}/ALS/")
+
+    # Target Group name (configurable via environment)
+    TARGET_GROUP: str = os.environ.get("VBP_TARGET_GROUP", "ALS - Amytrofisk lateral sklerose")
 
     # Path for the latest automated clinical report
     GLOBAL_REPORT_URI: str = f"{BASE_BUCKET}/reports/latest_vbp_report.html"
