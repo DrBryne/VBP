@@ -82,9 +82,12 @@ def setup_telemetry() -> str | None:
     """Configure OpenTelemetry and GenAI telemetry with GCS upload and Cloud Trace/Logging."""
     os.environ.setdefault("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "true")
 
+    env_name = "cloud" if os.environ.get("AGENT_ENGINE_ID") else "local"
+
     resource = Resource.create({
         "service.name": "vbp_workflow",
         "service.namespace": "vbp",
+        "vbp.environment": env_name,
     })
 
     # Initialize providers
