@@ -152,8 +152,8 @@
                         </div>
 
                         <!-- Pyramid -->
-                        <div class="flex flex-col pt-8">
-                            <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3 text-center">Kunnskapspyramiden</h3>
+                        <div class="flex flex-col h-full justify-end pb-[2px]">
+                            <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-[15px] text-center">Kunnskapspyramiden</h3>
                             <div class="w-full flex flex-col items-center space-y-[2px]">
                                 {% for lvl, data in dashboard.knowledge_base.items() %}
                                 <div class="h-8 rounded-sm text-center flex items-center justify-center relative group transition-all"
@@ -167,9 +167,9 @@
                         </div>
 
                         <!-- Confidence -->
-                        <div class="flex flex-col gap-4 pt-8 h-full">
+                        <div class="flex flex-col h-full justify-end pb-[2px]">
                             <div>
-                                <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-1 flex items-center justify-between">
+                                <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-[15px] flex items-center justify-between">
                                     Samlet Sikkerhet i Funn 
                                     <span class="text-indigo-400 cursor-help" title="KI-generert estimat basert på bl.a. spesifisitet og sporing mot kildematerialet.">ⓘ</span>
                                 </h3>
