@@ -26,6 +26,7 @@ async def test_sibling_merging_logic():
     # 2. Setup Mock Processed Document
     # We have one document that found both Child A and Child B
     doc = Document(
+        document_id="d1",
         source_uri="gs://test/doc1.pdf",
         title="Test Document",
         publication_year=2024,
@@ -36,8 +37,13 @@ async def test_sibling_merging_logic():
     finding_a = ProcessedFinding(
         finding_id="f1",
         document_id="d1",
-        nursing_diagnosis=MappedTerm(term="Child A", ICNP_concept_id="101"),
-        mapped_nursing_diagnosis=MappedTerm(term="Child A", ICNP_concept_id="101"), # Legacy field
+        nursing_diagnosis="Child A",
+        intervention="Int 1",
+        goal="Goal 1",
+        supporting_sentence_ids=["S1"],
+        clinical_specificity=8,
+        actionability_score=8,
+        mapped_nursing_diagnosis=MappedTerm(term="Child A", ICNP_concept_id="101"),
         mapped_intervention=MappedTerm(term="Int 1", ICNP_concept_id=""),
         mapped_goal=MappedTerm(term="Goal 1", ICNP_concept_id=""),
         FO=FunctionalArea.FO3, # Respirasjon
@@ -47,7 +53,12 @@ async def test_sibling_merging_logic():
     finding_b = ProcessedFinding(
         finding_id="f2",
         document_id="d1",
-        nursing_diagnosis=MappedTerm(term="Child B", ICNP_concept_id="102"),
+        nursing_diagnosis="Child B",
+        intervention="Int 2",
+        goal="Goal 2",
+        supporting_sentence_ids=["S2"],
+        clinical_specificity=8,
+        actionability_score=8,
         mapped_nursing_diagnosis=MappedTerm(term="Child B", ICNP_concept_id="102"),
         mapped_intervention=MappedTerm(term="Int 2", ICNP_concept_id=""),
         mapped_goal=MappedTerm(term="Goal 2", ICNP_concept_id=""),

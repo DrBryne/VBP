@@ -29,7 +29,7 @@ class VBPConfig:
     TARGET_GROUP: str = os.environ.get("VBP_TARGET_GROUP", "ALS - Amytrofisk lateral sklerose")
 
     # Path for the latest automated clinical report
-    GLOBAL_REPORT_URI: str = f"{BASE_BUCKET}/reports/latest_vbp_report.html"
+    GLOBAL_REPORT_URI: str = f"{BASE_BUCKET}/reports/draft_vbp_report.html"
 
     # Path for the persistent terminology cache
     TAXONOMY_CACHE_URI: str = f"{BASE_BUCKET}/cache/taxonomy_cache.json"
@@ -37,6 +37,16 @@ class VBPConfig:
     # Taxonomy Configuration
     # We use 'global' for preview models until they are regionalized in Europe
     PREVIEW_MODEL_LOCATION: str = "global"
+
+    # Synthesis Distillation Thresholds
+    # Minimum number of documents that must agree to admit a finding without Level 1/2 evidence
+    CONSENSUS_THRESHOLD: int = int(os.environ.get("VBP_CONSENSUS_THRESHOLD", "3"))
+
+    # Threshold for findings in a Functional Area (FO) to be considered 'cluttered'
+    CLUTTER_THRESHOLD: int = int(os.environ.get("VBP_CLUTTER_THRESHOLD", "5"))
+
+    # Required percentage (0.0 - 1.0) of findings in a cluttered FO that must share a parent to merge
+    PARENT_COVERAGE_PERCENT: float = float(os.environ.get("VBP_PARENT_COVERAGE_PERCENT", "0.5"))
 
 # Singleton instance for easy import
 config = VBPConfig()

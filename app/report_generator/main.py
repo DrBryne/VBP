@@ -30,6 +30,7 @@ def upload_to_gcs(content: str, gcs_uri: str):
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(blob_name)
 
+    blob.cache_control = "no-store, no-cache, must-revalidate, max-age=0"
     blob.upload_from_string(content, content_type="text/html")
     print(f"Report successfully uploaded to: {gcs_uri}")
 

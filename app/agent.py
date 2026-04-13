@@ -231,7 +231,8 @@ class VbpWorkflowAgent(BaseAgent):
                         current_completed = progress_state.completed
                         current_success = progress_state.success
 
-                        if (current_completed > last_reported_completion and current_completed % 5 == 0) or current_completed == total_files:
+                        # Yield heartbeat every 2 docs to keep the streaming connection alive
+                        if (current_completed > last_reported_completion and current_completed % 2 == 0) or current_completed == total_files:
                             progress_msg = f"*** Overall Progress: {current_completed}/{total_files} processed ({current_success} success) ***"
                             logger.info(progress_msg)
                             session_log_buffer.append(f"[Progress] {progress_msg}")
@@ -251,11 +252,12 @@ class VbpWorkflowAgent(BaseAgent):
 
             # --- PHASE 4: CONSOLIDATION & SYNTHESIS ---
             logger.info(f"Consolidating {len(successful_results)} successful documents and {len(excluded_results)} excluded documents.")
-            msg = "Consolidating findings..."
+            msg = "Consolidating findings with hierarchical ontology navigation..."
             session_log_buffer.append(f"[Progress] {msg}")
             yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=msg)]))
 
-            grouped_data = await group_findings(successful_results)
+            fhir_client = FhirTerminologyClient()
+            grouped_data = await group_findings(successful_results, fhir_client=fhir_client)
             # Persist updated cache to GCS
             save_taxonomy_cache()
             source_docs = [r.source_document for r in successful_results]
