@@ -154,7 +154,7 @@
                         <!-- Pyramid -->
                         <div class="flex flex-col h-full justify-end pb-[2px]">
                             <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-[15px] text-center">Kunnskapspyramiden</h3>
-                            <div class="w-full flex flex-col items-center space-y-[2px]">
+                            <div class="h-[160px] w-full flex flex-col items-center justify-end space-y-[2px]">
                                 {% for lvl, data in dashboard.knowledge_base.items() %}
                                 <div class="h-8 rounded-sm text-center flex items-center justify-center relative group transition-all"
                                      style="width: {{ data.p_width }}; background-color: rgba(79, 70, 229, {{ data.opacity }});">
@@ -168,12 +168,13 @@
 
                         <!-- Confidence -->
                         <div class="flex flex-col h-full justify-end pb-[2px]">
-                            <div>
-                                <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-[15px] flex items-center justify-between">
-                                    Samlet Sikkerhet i Funn 
-                                    <span class="text-indigo-400 cursor-help" title="KI-generert estimat basert på bl.a. spesifisitet og sporing mot kildematerialet.">ⓘ</span>
-                                </h3>
-                                <p class="text-[9px] text-slate-400 mb-2">* KI-generert estimat.</p>
+                            <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-[15px] flex items-center justify-between">
+                                Samlet Sikkerhet i Funn 
+                                <span class="text-indigo-400 cursor-help" title="KI-generert estimat basert på bl.a. spesifisitet og sporing mot kildematerialet.">ⓘ</span>
+                            </h3>
+                            <div class="h-[160px] flex flex-col justify-between">
+                                <div>
+                                    <p class="text-[9px] text-slate-400 mb-2">* KI-generert estimat.</p>
                                 <div class="flex h-[14px] bg-slate-100 rounded-sm overflow-hidden mb-2">
                                     <div class="bg-emerald-500 h-full" style="width: {{ dashboard.certainty.high_pct }}%"></div>
                                     <div class="bg-amber-400 h-full" style="width: {{ dashboard.certainty.med_pct }}%"></div>
@@ -184,12 +185,13 @@
                                     <li class="flex items-center justify-between"><div class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span> Moderat</div><span class="font-bold text-slate-800">{{ dashboard.certainty.med }}</span></li>
                                     <li class="flex items-center justify-between"><div class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span> Lav/Ukjent</div><span class="font-bold text-slate-800">{{ dashboard.certainty.low }}</span></li>
                                 </ul>
-                            </div>
-                            <div class="p-3 rounded-xl border border-indigo-50 bg-indigo-50/50 flex items-center justify-between mt-auto">
-                                <span class="text-[11px] font-semibold text-indigo-900 uppercase">Gradert Evidens</span>
-                                <div class="text-right">
-                                    <div class="text-2xl font-black text-indigo-600 leading-none">{{ dashboard.graded_evidence.count }}</div>
-                                    <div class="text-[9px] font-bold text-indigo-400 mt-1">av {{ dashboard.graded_evidence.total }} sitater</div>
+                                </div>
+                                <div class="p-3 rounded-xl border border-indigo-50 bg-indigo-50/50 flex items-center justify-between mt-auto">
+                                    <span class="text-[11px] font-semibold text-indigo-900 uppercase">Gradert Evidens</span>
+                                    <div class="text-right">
+                                        <div class="text-2xl font-black text-indigo-600 leading-none">{{ dashboard.graded_evidence.count }}</div>
+                                        <div class="text-[9px] font-bold text-indigo-400 mt-1">av {{ dashboard.graded_evidence.total }} sitater</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
