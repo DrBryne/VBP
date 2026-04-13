@@ -47,7 +47,7 @@ deploy: requirements
 # Export only top-level dependencies to speed up remote builds by using pre-cached versions
 requirements:
 	@echo "📦 Generating strict requirements.txt..."
-	uv export --format requirements-txt --no-dev --no-editable > app/app_utils/.requirements.txt
+	uv export --format requirements-txt --no-dev --no-editable --no-hashes --no-emit-project > app/app_utils/.requirements.txt
 
 # Alias for 'make deploy' for backward compatibility
 backend: deploy
