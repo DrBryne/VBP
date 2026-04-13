@@ -59,9 +59,7 @@ async def run_remote_cloud_test():
         # is already designed to fallback to parsing the latest message text.
         response_stream = remote_agent.stream_query(
             message=json.dumps(payload),
-            user_id="test_user_remote",
-            # Increase timeout to 30 minutes for large batch runs
-            request_timeout=1800 
+            user_id="test_user_remote"
         )
         
         final_response_data = None
