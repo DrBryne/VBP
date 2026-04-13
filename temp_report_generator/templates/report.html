@@ -216,11 +216,11 @@
                             <thead class="bg-slate-50">
                                 <tr>
                                     <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider w-[22%]">FO / Sykepleierdiagnose</th>
-                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28">ID</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[140px] w-[140px] max-w-[140px]">ID</th>
                                     <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider border-l border-slate-100">Intervensjoner</th>
-                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28 border-l border-slate-100">ID</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[140px] w-[140px] max-w-[140px] border-l border-slate-100">ID</th>
                                     <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider border-l border-slate-100">Mål</th>
-                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28 border-l border-slate-100">ID</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[140px] w-[140px] max-w-[140px] border-l border-slate-100">ID</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200 bg-white">
@@ -244,25 +244,25 @@
                                         <svg id="icon-{{ loop.index }}" class="w-4 h-4 mt-0.5 text-slate-300 group-hover:text-indigo-500 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                                         <span>{{ finding.nursing_diagnosis.term }}</span>
                                     </td>
-                                    <td class="px-2 py-4 align-top font-mono text-sm text-slate-700 whitespace-nowrap w-28">{{ finding.nursing_diagnosis.ICNP_concept_id or '—' }}</td>
+                                    <td class="px-2 py-4 align-top font-mono text-sm text-slate-700 whitespace-nowrap min-w-[140px] w-[140px] max-w-[140px]">{{ finding.nursing_diagnosis.ICNP_concept_id or '—' }}</td>
                                     
                                     <td colspan="2" class="px-0 py-0 align-top border-l border-slate-100">
-                                        <table class="min-w-full divide-y divide-slate-50">
+                                        <table class="min-w-full divide-y divide-slate-50 table-fixed">
                                             {% for intv in finding.interventions %}
                                             <tr>
-                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug w-full">{{ intv.term }}</td>
-                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap w-28 bg-slate-50/20 align-top border-l border-slate-50">{{ intv.ICNP_concept_id or '—' }}</td>
+                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ intv.term }}</td>
+                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap min-w-[140px] w-[140px] max-w-[140px] bg-slate-50/20 align-top border-l border-slate-50">{{ intv.ICNP_concept_id or '—' }}</td>
                                             </tr>
                                             {% endfor %}
                                         </table>
                                     </td>
 
                                     <td colspan="2" class="px-0 py-0 align-top border-l border-slate-100">
-                                        <table class="min-w-full divide-y divide-slate-50">
+                                        <table class="min-w-full divide-y divide-slate-50 table-fixed">
                                             {% for goal in finding.goals %}
                                             <tr>
-                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug w-full">{{ goal.term }}</td>
-                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap w-28 bg-slate-50/20 align-top border-l border-slate-50">{{ goal.ICNP_concept_id or '—' }}</td>
+                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ goal.term }}</td>
+                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap min-w-[140px] w-[140px] max-w-[140px] bg-slate-50/20 align-top border-l border-slate-50">{{ goal.ICNP_concept_id or '—' }}</td>
                                             </tr>
                                             {% endfor %}
                                         </table>
