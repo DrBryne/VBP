@@ -46,22 +46,8 @@ deploy: requirements
 
 # Export only top-level dependencies to speed up remote builds by using pre-cached versions
 requirements:
-	@echo "📦 Generating flexible requirements.txt..."
-	@echo "google-adk>=1.28.0" > app/app_utils/.requirements.txt
-	@echo "google-cloud-aiplatform[agent-engines]>=1.146.0" >> app/app_utils/.requirements.txt
-	@echo "jinja2" >> app/app_utils/.requirements.txt
-	@echo "markdown" >> app/app_utils/.requirements.txt
-	@echo "pymupdf" >> app/app_utils/.requirements.txt
-	@echo "nltk" >> app/app_utils/.requirements.txt
-	@echo "beautifulsoup4" >> app/app_utils/.requirements.txt
-	@echo "lxml" >> app/app_utils/.requirements.txt
-	@echo "gcsfs" >> app/app_utils/.requirements.txt
-	@echo "google-cloud-logging" >> app/app_utils/.requirements.txt
-	@echo "opentelemetry-instrumentation-google-genai" >> app/app_utils/.requirements.txt
-	@echo "opentelemetry-sdk" >> app/app_utils/.requirements.txt
-	@echo "opentelemetry-exporter-gcp-trace" >> app/app_utils/.requirements.txt
-	@echo "opentelemetry-exporter-gcp-logging" >> app/app_utils/.requirements.txt
-	@echo "python-dotenv" >> app/app_utils/.requirements.txt
+	@echo "📦 Generating strict requirements.txt..."
+	uv export --format requirements-txt --no-dev --no-editable > app/app_utils/.requirements.txt
 
 # Alias for 'make deploy' for backward compatibility
 backend: deploy
