@@ -233,10 +233,8 @@
                                         {{ finding.FO }}
                                     </td>
                                     <td class="bg-transparent border-r border-slate-100"></td>
-                                    <td class="bg-transparent border-r border-slate-100"></td>
-                                    <td class="bg-transparent border-r border-slate-100"></td>
-                                    <td class="bg-transparent border-r border-slate-100"></td>
-                                    <td class="bg-transparent"></td>
+                                    <td colspan="2" class="bg-transparent border-r border-slate-100"></td>
+                                    <td colspan="2" class="bg-transparent"></td>
                                 </tr>
                                 {% set ns.current_fo = finding.FO %}
                                 {% endif %}
@@ -248,31 +246,24 @@
                                     </td>
                                     <td class="px-2 py-4 align-top font-mono text-sm text-slate-700 whitespace-nowrap w-28">{{ finding.nursing_diagnosis.ICNP_concept_id or '—' }}</td>
                                     
-                                    <td class="px-0 py-0 align-top border-l border-slate-100">
+                                    <td colspan="2" class="px-0 py-0 align-top border-l border-slate-100">
                                         <table class="min-w-full divide-y divide-slate-50">
                                             {% for intv in finding.interventions %}
-                                            <tr><td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ intv.term }}</td></tr>
+                                            <tr>
+                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug w-full">{{ intv.term }}</td>
+                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap w-28 bg-slate-50/20 align-top border-l border-slate-50">{{ intv.ICNP_concept_id or '—' }}</td>
+                                            </tr>
                                             {% endfor %}
                                         </table>
                                     </td>
-                                    <td class="px-0 py-0 align-top bg-slate-50/20 w-28">
-                                        <table class="min-w-full divide-y divide-slate-50">
-                                            {% for intv in finding.interventions %}
-                                            <tr><td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap">{{ intv.ICNP_concept_id or '—' }}</td></tr>
-                                            {% endfor %}
-                                        </table>
-                                    </td>
-                                    <td class="px-0 py-0 align-top border-l border-slate-100">
+
+                                    <td colspan="2" class="px-0 py-0 align-top border-l border-slate-100">
                                         <table class="min-w-full divide-y divide-slate-50">
                                             {% for goal in finding.goals %}
-                                            <tr><td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ goal.term }}</td></tr>
-                                            {% endfor %}
-                                        </table>
-                                    </td>
-                                    <td class="px-0 py-0 align-top bg-slate-50/20 w-28">
-                                        <table class="min-w-full divide-y divide-slate-50">
-                                            {% for goal in finding.goals %}
-                                            <tr><td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap">{{ goal.ICNP_concept_id or '—' }}</td></tr>
+                                            <tr>
+                                                <td class="px-3 py-2 text-base text-slate-700 leading-snug w-full">{{ goal.term }}</td>
+                                                <td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap w-28 bg-slate-50/20 align-top border-l border-slate-50">{{ goal.ICNP_concept_id or '—' }}</td>
+                                            </tr>
                                             {% endfor %}
                                         </table>
                                     </td>
