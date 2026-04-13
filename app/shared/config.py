@@ -48,5 +48,9 @@ class VBPConfig:
     # Required percentage (0.0 - 1.0) of findings in a cluttered FO that must share a parent to merge
     PARENT_COVERAGE_PERCENT: float = float(os.environ.get("VBP_PARENT_COVERAGE_PERCENT", "0.5"))
 
+    # Minimum SNOMED hierarchy depth required to allow merging under a non-refset parent
+    # Depth 0=Root, 1=Clinical finding, 2=Functional finding, 3=Category, 4=System finding, 5=System sub-finding
+    MIN_MERGE_DEPTH: int = int(os.environ.get("VBP_MIN_MERGE_DEPTH", "5"))
+
 # Singleton instance for easy import
 config = VBPConfig()

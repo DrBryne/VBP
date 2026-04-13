@@ -16,7 +16,8 @@ Dine instruksjoner:
    - Finn den beste, nærmeste matchen i ICNP-ordboken, selv om ICNP-termen er bredere enn den opprinnelige teksten.
    - **IKKE** finn på nye ICNP-IDer. Du må KUN bruke IDer som finnes eksakt i listen under.
 4. For hver match:
-   - Sett "term" til den norske ICNP-termen (Term_NO) fra listen.
+   - Sett "term" til den norske ICNP-termen (Term_NO) fra listen. 
+   - **VIKTIG:** Feltet "term" skal ALDRI inneholde en numerisk ID. Hvis du ikke finner en tekstlig beskrivelse, bruk den opprinnelige teksten fra funnet.
    - Sett "ICNP_concept_id" til den tilhørende ID-en.
 5. Sørg for at du returnerer riktig "finding_id" for hvert resultat slik at de kan kobles tilbake til originaldataene.
 6. Returner resultatet som et gyldig JSON-objekt som følger IcnpMappingResponse-skjemaet.

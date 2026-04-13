@@ -123,19 +123,15 @@ def create_fo_classifier():
 class ClinicalTaxonomist(BaseAgent):
     """
     A domain-specific agent that internally orchestrates Functional Area classification
-    and ICNP mapping sequentially.
+    and ICNP mapping sequentially. Runs specialized mappers safely in parallel so a
+    single failure (e.g. timeout) does not crash the entire taxonomy step.
     """
     def __init__(self, name: str = "clinical_taxonomist"):
         super().__init__(name=name)
         self._fo_classifier = create_fo_classifier()
-        self._icnp_mappers = ParallelAgent(
-            name="icnp_mappers",
-            sub_agents=[
-                create_diagnosis_taxonomist(),
-                create_intervention_taxonomist(),
-                create_goal_taxonomist(),
-            ]
-        )
+        self._diagnosis_taxonomist = create_diagnosis_taxonomist()
+        self._intervention_taxonomist = create_intervention_taxonomist()
+        self._goal_taxonomist = create_goal_taxonomist()
 
     @track_telemetry_span("Agent: ClinicalTaxonomist Mapping")
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
@@ -152,6 +148,7 @@ class ClinicalTaxonomist(BaseAgent):
 
         if not findings_json:
             return
+
         # Step 1: Functional Area Classification
         async for ev in self._fo_classifier.run_async(ctx):
             yield ev
@@ -185,9 +182,33 @@ class ClinicalTaxonomist(BaseAgent):
             types.Part.from_text(text="Map these findings to ICNP. Use the assigned_FO and context_trace for better accuracy:"),
             types.Part.from_text(text=json.dumps(guided_findings))
         ])
+
         # Inject the enriched context into the session
         ctx.session.events.append(Event(author="system", content=mapper_msg))
 
-        # Invoke mappers
-        async for ev in self._icnp_mappers.run_async(ctx):
-            yield ev
+        # Safely run mappers concurrently
+        from google.adk.agents.parallel_agent import _create_branch_ctx_for_sub_agent
+        import asyncio
+        from app.shared.logging import VBPLogger
+        local_logger = VBPLogger("taxonomist_mappers")
+
+        async def run_safe(agent: BaseAgent):
+            events = []
+            try:
+                sub_ctx = _create_branch_ctx_for_sub_agent(self, agent, ctx)
+                async for ev in agent.run_async(sub_ctx):
+                    events.append(ev)
+            except Exception as e:
+                local_logger.error(f"Mapper {agent.name} failed: {e}")
+            return events
+
+        # Gather results safely without crashing the whole process
+        results = await asyncio.gather(
+            run_safe(self._diagnosis_taxonomist),
+            run_safe(self._intervention_taxonomist),
+            run_safe(self._goal_taxonomist)
+        )
+
+        for events in results:
+            for ev in events:
+                yield ev

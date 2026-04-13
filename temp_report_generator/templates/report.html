@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkast Veiledende Behandlingsplan - {{ execution_summary.target_group }}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Custom scrollbar for FO list */
+        .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+    <script>
+        let _clickTimer = null;
+        function toggleEvidence(findingId) {
+            // Cancel any pending jump if user clicks rapidly
+            if (_clickTimer) {
+                clearTimeout(_clickTimer);
+                _clickTimer = null;
+                return; // Must be a double-click
+            }
+
+            _clickTimer = setTimeout(() => {
+                _clickTimer = null;
+                const selection = window.getSelection();
+                if (selection.toString().length > 0) return; // Don't toggle if selecting text
+
+                const evidenceRow = document.getElementById('evidence-row-' + findingId);
+                const icon = document.getElementById('icon-' + findingId);
+                
+                if (evidenceRow.classList.contains('hidden')) {
+                    evidenceRow.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(90deg)';
+                } else {
+                    evidenceRow.classList.add('hidden');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }, 250);
+        }
+
+        function openEvidenceModal(evidenceId) {
+            const modal = document.getElementById('evidence-modal');
+            const content = document.getElementById('modal-content');
+            const sourceData = document.getElementById('data-' + evidenceId);
+            
+            content.innerHTML = sourceData.innerHTML;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEvidenceModal() {
+            const modal = document.getElementById('evidence-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('evidence-modal');
+            if (event.target == modal) closeEvidenceModal();
+        }
+
+        // Scroll-spy logic for Sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -80% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('bg-indigo-50', 'text-indigo-700');
+                            link.classList.add('text-slate-600');
+                        });
+                        const activeLink = document.querySelector(`a[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.remove('text-slate-600');
+                            activeLink.classList.add('bg-indigo-50', 'text-indigo-700');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section[id]').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-[95rem] mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Utkast Veiledende Behandlingsplan</h1>
+                    <p class="text-lg text-slate-600">Målgruppe: <span class="font-semibold text-slate-800">{{ execution_summary.target_group }}</span></p>
+                </div>
+                <div class="text-right text-sm text-slate-500 space-y-1">
+                    <p class="font-medium text-slate-900">Rapport generert: {{ execution_summary.execution_end_time.strftime('%d.%m.%Y %H:%M') if execution_summary.execution_end_time.strftime else execution_summary.execution_end_time }}</p>
+                    <p>Dokumenter: <span class="font-bold text-slate-700">{{ execution_summary.total_files_in_uri }}</span> | Funn: <span class="font-bold text-slate-700">{{ execution_summary.total_synthesized_findings }}</span></p>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8 items-start relative">
+            
+            <!-- LEFT SIDEBAR -->
+            <aside class="hidden lg:block w-64 flex-shrink-0 sticky top-8 self-start">
+                <nav class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Innhold</h2>
+                    <ul class="space-y-1">
+                        <li><a href="#oversikt" class="nav-link flex items-center px-3 py-2.5 text-xs font-bold rounded-lg transition-colors">Dashboard</a></li>
+                        <li><a href="#kliniske-funn" class="nav-link flex items-center px-3 py-2.5 text-xs font-bold rounded-lg transition-colors">Kliniske funn</a></li>
+                        <li><a href="#bibliografi" class="nav-link flex items-center px-3 py-2.5 text-xs font-bold rounded-lg transition-colors">Bibliografi</a></li>
+                        <li><a href="#ekskluderte" class="nav-link flex items-center px-3 py-2.5 text-xs font-bold rounded-lg transition-colors">Ekskluderte</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="flex-grow w-full min-w-0 space-y-12">
+                
+                <!-- DASHBOARD -->
+                <section id="oversikt" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 scroll-mt-8">
+                    <h2 class="text-base font-bold text-slate-800 mb-5 border-b border-slate-100 pb-2">Sammendrag og Kunnskapsgrunnlag</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- FO Density -->
+                        <div>
+                            <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3">Funn per Funksjonsområde</h3>
+                            <div class="space-y-[3px]">
+                                {% for i, fo in dashboard.evidence_density.items() %}
+                                <div class="flex items-center">
+                                    <div class="w-8 text-[10px] font-bold text-slate-400 text-right pr-2">FO{{ i }}</div>
+                                    <div class="flex-grow h-[14px] bg-slate-50 rounded-sm overflow-hidden flex items-center relative pr-6">
+                                        <div class="h-full bg-indigo-600 transition-all duration-500" style="width: {{ fo.density }}%; opacity: {{ 0.15 + (fo.density / 100) * 0.85 }};"></div>
+                                        <span class="absolute left-2 text-[9px] font-medium text-slate-800 truncate mix-blend-multiply">{{ fo.name }}</span>
+                                        <span class="absolute right-1 text-[9px] font-bold text-slate-500">{{ fo.count }}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Pyramid -->
+                        <div class="flex flex-col">
+                            <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3 text-center">Kunnskapspyramiden</h3>
+                            <div class="w-full flex-grow flex flex-col items-center justify-end space-y-[2px] pb-2">
+                                {% for lvl, data in dashboard.knowledge_base.items() %}
+                                <div class="h-8 rounded-sm text-center flex items-center justify-center relative group transition-all"
+                                     style="width: {{ data.p_width }}; background-color: rgba(79, 70, 229, {{ data.opacity }});">
+                                    <div class="w-full px-2 flex justify-center items-center z-10 {% if data.opacity > 0.5 %}text-white{% else %}text-indigo-900{% endif %}">
+                                        <span class="text-[10px] font-bold truncate">{{ data.label }}: {{ data.count }}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Confidence -->
+                        <div class="flex flex-col gap-4">
+                            <div>
+                                <h3 class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-1 flex items-center justify-between">
+                                    Samlet Sikkerhet i Funn 
+                                    <span class="text-indigo-400 cursor-help" title="KI-generert estimat basert på bl.a. spesifisitet og sporing mot kildematerialet.">ⓘ</span>
+                                </h3>
+                                <p class="text-[9px] text-slate-400 mb-2">* KI-generert estimat.</p>
+                                <div class="flex h-[14px] bg-slate-100 rounded-sm overflow-hidden mb-2">
+                                    <div class="bg-emerald-500 h-full" style="width: {{ dashboard.certainty.high_pct }}%"></div>
+                                    <div class="bg-amber-400 h-full" style="width: {{ dashboard.certainty.med_pct }}%"></div>
+                                    <div class="bg-rose-400 h-full" style="width: {{ dashboard.certainty.low_pct }}%"></div>
+                                </div>
+                                <ul class="text-[10px] text-slate-600 space-y-1">
+                                    <li class="flex items-center justify-between"><div class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span> Høy</div><span class="font-bold text-slate-800">{{ dashboard.certainty.high }}</span></li>
+                                    <li class="flex items-center justify-between"><div class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-2"></span> Moderat</div><span class="font-bold text-slate-800">{{ dashboard.certainty.med }}</span></li>
+                                    <li class="flex items-center justify-between"><div class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-rose-400 mr-2"></span> Lav/Ukjent</div><span class="font-bold text-slate-800">{{ dashboard.certainty.low }}</span></li>
+                                </ul>
+                            </div>
+                            <div class="p-3 rounded-xl border border-indigo-50 bg-indigo-50/50 flex items-center justify-between mt-auto">
+                                <span class="text-[11px] font-semibold text-indigo-900 uppercase">Gradert Evidens</span>
+                                <div class="text-right">
+                                    <div class="text-2xl font-black text-indigo-600 leading-none">{{ dashboard.graded_evidence.count }}</div>
+                                    <div class="text-[9px] font-bold text-indigo-400 mt-1">av {{ dashboard.graded_evidence.total }} sitater</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FINDINGS TABLE -->
+                {% if synthesized_findings %}
+                <section id="kliniske-funn" class="scroll-mt-8">
+                    <h2 class="text-xl font-bold text-slate-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                        Oversikt over kliniske funn
+                    </h2>
+                    <p class="text-xs text-slate-400 mb-6 italic">Klikk på en rad for å åpne kildegrunnlaget. Dobbeltklikk for å markere og kopiere ICNP-koder.</p>
+                    
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden w-full overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider w-[22%]">FO / Sykepleierdiagnose</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28">ID</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider border-l border-slate-100">Intervensjoner</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28 border-l border-slate-100">ID</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider border-l border-slate-100">Mål</th>
+                                    <th class="px-3 py-3 text-left text-[11px] font-black text-slate-700 uppercase tracking-wider min-w-[110px] w-28 border-l border-slate-100">ID</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 bg-white">
+                                {% set ns = namespace(current_fo=None) %}
+                                {% for finding in synthesized_findings %}
+                                
+                                {% if finding.FO != ns.current_fo %}
+                                <tr class="border-t border-slate-200">
+                                    <td class="px-3 py-2 text-[10px] font-black text-indigo-800 uppercase tracking-widest text-center bg-indigo-50 border-r border-slate-200">
+                                        {{ finding.FO }}
+                                    </td>
+                                    <td class="bg-transparent border-r border-slate-100"></td>
+                                    <td class="bg-transparent border-r border-slate-100"></td>
+                                    <td class="bg-transparent border-r border-slate-100"></td>
+                                    <td class="bg-transparent border-r border-slate-100"></td>
+                                    <td class="bg-transparent"></td>
+                                </tr>
+                                {% set ns.current_fo = finding.FO %}
+                                {% endif %}
+
+                                <tr class="hover:bg-slate-50 transition-colors cursor-pointer group" onclick="toggleEvidence({{ loop.index }})">
+                                    <td class="px-3 py-4 align-top text-base font-bold text-slate-900 leading-snug flex items-start gap-2">
+                                        <svg id="icon-{{ loop.index }}" class="w-4 h-4 mt-0.5 text-slate-300 group-hover:text-indigo-500 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                        <span>{{ finding.nursing_diagnosis.term }}</span>
+                                    </td>
+                                    <td class="px-2 py-4 align-top font-mono text-sm text-slate-700 whitespace-nowrap w-28">{{ finding.nursing_diagnosis.ICNP_concept_id or '—' }}</td>
+                                    
+                                    <td class="px-0 py-0 align-top border-l border-slate-100">
+                                        <table class="min-w-full divide-y divide-slate-50">
+                                            {% for intv in finding.interventions %}
+                                            <tr><td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ intv.term }}</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                    <td class="px-0 py-0 align-top bg-slate-50/20 w-28">
+                                        <table class="min-w-full divide-y divide-slate-50">
+                                            {% for intv in finding.interventions %}
+                                            <tr><td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap">{{ intv.ICNP_concept_id or '—' }}</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                    <td class="px-0 py-0 align-top border-l border-slate-100">
+                                        <table class="min-w-full divide-y divide-slate-50">
+                                            {% for goal in finding.goals %}
+                                            <tr><td class="px-3 py-2 text-base text-slate-700 leading-snug">{{ goal.term }}</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                    <td class="px-0 py-0 align-top bg-slate-50/20 w-28">
+                                        <table class="min-w-full divide-y divide-slate-50">
+                                            {% for goal in finding.goals %}
+                                            <tr><td class="px-2 py-2 text-sm font-mono text-slate-700 whitespace-nowrap">{{ goal.ICNP_concept_id or '—' }}</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                
+                                <!-- ACCORDION CONTENT -->
+                                {% set outer_loop = loop.index %}
+                                <tr id="evidence-row-{{ outer_loop }}" class="hidden bg-slate-50/30">
+                                    <td colspan="6" class="px-8 py-8 border-t border-slate-100 shadow-inner">
+                                        <div class="max-w-5xl">
+                                            <div class="bg-indigo-50/50 rounded-xl p-6 border border-indigo-100 mb-8">
+                                                <h4 class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-4 italic">Kvalitetsvurdering (KI-estimat)</h4>
+                                                <ul class="space-y-3">
+                                                    <li class="flex items-start">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 mr-3 flex-shrink-0"></span>
+                                                        <p class="text-sm text-slate-700"><strong>Pålitelighet:</strong> {{ finding.certainty_desc }}</p>
+                                                    </li>
+                                                    <li class="flex items-start">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 mr-3 flex-shrink-0"></span>
+                                                        <p class="text-sm text-slate-700"><strong>Relevans:</strong> {{ finding.specificity_desc }}</p>
+                                                    </li>
+                                                    <li class="flex items-start">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 mr-3 flex-shrink-0"></span>
+                                                        <p class="text-sm text-slate-700"><strong>Konkretisering:</strong> {{ finding.actionability_desc }}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="space-y-4">
+                                                <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 italic">Kildehenvisninger (Kompakt)</h4>
+                                                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                                                    <table class="min-w-full divide-y divide-slate-100">
+                                                        <thead class="bg-slate-50/50">
+                                                            <tr>
+                                                                <th class="px-4 py-2 text-left text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Nivå</th>
+                                                                <th class="px-4 py-2 text-left text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Tittel og kildeinfo</th>
+                                                                <th class="px-4 py-2 text-right text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Detaljer</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-slate-100">
+                                                            {% for evidence in finding.supporting_evidence %}
+                                                                {% set doc = source_documents | selectattr("document_id", "equalto", evidence.document_id) | first %}
+                                                                <tr class="hover:bg-slate-50 transition-colors">
+                                                                    <td class="px-4 py-3 align-top w-24">
+                                                                        <span class="px-1.5 py-0.5 rounded text-[9px] font-bold border bg-slate-50 text-slate-500 border-slate-200 whitespace-nowrap">{{ doc.evidence_level.split(':')[0] if doc else 'N/A' }}</span>
+                                                                    </td>
+                                                                    <td class="px-4 py-3 align-top">
+                                                                        <div class="text-[11px] font-bold text-slate-800 leading-tight mb-1">{{ doc.title if doc else 'Ukjent tittel' }} ({{ doc.publication_year if doc else '?' }})</div>
+                                                                        <div class="text-[9px] font-mono text-slate-400">DOI: {{ doc.doi if doc else '-' }}</div>
+                                                                    </td>
+                                                                    <td class="px-4 py-3 align-top text-right w-24">
+                                                                        <button onclick="event.stopPropagation(); openEvidenceModal('{{ outer_loop }}-{{ loop.index }}')" class="px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-[10px] font-black uppercase hover:bg-indigo-100 transition-colors border border-indigo-100/50">Info</button>
+                                                                        
+                                                                        <!-- Hidden data for modal -->
+                                                                        <div id="data-{{ outer_loop }}-{{ loop.index }}" class="hidden text-left">
+                                                                            <div class="mb-8 border-b border-slate-100 pb-6">
+                                                                                <div class="flex justify-between items-start mb-4">
+                                                                                    <h2 class="text-xl font-black text-indigo-950 m-0 leading-tight pr-4">{{ doc.title if doc else 'Ukjent tittel' }}</h2>
+                                                                                    <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-[10px] font-bold whitespace-nowrap border border-indigo-200">{{ doc.evidence_level if doc else 'Ukjent' }}</span>
+                                                                                </div>
+                                                                                <div class="text-[11px] text-slate-500 font-mono uppercase tracking-wider">Publisert: {{ doc.publication_year if doc else '?' }} | DOI: {{ doc.doi if doc else '-' }}</div>
+                                                                            </div>
+
+                                                                            {% if doc and doc.reasoning_trace %}
+                                                                            <div class="mb-8 bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                                                                                <h4 class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-3 flex items-center">
+                                                                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                                                    KI-vurdering av kildevalg (Reasoning)
+                                                                                </h4>
+                                                                                <p class="text-sm text-slate-700 italic leading-relaxed m-0">{{ doc.reasoning_trace }}</p>
+                                                                            </div>
+                                                                            {% endif %}
+
+                                                                            <div class="space-y-6">
+                                                                                <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center">
+                                                                                    <svg class="w-4 h-4 mr-2 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                                                                                    Støttende sitater for dette funnet
+                                                                                </h4>
+                                                                                {% for quote in evidence.quotes %}
+                                                                                <blockquote class="bg-slate-50 p-5 rounded-xl border-l-4 border-indigo-200 text-sm text-slate-700 m-0 leading-relaxed shadow-sm">"{{ quote }}"</blockquote>
+                                                                                {% endfor %}
+                                                                            </div>
+
+                                                                            {% if evidence.evidence_grade or evidence.recommendation_strength %}
+                                                                            <div class="mt-8 pt-6 border-t border-slate-100 flex items-center space-x-3">
+                                                                                {% if evidence.evidence_grade %}
+                                                                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded border border-emerald-200 uppercase tracking-wider">Evidens: {{ evidence.evidence_grade }}</span>
+                                                                                {% endif %}
+                                                                                {% if evidence.recommendation_strength %}
+                                                                                <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded border border-indigo-200 uppercase tracking-wider">Styrke: {{ evidence.recommendation_strength }}</span>
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            {% endif %}
+
+                                                                            {% if doc and doc.http_uri %}
+                                                                            <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end">
+                                                                                <a href="{{ doc.http_uri }}" target="_blank" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 transition-shadow shadow-lg shadow-indigo-200 no-underline group">
+                                                                                    Åpne kildedokument
+                                                                                    <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                                                                </a>
+                                                                            </div>
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {% endif %}
+
+                <!-- BIBLIOGRAPHY -->
+                <section id="bibliografi" class="scroll-mt-8">
+                    <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Bibliografi
+                    </h2>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        <table class="min-w-full divide-y divide-slate-200 text-sm">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tittel</th>
+                                    <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-24 text-center">År</th>
+                                    <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider w-40">Evidensnivå</th>
+                                    <th class="px-6 py-3 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">Kilde</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                {% for doc in source_documents %}
+                                <tr id="doc-{{ doc.document_id }}" class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="font-semibold text-slate-900 mb-1">{{ doc.title }}</div>
+                                        <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter">DOI: {{ doc.doi }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-center text-slate-600 font-medium">{{ doc.publication_year }}</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-slate-50 text-slate-600 border-slate-100">{{ doc.evidence_level }}</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        {% if doc.http_uri %}
+                                        <a href="{{ doc.http_uri }}" target="_blank" class="text-xs font-bold text-indigo-600 hover:text-indigo-800">Åpne kilde</a>
+                                        {% else %}<span class="text-xs text-slate-300 italic">N/A</span>{% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- EXCLUDED -->
+                <section id="ekskluderte" class="scroll-mt-8 pb-20">
+                    <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Ekskluderte dokumenter
+                    </h2>
+                    {% if excluded_documents %}
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                        <table class="min-w-full divide-y divide-slate-200 text-sm">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tittel / Kilde</th>
+                                    <th class="px-6 py-3 text-left text-[10px] font-bold text-slate-400 uppercase tracking-wider">Årsak</th>
+                                    <th class="px-6 py-3 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider w-32">Kilde</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                {% for doc in excluded_documents %}
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="font-semibold text-slate-900 mb-1">{{ doc.title }}</div>
+                                        <div class="mono text-[10px] text-slate-400 uppercase tracking-tighter">URI: {{ doc.source_uri.split('/')[-1] }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-600 leading-relaxed">{{ doc.justification }}</td>
+                                    <td class="px-6 py-4 text-center">
+                                        {% if doc.http_uri %}<a href="{{ doc.http_uri }}" target="_blank" class="text-xs font-bold text-indigo-600 hover:text-indigo-800">Åpne</a>{% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-6 text-slate-500 text-sm text-center italic">Ingen dokumenter ekskludert.</div>
+                    {% endif %}
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- EVIDENCE MODAL -->
+    <div id="evidence-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <h3 class="text-lg font-black text-slate-800 uppercase tracking-widest">Kildehenvisning og Detaljer</h3>
+                <button onclick="closeEvidenceModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-2 hover:bg-slate-200 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="modal-content" class="p-10 overflow-y-auto prose prose-slate max-w-none">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

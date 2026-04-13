@@ -17,7 +17,8 @@ from app.shared.models import (
     DiagnosisMappingResponse,
     FunctionalAreaResponse,
 )
-from app.shared.processing import load_valid_icnp_ids, safe_parse_json
+from app.shared.taxonomy import load_valid_icnp_ids
+from app.shared.parsing_utils import safe_parse_json
 
 # A selection of challenging, highly specific raw findings from the VBP run
 TEST_FINDINGS = [

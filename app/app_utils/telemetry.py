@@ -99,17 +99,19 @@ def setup_telemetry() -> str | None:
     # 1. Configure Cloud/Local Exporters
     if os.environ.get("AGENT_ENGINE_ID") or os.environ.get("GOOGLE_CLOUD_PROJECT"):
         try:
-            from opentelemetry.exporter.cloud_logging import CloudLoggingExporter
             from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
-
-            tracer_provider.add_span_processor(BatchSpanProcessor(CloudTraceSpanExporter()))
-            logger_provider.add_log_record_processor(BatchLogRecordProcessor(CloudLoggingExporter()))
-
-            logging.info("OpenTelemetry Cloud Trace and Cloud Logging initialized.")
+            
+            # Use SimpleSpanProcessor for Cloud Trace to avoid batching delays 
+            # and minimize 'DeadlineExceeded' risks during high-concurrency runs.
+            tracer_provider.add_span_processor(SimpleSpanProcessor(CloudTraceSpanExporter()))
+            
+            # NOTE: CloudLoggingExporter is disabled here to prevent gRPC congestion
+            # and timeout errors (DeadlineExceeded). On Agent Engine, logs are 
+            # automatically captured from stdout/stderr.
+            logging.info("OpenTelemetry Cloud Trace initialized. (Cloud Logging bypassed for performance)")
         except ImportError:
             logging.warning("Cloud Exporters not found. Falling back to local logging.")
             tracer_provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
-            logger_provider.add_log_record_processor(BatchLogRecordProcessor(ConsoleLogExporter()))
     else:
         # Local development fallback
         tracer_provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))

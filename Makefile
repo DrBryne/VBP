@@ -48,6 +48,7 @@ deploy: requirements
 requirements:
 	@echo "📦 Generating strict requirements.txt..."
 	uv export --format requirements-txt --no-dev --no-editable --no-hashes --no-emit-project > app/app_utils/.requirements.txt
+	sed -i 's/^google-cloud-aiplatform==/google-cloud-aiplatform\[agent-engines\]==/g' app/app_utils/.requirements.txt
 
 # Alias for 'make deploy' for backward compatibility
 backend: deploy

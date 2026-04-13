@@ -16,10 +16,15 @@ from app.app_utils.telemetry import setup_telemetry, track_telemetry_span
 # 1. Critical Initialization
 setup_telemetry()
 
+from app.shared.config import config
+
+# CRITICAL: Set the global model location BEFORE importing the ADK agents
+# so that the GenAI SDK Client is instantiated with the correct location (global).
+os.environ["GOOGLE_CLOUD_LOCATION"] = config.PREVIEW_MODEL_LOCATION
+
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
 from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
-from app.shared.config import config
 from app.shared.consolidation import (
     finalize_synthesis,
     group_findings,

@@ -45,12 +45,12 @@ def validate_taxonomy(
             if mapping_field and mapping_field.term:
                 concept_id = mapping_field.ICNP_concept_id
                 if concept_id and concept_id not in valid_icnp_ids:
-                    taxonomy_error_count += 1
-                    logger.warning(
-                        f"[Taxonomy Validation] Hallucinated ICNP ID '{concept_id}' removed in {filename}.",
+                    # We no longer clear the ID immediately. We flag it as 'Out-of-Refset'
+                    # and let the Consolidator attempt enrichment via the Australian FHIR API.
+                    logger.info(
+                        f"[Taxonomy Validation] ID '{concept_id}' is not in local Norwegian Refsets. Preserving for enrichment.",
                         field=field_name, finding_id=current_f_id
                     )
-                    concept_id = ""
                 return MappedTerm(term=mapping_field.term, ICNP_concept_id=concept_id)
             return MappedTerm(term=orig_val, ICNP_concept_id="")
 

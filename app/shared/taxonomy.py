@@ -83,3 +83,17 @@ def is_valid_fo(fo_string: str) -> bool:
 def get_default_fo() -> str:
     """Returns the default 'Other' category."""
     return "12. Annet/legedelegerte aktiviteter"
+
+# Universal Nursing Standards (Generic Baseline)
+# These IDs represent actions that are common to all nursing care and should be 
+# pruned from specialized templates if higher-specificity findings exist.
+GENERIC_NURSING_IDS = {
+    "103705002", # Observasjon av pasientstatus
+    "392134007", # Handtering av helsehjelp
+    "406163004", # Dokumentasjon
+    "304548000", # Undervisning (Generic)
+    "408912004", # Forebygging av infeksjon
+    "225302008", # Handhygiene
+    "386414004", # Sjekking av vitale tegn
+    "225358003", # Sørge for trygt miljø
+}
