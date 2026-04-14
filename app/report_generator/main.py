@@ -52,6 +52,18 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
     # Prepare the context
     context = synthesis.model_dump()
 
+    # Inject embedded CSS to remove external CDN dependency
+    try:
+        css_path = os.path.join(template_dir, "compiled_tailwind.css")
+        if os.path.exists(css_path):
+            with open(css_path, "r", encoding="utf-8") as f:
+                context["embedded_css"] = f.read()
+        else:
+            context["embedded_css"] = "/* Compiled CSS not found */"
+    except Exception as e:
+        print(f"Error loading compiled CSS: {e}")
+        context["embedded_css"] = "/* Error loading CSS */"
+
     # Ensure Enums are converted to strings for the template
     for finding in context.get('synthesized_findings', []):
         if hasattr(finding.get('FO'), 'value'):
@@ -68,6 +80,135 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
             return 999
 
     context['synthesized_findings'].sort(key=get_fo_sort_key)
+
+    # DASHBOARD LOGIC
+    # 1. Evidence Density (FOs 1-12)
+    fo_names = {
+        1: "Kommunikasjon/sanser",
+        2: "Kunnskap/utvikling/psykisk",
+        3: "Respirasjon/sirkulasjon",
+        4: "Ernæring/væske/elektrolyttbalanse",
+        5: "Eliminasjon",
+        6: "Hud/vev/sår",
+        7: "Aktivitet/funksjonsstatus",
+        8: "Smerte/søvn/hvile/velvære",
+        9: "Seksualitet/reproduksjon",
+        10: "Sosiale forhold/miljø",
+        11: "Åndelig/kulturelt/livsavslutning",
+        12: "Annet/legedelegerte aktiviteter"
+    }
+    
+    fo_counts = {i: {'name': name, 'count': 0, 'density': 0} for i, name in fo_names.items()}
+    total_findings = len(context.get('synthesized_findings', []))
+    certainty_counts = {'Høy': 0, 'Moderat': 0, 'Lav': 0, 'Ukjent': 0}
+
+    for finding in context.get('synthesized_findings', []):
+        fo_str = str(finding.get('FO', ''))
+        try:
+            # Robust extraction of the numeric prefix
+            fo_num = int(fo_str.split('.')[0])
+            if fo_num in fo_counts:
+                fo_counts[fo_num]['count'] += 1
+        except:
+            pass
+            
+        cert = finding.get('certainty_level', 'Ukjent')
+        if cert in ['Høy', 'høy', 'Hoy', 'hoy']: certainty_counts['Høy'] += 1
+        elif cert in ['Moderat', 'moderat']: certainty_counts['Moderat'] += 1
+        elif cert in ['Lav', 'lav']: certainty_counts['Lav'] += 1
+        else: certainty_counts['Ukjent'] += 1
+
+    max_fo_count = max([data['count'] for data in fo_counts.values()]) if total_findings > 0 else 1
+    for i in fo_counts:
+        fo_counts[i]['density'] = (fo_counts[i]['count'] / max_fo_count * 100) if max_fo_count > 0 else 0
+
+    # 2. Knowledge Base & Trust Metrics
+    evidence_levels = {
+        'Nivå 5': {'label': 'Systembaser', 'count': 0, 'p_width': '50%'},
+        'Nivå 4': {'label': 'Kliniske oppslagsverk', 'count': 0, 'p_width': '60%'},
+        'Nivå 3': {'label': 'Retningslinjer/prosedyrer', 'count': 0, 'p_width': '70%'},
+        'Nivå 2': {'label': 'Systematiske oversikter', 'count': 0, 'p_width': '80%'},
+        'Nivå 1': {'label': 'Enkeltstudier', 'count': 0, 'p_width': '90%'},
+        'Nivå 0': {'label': 'Annet / Ugradert', 'count': 0, 'p_width': '100%'},
+    }
+    
+    total_docs = len(context.get('source_documents', []))
+    for doc in context.get('source_documents', []):
+        level_str = doc.get('evidence_level', '')
+        if 'Nivå 5' in level_str: evidence_levels['Nivå 5']['count'] += 1
+        elif 'Nivå 4' in level_str: evidence_levels['Nivå 4']['count'] += 1
+        elif 'Nivå 3' in level_str: evidence_levels['Nivå 3']['count'] += 1
+        elif 'Nivå 2' in level_str: evidence_levels['Nivå 2']['count'] += 1
+        elif 'Nivå 1' in level_str: evidence_levels['Nivå 1']['count'] += 1
+        else: evidence_levels['Nivå 0']['count'] += 1
+        
+    max_ev = max([data['count'] for data in evidence_levels.values()]) if total_docs > 0 else 1
+    for lvl in evidence_levels:
+        evidence_levels[lvl]['pct'] = (evidence_levels[lvl]['count'] / total_docs * 100) if total_docs else 0
+        evidence_levels[lvl]['opacity'] = 0.2 + (evidence_levels[lvl]['count'] / max_ev) * 0.8 if max_ev > 0 else 0
+
+    graded_evidence_count = 0
+    total_evidence_count = 0
+    for finding in context.get('synthesized_findings', []):
+        for evidence in finding.get('supporting_evidence', []):
+            total_evidence_count += len(evidence.get('quotes', []))
+            if evidence.get('evidence_grade') or evidence.get('recommendation_strength'):
+                graded_evidence_count += len(evidence.get('quotes', []))
+                
+    graded_pct = (graded_evidence_count / total_evidence_count * 100) if total_evidence_count else 0
+    
+    # 3. Descriptive Quality Strings
+    def get_certainty_desc(level):
+        level = str(level).lower()
+        if 'høy' in level or 'hoy' in level:
+            return "Funnene er direkte og entydig beskrevet i kildematerialet, med lite rom for tolkning."
+        if 'moderat' in level:
+            return "Funnene er underbygget av kildene, men kan kreve noe faglig tolkning eller kontekstualisering."
+        return "Funnene er mer indirekte utledet fra kildene, og bør vurderes nøye opp mot øvrig klinisk erfaring."
+
+    def get_specificity_desc(score):
+        try:
+            score = float(score)
+            if score >= 9: return "Innholdet er høyt spesialisert og skreddersydd for denne spesifikke pasientgruppen."
+            if score >= 7: return "Innholdet er i stor grad rettet mot denne pasientgruppen, men inneholder også mer generelle elementer."
+            if score >= 4: return "Innholdet er delvis relevant for målgruppen, men er i hovedsak av generell klinisk natur."
+            return "Innholdet er av svært generell karakter og gjelder for de fleste pasientkategorier."
+        except:
+            return "Spesifisitet er ikke vurdert."
+
+    def get_actionability_desc(score):
+        try:
+            score = float(score)
+            if score >= 9: return "Tiltakene er svært konkrete og kan iverksettes direkte uten behov for omfattende lokal tilpasning."
+            if score >= 7: return "Tiltakene er tydelig beskrevet og gir gode føringer for praktisk gjennomføring."
+            if score >= 4: return "Tiltakene gir en overordnet retning, men krever lokal vurdering og konkretisering før iverksettelse."
+            return "Tiltakene er på et prinsipielt nivå og krever betydelig faglig tolkning og planlegging."
+        except:
+            return "Tiltaksmulighet er ikke vurdert."
+
+    for finding in context.get('synthesized_findings', []):
+        finding['certainty_desc'] = get_certainty_desc(finding.get('certainty_level'))
+        finding['specificity_desc'] = get_specificity_desc(finding.get('avg_specificity', 0))
+        finding['actionability_desc'] = get_actionability_desc(finding.get('avg_actionability', 0))
+
+    context['dashboard'] = {
+        'evidence_density': fo_counts,
+        'knowledge_base': evidence_levels,
+        'graded_evidence': {
+            'count': graded_evidence_count,
+            'total': total_evidence_count,
+            'pct': round(graded_pct, 1)
+        },
+        'certainty': {
+            'high': certainty_counts['Høy'],
+            'med': certainty_counts['Moderat'],
+            'low': certainty_counts['Lav'] + certainty_counts['Ukjent'],
+            'high_pct': round((certainty_counts['Høy'] / total_findings * 100) if total_findings else 0, 1),
+            'med_pct': round((certainty_counts['Moderat'] / total_findings * 100) if total_findings else 0, 1),
+            'low_pct': round(((certainty_counts['Lav'] + certainty_counts['Ukjent']) / total_findings * 100) if total_findings else 0, 1)
+        }
+    }
+    # END DASHBOARD LOGIC
 
     # Convert GCS URIs to HTTP links
     for doc in context.get('source_documents', []):
