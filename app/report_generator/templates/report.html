@@ -18,7 +18,7 @@
         .scrollbar-thin::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
     <script>
-        let _clickTimer = null;
+        var _clickTimer = null;
         function toggleEvidence(findingId) {
             // Cancel any pending jump if user clicks rapidly
             if (_clickTimer) {
@@ -27,13 +27,13 @@
                 return; // Must be a double-click
             }
 
-            _clickTimer = setTimeout(() => {
+            _clickTimer = setTimeout(function() {
                 _clickTimer = null;
-                const selection = window.getSelection();
+                var selection = window.getSelection();
                 if (selection.toString().length > 0) return; // Don't toggle if selecting text
 
-                const evidenceRow = document.getElementById('evidence-row-' + findingId);
-                const icon = document.getElementById('icon-' + findingId);
+                var evidenceRow = document.getElementById('evidence-row-' + findingId);
+                var icon = document.getElementById('icon-' + findingId);
                 
                 if (evidenceRow.classList.contains('hidden')) {
                     evidenceRow.classList.remove('hidden');
@@ -46,9 +46,9 @@
         }
 
         function openEvidenceModal(evidenceId) {
-            const modal = document.getElementById('evidence-modal');
-            const content = document.getElementById('modal-content');
-            const sourceData = document.getElementById('data-' + evidenceId);
+            var modal = document.getElementById('evidence-modal');
+            var content = document.getElementById('modal-content');
+            var sourceData = document.getElementById('data-' + evidenceId);
             
             content.innerHTML = sourceData.innerHTML;
             modal.classList.remove('hidden');
@@ -56,44 +56,49 @@
         }
 
         function closeEvidenceModal() {
-            const modal = document.getElementById('evidence-modal');
+            var modal = document.getElementById('evidence-modal');
             modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
         window.onclick = function(event) {
-            const modal = document.getElementById('evidence-modal');
+            var modal = document.getElementById('evidence-modal');
             if (event.target == modal) closeEvidenceModal();
         }
 
-        // Scroll-spy logic for Sidebar
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
+        // Scroll-spy logic for Sidebar (Legacy-Safe)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!('IntersectionObserver' in window)) return;
+
+            var observerOptions = {
                 root: null,
                 rootMargin: '-10% 0px -80% 0px',
                 threshold: 0
             };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+            var observer = new IntersectionObserver(function(entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    var entry = entries[i];
                     if (entry.isIntersecting) {
-                        const id = entry.target.id;
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('bg-indigo-50', 'text-indigo-700');
-                            link.classList.add('text-slate-600');
-                        });
-                        const activeLink = document.querySelector(`a[href="#${id}"]`);
+                        var id = entry.target.id;
+                        var navLinks = document.querySelectorAll('.nav-link');
+                        for (var j = 0; j < navLinks.length; j++) {
+                            navLinks[j].classList.remove('bg-indigo-50', 'text-indigo-700');
+                            navLinks[j].classList.add('text-slate-600');
+                        }
+                        var activeLink = document.querySelector('a[href="#' + id + '"]');
                         if (activeLink) {
                             activeLink.classList.remove('text-slate-600');
                             activeLink.classList.add('bg-indigo-50', 'text-indigo-700');
                         }
                     }
-                });
+                }
             }, observerOptions);
 
-            document.querySelectorAll('section[id]').forEach(section => {
-                observer.observe(section);
-            });
+            var sections = document.querySelectorAll('section[id]');
+            for (var k = 0; k < sections.length; k++) {
+                observer.observe(sections[k]);
+            }
         });
     </script>
 </head>
