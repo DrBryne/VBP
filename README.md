@@ -1,83 +1,72 @@
-# vbp
+# VBP - Veiledende Behandlingsplan (Clinical Synthesis Engine)
 
-
-Agent generated with [`googleCloudPlatform/agent-starter-pack`](https://github.com/GoogleCloudPlatform/agent-starter-pack) version `0.40.1`
+An automated clinical synthesis engine designed to process large volumes of nursing literature and generate condensed, evidence-based nursing plans. It bridges the gap between academic research and bedside practice by translating raw literature into standardized ICNP terminology. Built using the Google ADK (Agent Development Kit).
 
 ## Project Structure
 
 ```
 vbp/
-├── app/         # Core agent code
-│   ├── agent.py               # Main agent logic
-│   ├── agent_engine_app.py    # Agent Engine application logic
-│   └── app_utils/             # App utilities and helpers
-├── tests/                     # Unit, integration, and load tests
-├── GEMINI.md                  # AI-assisted development guide
-├── Makefile                   # Development commands
-└── pyproject.toml             # Project dependencies
+├── app/                        # Core agent code
+│   ├── agent.py                # Main orchestrator logic and routers
+│   ├── agent_engine_app.py     # Vertex AI Agent Engine deployment configuration
+│   ├── agents/                 # Specialized sub-agents
+│   │   ├── clinical_auditor/   # Evaluates findings for clinical safety and specificity
+│   │   ├── clinical_extractor/ # Extracts findings from raw PDFs/XMLs
+│   │   ├── clinical_taxonomist/# Maps natural language to ICNP standard terms
+│   │   └── report_chat/        # Conversational agent for querying synthesis results
+│   ├── app_utils/              # Deployment and telemetry utilities
+│   ├── report_generator/       # Automated HTML dashboard generation
+│   └── shared/                 # Shared models, taxonomy logic, and GCS tools
+├── docs/                       # Project specifications and documentation
+├── frontend/                   # Streamlit Chat UI for the ReportChatAgent
+├── local_data/                 # Local outputs and artifacts (ignored in git)
+├── scripts/                    # Utility and analysis scripts
+│   ├── analysis/               # Scripts for analyzing synthesis runs and taxonomies
+│   └── utils/                  # Diagnostic and test scripts
+├── tests/                      # Unit and integration tests
+├── Makefile                    # Build, test, and deployment commands
+└── pyproject.toml              # Python project configuration
 ```
-
-> 💡 **Tip:** Use [Gemini CLI](https://github.com/google-gemini/gemini-cli) for AI-assisted development - project context is pre-configured in `GEMINI.md`.
 
 ## Requirements
 
-Before you begin, ensure you have:
-- **uv**: Python package manager (used for all dependency management in this project) - [Install](https://docs.astral.sh/uv/getting-started/installation/) ([add packages](https://docs.astral.sh/uv/concepts/dependencies/) with `uv add <package>`)
+- **uv**: Python package manager - [Install](https://docs.astral.sh/uv/getting-started/installation/)
 - **Google Cloud SDK**: For GCP services - [Install](https://cloud.google.com/sdk/docs/install)
-- **make**: Build automation tool - [Install](https://www.gnu.org/software/make/) (pre-installed on most Unix-based systems)
+- **make**: Build automation tool
 
+## Setup & Quick Start
 
-## Quick Start
-
-Install required packages and launch the local development environment:
-
+1. Install dependencies:
 ```bash
-make install && make playground
+make install
 ```
 
-## Commands
+2. Run tests to ensure everything is working:
+```bash
+uv run pytest
+```
 
-| Command              | Description                                                                                 |
-| -------------------- | ------------------------------------------------------------------------------------------- |
-| `make install`       | Install dependencies using uv                                                               |
-| `make playground`    | Launch local development environment                                                        |
-| `make lint`          | Run code quality checks                                                                     |
-| `make test`          | Run unit and integration tests                                                              |
-| `make deploy`        | Deploy agent to Agent Engine                                                                |
-| `make register-gemini-enterprise` | Register deployed agent to Gemini Enterprise                                  |
+3. Launch the development playground (for backend agent testing):
+```bash
+make playground
+```
 
-For full command options and usage, refer to the [Makefile](Makefile).
-
-## 🛠️ Project Management
-
-| Command | What It Does |
-|---------|--------------|
-| `uvx agent-starter-pack enhance` | Add CI/CD pipelines and Terraform infrastructure |
-| `uvx agent-starter-pack setup-cicd` | One-command setup of entire CI/CD pipeline + infrastructure |
-| `uvx agent-starter-pack upgrade` | Auto-upgrade to latest version while preserving customizations |
-| `uvx agent-starter-pack extract` | Extract minimal, shareable version of your agent |
-
----
-
-## Development
-
-Edit your agent logic in `app/agent.py` and test with `make playground` - it auto-reloads on save.
-See the [development guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/development-guide) for the full workflow.
-
-For help with connectivity or environment issues, see the [Troubleshooting Guide](TROUBLESHOOTING.md).
+4. Launch the Conversational UI (Streamlit):
+```bash
+make run-ui
+```
 
 ## Deployment
 
+Deploying the backend to Vertex AI Agent Engine:
 ```bash
-gcloud config set project <your-project-id>
 make deploy
 ```
 
-To add CI/CD and Terraform, run `uvx agent-starter-pack enhance`.
-To set up your production infrastructure, run `uvx agent-starter-pack setup-cicd`.
-See the [deployment guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/deployment) for details.
+Deploying the frontend UI to Google Cloud Run:
+```bash
+make deploy-ui
+```
 
-## Observability
-
-Built-in telemetry exports to Cloud Trace, BigQuery, and Cloud Logging.
-See the [observability guide](https://googlecloudplatform.github.io/agent-starter-pack/guide/observability) for queries and dashboards.
+## Documentation
+For deeper architectural details, read the [Design Specification](docs/DESIGN_SPEC.md).

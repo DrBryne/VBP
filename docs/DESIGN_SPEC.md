@@ -7,7 +7,10 @@ The VBP (Veiledende Behandlingsplan) Workflow is an automated clinical synthesis
 
 ## 🏛️ System Architecture
 
-### 1. Root Orchestrator (`VbpWorkflowAgent`)
+### 1. The Root Router (`RootRouter`)
+The entry point of the ADK application. It inspects incoming messages and session state to dynamically route traffic to either the batch processing pipeline or the conversational chat interface.
+
+### 2. Root Orchestrator (`VbpWorkflowAgent`)
 The central brain of the system. It manages the end-to-end lifecycle of a synthesis run:
 - **Discovery**: Scans GCS buckets for PDF/XML clinical documents.
 - **Parallelism**: Manages a high-concurrency pipeline (default 25 documents) using `asyncio`.
@@ -15,7 +18,7 @@ The central brain of the system. It manages the end-to-end lifecycle of a synthe
 - **Consolidation**: Triggers the final semantic merge of findings from all sources.
 - **Handover**: Implements a **Link-Based Handover** pattern, saving massive results to GCS and returning lightweight manifests to prevent network timeouts.
 
-### 2. The Document Pipeline
+### 3. The Document Pipeline
 For every document, a four-stage intelligent process is executed:
 
 #### Stage 1: Extraction (`ClinicalExtractor`)
@@ -35,6 +38,12 @@ For every document, a four-stage intelligent process is executed:
 #### Stage 4: Semantic Validation (`Consolidator`)
 - **Deduplication**: Uses a **FHIR Terminology Server** (CSIRO) to merge sub-concepts into their parents.
 - **Local Fallback**: Utilizes a persistent GCS cache and local Norwegian mappings to ensure speed and accuracy even when APIs are throttled.
+
+### 4. Interactive Synthesis Interface (`ReportChatAgent` & UI)
+Once a batch run is complete, the `ReportChatAgent` provides an interactive conversational interface to the resulting synthesis:
+- **Streamlit UI**: A frontend application (`frontend/main.py`) that sends `[CHAT]` prefixed messages to the ADK backend to activate chat mode.
+- **Dynamic Context Loading**: The agent uses tools (`read_synthesis_report`) to fetch and filter the massive GCS JSON artifacts dynamically, bringing only relevant findings into the context window to prevent token exhaustion.
+- **Evidence Verification**: The agent can look up original source document quotes dynamically to verify any synthesized recommendation for the user.
 
 ---
 
