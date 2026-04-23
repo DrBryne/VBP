@@ -13,7 +13,7 @@ def create_clinical_auditor():
 
     config = types.GenerateContentConfig(
         temperature=1.0,  # Gemini 3.0 models operate best at default temperature
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 initial_delay=2,

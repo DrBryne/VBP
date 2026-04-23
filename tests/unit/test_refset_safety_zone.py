@@ -16,6 +16,9 @@ async def test_refset_and_depth_gatekeeper():
     2. Tests that non-Refset terms merge ONLY if deep (Depth 5+).
     3. Tests that shallow non-Refset terms (Depth 4) are BLOCKED.
     """
+    taxonomy_cache["concepts"].clear()
+    norwegian_refset_ids.clear()
+
     # 1. Setup Mock Taxonomy Cache
     taxonomy_cache["concepts"] = {
         # Pair 1: Shallow Refset terms -> SHOULD MERGE

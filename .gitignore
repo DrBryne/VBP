@@ -26,3 +26,4 @@ tests/**/results/
 
 # Legacy files
 trashcan/
+local_data/

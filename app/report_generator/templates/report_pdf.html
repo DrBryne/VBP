@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Rapport - {{ execution_summary.target_group }}</title>
+    <style>
+        {{ embedded_css | safe }}
+        
+        @page {
+            size: A4;
+            margin: 2cm;
+            @bottom-right {
+                content: "Side " counter(page) " av " counter(pages);
+                font-size: 9pt;
+                color: #94a3b8;
+            }
+            @bottom-left {
+                content: "VBP Rapport - {{ execution_summary.target_group }}";
+                font-size: 8pt;
+                color: #94a3b8;
+            }
+        }
+
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: white; color: #0f172a; }
+        .mono { font-family: 'Courier New', Courier, monospace; }
+        
+        /* Forces sections to start on new pages if needed */
+        .page-break { page-break-before: always; }
+        .no-break { page-break-inside: avoid; }
+
+        /* Links for navigation */
+        a { color: #4f46e5; text-decoration: none; }
+        .back-to-top { font-size: 8pt; font-weight: bold; text-transform: uppercase; color: #94a3b8; float: right; }
+
+        /* Adjusted Table for PDF (no JS toggles) */
+        .finding-row { border-top: 1px solid #e2e8f0; }
+        .evidence-section { background-color: #f8fafc; padding: 1rem; border-left: 4px solid #4f46e5; margin-top: 0.5rem; }
+    </style>
+</head>
+<body class="p-0">
+    <!-- FRONT PAGE / NAVIGATION -->
+    <header class="mb-12 border-b-4 border-indigo-600 pb-8" id="top">
+        <h1 class="text-3xl font-black text-slate-900 mb-2">Veiledende Behandlingsplan (VBP)</h1>
+        <p class="text-xl text-slate-600">Målgruppe: <span class="font-bold text-indigo-700">{{ execution_summary.target_group }}</span></p>
+        
+        <div class="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+            <h2 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Innhold (Klikkbart)</h2>
+            <ul class="space-y-2">
+                <li><a href="#dashboard" class="font-bold">1. Sammendrag og Analyse</a></li>
+                <li><a href="#kliniske-funn" class="font-bold">2. Oversikt over Kliniske Funn (Tabell)</a></li>
+                <li><a href="#bibliografi" class="font-bold">3. Fullstendig Bibliografi</a></li>
+                <li><a href="#ekskluderte" class="font-bold text-rose-600">4. Ekskluderte Dokumenter</a></li>
+                {% if quality_notes_html %}
+                <li><a href="#kvalitet" class="font-bold">5. Samlet Kvalitetsvurdering</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        <div class="mt-6 text-xs text-slate-400">
+            Generert: {{ execution_summary.execution_end_time.strftime('%d.%m.%Y %H:%M') if execution_summary.execution_end_time.strftime else execution_summary.execution_end_time }}
+        </div>
+    </header>
+
+    <!-- 1. DASHBOARD -->
+    <section id="dashboard" class="mb-20">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">1. Sammendrag</h2>
+        
+        <div class="grid grid-cols-2 gap-12">
+            <!-- FO Density -->
+            <div class="no-break">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Funn per Funksjonsområde</h3>
+                <div class="space-y-2">
+                    {% for i, fo in dashboard.evidence_density.items() %}
+                    <div>
+                        <div class="flex justify-between text-[9px] mb-1">
+                            <span class="font-bold text-slate-700">FO{{ i }} - {{ fo.name }}</span>
+                            <span class="text-slate-400">{{ fo.count }}</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-100 rounded-full">
+                            <div class="h-full bg-indigo-500 rounded-full" style="width: {{ fo.density }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="no-break flex flex-col justify-between">
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Sikkerhet i funn</h3>
+                    <div class="flex h-4 rounded overflow-hidden mb-4">
+                        <div class="bg-emerald-500" style="width: {{ dashboard.certainty.high_pct }}%"></div>
+                        <div class="bg-amber-400" style="width: {{ dashboard.certainty.med_pct }}%"></div>
+                        <div class="bg-rose-400" style="width: {{ dashboard.certainty.low_pct }}%"></div>
+                    </div>
+                    <ul class="text-[10px] space-y-1">
+                        <li class="flex justify-between"><span>Høy sikkerhet:</span> <span class="font-bold">{{ dashboard.certainty.high }}</span></li>
+                        <li class="flex justify-between"><span>Moderat sikkerhet:</span> <span class="font-bold">{{ dashboard.certainty.med }}</span></li>
+                        <li class="flex justify-between"><span>Lav/Ukjent:</span> <span class="font-bold">{{ dashboard.certainty.low }}</span></li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl mt-4">
+                    <span class="text-[10px] font-black text-indigo-900 uppercase">Gradert Evidens</span>
+                    <div class="text-2xl font-black text-indigo-600">{{ dashboard.graded_evidence.count }} / {{ dashboard.graded_evidence.total }}</div>
+                </div>
+            </div>
+        </div>
+        <a href="#top" class="back-to-top mt-4">↑ Til toppen</a>
+    </section>
+
+    <!-- 2. FINDINGS TABLE -->
+    <section id="kliniske-funn" class="page-break mb-20">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">2. Kliniske Funn</h2>
+        
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50 border-b border-slate-200">
+                    <tr class="text-[9px] font-black text-slate-500 uppercase">
+                        <th class="p-3 w-1/4">Sykepleierdiagnose</th>
+                        <th class="p-3 w-1/4">Intervensjoner</th>
+                        <th class="p-3 w-1/4">Mål</th>
+                        <th class="p-3">ICNP IDer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for finding in synthesized_findings %}
+                    <tr class="finding-row no-break">
+                        <td class="p-3 align-top">
+                            <div class="text-[10px] font-black text-indigo-400 mb-1">{{ finding.FO }}</div>
+                            <div class="font-bold text-slate-900">{{ finding.nursing_diagnosis.term }}</div>
+                        </td>
+                        <td class="p-3 align-top text-xs">
+                            <ul class="list-disc list-inside space-y-1">
+                                {% for intv in finding.interventions %}<li>{{ intv.term }}</li>{% endfor %}
+                            </ul>
+                        </td>
+                        <td class="p-3 align-top text-xs">
+                            <ul class="list-disc list-inside space-y-1">
+                                {% for goal in finding.goals %}<li>{{ goal.term }}</li>{% endfor %}
+                            </ul>
+                        </td>
+                        <td class="p-3 align-top text-[9px] font-mono text-slate-500">
+                            Diag: {{ finding.nursing_diagnosis.ICNP_concept_id or '-' }}<br>
+                            Intv: {% for intv in finding.interventions %}{{ intv.ICNP_concept_id or '-' }}{% if not loop.last %}, {% endif %}{% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="no-break bg-slate-50/50">
+                        <td colspan="4" class="p-6 border-t border-slate-100">
+                            <h4 class="text-[9px] font-black text-slate-400 uppercase mb-3">Kildegrunnlag og Sitater</h4>
+                            {% for evidence in finding.supporting_evidence %}
+                                {% set doc = source_documents | selectattr("document_id", "equalto", evidence.document_id) | first %}
+                                <div class="mb-4 last:mb-0">
+                                    <div class="text-[10px] font-bold text-indigo-800 underline">
+                                        <a href="#doc-{{ doc.document_id if doc else 'unknown' }}">
+                                            {{ doc.title if doc else 'Ukjent kilde' }} ({{ doc.publication_year if doc else '?' }})
+                                        </a>
+                                    </div>
+                                    <div class="mt-2 space-y-2">
+                                        {% for quote in evidence.quotes %}
+                                        <blockquote class="text-[9px] italic text-slate-600 border-l-2 border-slate-200 pl-3">"{{ quote }}"</blockquote>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="#top" class="back-to-top mt-4">↑ Til toppen</a>
+    </section>
+
+    <!-- 3. BIBLIOGRAPHY -->
+    <section id="bibliografi" class="page-break mb-20">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">3. Bibliografi</h2>
+        <div class="space-y-6">
+            {% for doc in source_documents %}
+            <div id="doc-{{ doc.document_id }}" class="no-break p-4 bg-slate-50 rounded-lg border border-slate-100">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-slate-900 text-sm">{{ doc.title }}</h3>
+                    <span class="text-[9px] font-black bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded">{{ doc.evidence_level }}</span>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">Publisert: {{ doc.publication_year }} | DOI: {{ doc.doi }}</div>
+                {% if doc.reasoning_trace %}
+                <p class="text-[9px] text-slate-600 mt-3 italic leading-relaxed">{{ doc.reasoning_trace }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a href="#top" class="back-to-top mt-4">↑ Til toppen</a>
+    </section>
+
+    <!-- 4. EXCLUDED -->
+    <section id="ekskluderte" class="page-break mb-20">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">4. Ekskluderte Dokumenter</h2>
+        {% if excluded_documents %}
+        <div class="space-y-4">
+            {% for doc in excluded_documents %}
+            <div class="p-4 border border-rose-100 bg-rose-50/30 rounded-lg">
+                <div class="font-bold text-sm text-slate-800">{{ doc.title }}</div>
+                <div class="text-[10px] text-rose-700 font-bold mt-1 uppercase tracking-tight">Årsak: {{ doc.justification }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-xs italic text-slate-400">Ingen dokumenter ekskludert.</p>
+        {% endif %}
+        <a href="#top" class="back-to-top mt-4">↑ Til toppen</a>
+    </section>
+
+    {% if quality_notes_html %}
+    <section id="kvalitet" class="page-break mb-20">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">5. Samlet Kvalitetsvurdering</h2>
+        <div class="prose prose-sm text-slate-700">
+            {{ quality_notes_html | safe }}
+        </div>
+        <a href="#top" class="back-to-top mt-4">↑ Til toppen</a>
+    </section>
+    {% endif %}
+
+    <footer class="mt-20 text-center text-[8px] text-slate-300 uppercase tracking-widest border-t border-slate-100 pt-8">
+        Veiledende Behandlingsplan (VBP) Workflow — Generert med Google Gemini AI
+    </footer>
+</body>
+</html>

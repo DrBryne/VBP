@@ -11,16 +11,9 @@ from google.adk.events import Event
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
-from app.app_utils.telemetry import setup_telemetry, track_telemetry_span
-
-# 1. Critical Initialization
-setup_telemetry()
+from app.app_utils.telemetry import track_telemetry_span
 
 from app.shared.config import config
-
-# CRITICAL: Set the global model location BEFORE importing the ADK agents
-# so that the GenAI SDK Client is instantiated with the correct location (global).
-os.environ["GOOGLE_CLOUD_LOCATION"] = config.PREVIEW_MODEL_LOCATION
 
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
@@ -355,5 +348,54 @@ class VbpWorkflowAgent(BaseAgent):
             span.end()
 
 
-root_agent = VbpWorkflowAgent()
+class RootRouter(BaseAgent):
+    """
+    Router that delegates execution either to the VbpWorkflowAgent (default) 
+    or the ReportChatAgent (if explicitly requested).
+    """
+    def __init__(self):
+        super().__init__(name="router")
+        self._workflow = VbpWorkflowAgent()
+        from app.agents.report_chat.agent import create_report_chat_agent
+        self._chat = create_report_chat_agent()
+
+    @property
+    def extractor(self):
+        """Proxy to workflow extractor for tests."""
+        return self._workflow.extractor
+
+    @property
+    def taxonomist(self):
+        """Proxy to workflow taxonomist for tests."""
+        return self._workflow.taxonomist
+
+    @property
+    def auditor(self):
+        """Proxy to workflow auditor for tests."""
+        return self._workflow.auditor
+
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        # 1. Check if Streamlit UI set the chat mode via state
+        mode = ctx.session.state.get("mode")
+        if mode == "chat":
+            async for ev in self._chat.run_async(ctx): yield ev
+            return
+
+        # 2. Check if a message explicitly triggers chat mode
+        if hasattr(ctx, "user_content") and ctx.user_content and ctx.user_content.parts:
+            text = ctx.user_content.parts[0].text
+            if text and text.startswith("[CHAT]"):
+                # Register mode persistently for this session
+                ctx.session.state["mode"] = "chat"
+                # Strip the command prefix
+                ctx.user_content.parts[0].text = text.replace("[CHAT]", "").strip()
+                async for ev in self._chat.run_async(ctx): yield ev
+                return
+
+        # Default fallback to the batch processing workflow
+        async for ev in self._workflow.run_async(ctx): yield ev
+
+
+root_agent = RootRouter()
 app = App(name="vbp_workflow", root_agent=root_agent)
+

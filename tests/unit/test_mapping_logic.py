@@ -60,10 +60,10 @@ async def test_validate_taxonomy_hallucinated_id():
     assert len(processed_findings) == 1
     f = processed_findings[0]
     
-    # Assert ID was stripped because it's not valid
+    # Assert ID was PRESERVED because it will be checked by FHIR Consolidator
     assert f.mapped_nursing_diagnosis.term == "Dysfagi"
-    assert f.mapped_nursing_diagnosis.ICNP_concept_id == ""
-    assert error_count == 1
+    assert f.mapped_nursing_diagnosis.ICNP_concept_id == "999999999"
+    assert error_count == 0
 
 @pytest.mark.asyncio
 async def test_validate_taxonomy_missing_mapping():

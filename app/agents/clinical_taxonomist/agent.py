@@ -38,7 +38,7 @@ def create_diagnosis_taxonomist():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -61,7 +61,7 @@ def create_intervention_taxonomist():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -84,7 +84,7 @@ def create_goal_taxonomist():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000
@@ -104,7 +104,7 @@ def create_fo_classifier():
     instructions = load_prompt("fo_classifier")
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(attempts=10, http_status_codes=[429, 500, 502, 503, 504]),
             timeout=300000

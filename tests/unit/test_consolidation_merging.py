@@ -16,6 +16,9 @@ async def test_sibling_merging_logic():
     Verifies that two findings in the same Functional Area with different ICNP IDs
     are merged if they share a common parent in the Norwegian Refset.
     """
+    taxonomy_cache["concepts"].clear()
+    norwegian_refset_ids.clear()
+
     # 1. Setup Mock Taxonomy Cache
     # Child A (101) and Child B (102) share Parent P (900)
     taxonomy_cache["concepts"] = {

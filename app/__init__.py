@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+from .shared.config import config
+
+# CRITICAL BOOTSTRAP: Set the global model location BEFORE importing the ADK agents
+# so that the GenAI SDK Client is instantiated with the correct location (e.g. 'global').
+os.environ["GOOGLE_CLOUD_LOCATION"] = config.PREVIEW_MODEL_LOCATION
+
 from .agent import app
 
 __all__ = ["app"]

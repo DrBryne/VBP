@@ -78,7 +78,8 @@ def load_taxonomy_cache():
         if os.path.exists(refset_path):
             with open(refset_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                norwegian_refset_ids = {item["id"] for item in data.get("items", [])}
+                norwegian_refset_ids.clear()
+                norwegian_refset_ids.update(item["id"] for item in data.get("items", []))
                 logger.info(f"Norwegian Refset Safety Zone initialized with {len(norwegian_refset_ids)} IDs.")
         else:
             logger.warning(f"icnp_norwegian.json missing at {refset_path}! Hierarchical merging will be restricted.")

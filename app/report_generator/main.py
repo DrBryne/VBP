@@ -17,8 +17,8 @@ def gcs_to_http(uri: str) -> str:
         return uri
     return f"https://storage.googleapis.com/{uri[5:]}"
 
-def upload_to_gcs(content: str, gcs_uri: str):
-    """Uploads string content to a GCS path."""
+def upload_to_gcs(content: bytes | str, gcs_uri: str):
+    """Uploads content to a GCS path with correct content type."""
     if not gcs_uri.startswith("gs://"):
         return
 
@@ -26,16 +26,26 @@ def upload_to_gcs(content: str, gcs_uri: str):
     bucket_name = parts[0]
     blob_name = parts[1] if len(parts) > 1 else ""
 
+    content_type = "application/pdf" if gcs_uri.lower().endswith(".pdf") else "text/html"
+
     client = storage.Client()
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(blob_name)
 
     blob.cache_control = "no-store, no-cache, must-revalidate, max-age=0"
-    blob.upload_from_string(content, content_type="text/html")
+    
+    if isinstance(content, str):
+        blob.upload_from_string(content, content_type=content_type)
+    else:
+        blob.upload_from_string(content, content_type=content_type)
+        
     print(f"Report successfully uploaded to: {gcs_uri}")
 
 def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
-    """Generates an HTML report directly from a SynthesisResponse object."""
+    """Generates an HTML or PDF report directly from a SynthesisResponse object."""
+    is_pdf = output_path.lower().endswith(".pdf")
+    template_name = "report_pdf.html" if is_pdf else "report.html"
+
     # Setup Jinja2 environment
     template_dir = Path(__file__).parent / "templates"
     env = jinja2.Environment(
@@ -44,15 +54,15 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
     )
 
     try:
-        template = env.get_template("report.html")
+        template = env.get_template(template_name)
     except Exception as e:
-        print(f"Error loading template: {e}")
+        print(f"Error loading template {template_name}: {e}")
         sys.exit(1)
 
     # Prepare the context
     context = synthesis.model_dump()
 
-    # Inject embedded CSS to remove external CDN dependency
+    # Inject embedded CSS
     try:
         css_path = os.path.join(template_dir, "compiled_tailwind.css")
         if os.path.exists(css_path):
@@ -81,8 +91,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
 
     context['synthesized_findings'].sort(key=get_fo_sort_key)
 
-    # DASHBOARD LOGIC
-    # 1. Evidence Density (FOs 1-12)
+    # DASHBOARD LOGIC (shared between HTML and PDF)
     fo_names = {
         1: "Kommunikasjon/sanser",
         2: "Kunnskap/utvikling/psykisk",
@@ -105,7 +114,6 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
     for finding in context.get('synthesized_findings', []):
         fo_str = str(finding.get('FO', ''))
         try:
-            # Robust extraction of the numeric prefix
             fo_num = int(fo_str.split('.')[0])
             if fo_num in fo_counts:
                 fo_counts[fo_num]['count'] += 1
@@ -122,7 +130,6 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
     for i in fo_counts:
         fo_counts[i]['density'] = (fo_counts[i]['count'] / max_fo_count * 100) if max_fo_count > 0 else 0
 
-    # 2. Knowledge Base & Trust Metrics
     evidence_levels = {
         'Nivå 5': {'label': 'Systembaser', 'count': 0, 'p_width': '50%'},
         'Nivå 4': {'label': 'Kliniske oppslagsverk', 'count': 0, 'p_width': '60%'},
@@ -157,7 +164,6 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
                 
     graded_pct = (graded_evidence_count / total_evidence_count * 100) if total_evidence_count else 0
     
-    # 3. Descriptive Quality Strings
     def get_certainty_desc(level):
         level = str(level).lower()
         if 'høy' in level or 'hoy' in level:
@@ -208,12 +214,10 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
             'low_pct': round(((certainty_counts['Lav'] + certainty_counts['Ukjent']) / total_findings * 100) if total_findings else 0, 1)
         }
     }
-    # END DASHBOARD LOGIC
 
     # Convert GCS URIs to HTTP links
     for doc in context.get('source_documents', []):
         doc['http_uri'] = gcs_to_http(doc.get('source_uri', ''))
-
     for doc in context.get('excluded_documents', []):
         doc['http_uri'] = gcs_to_http(doc.get('source_uri', ''))
 
@@ -223,18 +227,27 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
 
     # Render and save
     try:
-        html_output = template.render(**context)
+        final_html = template.render(**context)
 
-        if output_path.startswith("gs://"):
-            upload_to_gcs(html_output, output_path)
-        else:
+        if is_pdf:
+            import weasyprint
             os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(html_output)
-            print(f"Report successfully generated at: {output_path}")
+            weasyprint.HTML(string=final_html, base_url=str(template_dir)).write_pdf(output_path)
+            print(f"PDF-rapport generert ved: {output_path}")
+        else:
+            if output_path.startswith("gs://"):
+                upload_to_gcs(final_html, output_path)
+            else:
+                os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write(final_html)
+                print(f"HTML-rapport generert ved: {output_path}")
     except Exception as e:
-        print(f"Error rendering template: {e}")
+        print(f"Error generating report: {e}")
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
+
 
 def generate_report(input_path: str, output_path: str):
     """Generates an HTML report from a JSON synthesis result."""

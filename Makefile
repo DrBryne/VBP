@@ -23,6 +23,13 @@ playground:
 	@echo "==============================================================================="
 	uv run adk web . --port 8501 --reload_agents
 
+# Launch the Streamlit Chat UI for Report Synthesis
+run-ui:
+	@echo "==============================================================================="
+	@echo "| 🚀 Starting the VBP Clinical Synthesis Chat...                              |"
+	@echo "==============================================================================="
+	uv run streamlit run frontend/main.py
+
 # ==============================================================================
 # Backend Deployment Targets
 # ==============================================================================
@@ -52,6 +59,34 @@ requirements:
 
 # Alias for 'make deploy' for backward compatibility
 backend: deploy
+
+# Deploy the Streamlit Chat UI to Cloud Run
+deploy-ui:
+	@echo "==============================================================================="
+	@echo "| ☁️  Deploying Streamlit Chat UI to Cloud Run...                            |"
+	@echo "| NOTE: Requires deployment_metadata.json from \`make deploy\`                  |"
+	@echo "==============================================================================="
+	@if [ ! -f deployment_metadata.json ]; then \
+		echo "❌ Error: deployment_metadata.json not found. Run 'make deploy' first."; exit 1; \
+	fi
+	gcloud run deploy vbp-chat-ui \
+		--source . \
+		--region $(or $(REGION),us-central1) \
+		--allow-unauthenticated \
+		--port 8080 \
+		--clear-base-image \
+		--set-env-vars="STREAMLIT_SERVER_ADDRESS=0.0.0.0"
+	@echo "==============================================================================="
+	@echo "| ✅ Deployment complete.                                                     |"
+	@echo "| 🔒 NEXT STEP: Configure Identity Platform (Firebase Auth) in Cloud Console! |"
+	@echo "|    1. Go to Identity Platform and click 'Enable Identity Platform'.         |"
+	@echo "|    2. Add the 'Email / Password' provider.                                  |"
+	@echo "|    3. Copy the 'apiKey' from the Application Setup Details panel.           |"
+	@echo "|    4. Run this command to update the Cloud Run service with your key:       |"
+	@echo "|       gcloud run services update vbp-chat-ui --set-env-vars=\"FIREBASE_API_KEY=YOUR_KEY\""
+	@echo "|    5. Add users in the 'Users' tab in Identity Platform to grant access.    |"
+	@echo "==============================================================================="
+
 
 # ==============================================================================
 # Visualization & Reporting

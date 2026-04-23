@@ -44,24 +44,20 @@ def track_telemetry_span(span_name: str):
     def decorator(func: Callable):
         @functools.wraps(func)
         async def async_wrapper(*args, **kwargs) -> Any:
-            # We use start_span which is purely additive and doesn't manipulate 
-            # the active context stack, making it safe for high concurrency.
-            span = tracer.start_span(span_name)
-            if kwargs.get('uri'):
-                span.set_attribute("vbp.uri", kwargs.get('uri'))
-            elif args and isinstance(args[0], str) and args[0].startswith("gs://"):
-                span.set_attribute("vbp.uri", args[0])
+            with tracer.start_as_current_span(span_name) as span:
+                if kwargs.get('uri'):
+                    span.set_attribute("vbp.uri", kwargs.get('uri'))
+                elif args and isinstance(args[0], str) and args[0].startswith("gs://"):
+                    span.set_attribute("vbp.uri", args[0])
 
-            try:
-                result = await func(*args, **kwargs)
-                span.set_status(Status(StatusCode.OK))
-                return result
-            except Exception as e:
-                span.record_exception(e)
-                span.set_status(Status(StatusCode.ERROR, str(e)))
-                raise
-            finally:
-                span.end()
+                try:
+                    result = await func(*args, **kwargs)
+                    span.set_status(Status(StatusCode.OK))
+                    return result
+                except Exception as e:
+                    span.record_exception(e)
+                    span.set_status(Status(StatusCode.ERROR, str(e)))
+                    raise
 
         @functools.wraps(func)
         def sync_wrapper(*args, **kwargs) -> Any:
@@ -83,11 +79,13 @@ def setup_telemetry() -> str | None:
     os.environ.setdefault("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "true")
 
     env_name = "cloud" if os.environ.get("AGENT_ENGINE_ID") else "local"
+    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "sunny-passage-362617")
 
     resource = Resource.create({
         "service.name": "vbp_workflow",
         "service.namespace": "vbp",
         "vbp.environment": env_name,
+        "gcp.project_id": project_id,
     })
 
     # Initialize providers

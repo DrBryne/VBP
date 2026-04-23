@@ -10,7 +10,7 @@ def create_metadata_extractor():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 initial_delay=2,
@@ -38,7 +38,7 @@ def create_clinical_extractor():
 
     config = types.GenerateContentConfig(
         temperature=1.0,
-        max_output_tokens=8192,
+        max_output_tokens=65536,
         thinking_config=types.ThinkingConfig(
             thinking_level="high"
         ),
