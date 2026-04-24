@@ -1,10 +1,8 @@
-import os
+
 
 from google.adk.agents import Agent
-from google.adk.tools import FunctionTool
 
 from app.agents.report_chat.tools import read_synthesis_report
-from app.shared.config import config
 
 instruction = """
 You are the VBP Report Chat Agent, an expert clinical assistant. Your sole purpose is to answer questions based on the generated VBP synthesis report (workflow_synthesis.json).
@@ -16,6 +14,8 @@ When a user asks a question:
 3. If the JSON does not contain the answer, explicitly state that you cannot find it in the current synthesis. 
 4. Include quotes or references from the `evidence_snippets` section to back up your claims if present.
 5. Format your responses with clear headings and bullet points where appropriate for readability.
+
+You must write ALL your responses and explanations entirely in the language the user is using. Default language should be Norwegian (Norsk bokmål). The only exception to this rule are citations from the source documents used, which should be reported in the original language.
 """
 
 def create_report_chat_agent() -> Agent:
@@ -26,3 +26,4 @@ def create_report_chat_agent() -> Agent:
         description="Handles user queries about a specific clinical synthesis report.",
         tools=[read_synthesis_report]
     )
+

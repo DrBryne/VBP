@@ -4,13 +4,11 @@ Handles the grouping of findings across documents and the assembly
 of the final clinical report.
 """
 import asyncio
-from datetime import datetime
 import json
+from datetime import datetime
 
 from app.app_utils.telemetry import track_telemetry_span
 from app.shared.config import config
-from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
-from app.shared.taxonomy import GENERIC_NURSING_IDS, get_norwegian_term
 from app.shared.logging import VBPLogger
 from app.shared.models import (
     Document,
@@ -19,10 +17,11 @@ from app.shared.models import (
     ExecutionSummary,
     MappedTerm,
     ProcessedDocument,
-    ProcessedFinding,
     SynthesisResponse,
     SynthesizedFinding,
 )
+from app.shared.taxonomy import GENERIC_NURSING_IDS, get_norwegian_term
+from app.shared.tools import download_json_from_gcs, upload_json_to_gcs
 
 logger = VBPLogger("vbp_consolidation")
 
@@ -48,7 +47,7 @@ BLOCKED_ROOT_PARENTS = {
     "410607006", # Organism
 }
 
-# IDs that are technically in the Norwegian Refset but are clinically too generic 
+# IDs that are technically in the Norwegian Refset but are clinically too generic
 # to act as a merge anchor (e.g. 'lidelse').
 BLACKLISTED_REFSET_IDS = {
     "706873003", # lidelse
@@ -60,7 +59,7 @@ BLACKLISTED_REFSET_IDS = {
 def load_taxonomy_cache():
     """Initializes the taxonomy cache from GCS and the Refset from local disk."""
     global taxonomy_cache, norwegian_refset_ids
-    
+
     # 1. Load the dynamic lookup cache from GCS
     remote_cache = download_json_from_gcs(config.TAXONOMY_CACHE_URI, config.PROJECT_ID)
     if remote_cache:
@@ -74,9 +73,9 @@ def load_taxonomy_cache():
         # Best Practice: Use relative path from the current file to the resources dir
         base_dir = os.path.dirname(__file__)
         refset_path = os.path.join(base_dir, "resources", "icnp_norwegian.json")
-        
+
         if os.path.exists(refset_path):
-            with open(refset_path, "r", encoding="utf-8") as f:
+            with open(refset_path, encoding="utf-8") as f:
                 data = json.load(f)
                 norwegian_refset_ids.clear()
                 norwegian_refset_ids.update(item["id"] for item in data.get("items", []))
@@ -95,10 +94,9 @@ def save_taxonomy_cache():
 async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=None) -> dict[str, dict]:
     """
     Groups individual findings by Functional Area (FO) and ICNP Concept ID.
-    Implements Hierarchical Merging, Evidence-Gated Admission, and 
+    Implements Hierarchical Merging, Evidence-Gated Admission, and
     Hierarchical Gravity to distill a high-quality clinical template.
     """
-    groups = {}
     global_id_cache = {}
 
     # Evidence Level Mapping (Knowledge Pyramid)
@@ -145,7 +143,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
     if missing_ids and fhir_client:
         logger.info(f"[Taxonomy Enrichment] Attempting live lookup for {len(missing_ids)} IDs.")
         results = await asyncio.gather(*[fhir_client.lookup_concept(cid) for cid in missing_ids])
-        for cid, res in zip(missing_ids, results):
+        for cid, res in zip(missing_ids, results, strict=False):
             if res:
                 taxonomy_cache["concepts"][cid] = res
                 global_id_cache[cid] = res.get("display", cid)
@@ -182,7 +180,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                 is_in_refset = p_id in norwegian_refset_ids and p_id not in BLACKLISTED_REFSET_IDS
                 depth = get_concept_depth(p_id)
                 is_specific_enough = depth >= config.MIN_MERGE_DEPTH
-                
+
                 if not (is_in_refset or is_specific_enough): continue
 
                 siblings_in_this_run = [c for c in children if c in ids]
@@ -209,7 +207,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
 
         for finding in doc.mapped_findings:
             d_mapped = finding.mapped_nursing_diagnosis
-            d_base_key = f"{str(finding.FO)}||{d_mapped.ICNP_concept_id}" if d_mapped.ICNP_concept_id else f"{str(finding.FO)}||{finding.nursing_diagnosis}"
+            d_base_key = f"{finding.FO!s}||{d_mapped.ICNP_concept_id}" if d_mapped.ICNP_concept_id else f"{finding.FO!s}||{finding.nursing_diagnosis}"
             d_group_key = global_rewrite_map.get(d_base_key, d_base_key)
             final_d_id = d_group_key.split("||")[1] if "||" in d_group_key else ""
 
@@ -222,7 +220,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                 raw_groups[d_group_key] = {
                     "FO": finding.FO,
                     "nursing_diagnosis": MappedTerm(term=display_diag, ICNP_concept_id=final_d_id if final_d_id.isdigit() else ""),
-                    "intervention_pool": {}, 
+                    "intervention_pool": {},
                     "goals": [],
                     "supporting_evidence": {},
                     "specificity_scores": [],
@@ -239,7 +237,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
 
             # Intervention Distillation
             i_mapped = finding.mapped_intervention
-            i_base_key = f"{str(finding.FO)}||{i_mapped.ICNP_concept_id}" if i_mapped.ICNP_concept_id else f"{str(finding.FO)}||{finding.intervention}"
+            i_base_key = f"{finding.FO!s}||{i_mapped.ICNP_concept_id}" if i_mapped.ICNP_concept_id else f"{finding.FO!s}||{finding.intervention}"
             i_group_key = global_rewrite_map.get(i_base_key, i_base_key)
             final_i_id = i_group_key.split("||")[1] if "||" in i_group_key else ""
             display_int = global_id_cache.get(final_i_id, finding.intervention)
@@ -254,7 +252,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                     "evidence_level_sum": 0.0,
                     "consensus": 0
                 }
-            
+
             int_meta = raw_groups[d_group_key]["intervention_pool"][i_group_key]
             int_meta["consensus"] += 1
             int_meta["evidence_level_sum"] += doc_weight
@@ -287,7 +285,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
     for d_key, data in raw_groups.items():
         is_strong_evidence = data["max_evidence_level"] in ["Nivå 1", "Nivå 2"]
         is_high_consensus = data["consensus_count"] >= config.CONSENSUS_THRESHOLD
-        
+
         if is_strong_evidence or is_high_consensus:
             admitted_groups[d_key] = data
         else:
@@ -307,7 +305,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                 logger.info(f"[Hierarchical Gravity] Analyzing cluttered FO: {fo} ({len(d_keys)} findings)")
                 # Identify diagnoses with IDs
                 id_to_key = {admitted_groups[k]["nursing_diagnosis"].ICNP_concept_id: k for k in d_keys if admitted_groups[k]["nursing_diagnosis"].ICNP_concept_id}
-                
+
                 if len(id_to_key) >= 2:
                     # Look for common ancestors for all IDs in this FO
                     potential_parents = {} # parent_id -> count
@@ -317,7 +315,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                             for p_id in p_info.get("parent_ids", []):
                                 if p_id not in BLOCKED_ROOT_PARENTS:
                                     potential_parents[p_id] = potential_parents.get(p_id, 0) + 1
-                    
+
                     # Find a parent that covers the required threshold of findings in this FO
                     best_parent = None
                     max_cover = 0
@@ -325,7 +323,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                         if count >= 2 and count > max_cover:
                             best_parent = p_id
                             max_cover = count
-                    
+
                     if best_parent and max_cover >= len(id_to_key) * config.PARENT_COVERAGE_PERCENT:
                         # SAFETY ZONE RULE: Only apply gravity if in Refset (not blacklisted) or deep enough
                         is_in_refset = best_parent in norwegian_refset_ids and best_parent not in BLACKLISTED_REFSET_IDS
@@ -337,7 +335,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
                             logger.info(f"[Hierarchical Gravity] Merging {max_cover} findings in {fo} under ancestor: {p_term} ({best_parent})")
                         else:
                             logger.info(f"[Hierarchical Gravity] Ancestor {best_parent} too generic. Skipping.")
-                        
+
                         # Note: In a full implementation, we would recursively merge here.
                         # For now, we update the display name and ID for the most frequent findings to act as an anchor.
 
@@ -349,24 +347,24 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
     for key, data in admitted_groups.items():
         fo = data["FO"]
         if fo not in fo_specificity_map: fo_specificity_map[fo] = []
-        
+
         # Calculate mean specificity for this group
         avg_spec = sum(data["specificity_scores"]) / len(data["specificity_scores"]) if data["specificity_scores"] else 5.0
-        
+
         # Check if the primary ID is in our 'Generic Baseline'
         is_generic = data["nursing_diagnosis"].ICNP_concept_id in GENERIC_NURSING_IDS
         if is_generic: avg_spec -= 3.0 # Penalty for generic standards
-        
+
         fo_specificity_map[fo].append((key, avg_spec))
 
     for fo, findings in fo_specificity_map.items():
         # Sort findings in this FO by specificity
         findings.sort(key=lambda x: x[1], reverse=True)
-        
+
         high_spec_count = sum(1 for _, spec in findings if spec >= 7.0)
-        
-        # THE PRUNING RULE: 
-        # If we have at least 2 highly specific findings, drop all 'noise' (spec < 5.0) 
+
+        # THE PRUNING RULE:
+        # If we have at least 2 highly specific findings, drop all 'noise' (spec < 5.0)
         # and limit total findings in this FO to top 5.
         if high_spec_count >= 2:
             keep_keys = [k for k, spec in findings if spec >= 5.0][:5]
@@ -374,7 +372,7 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
         else:
             # If no 'pearls', keep the top 2-3 most relevant even if they are standard care.
             keep_keys = [k for k, _ in findings[:3]]
-            
+
         for k in keep_keys:
             pruned_groups[k] = admitted_groups[k]
 
@@ -382,11 +380,11 @@ async def group_findings(processed_docs: list[ProcessedDocument], fhir_client=No
     final_output = {}
     for diag_key, data in pruned_groups.items():
         ranked_ints = []
-        for int_key, int_meta in data["intervention_pool"].items():
+        for _int_key, int_meta in data["intervention_pool"].items():
             avg_quality = int_meta["weighted_quality"] / int_meta["consensus"] if int_meta["consensus"] > 0 else 5.0
             rank_score = (avg_quality * 0.4) + (int_meta["evidence_level_sum"] * 0.6)
             ranked_ints.append((int_meta["mapped_term"], rank_score))
-        
+
         ranked_ints.sort(key=lambda x: x[1], reverse=True)
         data["interventions"] = [x[0] for x in ranked_ints]
         del data["intervention_pool"]
@@ -446,7 +444,7 @@ def finalize_synthesis(
             certainty_level=certainty_level,
             supporting_evidence=evidence_list
         ))
-    
+
     synthesized_findings.sort(key=lambda x: (x.trust_score, x.avg_specificity), reverse=True)
 
     # Identify documents that were successful in extraction but pruned during distillation

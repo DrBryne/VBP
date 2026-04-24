@@ -1,14 +1,20 @@
 import pytest
-from app.shared.consolidation import group_findings, taxonomy_cache, norwegian_refset_ids
-from app.shared.taxonomy import GENERIC_NURSING_IDS
-from app.shared.models import (
-    ProcessedDocument, 
-    ProcessedFinding, 
-    Document, 
-    MappedTerm, 
-    FunctionalArea,
-    AuditorRating
+
+from app.shared.consolidation import (
+    group_findings,
+    norwegian_refset_ids,
+    taxonomy_cache,
 )
+from app.shared.models import (
+    AuditorRating,
+    Document,
+    FunctionalArea,
+    MappedTerm,
+    ProcessedDocument,
+    ProcessedFinding,
+)
+from app.shared.taxonomy import GENERIC_NURSING_IDS
+
 
 @pytest.mark.asyncio
 async def test_admission_and_pruning_logic():
@@ -24,7 +30,7 @@ async def test_admission_and_pruning_logic():
     }
     # Add GENERIC_ID to the global generic list for the test
     GENERIC_NURSING_IDS.add("GENERIC_ID")
-    
+
     norwegian_refset_ids.clear()
     norwegian_refset_ids.update({"ALS_PEARL", "GENERIC_ID", "WEAK_ID"})
 
@@ -34,7 +40,7 @@ async def test_admission_and_pruning_logic():
 
     def create_finding(fid, diag, cid, spec, doc_id, fo=FunctionalArea.FO3):
         return ProcessedFinding(
-            finding_id=fid, document_id=doc_id, nursing_diagnosis=diag, 
+            finding_id=fid, document_id=doc_id, nursing_diagnosis=diag,
             intervention="Action", goal="Goal", supporting_sentence_ids=["S1"],
             clinical_specificity=spec, actionability_score=8,
             mapped_nursing_diagnosis=MappedTerm(term=diag, ICNP_concept_id=cid),
@@ -49,7 +55,7 @@ async def test_admission_and_pruning_logic():
     # f1b: Second high-specificity finding -> TRIGGERS PRUNING
     # f2: Strong evidence, GENERIC -> SHOULD PRUNE (because f1 & f1b are in same FO)
     # f3: Weak evidence, Lonely -> SHOULD DROP (Admission Control)
-    
+
     f1 = create_finding("f1", "ALS Specific 1", "ALS_PEARL_1", 9, "d1", fo=FunctionalArea.FO3)
     f1b = create_finding("f1b", "ALS Specific 2", "ALS_PEARL_2", 8, "d1", fo=FunctionalArea.FO3)
     f2 = create_finding("f2", "Hand Hygiene", "GENERIC_ID", 3, "d1", fo=FunctionalArea.FO3)
@@ -64,7 +70,7 @@ async def test_admission_and_pruning_logic():
     grouped_data = await group_findings(processed_docs, fhir_client=None)
 
     # 4. Assertions
-    
+
     # Verify Admission: ALS Specifics (Nivå 1) are kept
     found_pearl1 = any("ALS_PEARL_1" in k for k in grouped_data.keys())
     found_pearl2 = any("ALS_PEARL_2" in k for k in grouped_data.keys())

@@ -5,13 +5,13 @@ enabling constrained generation and robust validation.
 """
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
 # --- 1. SHARED CORE TYPES ---
 
-class FunctionalArea(str, Enum):
+class FunctionalArea(StrEnum):
     """The 12 standard Norwegian Functional Areas (Funksjonsområder) for clinical classification."""
     FO1 = "1. Kommunikasjon/sanser"
     FO2 = "2. Kunnskap/utvikling/psykisk"

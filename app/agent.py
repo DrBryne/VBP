@@ -11,13 +11,10 @@ from google.adk.events import Event
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
-from app.app_utils.telemetry import track_telemetry_span
-
-from app.shared.config import config
-
 from app.agents.clinical_auditor.agent import create_clinical_auditor
 from app.agents.clinical_extractor.agent import create_combined_extractor
 from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
+from app.shared.config import config
 from app.shared.consolidation import (
     finalize_synthesis,
     group_findings,
@@ -43,7 +40,7 @@ logger = VBPLogger("vbp_orchestrator")
 class VbpWorkflowAgent(BaseAgent):
     """
     Root Orchestrator for the VBP Workflow.
-    
+
     Provides high-level coordination for massive clinical document
     analysis. It manages file discovery, task-level parallelism with
     concurrency control, and state-driven consolidation.
@@ -69,11 +66,11 @@ class VbpWorkflowAgent(BaseAgent):
         """The agent responsible for multi-dimensional quality scoring."""
         return self._auditor
 
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event]:
         # Manual span management for the top-level orchestrator.
         from app.app_utils.telemetry import tracer
         span = tracer.start_span("Workflow: Orchestration")
-        
+
         try:
             # A massive batch run requires overriding the default ADK 500-call limit
             ctx.run_config.max_llm_calls = 5000
@@ -88,7 +85,7 @@ class VbpWorkflowAgent(BaseAgent):
 
             # Buffer for session logging to be uploaded at the end
             session_log_buffer = []
-            
+
             # Initialize terminology cache
             load_taxonomy_cache()
 
@@ -216,7 +213,7 @@ class VbpWorkflowAgent(BaseAgent):
             tasks = [process_task(f) for f in files]
             async def run_gather():
                 return await asyncio.gather(*tasks)
-            
+
             gather_task = asyncio.create_task(run_gather())
 
             last_reported_completion = 0
@@ -237,7 +234,7 @@ class VbpWorkflowAgent(BaseAgent):
                             yield Event(author=self.name, content=types.Content(parts=[types.Part.from_text(text=progress_msg)]))
                             last_reported_completion = current_completed
                     progress_queue.task_done()
-                except asyncio.TimeoutError:
+                except TimeoutError:
                     continue
 
             mapped_results = await gather_task
@@ -259,7 +256,7 @@ class VbpWorkflowAgent(BaseAgent):
             # Persist updated cache to GCS
             save_taxonomy_cache()
             source_docs = [r.source_document for r in successful_results]
-            
+
             # 1. Finalize
             execution_end_time = datetime.now()
             async with state_lock:
@@ -284,6 +281,7 @@ class VbpWorkflowAgent(BaseAgent):
             # --- PERMANENT STORAGE EXPORT ---
             try:
                 from google.cloud import storage
+
                 from app.report_generator.main import generate_report_from_data
                 from app.shared.tools import upload_json_to_gcs
 
@@ -320,11 +318,11 @@ class VbpWorkflowAgent(BaseAgent):
 
             logger.info("Consolidation complete. Yielding final response.")
             # --- FINAL RESPONSE ---
-            # For ADK Evaluation, we should return the actual synthesis model so the 
+            # For ADK Evaluation, we should return the actual synthesis model so the
             # judge can grade clinical accuracy and structural integrity.
             # In production, we return the manifest with the URIs to avoid token limits.
             is_eval = custom_config.get("is_eval", False) or ctx.session.user_id == "eval_user"
-            
+
             if is_eval:
                 payload = final_response.model_dump_json()
             else:
@@ -350,7 +348,7 @@ class VbpWorkflowAgent(BaseAgent):
 
 class RootRouter(BaseAgent):
     """
-    Router that delegates execution either to the VbpWorkflowAgent (default) 
+    Router that delegates execution either to the VbpWorkflowAgent (default)
     or the ReportChatAgent (if explicitly requested).
     """
     def __init__(self):
@@ -374,7 +372,7 @@ class RootRouter(BaseAgent):
         """Proxy to workflow auditor for tests."""
         return self._workflow.auditor
 
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event]:
         # 1. Check if Streamlit UI set the chat mode via state
         mode = ctx.session.state.get("mode")
         if mode == "chat":

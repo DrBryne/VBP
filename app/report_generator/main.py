@@ -33,12 +33,12 @@ def upload_to_gcs(content: bytes | str, gcs_uri: str):
     blob = bucket.blob(blob_name)
 
     blob.cache_control = "no-store, no-cache, must-revalidate, max-age=0"
-    
+
     if isinstance(content, str):
         blob.upload_from_string(content, content_type=content_type)
     else:
         blob.upload_from_string(content, content_type=content_type)
-        
+
     print(f"Report successfully uploaded to: {gcs_uri}")
 
 def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
@@ -66,7 +66,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
     try:
         css_path = os.path.join(template_dir, "compiled_tailwind.css")
         if os.path.exists(css_path):
-            with open(css_path, "r", encoding="utf-8") as f:
+            with open(css_path, encoding="utf-8") as f:
                 context["embedded_css"] = f.read()
         else:
             context["embedded_css"] = "/* Compiled CSS not found */"
@@ -106,7 +106,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
         11: "Åndelig/kulturelt/livsavslutning",
         12: "Annet/legedelegerte aktiviteter"
     }
-    
+
     fo_counts = {i: {'name': name, 'count': 0, 'density': 0} for i, name in fo_names.items()}
     total_findings = len(context.get('synthesized_findings', []))
     certainty_counts = {'Høy': 0, 'Moderat': 0, 'Lav': 0, 'Ukjent': 0}
@@ -119,7 +119,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
                 fo_counts[fo_num]['count'] += 1
         except:
             pass
-            
+
         cert = finding.get('certainty_level', 'Ukjent')
         if cert in ['Høy', 'høy', 'Hoy', 'hoy']: certainty_counts['Høy'] += 1
         elif cert in ['Moderat', 'moderat']: certainty_counts['Moderat'] += 1
@@ -138,7 +138,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
         'Nivå 1': {'label': 'Enkeltstudier', 'count': 0, 'p_width': '90%'},
         'Nivå 0': {'label': 'Annet / Ugradert', 'count': 0, 'p_width': '100%'},
     }
-    
+
     total_docs = len(context.get('source_documents', []))
     for doc in context.get('source_documents', []):
         level_str = doc.get('evidence_level', '')
@@ -148,7 +148,7 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
         elif 'Nivå 2' in level_str: evidence_levels['Nivå 2']['count'] += 1
         elif 'Nivå 1' in level_str: evidence_levels['Nivå 1']['count'] += 1
         else: evidence_levels['Nivå 0']['count'] += 1
-        
+
     max_ev = max([data['count'] for data in evidence_levels.values()]) if total_docs > 0 else 1
     for lvl in evidence_levels:
         evidence_levels[lvl]['pct'] = (evidence_levels[lvl]['count'] / total_docs * 100) if total_docs else 0
@@ -161,9 +161,9 @@ def generate_report_from_data(synthesis: SynthesisResponse, output_path: str):
             total_evidence_count += len(evidence.get('quotes', []))
             if evidence.get('evidence_grade') or evidence.get('recommendation_strength'):
                 graded_evidence_count += len(evidence.get('quotes', []))
-                
+
     graded_pct = (graded_evidence_count / total_evidence_count * 100) if total_evidence_count else 0
-    
+
     def get_certainty_desc(level):
         level = str(level).lower()
         if 'høy' in level or 'hoy' in level:

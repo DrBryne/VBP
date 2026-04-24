@@ -1,7 +1,7 @@
-import subprocess
-import time
 import json
 import os
+import subprocess
+import time
 from datetime import datetime, timedelta
 
 PROJECT_ID = "sunny-passage-362617"
@@ -31,14 +31,14 @@ while True:
         f'AND resource.labels.reasoning_engine_id="{REASONING_ENGINE_ID}" '
         f'AND timestamp > "{last_timestamp}"'
     )
-    
+
     cmd = [
         "gcloud", "logging", "read", filter_str,
         f"--project={PROJECT_ID}",
         "--format=json",
         "--order=asc"
     ]
-    
+
     try:
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
@@ -52,8 +52,8 @@ while True:
                     last_timestamp = ts
         else:
             log_to_file(f"[{datetime.now()}] gcloud error: {result.stderr}")
-            
+
     except Exception as e:
-        log_to_file(f"[{datetime.now()}] Monitor script exception: {str(e)}")
-        
+        log_to_file(f"[{datetime.now()}] Monitor script exception: {e!s}")
+
     time.sleep(30)

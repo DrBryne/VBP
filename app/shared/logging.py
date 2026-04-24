@@ -5,7 +5,7 @@ import os
 def get_logger(name="vbp_workflow"):
     """
     Returns a standard python logger.
-    The actual formatting and Cloud syncing is handled by OpenTelemetry 
+    The actual formatting and Cloud syncing is handled by OpenTelemetry
     in app/app_utils/telemetry.py via the LoggingHandler.
     """
     logger = logging.getLogger(name)
@@ -23,7 +23,7 @@ def get_logger(name="vbp_workflow"):
 class VBPLogger:
     """
     Convenience wrapper to maintain backward compatibility with existing codebase
-    that passes kwargs (like uri=...) to logger methods. 
+    that passes kwargs (like uri=...) to logger methods.
     OpenTelemetry handles these extra context fields natively if configured.
     """
     def __init__(self, name="vbp_workflow"):

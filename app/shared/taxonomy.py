@@ -85,7 +85,7 @@ def get_default_fo() -> str:
     return "12. Annet/legedelegerte aktiviteter"
 
 # Universal Nursing Standards (Generic Baseline)
-# These IDs represent actions that are common to all nursing care and should be 
+# These IDs represent actions that are common to all nursing care and should be
 # pruned from specialized templates if higher-specificity findings exist.
 GENERIC_NURSING_IDS = {
     "103705002", # Observasjon av pasientstatus

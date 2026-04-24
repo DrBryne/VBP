@@ -1,9 +1,10 @@
 import json
 
+
 def analyze_missing_terms():
-    with open("workflow_synthesis.json", "r") as f:
+    with open("workflow_synthesis.json") as f:
         synthesis = json.load(f)
-    with open("taxonomy_cache.json", "r") as f:
+    with open("taxonomy_cache.json") as f:
         cache = json.load(f)
 
     cache_ids = set(cache.get("concepts", {}).keys())

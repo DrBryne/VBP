@@ -1,20 +1,28 @@
-import pytest
 from datetime import datetime
-from app.shared.consolidation import group_findings, finalize_synthesis, taxonomy_cache, norwegian_refset_ids
-from app.shared.taxonomy import GENERIC_NURSING_IDS
-from app.shared.models import (
-    ProcessedDocument, 
-    ProcessedFinding, 
-    Document, 
-    MappedTerm, 
-    FunctionalArea,
-    AuditorRating
+
+import pytest
+
+from app.shared.consolidation import (
+    finalize_synthesis,
+    group_findings,
+    norwegian_refset_ids,
+    taxonomy_cache,
 )
+from app.shared.models import (
+    AuditorRating,
+    Document,
+    FunctionalArea,
+    MappedTerm,
+    ProcessedDocument,
+    ProcessedFinding,
+)
+from app.shared.taxonomy import GENERIC_NURSING_IDS
+
 
 @pytest.mark.asyncio
 async def test_norwegian_audit_trail():
     """
-    Verifies that a document whose findings are 100% pruned correctly moves to 
+    Verifies that a document whose findings are 100% pruned correctly moves to
     excluded_documents with a Norwegian reason.
     """
     # 1. Setup
@@ -29,7 +37,7 @@ async def test_norwegian_audit_trail():
 
     def create_finding(fid, diag, cid, spec, doc_id):
         return ProcessedFinding(
-            finding_id=fid, document_id=doc_id, nursing_diagnosis=diag, 
+            finding_id=fid, document_id=doc_id, nursing_diagnosis=diag,
             intervention="Action", goal="Goal", supporting_sentence_ids=["S1"],
             clinical_specificity=spec, actionability_score=8,
             mapped_nursing_diagnosis=MappedTerm(term=diag, ICNP_concept_id=cid),
@@ -50,7 +58,7 @@ async def test_norwegian_audit_trail():
 
     # 2. Execute Consolidation
     grouped_data = await group_findings(processed_docs, fhir_client=None)
-    
+
     # 3. Finalize Synthesis (This is where doc exclusion happens)
     response = finalize_synthesis(
         target_group="ALS",
@@ -72,7 +80,7 @@ async def test_norwegian_audit_trail():
     assert len(response.excluded_documents) == 1
     excluded = response.excluded_documents[0]
     assert excluded.title == "Generic Doc"
-    
+
     # Verify Norwegian Reason
     expected_reason = "Dokumentets funn ble filtrert bort under konsolidering p\u00e5 grunn av lav spesifisitet eller manglende konsensus med andre kilder."
     assert excluded.justification == expected_reason

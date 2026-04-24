@@ -1,7 +1,6 @@
 import asyncio
 import json
 import os
-import uuid
 from collections.abc import AsyncGenerator
 
 from dotenv import load_dotenv
@@ -9,7 +8,6 @@ from google.adk.agents.invocation_context import InvocationContext, RunConfig
 from google.adk.events import Event
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
-from google.genai import types
 
 from app.agent import root_agent
 from app.agents.clinical_taxonomist.agent import ClinicalTaxonomist
@@ -34,9 +32,9 @@ class SpyTaxonomist(ClinicalTaxonomist):
         super().__init__(name="spy_taxonomist")
         object.__setattr__(self, "logs", [])
 
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event]:
         self.logs.append("--- SpyTaxonomist Execution Start ---")
-        
+
         # Log the input findings
         latest_event = ctx.session.events[-1]
         self.logs.append(f"Input Event Author: {latest_event.author}")
@@ -57,7 +55,7 @@ class SpyTaxonomist(ClinicalTaxonomist):
                     if "results" in data and not data["results"]:
                          self.logs.append(f"!!! CRITICAL: Sub-Agent '{ev.author}' returned an EMPTY results list.")
             yield ev
-        
+
         self.logs.append("\n--- SpyTaxonomist Execution End ---")
 
 async def run_deep_dive():
@@ -73,7 +71,7 @@ async def run_deep_dive():
 
     # Main Session
     session = await session_service.create_session(app_name="diagnostic", user_id="debug", session_id="deep_dive_run")
-    
+
     spy_taxonomist = SpyTaxonomist()
     progress_queue = asyncio.Queue()
     progress_state = WorkflowProgress()
@@ -89,8 +87,8 @@ async def run_deep_dive():
         run_config=RunConfig()
     )
 
-    filename = FAILING_URI.split("/")[-1]
-    
+    FAILING_URI.split("/")[-1]
+
     try:
         # We replace the taxonomist with our spy for THIS call
         result = await process_document_pipeline(

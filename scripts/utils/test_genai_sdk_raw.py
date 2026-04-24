@@ -60,7 +60,7 @@ async def run_diagnostic():
 
     # 4. Execute the call
     try:
-        response = await client.aio.models.generate_content(
+        await client.aio.models.generate_content(
             model="gemini-3.1-pro-preview",
             contents=parts,
             config=config

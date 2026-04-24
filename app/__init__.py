@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import os
+
 from .shared.config import config
 
 # CRITICAL BOOTSTRAP: Set the global model location BEFORE importing the ADK agents

@@ -1,7 +1,8 @@
 import asyncio
+import csv
 import json
 import os
-import csv
+
 import aiohttp
 from google.cloud import storage
 
@@ -23,13 +24,13 @@ async def fetch_concept_details(session, concept_id):
         "x-requested-with": "XMLHttpRequest"
     }
     cookies = {"licenseCookie": "true"}
-    
+
     try:
         async with session.get(url, headers=headers, cookies=cookies, timeout=10) as response:
             if response.status == 200:
                 item = await response.json()
                 display = item.get("pt", {}).get("term") or item.get("fsn", {}).get("term", "Unknown")
-                
+
                 # Fetch parents via the dedicated sub-endpoint
                 parents_url = f"{url}/parents"
                 parent_ids = []
@@ -37,7 +38,7 @@ async def fetch_concept_details(session, concept_id):
                     if p_p_resp_status := p_resp.status == 200:
                         p_items = await p_resp.json()
                         parent_ids = [p.get("conceptId") for p in p_items if p.get("conceptId")]
-                
+
                 return {
                     "display": display,
                     "parent_ids": parent_ids,
@@ -60,8 +61,8 @@ async def main():
             cid = row.get("Concept Id")
             if cid and cid.isdigit():
                 all_ids.append(cid)
-    
-    unique_ids = sorted(list(set(all_ids)))
+
+    unique_ids = sorted(set(all_ids))
     print(f"Loaded {len(unique_ids)} unique IDs from CSV.")
 
     # 2. Process with concurrency control
@@ -85,11 +86,11 @@ async def main():
     client = storage.Client(project=PROJECT_ID)
     bucket = client.bucket(BUCKET_NAME)
     blob = bucket.blob(CACHE_BLOB_NAME)
-    
+
     cache_data = {"subsumption": {}, "concepts": {}}
     if blob.exists():
         cache_data = json.loads(blob.download_as_string())
-    
+
     concept_cache = cache_data.setdefault("concepts", {})
     for cid, data in final_results.items():
         concept_cache[cid] = data

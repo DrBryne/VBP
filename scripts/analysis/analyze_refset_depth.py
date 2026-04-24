@@ -1,14 +1,14 @@
-import json
 import asyncio
-from app.shared.fhir_client import FhirTerminologyClient
+import json
+
 
 def get_refset_ids():
-    with open("app/shared/resources/icnp_norwegian.json", "r") as f:
+    with open("app/shared/resources/icnp_norwegian.json") as f:
         data = json.load(f)
         return [item["id"] for item in data.get("items", [])]
 
 def load_cache():
-    with open("taxonomy_cache.json", "r") as f:
+    with open("taxonomy_cache.json") as f:
         return json.load(f).get("concepts", {})
 
 def get_depth(cid, cache, current_depth=0, visited=None):
@@ -22,10 +22,10 @@ def get_depth(cid, cache, current_depth=0, visited=None):
 async def analyze_refset_depth():
     refset_ids = get_refset_ids()
     cache = load_cache()
-    
+
     depth_counts = {}
     shallow_terms = []
-    
+
     for cid in refset_ids:
         depth = get_depth(cid, cache)
         depth_counts[depth] = depth_counts.get(depth, 0) + 1
@@ -37,7 +37,7 @@ async def analyze_refset_depth():
     print("\nDepth Distribution:")
     for d in sorted(depth_counts.keys()):
         print(f" Depth {d}: {depth_counts[d]} terms")
-    
+
     print("\nSample Shallow Terms (Depth < 4):")
     for t in shallow_terms[:20]:
         print(f" - {t}")

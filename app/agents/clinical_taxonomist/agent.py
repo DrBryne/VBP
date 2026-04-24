@@ -2,7 +2,7 @@ import json
 import os
 from collections.abc import AsyncGenerator
 
-from google.adk.agents import Agent, BaseAgent, ParallelAgent
+from google.adk.agents import Agent, BaseAgent
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event
 from google.genai import types
@@ -134,7 +134,7 @@ class ClinicalTaxonomist(BaseAgent):
         self._goal_taxonomist = create_goal_taxonomist()
 
     @track_telemetry_span("Agent: ClinicalTaxonomist Mapping")
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event]:
         # The raw findings list and reasoning trace are in the latest user event content parts
         findings_json = None
         reasoning_trace = "No context provided."
@@ -187,8 +187,10 @@ class ClinicalTaxonomist(BaseAgent):
         ctx.session.events.append(Event(author="system", content=mapper_msg))
 
         # Safely run mappers concurrently
-        from google.adk.agents.parallel_agent import _create_branch_ctx_for_sub_agent
         import asyncio
+
+        from google.adk.agents.parallel_agent import _create_branch_ctx_for_sub_agent
+
         from app.shared.logging import VBPLogger
         local_logger = VBPLogger("taxonomist_mappers")
 

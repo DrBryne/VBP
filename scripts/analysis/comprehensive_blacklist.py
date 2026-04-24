@@ -1,12 +1,12 @@
 import json
-import re
+
 
 def comprehensive_blacklist_analysis():
-    with open("app/shared/resources/icnp_norwegian.json", "r") as f:
+    with open("app/shared/resources/icnp_norwegian.json") as f:
         data = json.load(f)
-    
+
     items = data.get("items", [])
-    
+
     # Expanded list of 'Generic' indicators in Norwegian
     generic_words = {
         "lidelse", "forstyrring", "funn", "tilstand", "problem", "situasjon",
@@ -14,28 +14,28 @@ def comprehensive_blacklist_analysis():
         "faktor", "kategori", "område", "enhet", "behov", "evne", "funksjon",
         "status", "tegn", "symptom", "oppfatning", "kunnskap", "verdi"
     }
-    
+
     candidates = []
-    
+
     for item in items:
         term = item.get("pt", {}).get("term", "").lower().strip()
         concept_id = item.get("id")
         words = term.split()
-        
+
         reason = None
-        
+
         # 1. Single word generic terms (e.g., "lidelse", "behov")
         if len(words) == 1 and term in generic_words:
             reason = "Single-word abstraction"
-            
+
         # 2. Very short terms that are likely categories
         elif len(term) < 5:
             reason = "Too short/undespecified"
-            
+
         # 3. High-level 'Problem' containers
         elif term in ["sykepleiediagnose", "klinisk funn", "sykepleieintervensjon", "pasientstatus"]:
             reason = "Meta-category"
-            
+
         # 4. Pattern: 'Problem med [X]' where X is also generic
         elif term.startswith("problem med ") and len(words) <= 3:
             target = words[-1]

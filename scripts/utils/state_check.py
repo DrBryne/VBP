@@ -1,6 +1,7 @@
 import pytest
 from google.adk.sessions import InMemorySessionService
 
+
 @pytest.mark.asyncio
 async def test_state_behavior():
     svc = InMemorySessionService()

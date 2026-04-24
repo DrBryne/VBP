@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import asyncio
 import functools
+import inspect
 import logging
 import os
 from collections.abc import Callable
@@ -26,7 +26,6 @@ from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogEx
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import (
-    BatchSpanProcessor,
     ConsoleSpanExporter,
     SimpleSpanProcessor,
 )
@@ -38,7 +37,7 @@ tracer = trace.get_tracer("vbp_workflow")
 def track_telemetry_span(span_name: str):
     """
     Creates a sub-span in the Cloud Trace waterfall for a function.
-    Uses start_span directly without attaching to context to avoid race conditions 
+    Uses start_span directly without attaching to context to avoid race conditions
     in high-concurrency async environments.
     """
     def decorator(func: Callable):
@@ -71,7 +70,7 @@ def track_telemetry_span(span_name: str):
                     span.set_status(Status(StatusCode.ERROR, str(e)))
                     raise
 
-        return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
+        return async_wrapper if inspect.iscoroutinefunction(func) else sync_wrapper
     return decorator
 
 def setup_telemetry() -> str | None:
@@ -98,13 +97,13 @@ def setup_telemetry() -> str | None:
     if os.environ.get("AGENT_ENGINE_ID") or os.environ.get("GOOGLE_CLOUD_PROJECT"):
         try:
             from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
-            
-            # Use SimpleSpanProcessor for Cloud Trace to avoid batching delays 
+
+            # Use SimpleSpanProcessor for Cloud Trace to avoid batching delays
             # and minimize 'DeadlineExceeded' risks during high-concurrency runs.
             tracer_provider.add_span_processor(SimpleSpanProcessor(CloudTraceSpanExporter()))
-            
+
             # NOTE: CloudLoggingExporter is disabled here to prevent gRPC congestion
-            # and timeout errors (DeadlineExceeded). On Agent Engine, logs are 
+            # and timeout errors (DeadlineExceeded). On Agent Engine, logs are
             # automatically captured from stdout/stderr.
             logging.info("OpenTelemetry Cloud Trace initialized. (Cloud Logging bypassed for performance)")
         except ImportError:

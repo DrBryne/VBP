@@ -1,18 +1,16 @@
 import asyncio
+
 import pytest
-from app.shared.processing import validate_taxonomy
+
 from app.shared.models import (
     ClinicalFinding,
-    DiagnosisMappingResponse,
     DiagnosisMapping,
-    InterventionMappingResponse,
-    GoalMappingResponse,
-    FunctionalAreaResponse,
-    FunctionalArea,
+    DiagnosisMappingResponse,
     MappedTerm,
     WorkflowProgress,
-    AuditorRating
 )
+from app.shared.processing import validate_taxonomy
+
 
 @pytest.mark.asyncio
 async def test_validate_taxonomy_hallucinated_id():
@@ -32,7 +30,7 @@ async def test_validate_taxonomy_hallucinated_id():
     )
     # Finding map format: {f_id: (original, auditor_rating, quality_score)}
     finding_map = {finding_id: (original, None, 8.0)}
-    
+
     # 2. Setup mappings with a HALLUCINATED ID (not in diagnoses.txt/interventions.txt)
     # Note: validate_taxonomy uses load_valid_icnp_ids() which reads from the agent data files.
     diag_mappings = DiagnosisMappingResponse(results=[
@@ -41,10 +39,10 @@ async def test_validate_taxonomy_hallucinated_id():
             nursing_diagnosis=MappedTerm(term="Dysfagi", ICNP_concept_id="999999999") # Hallucination
         )
     ])
-    
+
     progress_state = WorkflowProgress()
     state_lock = asyncio.Lock()
-    
+
     processed_findings, error_count = validate_taxonomy(
         finding_map=finding_map,
         diag_mappings=diag_mappings,
@@ -56,10 +54,10 @@ async def test_validate_taxonomy_hallucinated_id():
         progress_state=progress_state,
         state_lock=state_lock
     )
-    
+
     assert len(processed_findings) == 1
     f = processed_findings[0]
-    
+
     # Assert ID was PRESERVED because it will be checked by FHIR Consolidator
     assert f.mapped_nursing_diagnosis.term == "Dysfagi"
     assert f.mapped_nursing_diagnosis.ICNP_concept_id == "999999999"
@@ -81,9 +79,9 @@ async def test_validate_taxonomy_missing_mapping():
         quotes=["Some text"]
     )
     finding_map = {finding_id: (original, None, 5.0)}
-    
+
     # Mappings are empty/None
-    processed_findings, error_count = validate_taxonomy(
+    processed_findings, _error_count = validate_taxonomy(
         finding_map=finding_map,
         diag_mappings=None,
         int_mappings=None,
@@ -94,10 +92,10 @@ async def test_validate_taxonomy_missing_mapping():
         progress_state=WorkflowProgress(),
         state_lock=asyncio.Lock()
     )
-    
+
     assert len(processed_findings) == 1
     f = processed_findings[0]
-    
+
     # Should fall back to original
     assert f.mapped_nursing_diagnosis.term == "Angst"
     assert f.mapped_nursing_diagnosis.ICNP_concept_id == ""

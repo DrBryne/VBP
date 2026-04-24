@@ -1,14 +1,20 @@
+
 import pytest
-from datetime import datetime
-from app.shared.consolidation import group_findings, taxonomy_cache, norwegian_refset_ids
-from app.shared.models import (
-    ProcessedDocument, 
-    ProcessedFinding, 
-    Document, 
-    MappedTerm, 
-    FunctionalArea,
-    AuditorRating
+
+from app.shared.consolidation import (
+    group_findings,
+    norwegian_refset_ids,
+    taxonomy_cache,
 )
+from app.shared.models import (
+    AuditorRating,
+    Document,
+    FunctionalArea,
+    MappedTerm,
+    ProcessedDocument,
+    ProcessedFinding,
+)
+
 
 @pytest.mark.asyncio
 async def test_sibling_merging_logic():
@@ -26,7 +32,7 @@ async def test_sibling_merging_logic():
         "102": {"display": "Child B", "parent_ids": ["900"]},
         "900": {"display": "Common Parent Term", "parent_ids": ["138875005"]}
     }
-    
+
     # 2. Setup Refset Safety Zone
     # We must ensure the global set is actually populated for the logic to work
     norwegian_refset_ids.clear()
@@ -42,7 +48,7 @@ async def test_sibling_merging_logic():
         doi="10.1234/test",
         evidence_level="Nivå 1"
     )
-    
+
     def create_finding(fid, diag, cid):
         return ProcessedFinding(
             finding_id=fid,
@@ -69,31 +75,31 @@ async def test_sibling_merging_logic():
 
     finding_a = create_finding("f1", "Child A", "101")
     finding_b = create_finding("f2", "Child B", "102")
-    
+
     processed_docs = [
         ProcessedDocument(source_document=doc, mapped_findings=[finding_a, finding_b])
     ]
-    
+
     # 4. Execute Consolidation
     grouped_data = await group_findings(processed_docs, fhir_client=None)
-    
+
     # 5. Assertions
     # We expect exactly ONE group because they merged under parent 900
     assert len(grouped_data) == 1, f"Expected 1 merged group, but got {len(grouped_data)}"
-    
+
     group_key = f"{FunctionalArea.FO3}||900"
     assert group_key in grouped_data
-    
+
     merged_finding = grouped_data[group_key]
     assert merged_finding["nursing_diagnosis"].ICNP_concept_id == "900"
     assert merged_finding["nursing_diagnosis"].term == "Common Parent Term"
-    
+
     # Verify that evidence from both children was preserved
     evidence = merged_finding["supporting_evidence"]["d1"]
     assert "Quote f1" in evidence["quotes"]
     assert "Quote f2" in evidence["quotes"]
-    
+
     # Verify that interventions were aggregated (Wait, merged interventions logic)
     assert len(merged_finding["interventions"]) == 2
-    
+
     print("\n✅ Consolidation Merge Test Passed: Successfully distilled two siblings into one parent.")

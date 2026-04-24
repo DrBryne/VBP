@@ -1,4 +1,3 @@
-import asyncio
 import json
 import os
 import uuid
@@ -25,9 +24,9 @@ class SpyTaxonomist(ClinicalTaxonomist):
         super().__init__(name="spy_taxonomist")
         object.__setattr__(self, "logs", [])
 
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event]:
         self.logs.append("--- SpyTaxonomist Execution Start ---")
-        
+
         # Log the input findings
         latest_event = ctx.session.events[-1]
         self.logs.append(f"Input Event Author: {latest_event.author}")
@@ -49,7 +48,7 @@ class SpyTaxonomist(ClinicalTaxonomist):
                     if "results" in data and not data["results"]:
                          self.logs.append(f"!!! CRITICAL: Sub-Agent '{ev.author}' returned an EMPTY results list.")
             yield ev
-        
+
         self.logs.append("--- SpyTaxonomist Execution End ---")
 
 @pytest.mark.asyncio

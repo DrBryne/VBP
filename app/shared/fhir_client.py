@@ -38,7 +38,7 @@ class FhirTerminologyClient:
             code_a: The first SNOMED SCTID (e.g., '129839007' for Risk for fall).
             code_b: The second SNOMED SCTID.
         Returns:
-            One of: 
+            One of:
             - 'subsumed-by' (A is a child of B)
             - 'subsumes' (A is a parent of B)
             - 'equivalent' (A and B are the same concept)
@@ -74,7 +74,7 @@ class FhirTerminologyClient:
                                 logger.warning(f"FHIR Subsumption API Error: HTTP {response.status}", code_a=code_a, code_b=code_b)
                                 return "not-subsumed"
 
-                except asyncio.TimeoutError:
+                except TimeoutError:
                     logger.warning("FHIR Subsumption Timeout", code_a=code_a, code_b=code_b)
                 except Exception as e:
                     logger.error(f"FHIR Subsumption Connection Error: {e}", code_a=code_a, code_b=code_b)
@@ -87,7 +87,7 @@ class FhirTerminologyClient:
 
     async def lookup_concept(self, code: str) -> dict[str, Any] | None:
         """
-        Retrieves detailed information about a specific SNOMED CT concept, 
+        Retrieves detailed information about a specific SNOMED CT concept,
         including its parent concepts.
         Args:
             code: The SNOMED SCTID to lookup.
@@ -140,7 +140,7 @@ class FhirTerminologyClient:
                                 logger.warning(f"FHIR Lookup API Error: HTTP {response.status}", code=code)
                                 return None
 
-                except asyncio.TimeoutError:
+                except TimeoutError:
                     logger.warning("FHIR Lookup Timeout", code=code)
                 except Exception as e:
                     logger.error(f"FHIR Lookup Connection Error: {e}", code=code)

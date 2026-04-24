@@ -6,7 +6,7 @@ from dataclasses import dataclass
 class VBPConfig:
     """
     Central configuration registry for the VBP Workflow.
-    Reads from environment variables with sensible defaults for the 
+    Reads from environment variables with sensible defaults for the
     European staging environment.
     """
     # Google Cloud Project Details

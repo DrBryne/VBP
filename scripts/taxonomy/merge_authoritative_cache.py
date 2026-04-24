@@ -1,5 +1,6 @@
 import json
 import os
+
 from google.cloud import storage
 
 # Configure
@@ -16,19 +17,19 @@ def main():
     # 1. Load authoritative data from Helsedirektoratet export
     with open(LOCAL_DATA_PATH, encoding="utf-8") as f:
         export_data = json.load(f)
-    
+
     new_entries = {}
     for item in export_data.get("items", []):
         cid = item.get("conceptId")
         if not cid: continue
-        
+
         # Extract preferred term (Norwegian)
         display = "Unknown"
         if item.get("pt") and item.get("pt").get("term"):
             display = item.get("pt").get("term")
         elif item.get("fsn") and item.get("fsn").get("term"):
             display = item.get("fsn").get("term")
-            
+
         # Extract parents
         parent_ids = []
         # Snowstorm often provides parents in a specific field if expanded
@@ -37,7 +38,7 @@ def main():
                 pid = p.get("conceptId")
                 if pid:
                     parent_ids.append(pid)
-        
+
         new_entries[cid] = {
             "display": display,
             "parent_ids": parent_ids,
@@ -50,13 +51,13 @@ def main():
     client = storage.Client(project=PROJECT_ID)
     bucket = client.bucket(BUCKET_NAME)
     blob = bucket.blob(CACHE_BLOB_NAME)
-    
+
     cache_data = {"subsumption": {}, "concepts": {}}
     if blob.exists():
         cache_data = json.loads(blob.download_as_string())
-    
+
     concept_cache = cache_data.setdefault("concepts", {})
-    
+
     # 3. Merge: Authoritative data overwrites existing cache entries
     update_count = 0
     new_count = 0
@@ -69,8 +70,8 @@ def main():
 
     # 4. Upload back to GCS
     blob.upload_from_string(json.dumps(cache_data, indent=2), content_type="application/json")
-    
-    print(f"Successfully merged data into GCS cache.")
+
+    print("Successfully merged data into GCS cache.")
     print(f" - New entries added: {new_count}")
     print(f" - Existing entries updated: {update_count}")
     print(f" - Total cache size: {len(concept_cache)} concepts")

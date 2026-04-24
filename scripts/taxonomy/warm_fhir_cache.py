@@ -1,7 +1,8 @@
 import asyncio
+import csv
 import json
 import os
-import csv
+
 import aiohttp
 from google.cloud import storage
 
@@ -35,7 +36,7 @@ async def lookup_concept_with_retry(session, code):
     """Fetches display name and hierarchy for a concept."""
     url = f"{FHIR_BASE_URL}/CodeSystem/$lookup"
     params = {"system": FHIR_SYSTEM, "code": code}
-    
+
     for attempt in range(5):
         try:
             async with session.get(url, params=params, timeout=10) as response:
@@ -75,20 +76,20 @@ async def main():
             cid = row.get("Concept Id")
             if cid:
                 all_ids.add(cid)
-    
+
     print(f"Loaded {len(all_ids)} unique IDs from CSV.")
 
     # 2. Load existing cache
     cache_data = await download_cache()
     concept_cache = cache_data.setdefault("concepts", {})
-    
+
     # 3. Filter for IDs not already cached
     missing_ids = [cid for cid in all_ids if cid not in concept_cache]
     print(f"{len(missing_ids)} IDs are missing from cache. Starting warming...")
 
     # 4. Warm up missing concepts (using a semaphore to avoid overloading the server)
     semaphore = asyncio.Semaphore(10)
-    
+
     async def warm_one(session, cid):
         async with semaphore:
             res = await lookup_concept_with_retry(session, cid)

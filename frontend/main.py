@@ -1,14 +1,14 @@
 import os
 import sys
 import uuid
-from datetime import datetime
+
 import streamlit as st
 
 # Add project root to sys.path so we can import shared configs
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from google.cloud import storage
 import vertexai
+from google.cloud import storage
 
 from app.shared.config import config
 
@@ -16,7 +16,6 @@ from app.shared.config import config
 vertexai.init(project=os.environ.get("GOOGLE_CLOUD_PROJECT"), location=config.PREVIEW_MODEL_LOCATION)
 
 import pyrebase
-import streamlit as st
 
 # Configure Firebase / Identity Platform
 firebase_config = {
@@ -35,7 +34,7 @@ if firebase_config["apiKey"]:
     auth = firebase.auth()
 
 st.set_page_config(
-    page_title="VBP Clinical Synthesis Chat",
+    page_title="VBP Klinisk Syntese Chat",
     page_icon="🩺",
     layout="wide",
 )
@@ -48,30 +47,30 @@ if "user_email" not in st.session_state:
     st.session_state.user_email = None
 
 def login():
-    st.title("🩺 VBP Clinical Synthesis Login")
-    st.markdown("This application requires authorized access. Please log in below.")
-    
+    st.title("🩺 VBP Klinisk Syntese Innlogging")
+    st.markdown("Denne applikasjonen krever autorisert tilgang. Vennligst logg inn nedenfor.")
+
     if not firebase_config["apiKey"]:
-        st.warning("⚠️ Identity Platform is not fully configured. The `FIREBASE_API_KEY` environment variable is missing.")
+        st.warning("⚠️ Identity Platform er ikke fullstendig konfigurert. `FIREBASE_API_KEY` miljøvariabelen mangler.")
         return
 
-    email = st.text_input("Email Address")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Log In"):
+    email = st.text_input("E-postadresse")
+    password = st.text_input("Passord", type="password")
+
+    if st.button("Logg inn"):
         try:
             user = auth.sign_in_with_email_and_password(email, password)
             st.session_state.user_token = user['idToken']
             st.session_state.user_email = email
             st.rerun()
         except Exception as e:
-            st.error("Invalid email or password.")
+            st.error("Ugyldig e-post eller passord.")
 
 if not st.session_state.user_token and firebase_config["apiKey"]:
     login()
     st.stop() # Halt rendering the rest of the app until logged in
 
-st.title("🩺 VBP Clinical Synthesis Chat")
+st.title("🩺 VBP Klinisk Syntese Chat")
 
 # Session state initialization
 if "session_id" not in st.session_state:
@@ -91,7 +90,7 @@ def get_available_reports():
         storage_client = storage.Client()
         bucket = storage_client.bucket(bucket_name)
         blobs = bucket.list_blobs(prefix="runs/")
-        
+
         reports = []
         for blob in blobs:
             if blob.name.endswith("workflow_synthesis.json"):
@@ -104,13 +103,13 @@ def get_available_reports():
 
 # Sidebar for GCS Selection
 with st.sidebar:
-    st.header("1. Select Synthesis Report")
-    st.markdown("Choose a generated report from Google Cloud Storage to query.")
+    st.header("1. Velg Synteserapport")
+    st.markdown("Velg en generert rapport fra Google Cloud Storage for å spørre om.")
     reports = get_available_reports()
-    
+
     if reports:
         selected_report = st.selectbox(
-            "Available Reports:", 
+            "Tilgjengelige Rapporter:",
             reports,
             format_func=lambda x: x.split("runs/")[1].split("/")[0] if "runs/" in x else x
         )
@@ -118,13 +117,13 @@ with st.sidebar:
             st.session_state["gcs_path"] = selected_report
             # Clear chat when a new report is selected
             st.session_state["messages"] = [
-                {"role": "assistant", "content": f"Hi! I'm ready to answer questions about the report: {selected_report.split('/')[-2]}."}
+                {"role": "assistant", "content": f"Hei! Jeg er klar til å svare på spørsmål om rapporten: {selected_report.split('/')[-2]}."}
             ]
     else:
-        st.warning("No reports found in GCS bucket.")
-        
+        st.warning("Ingen rapporter funnet i GCS-bøtten.")
+
     st.divider()
-    st.markdown("### User Identity")
+    st.markdown("### Brukeridentitet")
     # For local testing, mock identity. In Cloud Run + IAP, fetch from headers.
     iap_user = st.context.headers.get("X-Goog-Authenticated-User-Email")
     # Use Identity Platform logged in email if present
@@ -134,22 +133,22 @@ with st.sidebar:
         user_email = iap_user.replace("accounts.google.com:", "")
     else:
         user_email = "local-developer@example.com"
-        
-    st.text(f"Logged in as: {user_email}")
+
+    st.text(f"Logget inn som: {user_email}")
 
 # Get Engine ID from deployment_metadata.json
 def get_engine_id():
     import json
     metadata_path = os.path.join(os.path.dirname(__file__), "..", "deployment_metadata.json")
     if os.path.exists(metadata_path):
-        with open(metadata_path, "r") as f:
+        with open(metadata_path) as f:
             return json.load(f).get("remote_agent_engine_id")
     return None
 
 engine_id = get_engine_id()
 
 if not engine_id:
-    st.warning("⚠️ Agent Engine not deployed. Please run `make deploy` to test the chat interface.")
+    st.warning("⚠️ Agent Engine er ikke distribuert. Vennligst kjør `make deploy` for å teste chat-grensesnittet.")
     st.stop()
 
 # Display chat messages
@@ -158,9 +157,9 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 # Chat Input
-if prompt := st.chat_input("Ask a question about the clinical synthesis..."):
+if prompt := st.chat_input("Still et spørsmål om den kliniske syntesen..."):
     if not st.session_state["gcs_path"]:
-        st.error("Please select a report from the sidebar first.")
+        st.error("Vennligst velg en rapport fra sidepanelet først.")
         st.stop()
 
     # Append user message
@@ -175,18 +174,26 @@ if prompt := st.chat_input("Ask a question about the clinical synthesis..."):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        
+
         try:
             # Initialize client
             client = vertexai.Client(location=config.PREVIEW_MODEL_LOCATION)
             agent = client.agent_engines.get(name=engine_id)
-            
+
+            # Ensure the session is created on the backend (ADK 1.15.0+ requirement for persistent session IDs)
+            if getattr(st.session_state, "_session_created", False) is False:
+                try:
+                    agent.create_session(user_id=user_email, session_id=st.session_state["session_id"])
+                    st.session_state._session_created = True
+                except Exception:
+                    pass
+
             response_stream = agent.stream_query(
                 user_id=user_email,
                 session_id=st.session_state["session_id"],
                 message=formatted_prompt
             )
-            
+
             for chunk in response_stream:
                 # AgentEngine returns a stream of events as dictionaries
                 if isinstance(chunk, dict):
@@ -203,11 +210,11 @@ if prompt := st.chat_input("Ask a question about the clinical synthesis..."):
                     text_chunk = chunk.message.parts[0].text
                     full_response += text_chunk
                     message_placeholder.markdown(full_response + "▌")
-                    
+
             message_placeholder.markdown(full_response)
-            
+
             # Save to history
             st.session_state.messages.append({"role": "assistant", "content": full_response})
-            
+
         except Exception as e:
             st.error(f"Error querying Agent Engine: {e}")

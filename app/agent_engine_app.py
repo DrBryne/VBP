@@ -22,15 +22,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # __init__ handles GOOGLE_CLOUD_LOCATION setup automatically
-from app.agent import app as adk_app
-from app.shared.config import config
 from google.adk.artifacts import GcsArtifactService, InMemoryArtifactService
 from google.adk.sessions import InMemorySessionService
 from google.cloud import logging as google_cloud_logging
 from vertexai.agent_engines.templates.adk import AdkApp
 
+from app.agent import app as adk_app
 from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
+from app.shared.config import config
 
 
 class AgentEngineApp(AdkApp):

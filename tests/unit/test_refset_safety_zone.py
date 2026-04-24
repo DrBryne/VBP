@@ -1,13 +1,19 @@
 import pytest
-from app.shared.consolidation import group_findings, taxonomy_cache, norwegian_refset_ids
-from app.shared.models import (
-    ProcessedDocument, 
-    ProcessedFinding, 
-    Document, 
-    MappedTerm, 
-    FunctionalArea,
-    AuditorRating
+
+from app.shared.consolidation import (
+    group_findings,
+    norwegian_refset_ids,
+    taxonomy_cache,
 )
+from app.shared.models import (
+    AuditorRating,
+    Document,
+    FunctionalArea,
+    MappedTerm,
+    ProcessedDocument,
+    ProcessedFinding,
+)
+
 
 @pytest.mark.asyncio
 async def test_refset_and_depth_gatekeeper():
@@ -25,7 +31,7 @@ async def test_refset_and_depth_gatekeeper():
         "101": {"display": "Ref Child 1", "parent_ids": ["100"]},
         "102": {"display": "Ref Child 2", "parent_ids": ["100"]},
         "100": {"display": "Ref Parent", "parent_ids": ["138875005"]}, # Depth 1
-        
+
         # Pair 2: Deep Non-Refset terms -> SHOULD MERGE (Depth 5)
         "201": {"display": "Deep 1", "parent_ids": ["200"]},
         "202": {"display": "Deep 2", "parent_ids": ["200"]},
@@ -53,7 +59,7 @@ async def test_refset_and_depth_gatekeeper():
 
     def create_f(fid, cid, fo):
         return ProcessedFinding(
-            finding_id=fid, document_id="d1", nursing_diagnosis="Diag", intervention="Int", goal="Goal", 
+            finding_id=fid, document_id="d1", nursing_diagnosis="Diag", intervention="Int", goal="Goal",
             supporting_sentence_ids=["S1"], clinical_specificity=7, actionability_score=8,
             mapped_nursing_diagnosis=MappedTerm(term="Diag", ICNP_concept_id=cid),
             mapped_intervention=MappedTerm(term="Int", ICNP_concept_id=""),
@@ -77,7 +83,7 @@ async def test_refset_and_depth_gatekeeper():
     grouped_data = await group_findings(processed_docs, fhir_client=None)
 
     # 5. Assertions
-    
+
     # FO1: Refset terms SHOULD merge (Depth 1 is ignored for Refset)
     fo1_groups = [k for k in grouped_data.keys() if k.startswith(str(FunctionalArea.FO1))]
     assert len(fo1_groups) == 1, f"Expected 1 group, got {fo1_groups}"
